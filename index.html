@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spacebar Clicker</title>
+    <meta name="description" content="Test your spacebar clicking speed with our free online spacebar clicker. Measure clicks per second (CPS) with customizable timer options from 5s to 100s.">
+    <meta name="keywords" content="spacebar clicker, spacebar counter, spacebar test, clicking speed test, CPS test, clicks per second">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://space-bar-clicker.github.io/" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f6f8fd 0%, #f0f2f5 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .timer-selection {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .timer-btn {
+            background: linear-gradient(145deg, #8546ff, #7838f3);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(120, 56, 243, 0.2);
+        }
+
+        .timer-btn:hover {
+            background: linear-gradient(145deg, #7838f3, #6429d4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(120, 56, 243, 0.3);
+        }
+
+        .timer-btn.active {
+            background: linear-gradient(145deg, #6429d4, #5620b3);
+            box-shadow: 0 2px 10px rgba(120, 56, 243, 0.4), 
+                        0 0 0 2px rgba(255, 255, 255, 0.8), 
+                        0 0 0 4px rgba(120, 56, 243, 0.4);
+        }
+
+        .custom-timer {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .custom-timer input {
+            width: 100px;
+            padding: 12px;
+            border: 2px solid rgba(120, 56, 243, 0.3);
+            border-radius: 12px;
+            outline: none;
+            font-size: 1rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        .custom-timer input:focus {
+            border-color: #7838f3;
+            background: white;
+            box-shadow: 0 4px 15px rgba(120, 56, 243, 0.15);
+        }
+
+        #app {
+            text-align: center;
+            background: white;
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(120, 56, 243, 0.15);
+            position: relative;
+        }
+
+        .display-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .display-box {
+            background: linear-gradient(145deg, #f8f9fe, #ffffff);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            width: 200px;
+            box-shadow: 0 10px 30px rgba(120, 56, 243, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .display-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #8546ff, #7838f3);
+        }
+
+        #timer,
+        #counter {
+            font-size: 48px;
+            color: #7838f3;
+            margin-bottom: 10px;
+            font-weight: 700;
+            font-family: 'Monaco', 'Consolas', monospace;
+        }
+
+        label {
+            font-size: 16px;
+            color: #666;
+            display: block;
+            font-weight: 600;
+        }
+
+        #message {
+            margin: 20px 0;
+            font-size: 20px;
+            color: #7838f3;
+            font-weight: 600;
+            min-height: 30px;
+        }
+
+        #restartButton {
+            background: linear-gradient(145deg, #8546ff, #7838f3);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 8px 20px rgba(120, 56, 243, 0.2);
+        }
+
+        #restartButton:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(120, 56, 243, 0.3);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 24px;
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2),
+                        0 0 0 1px rgba(120, 56, 243, 0.1);
+            animation: modalShow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes modalShow {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal h2 {
+            color: #7838f3;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .modal p {
+            margin: 15px 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .modal-btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .retry-btn {
+            background: linear-gradient(145deg, #8546ff, #7838f3);
+            color: white;
+            box-shadow: 0 4px 15px rgba(120, 56, 243, 0.3);
+        }
+
+        .retry-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(120, 56, 243, 0.4);
+        }
+
+        .close-btn {
+            background: rgba(224, 224, 224, 0.7);
+            color: #333;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .close-btn:hover {
+            background: rgba(200, 200, 200, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        @media (max-width: 600px) {
+            .display-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .display-box {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .timer-selection {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .custom-timer {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="timer-selection">
+            <button class="timer-btn active" data-time="10">10s</button>
+            <button class="timer-btn" data-time="5">5s</button>
+            <button class="timer-btn" data-time="15">15s</button>
+            <button class="timer-btn" data-time="30">30s</button>
+            <button class="timer-btn" data-time="60">60s</button>
+            <button class="timer-btn" data-time="100">100s</button>
+            <div class="custom-timer">
+                <input type="number" id="customTimer" min="1" max="999" placeholder="Custom">
+                <button class="timer-btn" id="setCustomTimer">Set</button>
+            </div>
+        </div>
+
+        <div class="display-container">
+            <div class="display-box">
+                <div id="timer">10</div>
+                <label>Timer (sec)</label>
+            </div>
+            <div class="display-box">
+                <div id="counter">0</div>
+                <label>Counter</label>
+            </div>
+        </div>
+        <div id="message">Press SPACEBAR to start clicking!</div>
+        <button id="restartButton">Restart Game</button>
+    </div>
+
+    <div class="modal" id="resultModal">
+        <div class="modal-content">
+            <h2>Test Results</h2>
+            <div id="modalResults"></div>
+            <div class="modal-buttons">
+                <button class="modal-btn retry-btn">
+                    ↺ Retry
+                </button>
+                <button class="modal-btn close-btn">
+                    ✕ Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let count = 0;
+        let time = 10;
+        let timerExpired = false;
+        let interval;
+        let timer = time;
+        
+        const counterDisplay = document.getElementById('counter');
+        const timerDisplay = document.getElementById('timer');
+        const messageDisplay = document.getElementById('message');
+        const restartButton = document.getElementById('restartButton');
+        const resultModal = document.getElementById('resultModal');
+        const modalResults = document.getElementById('modalResults');
+        const customTimerInput = document.getElementById('customTimer');
+
+        // Timer selection functionality
+        document.querySelectorAll('.timer-btn').forEach(btn => {
+            if (!btn.id) {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.timer-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    time = parseInt(btn.dataset.time);
+                    resetGame();
+                });
+            }
+        });
+
+        // Custom timer functionality
+        document.getElementById('setCustomTimer').addEventListener('click', () => {
+            const customTime = parseInt(customTimerInput.value);
+            if (customTime && customTime > 0 && customTime <= 999) {
+                document.querySelectorAll('.timer-btn').forEach(b => b.classList.remove('active'));
+                time = customTime;
+                resetGame();
+            } else {
+                alert('Please enter a valid time between 1 and 999 seconds');
+            }
+        });
+
+        document.body.onkeydown = function(e) {
+            if(e.keyCode == 32) {
+                e.preventDefault();
+                if (!timerExpired && interval === undefined) {
+                    messageDisplay.textContent = "Keep pressing SPACEBAR!";
+                    startTimer();
+                    count++;
+                    counterDisplay.textContent = count;
+                } else if (!timerExpired) {
+                    count++;
+                    counterDisplay.textContent = count;
+                }
+            }
+        }
+
+        function startTimer() {
+            timerExpired = false;
+            interval = setInterval(updateTimerDisplayAndDecrement, 1000);
+        }
+
+        function updateTimerDisplayAndDecrement() {
+            if (--timer < 0) {
+                stopTimer();
+            } else {
+                timerDisplay.textContent = timer;
+            }
+        }
+
+        function stopTimer() {
+            clearInterval(interval);
+            interval = undefined;
+            timerExpired = true;
+            timerDisplay.textContent = '0';
+            
+            const clicksPerSecond = (count / time).toFixed(2);
+            messageDisplay.textContent = `Test completed!`;
+            
+            // Show modal with results
+            modalResults.innerHTML = `
+                <p>Total Clicks: <strong>${count}</strong></p>
+                <p>Time: <strong>${time} seconds</strong></p>
+                <p>Clicks per Second: <strong>${clicksPerSecond}</strong></p>
+            `;
+            resultModal.style.display = 'flex';
+        }
+
+        function resetGame() {
+            clearInterval(interval);
+            interval = undefined;
+            timerExpired = false;
+            count = 0;
+            timer = time;
+            timerDisplay.textContent = time;
+            counterDisplay.textContent = '0';
+            messageDisplay.textContent = 'Press SPACEBAR to start clicking!';
+            resultModal.style.display = 'none';
+        }
+
+        restartButton.addEventListener('click', resetGame);
+
+        // Modal buttons
+        document.querySelector('.retry-btn').addEventListener('click', () => {
+            resetGame();
+        });
+
+        document.querySelector('.close-btn').addEventListener('click', () => {
+            resultModal.style.display = 'none';
+        });
+
+        // Prevent modal close when clicking modal content
+        document.querySelector('.modal-content').addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Enter' && resultModal.style.display === 'flex') {
+                resetGame();
+            } else if (e.code === 'Escape' && resultModal.style.display === 'flex') {
+                resultModal.style.display = 'none';
+            }
+        });
+</script>
+</body>
+</html>
