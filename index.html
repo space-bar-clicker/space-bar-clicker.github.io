@@ -274,8 +274,161 @@
             }
         }
     </style>
+    <style>
+        /* Existing styles */
+        
+        /* Navbar Styles */
+        .navbar {
+            background: linear-gradient(145deg, #8546ff, #7838f3);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 30px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: white;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: linear-gradient(145deg, #8546ff, #7838f3);
+                padding: 20px;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .menu-btn {
+                display: block;
+            }
+        }
+        /* Rest of existing styles */
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        h1, h2 {
+            color: #7838f3;
+            margin-bottom: 20px;
+        }
+        
+        .intro {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .highlight-box {
+            background: #f8f9fe;
+            border-left: 4px solid #7838f3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tips-list li {
+            margin-bottom: 15px;
+        }
+        
+        .feature-box {
+            background: linear-gradient(145deg, #f8f9fe, #ffffff);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(120, 56, 243, 0.1);
+        }
+    </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                Spacebar Clicker
+            </a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+            </div>
+            <button class="menu-btn">☰</button>
+        </div>
+    </nav>
     <div id="app">
         <div class="timer-selection">
             <button class="timer-btn active" data-time="10">10s</button>
@@ -318,6 +471,7 @@
             </div>
         </div>
     </div>
+    
 
     <script>
         let count = 0;
@@ -441,5 +595,107 @@
             }
         });
 </script>
+    <article class="article-container">
+        <h1>Spacebar Clicker: Test and Improve Your Clicking Speed</h1>
+        
+        <div class="intro">
+            The Spacebar Clicker is a powerful tool designed to measure and improve your clicking speed using your keyboard's spacebar. Whether you're a gamer looking to enhance your APM (Actions Per Minute) or simply curious about your typing capabilities, this tool provides accurate measurements and detailed feedback.
+        </div>
+        
+        <section class="section">
+            <h2>What is a Spacebar Clicker?</h2>
+            <p>A Spacebar Clicker is a specialized tool that measures how quickly you can press the spacebar key. It tracks both your total clicks and calculates your clicks per second (CPS), providing instant feedback on your performance. Our implementation features customizable time intervals ranging from 5 seconds to 100 seconds, allowing for both quick tests and endurance challenges.</p>
+            
+            <div class="feature-box">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Multiple timer options (5s, 10s, 15s, 30s, 60s, 100s)</li>
+                    <li>Custom timer setting</li>
+                    <li>Real-time click counter</li>
+                    <li>Detailed results with CPS calculation</li>
+                    <li>Modern, user-friendly interface</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>Why Test Your Spacebar Clicking Speed?</h2>
+            <p>Testing your spacebar clicking speed can be beneficial for several reasons:</p>
+            
+            <div class="highlight-box">
+                <ul>
+                    <li>Gaming Performance: Many games require rapid keyboard inputs. Understanding and improving your clicking speed can enhance your gaming performance.</li>
+                    <li>Input Speed Measurement: Measure and track your keyboard input speed over time.</li>
+                    <li>Hand Exercise: Regular clicking exercises can help maintain finger dexterity and prevent repetitive strain injuries when done in moderation.</li>
+                    <li>Competitive Challenge: Compare your scores with friends or the online community.</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>How to Use the Spacebar Clicker</h2>
+            <ol class="tips-list">
+                <li><strong>Select Your Time:</strong> Choose from preset timer options or set a custom duration for your test.</li>
+                <li><strong>Start Clicking:</strong> Press the spacebar once to begin the test. The timer will start automatically.</li>
+                <li><strong>Maintain Rhythm:</strong> Try to maintain a consistent clicking pace throughout the test.</li>
+                <li><strong>View Results:</strong> After the timer ends, review your performance in the detailed results popup.</li>
+                <li><strong>Try Again:</strong> Use the retry button to start a new test and attempt to beat your previous score.</li>
+            </ol>
+        </section>
+        
+        <section class="section">
+            <h2>Tips for Better Scores</h2>
+            <div class="highlight-box">
+                <ul>
+                    <li>Find a comfortable hand position that allows for rapid finger movement</li>
+                    <li>Take regular breaks to prevent fatigue</li>
+                    <li>Practice with different time intervals to improve both speed and endurance</li>
+                    <li>Focus on maintaining a steady rhythm rather than random bursts of speed</li>
+                    <li>Keep track of your progress over time to identify improvements</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>Understanding Your Results</h2>
+            <p>After each test, you'll receive detailed results including:</p>
+            <ul>
+                <li><strong>Total Clicks:</strong> The number of times you pressed the spacebar</li>
+                <li><strong>Time Duration:</strong> The length of your test in seconds</li>
+                <li><strong>Clicks Per Second (CPS):</strong> Your average clicking speed calculated by dividing total clicks by time duration</li>
+            </ul>
+            <p>These metrics help you understand your performance and track improvements over time.</p>
+        </section>
+        
+        <footer class="section">
+            <div class="feature-box">
+                <h3>Ready to Test Your Speed?</h3>
+                <p>Try our Spacebar Clicker now and challenge yourself to achieve higher scores. Remember to focus on consistent improvement rather than immediate results, and don't forget to take regular breaks during extended practice sessions.</p>
+            </div>
+        </footer>
+    </article>
+    <script>
+        // Mobile menu functionality
+        const menuBtn = document.querySelector('.menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.navbar')) {
+                navLinks.classList.remove('active');
+            }
+        });
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
