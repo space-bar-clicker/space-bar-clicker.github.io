@@ -39,59 +39,209 @@
       .timer-selection {
          display: flex;
          flex-wrap: wrap;
-         gap: 10px;
+         gap: 15px;
          justify-content: center;
          margin-bottom: 25px;
+         align-items: center;
+      }
+
+      .timer-presets {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 10px;
+         justify-content: center;
       }
 
       .timer-btn {
          background: linear-gradient(145deg, #8546ff, #7838f3);
          color: white;
          border: none;
-         padding: 12px 24px;
-         border-radius: 12px;
+         padding: 14px 28px;
+         border-radius: 14px;
          cursor: pointer;
          transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
          font-weight: 600;
          letter-spacing: 0.5px;
-         box-shadow: 0 4px 15px rgba(120, 56, 243, 0.2);
+         font-size: 15px;
+         box-shadow: 0 4px 15px rgba(120, 56, 243, 0.25);
+         position: relative;
+         min-width: 70px;
       }
 
       .timer-btn:hover {
          background: linear-gradient(145deg, #7838f3, #6429d4);
          transform: translateY(-2px);
-         box-shadow: 0 6px 20px rgba(120, 56, 243, 0.3);
+         box-shadow: 0 6px 20px rgba(120, 56, 243, 0.35);
       }
 
       .timer-btn.active {
          background: linear-gradient(145deg, #6429d4, #5620b3);
          box-shadow: 0 2px 10px rgba(120, 56, 243, 0.4),
-            0 0 0 2px rgba(255, 255, 255, 0.8),
-            0 0 0 4px rgba(120, 56, 243, 0.4);
+            0 0 0 2px rgba(255, 255, 255, 0.9),
+            0 0 0 4px rgba(120, 56, 243, 0.3);
+         transform: scale(1.05);
+      }
+
+      /* Tooltip styles */
+      .timer-btn[data-tooltip]::after {
+         content: attr(data-tooltip);
+         position: absolute;
+         bottom: 100%;
+         left: 50%;
+         transform: translateX(-50%) translateY(-8px);
+         background: rgba(0, 0, 0, 0.9);
+         color: white;
+         padding: 8px 12px;
+         border-radius: 8px;
+         font-size: 12px;
+         font-weight: 500;
+         white-space: nowrap;
+         opacity: 0;
+         pointer-events: none;
+         transition: opacity 0.3s ease, transform 0.3s ease;
+         z-index: 1000;
+         margin-bottom: 5px;
+      }
+
+      .timer-btn[data-tooltip]::before {
+         content: '';
+         position: absolute;
+         bottom: 100%;
+         left: 50%;
+         transform: translateX(-50%) translateY(-3px);
+         border: 5px solid transparent;
+         border-top-color: rgba(0, 0, 0, 0.9);
+         opacity: 0;
+         pointer-events: none;
+         transition: opacity 0.3s ease;
+         z-index: 1000;
+      }
+
+      .timer-btn[data-tooltip]:hover::after,
+      .timer-btn[data-tooltip]:hover::before {
+         opacity: 1;
+      }
+
+      .custom-timer-wrapper {
+         display: flex;
+         flex-direction: column;
+         gap: 8px;
+         align-items: center;
+         background: linear-gradient(145deg, #f8f9fe, #ffffff);
+         padding: 8px 20px;
+         border-radius: 16px;
+         border: 2px solid rgba(120, 56, 243, 0.2);
+         box-shadow: 0 4px 15px rgba(120, 56, 243, 0.1);
+         position: relative;
+      }
+
+      .custom-timer-wrapper::before {
+         content: 'Custom Timer';
+         position: absolute;
+         top: -10px;
+         left: 15px;
+         background: linear-gradient(145deg, #f8f9fe, #ffffff);
+         padding: 0 8px;
+         font-size: 11px;
+         font-weight: 600;
+         color: #7838f3;
+         text-transform: uppercase;
+         letter-spacing: 0.5px;
       }
 
       .custom-timer {
          display: flex;
          align-items: center;
-         gap: 10px;
+         gap: 12px;
+         position: relative;
       }
 
       .custom-timer input {
-         width: 100px;
-         padding: 12px;
-         border: 2px solid rgba(120, 56, 243, 0.3);
+         width: 120px;
+         padding: 14px 16px;
+         border: 2px solid rgba(120, 56, 243, 0.4);
          border-radius: 12px;
          outline: none;
-         font-size: 1rem;
+         font-size: 16px;
+         font-weight: 600;
          text-align: center;
-         background: rgba(255, 255, 255, 0.9);
+         background: white;
+         color: #333;
          transition: all 0.3s ease;
+         box-shadow: inset 0 2px 5px rgba(120, 56, 243, 0.1);
+      }
+
+      .custom-timer input::placeholder {
+         color: rgba(120, 56, 243, 0.5);
+         font-weight: 500;
       }
 
       .custom-timer input:focus {
          border-color: #7838f3;
          background: white;
-         box-shadow: 0 4px 15px rgba(120, 56, 243, 0.15);
+         box-shadow: 0 0 0 3px rgba(120, 56, 243, 0.15),
+            inset 0 2px 5px rgba(120, 56, 243, 0.1);
+         transform: scale(1.02);
+      }
+
+      .custom-timer input.success {
+         border-color: #4caf50;
+         background: rgba(76, 175, 80, 0.05);
+         box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.15),
+            inset 0 2px 5px rgba(76, 175, 80, 0.1);
+      }
+
+      .custom-timer input.error {
+         border-color: #f44336;
+         background: rgba(244, 67, 54, 0.05);
+         box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.15),
+            inset 0 2px 5px rgba(244, 67, 54, 0.1);
+         animation: shake 0.3s ease;
+      }
+
+      #setCustomTimer {
+         padding: 14px 24px;
+         font-size: 15px;
+         background: linear-gradient(145deg, #ff6b6b, #ee5a6f);
+         box-shadow: 0 4px 15px rgba(238, 90, 111, 0.3);
+         min-width: auto;
+      }
+
+      #setCustomTimer:hover {
+         background: linear-gradient(145deg, #ee5a6f, #dc4a5f);
+         box-shadow: 0 6px 20px rgba(238, 90, 111, 0.4);
+      }
+
+      @keyframes shake {
+
+         0%,
+         100% {
+            transform: translateX(0);
+         }
+
+         25% {
+            transform: translateX(-5px);
+         }
+
+         75% {
+            transform: translateX(5px);
+         }
+      }
+
+      .validation-message {
+         font-size: 12px;
+         font-weight: 500;
+         min-height: 16px;
+         transition: all 0.3s ease;
+         text-align: center;
+      }
+
+      .validation-message.success {
+         color: #4caf50;
+      }
+
+      .validation-message.error {
+         color: #f44336;
       }
 
       #app {
@@ -554,11 +704,36 @@
          .timer-selection {
             flex-direction: column;
             align-items: center;
+            gap: 15px;
+         }
+
+         .timer-presets {
+            width: 100%;
+            justify-content: center;
          }
 
          .custom-timer {
             width: 100%;
             justify-content: center;
+         }
+
+         .custom-timer-wrapper {
+            width: 100%;
+            align-items: center;
+            padding: 8px 15px;
+         }
+
+         .custom-timer input {
+            width: 100%;
+            max-width: 150px;
+         }
+
+         .timer-btn[data-tooltip]::after {
+            font-size: 11px;
+            padding: 6px 10px;
+            max-width: 200px;
+            white-space: normal;
+            text-align: center;
          }
 
          #timer,
@@ -741,15 +916,23 @@
    <div class="main-content">
       <div id="app">
          <div class="timer-selection">
-            <button class="timer-btn active" data-time="10">10s</button>
-            <button class="timer-btn" data-time="5">5s</button>
-            <button class="timer-btn" data-time="15">15s</button>
-            <button class="timer-btn" data-time="30">30s</button>
-            <button class="timer-btn" data-time="60">60s</button>
-            <button class="timer-btn" data-time="100">100s</button>
-            <div class="custom-timer">
-               <input type="number" id="customTimer" min="1" max="999" placeholder="Custom">
-               <button class="timer-btn" id="setCustomTimer">Set</button>
+            <div class="timer-presets">
+               <button class="timer-btn active" data-time="10"
+                  data-tooltip="Quick test - Great for speed bursts">10s</button>
+               <button class="timer-btn" data-time="5" data-tooltip="Ultra quick - Perfect for warm-up">5s</button>
+               <button class="timer-btn" data-time="15" data-tooltip="Short test - Good for quick practice">15s</button>
+               <button class="timer-btn" data-time="30"
+                  data-tooltip="Standard test - Balanced speed & endurance">30s</button>
+               <button class="timer-btn" data-time="60" data-tooltip="Endurance test - Test your stamina">60s</button>
+               <button class="timer-btn" data-time="100"
+                  data-tooltip="Marathon test - Maximum endurance challenge">100s</button>
+            </div>
+            <div class="custom-timer-wrapper">
+               <div class="custom-timer">
+                  <input type="number" id="customTimer" min="1" max="999" placeholder="Seconds">
+                  <button class="timer-btn" id="setCustomTimer">Set</button>
+               </div>
+               <div class="validation-message" id="validationMessage"></div>
             </div>
          </div>
          <div class="display-container">
@@ -807,6 +990,45 @@
          const customTimerInput = document.getElementById('customTimer');
          const progressBar = document.getElementById('progressBar');
          const liveCPSDisplay = document.getElementById('liveCPS');
+         const validationMessage = document.getElementById('validationMessage');
+
+         // Validation function for custom timer
+         function validateCustomTimer(value) {
+            const numValue = parseInt(value);
+            customTimerInput.classList.remove('success', 'error');
+            validationMessage.classList.remove('success', 'error');
+            validationMessage.textContent = '';
+
+            if (!value || value === '') {
+               return { valid: false, message: '' };
+            }
+
+            if (isNaN(numValue) || numValue <= 0) {
+               customTimerInput.classList.add('error');
+               validationMessage.classList.add('error');
+               validationMessage.textContent = 'Please enter a positive number';
+               return { valid: false, message: 'Please enter a positive number' };
+            }
+
+            if (numValue > 999) {
+               customTimerInput.classList.add('error');
+               validationMessage.classList.add('error');
+               validationMessage.textContent = 'Maximum time is 999 seconds';
+               return { valid: false, message: 'Maximum time is 999 seconds' };
+            }
+
+            if (numValue < 1) {
+               customTimerInput.classList.add('error');
+               validationMessage.classList.add('error');
+               validationMessage.textContent = 'Minimum time is 1 second';
+               return { valid: false, message: 'Minimum time is 1 second' };
+            }
+
+            customTimerInput.classList.add('success');
+            validationMessage.classList.add('success');
+            validationMessage.textContent = `Set to ${numValue} seconds`;
+            return { valid: true, message: `Set to ${numValue} seconds` };
+         }
 
          // Timer selection functionality
          document.querySelectorAll('.timer-btn').forEach(btn => {
@@ -815,20 +1037,49 @@
                   document.querySelectorAll('.timer-btn').forEach(b => b.classList.remove('active'));
                   btn.classList.add('active');
                   time = parseInt(btn.dataset.time);
+                  customTimerInput.value = '';
+                  customTimerInput.classList.remove('success', 'error');
+                  validationMessage.textContent = '';
                   resetGame();
                });
             }
          });
 
+         // Custom timer input validation on input
+         customTimerInput.addEventListener('input', (e) => {
+            validateCustomTimer(e.target.value);
+         });
+
+         customTimerInput.addEventListener('blur', (e) => {
+            if (e.target.value && !validateCustomTimer(e.target.value).valid) {
+               // Keep error state visible
+            } else if (!e.target.value) {
+               customTimerInput.classList.remove('success', 'error');
+               validationMessage.textContent = '';
+            }
+         });
+
          // Custom timer functionality
          document.getElementById('setCustomTimer').addEventListener('click', () => {
-            const customTime = parseInt(customTimerInput.value);
-            if (customTime && customTime > 0 && customTime <= 999) {
+            const validation = validateCustomTimer(customTimerInput.value);
+            if (validation.valid) {
+               const customTime = parseInt(customTimerInput.value);
                document.querySelectorAll('.timer-btn').forEach(b => b.classList.remove('active'));
                time = customTime;
                resetGame();
-            } else {
-               alert('Please enter a valid time between 1 and 999 seconds');
+
+               // Show success feedback
+               setTimeout(() => {
+                  validationMessage.textContent = '';
+                  customTimerInput.classList.remove('success');
+               }, 2000);
+            }
+         });
+
+         // Enter key support for custom timer
+         customTimerInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+               document.getElementById('setCustomTimer').click();
             }
          });
 
@@ -1025,6 +1276,7 @@
             timerDisplay.classList.remove('timer-warning', 'timer-danger');
             modalContent.classList.remove('celebration');
             modalTitle.classList.remove('celebration-title');
+            // Don't clear validation message on reset - keep it for user reference
          }
 
          restartButton.addEventListener('click', resetGame);
