@@ -141,6 +141,46 @@
          margin-bottom: 10px;
          font-weight: 700;
          font-family: 'Monaco', 'Consolas', monospace;
+         transition: transform 0.1s ease;
+      }
+
+      #counter.click-pulse {
+         animation: clickPulse 0.2s ease;
+      }
+
+      @keyframes clickPulse {
+         0% {
+            transform: scale(1);
+         }
+
+         50% {
+            transform: scale(1.15);
+         }
+
+         100% {
+            transform: scale(1);
+         }
+      }
+
+      #timer.timer-warning {
+         color: #ff9800;
+      }
+
+      #timer.timer-danger {
+         color: #f44336;
+         animation: timerPulse 0.5s ease infinite;
+      }
+
+      @keyframes timerPulse {
+
+         0%,
+         100% {
+            transform: scale(1);
+         }
+
+         50% {
+            transform: scale(1.05);
+         }
       }
 
       label {
@@ -148,6 +188,127 @@
          color: #666;
          display: block;
          font-weight: 600;
+      }
+
+      /* Progress Bar */
+      .progress-container {
+         width: 100%;
+         height: 8px;
+         background: rgba(120, 56, 243, 0.1);
+         border-radius: 10px;
+         overflow: hidden;
+         margin: 20px 0;
+         position: relative;
+      }
+
+      .progress-bar {
+         height: 100%;
+         background: linear-gradient(90deg, #8546ff, #7838f3);
+         border-radius: 10px;
+         width: 100%;
+         transition: width 0.3s ease, background 0.3s ease;
+         position: relative;
+         overflow: hidden;
+      }
+
+      .progress-bar::after {
+         content: '';
+         position: absolute;
+         top: 0;
+         left: 0;
+         bottom: 0;
+         right: 0;
+         background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+         animation: shimmer 2s infinite;
+      }
+
+      @keyframes shimmer {
+         0% {
+            transform: translateX(-100%);
+         }
+
+         100% {
+            transform: translateX(100%);
+         }
+      }
+
+      .progress-bar.warning {
+         background: linear-gradient(90deg, #ff9800, #f57c00);
+      }
+
+      .progress-bar.danger {
+         background: linear-gradient(90deg, #f44336, #d32f2f);
+      }
+
+      /* Live CPS Display */
+      .cps-display-box {
+         background: linear-gradient(145deg, #f8f9fe, #ffffff);
+         border-radius: 20px;
+         padding: 25px;
+         text-align: center;
+         width: 200px;
+         box-shadow: 0 10px 30px rgba(120, 56, 243, 0.1);
+         position: relative;
+         overflow: hidden;
+      }
+
+      .cps-display-box::before {
+         content: '';
+         position: absolute;
+         top: 0;
+         left: 0;
+         right: 0;
+         height: 4px;
+         background: linear-gradient(90deg, #8546ff, #7838f3);
+      }
+
+      #liveCPS {
+         font-size: 48px;
+         color: #7838f3;
+         margin-bottom: 10px;
+         font-weight: 700;
+         font-family: 'Monaco', 'Consolas', monospace;
+      }
+
+      #liveCPS.high-speed {
+         color: #4caf50;
+         animation: speedPulse 0.3s ease;
+      }
+
+      @keyframes speedPulse {
+
+         0%,
+         100% {
+            transform: scale(1);
+         }
+
+         50% {
+            transform: scale(1.1);
+         }
+      }
+
+      /* Click Feedback */
+      .click-feedback {
+         position: fixed;
+         pointer-events: none;
+         font-size: 24px;
+         font-weight: bold;
+         color: #7838f3;
+         z-index: 9999;
+         animation: clickFloat 0.6s ease-out forwards;
+         user-select: none;
+      }
+
+      @keyframes clickFloat {
+         0% {
+            opacity: 1;
+            transform: translateY(0) scale(0.5);
+         }
+
+         100% {
+            opacity: 0;
+            transform: translateY(-100px) scale(1);
+         }
       }
 
       #message {
@@ -200,6 +361,31 @@
          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2),
             0 0 0 1px rgba(120, 56, 243, 0.1);
          animation: modalShow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+         position: relative;
+         overflow: hidden;
+      }
+
+      .modal-content.celebration::before {
+         content: '';
+         position: absolute;
+         top: -50%;
+         left: -50%;
+         width: 200%;
+         height: 200%;
+         background: radial-gradient(circle, rgba(133, 70, 255, 0.1) 0%, transparent 70%);
+         animation: celebrationGlow 2s ease-out;
+      }
+
+      @keyframes celebrationGlow {
+         0% {
+            transform: scale(0) rotate(0deg);
+            opacity: 1;
+         }
+
+         100% {
+            transform: scale(1) rotate(360deg);
+            opacity: 0;
+         }
       }
 
       @keyframes modalShow {
@@ -220,10 +406,93 @@
          font-size: 24px;
       }
 
+      .modal h2.celebration-title {
+         animation: titleBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      @keyframes titleBounce {
+
+         0%,
+         100% {
+            transform: scale(1);
+         }
+
+         50% {
+            transform: scale(1.1);
+         }
+      }
+
       .modal p {
          margin: 15px 0;
          font-size: 18px;
          color: #333;
+      }
+
+      .result-stat {
+         background: linear-gradient(145deg, #f8f9fe, #ffffff);
+         padding: 15px;
+         border-radius: 12px;
+         margin: 10px 0;
+         box-shadow: 0 4px 15px rgba(120, 56, 243, 0.1);
+      }
+
+      .result-stat strong {
+         color: #7838f3;
+         font-size: 24px;
+         display: block;
+         margin-top: 5px;
+      }
+
+      .performance-badge {
+         display: inline-block;
+         padding: 8px 16px;
+         border-radius: 20px;
+         font-weight: 600;
+         margin: 10px 0;
+         font-size: 14px;
+         text-transform: uppercase;
+         letter-spacing: 1px;
+      }
+
+      .badge-excellent {
+         background: linear-gradient(145deg, #4caf50, #388e3c);
+         color: white;
+      }
+
+      .badge-great {
+         background: linear-gradient(145deg, #2196f3, #1976d2);
+         color: white;
+      }
+
+      .badge-good {
+         background: linear-gradient(145deg, #ff9800, #f57c00);
+         color: white;
+      }
+
+      .badge-average {
+         background: linear-gradient(145deg, #9e9e9e, #757575);
+         color: white;
+      }
+
+      .confetti {
+         position: fixed;
+         width: 10px;
+         height: 10px;
+         background: #7838f3;
+         position: absolute;
+         animation: confettiFall 3s ease-out forwards;
+      }
+
+      @keyframes confettiFall {
+         0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 1;
+         }
+
+         100% {
+            transform: translateY(500px) rotate(720deg);
+            opacity: 0;
+         }
       }
 
       .modal-buttons {
@@ -276,7 +545,8 @@
             align-items: center;
          }
 
-         .display-box {
+         .display-box,
+         .cps-display-box {
             width: 100%;
             max-width: 250px;
          }
@@ -289,6 +559,12 @@
          .custom-timer {
             width: 100%;
             justify-content: center;
+         }
+
+         #timer,
+         #counter,
+         #liveCPS {
+            font-size: 36px;
          }
       }
    </style>
@@ -485,13 +761,20 @@
                <div id="counter">0</div>
                <label>Counter</label>
             </div>
+            <div class="cps-display-box">
+               <div id="liveCPS">0.00</div>
+               <label>Live CPS</label>
+            </div>
+         </div>
+         <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
          </div>
          <div id="message">Press SPACEBAR to start clicking!</div>
          <button id="restartButton">Restart Game</button>
       </div>
       <div class="modal" id="resultModal">
-         <div class="modal-content">
-            <div>Test Results</div>
+         <div class="modal-content" id="modalContent">
+            <h2 id="modalTitle">Test Results</h2>
             <div id="modalResults"></div>
             <div class="modal-buttons">
                <button class="modal-btn retry-btn">
@@ -509,6 +792,9 @@
          let timerExpired = false;
          let interval;
          let timer = time;
+         let startTime = null;
+         let clickTimes = [];
+         let cpsUpdateInterval = null;
 
          const counterDisplay = document.getElementById('counter');
          const timerDisplay = document.getElementById('timer');
@@ -516,7 +802,11 @@
          const restartButton = document.getElementById('restartButton');
          const resultModal = document.getElementById('resultModal');
          const modalResults = document.getElementById('modalResults');
+         const modalContent = document.getElementById('modalContent');
+         const modalTitle = document.getElementById('modalTitle');
          const customTimerInput = document.getElementById('customTimer');
+         const progressBar = document.getElementById('progressBar');
+         const liveCPSDisplay = document.getElementById('liveCPS');
 
          // Timer selection functionality
          document.querySelectorAll('.timer-btn').forEach(btn => {
@@ -542,23 +832,85 @@
             }
          });
 
+         function showClickFeedback() {
+            const feedback = document.createElement('div');
+            feedback.className = 'click-feedback';
+            feedback.textContent = '+1';
+            feedback.style.left = Math.random() * 80 + 10 + '%';
+            feedback.style.top = '50%';
+            document.body.appendChild(feedback);
+            setTimeout(() => feedback.remove(), 600);
+         }
+
+         function updateLiveCPS() {
+            if (clickTimes.length < 2) {
+               liveCPSDisplay.textContent = '0.00';
+               return;
+            }
+            const recentClicks = clickTimes.filter(t => Date.now() - t < 1000);
+            const cps = recentClicks.length;
+            liveCPSDisplay.textContent = cps.toFixed(2);
+
+            if (cps >= 8) {
+               liveCPSDisplay.classList.add('high-speed');
+            } else {
+               liveCPSDisplay.classList.remove('high-speed');
+            }
+         }
+
          document.body.onkeydown = function (e) {
             if (e.keyCode == 32) {
                e.preventDefault();
                if (!timerExpired && interval === undefined) {
                   messageDisplay.textContent = "Keep pressing SPACEBAR!";
+                  startTime = Date.now();
+                  clickTimes = [];
                   startTimer();
                   count++;
+                  clickTimes.push(Date.now());
                   counterDisplay.textContent = count;
+                  counterDisplay.classList.add('click-pulse');
+                  setTimeout(() => counterDisplay.classList.remove('click-pulse'), 200);
+                  showClickFeedback();
+                  updateLiveCPS();
+
+                  // Start CPS update interval
+                  cpsUpdateInterval = setInterval(updateLiveCPS, 100);
                } else if (!timerExpired) {
                   count++;
+                  clickTimes.push(Date.now());
                   counterDisplay.textContent = count;
+                  counterDisplay.classList.add('click-pulse');
+                  setTimeout(() => counterDisplay.classList.remove('click-pulse'), 200);
+                  showClickFeedback();
+                  updateLiveCPS();
                }
+            }
+         }
+
+         function updateProgressBar() {
+            const progress = ((time - timer) / time) * 100;
+            progressBar.style.width = progress + '%';
+
+            // Color coding based on time remaining
+            const percentage = (timer / time) * 100;
+            progressBar.classList.remove('warning', 'danger');
+            timerDisplay.classList.remove('timer-warning', 'timer-danger');
+
+            if (percentage <= 25) {
+               progressBar.classList.add('danger');
+               timerDisplay.classList.add('timer-danger');
+            } else if (percentage <= 50) {
+               progressBar.classList.add('warning');
+               timerDisplay.classList.add('timer-warning');
             }
          }
 
          function startTimer() {
             timerExpired = false;
+            progressBar.style.width = '0%';
+            progressBar.classList.remove('warning', 'danger');
+            timerDisplay.classList.remove('timer-warning', 'timer-danger');
             interval = setInterval(updateTimerDisplayAndDecrement, 1000);
          }
 
@@ -567,37 +919,112 @@
                stopTimer();
             } else {
                timerDisplay.textContent = timer;
+               updateProgressBar();
+            }
+         }
+
+         function getPerformanceBadge(cps) {
+            if (cps >= 10) return { class: 'badge-excellent', text: '🌟 Excellent!' };
+            if (cps >= 7) return { class: 'badge-great', text: '⭐ Great!' };
+            if (cps >= 5) return { class: 'badge-good', text: '👍 Good!' };
+            return { class: 'badge-average', text: '💪 Keep Practicing!' };
+         }
+
+         function createConfetti() {
+            const colors = ['#7838f3', '#8546ff', '#4caf50', '#2196f3', '#ff9800'];
+            const modalRect = resultModal.getBoundingClientRect();
+            for (let i = 0; i < 30; i++) {
+               setTimeout(() => {
+                  const confetti = document.createElement('div');
+                  confetti.className = 'confetti';
+                  confetti.style.left = (modalRect.left + Math.random() * modalRect.width) + 'px';
+                  confetti.style.top = (modalRect.top - 10) + 'px';
+                  confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                  confetti.style.width = Math.random() * 10 + 5 + 'px';
+                  confetti.style.height = confetti.style.width;
+                  document.body.appendChild(confetti);
+                  setTimeout(() => confetti.remove(), 3000);
+               }, i * 50);
             }
          }
 
          function stopTimer() {
             clearInterval(interval);
+            if (cpsUpdateInterval) {
+               clearInterval(cpsUpdateInterval);
+               cpsUpdateInterval = null;
+            }
             interval = undefined;
             timerExpired = true;
             timerDisplay.textContent = '0';
+            progressBar.style.width = '100%';
 
             const clicksPerSecond = (count / time).toFixed(2);
+            const cpsNum = parseFloat(clicksPerSecond);
             messageDisplay.textContent = `Test completed!`;
+
+            // Get performance badge
+            const badge = getPerformanceBadge(cpsNum);
+
+            // Check for personal best
+            const personalBest = localStorage.getItem('spacebarClickerBest');
+            let isPersonalBest = false;
+            if (!personalBest || cpsNum > parseFloat(personalBest)) {
+               localStorage.setItem('spacebarClickerBest', clicksPerSecond);
+               isPersonalBest = true;
+            }
+
+            // Add celebration effects for good scores
+            if (cpsNum >= 7) {
+               modalContent.classList.add('celebration');
+               modalTitle.classList.add('celebration-title');
+               createConfetti();
+            }
 
             // Show modal with results
             modalResults.innerHTML = `
-                 <p>Total Clicks: <strong>${count}</strong></p>
-                 <p>Time: <strong>${time} seconds</strong></p>
-                 <p>Clicks per Second: <strong>${clicksPerSecond}</strong></p>
+                 ${isPersonalBest ? '<div style="color: #4caf50; font-weight: bold; margin-bottom: 15px; font-size: 20px;">🎉 NEW PERSONAL BEST! 🎉</div>' : ''}
+                 <div class="performance-badge ${badge.class}">${badge.text}</div>
+                 <div class="result-stat">
+                    <div>Total Clicks</div>
+                    <strong>${count}</strong>
+                 </div>
+                 <div class="result-stat">
+                    <div>Time Duration</div>
+                    <strong>${time} seconds</strong>
+                 </div>
+                 <div class="result-stat">
+                    <div>Clicks per Second</div>
+                    <strong style="font-size: 32px; color: #7838f3;">${clicksPerSecond}</strong>
+                 </div>
+                 ${personalBest && !isPersonalBest ? `<div style="margin-top: 15px; color: #666; font-size: 14px;">Personal Best: ${personalBest} CPS</div>` : ''}
              `;
             resultModal.style.display = 'flex';
          }
 
          function resetGame() {
             clearInterval(interval);
+            if (cpsUpdateInterval) {
+               clearInterval(cpsUpdateInterval);
+               cpsUpdateInterval = null;
+            }
             interval = undefined;
             timerExpired = false;
             count = 0;
             timer = time;
+            startTime = null;
+            clickTimes = [];
             timerDisplay.textContent = time;
             counterDisplay.textContent = '0';
+            liveCPSDisplay.textContent = '0.00';
+            liveCPSDisplay.classList.remove('high-speed');
             messageDisplay.textContent = 'Press SPACEBAR to start clicking!';
             resultModal.style.display = 'none';
+            progressBar.style.width = '0%';
+            progressBar.classList.remove('warning', 'danger');
+            timerDisplay.classList.remove('timer-warning', 'timer-danger');
+            modalContent.classList.remove('celebration');
+            modalTitle.classList.remove('celebration-title');
          }
 
          restartButton.addEventListener('click', resetGame);
