@@ -44,11 +44,20 @@
       .timer-panel {
          background: linear-gradient(145deg, #f8f9fe, #ffffff);
          border: 1px solid rgba(120, 56, 243, 0.2);
-         border-radius: 14px;
-         padding: 12px 14px 10px;
-         margin-bottom: 18px;
+         border-radius: 16px;
+         padding: 16px 18px 14px;
+         margin-bottom: 24px;
          text-align: left;
-         box-shadow: 0 6px 18px rgba(120, 56, 243, 0.08);
+         box-shadow: 0 8px 22px rgba(120, 56, 243, 0.09);
+      }
+
+      .timer-panel-head {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         gap: 12px;
+         flex-wrap: wrap;
+         margin-bottom: 10px;
       }
 
       .timer-panel-header {
@@ -57,7 +66,75 @@
          letter-spacing: 0.08em;
          text-transform: uppercase;
          color: #7838f3;
-         margin-bottom: 10px;
+         margin: 0;
+      }
+
+      .custom-timer-toggle-wrap {
+         display: flex;
+         align-items: center;
+         gap: 10px;
+         margin-left: auto;
+      }
+
+      .toggle-caption {
+         font-size: 12px;
+         font-weight: 600;
+         color: #555;
+         user-select: none;
+      }
+
+      .toggle-switch {
+         position: relative;
+         width: 46px;
+         height: 26px;
+         flex-shrink: 0;
+      }
+
+      .toggle-switch input {
+         position: absolute;
+         opacity: 0;
+         width: 100%;
+         height: 100%;
+         margin: 0;
+         cursor: pointer;
+         z-index: 2;
+      }
+
+      .toggle-slider {
+         position: absolute;
+         inset: 0;
+         background: #e4e6ed;
+         border-radius: 13px;
+         border: 1px solid rgba(120, 56, 243, 0.22);
+         transition: background 0.2s ease, border-color 0.2s ease;
+         pointer-events: none;
+      }
+
+      .toggle-slider::before {
+         content: '';
+         position: absolute;
+         width: 20px;
+         height: 20px;
+         left: 3px;
+         top: 50%;
+         transform: translateY(-50%);
+         background: #fff;
+         border-radius: 50%;
+         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+         transition: transform 0.2s ease;
+      }
+
+      .toggle-switch input:checked + .toggle-slider {
+         background: linear-gradient(145deg, #9a6aff, #7838f3);
+         border-color: rgba(86, 32, 179, 0.45);
+      }
+
+      .toggle-switch input:checked + .toggle-slider::before {
+         transform: translate(20px, -50%);
+      }
+
+      .toggle-switch input:focus-visible + .toggle-slider {
+         box-shadow: 0 0 0 3px rgba(120, 56, 243, 0.28);
       }
 
       .timer-selection {
@@ -75,37 +152,61 @@
          justify-content: center;
       }
 
-      .timer-btn {
-         background: linear-gradient(145deg, #8546ff, #7838f3);
-         color: white;
-         border: none;
-         padding: 8px 14px;
+      .timer-btn-preset {
+         background: linear-gradient(180deg, #ffffff 0%, #f3f0ff 100%);
+         color: #4c1d95;
+         border: 1px solid rgba(120, 56, 243, 0.45);
+         padding: 9px 16px;
          border-radius: 10px;
          cursor: pointer;
-         transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-         font-weight: 600;
+         font-weight: 700;
          letter-spacing: 0.02em;
-         font-size: 13px;
-         box-shadow: 0 3px 12px rgba(120, 56, 243, 0.22);
+         font-size: 14px;
+         font-family: inherit;
+         box-shadow:
+            0 1px 0 rgba(255, 255, 255, 0.9) inset,
+            0 2px 0 rgba(86, 32, 179, 0.08),
+            0 4px 12px rgba(120, 56, 243, 0.1);
          position: relative;
-         min-width: 48px;
+         min-width: 52px;
+         transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
       }
 
-      .timer-btn:hover {
-         background: linear-gradient(145deg, #7838f3, #6429d4);
+      .timer-btn-preset:hover {
+         background: linear-gradient(180deg, #ffffff 0%, #e8e0ff 100%);
+         border-color: #7838f3;
+         color: #3b0764;
+         box-shadow:
+            0 1px 0 rgba(255, 255, 255, 0.95) inset,
+            0 3px 0 rgba(86, 32, 179, 0.1),
+            0 6px 16px rgba(120, 56, 243, 0.14);
          transform: translateY(-1px);
-         box-shadow: 0 5px 16px rgba(120, 56, 243, 0.3);
       }
 
-      .timer-btn.active {
-         background: linear-gradient(145deg, #6429d4, #5620b3);
-         box-shadow: 0 2px 8px rgba(120, 56, 243, 0.35),
-            0 0 0 2px rgba(255, 255, 255, 0.95),
-            0 0 0 4px rgba(120, 56, 243, 0.28);
-         transform: scale(1.02);
+      .timer-btn-preset:active {
+         transform: translateY(1px);
+         box-shadow:
+            0 2px 4px rgba(86, 32, 179, 0.12) inset,
+            0 1px 3px rgba(120, 56, 243, 0.08);
       }
 
-      .timer-btn[data-tooltip]::after {
+      .timer-btn-preset.active {
+         background: linear-gradient(180deg, #9255ff 0%, #7838f3 50%, #6429d4 100%);
+         color: #fff;
+         border-color: #3d1a7a;
+         box-shadow:
+            0 1px 0 rgba(255, 255, 255, 0.22) inset,
+            0 3px 10px rgba(120, 56, 243, 0.35),
+            0 2px 0 rgba(45, 20, 95, 0.35);
+      }
+
+      .timer-btn-preset.active:hover {
+         color: #fff;
+         border-color: #2f1560;
+         transform: translateY(-1px);
+      }
+
+      .timer-btn-preset[data-tooltip]::after {
          content: attr(data-tooltip);
          position: absolute;
          bottom: 100%;
@@ -129,7 +230,7 @@
          line-height: 1.35;
       }
 
-      .timer-btn[data-tooltip]::before {
+      .timer-btn-preset[data-tooltip]::before {
          content: '';
          position: absolute;
          bottom: 100%;
@@ -143,9 +244,17 @@
          z-index: 1000;
       }
 
-      .timer-btn[data-tooltip]:hover::after,
-      .timer-btn[data-tooltip]:hover::before {
+      .timer-btn-preset[data-tooltip]:hover::after,
+      .timer-btn-preset[data-tooltip]:hover::before {
          opacity: 1;
+      }
+
+      .timer-custom-region[hidden] {
+         display: none !important;
+      }
+
+      .timer-custom-region {
+         margin-top: 4px;
       }
 
       .timer-custom-block {
@@ -235,18 +344,35 @@
          flex-shrink: 0;
       }
 
-      #setCustomTimer {
+      .timer-btn-apply {
          padding: 9px 18px;
          font-size: 13px;
-         background: linear-gradient(145deg, #ff6b6b, #ee5a6f);
-         box-shadow: 0 3px 12px rgba(238, 90, 111, 0.28);
+         font-weight: 700;
+         font-family: inherit;
+         border: 1px solid rgba(200, 60, 80, 0.45);
+         border-radius: 10px;
+         cursor: pointer;
+         color: #fff;
+         background: linear-gradient(180deg, #ff7a7a 0%, #ee5a6f 45%, #dc4a5f 100%);
+         box-shadow:
+            0 1px 0 rgba(255, 255, 255, 0.25) inset,
+            0 2px 0 rgba(160, 40, 60, 0.15),
+            0 4px 14px rgba(238, 90, 111, 0.32);
          min-width: auto;
          align-self: flex-end;
+         transition: transform 0.15s ease, box-shadow 0.15s ease;
       }
 
-      #setCustomTimer:hover {
-         background: linear-gradient(145deg, #ee5a6f, #dc4a5f);
-         box-shadow: 0 5px 16px rgba(238, 90, 111, 0.38);
+      .timer-btn-apply:hover {
+         background: linear-gradient(180deg, #ff6b6b 0%, #e84860 50%, #d63d52 100%);
+         box-shadow:
+            0 1px 0 rgba(255, 255, 255, 0.2) inset,
+            0 3px 12px rgba(238, 90, 111, 0.4);
+         transform: translateY(-1px);
+      }
+
+      .timer-btn-apply:active {
+         transform: translateY(1px);
       }
 
       @keyframes shake {
@@ -286,32 +412,38 @@
       #app {
          text-align: center;
          background: white;
-         width: 92%;
-         max-width: 720px;
+         width: 94%;
+         max-width: 900px;
          margin: auto;
-         padding: 20px 20px 22px;
-         border-radius: 18px;
-         box-shadow: 0 16px 40px rgba(120, 56, 243, 0.12);
+         padding: 32px 28px 36px;
+         border-radius: 22px;
+         box-shadow: 0 20px 55px rgba(120, 56, 243, 0.14);
          position: relative;
       }
 
       .display-container {
          display: flex;
          justify-content: center;
-         gap: 14px;
-         margin-bottom: 16px;
+         gap: 22px;
+         margin-bottom: 26px;
          flex-wrap: wrap;
       }
 
       .display-box {
          background: linear-gradient(145deg, #f8f9fe, #ffffff);
-         border-radius: 14px;
-         padding: 14px 12px 16px;
+         border: 1px solid rgba(120, 56, 243, 0.22);
+         border-radius: 18px;
+         padding: 26px 20px 28px;
          text-align: center;
-         width: 160px;
-         flex: 1 1 140px;
-         max-width: 200px;
-         box-shadow: 0 8px 22px rgba(120, 56, 243, 0.08);
+         width: 220px;
+         flex: 1 1 200px;
+         max-width: 280px;
+         min-height: 148px;
+         box-shadow:
+            0 1px 0 rgba(255, 255, 255, 0.85) inset,
+            0 2px 8px rgba(120, 56, 243, 0.07),
+            0 12px 32px rgba(120, 56, 243, 0.11),
+            0 20px 44px rgba(86, 32, 179, 0.07);
          position: relative;
          overflow: hidden;
       }
@@ -322,15 +454,15 @@
          top: 0;
          left: 0;
          right: 0;
-         height: 4px;
+         height: 5px;
          background: linear-gradient(90deg, #8546ff, #7838f3);
       }
 
       #timer,
       #counter {
-         font-size: 40px;
+         font-size: 54px;
          color: #7838f3;
-         margin-bottom: 6px;
+         margin-bottom: 10px;
          font-weight: 700;
          font-family: 'Inter', system-ui, sans-serif;
          font-variant-numeric: tabular-nums;
@@ -378,7 +510,7 @@
       }
 
       label {
-         font-size: 12px;
+         font-size: 14px;
          color: #666;
          display: block;
          font-weight: 600;
@@ -388,11 +520,11 @@
       /* Progress Bar */
       .progress-container {
          width: 100%;
-         height: 6px;
+         height: 9px;
          background: rgba(120, 56, 243, 0.1);
-         border-radius: 8px;
+         border-radius: 10px;
          overflow: hidden;
-         margin: 12px 0 14px;
+         margin: 18px 0 20px;
          position: relative;
       }
 
@@ -438,13 +570,19 @@
       /* Live CPS Display */
       .cps-display-box {
          background: linear-gradient(145deg, #f8f9fe, #ffffff);
-         border-radius: 14px;
-         padding: 14px 12px 16px;
+         border: 1px solid rgba(120, 56, 243, 0.22);
+         border-radius: 18px;
+         padding: 26px 20px 28px;
          text-align: center;
-         width: 160px;
-         flex: 1 1 140px;
-         max-width: 200px;
-         box-shadow: 0 8px 22px rgba(120, 56, 243, 0.08);
+         width: 220px;
+         flex: 1 1 200px;
+         max-width: 280px;
+         min-height: 148px;
+         box-shadow:
+            0 1px 0 rgba(255, 255, 255, 0.85) inset,
+            0 2px 8px rgba(120, 56, 243, 0.07),
+            0 12px 32px rgba(120, 56, 243, 0.11),
+            0 20px 44px rgba(86, 32, 179, 0.07);
          position: relative;
          overflow: hidden;
       }
@@ -455,14 +593,14 @@
          top: 0;
          left: 0;
          right: 0;
-         height: 4px;
+         height: 5px;
          background: linear-gradient(90deg, #8546ff, #7838f3);
       }
 
       #liveCPS {
-         font-size: 40px;
+         font-size: 54px;
          color: #7838f3;
-         margin-bottom: 6px;
+         margin-bottom: 10px;
          font-weight: 700;
          font-family: 'Inter', system-ui, sans-serif;
          font-variant-numeric: tabular-nums;
@@ -511,21 +649,21 @@
       }
 
       #message {
-         margin: 10px 0 14px;
-         font-size: 17px;
+         margin: 14px 0 18px;
+         font-size: 19px;
          color: #7838f3;
          font-weight: 600;
-         min-height: 26px;
+         min-height: 28px;
          line-height: 1.35;
       }
 
       #restartButton {
          background: linear-gradient(145deg, #8546ff, #7838f3);
          color: white;
-         padding: 10px 24px;
+         padding: 13px 34px;
          border: none;
-         border-radius: 11px;
-         font-size: 15px;
+         border-radius: 13px;
+         font-size: 17px;
          font-weight: 600;
          cursor: pointer;
          transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -748,11 +886,12 @@
          .display-box,
          .cps-display-box {
             width: 100%;
-            max-width: 250px;
+            max-width: min(320px, 92vw);
+            min-height: 132px;
          }
 
          .timer-panel {
-            padding: 10px 12px 8px;
+            padding: 12px 14px 10px;
          }
 
          .timer-custom-block {
@@ -760,7 +899,7 @@
             align-items: stretch;
          }
 
-         #setCustomTimer {
+         .timer-btn-apply {
             align-self: stretch;
          }
 
@@ -772,7 +911,7 @@
             justify-content: center;
          }
 
-         .timer-btn[data-tooltip]::after {
+         .timer-btn-preset[data-tooltip]::after {
             font-size: 10px;
             padding: 6px 8px;
             max-width: 200px;
@@ -781,7 +920,7 @@
          #timer,
          #counter,
          #liveCPS {
-            font-size: 32px;
+            font-size: 42px;
          }
       }
    </style>
@@ -931,17 +1070,17 @@
       .main-content {
          max-width: 1200px;
          margin: 0 auto;
-         padding: 16px 16px 24px;
+         padding: 20px 18px 32px;
          display: flex;
          flex-direction: column;
-         gap: 28px;
+         gap: 32px;
       }
 
       .page-title {
          text-align: center;
-         font-size: clamp(1.35rem, 4vw, 1.75rem);
+         font-size: clamp(1.45rem, 4.2vw, 1.95rem);
          line-height: 1.25;
-         margin: 0 8px 4px;
+         margin: 0 8px 8px;
       }
    </style>
 
@@ -967,32 +1106,44 @@
       <h1 class="page-title">Spacebar Clicker: Test and Improve Your Clicking Speed</h1>
       <div id="app">
          <div class="timer-panel">
-            <div class="timer-panel-header">Test duration</div>
+            <div class="timer-panel-head">
+               <div class="timer-panel-header">Test duration</div>
+               <div class="custom-timer-toggle-wrap">
+                  <span class="toggle-caption" id="customTimerToggleLabel">Custom duration</span>
+                  <label class="toggle-switch">
+                     <input type="checkbox" id="customTimerToggle" role="switch" aria-checked="false"
+                        aria-labelledby="customTimerToggleLabel" aria-controls="customTimerRegion">
+                     <span class="toggle-slider" aria-hidden="true"></span>
+                  </label>
+               </div>
+            </div>
             <div class="timer-selection">
                <div class="timer-presets" role="group" aria-label="Preset test durations">
-                  <button type="button" class="timer-btn active" data-time="10"
+                  <button type="button" class="timer-btn-preset active" data-time="10"
                      data-tooltip="Quick test — great for speed bursts">10s</button>
-                  <button type="button" class="timer-btn" data-time="5" data-tooltip="Ultra quick — warm-up">5s</button>
-                  <button type="button" class="timer-btn" data-time="15" data-tooltip="Short practice round">15s</button>
-                  <button type="button" class="timer-btn" data-time="30"
+                  <button type="button" class="timer-btn-preset" data-time="5" data-tooltip="Ultra quick — warm-up">5s</button>
+                  <button type="button" class="timer-btn-preset" data-time="15" data-tooltip="Short practice round">15s</button>
+                  <button type="button" class="timer-btn-preset" data-time="30"
                      data-tooltip="Standard — speed and endurance">30s</button>
-                  <button type="button" class="timer-btn" data-time="60" data-tooltip="Endurance — stamina test">60s</button>
-                  <button type="button" class="timer-btn" data-time="100"
+                  <button type="button" class="timer-btn-preset" data-time="60" data-tooltip="Endurance — stamina test">60s</button>
+                  <button type="button" class="timer-btn-preset" data-time="100"
                      data-tooltip="Marathon — long challenge">100s</button>
                </div>
-               <div class="timer-custom-block">
-                  <div class="custom-field">
-                     <label class="custom-field-label" for="customTimer">Custom length</label>
-                     <div class="custom-timer-input-group">
-                        <input type="number" id="customTimer" name="customTimer" min="1" max="999"
-                           placeholder="1–999" inputmode="numeric" autocomplete="off"
-                           aria-describedby="validationMessage">
-                        <span class="custom-suffix">sec</span>
+               <div id="customTimerRegion" class="timer-custom-region" hidden>
+                  <div class="timer-custom-block">
+                     <div class="custom-field">
+                        <label class="custom-field-label" for="customTimer">Custom length</label>
+                        <div class="custom-timer-input-group">
+                           <input type="number" id="customTimer" name="customTimer" min="1" max="999"
+                              placeholder="1–999" inputmode="numeric" autocomplete="off"
+                              aria-describedby="validationMessage">
+                           <span class="custom-suffix">sec</span>
+                        </div>
                      </div>
+                     <button type="button" class="timer-btn-apply" id="setCustomTimer">Apply</button>
                   </div>
-                  <button type="button" class="timer-btn" id="setCustomTimer">Apply</button>
+                  <div class="validation-message" id="validationMessage" role="status" aria-live="polite"></div>
                </div>
-               <div class="validation-message" id="validationMessage" role="status" aria-live="polite"></div>
             </div>
          </div>
          <div class="display-container">
@@ -1051,6 +1202,42 @@
          const progressBar = document.getElementById('progressBar');
          const liveCPSDisplay = document.getElementById('liveCPS');
          const validationMessage = document.getElementById('validationMessage');
+         const customTimerRegion = document.getElementById('customTimerRegion');
+         const customTimerToggle = document.getElementById('customTimerToggle');
+
+         function syncPresetActiveFromTime() {
+            const presetBtn = document.querySelector(`.timer-btn-preset[data-time="${time}"]`);
+            document.querySelectorAll('.timer-btn-preset').forEach(b => b.classList.remove('active'));
+            if (presetBtn) {
+               presetBtn.classList.add('active');
+               return true;
+            }
+            const ten = document.querySelector('.timer-btn-preset[data-time="10"]');
+            if (ten) {
+               ten.classList.add('active');
+               time = 10;
+            }
+            return false;
+         }
+
+         customTimerToggle.addEventListener('change', () => {
+            const on = customTimerToggle.checked;
+            customTimerToggle.setAttribute('aria-checked', on ? 'true' : 'false');
+            customTimerRegion.hidden = !on;
+            if (!on) {
+               customTimerInput.value = '';
+               customTimerInput.classList.remove('success', 'error');
+               validationMessage.textContent = '';
+               validationMessage.classList.remove('success', 'error');
+               if (!document.querySelector(`.timer-btn-preset[data-time="${time}"]`)) {
+                  time = 10;
+               }
+               syncPresetActiveFromTime();
+               resetGame();
+            } else {
+               requestAnimationFrame(() => customTimerInput.focus());
+            }
+         });
 
          // Validation function for custom timer
          function validateCustomTimer(value) {
@@ -1090,19 +1277,20 @@
             return { valid: true, message: `Set to ${numValue} seconds` };
          }
 
-         // Timer selection functionality
-         document.querySelectorAll('.timer-btn').forEach(btn => {
-            if (!btn.id) {
-               btn.addEventListener('click', () => {
-                  document.querySelectorAll('.timer-btn').forEach(b => b.classList.remove('active'));
-                  btn.classList.add('active');
-                  time = parseInt(btn.dataset.time);
-                  customTimerInput.value = '';
-                  customTimerInput.classList.remove('success', 'error');
-                  validationMessage.textContent = '';
-                  resetGame();
-               });
-            }
+         document.querySelectorAll('.timer-btn-preset').forEach(btn => {
+            btn.addEventListener('click', () => {
+               document.querySelectorAll('.timer-btn-preset').forEach(b => b.classList.remove('active'));
+               btn.classList.add('active');
+               time = parseInt(btn.dataset.time, 10);
+               customTimerInput.value = '';
+               customTimerInput.classList.remove('success', 'error');
+               validationMessage.textContent = '';
+               validationMessage.classList.remove('success', 'error');
+               customTimerToggle.checked = false;
+               customTimerToggle.setAttribute('aria-checked', 'false');
+               customTimerRegion.hidden = true;
+               resetGame();
+            });
          });
 
          // Custom timer input validation on input
@@ -1123,12 +1311,11 @@
          document.getElementById('setCustomTimer').addEventListener('click', () => {
             const validation = validateCustomTimer(customTimerInput.value);
             if (validation.valid) {
-               const customTime = parseInt(customTimerInput.value);
-               document.querySelectorAll('.timer-btn').forEach(b => b.classList.remove('active'));
+               const customTime = parseInt(customTimerInput.value, 10);
+               document.querySelectorAll('.timer-btn-preset').forEach(b => b.classList.remove('active'));
                time = customTime;
                resetGame();
 
-               // Show success feedback
                setTimeout(() => {
                   validationMessage.textContent = '';
                   customTimerInput.classList.remove('success');
