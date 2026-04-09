@@ -3,25 +3,21 @@
   <!-- General Pages -->
   <url>
     <loc>https://space-bar-clicker.github.io/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/about/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/contact/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/privacy-policy/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -29,259 +25,216 @@
   <!-- Game Pages -->
   <url>
     <loc>https://space-bar-clicker.github.io/brainrot-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/burger-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/candy-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/candy-clicker-2/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/capybara-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/capybara-clicker-2/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/case-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/case-clicker-2/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/chicken-jockey-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/chill-girl-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/chill-guy-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/clicker-counter/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/coin-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/cookie-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/cookie-clicker-2/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/csgo-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/dog-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/duck-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/duck-duck-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/duck-duck-clicker-3d/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/earth-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/gs-auto-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/italian-brainrot-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/kiwi-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/labubu-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/minecraft-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/money-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/op-auto-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/particle-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/pizza-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/planet-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/planet-clicker-2/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/plant-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/pokemon-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/roblox-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/robux-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/room-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/santa-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/sprunki-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/stimulation-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/tube-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/tung-tung-tung-sahur-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://space-bar-clicker.github.io/whopper-clicker/</loc>
-    <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
