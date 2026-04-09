@@ -1,0 +1,45 @@
+Please create pages for these games:
+
+- [x] cookie clicker
+- [x] planet clicker
+- [x] chill guy clicker
+- [x] capybara clicker
+- [x] op auto clicker
+- [x] italian brainrot clicker
+- [x] brainrot clicker
+- [x] candy clicker
+- [x] duck duck clicker
+- [x] cookie clicker 2
+- [x] stimulation clicker
+- [x] clicker counter
+- [x] candy clicker 2
+- [x] sprunki clicker
+- [x] roblox clicker
+- [x] planet clicker 2
+- [x] duck clicker
+- [x] whopper clicker
+- [x] chicken jockey clicker
+- [x] capybara clicker 2
+- [x] tube clicker
+- [x] pokemon clicker
+- [x] gs auto clicker
+- [x] earth clicker
+- [x] pizza clicker
+- [x] duck duck clicker 3d
+- [x] case clicker
+- [x] kiwi clicker
+- [x] money clicker
+- [x] tung tung tung sahur clicker
+- [x] labubu clicker
+- [x] room clicker
+- [x] case clicker 2
+- [x] plant clicker
+- [x] particle clicker
+- [x] burger clicker
+- [x] csgo clicker
+- [x] coin clicker
+- [x] dog clicker
+- [x] santa clicker
+- [x] chill girl clicker
+- [x] robux clicker
+- [x] minecraft clicker

@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>GS Auto Clicker - Play Free Online | Spacebar Clicker</title>
+   <meta name="description"
+      content="Play GS Auto Clicker online for free. Automate auto clicks, buy upgrades, and build your empire in this addictive idle clicker game.">
+   <meta name="keywords"
+      content="gs auto clicker, gs auto clicker, clicker game, idle game, free online game, play gs auto clicker">
+   <meta name="robots" content="index, follow">
+   <link rel="canonical" href="https://space-bar-clicker.github.io/gs-auto-clicker/" />
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+   <!-- Google tag (gtag.js) -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-C1RY1CEJF2"></script>
+   <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-C1RY1CEJF2');
+   </script>
+   <style>
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      }
+
+      body {
+         background: linear-gradient(135deg, #f6f8fd 0%, #f0f2f5 100%);
+         min-height: 100vh;
+      }
+
+      /* Navbar */
+      .navbar {
+         background: linear-gradient(145deg, #8546ff, #7838f3);
+         padding: 15px 0;
+         position: sticky;
+         top: 0;
+         z-index: 1000;
+         box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-container {
+         max-width: 1200px;
+         margin: 0 auto;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 0 20px;
+      }
+
+      .logo {
+         color: white;
+         font-size: 1.5rem;
+         font-weight: bold;
+         text-decoration: none;
+      }
+
+      .nav-links {
+         display: flex;
+         gap: 30px;
+      }
+
+      .nav-links a {
+         color: white;
+         text-decoration: none;
+         font-weight: 500;
+         position: relative;
+      }
+
+      .nav-links a::after {
+         content: '';
+         position: absolute;
+         width: 100%;
+         height: 2px;
+         bottom: -5px;
+         left: 0;
+         background-color: white;
+         transform: scaleX(0);
+         transition: transform 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+         transform: scaleX(1);
+      }
+
+      .menu-btn {
+         display: none;
+         background: none;
+         border: none;
+         color: white;
+         font-size: 1.5rem;
+         cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+         .nav-links {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: linear-gradient(145deg, #8546ff, #7838f3);
+            padding: 20px;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+         }
+         .nav-links.active { display: flex; }
+         .menu-btn { display: block; }
+      }
+
+      /* Main */
+      .main-content {
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 20px 18px 32px;
+         display: flex;
+         flex-direction: column;
+         gap: 32px;
+      }
+
+      .page-title {
+         text-align: center;
+         font-size: clamp(1.45rem, 4.2vw, 1.95rem);
+         line-height: 1.25;
+         margin: 0 8px 8px;
+         color: #7838f3;
+      }
+
+      /* ===== GAME STYLES ===== */
+      .game-wrapper {
+         width: 94%;
+         max-width: 900px;
+         margin: 0 auto;
+         background: white;
+         border-radius: 22px;
+         box-shadow: 0 20px 55px rgba(120, 56, 243, 0.14);
+         overflow: hidden;
+      }
+
+      .game-header {
+         background: linear-gradient(135deg, #475569, #475569dd);
+         padding: 18px 24px;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         flex-wrap: wrap;
+         gap: 12px;
+      }
+
+      .game-header h2 {
+         color: white;
+         font-size: 1.15rem;
+         margin: 0;
+      }
+
+      .game-stats-bar {
+         display: flex;
+         gap: 18px;
+         align-items: center;
+      }
+
+      .game-stat-pill {
+         background: rgba(255,255,255,0.2);
+         border-radius: 20px;
+         padding: 6px 14px;
+         color: white;
+         font-size: 0.85rem;
+         font-weight: 600;
+         white-space: nowrap;
+      }
+
+      .game-body {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 0;
+      }
+
+      @media (max-width: 700px) {
+         .game-body {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      /* Click Area */
+      .click-area {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         padding: 36px 20px;
+         border-right: 1px solid #f0f0f0;
+         background: #f1f5f9;
+         min-height: 320px;
+      }
+
+      @media (max-width: 700px) {
+         .click-area {
+            border-right: none;
+            border-bottom: 1px solid #f0f0f0;
+            min-height: 260px;
+            padding: 28px 20px;
+         }
+      }
+
+      .click-btn {
+         width: 150px;
+         height: 150px;
+         border-radius: 50%;
+         border: 4px solid #475569;
+         background: white;
+         font-size: 64px;
+         cursor: pointer;
+         transition: transform 0.1s ease, box-shadow 0.1s ease;
+         box-shadow: 0 8px 30px #47556933;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         user-select: none;
+         -webkit-user-select: none;
+         line-height: 1;
+         position: relative;
+         outline: none;
+      }
+
+      .click-btn:hover {
+         box-shadow: 0 12px 40px #47556955;
+      }
+
+      .click-btn:active, .click-btn.pressed {
+         transform: scale(0.92);
+         box-shadow: 0 4px 15px #47556944;
+      }
+
+      .click-btn .emoji {
+         pointer-events: none;
+      }
+
+      .score-display {
+         margin-top: 18px;
+         text-align: center;
+      }
+
+      .score-number {
+         font-size: 2.2rem;
+         font-weight: 700;
+         color: #475569;
+         font-variant-numeric: tabular-nums;
+      }
+
+      .score-label {
+         font-size: 0.85rem;
+         color: #888;
+         font-weight: 500;
+         margin-top: 2px;
+      }
+
+      .per-second {
+         margin-top: 8px;
+         font-size: 0.9rem;
+         color: #aaa;
+         font-weight: 500;
+      }
+
+      .click-power-info {
+         margin-top: 10px;
+         font-size: 0.8rem;
+         color: #475569;
+         font-weight: 600;
+         opacity: 0.7;
+      }
+
+      /* Click float (the +1 animation) */
+      .click-float {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1.3rem;
+         font-weight: 700;
+         color: #475569;
+         animation: floatUp 0.7s ease-out forwards;
+         z-index: 10;
+      }
+
+      @keyframes floatUp {
+         0% { opacity: 1; transform: translateY(0) scale(0.8); }
+         100% { opacity: 0; transform: translateY(-70px) scale(1.1); }
+      }
+
+      /* Upgrades Panel */
+      .upgrades-panel {
+         padding: 20px;
+         display: flex;
+         flex-direction: column;
+         gap: 10px;
+         overflow-y: auto;
+         max-height: 420px;
+      }
+
+      .upgrades-title {
+         font-size: 0.8rem;
+         text-transform: uppercase;
+         letter-spacing: 0.08em;
+         color: #aaa;
+         font-weight: 700;
+         margin-bottom: 4px;
+      }
+
+      .upgrade-card {
+         display: flex;
+         align-items: center;
+         gap: 12px;
+         padding: 12px 14px;
+         border-radius: 12px;
+         border: 1.5px solid #eee;
+         cursor: pointer;
+         transition: all 0.2s ease;
+         background: white;
+         position: relative;
+      }
+
+      .upgrade-card:hover:not(.locked) {
+         border-color: #475569;
+         background: #f1f5f9;
+         transform: translateY(-1px);
+         box-shadow: 0 4px 12px #47556915;
+      }
+
+      .upgrade-card.locked {
+         opacity: 0.45;
+         cursor: not-allowed;
+      }
+
+      .upgrade-emoji {
+         font-size: 1.5rem;
+         width: 36px;
+         text-align: center;
+         flex-shrink: 0;
+      }
+
+      .upgrade-info {
+         flex: 1;
+         min-width: 0;
+      }
+
+      .upgrade-name {
+         font-weight: 600;
+         font-size: 0.9rem;
+         color: #333;
+      }
+
+      .upgrade-desc {
+         font-size: 0.75rem;
+         color: #999;
+         margin-top: 1px;
+      }
+
+      .upgrade-right {
+         text-align: right;
+         flex-shrink: 0;
+      }
+
+      .upgrade-cost {
+         font-weight: 700;
+         font-size: 0.85rem;
+         color: #475569;
+      }
+
+      .upgrade-owned {
+         font-size: 0.7rem;
+         color: #aaa;
+         margin-top: 1px;
+      }
+
+      /* Game Footer */
+      .game-footer {
+         display: flex;
+         justify-content: center;
+         gap: 12px;
+         padding: 14px 20px;
+         border-top: 1px solid #f0f0f0;
+         background: #fafafa;
+         border-radius: 0 0 22px 22px;
+         flex-wrap: wrap;
+      }
+
+      .game-footer button {
+         padding: 8px 20px;
+         border-radius: 8px;
+         border: 1.5px solid #ddd;
+         background: white;
+         font-weight: 600;
+         font-size: 0.82rem;
+         cursor: pointer;
+         transition: all 0.2s ease;
+         font-family: inherit;
+         color: #555;
+      }
+
+      .game-footer button:hover {
+         border-color: #475569;
+         color: #475569;
+      }
+
+      .game-footer .reset-btn:hover {
+         border-color: #dc2626;
+         color: #dc2626;
+      }
+
+      /* Article Styles */
+      .article-container {
+         max-width: 800px;
+         margin: 0 auto;
+         padding: 20px;
+         line-height: 1.6;
+         color: #333;
+      }
+
+      h1, h2 { color: #7838f3; margin-bottom: 20px; }
+      h2 { margin-top: 10px; }
+      .intro { font-size: 1.1em; color: #555; margin-bottom: 30px; }
+      .section { margin-bottom: 30px; }
+      .highlight-box { background: #f8f9fe; border-left: 4px solid #7838f3; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+      .highlight-box ul { list-style: none; padding-left: 0; }
+      .highlight-box li { padding: 8px 0; color: #333; line-height: 1.6; }
+      .feature-box { background: linear-gradient(145deg, #f8f9fe, #fff); border-radius: 12px; padding: 20px; margin: 20px 0; box-shadow: 0 4px 15px rgba(120,56,243,0.1); }
+      .feature-box h3 { color: #7838f3; margin-bottom: 12px; }
+      .feature-box ul { list-style: none; padding-left: 0; }
+      .feature-box li { padding: 6px 0 6px 24px; position: relative; color: #333; line-height: 1.6; }
+      .feature-box li::before { content: '✓'; position: absolute; left: 0; color: #7838f3; font-weight: bold; }
+      p { color: #333; line-height: 1.8; margin-bottom: 15px; font-size: 1.05rem; }
+
+      .back-btn {
+         display: inline-block;
+         background: linear-gradient(145deg, #8546ff, #7838f3);
+         color: white;
+         padding: 12px 30px;
+         border-radius: 12px;
+         text-decoration: none;
+         font-weight: 600;
+         margin-top: 30px;
+         transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+         box-shadow: 0 8px 20px rgba(120, 56, 243, 0.2);
+      }
+      .back-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 25px rgba(120, 56, 243, 0.3); }
+
+      /* Footer */
+      .site-footer { background: linear-gradient(145deg, #8546ff, #7838f3); color: white; padding: 50px 0 20px; margin-top: 50px; }
+      .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+      .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+      .footer-section { display: flex; flex-direction: column; }
+      .footer-brand { padding-right: 30px; }
+      .footer-logo { color: white; font-size: 1.5rem; font-weight: bold; text-decoration: none; margin-bottom: 15px; display: inline-block; }
+      .footer-logo:hover { opacity: 0.9; }
+      .footer-tagline { color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.6; margin: 0; }
+      .footer-heading { color: white; font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+      .footer-heading::after { content: ''; position: absolute; left: 0; bottom: 0; width: 30px; height: 2px; background: rgba(255,255,255,0.5); }
+      .footer-links { list-style: none; padding: 0; margin: 0; }
+      .footer-links li { margin-bottom: 12px; }
+      .footer-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.95rem; transition: all 0.3s ease; display: inline-block; }
+      .footer-links a:hover { color: white; transform: translateX(5px); }
+      .footer-bottom { border-top: 1px solid rgba(255,255,255,0.2); padding-top: 25px; text-align: center; }
+      .footer-bottom p { color: rgba(255,255,255,0.8); font-size: 0.9rem; margin: 0; }
+
+      @media (max-width: 900px) {
+         .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+         .footer-brand { grid-column: span 2; padding-right: 0; }
+      }
+      @media (max-width: 600px) {
+         .site-footer { padding: 40px 0 20px; }
+         .footer-grid { grid-template-columns: 1fr; gap: 25px; }
+         .footer-brand { grid-column: span 1; }
+         .footer-section { text-align: center; }
+         .footer-heading::after { left: 50%; transform: translateX(-50%); }
+         .footer-links a:hover { transform: none; }
+      }
+   
+      /* Related Games Section */
+      .related-games-section {
+         max-width: 900px;
+         width: 94%;
+         margin: 0 auto;
+         padding: 32px 28px;
+         background: white;
+         border-radius: 22px;
+         box-shadow: 0 20px 55px rgba(120, 56, 243, 0.14);
+      }
+
+      .related-games-title {
+         text-align: center;
+         color: #7838f3;
+         font-size: 1.5rem;
+         margin-bottom: 6px;
+      }
+
+      .related-games-subtitle {
+         text-align: center;
+         color: #999;
+         font-size: 0.9rem;
+         margin-bottom: 24px;
+      }
+
+      .related-games-grid {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 10px;
+         justify-content: center;
+      }
+
+      .related-game-link {
+         display: inline-flex;
+         align-items: center;
+         gap: 6px;
+         padding: 8px 16px;
+         border-radius: 10px;
+         border: 1.5px solid #e8e0ff;
+         background: linear-gradient(180deg, #ffffff 0%, #f8f5ff 100%);
+         color: #4c1d95;
+         text-decoration: none;
+         font-size: 0.85rem;
+         font-weight: 600;
+         transition: all 0.2s ease;
+         white-space: nowrap;
+      }
+
+      .related-game-link:hover {
+         border-color: #7838f3;
+         background: linear-gradient(180deg, #ffffff 0%, #ede5ff 100%);
+         transform: translateY(-2px);
+         box-shadow: 0 4px 12px rgba(120, 56, 243, 0.15);
+         color: #3b0764;
+      }
+
+   </style>
+</head>
+
+<body>
+   <nav class="navbar">
+      <div class="nav-container">
+         <a href="https://space-bar-clicker.github.io/" class="logo">Spacebar Clicker</a>
+         <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about/">About Us</a>
+            <a href="/contact/">Contact</a>
+            <a href="/privacy-policy/">Privacy Policy</a>
+         </div>
+         <button class="menu-btn">☰</button>
+      </div>
+   </nav>
+
+   <div class="main-content">
+      <h1 class="page-title">Play GS Auto Clicker Online</h1>
+
+      <!-- ===== GAME ===== -->
+      <div class="game-wrapper" id="gameWrapper">
+         <div class="game-header">
+            <h2>⚙️ GS Auto Clicker</h2>
+            <div class="game-stats-bar">
+               <span class="game-stat-pill" id="gStatTotal">0 Auto Clicks</span>
+               <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+            </div>
+         </div>
+         <div class="game-body">
+            <div class="click-area" id="clickArea">
+               <button class="click-btn" id="clickBtn" aria-label="Automate Auto Click">
+                  <span class="emoji">⚙️</span>
+               </button>
+               <div class="score-display">
+                  <div class="score-number" id="scoreNum">0</div>
+                  <div class="score-label">Auto Clicks</div>
+               </div>
+               <div class="per-second" id="perSecDisplay">0 auto clicks/sec</div>
+               <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+            </div>
+            <div class="upgrades-panel" id="upgradesPanel">
+               <div class="upgrades-title">Upgrades</div>
+               
+               <div class="upgrade-card locked" id="upg0" data-idx="0">
+                  <div class="upgrade-emoji">⚡</div>
+                  <div class="upgrade-info">
+                     <div class="upgrade-name">Speed Boost</div>
+                     <div class="upgrade-desc">+1 click/sec</div>
+                  </div>
+                  <div class="upgrade-right">
+                     <div class="upgrade-cost" id="upgCost0">15</div>
+                     <div class="upgrade-owned" id="upgOwned0">Owned: 0</div>
+                  </div>
+               </div>
+               <div class="upgrade-card locked" id="upg1" data-idx="1">
+                  <div class="upgrade-emoji">🔀</div>
+                  <div class="upgrade-info">
+                     <div class="upgrade-name">Multi-Thread</div>
+                     <div class="upgrade-desc">+5 clicks/sec</div>
+                  </div>
+                  <div class="upgrade-right">
+                     <div class="upgrade-cost" id="upgCost1">100</div>
+                     <div class="upgrade-owned" id="upgOwned1">Owned: 0</div>
+                  </div>
+               </div>
+               <div class="upgrade-card locked" id="upg2" data-idx="2">
+                  <div class="upgrade-emoji">🚀</div>
+                  <div class="upgrade-info">
+                     <div class="upgrade-name">Turbo Mode</div>
+                     <div class="upgrade-desc">+20 clicks/sec</div>
+                  </div>
+                  <div class="upgrade-right">
+                     <div class="upgrade-cost" id="upgCost2">500</div>
+                     <div class="upgrade-owned" id="upgOwned2">Owned: 0</div>
+                  </div>
+               </div>
+               <div class="upgrade-card locked" id="upg3" data-idx="3">
+                  <div class="upgrade-emoji">🧠</div>
+                  <div class="upgrade-info">
+                     <div class="upgrade-name">Neural Network</div>
+                     <div class="upgrade-desc">+100 clicks/sec</div>
+                  </div>
+                  <div class="upgrade-right">
+                     <div class="upgrade-cost" id="upgCost3">2500</div>
+                     <div class="upgrade-owned" id="upgOwned3">Owned: 0</div>
+                  </div>
+               </div>
+               <div class="upgrade-card locked" id="upg4" data-idx="4">
+                  <div class="upgrade-emoji">💎</div>
+                  <div class="upgrade-info">
+                     <div class="upgrade-name">Quantum Processor</div>
+                     <div class="upgrade-desc">+500 clicks/sec</div>
+                  </div>
+                  <div class="upgrade-right">
+                     <div class="upgrade-cost" id="upgCost4">15000</div>
+                     <div class="upgrade-owned" id="upgOwned4">Owned: 0</div>
+                  </div>
+               </div>
+               <div class="upgrade-card" id="upgClickPower" data-type="click">
+                  <div class="upgrade-emoji">👆</div>
+                  <div class="upgrade-info">
+                     <div class="upgrade-name">Click Power</div>
+                     <div class="upgrade-desc">Double your clicking power</div>
+                  </div>
+                  <div class="upgrade-right">
+                     <div class="upgrade-cost" id="clickPowerCost">50</div>
+                     <div class="upgrade-owned" id="clickPowerLevel">Level: 1</div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="game-footer">
+            <button id="saveBtn">💾 Save</button>
+            <button class="reset-btn" id="resetBtn">🔄 Reset</button>
+         </div>
+      </div>
+
+      <!-- ===== ARTICLE CONTENT ===== -->
+      <article class="article-container">
+         
+         
+         <div class="intro">
+            GS Auto Clicker is one of the most popular free auto clicking tools available, known for its simplicity and reliability. This lightweight application automates mouse clicks at specified intervals, making it a go-to tool for gamers, testers, and anyone who needs to automate repetitive clicking tasks. With a straightforward interface and minimal system requirements, GS Auto Clicker has earned its place as a trusted clicking automation solution.
+         </div>
+         <section class="section">
+            <h2>What is GS Auto Clicker?</h2>
+            <p>GS Auto Clicker is a free, lightweight software application designed to automatically perform mouse clicks at adjustable speeds. Unlike more complex automation tools, GS Auto Clicker focuses on doing one thing well: clicking automatically. Its minimalist approach means you can be up and running in seconds, with a simple toggle to start and stop the auto-clicking functionality.</p>
+            <div class="feature-box">
+               <h3>Key Features</h3>
+               <ul>
+                  <li>Single-click activation and deactivation with customizable hotkey</li>
+                  <li>Adjustable click speed from very slow to extremely fast</li>
+                  <li>Left click and right click support</li>
+                  <li>Minimal interface that stays out of your way</li>
+                  <li>Very low system resource usage</li>
+                  <li>No installation required — runs as portable application</li>
+               </ul>
+            </div>
+         </section>
+         <section class="section">
+            <h2>How to Use GS Auto Clicker</h2>
+            <p>Using GS Auto Clicker is remarkably simple. Download and open the application — no installation is needed. Set your preferred clicking speed using the slider or input field. Position your mouse cursor where you want the clicks to occur, then press the designated hotkey (default is F8) to start auto-clicking. Press the same hotkey again to stop. That's the entire process.</p>
+            <p>The speed setting determines how many clicks per second the tool performs. For most idle games, a moderate speed of 10-20 clicks per second works well. For testing purposes, you might need faster speeds. The tool also allows you to toggle between left and right mouse buttons, accommodating different use cases. The portable nature means you can run it from a USB drive on any compatible computer.</p>
+         </section>
+         <section class="section">
+            <h2>GS Auto Clicker Use Cases</h2>
+            <div class="highlight-box">
+               <ul>
+                  <li><strong>Idle Games:</strong> Automate clicking in cookie clickers and similar games</li>
+                  <li><strong>Clicker Games:</strong> Progress faster in incremental games</li>
+                  <li><strong>Testing:</strong> Simulate rapid user clicks for application testing</li>
+                  <li><strong>Repetitive Tasks:</strong> Automate monotonous clicking workflows</li>
+                  <li><strong>Accessibility:</strong> Assist users who have difficulty with rapid manual clicking</li>
+               </ul>
+            </div>
+         </section>
+         <section class="section">
+            <h2>GS Auto Clicker vs Other Auto Clickers</h2>
+            <p>GS Auto Clicker distinguishes itself through its extreme simplicity. While tools like OP Auto Clicker offer more features (fixed positions, click counts, multiple click types), GS Auto Clicker's stripped-down approach appeals to users who just need basic auto-clicking without complexity. It starts faster, uses fewer resources, and has virtually zero learning curve.</p>
+            <p>The trade-off for simplicity is fewer advanced features. GS Auto Clicker doesn't support clicking at fixed coordinates, setting specific click counts, or recording click patterns. For users who need these capabilities, more full-featured alternatives exist. But for the majority of users who simply need reliable automated clicking at their cursor position, GS Auto Clicker delivers exactly what's needed without any bloat or complexity.</p>
+         </section>
+         <section class="section">
+            <h2>Important Considerations</h2>
+            <p>As with any auto-clicking tool, it's important to use GS Auto Clicker responsibly. Many online games and competitive applications prohibit the use of auto clickers, and using them could result in account penalties or bans. Always check the terms of service of any application before using automated clicking tools. GS Auto Clicker is best suited for single-player games, productivity tasks, and software testing where automated clicking is permitted and beneficial.</p>
+         </section>
+    
+         <div style="text-align: center;">
+            <a href="/" class="back-btn">Back to Home</a>
+         </div>
+      
+      </article>
+      <!-- Related Games Section -->
+      <div class="related-games-section">
+         <h2 class="related-games-title">🎮 More Clicker Games</h2>
+         <p class="related-games-subtitle">Discover more free online clicker games to play</p>
+         <div class="related-games-grid">
+                  <a href="/cookie-clicker/" class="related-game-link">🍪 Cookie Clicker</a>
+                  <a href="/planet-clicker/" class="related-game-link">🌍 Planet Clicker</a>
+                  <a href="/chill-guy-clicker/" class="related-game-link">😎 Chill Guy Clicker</a>
+                  <a href="/capybara-clicker/" class="related-game-link">🦫 Capybara Clicker</a>
+                  <a href="/op-auto-clicker/" class="related-game-link">🖱️ OP Auto Clicker</a>
+                  <a href="/italian-brainrot-clicker/" class="related-game-link">🇮🇹 Italian Brainrot Clicker</a>
+                  <a href="/brainrot-clicker/" class="related-game-link">🧠 Brainrot Clicker</a>
+                  <a href="/candy-clicker/" class="related-game-link">🍬 Candy Clicker</a>
+                  <a href="/duck-duck-clicker/" class="related-game-link">🦆 Duck Duck Clicker</a>
+                  <a href="/cookie-clicker-2/" class="related-game-link">🍪 Cookie Clicker 2</a>
+                  <a href="/stimulation-clicker/" class="related-game-link">✨ Stimulation Clicker</a>
+                  <a href="/clicker-counter/" class="related-game-link">🔢 Clicker Counter</a>
+                  <a href="/candy-clicker-2/" class="related-game-link">🍭 Candy Clicker 2</a>
+                  <a href="/sprunki-clicker/" class="related-game-link">🎵 Sprunki Clicker</a>
+                  <a href="/roblox-clicker/" class="related-game-link">🟩 Roblox Clicker</a>
+                  <a href="/planet-clicker-2/" class="related-game-link">🪐 Planet Clicker 2</a>
+                  <a href="/duck-clicker/" class="related-game-link">🐤 Duck Clicker</a>
+                  <a href="/whopper-clicker/" class="related-game-link">🍔 Whopper Clicker</a>
+                  <a href="/chicken-jockey-clicker/" class="related-game-link">🐔 Chicken Jockey Clicker</a>
+                  <a href="/capybara-clicker-2/" class="related-game-link">🦫 Capybara Clicker 2</a>
+                  <a href="/tube-clicker/" class="related-game-link">▶️ Tube Clicker</a>
+                  <a href="/pokemon-clicker/" class="related-game-link">⚡ Pokemon Clicker</a>
+                  <a href="/earth-clicker/" class="related-game-link">🌎 Earth Clicker</a>
+                  <a href="/pizza-clicker/" class="related-game-link">🍕 Pizza Clicker</a>
+                  <a href="/duck-duck-clicker-3d/" class="related-game-link">🦆 Duck Duck Clicker 3D</a>
+                  <a href="/case-clicker/" class="related-game-link">📦 Case Clicker</a>
+                  <a href="/kiwi-clicker/" class="related-game-link">🥝 Kiwi Clicker</a>
+                  <a href="/money-clicker/" class="related-game-link">💵 Money Clicker</a>
+                  <a href="/tung-tung-tung-sahur-clicker/" class="related-game-link">🔔 Tung Tung Tung Sahur Clicker</a>
+                  <a href="/labubu-clicker/" class="related-game-link">🧸 Labubu Clicker</a>
+                  <a href="/room-clicker/" class="related-game-link">🏠 Room Clicker</a>
+                  <a href="/case-clicker-2/" class="related-game-link">🎰 Case Clicker 2</a>
+                  <a href="/plant-clicker/" class="related-game-link">🌱 Plant Clicker</a>
+                  <a href="/particle-clicker/" class="related-game-link">⚛️ Particle Clicker</a>
+                  <a href="/burger-clicker/" class="related-game-link">🍔 Burger Clicker</a>
+                  <a href="/csgo-clicker/" class="related-game-link">🔫 CSGO Clicker</a>
+                  <a href="/coin-clicker/" class="related-game-link">🪙 Coin Clicker</a>
+                  <a href="/dog-clicker/" class="related-game-link">🐕 Dog Clicker</a>
+                  <a href="/santa-clicker/" class="related-game-link">🎅 Santa Clicker</a>
+                  <a href="/chill-girl-clicker/" class="related-game-link">💆‍♀️ Chill Girl Clicker</a>
+                  <a href="/robux-clicker/" class="related-game-link">💎 Robux Clicker</a>
+                  <a href="/minecraft-clicker/" class="related-game-link">⛏️ Minecraft Clicker</a>
+         </div>
+      </div>
+
+   </div>
+
+   <script>
+   (function() {
+      const SAVE_KEY = 'gs_auto_clicker_save';
+      const UPGRADES = [{"name":"Speed Boost","emoji":"⚡","baseCost":15,"baseRate":1,"desc":"+1 click/sec"},{"name":"Multi-Thread","emoji":"🔀","baseCost":100,"baseRate":5,"desc":"+5 clicks/sec"},{"name":"Turbo Mode","emoji":"🚀","baseCost":500,"baseRate":20,"desc":"+20 clicks/sec"},{"name":"Neural Network","emoji":"🧠","baseCost":2500,"baseRate":100,"desc":"+100 clicks/sec"},{"name":"Quantum Processor","emoji":"💎","baseCost":15000,"baseRate":500,"desc":"+500 clicks/sec"}];
+      const COST_SCALE = 1.15;
+
+      let score = 0;
+      let totalEarned = 0;
+      let clickPower = 1;
+      let clickPowerLevel = 1;
+      let clickPowerCost = 50;
+      let perSecond = 0;
+      let upgradeOwned = UPGRADES.map(() => 0);
+
+      // DOM
+      const scoreNum = document.getElementById('scoreNum');
+      const perSecDisplay = document.getElementById('perSecDisplay');
+      const clickPowerInfo = document.getElementById('clickPowerInfo');
+      const gStatTotal = document.getElementById('gStatTotal');
+      const gStatPerSec = document.getElementById('gStatPerSec');
+      const clickBtn = document.getElementById('clickBtn');
+      const clickArea = document.getElementById('clickArea');
+
+      function formatNum(n) {
+         if (n < 1000) return Math.floor(n).toLocaleString();
+         if (n < 1e6) return (n/1e3).toFixed(1) + 'K';
+         if (n < 1e9) return (n/1e6).toFixed(1) + 'M';
+         if (n < 1e12) return (n/1e9).toFixed(1) + 'B';
+         return (n/1e12).toFixed(1) + 'T';
+      }
+
+      function getCost(baseC, owned) {
+         return Math.floor(baseC * Math.pow(COST_SCALE, owned));
+      }
+
+      function recalcPerSecond() {
+         perSecond = 0;
+         UPGRADES.forEach((u, i) => {
+            perSecond += u.baseRate * upgradeOwned[i];
+         });
+      }
+
+      function render() {
+         scoreNum.textContent = formatNum(score);
+         perSecDisplay.textContent = formatNum(perSecond) + ' auto clicks/sec';
+         clickPowerInfo.textContent = '+' + formatNum(clickPower) + ' per click';
+         gStatTotal.textContent = formatNum(score) + ' Auto Clicks';
+         gStatPerSec.textContent = formatNum(perSecond) + '/sec';
+
+         UPGRADES.forEach((u, i) => {
+            const card = document.getElementById('upg' + i);
+            const cost = getCost(u.baseCost, upgradeOwned[i]);
+            document.getElementById('upgCost' + i).textContent = formatNum(cost);
+            document.getElementById('upgOwned' + i).textContent = 'Owned: ' + upgradeOwned[i];
+            if (score >= cost) {
+               card.classList.remove('locked');
+            } else {
+               card.classList.add('locked');
+            }
+         });
+
+         // Click power upgrade
+         const cpCard = document.getElementById('upgClickPower');
+         document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
+         document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
+         if (score >= clickPowerCost) {
+            cpCard.classList.remove('locked');
+         } else {
+            cpCard.classList.add('locked');
+         }
+      }
+
+      function showClickFloat(x, y) {
+         const el = document.createElement('div');
+         el.className = 'click-float';
+         el.textContent = '+' + formatNum(clickPower);
+         el.style.left = x + 'px';
+         el.style.top = y + 'px';
+         clickArea.style.position = 'relative';
+         clickArea.appendChild(el);
+         setTimeout(() => el.remove(), 700);
+      }
+
+      function doClick(e) {
+         score += clickPower;
+         totalEarned += clickPower;
+
+         clickBtn.classList.add('pressed');
+         setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+
+         // Float position
+         const rect = clickArea.getBoundingClientRect();
+         let cx, cy;
+         if (e && e.clientX) {
+            cx = e.clientX - rect.left;
+            cy = e.clientY - rect.top;
+         } else {
+            cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+            cy = rect.height / 2 - 30;
+         }
+         showClickFloat(cx, cy);
+         render();
+      }
+
+      clickBtn.addEventListener('click', doClick);
+      clickBtn.addEventListener('touchstart', (e) => {
+         e.preventDefault();
+         doClick(e.touches[0]);
+      });
+
+      // Keyboard: spacebar
+      document.addEventListener('keydown', (e) => {
+         if (e.code === 'Space' && !e.repeat) {
+            e.preventDefault();
+            doClick(null);
+         }
+      });
+
+      // Buy upgrades
+      UPGRADES.forEach((u, i) => {
+         document.getElementById('upg' + i).addEventListener('click', () => {
+            const cost = getCost(u.baseCost, upgradeOwned[i]);
+            if (score >= cost) {
+               score -= cost;
+               upgradeOwned[i]++;
+               recalcPerSecond();
+               render();
+            }
+         });
+      });
+
+      // Click power upgrade
+      document.getElementById('upgClickPower').addEventListener('click', () => {
+         if (score >= clickPowerCost) {
+            score -= clickPowerCost;
+            clickPowerLevel++;
+            clickPower = Math.pow(2, clickPowerLevel - 1);
+            clickPowerCost = Math.floor(50 * Math.pow(2.5, clickPowerLevel - 1));
+            render();
+         }
+      });
+
+      // Per-second tick
+      setInterval(() => {
+         if (perSecond > 0) {
+            score += perSecond;
+            totalEarned += perSecond;
+            render();
+         }
+      }, 1000);
+
+      // Save / Load
+      function saveGame() {
+         const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned };
+         try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch(e) {}
+      }
+
+      function loadGame() {
+         try {
+            const raw = localStorage.getItem(SAVE_KEY);
+            if (raw) {
+               const data = JSON.parse(raw);
+               score = data.score || 0;
+               totalEarned = data.totalEarned || 0;
+               clickPower = data.clickPower || 1;
+               clickPowerLevel = data.clickPowerLevel || 1;
+               clickPowerCost = data.clickPowerCost || 50;
+               upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+               recalcPerSecond();
+            }
+         } catch(e) {}
+      }
+
+      document.getElementById('saveBtn').addEventListener('click', () => {
+         saveGame();
+         const btn = document.getElementById('saveBtn');
+         btn.textContent = '✅ Saved!';
+         setTimeout(() => { btn.textContent = '💾 Save'; }, 1500);
+      });
+
+      document.getElementById('resetBtn').addEventListener('click', () => {
+         if (confirm('Reset all progress for GS Auto Clicker? This cannot be undone.')) {
+            localStorage.removeItem(SAVE_KEY);
+            score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
+            upgradeOwned = UPGRADES.map(() => 0);
+            recalcPerSecond();
+            render();
+         }
+      });
+
+      // Auto-save every 30s
+      setInterval(saveGame, 30000);
+
+      // Init
+      loadGame();
+      render();
+   })();
+   </script>
+
+   <script>
+      // Mobile menu
+      const menuBtn = document.querySelector('.menu-btn');
+      const navLinks = document.querySelector('.nav-links');
+      menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+      document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
+      document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+   </script>
+
+   <!-- Site Footer -->
+   <footer class="site-footer">
+      <div class="footer-container">
+         <div class="footer-grid">
+            <div class="footer-section footer-brand">
+               <a href="/" class="footer-logo">Spacebar Clicker</a>
+               <p class="footer-tagline">Test your spacebar clicking speed with our free online tool. Measure your CPS and improve your clicking skills.</p>
+            </div>
+            <div class="footer-section">
+               <h4 class="footer-heading">Quick Links</h4>
+               <ul class="footer-links">
+                  <li><a href="/">Home</a></li>
+                  
+                  <li><a href="/about/">About Us</a></li>
+                  <li><a href="/contact/">Contact</a></li>
+               </ul>
+            </div>
+            <div class="footer-section">
+               <h4 class="footer-heading">Legal</h4>
+               <ul class="footer-links">
+                  <li><a href="/privacy-policy/">Privacy Policy</a></li>
+               </ul>
+            </div>
+         </div>
+         <div class="footer-bottom">
+            <p>&copy; 2026 Spacebar Clicker. All rights reserved.</p>
+         </div>
+      </div>
+   </footer>
+
+   <script>(function(w,d,s,id){if(typeof(w.webpushr)!=='undefined')return;w.webpushr=w.webpushr||function(){(w.webpushr.q=w.webpushr.q||[]).push(arguments)};var js,fjs=d.getElementsByTagName(s)[0];js=d.createElement(s);js.id=id;js.async=1;js.src="https://cdn.webpushr.com/app.min.js";fjs.parentNode.appendChild(js);}(window,document,'script','webpushr-jssdk'));webpushr('setup',{'key':'BCqxAAS-ncGR0SExOoEY3HPXgbSncPSnvUNZbaqLmWTXCyeVDhZdKkXruhe2gvqHJnbMgm1oUAREgHJ3KPqSkW4'});</script>
+</body>
+
+</html>
