@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Pokemon Clicker - Play Free Online | Spacebar Clicker</title>
+   <title>Pokemon Clicker - Play Free Online</title>
    <meta name="description"
       content="Play Pokemon Clicker online for free. Catch pokécoins, buy upgrades, and build your empire in this addictive idle clicker game.">
    <meta name="keywords"
@@ -112,8 +112,14 @@
             align-items: center;
             gap: 20px;
          }
-         .nav-links.active { display: flex; }
-         .menu-btn { display: block; }
+
+         .nav-links.active {
+            display: flex;
+         }
+
+         .menu-btn {
+            display: block;
+         }
       }
 
       /* Main */
@@ -168,7 +174,7 @@
       }
 
       .game-stat-pill {
-         background: rgba(255,255,255,0.2);
+         background: rgba(255, 255, 255, 0.2);
          border-radius: 20px;
          padding: 6px 14px;
          color: white;
@@ -234,7 +240,8 @@
          box-shadow: 0 12px 40px #dc262655;
       }
 
-      .click-btn:active, .click-btn.pressed {
+      .click-btn:active,
+      .click-btn.pressed {
          transform: scale(0.92);
          box-shadow: 0 4px 15px #dc262644;
       }
@@ -289,8 +296,15 @@
       }
 
       @keyframes floatUp {
-         0% { opacity: 1; transform: translateY(0) scale(0.8); }
-         100% { opacity: 0; transform: translateY(-70px) scale(1.1); }
+         0% {
+            opacity: 1;
+            transform: translateY(0) scale(0.8);
+         }
+
+         100% {
+            opacity: 0;
+            transform: translateY(-70px) scale(1.1);
+         }
       }
 
       /* Upgrades Panel */
@@ -422,19 +436,84 @@
          color: #333;
       }
 
-      h1, h2 { color: #7838f3; margin-bottom: 20px; }
-      h2 { margin-top: 10px; }
-      .intro { font-size: 1.1em; color: #555; margin-bottom: 30px; }
-      .section { margin-bottom: 30px; }
-      .highlight-box { background: #f8f9fe; border-left: 4px solid #7838f3; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
-      .highlight-box ul { list-style: none; padding-left: 0; }
-      .highlight-box li { padding: 8px 0; color: #333; line-height: 1.6; }
-      .feature-box { background: linear-gradient(145deg, #f8f9fe, #fff); border-radius: 12px; padding: 20px; margin: 20px 0; box-shadow: 0 4px 15px rgba(120,56,243,0.1); }
-      .feature-box h3 { color: #7838f3; margin-bottom: 12px; }
-      .feature-box ul { list-style: none; padding-left: 0; }
-      .feature-box li { padding: 6px 0 6px 24px; position: relative; color: #333; line-height: 1.6; }
-      .feature-box li::before { content: '✓'; position: absolute; left: 0; color: #7838f3; font-weight: bold; }
-      p { color: #333; line-height: 1.8; margin-bottom: 15px; font-size: 1.05rem; }
+      h1,
+      h2 {
+         color: #7838f3;
+         margin-bottom: 20px;
+      }
+
+      h2 {
+         margin-top: 10px;
+      }
+
+      .intro {
+         font-size: 1.1em;
+         color: #555;
+         margin-bottom: 30px;
+      }
+
+      .section {
+         margin-bottom: 30px;
+      }
+
+      .highlight-box {
+         background: #f8f9fe;
+         border-left: 4px solid #7838f3;
+         padding: 20px;
+         margin: 20px 0;
+         border-radius: 0 8px 8px 0;
+      }
+
+      .highlight-box ul {
+         list-style: none;
+         padding-left: 0;
+      }
+
+      .highlight-box li {
+         padding: 8px 0;
+         color: #333;
+         line-height: 1.6;
+      }
+
+      .feature-box {
+         background: linear-gradient(145deg, #f8f9fe, #fff);
+         border-radius: 12px;
+         padding: 20px;
+         margin: 20px 0;
+         box-shadow: 0 4px 15px rgba(120, 56, 243, 0.1);
+      }
+
+      .feature-box h3 {
+         color: #7838f3;
+         margin-bottom: 12px;
+      }
+
+      .feature-box ul {
+         list-style: none;
+         padding-left: 0;
+      }
+
+      .feature-box li {
+         padding: 6px 0 6px 24px;
+         position: relative;
+         color: #333;
+         line-height: 1.6;
+      }
+
+      .feature-box li::before {
+         content: '✓';
+         position: absolute;
+         left: 0;
+         color: #7838f3;
+         font-weight: bold;
+      }
+
+      p {
+         color: #333;
+         line-height: 1.8;
+         margin-bottom: 15px;
+         font-size: 1.05rem;
+      }
 
       .back-btn {
          display: inline-block;
@@ -448,39 +527,156 @@
          transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
          box-shadow: 0 8px 20px rgba(120, 56, 243, 0.2);
       }
-      .back-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 25px rgba(120, 56, 243, 0.3); }
+
+      .back-btn:hover {
+         transform: translateY(-2px);
+         box-shadow: 0 12px 25px rgba(120, 56, 243, 0.3);
+      }
 
       /* Footer */
-      .site-footer { background: linear-gradient(145deg, #8546ff, #7838f3); color: white; padding: 50px 0 20px; margin-top: 50px; }
-      .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-      .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-      .footer-section { display: flex; flex-direction: column; }
-      .footer-brand { padding-right: 30px; }
-      .footer-logo { color: white; font-size: 1.5rem; font-weight: bold; text-decoration: none; margin-bottom: 15px; display: inline-block; }
-      .footer-logo:hover { opacity: 0.9; }
-      .footer-tagline { color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.6; margin: 0; }
-      .footer-heading { color: white; font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
-      .footer-heading::after { content: ''; position: absolute; left: 0; bottom: 0; width: 30px; height: 2px; background: rgba(255,255,255,0.5); }
-      .footer-links { list-style: none; padding: 0; margin: 0; }
-      .footer-links li { margin-bottom: 12px; }
-      .footer-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.95rem; transition: all 0.3s ease; display: inline-block; }
-      .footer-links a:hover { color: white; transform: translateX(5px); }
-      .footer-bottom { border-top: 1px solid rgba(255,255,255,0.2); padding-top: 25px; text-align: center; }
-      .footer-bottom p { color: rgba(255,255,255,0.8); font-size: 0.9rem; margin: 0; }
+      .site-footer {
+         background: linear-gradient(145deg, #8546ff, #7838f3);
+         color: white;
+         padding: 50px 0 20px;
+         margin-top: 50px;
+      }
+
+      .footer-container {
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 0 20px;
+      }
+
+      .footer-grid {
+         display: grid;
+         grid-template-columns: 2fr 1fr 1fr;
+         gap: 40px;
+         margin-bottom: 40px;
+      }
+
+      .footer-section {
+         display: flex;
+         flex-direction: column;
+      }
+
+      .footer-brand {
+         padding-right: 30px;
+      }
+
+      .footer-logo {
+         color: white;
+         font-size: 1.5rem;
+         font-weight: bold;
+         text-decoration: none;
+         margin-bottom: 15px;
+         display: inline-block;
+      }
+
+      .footer-logo:hover {
+         opacity: 0.9;
+      }
+
+      .footer-tagline {
+         color: rgba(255, 255, 255, 0.85);
+         font-size: 0.95rem;
+         line-height: 1.6;
+         margin: 0;
+      }
+
+      .footer-heading {
+         color: white;
+         font-size: 1.1rem;
+         font-weight: 600;
+         margin-bottom: 20px;
+         position: relative;
+         padding-bottom: 10px;
+      }
+
+      .footer-heading::after {
+         content: '';
+         position: absolute;
+         left: 0;
+         bottom: 0;
+         width: 30px;
+         height: 2px;
+         background: rgba(255, 255, 255, 0.5);
+      }
+
+      .footer-links {
+         list-style: none;
+         padding: 0;
+         margin: 0;
+      }
+
+      .footer-links li {
+         margin-bottom: 12px;
+      }
+
+      .footer-links a {
+         color: rgba(255, 255, 255, 0.85);
+         text-decoration: none;
+         font-size: 0.95rem;
+         transition: all 0.3s ease;
+         display: inline-block;
+      }
+
+      .footer-links a:hover {
+         color: white;
+         transform: translateX(5px);
+      }
+
+      .footer-bottom {
+         border-top: 1px solid rgba(255, 255, 255, 0.2);
+         padding-top: 25px;
+         text-align: center;
+      }
+
+      .footer-bottom p {
+         color: rgba(255, 255, 255, 0.8);
+         font-size: 0.9rem;
+         margin: 0;
+      }
 
       @media (max-width: 900px) {
-         .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
-         .footer-brand { grid-column: span 2; padding-right: 0; }
+         .footer-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+         }
+
+         .footer-brand {
+            grid-column: span 2;
+            padding-right: 0;
+         }
       }
+
       @media (max-width: 600px) {
-         .site-footer { padding: 40px 0 20px; }
-         .footer-grid { grid-template-columns: 1fr; gap: 25px; }
-         .footer-brand { grid-column: span 1; }
-         .footer-section { text-align: center; }
-         .footer-heading::after { left: 50%; transform: translateX(-50%); }
-         .footer-links a:hover { transform: none; }
+         .site-footer {
+            padding: 40px 0 20px;
+         }
+
+         .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 25px;
+         }
+
+         .footer-brand {
+            grid-column: span 1;
+         }
+
+         .footer-section {
+            text-align: center;
+         }
+
+         .footer-heading::after {
+            left: 50%;
+            transform: translateX(-50%);
+         }
+
+         .footer-links a:hover {
+            transform: none;
+         }
       }
-   
+
       /* Related Games Section */
       .related-games-section {
          max-width: 900px;
@@ -536,7 +732,6 @@
          box-shadow: 0 4px 12px rgba(120, 56, 243, 0.15);
          color: #3b0764;
       }
-
    </style>
 </head>
 
@@ -580,7 +775,7 @@
             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
-               
+
                <div class="upgrade-card locked" id="upg0" data-idx="0">
                   <div class="upgrade-emoji">🔵</div>
                   <div class="upgrade-info">
@@ -657,14 +852,21 @@
 
       <!-- ===== ARTICLE CONTENT ===== -->
       <article class="article-container">
-         
-         
+
+
          <div class="intro">
-            Pokemon Clicker combines the beloved Pokemon universe with addictive idle clicker mechanics. Click to encounter and catch Pokemon, build your team, evolve your favorites, and explore different regions in this clicking adventure. With familiar Pokemon mechanics adapted for the clicker genre, this game offers a fresh way to experience the journey of becoming a Pokemon master.
+            Pokemon Clicker combines the beloved Pokemon universe with addictive idle clicker mechanics. Click to
+            encounter and catch Pokemon, build your team, evolve your favorites, and explore different regions in this
+            clicking adventure. With familiar Pokemon mechanics adapted for the clicker genre, this game offers a fresh
+            way to experience the journey of becoming a Pokemon master.
          </div>
          <section class="section">
             <h2>What is Pokemon Clicker?</h2>
-            <p>Pokemon Clicker is a free online idle clicker game set in a Pokemon-inspired world. Players click to encounter wild Pokemon, earn Poke-coins for catching them, and build a team of Pokemon that generates passive resources. The game incorporates classic Pokemon elements like type matchups, evolution, and region exploration into an accessible clicker framework that both Pokemon fans and clicker enthusiasts will enjoy.</p>
+            <p>Pokemon Clicker is a free online idle clicker game set in a Pokemon-inspired world. Players click to
+               encounter wild Pokemon, earn Poke-coins for catching them, and build a team of Pokemon that generates
+               passive resources. The game incorporates classic Pokemon elements like type matchups, evolution, and
+               region exploration into an accessible clicker framework that both Pokemon fans and clicker enthusiasts
+               will enjoy.</p>
             <div class="feature-box">
                <h3>Pokemon Features</h3>
                <ul>
@@ -679,15 +881,22 @@
          </section>
          <section class="section">
             <h2>How to Play Pokemon Clicker</h2>
-            <p>Click on the encounter button to find wild Pokemon. Each encounter has a catch chance based on the Pokemon's rarity and your current catching power. Successfully caught Pokemon join your team and contribute passive resources. Accumulate enough experience points, and your Pokemon evolve into stronger forms with better passive generation rates.</p>
-            <p>The region system adds exploration to the clicker experience. Starting in grassy routes with common Pokemon, you unlock new areas as your team grows stronger. Each region features unique Pokemon species, rare spawns, and legendary encounters. The Pokedex tracks your collection progress, providing completion bonuses and motivating players to catch every available species.</p>
+            <p>Click on the encounter button to find wild Pokemon. Each encounter has a catch chance based on the
+               Pokemon's rarity and your current catching power. Successfully caught Pokemon join your team and
+               contribute passive resources. Accumulate enough experience points, and your Pokemon evolve into stronger
+               forms with better passive generation rates.</p>
+            <p>The region system adds exploration to the clicker experience. Starting in grassy routes with common
+               Pokemon, you unlock new areas as your team grows stronger. Each region features unique Pokemon species,
+               rare spawns, and legendary encounters. The Pokedex tracks your collection progress, providing completion
+               bonuses and motivating players to catch every available species.</p>
          </section>
          <section class="section">
             <h2>Pokemon Clicker Strategy</h2>
             <div class="highlight-box">
                <ul>
                   <li><strong>Catch Everything:</strong> Each new species provides collection bonuses</li>
-                  <li><strong>Evolve Strategically:</strong> Evolved Pokemon provide significantly better passive income</li>
+                  <li><strong>Evolve Strategically:</strong> Evolved Pokemon provide significantly better passive income
+                  </li>
                   <li><strong>Type Coverage:</strong> Diverse team types provide bonuses in different regions</li>
                   <li><strong>Rare Hunting:</strong> Rare and legendary Pokemon offer massive multipliers</li>
                   <li><strong>Region Progression:</strong> New regions unlock higher-value Pokemon encounters</li>
@@ -696,264 +905,272 @@
          </section>
          <section class="section">
             <h2>Pokemon Meets Idle Gaming</h2>
-            <p>Pokemon Clicker successfully bridges two beloved gaming genres. The Pokemon franchise's emphasis on collection and progression aligns perfectly with idle clicker mechanics. The desire to "catch 'em all" provides natural motivation for continued play, while the evolution system creates satisfying power spikes that keep progression feeling meaningful. It's a natural pairing that brings out the best in both genres.</p>
-            <p>The game captures the essence of what makes Pokemon games special — the excitement of encountering a rare Pokemon, the satisfaction of watching your team evolve, and the adventure of exploring new regions. By translating these elements into clicker mechanics, Pokemon Clicker makes the Pokemon experience accessible in a format that's perfect for casual play sessions, offering meaningful progress whether you play for five minutes or five hours.</p>
+            <p>Pokemon Clicker successfully bridges two beloved gaming genres. The Pokemon franchise's emphasis on
+               collection and progression aligns perfectly with idle clicker mechanics. The desire to "catch 'em all"
+               provides natural motivation for continued play, while the evolution system creates satisfying power
+               spikes that keep progression feeling meaningful. It's a natural pairing that brings out the best in both
+               genres.</p>
+            <p>The game captures the essence of what makes Pokemon games special — the excitement of encountering a rare
+               Pokemon, the satisfaction of watching your team evolve, and the adventure of exploring new regions. By
+               translating these elements into clicker mechanics, Pokemon Clicker makes the Pokemon experience
+               accessible in a format that's perfect for casual play sessions, offering meaningful progress whether you
+               play for five minutes or five hours.</p>
          </section>
-    
+
          <div style="text-align: center;">
             <a href="/" class="back-btn">Back to Home</a>
          </div>
-      
+
       </article>
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
          <p class="related-games-subtitle">Discover more free online clicker games to play</p>
          <div class="related-games-grid">
-                  <a href="/cookie-clicker/" class="related-game-link">🍪 Cookie Clicker</a>
-                  <a href="/planet-clicker/" class="related-game-link">🌍 Planet Clicker</a>
-                  <a href="/chill-guy-clicker/" class="related-game-link">😎 Chill Guy Clicker</a>
-                  <a href="/capybara-clicker/" class="related-game-link">🦫 Capybara Clicker</a>
-                  <a href="/op-auto-clicker/" class="related-game-link">🖱️ OP Auto Clicker</a>
-                  <a href="/italian-brainrot-clicker/" class="related-game-link">🇮🇹 Italian Brainrot Clicker</a>
-                  <a href="/brainrot-clicker/" class="related-game-link">🧠 Brainrot Clicker</a>
-                  <a href="/candy-clicker/" class="related-game-link">🍬 Candy Clicker</a>
-                  <a href="/duck-duck-clicker/" class="related-game-link">🦆 Duck Duck Clicker</a>
-                  <a href="/cookie-clicker-2/" class="related-game-link">🍪 Cookie Clicker 2</a>
-                  <a href="/stimulation-clicker/" class="related-game-link">✨ Stimulation Clicker</a>
-                  <a href="/clicker-counter/" class="related-game-link">🔢 Clicker Counter</a>
-                  <a href="/candy-clicker-2/" class="related-game-link">🍭 Candy Clicker 2</a>
-                  <a href="/sprunki-clicker/" class="related-game-link">🎵 Sprunki Clicker</a>
-                  <a href="/roblox-clicker/" class="related-game-link">🟩 Roblox Clicker</a>
-                  <a href="/planet-clicker-2/" class="related-game-link">🪐 Planet Clicker 2</a>
-                  <a href="/duck-clicker/" class="related-game-link">🐤 Duck Clicker</a>
-                  <a href="/whopper-clicker/" class="related-game-link">🍔 Whopper Clicker</a>
-                  <a href="/chicken-jockey-clicker/" class="related-game-link">🐔 Chicken Jockey Clicker</a>
-                  <a href="/capybara-clicker-2/" class="related-game-link">🦫 Capybara Clicker 2</a>
-                  <a href="/tube-clicker/" class="related-game-link">▶️ Tube Clicker</a>
-                  <a href="/gs-auto-clicker/" class="related-game-link">⚙️ GS Auto Clicker</a>
-                  <a href="/earth-clicker/" class="related-game-link">🌎 Earth Clicker</a>
-                  <a href="/pizza-clicker/" class="related-game-link">🍕 Pizza Clicker</a>
-                  <a href="/duck-duck-clicker-3d/" class="related-game-link">🦆 Duck Duck Clicker 3D</a>
-                  <a href="/case-clicker/" class="related-game-link">📦 Case Clicker</a>
-                  <a href="/kiwi-clicker/" class="related-game-link">🥝 Kiwi Clicker</a>
-                  <a href="/money-clicker/" class="related-game-link">💵 Money Clicker</a>
-                  <a href="/tung-tung-tung-sahur-clicker/" class="related-game-link">🔔 Tung Tung Tung Sahur Clicker</a>
-                  <a href="/labubu-clicker/" class="related-game-link">🧸 Labubu Clicker</a>
-                  <a href="/room-clicker/" class="related-game-link">🏠 Room Clicker</a>
-                  <a href="/case-clicker-2/" class="related-game-link">🎰 Case Clicker 2</a>
-                  <a href="/plant-clicker/" class="related-game-link">🌱 Plant Clicker</a>
-                  <a href="/particle-clicker/" class="related-game-link">⚛️ Particle Clicker</a>
-                  <a href="/burger-clicker/" class="related-game-link">🍔 Burger Clicker</a>
-                  <a href="/csgo-clicker/" class="related-game-link">🔫 CSGO Clicker</a>
-                  <a href="/coin-clicker/" class="related-game-link">🪙 Coin Clicker</a>
-                  <a href="/dog-clicker/" class="related-game-link">🐕 Dog Clicker</a>
-                  <a href="/santa-clicker/" class="related-game-link">🎅 Santa Clicker</a>
-                  <a href="/chill-girl-clicker/" class="related-game-link">💆‍♀️ Chill Girl Clicker</a>
-                  <a href="/robux-clicker/" class="related-game-link">💎 Robux Clicker</a>
-                  <a href="/minecraft-clicker/" class="related-game-link">⛏️ Minecraft Clicker</a>
+            <a href="/cookie-clicker/" class="related-game-link">🍪 Cookie Clicker</a>
+            <a href="/planet-clicker/" class="related-game-link">🌍 Planet Clicker</a>
+            <a href="/chill-guy-clicker/" class="related-game-link">😎 Chill Guy Clicker</a>
+            <a href="/capybara-clicker/" class="related-game-link">🦫 Capybara Clicker</a>
+            <a href="/op-auto-clicker/" class="related-game-link">🖱️ OP Auto Clicker</a>
+            <a href="/italian-brainrot-clicker/" class="related-game-link">🇮🇹 Italian Brainrot Clicker</a>
+            <a href="/brainrot-clicker/" class="related-game-link">🧠 Brainrot Clicker</a>
+            <a href="/candy-clicker/" class="related-game-link">🍬 Candy Clicker</a>
+            <a href="/duck-duck-clicker/" class="related-game-link">🦆 Duck Duck Clicker</a>
+            <a href="/cookie-clicker-2/" class="related-game-link">🍪 Cookie Clicker 2</a>
+            <a href="/stimulation-clicker/" class="related-game-link">✨ Stimulation Clicker</a>
+            <a href="/clicker-counter/" class="related-game-link">🔢 Clicker Counter</a>
+            <a href="/candy-clicker-2/" class="related-game-link">🍭 Candy Clicker 2</a>
+            <a href="/sprunki-clicker/" class="related-game-link">🎵 Sprunki Clicker</a>
+            <a href="/roblox-clicker/" class="related-game-link">🟩 Roblox Clicker</a>
+            <a href="/planet-clicker-2/" class="related-game-link">🪐 Planet Clicker 2</a>
+            <a href="/duck-clicker/" class="related-game-link">🐤 Duck Clicker</a>
+            <a href="/whopper-clicker/" class="related-game-link">🍔 Whopper Clicker</a>
+            <a href="/chicken-jockey-clicker/" class="related-game-link">🐔 Chicken Jockey Clicker</a>
+            <a href="/capybara-clicker-2/" class="related-game-link">🦫 Capybara Clicker 2</a>
+            <a href="/tube-clicker/" class="related-game-link">▶️ Tube Clicker</a>
+            <a href="/gs-auto-clicker/" class="related-game-link">⚙️ GS Auto Clicker</a>
+            <a href="/earth-clicker/" class="related-game-link">🌎 Earth Clicker</a>
+            <a href="/pizza-clicker/" class="related-game-link">🍕 Pizza Clicker</a>
+            <a href="/duck-duck-clicker-3d/" class="related-game-link">🦆 Duck Duck Clicker 3D</a>
+            <a href="/case-clicker/" class="related-game-link">📦 Case Clicker</a>
+            <a href="/kiwi-clicker/" class="related-game-link">🥝 Kiwi Clicker</a>
+            <a href="/money-clicker/" class="related-game-link">💵 Money Clicker</a>
+            <a href="/tung-tung-tung-sahur-clicker/" class="related-game-link">🔔 Tung Tung Tung Sahur Clicker</a>
+            <a href="/labubu-clicker/" class="related-game-link">🧸 Labubu Clicker</a>
+            <a href="/room-clicker/" class="related-game-link">🏠 Room Clicker</a>
+            <a href="/case-clicker-2/" class="related-game-link">🎰 Case Clicker 2</a>
+            <a href="/plant-clicker/" class="related-game-link">🌱 Plant Clicker</a>
+            <a href="/particle-clicker/" class="related-game-link">⚛️ Particle Clicker</a>
+            <a href="/burger-clicker/" class="related-game-link">🍔 Burger Clicker</a>
+            <a href="/csgo-clicker/" class="related-game-link">🔫 CSGO Clicker</a>
+            <a href="/coin-clicker/" class="related-game-link">🪙 Coin Clicker</a>
+            <a href="/dog-clicker/" class="related-game-link">🐕 Dog Clicker</a>
+            <a href="/santa-clicker/" class="related-game-link">🎅 Santa Clicker</a>
+            <a href="/chill-girl-clicker/" class="related-game-link">💆‍♀️ Chill Girl Clicker</a>
+            <a href="/robux-clicker/" class="related-game-link">💎 Robux Clicker</a>
+            <a href="/minecraft-clicker/" class="related-game-link">⛏️ Minecraft Clicker</a>
          </div>
       </div>
 
    </div>
 
    <script>
-   (function() {
-      const SAVE_KEY = 'pokemon_clicker_save';
-      const UPGRADES = [{"name":"Great Ball","emoji":"🔵","baseCost":15,"baseRate":1,"desc":"+1 coin/sec"},{"name":"Pokédex Upgrade","emoji":"📱","baseCost":100,"baseRate":5,"desc":"+5 coins/sec"},{"name":"Gym Badge","emoji":"🏅","baseCost":500,"baseRate":20,"desc":"+20 coins/sec"},{"name":"Legendary Hunt","emoji":"🐲","baseCost":2500,"baseRate":100,"desc":"+100 coins/sec"},{"name":"Pokémon Master","emoji":"👑","baseCost":15000,"baseRate":500,"desc":"+500 coins/sec"}];
-      const COST_SCALE = 1.15;
+      (function () {
+         const SAVE_KEY = 'pokemon_clicker_save';
+         const UPGRADES = [{ "name": "Great Ball", "emoji": "🔵", "baseCost": 15, "baseRate": 1, "desc": "+1 coin/sec" }, { "name": "Pokédex Upgrade", "emoji": "📱", "baseCost": 100, "baseRate": 5, "desc": "+5 coins/sec" }, { "name": "Gym Badge", "emoji": "🏅", "baseCost": 500, "baseRate": 20, "desc": "+20 coins/sec" }, { "name": "Legendary Hunt", "emoji": "🐲", "baseCost": 2500, "baseRate": 100, "desc": "+100 coins/sec" }, { "name": "Pokémon Master", "emoji": "👑", "baseCost": 15000, "baseRate": 500, "desc": "+500 coins/sec" }];
+         const COST_SCALE = 1.15;
 
-      let score = 0;
-      let totalEarned = 0;
-      let clickPower = 1;
-      let clickPowerLevel = 1;
-      let clickPowerCost = 50;
-      let perSecond = 0;
-      let upgradeOwned = UPGRADES.map(() => 0);
+         let score = 0;
+         let totalEarned = 0;
+         let clickPower = 1;
+         let clickPowerLevel = 1;
+         let clickPowerCost = 50;
+         let perSecond = 0;
+         let upgradeOwned = UPGRADES.map(() => 0);
 
-      // DOM
-      const scoreNum = document.getElementById('scoreNum');
-      const perSecDisplay = document.getElementById('perSecDisplay');
-      const clickPowerInfo = document.getElementById('clickPowerInfo');
-      const gStatTotal = document.getElementById('gStatTotal');
-      const gStatPerSec = document.getElementById('gStatPerSec');
-      const clickBtn = document.getElementById('clickBtn');
-      const clickArea = document.getElementById('clickArea');
+         // DOM
+         const scoreNum = document.getElementById('scoreNum');
+         const perSecDisplay = document.getElementById('perSecDisplay');
+         const clickPowerInfo = document.getElementById('clickPowerInfo');
+         const gStatTotal = document.getElementById('gStatTotal');
+         const gStatPerSec = document.getElementById('gStatPerSec');
+         const clickBtn = document.getElementById('clickBtn');
+         const clickArea = document.getElementById('clickArea');
 
-      function formatNum(n) {
-         if (n < 1000) return Math.floor(n).toLocaleString();
-         if (n < 1e6) return (n/1e3).toFixed(1) + 'K';
-         if (n < 1e9) return (n/1e6).toFixed(1) + 'M';
-         if (n < 1e12) return (n/1e9).toFixed(1) + 'B';
-         return (n/1e12).toFixed(1) + 'T';
-      }
+         function formatNum(n) {
+            if (n < 1000) return Math.floor(n).toLocaleString();
+            if (n < 1e6) return (n / 1e3).toFixed(1) + 'K';
+            if (n < 1e9) return (n / 1e6).toFixed(1) + 'M';
+            if (n < 1e12) return (n / 1e9).toFixed(1) + 'B';
+            return (n / 1e12).toFixed(1) + 'T';
+         }
 
-      function getCost(baseC, owned) {
-         return Math.floor(baseC * Math.pow(COST_SCALE, owned));
-      }
+         function getCost(baseC, owned) {
+            return Math.floor(baseC * Math.pow(COST_SCALE, owned));
+         }
 
-      function recalcPerSecond() {
-         perSecond = 0;
-         UPGRADES.forEach((u, i) => {
-            perSecond += u.baseRate * upgradeOwned[i];
-         });
-      }
+         function recalcPerSecond() {
+            perSecond = 0;
+            UPGRADES.forEach((u, i) => {
+               perSecond += u.baseRate * upgradeOwned[i];
+            });
+         }
 
-      function render() {
-         scoreNum.textContent = formatNum(score);
-         perSecDisplay.textContent = formatNum(perSecond) + ' pokécoins/sec';
-         clickPowerInfo.textContent = '+' + formatNum(clickPower) + ' per click';
-         gStatTotal.textContent = formatNum(score) + ' PokéCoins';
-         gStatPerSec.textContent = formatNum(perSecond) + '/sec';
+         function render() {
+            scoreNum.textContent = formatNum(score);
+            perSecDisplay.textContent = formatNum(perSecond) + ' pokécoins/sec';
+            clickPowerInfo.textContent = '+' + formatNum(clickPower) + ' per click';
+            gStatTotal.textContent = formatNum(score) + ' PokéCoins';
+            gStatPerSec.textContent = formatNum(perSecond) + '/sec';
 
-         UPGRADES.forEach((u, i) => {
-            const card = document.getElementById('upg' + i);
-            const cost = getCost(u.baseCost, upgradeOwned[i]);
-            document.getElementById('upgCost' + i).textContent = formatNum(cost);
-            document.getElementById('upgOwned' + i).textContent = 'Owned: ' + upgradeOwned[i];
-            if (score >= cost) {
-               card.classList.remove('locked');
+            UPGRADES.forEach((u, i) => {
+               const card = document.getElementById('upg' + i);
+               const cost = getCost(u.baseCost, upgradeOwned[i]);
+               document.getElementById('upgCost' + i).textContent = formatNum(cost);
+               document.getElementById('upgOwned' + i).textContent = 'Owned: ' + upgradeOwned[i];
+               if (score >= cost) {
+                  card.classList.remove('locked');
+               } else {
+                  card.classList.add('locked');
+               }
+            });
+
+            // Click power upgrade
+            const cpCard = document.getElementById('upgClickPower');
+            document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
+            document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
+            if (score >= clickPowerCost) {
+               cpCard.classList.remove('locked');
             } else {
-               card.classList.add('locked');
+               cpCard.classList.add('locked');
+            }
+         }
+
+         function showClickFloat(x, y) {
+            const el = document.createElement('div');
+            el.className = 'click-float';
+            el.textContent = '+' + formatNum(clickPower);
+            el.style.left = x + 'px';
+            el.style.top = y + 'px';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 700);
+         }
+
+         function doClick(e) {
+            score += clickPower;
+            totalEarned += clickPower;
+
+            clickBtn.classList.add('pressed');
+            setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+
+            // Float position
+            const rect = clickArea.getBoundingClientRect();
+            let cx, cy;
+            if (e && e.clientX) {
+               cx = e.clientX - rect.left;
+               cy = e.clientY - rect.top;
+            } else {
+               cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+               cy = rect.height / 2 - 30;
+            }
+            showClickFloat(cx, cy);
+            render();
+         }
+
+         clickBtn.addEventListener('click', doClick);
+         clickBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            doClick(e.touches[0]);
+         });
+
+         // Keyboard: spacebar
+         document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space' && !e.repeat) {
+               e.preventDefault();
+               doClick(null);
             }
          });
 
+         // Buy upgrades
+         UPGRADES.forEach((u, i) => {
+            document.getElementById('upg' + i).addEventListener('click', () => {
+               const cost = getCost(u.baseCost, upgradeOwned[i]);
+               if (score >= cost) {
+                  score -= cost;
+                  upgradeOwned[i]++;
+                  recalcPerSecond();
+                  render();
+               }
+            });
+         });
+
          // Click power upgrade
-         const cpCard = document.getElementById('upgClickPower');
-         document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
-         document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
-         if (score >= clickPowerCost) {
-            cpCard.classList.remove('locked');
-         } else {
-            cpCard.classList.add('locked');
+         document.getElementById('upgClickPower').addEventListener('click', () => {
+            if (score >= clickPowerCost) {
+               score -= clickPowerCost;
+               clickPowerLevel++;
+               clickPower = Math.pow(2, clickPowerLevel - 1);
+               clickPowerCost = Math.floor(50 * Math.pow(2.5, clickPowerLevel - 1));
+               render();
+            }
+         });
+
+         // Per-second tick
+         setInterval(() => {
+            if (perSecond > 0) {
+               score += perSecond;
+               totalEarned += perSecond;
+               render();
+            }
+         }, 1000);
+
+         // Save / Load
+         function saveGame() {
+            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned };
+            try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
          }
-      }
 
-      function showClickFloat(x, y) {
-         const el = document.createElement('div');
-         el.className = 'click-float';
-         el.textContent = '+' + formatNum(clickPower);
-         el.style.left = x + 'px';
-         el.style.top = y + 'px';
-         clickArea.style.position = 'relative';
-         clickArea.appendChild(el);
-         setTimeout(() => el.remove(), 700);
-      }
-
-      function doClick(e) {
-         score += clickPower;
-         totalEarned += clickPower;
-
-         clickBtn.classList.add('pressed');
-         setTimeout(() => clickBtn.classList.remove('pressed'), 100);
-
-         // Float position
-         const rect = clickArea.getBoundingClientRect();
-         let cx, cy;
-         if (e && e.clientX) {
-            cx = e.clientX - rect.left;
-            cy = e.clientY - rect.top;
-         } else {
-            cx = rect.width / 2 + (Math.random() - 0.5) * 40;
-            cy = rect.height / 2 - 30;
+         function loadGame() {
+            try {
+               const raw = localStorage.getItem(SAVE_KEY);
+               if (raw) {
+                  const data = JSON.parse(raw);
+                  score = data.score || 0;
+                  totalEarned = data.totalEarned || 0;
+                  clickPower = data.clickPower || 1;
+                  clickPowerLevel = data.clickPowerLevel || 1;
+                  clickPowerCost = data.clickPowerCost || 50;
+                  upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                  recalcPerSecond();
+               }
+            } catch (e) { }
          }
-         showClickFloat(cx, cy);
-         render();
-      }
 
-      clickBtn.addEventListener('click', doClick);
-      clickBtn.addEventListener('touchstart', (e) => {
-         e.preventDefault();
-         doClick(e.touches[0]);
-      });
+         document.getElementById('saveBtn').addEventListener('click', () => {
+            saveGame();
+            const btn = document.getElementById('saveBtn');
+            btn.textContent = '✅ Saved!';
+            setTimeout(() => { btn.textContent = '💾 Save'; }, 1500);
+         });
 
-      // Keyboard: spacebar
-      document.addEventListener('keydown', (e) => {
-         if (e.code === 'Space' && !e.repeat) {
-            e.preventDefault();
-            doClick(null);
-         }
-      });
-
-      // Buy upgrades
-      UPGRADES.forEach((u, i) => {
-         document.getElementById('upg' + i).addEventListener('click', () => {
-            const cost = getCost(u.baseCost, upgradeOwned[i]);
-            if (score >= cost) {
-               score -= cost;
-               upgradeOwned[i]++;
+         document.getElementById('resetBtn').addEventListener('click', () => {
+            if (confirm('Reset all progress for Pokemon Clicker? This cannot be undone.')) {
+               localStorage.removeItem(SAVE_KEY);
+               score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
+               upgradeOwned = UPGRADES.map(() => 0);
                recalcPerSecond();
                render();
             }
          });
-      });
 
-      // Click power upgrade
-      document.getElementById('upgClickPower').addEventListener('click', () => {
-         if (score >= clickPowerCost) {
-            score -= clickPowerCost;
-            clickPowerLevel++;
-            clickPower = Math.pow(2, clickPowerLevel - 1);
-            clickPowerCost = Math.floor(50 * Math.pow(2.5, clickPowerLevel - 1));
-            render();
-         }
-      });
+         // Auto-save every 30s
+         setInterval(saveGame, 30000);
 
-      // Per-second tick
-      setInterval(() => {
-         if (perSecond > 0) {
-            score += perSecond;
-            totalEarned += perSecond;
-            render();
-         }
-      }, 1000);
-
-      // Save / Load
-      function saveGame() {
-         const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned };
-         try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch(e) {}
-      }
-
-      function loadGame() {
-         try {
-            const raw = localStorage.getItem(SAVE_KEY);
-            if (raw) {
-               const data = JSON.parse(raw);
-               score = data.score || 0;
-               totalEarned = data.totalEarned || 0;
-               clickPower = data.clickPower || 1;
-               clickPowerLevel = data.clickPowerLevel || 1;
-               clickPowerCost = data.clickPowerCost || 50;
-               upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
-               recalcPerSecond();
-            }
-         } catch(e) {}
-      }
-
-      document.getElementById('saveBtn').addEventListener('click', () => {
-         saveGame();
-         const btn = document.getElementById('saveBtn');
-         btn.textContent = '✅ Saved!';
-         setTimeout(() => { btn.textContent = '💾 Save'; }, 1500);
-      });
-
-      document.getElementById('resetBtn').addEventListener('click', () => {
-         if (confirm('Reset all progress for Pokemon Clicker? This cannot be undone.')) {
-            localStorage.removeItem(SAVE_KEY);
-            score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
-            upgradeOwned = UPGRADES.map(() => 0);
-            recalcPerSecond();
-            render();
-         }
-      });
-
-      // Auto-save every 30s
-      setInterval(saveGame, 30000);
-
-      // Init
-      loadGame();
-      render();
-   })();
+         // Init
+         loadGame();
+         render();
+      })();
    </script>
 
    <script>
@@ -971,13 +1188,14 @@
          <div class="footer-grid">
             <div class="footer-section footer-brand">
                <a href="/" class="footer-logo">Spacebar Clicker</a>
-               <p class="footer-tagline">Test your spacebar clicking speed with our free online tool. Measure your CPS and improve your clicking skills.</p>
+               <p class="footer-tagline">Test your spacebar clicking speed with our free online tool. Measure your CPS
+                  and improve your clicking skills.</p>
             </div>
             <div class="footer-section">
                <h4 class="footer-heading">Quick Links</h4>
                <ul class="footer-links">
                   <li><a href="/">Home</a></li>
-                  
+
                   <li><a href="/about/">About Us</a></li>
                   <li><a href="/contact/">Contact</a></li>
                </ul>
@@ -995,7 +1213,7 @@
       </div>
    </footer>
 
-   <script>(function(w,d,s,id){if(typeof(w.webpushr)!=='undefined')return;w.webpushr=w.webpushr||function(){(w.webpushr.q=w.webpushr.q||[]).push(arguments)};var js,fjs=d.getElementsByTagName(s)[0];js=d.createElement(s);js.id=id;js.async=1;js.src="https://cdn.webpushr.com/app.min.js";fjs.parentNode.appendChild(js);}(window,document,'script','webpushr-jssdk'));webpushr('setup',{'key':'BCqxAAS-ncGR0SExOoEY3HPXgbSncPSnvUNZbaqLmWTXCyeVDhZdKkXruhe2gvqHJnbMgm1oUAREgHJ3KPqSkW4'});</script>
+   <script>(function (w, d, s, id) { if (typeof (w.webpushr) !== 'undefined') return; w.webpushr = w.webpushr || function () { (w.webpushr.q = w.webpushr.q || []).push(arguments) }; var js, fjs = d.getElementsByTagName(s)[0]; js = d.createElement(s); js.id = id; js.async = 1; js.src = "https://cdn.webpushr.com/app.min.js"; fjs.parentNode.appendChild(js); }(window, document, 'script', 'webpushr-jssdk')); webpushr('setup', { 'key': 'BCqxAAS-ncGR0SExOoEY3HPXgbSncPSnvUNZbaqLmWTXCyeVDhZdKkXruhe2gvqHJnbMgm1oUAREgHJ3KPqSkW4' });</script>
 </body>
 
 </html>
