@@ -1,241 +1,239 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- General Pages -->
-  <url>
-    <loc>https://space-bar-clicker.github.io/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/about/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/contact/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/privacy-policy/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
+<url>
+<loc>https://space-bar-clicker.github.io/</loc>
+<changefreq>weekly</changefreq>
+<priority>1.0</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/about/</loc>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/contact/</loc>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/privacy-policy/</loc>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
 
-  <!-- Game Pages -->
-  <url>
-    <loc>https://space-bar-clicker.github.io/brainrot-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/burger-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/candy-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/candy-clicker-2/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/capybara-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/capybara-clicker-2/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/case-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/case-clicker-2/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/chicken-jockey-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/chill-girl-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/chill-guy-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/clicker-counter/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/coin-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/cookie-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/cookie-clicker-2/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/csgo-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/dog-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/duck-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/duck-duck-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/duck-duck-clicker-3d/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/earth-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/gs-auto-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/italian-brainrot-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/kiwi-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/labubu-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/minecraft-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/money-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/op-auto-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/particle-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/pizza-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/planet-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/planet-clicker-2/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/plant-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/pokemon-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/roblox-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/robux-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/room-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/santa-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/sprunki-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/stimulation-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/tube-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/tung-tung-tung-sahur-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://space-bar-clicker.github.io/whopper-clicker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
+<url>
+<loc>https://space-bar-clicker.github.io/brainrot-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/burger-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/candy-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/candy-clicker-2/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/capybara-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/capybara-clicker-2/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/case-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/case-clicker-2/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/chicken-jockey-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/chill-girl-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/chill-guy-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/clicker-counter/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/coin-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/cookie-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/cookie-clicker-2/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/csgo-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/dog-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/duck-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/duck-duck-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/duck-duck-clicker-3d/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/earth-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/gs-auto-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/italian-brainrot-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/kiwi-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/labubu-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/minecraft-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/money-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/op-auto-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/particle-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/pizza-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/planet-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/planet-clicker-2/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/plant-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/pokemon-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/roblox-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/robux-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/room-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/santa-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/sprunki-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/stimulation-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/tube-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/tung-tung-tung-sahur-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://space-bar-clicker.github.io/whopper-clicker/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
 </urlset>
