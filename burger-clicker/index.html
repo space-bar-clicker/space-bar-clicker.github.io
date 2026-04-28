@@ -6,7 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Burger Clicker - Play Free Online</title>
    <meta name="description"
-      content="Play Burger Clicker online for free. Flip burgers, buy upgrades, and build your empire in this addictive idle clicker game.">
+      content="Burger Clicker: click for burgers/sec, stack Better Buns through Fast Food Chain, level Click Power (exponential taps), save or reset. Browser idle incremental—no recipe or customer sim in this build.">
    <meta name="keywords"
       content="burger clicker, burger clicker, clicker game, idle game, free online game, play burger clicker">
    <meta name="robots" content="index, follow">
@@ -456,6 +456,18 @@
          margin-bottom: 30px;
       }
 
+      ol.tips-list {
+         margin: 0 0 0 1.25rem;
+         padding: 0;
+      }
+
+      ol.tips-list li {
+         margin-bottom: 14px;
+         line-height: 1.65;
+         color: #333;
+         padding-left: 0.35rem;
+      }
+
       .highlight-box {
          background: #f8f9fe;
          border-left: 4px solid #7838f3;
@@ -853,98 +865,59 @@
       <!-- ===== ARTICLE CONTENT ===== -->
       <article class="article-container">
 
-
          <div class="intro">
-            Burger Clicker is a sizzling idle clicker game where you build a burger restaurant empire from the ground
-            up. Click to flip burgers, serve customers, and reinvest your earnings into kitchen upgrades and restaurant
-            expansions. With satisfying cooking animations, a deep upgrade tree, and the classic appeal of burger-themed
-            gameplay, Burger Clicker serves up a perfect combination of food fantasy and clicking fun.
+            This build is a <strong>compact idle economy</strong> dressed in fast-food flavor: you earn “burgers” as a
+            score, click for burst income, buy five named generator tiers for passive burgers per second, and separately
+            level <strong>Click Power</strong> so manual taps stay relevant while numbers climb. There are
+            <strong>no</strong> customer queues, recipes, VIP orders, maps, or franchise sim layers—those would be fun in
+            a different game; here the loop is deliberately simple so you can focus on pacing and arithmetic. Progress
+            persists in-browser via <strong>Save</strong>; <strong>Reset</strong> wipes the run for a clean start.
          </div>
+
          <section class="section">
-            <h2>What is Burger Clicker?</h2>
-            <script>
-               atOptions = {
-                  'key': '0ae563171b9c38a1903e0fda129b3528',
-                  'format': 'iframe',
-                  'height': 250,
-                  'width': 300,
-                  'params': {}
-               };
-            </script>
-            <script src="https://www.highperformanceformat.com/0ae563171b9c38a1903e0fda129b3528/invoke.js"></script>
-            <p>Burger Clicker is a free online idle clicker game focused on burger production and restaurant management.
-               Players click to cook burgers, starting with simple patty-and-bun combinations and working up to gourmet
-               creations. Revenue from burger sales funds kitchen upgrades, new menu items, and restaurant chain
-               expansion. The game captures the fast-paced energy of a busy kitchen while maintaining the relaxing flow
-               of idle gameplay.</p>
+            <h2>What you are actually buying</h2>
+            <p>Each row is a stackable passive source. Costs rise with ownership, so the “correct” moment to buy the next
+               copy is whenever it shortens time-to-next-big-tick more than banking the same coins would.</p>
             <div class="feature-box">
-               <h3>Restaurant Features</h3>
+               <h3>Generators (passive burgers/sec per stack)</h3>
                <ul>
-                  <li>Click to cook and serve burgers of increasing complexity</li>
-                  <li>Upgrade grills, fryers, and cooking equipment</li>
-                  <li>Unlock premium burger recipes with specialty ingredients</li>
-                  <li>Hire cooks and servers for automated production</li>
-                  <li>Open multiple restaurant locations</li>
-                  <li>Satisfy customer orders for bonus tips</li>
+                  <li><strong>Better Buns</strong> — +1/sec; starter throughput, first rung on the ladder.</li>
+                  <li><strong>Fry Cook</strong> — +5/sec; early mid-tier when one click still beats one second of Buns.</li>
+                  <li><strong>Double Grill</strong> — +20/sec; feel the kitchen “scale” without new UI—a pure rate bump.</li>
+                  <li><strong>Food Truck</strong> — +100/sec; the point where AFK tabs start to earn meaningfully.</li>
+                  <li><strong>Fast Food Chain</strong> — +500/sec; late-run anchor; stacking these is how you chase big totals.</li>
                </ul>
             </div>
+            <p><strong>Click Power</strong> is separate: each purchase increases burgers <em>per manual click</em> on an
+               exponential curve (starting at +1 per click, doubling effective tap damage as levels climb—check the HUD’s
+               “per click” readout). Its price escalates too, so you alternate between feeding generators when passive is
+               weak and buffing clicks when the next passive tier is still expensive.</p>
          </section>
+
          <section class="section">
-            <h2>How to Play Burger Clicker</h2>
-            <script>
-               atOptions = {
-                  'key': '0ae563171b9c38a1903e0fda129b3528',
-                  'format': 'iframe',
-                  'height': 250,
-                  'width': 300,
-                  'params': {}
-               };
-            </script>
-            <script src="https://www.highperformanceformat.com/0ae563171b9c38a1903e0fda129b3528/invoke.js"></script>
-            <p>Start by clicking to flip your first burger. Each successfully cooked burger earns you coins based on the
-               recipe complexity. Invest in grill upgrades for faster cooking, unlock new patty types and toppings for
-               more valuable burgers, and hire cooks to keep the kitchen running when you step away. The game balances
-               active burger-flipping fun with strategic business management.</p>
-            <p>Customer satisfaction adds an engaging element. Customers have specific orders, and filling them
-               accurately earns bonus tips. As your restaurant's reputation grows, more customers arrive with
-               higher-value orders. Managing your menu to match demand while maintaining production efficiency becomes
-               the key strategic challenge. VIP customers occasionally appear with luxury orders that offer massive
-               bonuses.</p>
+            <h2>How to pace a satisfying session</h2>
+            <ol class="tips-list">
+               <li><strong>Open with clicks + Better Buns.</strong> Passive income should appear early so you are not
+                  purely hammering one button forever.</li>
+               <li><strong>Don’t skip Fry Cook envy.</strong> Five/sec stacks add up; sometimes two Fry Cooks beat one
+                  impatient Double Grill purchase.</li>
+               <li><strong>Use Double Grill as a milestone.</strong> When +20 stacks multiply, passive overtakes casual
+                  clicking unless your Click Power is leveled.</li>
+               <li><strong>Food Truck is your AFK breakpoint.</strong> +100 makes leaving the tab open feel rewarding.</li>
+               <li><strong>Fast Food Chain is endgame throughput.</strong> Once several are rolling, totals climb quickly—good
+                  for chasing personal bests.</li>
+               <li><strong>Buy Click Power when clicks still shave minutes off the next tier.</strong> If you can halve the
+                  wait to Food Truck #3 with taps, do it.</li>
+            </ol>
          </section>
+
          <section class="section">
-            <h2>Burger Clicker Strategy</h2>
-            <div class="highlight-box">
-               <ul>
-                  <li><strong>Grill Master:</strong> Keep upgrading your grill — it's your most important asset</li>
-                  <li><strong>Menu Management:</strong> Match your menu to customer demand patterns</li>
-                  <li><strong>Staff Efficiency:</strong> Well-trained staff reduce waste and increase speed</li>
-                  <li><strong>Premium Ingredients:</strong> Higher-quality ingredients justify premium pricing</li>
-                  <li><strong>Location Scouting:</strong> Choose expansion locations based on customer density</li>
-               </ul>
-            </div>
-         </section>
-         <section class="section">
-            <h2>The Enduring Appeal of Burger Games</h2>
-            <script>
-               atOptions = {
-                  'key': '0ae563171b9c38a1903e0fda129b3528',
-                  'format': 'iframe',
-                  'height': 250,
-                  'width': 300,
-                  'params': {}
-               };
-            </script>
-            <script src="https://www.highperformanceformat.com/0ae563171b9c38a1903e0fda129b3528/invoke.js"></script>
-            <p>Burger Clicker taps into the timeless appeal of cooking games and restaurant simulators. The burger is
-               arguably the most iconic fast food item in the world, and the fantasy of running a successful burger
-               restaurant resonates across cultures. The game's cooking animations — sizzling patties, melting cheese,
-               and stacking fresh ingredients — trigger genuine appetizing reactions that keep players engaged.</p>
-            <p>What elevates Burger Clicker above simple food-themed clickers is its attention to the restaurant
-               business side. Managing staff, optimizing kitchen layouts, and expanding to new locations adds genuine
-               strategic depth. The balance between hands-on cooking (active clicking) and business management (idle
-               systems) creates a dynamic gameplay experience that caters to different play styles and moods. Whether
-               you want to actively flip burgers or manage your empire from above, Burger Clicker accommodates both
-               approaches.</p>
+            <h2>Why the burger theme still works without a sim layer</h2>
+            <p>Incremental games borrow <em>fantasy nouns</em>—cookies, planets, burgers—to make identical math feel novel.
+               Here the fantasy is shorthand for “cheap snack becomes vertical integration.” Your brain fills in grills
+               and trucks even though the UI only shows numbers and emoji. If you like this skeleton, compare pacing with
+               <a href="/pizza-clicker/">Pizza Clicker</a> or <a href="/whopper-clicker/">Whopper Clicker</a> on this
+               site—same genre, different seasoning.</p>
          </section>
 
          <div style="text-align: center;">

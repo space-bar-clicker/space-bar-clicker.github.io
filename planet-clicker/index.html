@@ -6,7 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Planet Clicker - Play Free Online</title>
    <meta name="description"
-      content="Play Planet Clicker online for free. Generate energy, buy upgrades, and build your empire in this addictive idle clicker game.">
+      content="Planet Clicker in-browser: harvest energy, stack Solar Panels through Dark Matter tiers, tune click vs passive output, save runs. Idle cosmic incremental—no multiplayer or leaderboards in this build.">
    <meta name="keywords"
       content="planet clicker, planet clicker, clicker game, idle game, free online game, play planet clicker">
    <meta name="robots" content="index, follow">
@@ -456,6 +456,18 @@
          margin-bottom: 30px;
       }
 
+      ol.tips-list {
+         margin: 0 0 0 1.25rem;
+         padding: 0;
+      }
+
+      ol.tips-list li {
+         margin-bottom: 14px;
+         line-height: 1.65;
+         color: #333;
+         padding-left: 0.35rem;
+      }
+
       .highlight-box {
          background: #f8f9fe;
          border-left: 4px solid #7838f3;
@@ -853,101 +865,72 @@
       <!-- ===== ARTICLE CONTENT ===== -->
       <article class="article-container">
 
-
          <div class="intro">
-            Planet Clicker is an exciting cosmic idle clicker game that puts you in charge of developing and evolving an
-            entire planet. Starting from a barren world, you click to generate energy and resources that allow you to
-            transform your planet into a thriving civilization. This space-themed clicker game combines the satisfaction
-            of incremental progress with the wonder of exploring the cosmos.
+            This page is a <strong>cosmic-themed idle incremental</strong>: you harvest <strong>energy</strong>, not
+            cookies—letting sci-fi shorthand (solar → dark matter) stand in for a civilization climbing the
+            Kardashev-style ladder inside a spreadsheet brain. You’re optimizing <em>energy per second</em> and
+            <em>per click</em>, not piloting a 4X map—no guarantee of multiplayer, colonization cinematics, or
+            leaderboard sync in this lightweight web build.
          </div>
+
          <section class="section">
-            <h2>What is Planet Clicker?</h2>
-            <script>
-               atOptions = {
-                  'key': '0ae563171b9c38a1903e0fda129b3528',
-                  'format': 'iframe',
-                  'height': 250,
-                  'width': 300,
-                  'params': {}
-               };
-            </script>
-            <script src="https://www.highperformanceformat.com/0ae563171b9c38a1903e0fda129b3528/invoke.js"></script>
-            <p>Planet Clicker is an incremental game where players generate energy by clicking on a planet. The energy
-               you accumulate can be spent on various upgrades that increase your energy production, unlock new
-               technologies, and eventually allow you to colonize other planets. The game features a progression system
-               that takes you from simple solar panels to advanced interstellar technologies, making each upgrade feel
-               meaningful and rewarding.</p>
+            <h2>What this Planet Clicker actually simulates</h2>
+            <p>You run a two-track economy exactly like other games on this site: <strong>manual pulses</strong> from
+               clicking the planet and <strong>passive generators</strong> you can stack in multiple copies, each with
+               rising marginal cost. The fantasy names map to clear math roles:</p>
             <div class="feature-box">
-               <h3>Core Features</h3>
+               <h3>Generators you can buy (per owned copy)</h3>
                <ul>
-                  <li>Click your planet to generate energy and resources</li>
-                  <li>Purchase upgrades to automate energy production</li>
-                  <li>Unlock new planets and expand your galactic empire</li>
-                  <li>Research advanced technologies for exponential growth</li>
-                  <li>Compete with other players on global leaderboards</li>
-                  <li>Beautiful space-themed visuals and animations</li>
+                  <li><strong>Solar Panel</strong> — +1 energy/sec (cheap baseline; spam early)</li>
+                  <li><strong>Wind Turbine</strong> — +5 energy/sec (midline renewable)</li>
+                  <li><strong>Nuclear Plant</strong> — +20 energy/sec (dense baseload)</li>
+                  <li><strong>Dyson Ring</strong> — +100 energy/sec (megastructure fantasy tier)</li>
+                  <li><strong>Dark Matter</strong> — +500 energy/sec (absurd endgame throughput)</li>
+                  <li><strong>Click Power</strong> — multiplies how much each tap adds when numbers are still small</li>
                </ul>
             </div>
+            <p>Together they model the intuition that civilizations escalate from planetary-scale renewables to absurd
+               universal-scale harvesters—without simulating orbital mechanics.</p>
          </section>
+
          <section class="section">
-            <h2>How to Play Planet Clicker</h2>
-            <script>
-               atOptions = {
-                  'key': '0ae563171b9c38a1903e0fda129b3528',
-                  'format': 'iframe',
-                  'height': 250,
-                  'width': 300,
-                  'params': {}
-               };
-            </script>
-            <script src="https://www.highperformanceformat.com/0ae563171b9c38a1903e0fda129b3528/invoke.js"></script>
-            <p>Playing Planet Clicker begins with simple clicks on your home planet. Each click generates a small amount
-               of energy that you can invest in upgrades. Solar panels, wind turbines, and nuclear reactors automate
-               your energy production, freeing you from constant clicking. As your energy reserves grow, you unlock
-               research options that dramatically increase your output and open new pathways for expansion.</p>
-            <p>The game's progression is designed to keep you engaged at every stage. Early upgrades focus on basic
-               energy generation, while mid-game content introduces planetary terraforming and atmospheric management.
-               Late-game content revolves around interplanetary travel and the construction of Dyson spheres and other
-               megastructures. Each milestone feels like a genuine achievement as you watch your planet evolve from a
-               lifeless rock into a hub of galactic civilization.</p>
+            <h2>How to climb the energy ladder</h2>
+            <ol class="tips-list">
+               <li><strong>Seed with clicks.</strong> Before passives compound, manual energy is fastest—keep clicking
+                  until Solar Panels pull their weight.</li>
+               <li><strong>Ride the cheap tiers.</strong> Flooding Wind Turbines often beats hoarding for a single Dyson
+                  Ring—parallel low-cost stacks reduce downtime.</li>
+               <li><strong>Invest in click power during the “fragile mid.”</strong> When Nuclear is online but Dark
+                  Matter is still distant, doubling tap value shortens awkward grinds.</li>
+               <li><strong>Target Dark Matter as your “universe budget cap.”</strong> Once dark-matter stacks tick,
+                  you’ve effectively solved the incremental arc; after that it’s experimentation or resets for fun.</li>
+               <li><strong>Save before walking away.</strong> Browser storage keeps progress; clearing site data wipes
+                  it—treat saves like checkpoints.</li>
+            </ol>
          </section>
+
          <section class="section">
-            <h2>Planet Clicker Tips and Strategies</h2>
+            <h2>Science flavor without false precision</h2>
+            <p>Real astrophysics doesn’t unlock Dyson rings from a smiley planet button—but incremental games borrow
+               <em>named</em> rungs (solar, nuclear, hypothetical megastructures) to make each purchase feel like a tech
+               tree. Treat the copy as thematic seasoning: what matters mechanically is exponential costs, linear or
+               superlinear generators, and the player’s pacing decisions.</p>
             <div class="highlight-box">
                <ul>
-                  <li><strong>Early Game:</strong> Focus on clicking speed and basic solar upgrades to establish income
-                  </li>
-                  <li><strong>Balance Upgrades:</strong> Don't invest everything in one technology — diversify for
-                     steady growth</li>
-                  <li><strong>Prestige Wisely:</strong> Reset at optimal times to maximize prestige bonuses</li>
-                  <li><strong>Active vs Idle:</strong> Mix active clicking sessions with idle accumulation for best
-                     results</li>
-                  <li><strong>Technology Research:</strong> Prioritize research that multiplies existing production</li>
+                  <li><strong>Renewable metaphor:</strong> early tiers echo real engineering tradeoffs (distributed
+                     renewables vs concentrated plants).</li>
+                  <li><strong>Sci-fi metaphor:</strong> late tiers echo speculative energy harvesting—just enough wonder to
+                     justify giant numbers.</li>
                </ul>
             </div>
          </section>
+
          <section class="section">
-            <h2>Why Planet Clicker is Unique</h2>
-            <script>
-               atOptions = {
-                  'key': '0ae563171b9c38a1903e0fda129b3528',
-                  'format': 'iframe',
-                  'height': 250,
-                  'width': 300,
-                  'params': {}
-               };
-            </script>
-            <script src="https://www.highperformanceformat.com/0ae563171b9c38a1903e0fda129b3528/invoke.js"></script>
-            <p>Planet Clicker stands out from other idle clicker games through its compelling space exploration theme
-               and sense of scale. Unlike cookie or candy-themed clickers, Planet Clicker gives players a sense of
-               cosmic progression that feels both educational and entertaining. The game subtly introduces concepts like
-               renewable energy, space colonization, and technological advancement while maintaining the satisfying
-               gameplay loop that makes clicker games so addictive.</p>
-            <p>The visual design of Planet Clicker deserves special mention. Watching your planet transform from a
-               barren world into a gleaming center of civilization provides a visual reward that many text-heavy clicker
-               games lack. The animations become more elaborate as you progress, with orbital stations, space fleets,
-               and energy beams becoming visible as you unlock higher-tier upgrades. This visual feedback creates a
-               powerful motivation loop that keeps players clicking and upgrading.</p>
+            <h2>Who should play it</h2>
+            <p>Fans of <strong>idle games about scale</strong> who want cosmic window dressing instead of bakery jokes.
+               If you enjoy planning purchase order more than twitch skill, Planet Clicker is a clean mental puzzle with
+               space vibes—pair it with <a href="/earth-clicker/">Earth Clicker</a> or <a href="/planet-clicker-2/">Planet
+                  Clicker 2</a> if you want to compare flavor text without changing the core math.</p>
          </section>
 
          <div style="text-align: center;">

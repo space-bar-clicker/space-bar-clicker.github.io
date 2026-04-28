@@ -6,7 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Minecraft Clicker - Play Free Online</title>
    <meta name="description"
-      content="Play Minecraft Clicker online for free. Mine blocks, buy upgrades, and build your empire in this addictive idle clicker game.">
+      content="Mine blocks in-browser in this Minecraft-themed idle clicker: stone to netherite pickaxes, enchanting table, beacon, click power scaling, saves. Free incremental game; not Mojang-affiliated.">
    <meta name="keywords"
       content="minecraft clicker, minecraft clicker, clicker game, idle game, free online game, play minecraft clicker">
    <meta name="robots" content="index, follow">
@@ -456,6 +456,18 @@
          margin-bottom: 30px;
       }
 
+      ol.tips-list {
+         margin: 0 0 0 1.25rem;
+         padding: 0;
+      }
+
+      ol.tips-list li {
+         margin-bottom: 14px;
+         line-height: 1.65;
+         color: #333;
+         padding-left: 0.35rem;
+      }
+
       .highlight-box {
          background: #f8f9fe;
          border-left: 4px solid #7838f3;
@@ -853,97 +865,81 @@
       <!-- ===== ARTICLE CONTENT ===== -->
       <article class="article-container">
 
-
          <div class="intro">
-            Minecraft Clicker brings the beloved world of Minecraft into the idle clicker genre, letting you click to
-            mine blocks, gather resources, and build your blocky empire. With familiar Minecraft mechanics like
-            crafting, enchanting, and dimension exploration adapted for clicking gameplay, this game offers a fresh
-            perspective on the world's best-selling game. Mine, craft, and click your way to becoming the ultimate
-            Minecraft master.
+            This page is an <strong>incremental / idle “Minecraft-themed” clicker</strong>: you mine <strong>blocks</strong>,
+            multiply passive “blocks per second,” and reinforce manual mining with upgradeable <strong>click power</strong>.
+            Mojang/Microsoft’s Minecraft is its own commercial game—this browser build uses familiar pickaxe tiers and vibes
+            as <em>fantasy shorthand</em> for pacing, without claiming lore, multiplayer, caves, villagers, The End,
+            modding parity, or any official tie-in.
          </div>
+
          <section class="section">
-            <h2>What is Minecraft Clicker?</h2>
-            <script>
-               atOptions = {
-                  'key': '0ae563171b9c38a1903e0fda129b3528',
-                  'format': 'iframe',
-                  'height': 250,
-                  'width': 300,
-                  'params': {}
-               };
-            </script>
-            <script src="https://www.highperformanceformat.com/0ae563171b9c38a1903e0fda129b3528/invoke.js"></script>
-            <p>Minecraft Clicker is a free online idle clicker game set in the Minecraft universe. Players click to mine
-               blocks, collecting resources that can be crafted into tools, weapons, and building materials. The game
-               follows Minecraft's familiar progression — from punching trees to mining diamonds and exploring the
-               Nether — reimagined through idle clicker mechanics. The pixel art style faithfully recreates Minecraft's
-               iconic visual identity.</p>
+            <h2>What you actually control here</h2>
+            <p>You have two intertwined engines:</p>
+            <ul style="margin: 14px 0 14px 1.25rem; line-height: 1.65;">
+               <li><strong>Manual mining:</strong> click the giant pickaxe chunk to add blocks instantly; invest in Click
+                  Power so each tap digs deeper digits.</li>
+               <li><strong>Passive mining tiers:</strong> stack Stone Pickaxe, Iron Pickaxe, Diamond Pickaxe,
+                  Enchantment Table, then Netherite Beacon—each contributes independent block/sec throughput you can buy
+                  in multiple stacks with rising per-tier price.</li>
+            </ul>
             <div class="feature-box">
-               <h3>Minecraft Features</h3>
+               <h3>What appears in the UI (accurate list)</h3>
                <ul>
-                  <li>Click to mine blocks and gather resources</li>
-                  <li>Craft tools and equipment following Minecraft recipes</li>
-                  <li>Progress through material tiers: Wood, Stone, Iron, Diamond, Netherite</li>
-                  <li>Explore the Overworld, Nether, and End dimensions</li>
-                  <li>Enchantment system for tool and production upgrades</li>
-                  <li>Build structures that generate passive resources</li>
+                  <li>Stone Pickaxe — +1 block/sec per owned</li>
+                  <li>Iron Pickaxe — +5 blocks/sec per owned</li>
+                  <li>Diamond Pickaxe — +20 blocks/sec per owned</li>
+                  <li>Enchantment Table — +100 blocks/sec per owned</li>
+                  <li>Netherite Beacon — +500 blocks/sec per owned</li>
+                  <li>Click Power — spend blocks to multiply per-click mining (the “manual DPS button”)</li>
+                  <li>Save / Reset — local persistence if you choose to save</li>
                </ul>
             </div>
+            <p>That’s why the progression feels like Minecraft’s tech tree in <em>mood</em> but not like a voxel
+               sandbox: you’re optimizing an economy around block income, not surviving creeper ambushes.</p>
          </section>
+
          <section class="section">
-            <h2>How to Play Minecraft Clicker</h2>
-            <script>
-               atOptions = {
-                  'key': '0ae563171b9c38a1903e0fda129b3528',
-                  'format': 'iframe',
-                  'height': 250,
-                  'width': 300,
-                  'params': {}
-               };
-            </script>
-            <script src="https://www.highperformanceformat.com/0ae563171b9c38a1903e0fda129b3528/invoke.js"></script>
-            <p>Start by clicking to punch trees, gathering wood — just like real Minecraft. Craft your wood into a
-               crafting table, then make wooden tools. Each tool upgrade lets you mine harder blocks and gather rarer
-               resources faster. The familiar Minecraft progression from wood to stone to iron to diamond provides
-               natural milestones that feel rewarding to reach.</p>
-            <p>The building system adds a unique element. Use gathered resources to construct Minecraft structures like
-               houses, farms, and mob spawners. Each structure generates passive resources — farms produce food for
-               worker villagers, mob spawners create experience points for enchanting, and trading posts enable villager
-               commerce. Managing your builds becomes important for efficient resource generation.</p>
+            <h2>How to play (from first click to beacon)</h2>
+            <ol class="tips-list">
+               <li><strong>Spam early clicks</strong> until you buy the first Stone Pickaxe passives—they pay for every
+                  second you aren’t hovering the mouse.</li>
+               <li><strong>Stack pickaxes before glamor-buying Diamond.</strong> Two cheap iron lines can out-DPS waiting
+                  for a single beacon if you pause all income.</li>
+               <li><strong>Enchantment Table is your “factory midgame spike.”</strong> +100/sec per unit is the hinge
+                  where AFK tabs start to feel worth it.</li>
+               <li><strong>Netherite Beacon is the apex passive.</strong> Once you stack them, manual clicking is mostly
+                  for bursts after reset or catching a purchase threshold.</li>
+               <li><strong>Upgrade click power whenever manual still moves the needle.</strong> If passive is still
+                  double-digit, doubling clicks wins races to the next tier.</li>
+               <li><strong>Save often</strong> when you’re proud of a run; <strong>reset</strong> when you want to speedrun
+                  the opening minutes with better intuition.</li>
+            </ol>
          </section>
+
          <section class="section">
-            <h2>Minecraft Clicker Strategy</h2>
+            <h2>Strategy: why “Minecraft brain” helps</h2>
+            <p>Real Minecraft teaches <strong>tool tier gating</strong>: you don’t rush obsidian with bare hands. This
+               clicker copies that <em>feel</em> numerically—each tier is a bigger passive multiplier, so you experience
+               the same “finally iron!” dopamine, abstracted into exponential block counters.</p>
             <div class="highlight-box">
                <ul>
-                  <li><strong>Tool Priority:</strong> Better tools exponentially increase mining speed</li>
-                  <li><strong>Building Income:</strong> Construct passive-generating buildings as soon as possible</li>
-                  <li><strong>Enchanting:</strong> Enchanted tools provide massive efficiency bonuses</li>
-                  <li><strong>Dimension Progress:</strong> New dimensions offer higher-value resources</li>
-                  <li><strong>Villager Trading:</strong> Establish trades for resources you can't mine efficiently</li>
+                  <li><strong>Opportunity cost:</strong> every second without the best affordable passive online is
+                     blocks you never get back—idle games punish perfectionist hoarding.</li>
+                  <li><strong>Parallel vs vertical:</strong> sometimes five extra Stone axes beat one delayed Diamond
+                     because cost curves reward breadth early.</li>
+                  <li><strong>Session types:</strong> short sessions favor click power; long AFK sessions favor stacked
+                     beacon + table throughput.</li>
                </ul>
             </div>
          </section>
+
          <section class="section">
-            <h2>Minecraft's Clicking Roots</h2>
-            <script>
-               atOptions = {
-                  'key': '0ae563171b9c38a1903e0fda129b3528',
-                  'format': 'iframe',
-                  'height': 250,
-                  'width': 300,
-                  'params': {}
-               };
-            </script>
-            <script src="https://www.highperformanceformat.com/0ae563171b9c38a1903e0fda129b3528/invoke.js"></script>
-            <p>Interestingly, Minecraft itself has always been fundamentally about clicking. Mining blocks, placing
-               blocks, crafting items — all core Minecraft actions involve clicking. Minecraft Clicker simply distills
-               this into its purest form, creating a natural synergy between the source material and the clicker genre.
-               The progression from weak tools to powerful ones mirrors Minecraft's actual gameplay arc.</p>
-            <p>For the massive global community of Minecraft players, this clicker game offers a casual way to engage
-               with familiar content during moments when booting up the full game isn't practical. The bite-sized
-               progression loops of idle clicking complement Minecraft's longer play sessions, making Minecraft Clicker
-               perfect for quick breaks or idle background play. The faithful recreation of Minecraft's aesthetic and
-               mechanics ensures that fans feel right at home while enjoying a fresh gameplay format.</p>
+            <h2>Who this is for</h2>
+            <p>Speedrunners who want a <strong>low-friction incremental</strong> between Realms sessions, students on
+               locked-down Chromebooks, or anyone who likes watching resource numbers climb with Minecraft-flavored
+               nouns. It’s also a gentle entry point to the genre if you’ve never opened an idle spreadsheet in your
+               life—just don’t expect redstone sim depth; expect satisfying arithmetic.</p>
          </section>
 
          <div style="text-align: center;">
