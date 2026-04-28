@@ -452,6 +452,14 @@
          margin-bottom: 30px;
       }
 
+      .intro p:last-child {
+         margin-bottom: 0;
+      }
+
+      .intro p + p {
+         margin-top: 14px;
+      }
+
       .section {
          margin-bottom: 30px;
       }
@@ -867,38 +875,53 @@
 
 
          <div class="intro">
-            This page’s build is a science-themed reskin of the site’s standard idle core: the HUD tracks
-            <strong>Data Points</strong>, passive upgrades run from <strong>Junior Researcher</strong> through
-            <strong>Higgs Discovery</strong>, and <strong>Click Power</strong> doubles per level (same pattern as
-            <a href="/planet-clicker/">Planet Clicker</a>). There are <strong>no</strong> collision minigames, particle
-            identification trees, Standard Model unlock screens, grant mini-games, lab layout, or CERN-accurate
-            simulation—older copy described a different, educational product.
+            <p>Particle Clicker drapes PhD-humor over the same idle scaffold: <strong>Data Points</strong> tick up like fake
+               collider spills, passives borrow <strong>Junior Researcher</strong> through <strong>Higgs Discovery</strong> names, and
+               <strong>Click Power</strong> represents “what if you smacked the detector harder with your mouse.”</p>
+            <p>This is not Open Data from CERN: there are no ROOT files, track fits, ATLAS event displays, grid certificates, or
+               shift slots on the real experiment. The <strong>CERN Grant</strong> line is a budget punchline, not a wire transfer.
+               Enjoy the cosplay; publish real papers elsewhere.</p>
          </div>
          <section class="section">
-            <h2>Passive data rate (+data/sec)</h2>
+            <h2>Lab staffing table (what each hire actually does)</h2>
             <div class="feature-box">
-               <h3>Tiers</h3>
+               <h3>Throughput, not thesis defense</h3>
                <ul>
-                  <li><strong>Junior Researcher</strong> — +1/sec.</li>
-                  <li><strong>Postdoc Team</strong> — +5/sec.</li>
-                  <li><strong>Accelerator Upgrade</strong> — +20/sec.</li>
-                  <li><strong>CERN Grant</strong> — +100/sec.</li>
-                  <li><strong>Higgs Discovery</strong> — +500/sec.</li>
+                  <li><strong>Junior Researcher</strong> — +1 data/sec; cannon fodder postdocs grinding plots.</li>
+                  <li><strong>Postdoc Team</strong> — +5/sec; when caffeine becomes a lab supply.</li>
+                  <li><strong>Accelerator Upgrade</strong> — +20/sec; ring upgrade fantasy without cryo schematics.</li>
+                  <li><strong>CERN Grant</strong> — +100/sec; soft-money dream; still no wire to Switzerland.</li>
+                  <li><strong>Higgs Discovery</strong> — +500/sec; Nobel meme for people who just like big numbers.</li>
                </ul>
             </div>
-            <p>Numbers add per owned tier; costs scale with the usual multiplier. <strong>Save</strong> persists to
-               <code>localStorage</code>; <strong>Reset</strong> wipes the run.</p>
          </section>
          <section class="section">
-            <h2>Tips</h2>
+            <h2>Grant-writing night vs stay-up-and-click night</h2>
+            <p>When you desperately need the next <strong>Accelerator Upgrade</strong> but the price is still a few kilo-data away,
+               stacking another <strong>Postdoc Team</strong> might still win the budget war. If you are babysitting the tab for a
+               Zoom class, lean on <strong>CERN Grant</strong> copies so data accrues without finger strain. <strong>Click Power</strong> is your
+               hail-mary “PI approved overtime” button for manual bursts.</p>
+         </section>
+         <section class="section">
+            <h2>Preprints stored in your browser cache</h2>
+            <p><strong>Save</strong> freezes the run under <code>particle_clicker_save</code>; <strong>Reset</strong> is the cruel desk reject.
+               No arXiv webhook, no doi—just localStorage on this machine.</p>
+         </section>
+         <section class="section">
+            <h2>Luminosity checklist</h2>
             <ol class="tips-list">
-               <li><strong>Buy Junior Researcher when the first tier’s cost beats manual clicking.</strong></li>
-               <li><strong>Stack Postdoc Team next; broad early purchases usually beat one deep lane.</strong></li>
-               <li><strong>Accelerator Upgrade is the mid jump.</strong></li>
-               <li><strong>CERN Grant is the heavy AFK tier before the finale.</strong></li>
-               <li><strong>Higgs Discovery is the largest flat +/sec.</strong></li>
-               <li><strong>Click Power when taps still move the needle toward the next purchase.</strong></li>
+               <li><strong>Fund Junior Researchers</strong> before you role-play Higgs plots.</li>
+               <li><strong>Stack Postdocs</strong> whenever early breadth still crushes one lonely accelerator purchase.</li>
+               <li><strong>Accelerator Upgrade is the realistic mid-run gear shift.</strong></li>
+               <li><strong>CERN Grant feeds AFK sessions</strong> once you need hundreds of data/sec passively.</li>
+               <li><strong>Higgs Discovery rows are your “tenure track” flex number.</strong></li>
+               <li><strong>Bump Click Power</strong> whenever you can still feel clicks shaving seconds off the next buy.</li>
             </ol>
+         </section>
+         <section class="section">
+            <h2>If you want more cosmic scale</h2>
+            <p>Try <a href="/planet-clicker/">Planet Clicker</a> for planetary energy nouns, or <a href="/earth-clicker/">Earth Clicker</a> for
+               civ-scale comedy with the same pacing.</p>
          </section>
 
          <div style="text-align: center;">

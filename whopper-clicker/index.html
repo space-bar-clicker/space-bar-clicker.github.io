@@ -452,6 +452,14 @@
          margin-bottom: 30px;
       }
 
+      .intro p:last-child {
+         margin-bottom: 0;
+      }
+
+      .intro p + p {
+         margin-top: 14px;
+      }
+
       .section {
          margin-bottom: 30px;
       }
@@ -867,37 +875,53 @@
 
 
          <div class="intro">
-            This page is a browser idle game on the same five-tier engine as <a href="/burger-clicker/">Burger Clicker</a>:
-            the currency is <strong>Whoppers</strong>, with passive rates from <strong>Extra Patty</strong> through
-            <strong>Burger Empire</strong> and a separate <strong>Click Power</strong> track. This is <strong>not</strong> an
-            official or licensed Burger King product; there are <strong>no</strong> franchise menus, kitchen sims, multi-location
-            maps, recipe unlocks, or leaderboards—only the counters and upgrades shown above the article.
+            <p>This Whopper tally is burger-chain cosplay built on idle math—not a tie-in burger from Tampa, Miami, or
+               whichever city your drive-through lives in. The HUD tracks abstract <strong>Whoppers</strong> “per second,” with rows
+               named after patties, grills, drive-through stress, and franchising dreams.</p>
+            <p>No receipt printer, no Impossible patty swap, no secret menu ARG, no mobile order push notifications—just
+               <strong>Save</strong> for late-night sessions and <strong>Reset</strong> when you want to relive the opening shift without
+               inventory management.</p>
          </div>
          <section class="section">
-            <h2>Passive production (+whoppers/sec)</h2>
+            <h2>Expedite line: what each upgrade is whispering</h2>
             <div class="feature-box">
-               <h3>Tiers</h3>
+               <h3>Kitchen drama as +/sec</h3>
                <ul>
-                  <li><strong>Extra Patty</strong> — +1/sec.</li>
-                  <li><strong>Grill Master</strong> — +5/sec.</li>
-                  <li><strong>Drive-Through</strong> — +20/sec.</li>
-                  <li><strong>Franchise Deal</strong> — +100/sec.</li>
-                  <li><strong>Burger Empire</strong> — +500/sec.</li>
+                  <li><strong>Extra Patty</strong> — +1/sec; the student who double-stacks before prom.</li>
+                  <li><strong>Grill Master</strong> — +5/sec; tongs clanging for anyone who ever called “order up.”</li>
+                  <li><strong>Drive-Through</strong> — +20/sec; headset chaos expressed as spreadsheets.</li>
+                  <li><strong>Franchise Deal</strong> — +100/sec; fantasies about owning twelve locations.</li>
+                  <li><strong>Burger Empire</strong> — +500/sec; pretend McDowell’s vs Wendys arc without courtroom scenes.</li>
                </ul>
             </div>
-            <p>Costs scale per purchase; stacking lower tiers usually beats dumping everything into one line early.
-               <strong>Save</strong> writes to browser storage; <strong>Reset</strong> clears the run.</p>
          </section>
          <section class="section">
-            <h2>Tips</h2>
+            <h2>Grease-lamp revelations: Click Power vs fry oil throughput</h2>
+            <p>Trying to brute-force enough Whoppers manually to snag your first <strong>Franchise Deal</strong> is how carpal tunnel
+               meets comedy. Usually you want at least one <strong>Grill Master</strong> duplicating silently while you slam
+               Whoppers faster via <strong>Click Power</strong> during sprint bursts. Leaving the fryer unattended? Lean on stacked
+               <strong>Burger Empire</strong> tiers so timers keep ticking while you fetch actual food.</p>
+         </section>
+         <section class="section">
+            <h2>Holding tanks (local saves)</h2>
+            <p>Progress sits under <code>whopper_clicker_save</code> in this browser’s storage. That is the whole supply chain—no
+               franchise HQ sync.</p>
+         </section>
+         <section class="section">
+            <h2>Shift notes</h2>
             <ol class="tips-list">
-               <li><strong>Grab Extra Patty until passive noticeably beats lone clicking.</strong></li>
-               <li><strong>Grill Master is the logical second ramp.</strong></li>
-               <li><strong>Use Drive-Through for mid pacing.</strong></li>
-               <li><strong>Franchise Deal supports longer AFK stretches.</strong></li>
-               <li><strong>Burger Empire dominates late totals.</strong></li>
-               <li><strong>Raising Click Power helps when bursts buy the next tier faster.</strong></li>
+               <li><strong>Extra Patty until passive clearly tops bare clicking.</strong></li>
+               <li><strong>Grill Master for the early curve.</strong></li>
+               <li><strong>Drive-Through when mid prices start to pinch.</strong></li>
+               <li><strong>Franchise Deal before long AFK stretches.</strong></li>
+               <li><strong>Burger Empire for flex totals.</strong></li>
+               <li><strong>Click Power</strong> when finger grease still wins races to the next upgrade.</li>
             </ol>
+         </section>
+         <section class="section">
+            <h2>Other greasy siblings</h2>
+            <p>For standard cheddar stacks without trademark anxiety, poke <a href="/burger-clicker/">Burger Clicker</a>; for marina,
+               hit <a href="/pizza-clicker/">Pizza Clicker</a>.</p>
          </section>
 
          <div style="text-align: center;">
