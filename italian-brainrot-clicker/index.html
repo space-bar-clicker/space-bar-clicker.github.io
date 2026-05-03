@@ -1111,7 +1111,6 @@
           </section>
 
           <div style="text-align: center;">
-             <a href="/" class="back-btn">Back to Home</a>
           </div>
 
        </article>
@@ -1428,15 +1427,16 @@
             setTimeout(() => { btn.textContent = '💾 Save'; }, 1500);
          });
 
-         document.getElementById('resetBtn').addEventListener('click', () => {
-            if (confirm('Reset all progress for Italian Brainrot Clicker? This cannot be undone.')) {
-               localStorage.removeItem(SAVE_KEY);
-               score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
-               upgradeOwned = UPGRADES.map(() => 0);
-               recalcPerSecond();
-               render();
-            }
-         });
+          document.getElementById('resetBtn').addEventListener('click', () => {
+             if (confirm('Reset all progress for Italian Brainrot Clicker? This cannot be undone.')) {
+                localStorage.removeItem(SAVE_KEY);
+                score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
+                upgradeOwned = UPGRADES.map(() => 0);
+                milestonesReached = {}; milestones.forEach(m => milestonesReached[m] = false);
+                recalcPerSecond();
+                render();
+             }
+          });
 
           // Auto-save every 30s
           setInterval(saveGame, 30000);
