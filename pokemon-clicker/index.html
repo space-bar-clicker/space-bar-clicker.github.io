@@ -4,9 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Pokemon Clicker - Play Free Online</title>
-   <meta name="description"
-      content="Unofficial fan idle: PokéCoins from Great Ball tiers up to Pokémon Master, Click Power buffs — not Nintendo software, wild battles, or real Pokédex; browser save only.">
+   <title>Pokemon Clicker - Catch Them All | Free Online Idle Game</title>
+   <meta name="description" content="Play Pokemon Clicker free online! Earn PokéCoins, collect upgrades & build combos in this fan-made idle clicker. No download needed!">
    <meta name="keywords"
       content="pokemon clicker, pokemon clicker, clicker game, idle game, free online game, play pokemon clicker">
    <meta name="robots" content="index, follow">
@@ -752,6 +751,164 @@
          box-shadow: 0 4px 12px rgba(120, 56, 243, 0.15);
          color: #3b0764;
       }
+   
+      /* ===== NEW GAME FEATURES CSS ===== */
+      .sound-toggle {
+         background: none;
+         border: 2px solid rgba(255,255,255,0.4);
+         color: white;
+         border-radius: 8px;
+         padding: 4px 10px;
+         cursor: pointer;
+         font-size: 1rem;
+         transition: all 0.2s ease;
+      }
+      .sound-toggle:hover {
+         background: rgba(255,255,255,0.15);
+         border-color: rgba(255,255,255,0.7);
+      }
+      .combo-display {
+         margin-top: 6px;
+         font-size: 0.85rem;
+         font-weight: 700;
+         color: #dc2626;
+         min-height: 20px;
+         text-align: center;
+      }
+      .progress-bar-container {
+         width: 80%;
+         max-width: 220px;
+         height: 10px;
+         background: #eee;
+         border-radius: 5px;
+         margin-top: 10px;
+         overflow: hidden;
+      }
+      .progress-bar-fill {
+         height: 100%;
+         background: linear-gradient(90deg, #dc2626, #dc262688);
+         width: 0%;
+         transition: width 0.3s ease;
+         border-radius: 5px;
+      }
+      .milestone-banner {
+         position: fixed;
+         top: 80px;
+         left: 50%;
+         transform: translateX(-50%) translateY(-100px);
+         background: linear-gradient(135deg, #dc2626, #dc2626dd);
+         color: white;
+         padding: 14px 28px;
+         border-radius: 12px;
+         font-weight: 700;
+         font-size: 1.1rem;
+         box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+         z-index: 2000;
+         opacity: 0;
+         pointer-events: none;
+         transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+         white-space: nowrap;
+      }
+      .milestone-banner.show {
+         opacity: 1;
+         transform: translateX(-50%) translateY(0);
+      }
+      .critical-popup {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1.4rem;
+         font-weight: 800;
+         color: #ff4757;
+         text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+         animation: criticalAnim 0.9s ease-out forwards;
+         z-index: 20;
+      }
+      @keyframes criticalAnim {
+         0% { opacity: 1; transform: translateY(0) scale(0.6) rotate(-5deg); }
+         50% { opacity: 1; transform: translateY(-40px) scale(1.2) rotate(5deg); }
+         100% { opacity: 0; transform: translateY(-90px) scale(1) rotate(0deg); }
+      }
+      .particle {
+         position: absolute;
+         pointer-events: none;
+         font-size: 0.9rem;
+         opacity: 0.7;
+         animation: particleFloat 2.5s ease-out forwards;
+         z-index: 5;
+      }
+      @keyframes particleFloat {
+         0% { opacity: 0.7; transform: translateY(0) scale(1); }
+         100% { opacity: 0; transform: translateY(-120px) scale(0.5); }
+      }
+      .keyboard-tip {
+         text-align: center;
+         font-size: 0.78rem;
+         color: #888;
+         margin-top: 8px;
+         font-weight: 500;
+      }
+      .faq-section { margin-bottom: 30px; }
+      .faq-item { margin-bottom: 16px; border-bottom: 1px solid #eee; padding-bottom: 12px; }
+      .faq-item h3 {
+         color: #7838f3;
+         font-size: 1.05rem;
+         margin-bottom: 6px;
+         cursor: pointer;
+         display: flex;
+         align-items: center;
+         gap: 8px;
+         transition: color 0.2s ease;
+      }
+      .faq-item h3:hover { color: #4c1d95; }
+      .faq-item h3::before {
+         content: '+';
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         width: 20px;
+         height: 20px;
+         background: #f0f0f0;
+         border-radius: 4px;
+         font-size: 0.85rem;
+         color: #666;
+         flex-shrink: 0;
+      }
+      .faq-item.open h3::before { content: '−'; }
+      .faq-answer {
+         max-height: 0;
+         overflow: hidden;
+         transition: max-height 0.35s ease, opacity 0.25s ease;
+         opacity: 0;
+      }
+      .faq-item.open .faq-answer {
+         max-height: 300px;
+         opacity: 1;
+      }
+      .faq-answer p {
+         color: #555;
+         line-height: 1.7;
+         font-size: 1rem;
+         padding-top: 4px;
+      }
+      .fun-facts-list {
+         list-style: none;
+         padding-left: 0;
+         margin: 0;
+      }
+      .fun-facts-list li {
+         padding: 10px 0 10px 28px;
+         position: relative;
+         color: #333;
+         line-height: 1.65;
+         font-size: 1.02rem;
+      }
+      .fun-facts-list li::before {
+         content: '💡';
+         position: absolute;
+         left: 0;
+         top: 10px;
+      }
+
    </style>
 </head>
 
@@ -774,26 +931,33 @@
 
       <!-- ===== GAME ===== -->
       <div class="game-wrapper" id="gameWrapper">
-         <div class="game-header">
-            <h2>⚡ Pokemon Clicker</h2>
-            <div class="game-stats-bar">
-               <span class="game-stat-pill" id="gStatTotal">0 PokéCoins</span>
-               <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
-            </div>
-         </div>
-         <div class="game-body">
-            <div class="click-area" id="clickArea">
-               <button class="click-btn" id="clickBtn" aria-label="Catch PokéCoin">
-                  <span class="emoji">⚡</span>
-               </button>
-               <div class="score-display">
-                  <div class="score-number" id="scoreNum">0</div>
-                  <div class="score-label">PokéCoins</div>
-               </div>
-               <div class="per-second" id="perSecDisplay">0 pokécoins/sec</div>
-               <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
-            </div>
-            <div class="upgrades-panel" id="upgradesPanel">
+                   <div class="milestone-banner" id="milestoneBanner">🎉 Milestone Reached!</div>
+          <div class="game-header">
+             <h2>⚡ Pokemon Clicker</h2>
+             <div class="game-stats-bar">
+                <span class="game-stat-pill" id="gStatTotal">0 PokéCoins</span>
+                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+                <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
+             </div>
+          </div>
+          <div class="game-body">
+                         <div class="click-area" id="clickArea">
+                <button class="click-btn" id="clickBtn" aria-label="Catch PokéCoin">
+                   <span class="emoji">⚡</span>
+                </button>
+                <div class="score-display">
+                   <div class="score-number" id="scoreNum">0</div>
+                   <div class="score-label">PokéCoins</div>
+                </div>
+                <div class="progress-bar-container" id="progressBarContainer">
+                   <div class="progress-bar-fill" id="progressBarFill"></div>
+                </div>
+                <div class="combo-display" id="comboDisplay"></div>
+                <div class="per-second" id="perSecDisplay">0 pokécoins/sec</div>
+                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+                <div class="keyboard-tip">Tip: Press SPACE to click!</div>
+             </div>
+             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
 
                <div class="upgrade-card locked" id="upg0" data-idx="0">
@@ -872,80 +1036,100 @@
 
       <!-- ===== ARTICLE CONTENT ===== -->
       <article class="article-container">
-
-
          <div class="intro">
-            <p>This page is <strong>fan-made clicker nostalgia</strong>, not a product of Nintendo, The Pokémon Company, or
-               Game Freak. The currency label <strong>PokéCoins</strong> is window dressing: you accrue them from taps and from
-               passive tiers named after balls, dex upgrades, badges, and a “legend” fantasy—none of that hooks into a real
-               battle engine, wild-spawn table, move learnsets, or online ranked ladder.</p>
-            <p>Treat the ladder as a joke résumé: <strong>Great Ball</strong> is your budget automation, <strong>Pokédex Upgrade</strong> is a
-               phone-shaped +5 row with no actual Pokédex screen, <strong>Gym Badge</strong> bumps mid pacing, <strong>Legendary Hunt</strong>
-               spikes AFK income, and <strong>Pokémon Master</strong> is just the crowned top-tier number printer. Optimize the
-               economy; export the tournament dreams to cartridges and phones that actually ship battling.</p>
+            <p><strong>Pokemon Clicker</strong> is a fan-made idle clicker that channels the thrill of Pokemon trainer progression into satisfying incremental gameplay. Since 1996, the Pokemon franchise by Nintendo and Game Freak has captivated over 380 million players worldwide with its "Gotta Catch 'Em All" philosophy. This unofficial browser game distills that collecting spirit into pure numbers: your currency is PokéCoins, your upgrades are themed after iconic Pokemon milestones, and your goal is to become a Pokemon Master without ever opening a Nintendo console.</p>
+         <p>The Pokemon universe spans nine generations, over 1,000 unique creatures, anime series, trading card games, and blockbuster movies. Pokemon Clicker pays homage to this cultural phenomenon by naming its upgrades after recognizable franchise elements: Great Balls for capturing, Pokédex Upgrades for cataloging, Gym Badges for achievement, Legendary Hunts for endgame challenges, and Pokemon Master status for ultimate completion. While this is purely a numbers game with no actual battling or creature collection, the thematic wrapper adds nostalgic flavor that resonates with millions of fans.</p>
+         <p>Idle and clicker games have become a dominant genre in casual gaming because they provide constant positive feedback with minimal barriers to entry. Pokemon Clicker exemplifies this perfectly—you can play for 30 seconds or 3 hours, and the game respects both playstyles. Passive income from your upgrades accumulates even when you are not actively clicking, rewarding both manic tapping sessions and relaxed background tab farming. Best of all, it is a <strong>completely free browser game requiring no download or registration</strong>.</p>
+         <p>Among the clickers on our platform, Pokemon Clicker stands out for its nostalgic appeal. While <a href="/money-clicker/">Money Clicker</a> attracts aspiring tycoons and <a href="/earth-clicker/">Earth Clicker</a> draws science enthusiasts, Pokemon Clicker speaks to anyone who grew up watching Ash Ketchum's journey or spent hours trading cards on the playground. The red color scheme and lightning-bolt motif evoke the iconic Pokemon brand without infringing on copyrighted assets.</p>
          </div>
 
          <section class="section">
-            <h2>Badge case on the left, spreadsheet on the right</h2>
-            <div class="feature-box">
-               <h3>What each row is pretending to be</h3>
-               <ul>
-                  <li><strong>Great Ball</strong> (+1/sec) — “cheap capture tool” lore; really your first respectable passive bleed.</li>
-                  <li><strong>Pokédex Upgrade</strong> (+5/sec) — the smartphone emoji is flair only—still just another generator row.</li>
-                  <li><strong>Gym Badge</strong> (+20/sec) — where early runs start to feel like you left the first route.</li>
-                  <li><strong>Legendary Hunt</strong> (+100/sec) — the tab-friendly tier for when you are half-watching a stream.</li>
-                  <li><strong>Pokémon Master</strong> (+500/sec) — Hall-of-Fame flavor for endgame coin gravity.</li>
-               </ul>
-            </div>
-            <p><strong>Click Power</strong> buffs how many PokéCoins each tap or spacebar press adds; it is the only upgrade that
-               changes manual output while the five named tiers keep printing in the background.</p>
-         </section>
-
-         <section class="section">
-            <h2>When to hyper-train Click Power vs buy another Hunt</h2>
-            <p>Because every passive can be owned in duplicate, the “best” next purchase is whichever shortens the wait to
-               the target number on the price tag you are staring at. If you are two thousand PokéCoins shy of your first
-               <strong>Legendary Hunt</strong>, sometimes an extra <strong>Great Ball</strong> copy still wins on math; if you are about to step
-               away, locking another Hunt or <strong>Pokémon Master</strong> copy usually beats juicing clicks for a session you will
-               not touch.</p>
-            <p>There is no type chart to memorize—just compare your per-second sum to the next cost the way you would in any
-               idle sheet, only the nouns are Poké-flavored.</p>
-         </section>
-
-         <section class="section">
-            <h2>Where your Hall of Fame save actually lives</h2>
-            <p>Pressing <strong>Save</strong> persists your haul in this browser’s storage for <code>pokemon_clicker_save</code>. That means no
-               cross-device cloud sync from this static page: new phone,
-               incognito window, or cleared site data starts a fresh save file until you build another stack of Great Balls.</p>
-            <p><strong>Reset</strong> is the in-game Nuzlocke wipe—use it when you want a clean speedrun of the opening minutes with
-               better intuition, not when you are trying to roll IVs (there are no IVs here).</p>
-         </section>
-
-         <section class="section">
-            <h2>Route ideas after you have cleared this ladder</h2>
+            <h2>How to Play Pokemon Clicker</h2>
             <ol class="tips-list">
-               <li><strong>Stack Great Balls before daydreaming Master copies.</strong> Passive income has to exist before big numbers feel real.</li>
-               <li><strong>Compare Pokédex Upgrade math to another Great Ball duplicate</strong>; sometimes breadth still wins mid-early.</li>
-               <li><strong>Ride Gym Badge into Legendary Hunt</strong> once your per-second can absorb the price jumps.</li>
-               <li><strong>Use Legendary Hunts as AFK scaffolding</strong>; they are tuned for multitask stretches.</li>
-               <li><strong>Pokémon Master tiers are your long-run trophy printer</strong>; stack them when costs look like rounding error.</li>
-               <li><strong>Level Click Power</strong> when spamming genuinely cuts the ETA to whichever upgrade is bottlenecking you.</li>
+               <li>Tap the lightning bolt button to earn your first PokéCoins through manual catching effort.</li>
+<li>Buy a <strong>Great Ball</strong> (15 PokéCoins) for +1 coin/sec—your first reliable capture tool.</li>
+<li>Keep clicking while your Great Balls work in the background to accelerate your income.</li>
+<li>At 100 PokéCoins, purchase a <strong>Pokédex Upgrade</strong> for +5/sec, expanding your cataloging efficiency.</li>
+<li>Earn your first <strong>Gym Badge</strong> at 500 PokéCoins for +20/sec, proving your trainer worth.</li>
+<li>Level up <strong>Click Power</strong> to make each tap worth more PokéCoins as you progress.</li>
+<li>Unlock <strong>Legendary Hunt</strong> at 2,500 PokéCoins for +100/sec—chase mythical profits.</li>
+<li>Achieve <strong>Pokemon Master</strong> status at 15,000 PokéCoins for +500/sec and reign supreme.</li>
+<li>Use Save to protect your trainer journey across browser sessions.</li>
+<li>Build click combos for Critical Hits, and press SPACE to catch PokéCoins faster!</li>
             </ol>
          </section>
 
          <section class="section">
-            <h2>Trainer-shaped games elsewhere on this site</h2>
-            <p>If you want more creature-collector window dressing without pretending this HTML is Pokémon Bank, skim
-               <a href="/cookie-clicker/">Cookie Clicker</a> or <a href="/earth-clicker/">Earth Clicker</a> afterward—different jokes, identical
-               macro loop, so you get a palate cleanser without reinstalling emulation tools.</p>
+            <h2>Strategy Guide</h2>
+            <p>New trainers often make the mistake of hoarding PokéCoins for expensive upgrades while ignoring cheap Great Balls. Remember: every Great Ball pays for itself in 15 seconds and generates pure profit after that. In the opening minutes, buy Great Balls whenever you can afford them. The compound effect of multiple +1/sec generators adds up faster than you might expect.</p>
+<p>The Gym Badge tier (+20/sec) is your first major power spike. Before unlocking it, ensure you have at least 5-8 Great Balls and 2-3 Pokédex Upgrades. This income foundation means the 500 PokéCoin cost for Gym Badge will not bankrupt your passive earnings. After purchasing your first Gym Badge, your per-second income should jump enough to make the next tiers accessible within minutes rather than hours.</p>
+<p>Legendary Hunt (+100/sec) and Pokemon Master (+500/sec) are expensive but transformative. When approaching these purchases, calculate your "time to purchase" by dividing the cost by your current per-second income. If it will take more than 10 minutes, invest in Click Power or lower-tier duplicates first. The goal is minimizing downtime between major upgrades.</p>
+<p>The optimal endgame strategy involves maintaining a diverse portfolio of all upgrade tiers rather than maxing just one. Because each duplicate costs 1.15x more than the last, spreading purchases across tiers keeps the marginal cost low while maximizing total income. Check the progress bar to identify which upgrade offers the best value at any moment.</p>
          </section>
 
-         <div style="text-align: center;">
-            <a href="/" class="back-btn">Back to Home</a>
-         </div>
+         <section class="section faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                  <h3>Is Pokemon Clicker an official Nintendo game?</h3>
+                  <div class="faq-answer"><p>No. Pokemon Clicker is an unofficial fan-made clicker game that uses Pokemon-themed naming and concepts. It is not affiliated with Nintendo, Game Freak, or The Pokemon Company. There is no actual Pokemon battling, catching, or trading in this game—just idle clicker math with thematic names.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>How do PokéCoins work?</h3>
+                  <div class="faq-answer"><p>PokéCoins are the abstract currency of Pokemon Clicker. You earn them by clicking the lightning bolt button or from passive upgrades like Great Balls and Gym Badges. They exist only within this browser game and have no connection to Pokemon GO's real-world premium currency.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>What is the fastest way to become a Pokemon Master?</h3>
+                  <div class="faq-answer"><p>The fastest path is: buy Great Balls until you have 5-8, then save for Pokédex Upgrade. Continue balancing cheap duplicates with saving for the next tier. Once you unlock Legendary Hunt, focus on stacking those before pushing for Pokemon Master. Use Click Power strategically to burst through cost walls.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>Can I play on my phone?</h3>
+                  <div class="faq-answer"><p>Absolutely! Pokemon Clicker works on all mobile browsers. Touch the lightning bolt to earn PokéCoins, and swipe through the upgrades panel to manage your investments. The game is fully responsive.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>How do I save my progress?</h3>
+                  <div class="faq-answer"><p>Press the Save button or let the auto-save feature (every 30 seconds) handle it. Your trainer progress stores locally in your browser. Clearing site data will reset your journey.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>What is a Critical Hit in Pokemon Clicker?</h3>
+                  <div class="faq-answer"><p>When you achieve a 10-click combo (clicking at least once every 2 seconds), your next click triggers a Critical Hit that awards double PokéCoins and shows a dramatic popup!</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>Is there a maximum level?</h3>
+                  <div class="faq-answer"><p>There is no level cap. Click Power scales exponentially (doubling each level), and you can own unlimited copies of each upgrade tier. Dedicated trainers can reach billions or trillions of PokéCoins.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>How is this different from Pokemon GO?</h3>
+                  <div class="faq-answer"><p>Pokemon GO is an augmented reality mobile game with real-world exploration, creature catching, and battling. Pokemon Clicker is a static browser idle game focused on number accumulation and upgrade purchasing. They share thematic inspiration but are completely different genres.</p></div>
+               </div>
+         </section>
+
+         <section class="section">
+            <h2>Why Play Pokemon Clicker?</h2>
+            <p>Pokemon Clicker leverages decades of nostalgic attachment to one of gaming's most beloved franchises. Even without actual Pokemon sprites or battles, the thematic language of Great Balls, Gym Badges, and Legendary Hunts triggers positive associations for millions of players. The idle format is perfect for Pokemon fans who want a low-commitment way to engage with franchise iconography during work breaks or commutes.</p>
+<p>Compared to generic clickers, Pokemon Clicker offers an emotional hook that transcends pure mathematics. While <a href="/stimulation-clicker/">Stimulation Clicker</a> focuses on sensory overload and <a href="/coin-clicker/">Coin Clicker</a> explores medieval minting, Pokemon Clicker tells a story of trainer growth that millions already know and love. The red lightning-bolt aesthetic and familiar upgrade names create an experience that feels personal rather than purely mechanical.</p>
+         </section>
+
+         <section class="section">
+            <h2>Did You Know? Fun Facts</h2>
+            <ul class="fun-facts-list">
+               <li>The Pokemon franchise is the highest-grossing media franchise of all time, earning over $100 billion across games, cards, movies, and merchandise since 1996.</li>
+<li>The first Pokemon games (Red and Green in Japan, Red and Blue internationally) featured only 151 creatures. The current total exceeds 1,000 across nine generations.</li>
+<li>Pokemon Clicker's upgrade ladder mirrors actual trainer progression: starting with basic capture tools (Great Ball), cataloging (Pokédex), earning recognition (Gym Badge), chasing rare finds (Legendary Hunt), and achieving mastery (Pokemon Master).</li>
+<li>The lightning bolt emoji (⚡) used as Pokemon Clicker's primary symbol references Pikachu, the franchise mascot whose electric-type attacks use the same iconography.</li>
+<li>Clicker games as a genre originated with Cow Clicker in 2010 and exploded with Cookie Clicker in 2013, proving that simple accumulation mechanics can support wildly successful games.</li>
+            </ul>
+         </section>
+
+         <section class="section">
+            <h2>Related Clicker Games</h2>
+            <p>If you enjoy themed clickers, check out <a href="/money-clicker/">Money Clicker</a> for wealth-building gameplay, <a href="/sprunki-clicker/">Sprunki Clicker</a> for music-themed progression, or <a href="/earth-clicker/">Earth Clicker</a> for civilization-building with scientific depth.</p>
+         </section>
+
+
 
       </article>
-      <!-- Related Games Section -->
+
+       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
          <p class="related-games-subtitle">Discover more free online clicker games to play</p>
@@ -1189,6 +1373,150 @@
 
          // Auto-save every 30s
          setInterval(saveGame, 30000);
+
+
+         // ===== NEW FEATURES =====
+         let comboCount = 0;
+         let lastClickTime = 0;
+         let soundEnabled = true;
+         let milestonesReached = {};
+
+         const comboDisplay = document.getElementById('comboDisplay');
+         const progressBarFill = document.getElementById('progressBarFill');
+         const milestoneBanner = document.getElementById('milestoneBanner');
+         const soundToggle = document.getElementById('soundToggle');
+
+         soundToggle.addEventListener('click', () => {
+            soundEnabled = !soundEnabled;
+            soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+         });
+
+         function updateCombo() {
+            const now = Date.now();
+            if (now - lastClickTime < 2000) {
+               comboCount++;
+            } else {
+               comboCount = 1;
+            }
+            lastClickTime = now;
+            if (comboCount >= 10) {
+               comboDisplay.textContent = '🔥 COMBO x' + comboCount + '!';
+               comboDisplay.style.color = '#ff4757';
+            } else if (comboCount > 1) {
+               comboDisplay.textContent = 'Combo x' + comboCount;
+               comboDisplay.style.color = '#dc2626';
+            } else {
+               comboDisplay.textContent = '';
+            }
+         }
+
+         function showCriticalHit(x, y) {
+            const el = document.createElement('div');
+            el.className = 'critical-popup';
+            el.textContent = 'CRITICAL HIT! +' + formatNum(clickPower * 2);
+            el.style.left = x + 'px';
+            el.style.top = y + 'px';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 900);
+         }
+
+         function updateProgressBar() {
+            let nextCost = Infinity;
+            for (let i = 0; i < UPGRADES.length; i++) {
+               const cost = getCost(UPGRADES[i].baseCost, upgradeOwned[i]);
+               if (cost < nextCost) nextCost = cost;
+            }
+            if (clickPowerCost < nextCost) nextCost = clickPowerCost;
+            let pct = Math.min(100, (score / nextCost) * 100);
+            progressBarFill.style.width = pct + '%';
+         }
+
+         function checkMilestones() {
+            const milestones = [1000, 10000, 100000, 1000000];
+            for (let m of milestones) {
+               if (score >= m && !milestonesReached[m]) {
+                  milestonesReached[m] = true;
+                  showMilestone('🎉 ' + formatNum(m) + ' PokéCoins Reached!');
+               }
+            }
+         }
+
+         function showMilestone(text) {
+            milestoneBanner.textContent = text;
+            milestoneBanner.classList.add('show');
+            setTimeout(() => milestoneBanner.classList.remove('show'), 2500);
+         }
+
+         function spawnParticle() {
+            const particles = ['⚡', '✨', '⭐', '💫'];
+            const el = document.createElement('div');
+            el.className = 'particle';
+            el.textContent = particles[Math.floor(Math.random() * particles.length)];
+            const rect = clickArea.getBoundingClientRect();
+            el.style.left = (rect.width * 0.2 + Math.random() * rect.width * 0.6) + 'px';
+            el.style.top = (rect.height * 0.3 + Math.random() * rect.height * 0.3) + 'px';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 2500);
+         }
+
+         // Modify doClick to include new features
+         const _origDoClick = doClick;
+         doClick = function(e) {
+            let multiplier = 1;
+            updateCombo();
+            if (comboCount >= 10 && comboCount % 10 === 0) {
+               multiplier = 2;
+            }
+            score += clickPower * multiplier;
+            totalEarned += clickPower * multiplier;
+
+            clickBtn.classList.add('pressed');
+            setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+
+            const rect = clickArea.getBoundingClientRect();
+            let cx, cy;
+            if (e && e.clientX) {
+               cx = e.clientX - rect.left;
+               cy = e.clientY - rect.top;
+            } else {
+               cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+               cy = rect.height / 2 - 30;
+            }
+            if (multiplier === 2) {
+               showCriticalHit(cx, cy);
+            }
+            showClickFloat(cx, cy);
+            checkMilestones();
+            updateProgressBar();
+            render();
+         };
+
+         // Re-attach click listener to use new doClick
+         clickBtn.removeEventListener('click', _origDoClick);
+         clickBtn.addEventListener('click', doClick);
+
+         // Modify render to include progress bar update
+         const _origRender = render;
+         render = function() {
+            _origRender();
+            updateProgressBar();
+         };
+
+         // Particle spawn interval (max 3 visible at a time)
+         setInterval(() => {
+            if (document.querySelectorAll('.particle').length < 3) {
+               spawnParticle();
+            }
+         }, 4000);
+
+         // FAQ toggle
+         document.querySelectorAll('.faq-item h3').forEach(h3 => {
+            h3.addEventListener('click', () => {
+               h3.parentElement.classList.toggle('open');
+            });
+         });
 
          // Init
          loadGame();

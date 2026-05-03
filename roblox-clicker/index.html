@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Roblox Clicker - Play Free Online</title>
+   <title>Roblox Clicker - Free Online Idle Game | Build Your Roblox Empire</title>
    <meta name="description"
       content="Roblox Clicker idle: Robux Points/sec Starter Pack→Roblox Empire, Click Power—not Roblox platform, stages, or prestige—unofficial fan theme in browser.">
    <meta name="keywords"
@@ -752,6 +752,172 @@
          box-shadow: 0 4px 12px rgba(120, 56, 243, 0.15);
          color: #3b0764;
       }
+      /* Combo System */
+      .combo-display {
+         margin-top: 6px;
+         font-size: 0.9rem;
+         font-weight: 700;
+         color: #dc2626;
+         opacity: 0;
+         transition: opacity 0.2s;
+         min-height: 1.2em;
+      }
+      .combo-display.active {
+         opacity: 1;
+      }
+
+      /* Critical Hit Popup */
+      .critical-popup {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1.5rem;
+         font-weight: 800;
+         color: #dc2626;
+         text-shadow: 0 2px 8px rgba(0,0,0,0.12);
+         animation: criticalPop 0.8s ease-out forwards;
+         z-index: 20;
+         white-space: nowrap;
+      }
+      @keyframes criticalPop {
+         0% { opacity: 1; transform: translateY(0) scale(0.6); }
+         50% { transform: translateY(-40px) scale(1.2); }
+         100% { opacity: 0; transform: translateY(-80px) scale(1); }
+      }
+
+      /* Progress Bar */
+      .progress-bar-container {
+         width: 80%;
+         max-width: 220px;
+         height: 10px;
+         background: #e5e7eb;
+         border-radius: 5px;
+         margin-top: 10px;
+         overflow: hidden;
+      }
+      .progress-bar-fill {
+         height: 100%;
+         background: linear-gradient(90deg, #dc2626, #f87171);
+         border-radius: 5px;
+         transition: width 0.3s ease;
+         width: 0%;
+      }
+
+      /* Floating Particles */
+      .particle {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1rem;
+         animation: particleFloat 2s ease-out forwards;
+         z-index: 5;
+      }
+      @keyframes particleFloat {
+         0% { opacity: 1; transform: translateY(0) scale(0.8); }
+         100% { opacity: 0; transform: translateY(-120px) scale(1.2); }
+      }
+
+      /* Milestone Banner */
+      .milestone-banner {
+         position: fixed;
+         top: 80px;
+         left: 50%;
+         transform: translateX(-50%) translateY(-20px);
+         background: linear-gradient(135deg, #dc2626, #991b1b);
+         color: white;
+         padding: 14px 32px;
+         border-radius: 30px;
+         font-weight: 700;
+         font-size: 1.1rem;
+         box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+         opacity: 0;
+         transition: all 0.5s ease;
+         z-index: 2000;
+         pointer-events: none;
+         text-align: center;
+      }
+      .milestone-banner.show {
+         opacity: 1;
+         transform: translateX(-50%) translateY(0);
+      }
+
+      /* FAQ Section */
+      .faq-section h3 {
+         color: #7838f3;
+         margin: 16px 0 0;
+         font-size: 1.1rem;
+         cursor: pointer;
+         padding: 12px 16px;
+         background: #f8f9fe;
+         border-radius: 8px;
+         transition: all 0.2s ease;
+         position: relative;
+         font-weight: 600;
+      }
+      .faq-section h3:hover {
+         background: #ede5ff;
+         transform: translateX(4px);
+      }
+      .faq-section h3::after {
+         content: '+';
+         position: absolute;
+         right: 16px;
+         top: 50%;
+         transform: translateY(-50%);
+         font-weight: 700;
+         color: #7838f3;
+         font-size: 1.2rem;
+      }
+      .faq-section h3.open::after {
+         content: '−';
+      }
+      .faq-section p {
+         display: none;
+         padding: 12px 16px;
+         margin: 0 0 10px;
+         color: #555;
+         line-height: 1.7;
+         background: #fff;
+         border-radius: 0 0 8px 8px;
+         border: 1px solid #f0f0f0;
+         border-top: none;
+      }
+      .faq-section p.open {
+         display: block;
+      }
+
+      /* Sound Toggle */
+      .sound-toggle {
+         background: rgba(255,255,255,0.25);
+         border: none;
+         font-size: 1.2rem;
+         cursor: pointer;
+         color: white;
+         padding: 4px 8px;
+         line-height: 1;
+         border-radius: 8px;
+         transition: all 0.2s;
+      }
+      .sound-toggle:hover {
+         background: rgba(255,255,255,0.4);
+      }
+
+      /* Keyboard hint */
+      .keyboard-hint {
+         text-align: center;
+         font-size: 0.8rem;
+         color: #999;
+         margin-top: 10px;
+         font-weight: 500;
+      }
+
+      /* Internal links styling consistency */
+      .article-container a {
+         color: #7838f3;
+         text-decoration: underline;
+         font-weight: 600;
+      }
+      .article-container a:hover {
+         color: #5b21b6;
+      }
    </style>
 </head>
 
@@ -780,6 +946,7 @@
                <span class="game-stat-pill" id="gStatTotal">0 Robux Points</span>
                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
             </div>
+            <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
@@ -873,62 +1040,76 @@
       <!-- ===== ARTICLE CONTENT ===== -->
       <article class="article-container">
 
+          <div class="intro">
+             <p><strong>Roblox Clicker</strong> is a free online idle clicker game that lets you build your own virtual Roblox empire from scratch. Starting with nothing but a clicking finger, you generate <strong>Robux Points</strong> by tapping the iconic green block, then reinvest your earnings into powerful upgrades like Starter Packs, Game Passes, and eventually a full-blown Roblox Empire. The game captures the thrill of progression and exponential growth that makes idle games so addictive.</p>
+             <p>For those unfamiliar, <strong>Roblox</strong> is one of the world's largest online platforms, launched in 2006, where millions of users create and play games built by a global community of developers. It has become a cultural phenomenon, especially among younger audiences, with its own economy centered around Robux currency. Our Roblox Clicker draws inspiration from this vibrant ecosystem, translating the excitement of Roblox success into an accessible browser-based incremental experience.</p>
+             <p>Idle and clicker games have exploded in popularity because they deliver a uniquely satisfying loop: immediate feedback from each click, visible progress through upgrade purchases, and the dopamine rush of watching numbers grow exponentially. Whether you have five minutes or five hours, Roblox Clicker scales to your schedule. The best part? This is entirely a <strong>free browser game with no download required</strong>. Just open the page and start building your empire instantly on desktop, tablet, or mobile.</p>
+             <p>Unlike complex simulation games that demand tutorials and steep learning curves, Roblox Clicker offers instant gratification. Yet beneath its simple surface lies surprising strategic depth. Choosing when to buy passive upgrades versus boosting your click power can dramatically alter your progression speed. Will you focus on rapid manual clicking to snowball early, or invest heavily in passive income and let the game work for you while AFK?</p>
+          </div>
 
-         <div class="intro">
-            <p><strong>Roblox Clicker</strong> is indie fan riffing: the HUD reads <strong>Robux Points</strong> for flavor; tiers borrow
-               Starter Pack slang and “Empire” memes—none of this syncs Creator Dashboard payouts, badges, moderation tickets, or DevEx
-               requests.</p>
-            <p>You are clicking inside a mirrored lobby poster, not the Roblox.exe client—no bricks to place, no Lua toolbox, no
-               friends list, no private server links. <strong>Save</strong> keeps the joke locally; <strong>Reset</strong> wipes the studio
-               whiteboard.</p>
-         </div>
-         <section class="section">
-            <h2>Greenroom props that map to +points/sec</h2>
-            <div class="feature-box">
-               <h3>Studio comedy lineup</h3>
-               <ul>
-                  <li><strong>Starter Pack</strong> — +1/sec; “I bought the smile” starter-joke.</li>
-                  <li><strong>Game Pass</strong> — +5/sec; recurring revenue fantasy without Revenue tab.</li>
-                  <li><strong>Dev Console</strong> — +20/sec; script kiddie aura, zero eval() here.</li>
-                  <li><strong>Popular Game</strong> — +100/sec; front-page daydream for chart-chasers.</li>
-                  <li><strong>Roblox Empire</strong> — +500/sec; pretend you IPO’d the plaza obby.</li>
-               </ul>
-            </div>
-         </section>
-         <section class="section">
-            <h2>Jam session clicks vs unattended simulators</h2>
-            <p>Use <strong>Click Power</strong> when you personally want to brute-force thresholds—like cramming feature polish before demo
-               day. Stack <strong>Popular Game</strong> / Empire rows before you walk away so passive points mimic players grinding while
-               AFK—you just will not hear chat spam.</p>
-         </section>
-         <section class="section">
-            <h2>Save data on this CDN only</h2>
-            <p><strong>Save</strong> stores JSON under <code>roblox_clicker_save</code>. Roblox Corp never sees these numbers unless you screenshot
-               them manually.</p>
-         </section>
-         <section class="section">
-            <h2>Studio sprint checklist</h2>
-            <ol class="tips-list">
-               <li><strong>Starter Pack passives ASAP</strong> so totals climb before fantasizing Empire.</li>
-               <li><strong>Game Pass copies</strong> when breadth still beats greedy Dev Console leaps.</li>
-               <li><strong>Dev Console once mid tiers feel cramped.</strong></li>
-               <li><strong>Popular Game tiers before tab-AFK marathons.</strong></li>
-               <li><strong>Roblox Empire spam</strong> for pretend-conglomerate scores.</li>
-               <li><strong>Click Power</strong> when manual still wins races to the next threshold.</li>
-            </ol>
-         </section>
-         <section class="section">
-            <h2>Robux-shaped cousin</h2>
-            <p>Need currency cosplay that pretends to be spendable gems? Peek <a href="/robux-clicker/">Robux Clicker</a> afterward—different
-               nouns, same loop.</p>
-         </section>
+          <section class="section">
+             <h2>How to Play Roblox Clicker</h2>
+             <ol class="tips-list">
+                <li><strong>Click the Green Block:</strong> Tap or click the large 🟩 button to earn Robux Points. Each click adds to your total score.</li>
+                <li><strong>Build Passive Income:</strong> Purchase the <strong>Starter Pack</strong> upgrade to earn +1 Robux Point per second automatically, even when you are not clicking.</li>
+                <li><strong>Upgrade Click Power:</strong> Invest in <strong>Click Power</strong> to double (and eventually multiply) the amount you earn per click. This is crucial for active play sessions.</li>
+                <li><strong>Expand Your Studio:</strong> Unlock <strong>Game Pass</strong> (+5/sec) and <strong>Dev Console</strong> (+20/sec) to accelerate your mid-game growth and reach bigger milestones faster.</li>
+                <li><strong>Dominate the Charts:</strong> Save up for <strong>Popular Game</strong> (+100/sec) and <strong>Roblox Empire</strong> (+500/sec) to generate massive passive income and watch your score explode.</li>
+                <li><strong>Use Keyboard Shortcuts:</strong> Press the <strong>SPACE bar</strong> to click without using your mouse. Build combos by clicking rapidly within 2 seconds to trigger <strong>Critical Hits</strong> for bonus points!</li>
+             </ol>
+          </section>
 
-         <div style="text-align: center;">
-            <a href="/" class="back-btn">Back to Home</a>
-         </div>
+          <section class="section">
+             <h2>Roblox Clicker Strategy Guide</h2>
+             <p><strong>Early Game Snowball:</strong> Your first priority should always be buying a Starter Pack as soon as you can afford it. Passive income is the engine that drives idle games. Once you have one or two Starter Packs, alternate between Click Power upgrades and more passive generators. The key early on is to never let your points sit idle; if you can afford an upgrade, buy it immediately. Every new purchase compounds your future earnings.</p>
+             <p><strong>Mid-Game Transition:</strong> Around the 500-2,000 point mark, you will face a decision: continue buying cheaper lower-tier upgrades or save for the Dev Console and Popular Game. Generally, if a cheaper upgrade pays for itself in under 30 seconds, it is worth buying. Otherwise, save for the next tier. Do not neglect Click Power during this phase. A high click multiplier makes manual grinding during active sessions incredibly effective for bridging gaps between expensive purchases.</p>
+             <p><strong>Late Game Optimization:</strong> Once you unlock Roblox Empire, your passive income becomes astronomical. At this stage, the game shifts from active clicking to empire management. Stack multiple Empire rows and let the points roll in while you are away. When you return, dump your accumulated wealth into more Empires or further Click Power levels. Remember to hit the Save button periodically, or let the auto-save feature handle it every 30 seconds.</p>
+          </section>
 
-      </article>
-      <!-- Related Games Section -->
+          <section class="section faq-section">
+             <h2>Frequently Asked Questions</h2>
+             <h3>What is Roblox Clicker?</h3>
+             <p>Roblox Clicker is a free browser-based idle clicker game themed around the popular Roblox platform. Players earn Robux Points by clicking and purchasing upgrades to generate passive income, gradually building from a humble Starter Pack to a massive Roblox Empire.</p>
+             <h3>Is this the official Roblox game?</h3>
+             <p>No, this is an unofficial fan-themed clicker game. It is not affiliated with Roblox Corporation and does not connect to real Robux, accounts, or the Roblox platform. It is purely a fun incremental experience for fans.</p>
+             <h3>How do I save my progress?</h3>
+             <p>Click the 💾 Save button to manually store your progress in your browser's local storage. The game also auto-saves every 30 seconds. Your data stays on your device and is not uploaded to any server.</p>
+             <h3>What are the best upgrades to buy first?</h3>
+             <p>Always start with the Starter Pack for passive income. Then balance Click Power upgrades with the next available tier. A good rule of thumb is to buy the most expensive upgrade you can afford, unless a cheaper one provides a better points-per-second return on investment.</p>
+             <h3>Can I play Roblox Clicker on mobile?</h3>
+             <p>Yes! The game is fully responsive and works on smartphones and tablets. Simply tap the click button to earn points. Touch interactions are optimized for mobile screens.</p>
+             <h3>How does the combo system work?</h3>
+             <p>Every time you click within 2 seconds of your previous click, your combo counter increases. When you reach a 10x combo (and every 10 clicks after), you score a <strong>Critical Hit</strong> that doubles the points for that click. Keep clicking rapidly to maintain your combo streak!</p>
+          </section>
+
+          <section class="section">
+             <h2>Why Play Roblox Clicker?</h2>
+             <p>Roblox Clicker taps into the core psychology that makes idle games irresistible: the Zeigarnik effect, where unfinished goals compel us to keep playing, and variable reinforcement, where each upgrade purchase delivers a satisfying burst of progress. Unlike competitive games that can induce stress, clickers provide a low-stakes, meditative experience. There is no timer pressuring you, no opponent defeating you, just the calm accumulation of ever-larger numbers.</p>
+             <p>Compared to generic clickers, Roblox Clicker stands out through its thematic cohesion. Every upgrade name resonates with Roblox culture, from Game Passes to Dev Consoles, making progression feel like a genuine journey through the platform's ecosystem. If you enjoy <a href="/robux-clicker/">Robux Clicker</a> or <a href="/minecraft-clicker/">Minecraft Clicker</a>, you will find a familiar yet distinct flavor here. And when you want a break from gaming themes, try <a href="/pizza-clicker/">Pizza Clicker</a> for a culinary twist or <a href="/cookie-clicker/">Cookie Clicker</a> for the classic experience.</p>
+          </section>
+
+          <section class="section">
+             <h2>Did You Know? Roblox Fun Facts</h2>
+             <div class="highlight-box">
+                <ul>
+                   <li>Roblox was founded in 2004 by David Baszucki and Erik Cassel, originally under the name DynaBlocks.</li>
+                   <li>As of 2026, Roblox boasts over 80 million daily active users worldwide, making it one of the largest gaming platforms on Earth.</li>
+                   <li>Top Roblox developers earn millions of real dollars annually through the platform's Developer Exchange program.</li>
+                   <li>The most popular Roblox games have been played billions of times, with titles like Adopt Me! and Bloxburg becoming household names.</li>
+                   <li>Roblox hosts over 40 million user-created experiences, ranging from obstacle courses (obbies) to complex role-playing worlds.</li>
+                </ul>
+             </div>
+          </section>
+
+          <div style="text-align: center;">
+             <a href="/" class="back-btn">Back to Home</a>
+          </div>
+
+       </article>
+
+       <div class="milestone-banner" id="milestoneBanner">Milestone Reached!</div>
+
+       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
          <p class="related-games-subtitle">Discover more free online clicker games to play</p>
@@ -994,6 +1175,28 @@
          let perSecond = 0;
          let upgradeOwned = UPGRADES.map(() => 0);
 
+         // Combo system
+         let lastClickTime = 0;
+         let comboCount = 0;
+         const COMBO_WINDOW = 2000;
+         const comboDisplay = document.getElementById('comboDisplay');
+
+         // Sound toggle
+         let soundOn = true;
+         const soundToggle = document.getElementById('soundToggle');
+         soundToggle.addEventListener('click', () => {
+            soundOn = !soundOn;
+            soundToggle.textContent = soundOn ? '🔊' : '🔇';
+         });
+
+         // Progress bar
+         const progressBarFill = document.getElementById('progressBarFill');
+
+         // Milestones
+         const milestones = [1000, 10000, 100000, 1000000];
+         let reachedMilestones = new Set();
+         const milestoneBanner = document.getElementById('milestoneBanner');
+
          // DOM
          const scoreNum = document.getElementById('scoreNum');
          const perSecDisplay = document.getElementById('perSecDisplay');
@@ -1014,6 +1217,36 @@
          function getCost(baseC, owned) {
             return Math.floor(baseC * Math.pow(COST_SCALE, owned));
          }
+
+         function showCriticalPopup() {
+            const el = document.createElement('div');
+            el.className = 'critical-popup';
+            el.textContent = 'CRITICAL HIT!';
+            const rect = clickArea.getBoundingClientRect();
+            el.style.left = (rect.width/2 - 60) + 'px';
+            el.style.top = (rect.height/2 - 60) + 'px';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 800);
+         }
+
+         function showMilestoneBanner(text) {
+            milestoneBanner.textContent = 'Milestone Reached! ' + text + ' Robux Points';
+            milestoneBanner.classList.add('show');
+            setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
+         }
+
+         // Particles
+         setInterval(() => {
+            if (document.hidden) return;
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.textContent = ['🟩', '💎', '⭐', '🎮'][Math.floor(Math.random()*4)];
+            const rect = clickArea.getBoundingClientRect();
+            p.style.left = (20 + Math.random() * (rect.width - 40)) + 'px';
+            p.style.top = (rect.height - 30) + 'px';
+            clickArea.appendChild(p);
+            setTimeout(() => p.remove(), 2000);
+         }, 3500);
 
          function recalcPerSecond() {
             perSecond = 0;
@@ -1041,6 +1274,24 @@
                }
             });
 
+            // Progress bar to next affordable upgrade
+            let nextCost = Infinity;
+            UPGRADES.forEach((u, i) => {
+               const c = getCost(u.baseCost, upgradeOwned[i]);
+               if (c < nextCost) nextCost = c;
+            });
+            if (clickPowerCost < nextCost) nextCost = clickPowerCost;
+            let progress = Math.min(100, (score / nextCost) * 100);
+            progressBarFill.style.width = progress + '%';
+
+            // Milestones
+            milestones.forEach(m => {
+               if (score >= m && !reachedMilestones.has(m)) {
+                  reachedMilestones.add(m);
+                  showMilestoneBanner(formatNum(m));
+               }
+            });
+
             // Click power upgrade
             const cpCard = document.getElementById('upgClickPower');
             document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
@@ -1064,8 +1315,31 @@
          }
 
          function doClick(e) {
-            score += clickPower;
-            totalEarned += clickPower;
+            let now = Date.now();
+            if (now - lastClickTime <= COMBO_WINDOW) {
+               comboCount++;
+            } else {
+               comboCount = 1;
+            }
+            lastClickTime = now;
+
+            let earned = clickPower;
+            if (comboCount >= 10 && comboCount % 10 === 0) {
+               earned *= 2;
+               showCriticalPopup();
+            }
+
+            score += earned;
+            totalEarned += earned;
+
+            if (comboCount > 1) {
+               comboDisplay.textContent = comboCount + 'x COMBO!';
+               comboDisplay.classList.add('active');
+               clearTimeout(comboDisplay._t);
+               comboDisplay._t = setTimeout(() => comboDisplay.classList.remove('active'), 1500);
+            } else {
+               comboDisplay.classList.remove('active');
+            }
 
             clickBtn.classList.add('pressed');
             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
@@ -1133,7 +1407,7 @@
 
          // Save / Load
          function saveGame() {
-            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned };
+            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, reachedMilestones: [...reachedMilestones] };
             try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
          }
 
@@ -1148,6 +1422,7 @@
                   clickPowerLevel = data.clickPowerLevel || 1;
                   clickPowerCost = data.clickPowerCost || 50;
                   upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                  if (data.reachedMilestones) reachedMilestones = new Set(data.reachedMilestones);
                   recalcPerSecond();
                }
             } catch (e) { }
@@ -1186,6 +1461,16 @@
       menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
       document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
       document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+   </script>
+
+   <script>
+      // FAQ Toggle
+      document.querySelectorAll('.faq-section h3').forEach(q => {
+         q.addEventListener('click', () => {
+            q.classList.toggle('open');
+            q.nextElementSibling.classList.toggle('open');
+         });
+      });
    </script>
 
    <!-- Site Footer -->

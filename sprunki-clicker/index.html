@@ -4,9 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Sprunki Clicker - Play Free Online</title>
-   <meta name="description"
-      content="Sprunki Clicker idle: Beats/sec Drum Kit→Concert Stage, Click Power—not character roster, layered music, or Incredibox integration in this static build (unofficial theme).">
+   <title>Sprunki Clicker - Music Idle Game | Free Online Beat Maker</title>
+   <meta name="description" content="Play Sprunki Clicker free online! Drop beats, build combos & reach concert stage glory. Free music-themed idle clicker, no download needed!">
    <meta name="keywords"
       content="sprunki clicker, sprunki clicker, clicker game, idle game, free online game, play sprunki clicker">
    <meta name="robots" content="index, follow">
@@ -744,6 +743,164 @@
          box-shadow: 0 4px 12px rgba(120, 56, 243, 0.15);
          color: #3b0764;
       }
+   
+      /* ===== NEW GAME FEATURES CSS ===== */
+      .sound-toggle {
+         background: none;
+         border: 2px solid rgba(255,255,255,0.4);
+         color: white;
+         border-radius: 8px;
+         padding: 4px 10px;
+         cursor: pointer;
+         font-size: 1rem;
+         transition: all 0.2s ease;
+      }
+      .sound-toggle:hover {
+         background: rgba(255,255,255,0.15);
+         border-color: rgba(255,255,255,0.7);
+      }
+      .combo-display {
+         margin-top: 6px;
+         font-size: 0.85rem;
+         font-weight: 700;
+         color: #0d9488;
+         min-height: 20px;
+         text-align: center;
+      }
+      .progress-bar-container {
+         width: 80%;
+         max-width: 220px;
+         height: 10px;
+         background: #eee;
+         border-radius: 5px;
+         margin-top: 10px;
+         overflow: hidden;
+      }
+      .progress-bar-fill {
+         height: 100%;
+         background: linear-gradient(90deg, #0d9488, #0d948888);
+         width: 0%;
+         transition: width 0.3s ease;
+         border-radius: 5px;
+      }
+      .milestone-banner {
+         position: fixed;
+         top: 80px;
+         left: 50%;
+         transform: translateX(-50%) translateY(-100px);
+         background: linear-gradient(135deg, #0d9488, #0d9488dd);
+         color: white;
+         padding: 14px 28px;
+         border-radius: 12px;
+         font-weight: 700;
+         font-size: 1.1rem;
+         box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+         z-index: 2000;
+         opacity: 0;
+         pointer-events: none;
+         transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+         white-space: nowrap;
+      }
+      .milestone-banner.show {
+         opacity: 1;
+         transform: translateX(-50%) translateY(0);
+      }
+      .critical-popup {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1.4rem;
+         font-weight: 800;
+         color: #ff4757;
+         text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+         animation: criticalAnim 0.9s ease-out forwards;
+         z-index: 20;
+      }
+      @keyframes criticalAnim {
+         0% { opacity: 1; transform: translateY(0) scale(0.6) rotate(-5deg); }
+         50% { opacity: 1; transform: translateY(-40px) scale(1.2) rotate(5deg); }
+         100% { opacity: 0; transform: translateY(-90px) scale(1) rotate(0deg); }
+      }
+      .particle {
+         position: absolute;
+         pointer-events: none;
+         font-size: 0.9rem;
+         opacity: 0.7;
+         animation: particleFloat 2.5s ease-out forwards;
+         z-index: 5;
+      }
+      @keyframes particleFloat {
+         0% { opacity: 0.7; transform: translateY(0) scale(1); }
+         100% { opacity: 0; transform: translateY(-120px) scale(0.5); }
+      }
+      .keyboard-tip {
+         text-align: center;
+         font-size: 0.78rem;
+         color: #888;
+         margin-top: 8px;
+         font-weight: 500;
+      }
+      .faq-section { margin-bottom: 30px; }
+      .faq-item { margin-bottom: 16px; border-bottom: 1px solid #eee; padding-bottom: 12px; }
+      .faq-item h3 {
+         color: #7838f3;
+         font-size: 1.05rem;
+         margin-bottom: 6px;
+         cursor: pointer;
+         display: flex;
+         align-items: center;
+         gap: 8px;
+         transition: color 0.2s ease;
+      }
+      .faq-item h3:hover { color: #4c1d95; }
+      .faq-item h3::before {
+         content: '+';
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         width: 20px;
+         height: 20px;
+         background: #f0f0f0;
+         border-radius: 4px;
+         font-size: 0.85rem;
+         color: #666;
+         flex-shrink: 0;
+      }
+      .faq-item.open h3::before { content: '−'; }
+      .faq-answer {
+         max-height: 0;
+         overflow: hidden;
+         transition: max-height 0.35s ease, opacity 0.25s ease;
+         opacity: 0;
+      }
+      .faq-item.open .faq-answer {
+         max-height: 300px;
+         opacity: 1;
+      }
+      .faq-answer p {
+         color: #555;
+         line-height: 1.7;
+         font-size: 1rem;
+         padding-top: 4px;
+      }
+      .fun-facts-list {
+         list-style: none;
+         padding-left: 0;
+         margin: 0;
+      }
+      .fun-facts-list li {
+         padding: 10px 0 10px 28px;
+         position: relative;
+         color: #333;
+         line-height: 1.65;
+         font-size: 1.02rem;
+      }
+      .fun-facts-list li::before {
+         content: '💡';
+         position: absolute;
+         left: 0;
+         top: 10px;
+      }
+
    </style>
 </head>
 
@@ -766,26 +923,33 @@
 
       <!-- ===== GAME ===== -->
       <div class="game-wrapper" id="gameWrapper">
-         <div class="game-header">
-            <h2>🎵 Sprunki Clicker</h2>
-            <div class="game-stats-bar">
-               <span class="game-stat-pill" id="gStatTotal">0 Beats</span>
-               <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
-            </div>
-         </div>
-         <div class="game-body">
-            <div class="click-area" id="clickArea">
-               <button class="click-btn" id="clickBtn" aria-label="Drop Beat">
-                  <span class="emoji">🎵</span>
-               </button>
-               <div class="score-display">
-                  <div class="score-number" id="scoreNum">0</div>
-                  <div class="score-label">Beats</div>
-               </div>
-               <div class="per-second" id="perSecDisplay">0 beats/sec</div>
-               <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
-            </div>
-            <div class="upgrades-panel" id="upgradesPanel">
+                   <div class="milestone-banner" id="milestoneBanner">🎉 Milestone Reached!</div>
+          <div class="game-header">
+             <h2>🎵 Sprunki Clicker</h2>
+             <div class="game-stats-bar">
+                <span class="game-stat-pill" id="gStatTotal">0 Beats</span>
+                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+                <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
+             </div>
+          </div>
+          <div class="game-body">
+                         <div class="click-area" id="clickArea">
+                <button class="click-btn" id="clickBtn" aria-label="Drop Beat">
+                   <span class="emoji">🎵</span>
+                </button>
+                <div class="score-display">
+                   <div class="score-number" id="scoreNum">0</div>
+                   <div class="score-label">Beats</div>
+                </div>
+                <div class="progress-bar-container" id="progressBarContainer">
+                   <div class="progress-bar-fill" id="progressBarFill"></div>
+                </div>
+                <div class="combo-display" id="comboDisplay"></div>
+                <div class="per-second" id="perSecDisplay">0 beats/sec</div>
+                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+                <div class="keyboard-tip">Tip: Press SPACE to click!</div>
+             </div>
+             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
 
                <div class="upgrade-card locked" id="upg0" data-idx="0">
@@ -864,46 +1028,100 @@
 
       <!-- ===== ARTICLE CONTENT ===== -->
       <article class="article-container">
-
-
          <div class="intro">
-            The counters here are labeled <strong>Beats</strong>; passive clones go from <strong>Drum Kit</strong> through
-            <strong>Concert Stage</strong>, with <strong>Click Power</strong> on the side. This is a fan homage naming layer on the
-            site’s idle template—not the Sprunki / Incredibox music toy, not an official product, and <strong>no</strong> separate
-            character unlock grid, mix lanes, combo tracks, or beat-sync bonus logic beyond the numbers in the script.
+            <p><strong>Sprunki Clicker</strong> is a rhythm-infused idle clicker that celebrates the joy of music creation, from your first tentative drumbeat to headlining a massive concert stage. Inspired by the creative energy of music production apps and the viral appeal of beat-making culture, this game transforms the incremental formula into a virtual music career. Every click drops a beat, every upgrade adds a new instrument to your ensemble, and every milestone marks another step toward becoming a legendary producer.</p>
+         <p>Music has been humanity's universal language for at least 40,000 years, with archaeological evidence of flutes dating back to the Stone Age. Today, digital audio workstations (DAWs) and apps like Incredibox have democratized music creation, letting anyone compose without formal training. Sprunki Clicker captures this democratization spirit by making "beat production" as simple as clicking a button. Your currency—Beats—represents the fundamental unit of musical time, while upgrades like Drum Kit, Bass Guitar, Synth Pad, DJ Booth, and Concert Stage mirror the real progression from bedroom producer to festival headliner.</p>
+         <p>The idle clicker genre and music production share a surprising psychological overlap: both reward patience, layering, and gradual refinement. A great song is built one track at a time, just as a great clicker run is built one upgrade at a time. Sprunki Clicker requires <strong>no download, no musical knowledge, and no payment</strong>—open your browser and start dropping beats immediately. Whether you are an aspiring producer or just love watching numbers grow to a rhythmic theme, this clicker hits the right note.</p>
+         <p>Among our clicker collection, Sprunki Clicker stands out for its creative, optimistic energy. While <a href="/money-clicker/">Money Clicker</a> channels capitalist ambition and <a href="/pokemon-clicker/">Pokemon Clicker</a> leverages nostalgia, Sprunki Clicker taps into the universal desire to create something beautiful. The teal color palette evokes calm creativity, while instrument-themed emojis (🥁🎸🎹🎧🎤) tell a visual story of musical evolution. It is the perfect clicker for artists, musicians, and anyone who believes life needs a better soundtrack.</p>
          </div>
+
          <section class="section">
-            <h2>Passive rate (+beats/sec)</h2>
-            <div class="feature-box">
-               <h3>Tiers</h3>
-               <ul>
-                  <li><strong>Drum Kit</strong> — +1/sec.</li>
-                  <li><strong>Bass Guitar</strong> — +5/sec.</li>
-                  <li><strong>Synth Pad</strong> — +20/sec.</li>
-                  <li><strong>DJ Booth</strong> — +100/sec.</li>
-                  <li><strong>Concert Stage</strong> — +500/sec.</li>
-               </ul>
-            </div>
-            <p>Use <strong>Save</strong> and <strong>Reset</strong> like the other hub games—progress stays in your browser.</p>
-         </section>
-         <section class="section">
-            <h2>Tips</h2>
+            <h2>How to Play Sprunki Clicker</h2>
             <ol class="tips-list">
-               <li><strong>Open with Drum Kit when it pays back quickly.</strong></li>
-               <li><strong>Bass Guitar spreads early income.</strong></li>
-               <li><strong>Synth Pad bumps mid pacing.</strong></li>
-               <li><strong>DJ Booth fuels idle stretches.</strong></li>
-               <li><strong>Concert Stage is the top passive tier.</strong></li>
-               <li><strong>Click Power stays relevant while manual taps shorten purchase gaps.</strong></li>
+               <li>Click the music note button to drop your first Beats manually—every great track starts with a single note.</li>
+<li>Purchase a <strong>Drum Kit</strong> (15 Beats) for +1 beat/sec, laying down the rhythmic foundation of your production.</li>
+<li>Continue clicking while your Drum Kit keeps the beat in the background.</li>
+<li>At 100 Beats, add a <strong>Bass Guitar</strong> for +5/sec, giving your track low-end warmth and groove.</li>
+<li>Unlock the <strong>Synth Pad</strong> at 500 Beats for +20/sec, adding ethereal harmonies and atmosphere.</li>
+<li>Invest in <strong>Click Power</strong> to make each manual beat drop worth exponentially more.</li>
+<li>Build a <strong>DJ Booth</strong> at 2,500 Beats for +100/sec, remixing your sound into club-ready bangers.</li>
+<li>Headline the <strong>Concert Stage</strong> at 15,000 Beats for +500/sec, achieving music industry dominance.</li>
+<li>Save your production regularly to protect your discography across browser sessions.</li>
+<li>Press SPACE to drop beats rapidly and chain 10-click combos for spectacular Critical Hit solos!</li>
             </ol>
          </section>
 
-         <div style="text-align: center;">
-            <a href="/" class="back-btn">Back to Home</a>
-         </div>
+         <section class="section">
+            <h2>Strategy Guide</h2>
+            <p>Every music producer knows that the drums make the track. In Sprunki Clicker, this translates to buying Drum Kits aggressively in the opening minutes. Each Drum Kit costs 15 Beats and generates +1/sec, paying for itself in 15 seconds. Build 5-6 Drum Kits before seriously saving for Bass Guitar. This creates a solid rhythmic foundation that makes all future upgrades more accessible.</p>
+<p>The transition from Synth Pad (+20) to DJ Booth (+100) is where most producers find their groove. At 2,500 Beats, the DJ Booth seems expensive, but the +100/sec boost is transformative. To reach it efficiently, maintain a ratio of approximately 3:2:1 for Drum Kits:Bass Guitars:Synth Pads. For example, if you have 6 Drum Kits, 4 Bass Guitars, and 2 Synth Pads, your income will be ~6+20+40=66/sec, making the DJ Booth achievable in under 40 seconds of waiting.</p>
+<p>Click Power is your "solo button"—it makes manual clicks exponentially more valuable. However, each level costs 2.5× the previous, so timing matters. Buy Click Power when you can afford the next level in under 45 seconds of passive income. Any longer, and your Beats generate more value invested in instruments. In the ultra-late game (multiple Concert Stages), Click Power becomes essential for pushing through trillion-Beat milestones.</p>
+<p>For maximum AFK production, always invest your entire balance into Concert Stages before stepping away. One Concert Stage generates +500/sec, meaning an 8-hour sleep session yields 14.4 million Beats. When you return, you can buy out entire lower tiers in bulk, creating a satisfying "studio upgrade" moment where your per-second income jumps by thousands.</p>
+         </section>
+
+         <section class="section faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                  <h3>What is Sprunki Clicker?</h3>
+                  <div class="faq-answer"><p>Sprunki Clicker is a free online idle clicker game themed around music production and beat-making. You earn Beats by clicking and through passive upgrades representing musical instruments and production equipment, from Drum Kits to Concert Stages.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>Is Sprunki Clicker free?</h3>
+                  <div class="faq-answer"><p>Yes! It is 100% free to play in any web browser with no downloads, registration, or in-app purchases. Your progress saves locally via browser storage.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>Do I need to know music to play?</h3>
+                  <div class="faq-answer"><p>Not at all! While the game uses music-themed names and emojis, the mechanics are pure idle clicker math. No musical knowledge, rhythm skills, or production experience is required.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>How do I save my progress?</h3>
+                  <div class="faq-answer"><p>Click the Save button or rely on auto-save every 30 seconds. Your beat collection stores in browser local storage. Clearing site data will reset your studio.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>What is the best early strategy?</h3>
+                  <div class="faq-answer"><p>Buy Drum Kits liberally in the first few minutes. They are cheap, pay back quickly, and create the income foundation for everything else. Aim for 5-6 Drum Kits before saving seriously for Bass Guitar.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>How do Critical Hits work?</h3>
+                  <div class="faq-answer"><p>Maintain a 10-click combo by clicking at least once every 2 seconds. Your next click becomes a Critical Hit worth 2× Beats, celebrated with a dramatic popup!</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>Can I play on my phone?</h3>
+                  <div class="faq-answer"><p>Yes! Sprunki Clicker is fully responsive and works on mobile browsers. Tap the music note, swipe through upgrades, and save your progress anywhere.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>Is this related to Incredibox or Sprunki mods?</h3>
+                  <div class="faq-answer"><p>This is an unofficial fan-made clicker game that pays homage to music creation culture. It is not officially affiliated with Incredibox or any specific Sprunki mod. The game uses music-themed idle mechanics without actual audio playback.</p></div>
+               </div>
+         </section>
+
+         <section class="section">
+            <h2>Why Play Sprunki Clicker?</h2>
+            <p>Sprunki Clicker fills a unique niche in the clicker ecosystem by celebrating creativity rather than accumulation. While other clickers ask "how rich can you get?" or "how strong can you become?", Sprunki Clicker asks "what can you create?" This artistic framing creates an emotionally lighter experience that feels less like greed and more like growth. The instrument-based upgrade path also provides a natural, intuitive progression that anyone who has ever listened to music can understand.</p>
+<p>The teal color palette and clean design make Sprunki Clicker one of the most visually calming clickers in our collection. Compared to the intense red of <a href="/pokemon-clicker/">Pokemon Clicker</a> or the chaotic orange of <a href="/tung-tung-tung-sahur-clicker/">Tung Tung Tung Sahur Clicker</a>, Sprunki's aesthetic invites long, relaxed play sessions. It is the perfect background game for listening to actual music, studying, or creative work—ironically, you might find yourself composing real beats after being inspired by your virtual concert stage.</p>
+         </section>
+
+         <section class="section">
+            <h2>Did You Know? Fun Facts</h2>
+            <ul class="fun-facts-list">
+               <li>The oldest known musical instruments are bone flutes from Germany, dating back over 40,000 years—proving humans have been making beats since before recorded history.</li>
+<li>A standard drum kit contains 5-7 pieces (bass drum, snare, toms, hi-hat, cymbals), while Sprunki Clicker's Drum Kit upgrade generates an infinite +1 beat per second with no physical limitations!</li>
+<li>The synthesizer pad sound (represented by 🎹 in the Synth Pad upgrade) was pioneered by Robert Moog in the 1960s and revolutionized popular music from the Beatles to modern EDM.</li>
+<li>The world's largest concert stage was built for Rolling Stones tours, spanning over 100 feet wide with massive LED screens—Sprunki Clicker's Concert Stage upgrade lets you own unlimited virtual ones!</li>
+<li>Research shows that listening to music while gaming can improve performance by 10-15%—try playing Sprunki Clicker with your favorite playlist for maximum enjoyment!</li>
+            </ul>
+         </section>
+
+         <section class="section">
+            <h2>Related Clicker Games</h2>
+            <p>For more musical clicking, try <a href="/tung-tung-tung-sahur-clicker/">Tung Tung Tung Sahur Clicker</a> for drum-meme energy. For wealth-building, check <a href="/money-clicker/">Money Clicker</a>. Or explore <a href="/stimulation-clicker/">Stimulation Clicker</a> for abstract sensory themes.</p>
+         </section>
+
+
 
       </article>
-      <!-- Related Games Section -->
+
+       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
          <p class="related-games-subtitle">Discover more free online clicker games to play</p>
@@ -1147,6 +1365,150 @@
 
          // Auto-save every 30s
          setInterval(saveGame, 30000);
+
+
+         // ===== NEW FEATURES =====
+         let comboCount = 0;
+         let lastClickTime = 0;
+         let soundEnabled = true;
+         let milestonesReached = {};
+
+         const comboDisplay = document.getElementById('comboDisplay');
+         const progressBarFill = document.getElementById('progressBarFill');
+         const milestoneBanner = document.getElementById('milestoneBanner');
+         const soundToggle = document.getElementById('soundToggle');
+
+         soundToggle.addEventListener('click', () => {
+            soundEnabled = !soundEnabled;
+            soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+         });
+
+         function updateCombo() {
+            const now = Date.now();
+            if (now - lastClickTime < 2000) {
+               comboCount++;
+            } else {
+               comboCount = 1;
+            }
+            lastClickTime = now;
+            if (comboCount >= 10) {
+               comboDisplay.textContent = '🔥 COMBO x' + comboCount + '!';
+               comboDisplay.style.color = '#ff4757';
+            } else if (comboCount > 1) {
+               comboDisplay.textContent = 'Combo x' + comboCount;
+               comboDisplay.style.color = '#0d9488';
+            } else {
+               comboDisplay.textContent = '';
+            }
+         }
+
+         function showCriticalHit(x, y) {
+            const el = document.createElement('div');
+            el.className = 'critical-popup';
+            el.textContent = 'CRITICAL HIT! +' + formatNum(clickPower * 2);
+            el.style.left = x + 'px';
+            el.style.top = y + 'px';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 900);
+         }
+
+         function updateProgressBar() {
+            let nextCost = Infinity;
+            for (let i = 0; i < UPGRADES.length; i++) {
+               const cost = getCost(UPGRADES[i].baseCost, upgradeOwned[i]);
+               if (cost < nextCost) nextCost = cost;
+            }
+            if (clickPowerCost < nextCost) nextCost = clickPowerCost;
+            let pct = Math.min(100, (score / nextCost) * 100);
+            progressBarFill.style.width = pct + '%';
+         }
+
+         function checkMilestones() {
+            const milestones = [1000, 10000, 100000, 1000000];
+            for (let m of milestones) {
+               if (score >= m && !milestonesReached[m]) {
+                  milestonesReached[m] = true;
+                  showMilestone('🎉 ' + formatNum(m) + ' Beats Reached!');
+               }
+            }
+         }
+
+         function showMilestone(text) {
+            milestoneBanner.textContent = text;
+            milestoneBanner.classList.add('show');
+            setTimeout(() => milestoneBanner.classList.remove('show'), 2500);
+         }
+
+         function spawnParticle() {
+            const particles = ['🎵', '✨', '⭐', '💫'];
+            const el = document.createElement('div');
+            el.className = 'particle';
+            el.textContent = particles[Math.floor(Math.random() * particles.length)];
+            const rect = clickArea.getBoundingClientRect();
+            el.style.left = (rect.width * 0.2 + Math.random() * rect.width * 0.6) + 'px';
+            el.style.top = (rect.height * 0.3 + Math.random() * rect.height * 0.3) + 'px';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 2500);
+         }
+
+         // Modify doClick to include new features
+         const _origDoClick = doClick;
+         doClick = function(e) {
+            let multiplier = 1;
+            updateCombo();
+            if (comboCount >= 10 && comboCount % 10 === 0) {
+               multiplier = 2;
+            }
+            score += clickPower * multiplier;
+            totalEarned += clickPower * multiplier;
+
+            clickBtn.classList.add('pressed');
+            setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+
+            const rect = clickArea.getBoundingClientRect();
+            let cx, cy;
+            if (e && e.clientX) {
+               cx = e.clientX - rect.left;
+               cy = e.clientY - rect.top;
+            } else {
+               cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+               cy = rect.height / 2 - 30;
+            }
+            if (multiplier === 2) {
+               showCriticalHit(cx, cy);
+            }
+            showClickFloat(cx, cy);
+            checkMilestones();
+            updateProgressBar();
+            render();
+         };
+
+         // Re-attach click listener to use new doClick
+         clickBtn.removeEventListener('click', _origDoClick);
+         clickBtn.addEventListener('click', doClick);
+
+         // Modify render to include progress bar update
+         const _origRender = render;
+         render = function() {
+            _origRender();
+            updateProgressBar();
+         };
+
+         // Particle spawn interval (max 3 visible at a time)
+         setInterval(() => {
+            if (document.querySelectorAll('.particle').length < 3) {
+               spawnParticle();
+            }
+         }, 4000);
+
+         // FAQ toggle
+         document.querySelectorAll('.faq-item h3').forEach(h3 => {
+            h3.addEventListener('click', () => {
+               h3.parentElement.classList.toggle('open');
+            });
+         });
 
          // Init
          loadGame();

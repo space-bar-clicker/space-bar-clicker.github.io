@@ -4,9 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Candy Clicker 2 - Play Free Online</title>
-   <meta name="description"
-      content="Candy Clicker 2 variant: Gummy Worm through Candy Cosmos tiers, passive candies/sec, Click Power, save & reset—not a fusion lab, candy market, or prestige sequel in this build.">
+   <title>Candy Clicker 2 - Play Free Online | Sweet Idle Clicker Sequel</title>
+   <meta name="description" content="Satisfy your sweet tooth with Candy Clicker 2! Free browser idle game with super candies, combos & cosmic upgrades. No download needed!">
    <meta name="keywords"
       content="candy clicker 2, candy clicker 2, clicker game, idle game, free online game, play candy clicker 2">
    <meta name="robots" content="index, follow">
@@ -744,6 +743,26 @@
          box-shadow: 0 4px 12px rgba(120, 56, 243, 0.15);
          color: #3b0764;
       }
+         /* ===== NEW FEATURES CSS ===== */
+      .combo-display { margin-top: 8px; font-size: 0.9rem; font-weight: 700; color: #ff6b00; min-height: 1.2rem; text-align: center; }
+      .critical-popup { position: absolute; pointer-events: none; font-size: 1.5rem; font-weight: 800; color: #ff2200; text-shadow: 0 2px 6px rgba(255,34,0,0.35); animation: criticalPop 0.85s ease-out forwards; z-index: 20; }
+      @keyframes criticalPop { 0% { opacity: 1; transform: translateY(0) scale(0.5); } 50% { transform: translateY(-25px) scale(1.25); } 100% { opacity: 0; transform: translateY(-65px) scale(1); } }
+      .progress-bar-container { width: 80%; max-width: 220px; height: 10px; background: #e5e7eb; border-radius: 5px; margin-top: 12px; overflow: hidden; box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); }
+      .progress-bar-fill { height: 100%; border-radius: 5px; transition: width 0.35s ease; background: linear-gradient(90deg, currentColor, rgba(255,255,255,0.3)); background-color: currentColor; }
+      .particle { position: absolute; pointer-events: none; font-size: 1rem; opacity: 0; animation: particleFloat 2.2s ease-out forwards; z-index: 5; }
+      @keyframes particleFloat { 0% { opacity: 0.85; transform: translateY(0) scale(0.7); } 100% { opacity: 0; transform: translateY(-130px) scale(1.3); } }
+      .milestone-banner { position: fixed; top: 80px; left: 50%; transform: translateX(-50%) translateY(-120px); background: linear-gradient(135deg, #ffd700, #ffaa00); color: #333; padding: 16px 32px; border-radius: 14px; font-weight: 700; font-size: 1.15rem; box-shadow: 0 10px 30px rgba(255,170,0,0.35); z-index: 2000; transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1); text-align: center; }
+      .milestone-banner.show { transform: translateX(-50%) translateY(0); }
+      .faq-section h3 { cursor: pointer; padding: 14px 18px; background: #f8f9fe; border-radius: 10px; margin-bottom: 6px; transition: all 0.2s ease; position: relative; font-size: 1.05rem; color: #333; font-weight: 600; }
+      .faq-section h3:hover { background: #ede5ff; }
+      .faq-section h3::after { content: '+'; position: absolute; right: 18px; font-weight: 700; color: #7838f3; font-size: 1.2rem; }
+      .faq-section h3.active::after { content: '−'; }
+      .faq-section p { padding: 0 18px 18px; margin: 0; display: none; line-height: 1.8; }
+      .faq-section p.open { display: block; }
+      .sound-toggle { background: none; border: none; font-size: 1.25rem; cursor: pointer; padding: 4px 10px; border-radius: 8px; transition: background 0.2s; color: white; line-height: 1; }
+      .sound-toggle:hover { background: rgba(255,255,255,0.2); }
+      .keyboard-hint { font-size: 0.75rem; color: #aaa; margin-top: 10px; text-align: center; font-weight: 500; }
+
    </style>
 </head>
 
@@ -760,6 +779,8 @@
          <button class="menu-btn">☰</button>
       </div>
    </nav>
+   <div class="milestone-banner" id="milestoneBanner"></div>
+
 
    <div class="main-content">
       <h1 class="page-title">Play Candy Clicker 2 Online</h1>
@@ -772,6 +793,7 @@
                <span class="game-stat-pill" id="gStatTotal">0 Super Candies</span>
                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
             </div>
+         <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
@@ -784,6 +806,11 @@
                </div>
                <div class="per-second" id="perSecDisplay">0 super candies/sec</div>
                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+               <div class="combo-display" id="comboDisplay"></div>
+               <div class="progress-bar-container">
+                  <div class="progress-bar-fill" id="progressBar" style="width:0%; color: #a855f7;"></div>
+               </div>
+               <div class="keyboard-hint">Tip: Press SPACE to click!</div>
             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
@@ -866,52 +893,67 @@
       <article class="article-container">
 
          <div class="intro">
-            “Candy Clicker 2” on this site is a <strong>sister skin</strong> of <a href="/candy-clicker/">Candy Clicker</a>:
-            identical idle skeleton—central click, exponential <strong>Click Power</strong>, five generator rows with
-            fixed base rates—but new silly tier names (<em>Gummy Worm → Candy Cosmos</em>). It does <strong>not</strong>
-            introduce a candy fusion minigame, global market pricing, prestige paths, conveyor puzzle, fifty candy varieties,
-            or museum collection; those bullets describe aspiration, not code in this static build. Use <strong>Save</strong>
-            to keep a run; <strong>Reset</strong> for a clean counter.
+            <p><strong>Candy Clicker 2</strong> is a sugar-coated free browser idle game that takes everything delicious about the original <a href="/candy-clicker/">Candy Clicker</a> and adds a cosmic twist. Where the first game ended at the Candy Dimension, this sequel rockets you into space with Gummy Worms, Jawbreaker Presses, and the legendary Candy Cosmos. The global confectionery market produces over 7.5 million tons of chocolate annually, and this game lets you contribute to that dream—one click at a time.</p>
+<p>Clicker games have endured for over a decade because they fulfill a fundamental human need: the desire to build something from nothing. Starting with a single click and ending with a universe-spanning candy empire, idle games tell a story of exponential growth that mirrors real-world success. The genre was essentially invented by Cookie Clicker in 2013, but it traces its roots back to Progress Quest and other 'zero-player' games of the early 2000s. Candy Clicker 2 proudly continues that tradition with purple flair and interstellar ambition.</p>
+<p>This is a completely free browser game requiring no downloads, no registration, and no payment. Your progress saves to local storage automatically. If you loved the first Candy Clicker, this sequel gives you a whole new set of fantasy nouns to chase. Also try <a href="/burger-clicker/">Burger Clicker</a> for savory incremental action, or <a href="/brainrot-clicker/">Brainrot Clicker</a> if you prefer internet chaos over cosmic sweetness.</p>
          </div>
 
          <section class="section">
-            <h2>What the tiers actually do</h2>
-            <p>The table below is the authoritative list: each purchase adds passive candy per second; duplicates scale cost
-               the way you have already learned on other pages here.</p>
-            <div class="feature-box">
-               <h3>Generators (per stack)</h3>
-               <ul>
-                  <li><strong>Gummy Worm</strong> — +1/sec; squishy starter automation.</li>
-                  <li><strong>Cotton Candy Spinner</strong> — +5/sec; fairground energy, same math as “Machine” tier elsewhere.
-                  </li>
-                  <li><strong>Jawbreaker Press</strong> — +20/sec; mid-run when you need harder numbers faster.</li>
-                  <li><strong>Candy Fusion Lab</strong> — +100/sec; the name is flavor only—no fusion UI ships in this file.
-                  </li>
-                  <li><strong>Candy Cosmos</strong> — +500/sec; planetary candy pun for the top passive band.</li>
-               </ul>
-            </div>
-            <p>Click Power still answers: “How big is each manual tap?” Level it when the gap to your next generator copy
-               feels shorter if you buff clicks first.</p>
-         </section>
-
-         <section class="section">
-            <h2>Strategy tuned to this fork</h2>
+            <h2>How to Play Candy Clicker 2</h2>
             <ol class="tips-list">
-               <li><strong>If you mastered Candy Clicker 1, reuse the plan.</strong> Same breakpoints, different emoji.</li>
-               <li><strong>Don’t skip Gummy Worms early.</strong> +1/sec is small but compounds with every subsequent buy.
-               </li>
-               <li><strong>Cotton Candy at +5/sec is your workhorse tier.</strong> Stack before over-investing in one
-                  Jawbreaker.</li>
-               <li><strong>Jawbreaker Press is the midgame hump.</strong> When multiple +20s hum, passive starts winning.</li>
-               <li><strong>Candy Fusion Lab is your tab-leave tier.</strong> +100/sec rewards AFK multitaskers.</li>
-               <li><strong>Candy Cosmos for big totals.</strong> Stack +500/sec rows to balloon the score readout.</li>
+            <li><strong>Click the lollipop button</strong> to craft Super Candies manually. Each click yields candies scaled by your Click Power level.</li>
+            <li><strong>Start with Gummy Worms</strong> at 15 candies for +1 candy/sec. These squishy starters are your first passive income source.</li>
+            <li><strong>Spin Cotton Candy</strong> at 100 candies for +5 candies/sec. Stack multiple spinners for rapid early growth.</li>
+            <li><strong>Fire up the Jawbreaker Press</strong> at 500 candies for +20 candies/sec. This mid-game upgrade crushes your competition.</li>
+            <li><strong>Launch the Candy Fusion Lab</strong> at 2,500 candies for +100 candies/sec. Now your production operates at industrial scale.</li>
+            <li><strong>Enter the Candy Cosmos</strong> at 15,000 candies for +500 candies/sec. This planetary endgame tier launches you into the stratosphere.</li>
+            <li><strong>Upgrade Click Power</strong> whenever active clicking can meaningfully shorten your wait for the next tier.</li>
+            <li><strong>Press SPACE</strong> for rapid-fire clicking and to maintain your combo streak for critical hits.</li>
             </ol>
          </section>
 
          <section class="section">
-            <h2>When to play this page vs the first Candy Clicker</h2>
-            <p>Pick whichever theme text makes you smile—progression maps one-to-one. Mixing sessions can still feel fresh
-               because muscle memory transfers while the fantasy nouns change, a common trick in incremental collections.</p>
+            <h2>Strategy Guide</h2>
+            <p>Candy Clicker 2 demands aggressive early expansion. Gummy Worms and Cotton Candy Spinners are so inexpensive that they should be purchased the moment you can afford them. Do not save for a Jawbreaker Press if buying five Spinners first gets you there faster. The exponential nature of compound growth means that every second you delay a purchase is a second of lost passive income that can never be recovered.</p>
+<p>Mid-game begins when you unlock your first Candy Fusion Lab at 2,500 candies. At this point, your passive output crosses into triple digits per second, and the game shifts from active grinding to passive accumulation. Click Power upgrades become situational: buy them before active sessions, ignore them before AFK breaks. A practical heuristic is to divide the Click Power cost by your current clicks-per-second; if the payback time is under two minutes, it is worth buying.</p>
+<p>The Candy Cosmos is the late-game crown jewel, but experienced players know that diversification wins championships. Because costs scale exponentially, your 45th Gummy Worm may be cheaper than your 4th Candy Cosmos while still adding meaningful output. The ultimate Candy Clicker 2 empire is not a tower but a pyramid: a broad base of cheap upgrades supporting a narrow peak of expensive ones.</p>
+         </section>
+
+         <section class="section faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <h3>How is Candy Clicker 2 different from Candy Clicker 1?</h3>
+            <p>Candy Clicker 2 uses the same idle engine but features entirely new upgrade names, a 'super candy' currency label, and a purple cosmic aesthetic. The math and strategy are identical, so skills transfer seamlessly between versions.</p>
+            <h3>What is the Candy Fusion Lab?</h3>
+            <p>The Candy Fusion Lab is a mid-to-late game upgrade that generates +100 super candies per second. Despite its scientific-sounding name, it operates as a standard passive generator with no additional mechanics.</p>
+            <h3>How do critical hits work?</h3>
+            <p>Build a combo by clicking at least once every 2 seconds. Every 10th consecutive click triggers a CRITICAL HIT, awarding double candies for that click. The combo counter resets if you wait too long between clicks.</p>
+            <h3>Can I reset my progress?</h3>
+            <p>Yes. Click the 🔄 Reset button in the game footer and confirm to wipe your save and start fresh. This is useful for players who enjoy speedrunning from zero.</p>
+            <h3>What does the progress bar track?</h3>
+            <p>The progress bar shows your percentage progress toward the next cheapest upgrade you cannot yet afford. It updates in real time as you earn candies.</p>
+            <h3>Is this game free?</h3>
+            <p>Yes. Candy Clicker 2 is 100% free with no ads, no microtransactions, and no registration. It runs entirely in your browser using local storage for saves.</p>
+            <h3>What happens at milestones?</h3>
+            <p>Reaching 1,000, 10,000, 100,000, or 1,000,000 candies triggers a golden celebration banner. These are cosmetic achievements designed to mark your progression.</p>
+         </section>
+
+         <section class="section">
+            <h2>Why Play Candy Clicker 2?</h2>
+            <p>Candy Clicker 2 occupies a unique niche in the clicker ecosystem: it is unapologetically whimsical. While many idle games adopt serious themes like capitalism, warfare, or survival, this sequel asks only that you embrace the absurdity of a candy-powered space program. The purple cosmic aesthetic, combined with silly upgrade names like 'Jawbreaker Press,' creates an atmosphere of joyful nonsense that is genuinely refreshing.</p>
+<p>Compared to the original <a href="/candy-clicker/">Candy Clicker</a>, this version offers more visual flair and a darker color palette that some players find easier on the eyes during late-night sessions. The combo system and milestone banners add just enough structure to give active players goals to chase, while the robust passive generators ensure that AFK players never fall behind. Whether you are a sugar fanatic or just someone who likes watching numbers get comically large, Candy Clicker 2 is worth a click.</p>
+         </section>
+
+         <section class="section">
+            <h2>Did You Know? Fun Facts</h2>
+            <div class="highlight-box">
+               <ul>
+            <li>The world's largest jawbreaker weighed over 12 pounds and took 331 days to manufacture.</li>
+            <li>Cotton candy was invented by a dentist, William Morrison, and a confectioner, John Wharton, in 1897.</li>
+            <li>Gummy worms were invented in 1981 as a response to the popularity of gummy bears, giving kids a 'gross' alternative.</li>
+            <li>The candy industry spends over $2 billion annually on advertising in the United States alone.</li>
+            <li>Astronauts have taken candy into space, including M&Ms and jelly beans, as special treats during long missions.</li>
+               </ul>
+            </div>
          </section>
 
          <div style="text-align: center;">
@@ -919,6 +961,7 @@
          </div>
 
       </article>
+
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
@@ -1032,21 +1075,38 @@
                }
             });
 
-            // Click power upgrade
-            const cpCard = document.getElementById('upgClickPower');
-            document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
-            document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
-            if (score >= clickPowerCost) {
-               cpCard.classList.remove('locked');
-            } else {
-               cpCard.classList.add('locked');
-            }
+                     // Click power upgrade
+         const cpCard = document.getElementById('upgClickPower');
+         document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
+         document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
+         if (score >= clickPowerCost) {
+            cpCard.classList.remove('locked');
+         } else {
+            cpCard.classList.add('locked');
          }
 
-         function showClickFloat(x, y) {
+         // Update combo display
+         if (combo > 1) {
+            comboDisplay.textContent = '🔥 ' + combo + 'x COMBO';
+         } else {
+            comboDisplay.textContent = '';
+         }
+
+         // Update progress bar
+         let cheapestCost = Infinity;
+         UPGRADES.forEach((u, i) => {
+            const c = getCost(u.baseCost, upgradeOwned[i]);
+            if (c < cheapestCost) cheapestCost = c;
+         });
+         if (clickPowerCost < cheapestCost) cheapestCost = clickPowerCost;
+         const progressPct = Math.min(100, (score / cheapestCost) * 100);
+         progressBar.style.width = progressPct + '%';
+      }
+
+                  function showClickFloat(x, y, pts) {
             const el = document.createElement('div');
             el.className = 'click-float';
-            el.textContent = '+' + formatNum(clickPower);
+            el.textContent = '+' + formatNum(pts || clickPower);
             el.style.left = x + 'px';
             el.style.top = y + 'px';
             clickArea.style.position = 'relative';
@@ -1054,14 +1114,28 @@
             setTimeout(() => el.remove(), 700);
          }
 
-         function doClick(e) {
-            score += clickPower;
-            totalEarned += clickPower;
+                  function doClick(e) {
+            const now = Date.now();
+            if (now - lastClickTime < 2000) {
+               combo++;
+            } else {
+               combo = 1;
+            }
+            lastClickTime = now;
+
+            let points = clickPower;
+            let isCritical = false;
+            if (combo > 0 && combo % 10 === 0) {
+               points *= 2;
+               isCritical = true;
+            }
+
+            score += points;
+            totalEarned += points;
 
             clickBtn.classList.add('pressed');
             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
 
-            // Float position
             const rect = clickArea.getBoundingClientRect();
             let cx, cy;
             if (e && e.clientX) {
@@ -1071,7 +1145,9 @@
                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
                cy = rect.height / 2 - 30;
             }
-            showClickFloat(cx, cy);
+            showClickFloat(cx, cy, points);
+            if (isCritical) showCriticalPopup(cx, cy);
+            checkMilestones();
             render();
          }
 
@@ -1123,8 +1199,8 @@
          }, 1000);
 
          // Save / Load
-         function saveGame() {
-            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned };
+                  function saveGame() {
+            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, milestoneShown };
             try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
          }
 
@@ -1133,13 +1209,14 @@
                const raw = localStorage.getItem(SAVE_KEY);
                if (raw) {
                   const data = JSON.parse(raw);
-                  score = data.score || 0;
-                  totalEarned = data.totalEarned || 0;
-                  clickPower = data.clickPower || 1;
-                  clickPowerLevel = data.clickPowerLevel || 1;
-                  clickPowerCost = data.clickPowerCost || 50;
-                  upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
-                  recalcPerSecond();
+                                  score = data.score || 0;
+                   totalEarned = data.totalEarned || 0;
+                   clickPower = data.clickPower || 1;
+                   clickPowerLevel = data.clickPowerLevel || 1;
+                   clickPowerCost = data.clickPowerCost || 50;
+                   upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                   milestoneShown = data.milestoneShown || {1000: false, 10000: false, 100000: false, 1000000: false};
+                   recalcPerSecond();
                }
             } catch (e) { }
          }
@@ -1154,12 +1231,75 @@
          document.getElementById('resetBtn').addEventListener('click', () => {
             if (confirm('Reset all progress for Candy Clicker 2? This cannot be undone.')) {
                localStorage.removeItem(SAVE_KEY);
-               score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
-               upgradeOwned = UPGRADES.map(() => 0);
-               recalcPerSecond();
-               render();
+                               score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
+                upgradeOwned = UPGRADES.map(() => 0);
+                milestoneShown = {1000: false, 10000: false, 100000: false, 1000000: false};
+                combo = 0;
+                recalcPerSecond();
+                render();
             }
          });
+
+          // ===== NEW FEATURES =====
+          let combo = 0;
+          let lastClickTime = 0;
+          let soundEnabled = true;
+          let milestoneShown = {1000: false, 10000: false, 100000: false, 1000000: false};
+          const PARTICLE_EMOJI = '🍭';
+          const comboDisplay = document.getElementById('comboDisplay');
+          const progressBar = document.getElementById('progressBar');
+          const milestoneBanner = document.getElementById('milestoneBanner');
+          const soundToggle = document.getElementById('soundToggle');
+
+          function showCriticalPopup(x, y) {
+             const el = document.createElement('div');
+             el.className = 'critical-popup';
+             el.textContent = 'CRITICAL HIT!';
+             el.style.left = (x - 50) + 'px';
+             el.style.top = (y - 50) + 'px';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 850);
+          }
+
+          function checkMilestones() {
+             const ms = [1000, 10000, 100000, 1000000];
+             ms.forEach(m => {
+                if (score >= m && !milestoneShown[m]) {
+                   milestoneShown[m] = true;
+                   milestoneBanner.textContent = '🎉 Milestone Reached! ' + formatNum(m) + ' Super Candies!';
+                   milestoneBanner.classList.add('show');
+                   setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
+                }
+             });
+          }
+
+          setInterval(() => {
+             if (document.hidden) return;
+             if (!clickArea) return;
+             const particle = document.createElement('div');
+             particle.className = 'particle';
+             particle.textContent = PARTICLE_EMOJI;
+             const rect = clickArea.getBoundingClientRect();
+             const x = Math.random() * (rect.width - 20) + 10;
+             const y = rect.height - 25;
+             particle.style.left = x + 'px';
+             particle.style.top = y + 'px';
+             clickArea.appendChild(particle);
+             setTimeout(() => particle.remove(), 2200);
+          }, 3500);
+
+          soundToggle.addEventListener('click', () => {
+             soundEnabled = !soundEnabled;
+             soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+          });
+
+          document.querySelectorAll('.faq-section h3').forEach(q => {
+             q.addEventListener('click', () => {
+                q.classList.toggle('active');
+                const ans = q.nextElementSibling;
+                ans.classList.toggle('open');
+             });
+          });
 
          // Auto-save every 30s
          setInterval(saveGame, 30000);

@@ -4,9 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Capybara Clicker - Play Free Online</title>
-   <meta name="description"
-      content="Capybara Clicker: Watermelon through Capybara Kingdom tiers, passive coins/sec, Click Power, chill capybara theme, save & reset—not a meadow builder, visuals per tier, or daily rewards in this build.">
+   <title>Capybara Clicker - Play Free Online | Chill Animal Idle Game</title>
+   <meta name="description" content="Relax with Capybara Clicker! Free browser idle game with capybara coins, combo system & spa upgrades. No download needed. Start clicking!">
    <meta name="keywords"
       content="capybara clicker, capybara clicker, clicker game, idle game, free online game, play capybara clicker">
    <meta name="robots" content="index, follow">
@@ -744,6 +743,26 @@
          box-shadow: 0 4px 12px rgba(120, 56, 243, 0.15);
          color: #3b0764;
       }
+         /* ===== NEW FEATURES CSS ===== */
+      .combo-display { margin-top: 8px; font-size: 0.9rem; font-weight: 700; color: #ff6b00; min-height: 1.2rem; text-align: center; }
+      .critical-popup { position: absolute; pointer-events: none; font-size: 1.5rem; font-weight: 800; color: #ff2200; text-shadow: 0 2px 6px rgba(255,34,0,0.35); animation: criticalPop 0.85s ease-out forwards; z-index: 20; }
+      @keyframes criticalPop { 0% { opacity: 1; transform: translateY(0) scale(0.5); } 50% { transform: translateY(-25px) scale(1.25); } 100% { opacity: 0; transform: translateY(-65px) scale(1); } }
+      .progress-bar-container { width: 80%; max-width: 220px; height: 10px; background: #e5e7eb; border-radius: 5px; margin-top: 12px; overflow: hidden; box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); }
+      .progress-bar-fill { height: 100%; border-radius: 5px; transition: width 0.35s ease; background: linear-gradient(90deg, currentColor, rgba(255,255,255,0.3)); background-color: currentColor; }
+      .particle { position: absolute; pointer-events: none; font-size: 1rem; opacity: 0; animation: particleFloat 2.2s ease-out forwards; z-index: 5; }
+      @keyframes particleFloat { 0% { opacity: 0.85; transform: translateY(0) scale(0.7); } 100% { opacity: 0; transform: translateY(-130px) scale(1.3); } }
+      .milestone-banner { position: fixed; top: 80px; left: 50%; transform: translateX(-50%) translateY(-120px); background: linear-gradient(135deg, #ffd700, #ffaa00); color: #333; padding: 16px 32px; border-radius: 14px; font-weight: 700; font-size: 1.15rem; box-shadow: 0 10px 30px rgba(255,170,0,0.35); z-index: 2000; transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1); text-align: center; }
+      .milestone-banner.show { transform: translateX(-50%) translateY(0); }
+      .faq-section h3 { cursor: pointer; padding: 14px 18px; background: #f8f9fe; border-radius: 10px; margin-bottom: 6px; transition: all 0.2s ease; position: relative; font-size: 1.05rem; color: #333; font-weight: 600; }
+      .faq-section h3:hover { background: #ede5ff; }
+      .faq-section h3::after { content: '+'; position: absolute; right: 18px; font-weight: 700; color: #7838f3; font-size: 1.2rem; }
+      .faq-section h3.active::after { content: '−'; }
+      .faq-section p { padding: 0 18px 18px; margin: 0; display: none; line-height: 1.8; }
+      .faq-section p.open { display: block; }
+      .sound-toggle { background: none; border: none; font-size: 1.25rem; cursor: pointer; padding: 4px 10px; border-radius: 8px; transition: background 0.2s; color: white; line-height: 1; }
+      .sound-toggle:hover { background: rgba(255,255,255,0.2); }
+      .keyboard-hint { font-size: 0.75rem; color: #aaa; margin-top: 10px; text-align: center; font-weight: 500; }
+
    </style>
 </head>
 
@@ -760,6 +779,8 @@
          <button class="menu-btn">☰</button>
       </div>
    </nav>
+   <div class="milestone-banner" id="milestoneBanner"></div>
+
 
    <div class="main-content">
       <h1 class="page-title">Play Capybara Clicker Online</h1>
@@ -772,6 +793,7 @@
                <span class="game-stat-pill" id="gStatTotal">0 Capybara Coins</span>
                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
             </div>
+         <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
@@ -784,6 +806,11 @@
                </div>
                <div class="per-second" id="perSecDisplay">0 capybara coins/sec</div>
                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+               <div class="combo-display" id="comboDisplay"></div>
+               <div class="progress-bar-container">
+                  <div class="progress-bar-fill" id="progressBar" style="width:0%; color: #b45309;"></div>
+               </div>
+               <div class="keyboard-hint">Tip: Press SPACE to click!</div>
             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
@@ -866,52 +893,67 @@
       <article class="article-container">
 
          <div class="intro">
-            Capybara Clicker wraps familiar idle math in <strong>capybara cosplay</strong>: click the critter for
-            currency, funnel coins into stacked passive tiers, ramp <strong>Click Power</strong> for bigger taps—same core
-            as other games here. The vibes are chill; the spreadsheet is serious. Currency in this build reads as generic
-            <strong>coins</strong> in upgrade descriptions—not a colony sim with wandering animals, biome unlocks,
-            meadow graphics that evolve per purchase, rotating daily bonuses, or an achievement trophy case. Persist with
-            <strong>Save</strong>; wipe with <strong>Reset</strong>.
+            <p><strong>Capybara Clicker</strong> is the most relaxing idle game on the web, wrapped around the internet's favorite chill animal. Capybaras—native to South America—have become global superstars thanks to their perpetually serene expressions, their love of hot springs, and their inexplicable ability to befriend every other species from ducks to crocodiles. This free browser clicker lets you channel that zen energy into exponential growth: click the capybara to earn coins, buy watermelon snacks and spa days, and watch your passive income multiply while you multitask.</p>
+<p>Idle games are beloved worldwide because they transform idle time into productive dopamine. The genre originated with simple Flash experiments in the early 2000s and exploded when Cookie Clicker proved that watching numbers go up could be genuinely compelling. The secret sauce is compounding returns: early investments generate income that funds bigger investments, creating an exponential curve that feels incredibly satisfying. Capybara Clicker adds a layer of wholesome animal vibes to this proven formula, making it the perfect stress-relief game for work breaks, commutes, or lazy Sundays.</p>
+<p>This is a completely free browser game—no download, no registration, no paywalls. Your progress saves to local storage so you can close the tab and return anytime. If you love capybaras as much as the internet does, also try <a href="/capybara-clicker-2/">Capybara Clicker 2</a> for a fresh reskin, or explore <a href="/candy-clicker/">Candy Clicker</a> and <a href="/burger-clicker/">Burger Clicker</a> for more delicious incremental action.</p>
          </div>
 
          <section class="section">
-            <h2>Economy tiers (names vs mechanics)</h2>
-            <p>Each row adds passive coins per second per copy; costs scale as you stack. The labels nod to capybara memes
-               (watermelon snacks, onsen energy) without simulating them as separate systems.</p>
-            <div class="feature-box">
-               <h3>Generators</h3>
-               <ul>
-                  <li><strong>Watermelon</strong> — +1 coin/sec; snack-tier starter automation.</li>
-                  <li><strong>Hot Spring</strong> — +5/sec; spa mood, same mid-early rate as other “+5” games on site.
-                  </li>
-                  <li><strong>Baby Capybara</strong> — +20/sec; “more capybaras” expressed as one stat line.</li>
-                  <li><strong>Capybara Spa</strong> — +100/sec; late-mid passive when AFK helps.</li>
-                  <li><strong>Capybara Kingdom</strong> — +500/sec; crown emoji, top passive band for big totals.</li>
-               </ul>
-            </div>
-            <p><strong>Click Power</strong> still governs manual income separately—level it when spam-clicking shaves
-               time off the next meaningful purchase.</p>
-         </section>
-
-         <section class="section">
-            <h2>Tips grounded in this file</h2>
+            <h2>How to Play Capybara Clicker</h2>
             <ol class="tips-list">
-               <li><strong>Get Watermelon early.</strong> Even +1/sec changes how quickly Hot Spring unlocks.</li>
-               <li><strong>Stack Hot Springs before one big Baby skip.</strong> Five +5/s often beats one impatient +20 buy.
-               </li>
-               <li><strong>Baby Capybara is your pivot to heavy passive.</strong> When several +20s run, clicking is optional.
-               </li>
-               <li><strong>Capybara Spa rewards tabbing away.</strong> +100/sec makes breaks profitable.</li>
-               <li><strong>Capybara Kingdom balloons scores.</strong> Multiple +500 rows accelerate endgame numbers.</li>
-               <li><strong>Balance Click Power vs next generator.</strong> If taps still double your income short-term, buy
-                  click levels.</li>
+            <li><strong>Click the capybara button</strong> to earn Capybara Coins manually. Each click yields coins that scale with your Click Power level.</li>
+            <li><strong>Buy Watermelons</strong> at 15 coins for +1 coin/sec. This is your first passive income source and should be purchased immediately.</li>
+            <li><strong>Invest in Hot Springs</strong> at 100 coins for +5 coins/sec. Stack multiple springs early—they offer fantastic return on investment.</li>
+            <li><strong>Adopt Baby Capybaras</strong> at 500 coins for +20 coins/sec. This mid-game upgrade signals that your passive income is becoming serious.</li>
+            <li><strong>Build a Capybara Spa</strong> at 2,500 coins for +100 coins/sec. Now you can leave the tab open and return to meaningful progress.</li>
+            <li><strong>Establish a Capybara Kingdom</strong> at 15,000 coins for +500 coins/sec. This endgame upgrade turns your modest pond into an empire.</li>
+            <li><strong>Upgrade Click Power</strong> when you are actively playing and want to speed-run your next major purchase.</li>
+            <li><strong>Press SPACE</strong> to click rapidly and build combos for critical hit bonuses.</li>
             </ol>
          </section>
 
          <section class="section">
-            <h2>Related page</h2>
-            <p>For another capybara-themed reskin with different tier names, try
-               <a href="/capybara-clicker-2/">Capybara Clicker 2</a>—compare which mental image keeps you tapping.</p>
+            <h2>Strategy Guide</h2>
+            <p>The optimal Capybara Clicker strategy is deceptively simple: never stop buying. Because upgrade costs scale exponentially, the cheapest available upgrade often provides the best marginal return even in the late game. Early on, this means buying Watermelons and Hot Springs as fast as you can click. Do not save up for a Baby Capybara if buying five Hot Springs first gets you there faster.</p>
+<p>Mid-game, around the time you unlock your first Capybara Spa, you should evaluate your play style. Active players benefit enormously from Click Power upgrades, which double your per-click output. A player clicking ten times per second with level-4 Click Power earns more than a passive player with only one Spa. However, if you prefer to leave the tab open while working or studying, pour every coin into passive generators. The beauty of this game is that both strategies are valid.</p>
+<p>In the true late game, when you own multiple Kingdoms, the exponential cost scaling creates interesting optimization puzzles. Sometimes buying your 30th Watermelon is cheaper than your 3rd Kingdom and still adds meaningful income. Diversify across all tiers rather than hyper-focusing on the most expensive. Think of your capybara empire as a balanced ecosystem: every pond, spa, and watermelon patch contributes to the whole.</p>
+         </section>
+
+         <section class="section faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <h3>Are capybaras really as chill as the internet says?</h3>
+            <p>Absolutely. Capybaras are semi-aquatic rodents native to South America known for their docile temperament. In Japan, they are famous for bathing in hot springs during winter, and viral videos show them peacefully coexisting with cats, dogs, birds, and even crocodiles.</p>
+            <h3>How do I save my progress in Capybara Clicker?</h3>
+            <p>Click the 💾 Save button, or let the auto-save run every 30 seconds. Your progress is stored in browser local storage, so it persists as long as you do not clear your browser data.</p>
+            <h3>What is the combo system?</h3>
+            <p>Click rapidly within 2 seconds between clicks to build a combo counter. Every 10th consecutive click triggers a CRITICAL HIT that gives you double points for that click. Keep clicking to maintain your streak!</p>
+            <h3>Can I reset my progress?</h3>
+            <p>Yes. Click the 🔄 Reset button in the game footer. You will be asked to confirm because this action cannot be undone. Resetting is great for players who enjoy speedrunning from zero.</p>
+            <h3>Why is my progress bar not moving?</h3>
+            <p>The progress bar shows your progress toward the cheapest upgrade you cannot yet afford. If you have just bought something expensive, it may take a moment to fill again. It updates in real time as you earn coins.</p>
+            <h3>Is this game free to play?</h3>
+            <p>Yes. Capybara Clicker is 100% free with no ads, no microtransactions, and no registration required. It runs entirely in your browser.</p>
+            <h3>What happens at score milestones?</h3>
+            <p>When you reach 1,000, 10,000, 100,000, or 1,000,000 coins, a golden milestone banner appears at the top of your screen to celebrate your achievement.</p>
+         </section>
+
+         <section class="section">
+            <h2>Why Play Capybara Clicker?</h2>
+            <p>Capybara Clicker stands out in the crowded clicker genre by offering something rare: genuine relaxation. While many idle games rely on high-pressure themes like warfare, capitalism, or survival, Capybara Clicker invites you to slow down. The warm brown-and-yellow color palette, the hot spring upgrades, and the gentle particle animations create an atmosphere of cozy contentment. It is the gaming equivalent of a weighted blanket.</p>
+<p>Compared to faster-paced clickers like <a href="/brainrot-clicker/">Brainrot Clicker</a> or <a href="/chicken-jockey-clicker/">Chicken Jockey Clicker</a>, this game prioritizes steady, predictable growth over chaotic spikes. That makes it ideal for background play during work calls, study sessions, or while binge-watching shows. The combo system still rewards active engagement, but you never feel punished for looking away. For players who want to de-stress while still experiencing the satisfaction of exponential growth, Capybara Clicker is the perfect digital sanctuary.</p>
+         </section>
+
+         <section class="section">
+            <h2>Did You Know? Fun Facts</h2>
+            <div class="highlight-box">
+               <ul>
+            <li>Capybaras are the largest rodents in the world, typically weighing between 77 and 146 pounds (35–66 kg).</li>
+            <li>The word 'capybara' comes from the Tupi language of Brazil and means 'master of the grasses'.</li>
+            <li>In Japan, capybaras are so beloved that many zoos hold annual 'Capybara Onsen' events where the animals bathe in yuzu-scented hot springs.</li>
+            <li>Capybaras have webbed feet and can stay submerged underwater for up to five minutes to escape predators.</li>
+            <li>Despite being prey animals, capybaras are famously tolerant and have been photographed letting birds, monkeys, rabbits, and even alligators sit on their backs.</li>
+               </ul>
+            </div>
          </section>
 
          <div style="text-align: center;">
@@ -919,6 +961,7 @@
          </div>
 
       </article>
+
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
@@ -1032,21 +1075,38 @@
                }
             });
 
-            // Click power upgrade
-            const cpCard = document.getElementById('upgClickPower');
-            document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
-            document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
-            if (score >= clickPowerCost) {
-               cpCard.classList.remove('locked');
-            } else {
-               cpCard.classList.add('locked');
-            }
+                     // Click power upgrade
+         const cpCard = document.getElementById('upgClickPower');
+         document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
+         document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
+         if (score >= clickPowerCost) {
+            cpCard.classList.remove('locked');
+         } else {
+            cpCard.classList.add('locked');
          }
 
-         function showClickFloat(x, y) {
+         // Update combo display
+         if (combo > 1) {
+            comboDisplay.textContent = '🔥 ' + combo + 'x COMBO';
+         } else {
+            comboDisplay.textContent = '';
+         }
+
+         // Update progress bar
+         let cheapestCost = Infinity;
+         UPGRADES.forEach((u, i) => {
+            const c = getCost(u.baseCost, upgradeOwned[i]);
+            if (c < cheapestCost) cheapestCost = c;
+         });
+         if (clickPowerCost < cheapestCost) cheapestCost = clickPowerCost;
+         const progressPct = Math.min(100, (score / cheapestCost) * 100);
+         progressBar.style.width = progressPct + '%';
+      }
+
+                  function showClickFloat(x, y, pts) {
             const el = document.createElement('div');
             el.className = 'click-float';
-            el.textContent = '+' + formatNum(clickPower);
+            el.textContent = '+' + formatNum(pts || clickPower);
             el.style.left = x + 'px';
             el.style.top = y + 'px';
             clickArea.style.position = 'relative';
@@ -1054,14 +1114,28 @@
             setTimeout(() => el.remove(), 700);
          }
 
-         function doClick(e) {
-            score += clickPower;
-            totalEarned += clickPower;
+                  function doClick(e) {
+            const now = Date.now();
+            if (now - lastClickTime < 2000) {
+               combo++;
+            } else {
+               combo = 1;
+            }
+            lastClickTime = now;
+
+            let points = clickPower;
+            let isCritical = false;
+            if (combo > 0 && combo % 10 === 0) {
+               points *= 2;
+               isCritical = true;
+            }
+
+            score += points;
+            totalEarned += points;
 
             clickBtn.classList.add('pressed');
             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
 
-            // Float position
             const rect = clickArea.getBoundingClientRect();
             let cx, cy;
             if (e && e.clientX) {
@@ -1071,7 +1145,9 @@
                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
                cy = rect.height / 2 - 30;
             }
-            showClickFloat(cx, cy);
+            showClickFloat(cx, cy, points);
+            if (isCritical) showCriticalPopup(cx, cy);
+            checkMilestones();
             render();
          }
 
@@ -1123,8 +1199,8 @@
          }, 1000);
 
          // Save / Load
-         function saveGame() {
-            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned };
+                  function saveGame() {
+            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, milestoneShown };
             try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
          }
 
@@ -1133,13 +1209,14 @@
                const raw = localStorage.getItem(SAVE_KEY);
                if (raw) {
                   const data = JSON.parse(raw);
-                  score = data.score || 0;
-                  totalEarned = data.totalEarned || 0;
-                  clickPower = data.clickPower || 1;
-                  clickPowerLevel = data.clickPowerLevel || 1;
-                  clickPowerCost = data.clickPowerCost || 50;
-                  upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
-                  recalcPerSecond();
+                                  score = data.score || 0;
+                   totalEarned = data.totalEarned || 0;
+                   clickPower = data.clickPower || 1;
+                   clickPowerLevel = data.clickPowerLevel || 1;
+                   clickPowerCost = data.clickPowerCost || 50;
+                   upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                   milestoneShown = data.milestoneShown || {1000: false, 10000: false, 100000: false, 1000000: false};
+                   recalcPerSecond();
                }
             } catch (e) { }
          }
@@ -1154,12 +1231,75 @@
          document.getElementById('resetBtn').addEventListener('click', () => {
             if (confirm('Reset all progress for Capybara Clicker? This cannot be undone.')) {
                localStorage.removeItem(SAVE_KEY);
-               score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
-               upgradeOwned = UPGRADES.map(() => 0);
-               recalcPerSecond();
-               render();
+                               score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
+                upgradeOwned = UPGRADES.map(() => 0);
+                milestoneShown = {1000: false, 10000: false, 100000: false, 1000000: false};
+                combo = 0;
+                recalcPerSecond();
+                render();
             }
          });
+
+          // ===== NEW FEATURES =====
+          let combo = 0;
+          let lastClickTime = 0;
+          let soundEnabled = true;
+          let milestoneShown = {1000: false, 10000: false, 100000: false, 1000000: false};
+          const PARTICLE_EMOJI = '🍉';
+          const comboDisplay = document.getElementById('comboDisplay');
+          const progressBar = document.getElementById('progressBar');
+          const milestoneBanner = document.getElementById('milestoneBanner');
+          const soundToggle = document.getElementById('soundToggle');
+
+          function showCriticalPopup(x, y) {
+             const el = document.createElement('div');
+             el.className = 'critical-popup';
+             el.textContent = 'CRITICAL HIT!';
+             el.style.left = (x - 50) + 'px';
+             el.style.top = (y - 50) + 'px';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 850);
+          }
+
+          function checkMilestones() {
+             const ms = [1000, 10000, 100000, 1000000];
+             ms.forEach(m => {
+                if (score >= m && !milestoneShown[m]) {
+                   milestoneShown[m] = true;
+                   milestoneBanner.textContent = '🎉 Milestone Reached! ' + formatNum(m) + ' Capybara Coins!';
+                   milestoneBanner.classList.add('show');
+                   setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
+                }
+             });
+          }
+
+          setInterval(() => {
+             if (document.hidden) return;
+             if (!clickArea) return;
+             const particle = document.createElement('div');
+             particle.className = 'particle';
+             particle.textContent = PARTICLE_EMOJI;
+             const rect = clickArea.getBoundingClientRect();
+             const x = Math.random() * (rect.width - 20) + 10;
+             const y = rect.height - 25;
+             particle.style.left = x + 'px';
+             particle.style.top = y + 'px';
+             clickArea.appendChild(particle);
+             setTimeout(() => particle.remove(), 2200);
+          }, 3500);
+
+          soundToggle.addEventListener('click', () => {
+             soundEnabled = !soundEnabled;
+             soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+          });
+
+          document.querySelectorAll('.faq-section h3').forEach(q => {
+             q.addEventListener('click', () => {
+                q.classList.toggle('active');
+                const ans = q.nextElementSibling;
+                ans.classList.toggle('open');
+             });
+          });
 
          // Auto-save every 30s
          setInterval(saveGame, 30000);

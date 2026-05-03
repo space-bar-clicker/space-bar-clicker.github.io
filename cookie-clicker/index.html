@@ -4,9 +4,9 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Cookie Clicker - Play Free Online</title>
+   <title>Cookie Clicker - Free Classic Baking Idle Game Online | Spacebar Clicker</title>
    <meta name="description"
-      content="Play Cookie Clicker free in your browser: bake cookies, unlock flour to portals, scale passive income, learn idle strategy, and save progress. No download.">
+      content="Play the classic Cookie Clicker free online! Bake cookies, unlock grandmas to portals, and build massive passive income in this beloved incremental game. No download needed.">
    <meta name="keywords"
       content="cookie clicker, cookie clicker, clicker game, idle game, free online game, play cookie clicker">
    <meta name="robots" content="index, follow">
@@ -427,6 +427,139 @@
          color: #dc2626;
       }
 
+      /* ===== NEW GAME FEATURES CSS ===== */
+      .combo-display {
+         margin-top: 6px;
+         font-size: 0.85rem;
+         font-weight: 700;
+         color: #c8860a;
+         min-height: 1.2em;
+      }
+      .critical-popup {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1.6rem;
+         font-weight: 800;
+         color: #dc2626;
+         text-shadow: 0 2px 8px rgba(220,38,38,0.3);
+         animation: criticalPop 0.8s ease-out forwards;
+         z-index: 20;
+      }
+      @keyframes criticalPop {
+         0% { opacity: 1; transform: translateY(0) scale(0.5); }
+         50% { transform: translateY(-30px) scale(1.2); }
+         100% { opacity: 0; transform: translateY(-80px) scale(1); }
+      }
+      .progress-bar-container {
+         width: 80%;
+         max-width: 220px;
+         height: 10px;
+         background: #eee;
+         border-radius: 5px;
+         margin-top: 12px;
+         overflow: hidden;
+      }
+      .progress-bar-fill {
+         height: 100%;
+         background: linear-gradient(90deg, #c8860a, #c8860add);
+         border-radius: 5px;
+         transition: width 0.3s ease;
+         width: 0%;
+      }
+      .particle {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1rem;
+         opacity: 0.7;
+         animation: particleFloat 2.5s ease-out forwards;
+         z-index: 5;
+      }
+      @keyframes particleFloat {
+         0% { opacity: 0.7; transform: translateY(0) rotate(0deg); }
+         100% { opacity: 0; transform: translateY(-120px) rotate(45deg); }
+      }
+      .milestone-banner {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         background: linear-gradient(135deg, #c8860a, #c8860add);
+         color: white;
+         padding: 14px 28px;
+         border-radius: 12px;
+         font-size: 1.1rem;
+         font-weight: 700;
+         box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+         animation: milestoneIn 0.5s ease-out, milestoneOut 0.5s ease-in 2s forwards;
+         z-index: 50;
+         pointer-events: none;
+         white-space: nowrap;
+      }
+      @keyframes milestoneIn {
+         from { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+         to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+      }
+      @keyframes milestoneOut {
+         from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+         to { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+      }
+      .sound-toggle {
+         background: rgba(255,255,255,0.2);
+         border: none;
+         border-radius: 8px;
+         padding: 4px 10px;
+         color: white;
+         font-size: 1rem;
+         cursor: pointer;
+         transition: background 0.2s;
+      }
+      .sound-toggle:hover { background: rgba(255,255,255,0.35); }
+      .keyboard-tip {
+         width: 100%;
+         text-align: center;
+         font-size: 0.78rem;
+         color: #888;
+         margin-top: 8px;
+         font-weight: 500;
+      }
+      /* FAQ Section */
+      .faq-section { margin-bottom: 30px; }
+      .faq-item { margin-bottom: 14px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+      .faq-item h3 {
+         color: #333;
+         font-size: 1.05rem;
+         margin-bottom: 6px;
+         cursor: pointer;
+         transition: color 0.2s;
+         position: relative;
+         padding-right: 20px;
+      }
+      .faq-item h3:hover { color: #c8860a; }
+      .faq-item h3::after {
+         content: '+';
+         position: absolute;
+         right: 0;
+         top: 0;
+         color: #7838f3;
+         font-weight: 700;
+         transition: transform 0.2s;
+      }
+      .faq-item.active h3::after { transform: rotate(45deg); }
+      .faq-item p {
+         display: none;
+         color: #555;
+         line-height: 1.7;
+         font-size: 1rem;
+         margin-bottom: 0;
+         padding-top: 4px;
+      }
+      .faq-item.active p { display: block; }
+      .fun-facts { background: #f8f9fe; border-radius: 12px; padding: 20px; margin: 20px 0; }
+      .fun-facts h3 { color: #7838f3; margin-bottom: 12px; }
+      .fun-facts ul { list-style: none; padding-left: 0; }
+      .fun-facts li { padding: 6px 0 6px 24px; position: relative; color: #333; line-height: 1.6; }
+      .fun-facts li::before { content: '•'; position: absolute; left: 0; color: #7838f3; font-weight: bold; }
+
       /* Article Styles */
       .article-container {
          max-width: 800px;
@@ -768,22 +901,25 @@
       <div class="game-wrapper" id="gameWrapper">
          <div class="game-header">
             <h2>🍪 Cookie Clicker</h2>
-            <div class="game-stats-bar">
-               <span class="game-stat-pill" id="gStatTotal">0 Cookies</span>
-               <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
-            </div>
+             <div class="game-stats-bar">
+                <span class="game-stat-pill" id="gStatTotal">0 Cookies</span>
+                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+                <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
+             </div>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
                <button class="click-btn" id="clickBtn" aria-label="Bake Cookie">
                   <span class="emoji">🍪</span>
                </button>
-               <div class="score-display">
-                  <div class="score-number" id="scoreNum">0</div>
-                  <div class="score-label">Cookies</div>
-               </div>
-               <div class="per-second" id="perSecDisplay">0 cookies/sec</div>
-               <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+                <div class="score-display">
+                   <div class="score-number" id="scoreNum">0</div>
+                   <div class="score-label">Cookies</div>
+                   <div class="combo-display" id="comboDisplay"></div>
+                </div>
+                <div class="per-second" id="perSecDisplay">0 cookies/sec</div>
+                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+                <div class="progress-bar-container"><div class="progress-bar-fill" id="progressBarFill"></div></div>
             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
@@ -856,107 +992,93 @@
                </div>
             </div>
          </div>
-         <div class="game-footer">
-            <button id="saveBtn">💾 Save</button>
-            <button class="reset-btn" id="resetBtn">🔄 Reset</button>
-         </div>
+          <div class="game-footer">
+             <button id="saveBtn">💾 Save</button>
+             <button class="reset-btn" id="resetBtn">🔄 Reset</button>
+             <div class="keyboard-tip">💡 Tip: Press SPACE to click!</div>
+          </div>
       </div>
 
       <!-- ===== ARTICLE CONTENT ===== -->
-      <article class="article-container">
+       <article class="article-container">
+          <div class="intro">
+             <p>The <strong>cookie clicker</strong> genre transformed a single button into a billion-dollar design pattern that has captivated hundreds of millions of players worldwide. It all started in 2013 when French developer Julien "Orteil" Thiennot released the original <em>Cookie Clicker</em>—a deceptively simple browser game where you click a giant cookie to bake more cookies. That humble prototype sparked an entire genre of incremental games, inspiring everything from mobile apps to Steam bestsellers. The version on this page honors that legacy as a <strong>free, browser-first incremental game</strong> you can play instantly without downloads, capturing the same psychological magic that made the original a cultural phenomenon.</p>
+             <p>In our Cookie Clicker, you begin as a humble home baker with nothing but a mixing bowl and determination. Each click produces one delicious cookie, but smart players quickly realize that manual labor alone will never build an empire. By investing your early cookies into Extra Flour, you establish your first passive income stream. Soon you will recruit Grandmas to bake around the clock, purchase sprawling Cookie Farms, industrialize with Cookie Factories, and eventually open dimensional Cookie Portals that harvest treats from parallel universes. Every building follows the classic idle-game cost curve, meaning each additional copy costs more than the last.</p>
+             <p>Idle games like this have become a global obsession because they masterfully exploit our brain's love for compounding returns and visible progress. There is something almost meditative about watching your cookies per second tick upward while you make strategic decisions about reinvestment. The "one more upgrade" syndrome is real—studies in behavioral psychology show that variable reward schedules and near-constant positive feedback create powerful engagement loops. Cookie Clicker distills this into its purest form, wrapped in a wholesome baking theme that feels cozy rather than overwhelming. Best of all, it is completely free and requires no account or download.</p>
+             <p>Whether you are a veteran of Orteil's original masterpiece or a complete newcomer to incremental games, this browser version offers an accessible entry point into one of gaming's most satisfying genres. The learning curve is gentle, the math is transparent, and the progression never stops. If you find yourself craving more after reaching your first million cookies, be sure to check out <a href="/cookie-clicker-2/">Cookie Clicker 2</a> for a sci-fi twist on the formula, or <a href="/candy-clicker/">Candy Clicker</a> for a sweeter variation with its own unique upgrade tree.</p>
+          </div>
 
-         <div class="intro">
-            The <strong>cookie clicker</strong> genre turned a single button into a billion-dollar design pattern: you
-            tap, numbers go up, you reinvest, and passive income eventually outpaces your finger. The version on this page
-            is a <strong>free, browser-first incremental game</strong> you can play without installs—balanced around
-            the same psychological loop that made Julien “Orteil” Thiennot’s original <em>Cookie Clicker</em> (2013) a
-            cultural phenomenon: visible progress, escalating costs, and “one more upgrade” syndrome.
-         </div>
+          <section class="section">
+             <h2>How to Play Cookie Clicker</h2>
+             <ol class="tips-list">
+                <li><strong>Start baking manually.</strong> Click the giant cookie or press SPACE to earn your first cookies. Each click gives you +1 cookie at the start.</li>
+                <li><strong>Invest in Extra Flour.</strong> At 15 cookies, buy your first passive generator to earn +1 cookie per second automatically. This is your first automation milestone.</li>
+                <li><strong>Recruit Grandmas early and often.</strong> Grandmas give +5 cookies/sec and are incredibly cost-efficient. Stack several before moving to higher tiers.</li>
+                <li><strong>Boost Click Power when manual matters.</strong> If your CPS is still low, upgrading your click power effectively doubles your manual output and accelerates early growth.</li>
+                <li><strong>Expand to Farms and Factories.</strong> Once you have a solid Grandma foundation, unlock Farms (+20/sec) and Factories (+100/sec) to dramatically increase passive income.</li>
+                <li><strong>Open Cookie Portals.</strong> The Portal tier generates +500 cookies/sec and marks your transition into late-game exponential growth.</li>
+                <li><strong>Save frequently.</strong> Use the Save button or rely on auto-save every 30 seconds to protect your bakery empire between sessions.</li>
+             </ol>
+          </section>
 
-         <section class="section">
-            <h2>What this game is—and what it is not</h2>
-            <p>This is <strong>not</strong> a port of Orteil’s full desktop or mobile <em>Cookie Clicker</em>. It does
-               not claim their trademark, art, saves, prestige trees, heavenly chips, seasonal events, or minigames.
-               It <strong>is</strong> a compact idle prototype in the spirit of that design: bake cookies manually, unlock
-               production buildings, multiply click power, and watch cookies per second (CPS) climb while costs scale so
-               the next milestone always feels one purchase away.</p>
-            <div class="feature-box">
-               <h3>What you get on this page</h3>
-               <ul>
-                  <li><strong>Active layer:</strong> Click the giant cookie for instant cookies (click power can be
-                     upgraded).</li>
-                  <li><strong>Passive layer:</strong> Extra Flour, Grandma, Cookie Farm, Cookie Factory, and Cookie Portal
-                     each add cookies per second; you can own multiples of each.</li>
-                  <li><strong>Escalating prices:</strong> Each additional copy of the same building costs more (standard
-                     idle-game pacing).</li>
-                  <li><strong>Click Power upgrades:</strong> Spend cookies to multiply how much each tap is worth—a
-                     clutch purchase when CPS is still low.</li>
-                  <li><strong>Save / reset:</strong> Progress can be stored in your browser; reset when you want a clean
-                     run.</li>
-               </ul>
-            </div>
-         </section>
+          <section class="section">
+             <h2>Cookie Clicker Strategy Guide</h2>
+             <p>Success in Cookie Clicker hinges on understanding the relationship between active clicking and passive income. In the first few minutes, your fingers are your primary engine. A player clicking 5 times per second generates 300 cookies per minute manually—far more than early passive buildings. During this phase, Click Power upgrades offer the highest return on investment because they multiply your dominant income source. The optimal early strategy is to alternate between buying one Click Power upgrade and one or two cheap buildings, maintaining a balance that keeps both vectors growing.</p>
+             <p>As your bakery expands into the mid-game, the math shifts dramatically. With ten Grandmas producing 50 cookies per second, your manual clicking becomes a smaller percentage of total output. This is the transition point where breadth matters more than depth. Instead of saving for a single expensive Factory, analyze the cost-per-cookie of your next purchase. If a third Grandma costs 130 cookies and gives +5/sec (payback in 26 seconds), while your first Factory costs 2,500 and gives +100/sec (payback in 25 seconds), the Factory is slightly better—but only if you can afford it without stalling your growth for minutes. The progress bar below your score helps visualize exactly how close you are to the next upgrade.</p>
+             <p>Late-game strategy in Cookie Clicker is about achieving "escape velocity"—the point where your passive income is so high that you no longer need to click at all. Once you own multiple Cookie Portals and Factories, your CPS enters the thousands, and milestones like 100,000 or 1 million cookies fall quickly. At this stage, the game becomes a pure optimization puzzle: which building gives the best marginal return? Experienced players often keep a spreadsheet mentality, mentally tracking payback periods. The satisfaction of watching your cookie count explode into the millions is the ultimate reward for smart early-game decisions. For players who enjoy this exponential climb, <a href="/pizza-clicker/">Pizza Clicker</a> offers a savory alternative with identical mechanics.</p>
+          </section>
 
-         <section class="section">
-            <h2>How to play (step by step)</h2>
-            <ol class="tips-list">
-               <li><strong>Warm up manually.</strong> Click until you have enough cookies for Extra Flour—that first
-                  passive tick changes how often you must babysit the screen.</li>
-               <li><strong>Stack cheap buildings first.</strong> Extra Flour and Grandma are your early breadwinners:
-                  dozens of cheap tiers often beat saving forever for one expensive tier.</li>
-               <li><strong>Buy click power when clicking still matters.</strong> If your CPS is tiny, doubling taps is the
-                  fastest way to bootstrap the Farm and Factory breakpoints.</li>
-               <li><strong>Unlock higher tiers.</strong> Farm → Factory → Portal: each jumps passive output so you spend
-                  less time clicking per cookie.</li>
-               <li><strong>Hit Save.</strong> When you finish a session, save so returning players keep their CPS and bank.
-               </li>
-               <li><strong>Reset knowingly.</strong> Use reset when you want a fresh economy or to chase a faster opener
-               with experience.</li>
-            </ol>
-         </section>
+          <section class="section faq-section">
+             <h2>Frequently Asked Questions</h2>
+             <div class="faq-item active">
+                <h3>Is this the official Cookie Clicker by Orteil?</h3>
+                <p>No. This is an independent fan-inspired browser game that captures the spirit of the original Cookie Clicker. It does not include Orteil's trademark, art, heavenly chips, prestige systems, seasonal events, or minigames. It is a compact idle prototype designed for quick browser play.</p>
+             </div>
+             <div class="faq-item">
+                <h3>Do I need to download or install anything?</h3>
+                <p>No download is required. Cookie Clicker runs entirely in your web browser using HTML5, CSS, and JavaScript. It works on desktop computers, tablets, and smartphones. Just open the page and start baking.</p>
+             </div>
+             <div class="faq-item">
+                <h3>How does the combo and critical hit system work?</h3>
+                <p>Click rapidly within 2 seconds of each other to build a combo counter. When you reach 10 consecutive clicks, you trigger a CRITICAL HIT that awards double cookies for that click. The combo display shows your current streak below the main score.</p>
+             </div>
+             <div class="faq-item">
+                <h3>What are the milestone celebrations?</h3>
+                <p>When your total cookies baked reaches 1,000, 10,000, 100,000, or 1,000,000, a special milestone banner appears in the center of the screen to celebrate your achievement. These are purely cosmetic rewards for your progression.</p>
+             </div>
+             <div class="faq-item">
+                <h3>Will I lose my progress if I close the browser?</h3>
+                <p>Your progress is automatically saved to your browser's local storage every 30 seconds. You can also click the Save button at any time. However, clearing your browser cache or using private/incognito mode will erase your save data.</p>
+             </div>
+             <div class="faq-item">
+                <h3>What makes idle games so popular?</h3>
+                <p>Idle games tap into fundamental human psychology: the desire for growth, the satisfaction of compounding returns, and the dopamine release from achieving goals. They require minimal time investment while still providing a sense of accomplishment, making them perfect for multitasking or short breaks.</p>
+             </div>
+          </section>
 
-         <section class="section">
-            <h2>Strategy: CPS vs clicks (the idle math mindset)</h2>
-            <p>In any incremental, your throughput is roughly <strong>clicks × click value + CPS</strong>. Early on,
-               CPS is negligible—clicks dominate. Later, CPS dominates—clicks mainly break idle plateaus after you
-               reopen the tab.</p>
-            <div class="highlight-box">
-               <ul>
-                  <li><strong>Golden rule:</strong> Buy the generator whose <em>cookies per cookie spent</em> beats
-                     hoarding indefinitely. Idle games punish “saving forever” because opportunity cost rises with every
-                     second you don’t have passive income online.</li>
-                  <li><strong>Breakpoints:</strong> Watch when the <em>next</em> copy of Flour or Grandma is cheaper than
-                     waiting for Portal #1—you often want breadth before apex buildings.</li>
-                  <li><strong>Click power timing:</strong> Buy when a single purchase roughly doubles your manual DPS;
-                     after CPS is huge, click upgrades are luxury, not core.</li>
-               </ul>
-            </div>
-         </section>
+          <section class="section">
+             <h2>Why Play Cookie Clicker?</h2>
+             <p>Cookie Clicker remains the gold standard for incremental games because its theme is universally appealing and its mechanics are flawlessly tuned. Unlike competitive games that can induce stress, Cookie Clicker offers a zero-pressure environment where the only goal is growth. The baking theme adds a layer of cozy charm that distinguishes it from more aggressive idle games. Every building upgrade feels like a genuine expansion of your imaginary bakery, from the humble Grandma kneading dough to the reality-bending Cookie Portal pulling desserts from alternate dimensions.</p>
+             <p>Psychologically, the game excels at creating what researchers call "progressive mastery." Early goals are achievable in seconds, mid-term goals in minutes, and long-term goals in hours—creating a perfectly calibrated difficulty curve that never frustrates. This design principle, first pioneered by Orteil in 2013, has since been adopted by thousands of games across every platform. Our browser version preserves that timeless appeal while adding modern quality-of-life features like combo multipliers, milestone celebrations, and a visual progress bar. Whether you have five minutes or five hours, Cookie Clicker adapts to your schedule and always leaves you feeling like you have accomplished something sweet.</p>
+          </section>
 
-         <section class="section">
-            <h2>Why cookie clickers still work (game design)</h2>
-            <p>Incremental games pair <strong>short feedback loops</strong> (click, number pops) with <strong>long
-                  compounding loops</strong> (automation, multipliers). That mix keeps both casual and “optimizer”
-               players engaged: one group enjoys the cozy rhythm; the other micro-optimizes purchase order. The cookie
-               theme is pure fantasy resource skinning—what matters mechanically is transparent numbers, fair scaling, and
-               always-visible next goals.</p>
-            <p>If you like this loop, try our other free clickers from the list below—same satisfaction curve, different
-               themes and upgrade trees.</p>
-         </section>
+          <section class="section">
+             <div class="fun-facts">
+                <h3>Did You Know? Cookie Clicker Fun Facts</h3>
+                <ul>
+                   <li>The original Cookie Clicker was created by Julien "Orteil" Thiennot in August 2013 and went viral within days, crashing his server from traffic.</li>
+                   <li>Orteil later founded DashNet and released an expanded version of Cookie Clicker on Steam in 2021, which sold over a million copies.</li>
+                   <li>The "Grandma" upgrade in Cookie Clicker became an iconic meme, with later updates adding creepy "grandmapocalypse" features in the full game.</li>
+                   <li>Incremental games inspired by Cookie Clicker have collectively generated billions of player-hours across web, mobile, and PC platforms.</li>
+                   <li>The mathematical formula behind Cookie Clicker's cost scaling (approximately 1.15x per purchase) has become an industry standard for idle games.</li>
+                </ul>
+             </div>
+          </section>
 
-         <section class="section">
-            <h2>Accessibility &amp; fair play</h2>
-            <p>Play in a modern browser with JavaScript enabled. Saving uses <strong>local browser storage</strong>
-               (similar to many web games); clearing site data will erase progress—use the in-game save intentionally.
-               This experience is free to play in the sense of no paywall; take breaks to avoid strain from repetitive
-               clicking.</p>
-         </section>
-
-         <div style="text-align: center;">
-            <a href="/" class="back-btn">Back to Home</a>
-         </div>
-
-      </article>
+          <div style="text-align: center;">
+             <a href="/" class="back-btn">Back to Home</a>
+          </div>
+       </article>
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
@@ -1021,7 +1143,15 @@
          let clickPowerLevel = 1;
          let clickPowerCost = 50;
          let perSecond = 0;
-         let upgradeOwned = UPGRADES.map(() => 0);
+          let upgradeOwned = UPGRADES.map(() => 0);
+
+          // New features state
+          let comboCount = 0;
+          let lastClickTime = 0;
+          const COMBO_TIMEOUT = 2000;
+          const milestonesReached = new Set();
+          const MILESTONES = [1000, 10000, 100000, 1000000];
+          const PARTICLES = ['🍪', '🌾', '✨', '🥛'];
 
          // DOM
          const scoreNum = document.getElementById('scoreNum');
@@ -1029,8 +1159,10 @@
          const clickPowerInfo = document.getElementById('clickPowerInfo');
          const gStatTotal = document.getElementById('gStatTotal');
          const gStatPerSec = document.getElementById('gStatPerSec');
-         const clickBtn = document.getElementById('clickBtn');
-         const clickArea = document.getElementById('clickArea');
+          const clickBtn = document.getElementById('clickBtn');
+          const clickArea = document.getElementById('clickArea');
+          const comboDisplay = document.getElementById('comboDisplay');
+          const progressBarFill = document.getElementById('progressBarFill');
 
          function formatNum(n) {
             if (n < 1000) return Math.floor(n).toLocaleString();
@@ -1092,9 +1224,95 @@
             setTimeout(() => el.remove(), 700);
          }
 
-         function doClick(e) {
-            score += clickPower;
-            totalEarned += clickPower;
+          function updateCombo() {
+             const now = Date.now();
+             if (now - lastClickTime < COMBO_TIMEOUT) {
+                comboCount++;
+             } else {
+                comboCount = 1;
+             }
+             lastClickTime = now;
+             if (comboDisplay) {
+                comboDisplay.textContent = comboCount > 1 ? '🔥 Combo x' + comboCount : '';
+             }
+             if (comboCount >= 10 && comboCount % 10 === 0) {
+                showCriticalHit();
+                return 2;
+             }
+             return 1;
+          }
+
+          function showCriticalHit() {
+             const el = document.createElement('div');
+             el.className = 'critical-popup';
+             el.textContent = 'CRITICAL HIT!';
+             const rect = clickArea.getBoundingClientRect();
+             el.style.left = (rect.width / 2 - 60) + 'px';
+             el.style.top = (rect.height / 2 - 80) + 'px';
+             clickArea.style.position = 'relative';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 800);
+          }
+
+          function updateProgressBar() {
+             if (!progressBarFill) return;
+             let nextCost = Infinity;
+             let found = false;
+             UPGRADES.forEach((u, i) => {
+                const cost = getCost(u.baseCost, upgradeOwned[i]);
+                if (cost > score && cost < nextCost) {
+                   nextCost = cost;
+                   found = true;
+                }
+             });
+             if (clickPowerCost > score && clickPowerCost < nextCost) {
+                nextCost = clickPowerCost;
+                found = true;
+             }
+             if (!found) {
+                progressBarFill.style.width = '100%';
+                return;
+             }
+             const prevCost = nextCost / COST_SCALE;
+             const progress = Math.max(0, Math.min(100, ((score - prevCost) / (nextCost - prevCost)) * 100));
+             progressBarFill.style.width = progress + '%';
+          }
+
+          function checkMilestones() {
+             MILESTONES.forEach(m => {
+                if (score >= m && !milestonesReached.has(m)) {
+                   milestonesReached.add(m);
+                   showMilestone(m);
+                }
+             });
+          }
+
+          function showMilestone(value) {
+             const banner = document.createElement('div');
+             banner.className = 'milestone-banner';
+             banner.textContent = '🎉 Milestone: ' + formatNum(value) + '!';
+             clickArea.style.position = 'relative';
+             clickArea.appendChild(banner);
+             setTimeout(() => banner.remove(), 3000);
+          }
+
+          function spawnParticle() {
+             if (document.hidden) return;
+             const p = document.createElement('div');
+             p.className = 'particle';
+             p.textContent = PARTICLES[Math.floor(Math.random() * PARTICLES.length)];
+             const rect = clickArea.getBoundingClientRect();
+             p.style.left = (Math.random() * rect.width * 0.6 + rect.width * 0.2) + 'px';
+             p.style.top = (rect.height * 0.3) + 'px';
+             clickArea.appendChild(p);
+             setTimeout(() => p.remove(), 2500);
+          }
+
+          function doClick(e) {
+             const mult = updateCombo();
+             const power = clickPower * mult;
+             score += power;
+             totalEarned += power;
 
             clickBtn.classList.add('pressed');
             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
@@ -1109,9 +1327,21 @@
                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
                cy = rect.height / 2 - 30;
             }
-            showClickFloat(cx, cy);
-            render();
-         }
+             showClickFloat(cx, cy);
+             if (mult === 2) {
+                const cel = document.createElement('div');
+                cel.className = 'click-float';
+                cel.textContent = '+' + formatNum(power) + ' (2x)';
+                cel.style.left = (cx + 20) + 'px';
+                cel.style.top = (cy - 20) + 'px';
+                cel.style.color = '#dc2626';
+                clickArea.appendChild(cel);
+                setTimeout(() => cel.remove(), 700);
+             }
+             checkMilestones();
+             render();
+             updateProgressBar();
+          }
 
          clickBtn.addEventListener('click', doClick);
          clickBtn.addEventListener('touchstart', (e) => {
@@ -1199,23 +1429,43 @@
             }
          });
 
-         // Auto-save every 30s
-         setInterval(saveGame, 30000);
+          // Auto-save every 30s
+          setInterval(saveGame, 30000);
 
-         // Init
-         loadGame();
-         render();
+          // Particles
+          setInterval(spawnParticle, 3000);
+
+          // Sound toggle
+          document.getElementById('soundToggle').addEventListener('click', function() {
+             this.textContent = this.textContent === '🔊' ? '🔇' : '🔊';
+          });
+
+          // Init
+          loadGame();
+          render();
+          updateProgressBar();
       })();
    </script>
 
-   <script>
-      // Mobile menu
-      const menuBtn = document.querySelector('.menu-btn');
-      const navLinks = document.querySelector('.nav-links');
-      menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
-      document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
-      document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
-   </script>
+    <script>
+       // Mobile menu
+       const menuBtn = document.querySelector('.menu-btn');
+       const navLinks = document.querySelector('.nav-links');
+       menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+       document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
+       document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+    </script>
+    <script>
+       // FAQ toggle
+       document.querySelectorAll('.faq-item h3').forEach(q => {
+          q.addEventListener('click', () => {
+             const item = q.parentElement;
+             const isActive = item.classList.contains('active');
+             document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+             if (!isActive) item.classList.add('active');
+          });
+       });
+    </script>
 
    <!-- Site Footer -->
    <footer class="site-footer">

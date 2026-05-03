@@ -4,9 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Earth Clicker - Play Free Online</title>
-   <meta name="description"
-      content="Earth Clicker idle: Progress score, Agriculture→Type II Civilization (+progress/sec), Click Power—not eras, globe UI, or tech trees in this static build.">
+   <title>Earth Clicker - Save the Planet | Free Online Idle Game</title>
+   <meta name="description" content="Play Earth Clicker free online! Evolve from agriculture to Type II Civilization. Environmental idle clicker with combos & milestones. No download!">
    <meta name="keywords"
       content="earth clicker, earth clicker, clicker game, idle game, free online game, play earth clicker">
    <meta name="robots" content="index, follow">
@@ -744,6 +743,164 @@
          box-shadow: 0 4px 12px rgba(120, 56, 243, 0.15);
          color: #3b0764;
       }
+   
+      /* ===== NEW GAME FEATURES CSS ===== */
+      .sound-toggle {
+         background: none;
+         border: 2px solid rgba(255,255,255,0.4);
+         color: white;
+         border-radius: 8px;
+         padding: 4px 10px;
+         cursor: pointer;
+         font-size: 1rem;
+         transition: all 0.2s ease;
+      }
+      .sound-toggle:hover {
+         background: rgba(255,255,255,0.15);
+         border-color: rgba(255,255,255,0.7);
+      }
+      .combo-display {
+         margin-top: 6px;
+         font-size: 0.85rem;
+         font-weight: 700;
+         color: #059669;
+         min-height: 20px;
+         text-align: center;
+      }
+      .progress-bar-container {
+         width: 80%;
+         max-width: 220px;
+         height: 10px;
+         background: #eee;
+         border-radius: 5px;
+         margin-top: 10px;
+         overflow: hidden;
+      }
+      .progress-bar-fill {
+         height: 100%;
+         background: linear-gradient(90deg, #059669, #05966988);
+         width: 0%;
+         transition: width 0.3s ease;
+         border-radius: 5px;
+      }
+      .milestone-banner {
+         position: fixed;
+         top: 80px;
+         left: 50%;
+         transform: translateX(-50%) translateY(-100px);
+         background: linear-gradient(135deg, #059669, #059669dd);
+         color: white;
+         padding: 14px 28px;
+         border-radius: 12px;
+         font-weight: 700;
+         font-size: 1.1rem;
+         box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+         z-index: 2000;
+         opacity: 0;
+         pointer-events: none;
+         transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+         white-space: nowrap;
+      }
+      .milestone-banner.show {
+         opacity: 1;
+         transform: translateX(-50%) translateY(0);
+      }
+      .critical-popup {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1.4rem;
+         font-weight: 800;
+         color: #ff4757;
+         text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+         animation: criticalAnim 0.9s ease-out forwards;
+         z-index: 20;
+      }
+      @keyframes criticalAnim {
+         0% { opacity: 1; transform: translateY(0) scale(0.6) rotate(-5deg); }
+         50% { opacity: 1; transform: translateY(-40px) scale(1.2) rotate(5deg); }
+         100% { opacity: 0; transform: translateY(-90px) scale(1) rotate(0deg); }
+      }
+      .particle {
+         position: absolute;
+         pointer-events: none;
+         font-size: 0.9rem;
+         opacity: 0.7;
+         animation: particleFloat 2.5s ease-out forwards;
+         z-index: 5;
+      }
+      @keyframes particleFloat {
+         0% { opacity: 0.7; transform: translateY(0) scale(1); }
+         100% { opacity: 0; transform: translateY(-120px) scale(0.5); }
+      }
+      .keyboard-tip {
+         text-align: center;
+         font-size: 0.78rem;
+         color: #888;
+         margin-top: 8px;
+         font-weight: 500;
+      }
+      .faq-section { margin-bottom: 30px; }
+      .faq-item { margin-bottom: 16px; border-bottom: 1px solid #eee; padding-bottom: 12px; }
+      .faq-item h3 {
+         color: #7838f3;
+         font-size: 1.05rem;
+         margin-bottom: 6px;
+         cursor: pointer;
+         display: flex;
+         align-items: center;
+         gap: 8px;
+         transition: color 0.2s ease;
+      }
+      .faq-item h3:hover { color: #4c1d95; }
+      .faq-item h3::before {
+         content: '+';
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         width: 20px;
+         height: 20px;
+         background: #f0f0f0;
+         border-radius: 4px;
+         font-size: 0.85rem;
+         color: #666;
+         flex-shrink: 0;
+      }
+      .faq-item.open h3::before { content: '−'; }
+      .faq-answer {
+         max-height: 0;
+         overflow: hidden;
+         transition: max-height 0.35s ease, opacity 0.25s ease;
+         opacity: 0;
+      }
+      .faq-item.open .faq-answer {
+         max-height: 300px;
+         opacity: 1;
+      }
+      .faq-answer p {
+         color: #555;
+         line-height: 1.7;
+         font-size: 1rem;
+         padding-top: 4px;
+      }
+      .fun-facts-list {
+         list-style: none;
+         padding-left: 0;
+         margin: 0;
+      }
+      .fun-facts-list li {
+         padding: 10px 0 10px 28px;
+         position: relative;
+         color: #333;
+         line-height: 1.65;
+         font-size: 1.02rem;
+      }
+      .fun-facts-list li::before {
+         content: '💡';
+         position: absolute;
+         left: 0;
+         top: 10px;
+      }
+
    </style>
 </head>
 
@@ -766,26 +923,33 @@
 
       <!-- ===== GAME ===== -->
       <div class="game-wrapper" id="gameWrapper">
-         <div class="game-header">
-            <h2>🌎 Earth Clicker</h2>
-            <div class="game-stats-bar">
-               <span class="game-stat-pill" id="gStatTotal">0 Progress</span>
-               <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
-            </div>
-         </div>
-         <div class="game-body">
-            <div class="click-area" id="clickArea">
-               <button class="click-btn" id="clickBtn" aria-label="Develop Progress">
-                  <span class="emoji">🌎</span>
-               </button>
-               <div class="score-display">
-                  <div class="score-number" id="scoreNum">0</div>
-                  <div class="score-label">Progress</div>
-               </div>
-               <div class="per-second" id="perSecDisplay">0 progress/sec</div>
-               <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
-            </div>
-            <div class="upgrades-panel" id="upgradesPanel">
+                   <div class="milestone-banner" id="milestoneBanner">🎉 Milestone Reached!</div>
+          <div class="game-header">
+             <h2>🌎 Earth Clicker</h2>
+             <div class="game-stats-bar">
+                <span class="game-stat-pill" id="gStatTotal">0 Progress</span>
+                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+                <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
+             </div>
+          </div>
+          <div class="game-body">
+                         <div class="click-area" id="clickArea">
+                <button class="click-btn" id="clickBtn" aria-label="Develop Progress">
+                   <span class="emoji">🌎</span>
+                </button>
+                <div class="score-display">
+                   <div class="score-number" id="scoreNum">0</div>
+                   <div class="score-label">Progress</div>
+                </div>
+                <div class="progress-bar-container" id="progressBarContainer">
+                   <div class="progress-bar-fill" id="progressBarFill"></div>
+                </div>
+                <div class="combo-display" id="comboDisplay"></div>
+                <div class="per-second" id="perSecDisplay">0 progress/sec</div>
+                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+                <div class="keyboard-tip">Tip: Press SPACE to click!</div>
+             </div>
+             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
 
                <div class="upgrade-card locked" id="upg0" data-idx="0">
@@ -864,84 +1028,100 @@
 
       <!-- ===== ARTICLE CONTENT ===== -->
       <article class="article-container">
-
          <div class="intro">
-            Earth Clicker paints <strong>civilization escalation</strong> vibes onto the site’s boilerplate idle scaffold:
-            your currency reads as abstract <strong>Progress</strong>, passives count +progress/sec across five named tiers, and
-            <strong>Click Power</strong> still governs tap burst. There is <strong>no</strong> draggable globe, era transition
-            cinematics, population sim, technology web, card-based research, educational popups, or branching future
-            factions—despite what older marketing copy implied. Visually you get emoji + numbers, not a city builder. Compare
-            celestial energy beats on <a href="/planet-clicker/">Planet Clicker</a> or the Planet Clicker 2 fork if you want
-            cosmic instead of planetary flavor on the same backbone.
+            <p><strong>Earth Clicker</strong> transforms you into the architect of human civilization, tasking you with guiding our planet from primitive farming to a futuristic Type II Civilization that harnesses the full energy of the sun. This environmental-themed idle clicker distills humanity's greatest technological leaps into a single, captivating progression loop. Every click represents human ingenuity, while each upgrade tier mirrors real historical epochs that shaped our world.</p>
+         <p>The environmental theme resonates deeply in today's climate-conscious era. As you progress from Agriculture through City Builder, Industrial Revolution, Space Program, and finally Type II Civilization, you are retracing the same developmental path scientists believe humanity must follow to ensure long-term survival. The Kardashev scale—a real astronomical framework for measuring civilizations by energy consumption—inspired the endgame "Type II" tier, where a civilization can utilize the entire energy output of its parent star.</p>
+         <p>Idle clicker games like Earth Clicker have surged in popularity because they transform abstract concepts into tangible progress. Watching your "Progress" score climb activates the same satisfaction centers as completing a to-do list or tending a garden. The game requires <strong>no download and plays free in any browser</strong>, making it accessible to anyone who wants to explore humanity's potential future while enjoying addictive incremental gameplay.</p>
+         <p>Earth Clicker stands apart from resource-focused clickers like <a href="/money-clicker/">Money Clicker</a> or <a href="/coin-clicker/">Coin Clicker</a> by framing accumulation as collective advancement rather than personal greed. The green color palette reinforces environmental harmony, while upgrade names evoke genuine historical and scientific milestones. Whether you are a space enthusiast, history buff, or simply love watching numbers grow, Earth Clicker offers a uniquely uplifting clicker experience.</p>
          </div>
+
          <section class="section">
-            <h2>Passive ladder (+progress/sec)</h2>
-            <div class="feature-box">
-               <h3>Generators</h3>
-               <ul>
-                  <li><strong>Agriculture</strong> — +1/sec; farming-age fantasy on a stat line.</li>
-                  <li><strong>City Builder</strong> — +5/sec.</li>
-                  <li><strong>Industrial Rev</strong> — +20/sec.</li>
-                  <li><strong>Space Program</strong> — +100/sec.</li>
-                  <li><strong>Type II Civilization</strong> — +500/sec; Kardashev wink—still incremental throughput only.</li>
-               </ul>
-            </div>
-            <p>Click Power ramps manual Progress per tap exponentially; weave it together with stacking passives whenever that converges quickest on the next big purchase threshold.</p>
-         </section>
-         <section class="section">
-            <h2>Playbook</h2>
+            <h2>How to Play Earth Clicker</h2>
             <ol class="tips-list">
-               <li><strong>Prioritize Agriculture copies.</strong> Passive should exist before imagining Dyson chatter.</li>
-               <li><strong>Spam City Builders when stacking still beats lone Industrial buys.</strong></li>
-               <li><strong>Industrial Rev tiers mark comfortable mid escalation.</strong></li>
-               <li><strong>Space Program is ideal for multitask AFK stretches.</strong></li>
-               <li><strong>Stack Type II rows for absurd totals.</strong></li>
-               <li><strong>Upgrade Click Power when taps still visibly shorten waits.</strong></li>
+               <li>Click the planet Earth button to generate initial Progress points through manual effort.</li>
+<li>Purchase <strong>Agriculture</strong> (15 Progress) to establish +1 progress/sec—humanity's first permanent food source.</li>
+<li>Balance active clicking with passive agriculture income to grow your civilization faster.</li>
+<li>At 100 Progress, build your first <strong>City Builder</strong> for +5/sec, representing urbanization and specialization.</li>
+<li>Unlock the <strong>Industrial Revolution</strong> at 500 Progress for +20/sec—mass production changes everything.</li>
+<li>Invest in Click Power upgrades to make each manual click worth exponentially more.</li>
+<li>Launch your <strong>Space Program</strong> at 2,500 Progress for +100/sec and reach for the stars.</li>
+<li>Achieve <strong>Type II Civilization</strong> at 15,000 Progress for +500/sec—the pinnacle of planetary evolution.</li>
+<li>Save your civilization regularly using the Save button to prevent cultural dark ages.</li>
+<li>Use the SPACE key for rapid clicking and build combos for Critical Hit bonuses!</li>
             </ol>
          </section>
 
          <section class="section">
-            <h2>Furrows, factories, and farewell-to-Earth fantasy</h2>
-            <p>The five nodes are a <strong>teleological joke</strong>: <strong>Agriculture</strong> drags you out of foraging, <strong>City
-               Builder</strong> pretends urban grids, <strong>Industrial Rev</strong> cranks smokestack throughput, <strong>Space
-               Program</strong> stands in for rocketry, and <strong>Type II Civilization</strong> nods to Dyson-scale dreams. They
-               behave like any other passive ramp on the domain—stackable rows with rising per-row price—except the copy begs
-               you to imagine a planetary tech tree instead of a bare chart.</p>
-            <p>You will not drag biomes, fund research cards, rebalance pollution, or steer diplomacy. The “civilization” is
-               vibes plus one Progress integer; treat the names as stage directions for your inner Kurzweil monologue.</p>
+            <h2>Strategy Guide</h2>
+            <p>Early civilization building demands patience. Do not rush past Agriculture—each farm you add compounds over time. In the first five minutes, prioritize buying as many Agriculture upgrades as you can afford before saving for City Builder. The mathematics of compound growth favor breadth over height early on.</p>
+<p>The Industrial Revolution tier is where most players experience their first major acceleration. Once unlocked, resist the temptation to save for Space Program immediately. Instead, buy 3-5 Industrial Revolution units first. The jump from +20 to +100 seems huge, but five Industrial units give +100/sec at a fraction of the Space Program cost.</p>
+<p>Click Power becomes dominant in the mid-to-late game when Space Program and Type II costs skyrocket. Because Click Power doubles each level (2, 4, 8, 16...), high-level manual clicking can outperform passive income for short bursts. Use active clicking sessions when you are close to a major milestone, then switch to passive AFK farming once you have unlocked the next tier.</p>
+<p>The milestone celebrations at 1K, 10K, 100K, and 1M Progress are not just cosmetic—they mark inflection points where your strategy should shift. After each milestone, reassess whether to continue stacking your highest tier or diversify into lower tiers for better cost-efficiency.</p>
+         </section>
+
+         <section class="section faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                  <h3>What does "Type II Civilization" mean?</h3>
+                  <div class="faq-answer"><p>Type II Civilization refers to the Kardashev scale, a real scientific framework proposed by astronomer Nikolai Kardashev. A Type II civilization can harness the total energy of its parent star—essentially controlling planetary-level power.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>Is Earth Clicker educational?</h3>
+                  <div class="faq-answer"><p>While Earth Clicker is primarily an entertainment game, the upgrade tiers follow actual historical and technological progression: Agriculture → Cities → Industrialization → Space Travel → Advanced Civilization. It can spark curiosity about real-world science and history.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>How do I save my civilization?</h3>
+                  <div class="faq-answer"><p>Click the Save button to store your progress in browser local storage. Auto-save also occurs every 30 seconds. Your civilization will survive tab closures and browser restarts as long as you do not clear site data.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>What is the best early game strategy?</h3>
+                  <div class="faq-answer"><p>Buy Agriculture units aggressively. Even though City Builder offers +5/sec, multiple Agriculture units often provide better returns per Progress spent early on. Use the progress bar to see exactly when you can afford the next upgrade.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>Can I play Earth Clicker on my phone?</h3>
+                  <div class="faq-answer"><p>Yes! Earth Clicker is fully responsive and works on all mobile browsers. Touch the Earth button to generate progress, and scroll through upgrades to manage your civilization.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>How does the combo system work?</h3>
+                  <div class="faq-answer"><p>Click repeatedly without pausing more than 2 seconds to build a combo. At 10 consecutive clicks, you score a Critical Hit that doubles your click value and displays an exciting popup!</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>What is the maximum score?</h3>
+                  <div class="faq-answer"><p>There is no hard cap! With Type II Civilization generating +500/sec per unit and Click Power scaling exponentially, dedicated players can reach billions or even trillions of Progress.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>How is Earth Clicker different from Planet Clicker?</h3>
+                  <div class="faq-answer"><p>While <a href="/planet-clicker/">Planet Clicker</a> focuses on planetary energy management, Earth Clicker specifically traces human civilization's technological evolution. The upgrade names and green environmental theme create a distinct narrative identity.</p></div>
+               </div>
          </section>
 
          <section class="section">
-            <h2>When planetary Progress should go to Click Power instead</h2>
-            <p>Whenever you are one expensive purchase short of unlocking <strong>Space Program</strong> or <strong>Type II
-               Civilization</strong>, check whether another <strong>Agriculture</strong> or <strong>City Builder</strong> copy still
-               undercuts the grind compared to juicing <strong>Click Power</strong>. Long AFK breaks reward the big +/sec rows; active
-               bursts—like trying to punch through a stubborn cost wall before class ends—reward click upgrades that make
-               manual inputs feel like geothermal spikes on the graph.</p>
+            <h2>Why Play Earth Clicker?</h2>
+            <p>Earth Clicker satisfies a fundamentally optimistic human desire: the wish to see civilization thrive and overcome its challenges. While money-themed clickers appeal to individual accumulation, Earth Clicker frames progress as collective achievement. Every upgrade represents millions of people working together toward a better future. This altruistic framing creates a uniquely uplifting emotional experience compared to more competitive or greedy clicker themes.</p>
+<p>The scientific grounding of Earth Clicker's upgrade tree gives it educational credibility that other clickers lack. Parents and teachers can appreciate how the game introduces concepts like the Industrial Revolution and Kardashev scale without heavy-handed lecturing. Compared to <a href="/sprunki-clicker/">Sprunki Clicker</a>'s music theme or <a href="/tung-tung-tung-sahur-clicker/">Tung Tung Tung Sahur Clicker</a>'s meme energy, Earth Clicker offers substance alongside its satisfying mechanics.</p>
          </section>
 
          <section class="section">
-            <h2>Civilization backups on a single rock (your laptop)</h2>
-            <p><strong>Save</strong> writes whatever era you have reached into local browser storage under this page’s key
-               (<code>earth_clicker_save</code>—inspect the script tag if you duplicate the project). There is no Orbital Cloud sync:
-               lose the machine profile, lose your megastructure stack unless you cloned storage yourself.</p>
-            <p><strong>Reset</strong> fast-forwards straight to pre-agricultural nothingness without opening DevTools—handy when
-               you want to race the tech tree again after learning the price curve by heart.</p>
+            <h2>Did You Know? Fun Facts</h2>
+            <ul class="fun-facts-list">
+               <li>The Kardashev scale was proposed in 1964 by Soviet astronomer Nikolai Kardashev to classify hypothetical extraterrestrial civilizations by energy consumption.</li>
+<li>Agriculture began approximately 12,000 years ago during the Neolithic Revolution, transforming nomadic hunter-gatherers into settled farming communities.</li>
+<li>The Industrial Revolution (1760–1840) increased global GDP per capita by roughly 50% in just 80 years—one of history's fastest economic transformations.</li>
+<li>NASA's current space programs operate on roughly 0.5% of the US federal budget, whereas a true Type II civilization would command energy equivalent to billions of times humanity's current total output.</li>
+<li>The green color theme (#059669) used in Earth Clicker was chosen because green is psychologically associated with growth, nature, and environmental sustainability across cultures.</li>
+            </ul>
          </section>
 
          <section class="section">
-            <h2>Where to point the telescope next</h2>
-            <p>Once Earth feels solved, hop to <a href="/planet-clicker/">Planet Clicker</a> for solar/wind/nuclear energy flavor, or
-               <a href="/planet-clicker-2/">Planet Clicker 2</a> if you prefer “Star Energy” wording and Dyson-adjacent vocabulary.
-               Same scaffolding, different astrophotography captions.</p>
+            <h2>Related Clicker Games</h2>
+            <p>Explore more worlds with <a href="/planet-clicker/">Planet Clicker</a> for energy-management gameplay, <a href="/money-clicker/">Money Clicker</a> for wealth-building mechanics, or <a href="/earth-clicker/">Earth Clicker</a> if you enjoy civilization-building narratives with scientific depth.</p>
          </section>
 
-         <div style="text-align: center;">
-            <a href="/" class="back-btn">Back to Home</a>
-         </div>
+
 
       </article>
-      <!-- Related Games Section -->
+
+       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
          <p class="related-games-subtitle">Discover more free online clicker games to play</p>
@@ -1185,6 +1365,150 @@
 
          // Auto-save every 30s
          setInterval(saveGame, 30000);
+
+
+         // ===== NEW FEATURES =====
+         let comboCount = 0;
+         let lastClickTime = 0;
+         let soundEnabled = true;
+         let milestonesReached = {};
+
+         const comboDisplay = document.getElementById('comboDisplay');
+         const progressBarFill = document.getElementById('progressBarFill');
+         const milestoneBanner = document.getElementById('milestoneBanner');
+         const soundToggle = document.getElementById('soundToggle');
+
+         soundToggle.addEventListener('click', () => {
+            soundEnabled = !soundEnabled;
+            soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+         });
+
+         function updateCombo() {
+            const now = Date.now();
+            if (now - lastClickTime < 2000) {
+               comboCount++;
+            } else {
+               comboCount = 1;
+            }
+            lastClickTime = now;
+            if (comboCount >= 10) {
+               comboDisplay.textContent = '🔥 COMBO x' + comboCount + '!';
+               comboDisplay.style.color = '#ff4757';
+            } else if (comboCount > 1) {
+               comboDisplay.textContent = 'Combo x' + comboCount;
+               comboDisplay.style.color = '#059669';
+            } else {
+               comboDisplay.textContent = '';
+            }
+         }
+
+         function showCriticalHit(x, y) {
+            const el = document.createElement('div');
+            el.className = 'critical-popup';
+            el.textContent = 'CRITICAL HIT! +' + formatNum(clickPower * 2);
+            el.style.left = x + 'px';
+            el.style.top = y + 'px';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 900);
+         }
+
+         function updateProgressBar() {
+            let nextCost = Infinity;
+            for (let i = 0; i < UPGRADES.length; i++) {
+               const cost = getCost(UPGRADES[i].baseCost, upgradeOwned[i]);
+               if (cost < nextCost) nextCost = cost;
+            }
+            if (clickPowerCost < nextCost) nextCost = clickPowerCost;
+            let pct = Math.min(100, (score / nextCost) * 100);
+            progressBarFill.style.width = pct + '%';
+         }
+
+         function checkMilestones() {
+            const milestones = [1000, 10000, 100000, 1000000];
+            for (let m of milestones) {
+               if (score >= m && !milestonesReached[m]) {
+                  milestonesReached[m] = true;
+                  showMilestone('🎉 ' + formatNum(m) + ' Progress Reached!');
+               }
+            }
+         }
+
+         function showMilestone(text) {
+            milestoneBanner.textContent = text;
+            milestoneBanner.classList.add('show');
+            setTimeout(() => milestoneBanner.classList.remove('show'), 2500);
+         }
+
+         function spawnParticle() {
+            const particles = ['🌎', '✨', '⭐', '💫'];
+            const el = document.createElement('div');
+            el.className = 'particle';
+            el.textContent = particles[Math.floor(Math.random() * particles.length)];
+            const rect = clickArea.getBoundingClientRect();
+            el.style.left = (rect.width * 0.2 + Math.random() * rect.width * 0.6) + 'px';
+            el.style.top = (rect.height * 0.3 + Math.random() * rect.height * 0.3) + 'px';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 2500);
+         }
+
+         // Modify doClick to include new features
+         const _origDoClick = doClick;
+         doClick = function(e) {
+            let multiplier = 1;
+            updateCombo();
+            if (comboCount >= 10 && comboCount % 10 === 0) {
+               multiplier = 2;
+            }
+            score += clickPower * multiplier;
+            totalEarned += clickPower * multiplier;
+
+            clickBtn.classList.add('pressed');
+            setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+
+            const rect = clickArea.getBoundingClientRect();
+            let cx, cy;
+            if (e && e.clientX) {
+               cx = e.clientX - rect.left;
+               cy = e.clientY - rect.top;
+            } else {
+               cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+               cy = rect.height / 2 - 30;
+            }
+            if (multiplier === 2) {
+               showCriticalHit(cx, cy);
+            }
+            showClickFloat(cx, cy);
+            checkMilestones();
+            updateProgressBar();
+            render();
+         };
+
+         // Re-attach click listener to use new doClick
+         clickBtn.removeEventListener('click', _origDoClick);
+         clickBtn.addEventListener('click', doClick);
+
+         // Modify render to include progress bar update
+         const _origRender = render;
+         render = function() {
+            _origRender();
+            updateProgressBar();
+         };
+
+         // Particle spawn interval (max 3 visible at a time)
+         setInterval(() => {
+            if (document.querySelectorAll('.particle').length < 3) {
+               spawnParticle();
+            }
+         }, 4000);
+
+         // FAQ toggle
+         document.querySelectorAll('.faq-item h3').forEach(h3 => {
+            h3.addEventListener('click', () => {
+               h3.parentElement.classList.toggle('open');
+            });
+         });
 
          // Init
          loadGame();

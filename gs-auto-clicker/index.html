@@ -4,9 +4,9 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>GS Auto Clicker - Play Free Online</title>
+   <title>GS Auto Clicker - Play Free Online | Spacebar Clicker</title>
    <meta name="description"
-      content="GS Auto Clicker browser idle: Auto Clicks, Speed Boost→Quantum (+clicks/sec), Click Power— homage name only; not the Windows GS Auto Clicker desktop app.">
+      content="Play GS Auto Clicker free online! Stack automation upgrades, earn Auto Clicks per second, and optimize your clicking empire. No download needed!">
    <meta name="keywords"
       content="gs auto clicker, gs auto clicker, clicker game, idle game, free online game, play gs auto clicker">
    <meta name="robots" content="index, follow">
@@ -149,6 +149,7 @@
          border-radius: 22px;
          box-shadow: 0 20px 55px rgba(120, 56, 243, 0.14);
          overflow: hidden;
+         position: relative;
       }
 
       .game-header {
@@ -205,6 +206,8 @@
          border-right: 1px solid #f0f0f0;
          background: #f1f5f9;
          min-height: 320px;
+         position: relative;
+         overflow: hidden;
       }
 
       @media (max-width: 700px) {
@@ -234,6 +237,7 @@
          line-height: 1;
          position: relative;
          outline: none;
+         z-index: 2;
       }
 
       .click-btn:hover {
@@ -426,6 +430,148 @@
          border-color: #dc2626;
          color: #dc2626;
       }
+
+      /* Combo System */
+      .combo-display {
+         margin-top: 6px;
+         font-size: 0.9rem;
+         font-weight: 700;
+         color: #ff6b35;
+         min-height: 1.3em;
+         transition: transform 0.1s;
+         z-index: 2;
+      }
+      .combo-display.active { transform: scale(1.15); }
+
+      .critical-popup {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1.5rem;
+         font-weight: 800;
+         color: #ff3d00;
+         text-shadow: 0 2px 8px rgba(255, 61, 0, 0.3);
+         animation: critPop 0.8s ease-out forwards;
+         z-index: 20;
+      }
+      @keyframes critPop {
+         0% { opacity: 1; transform: translateY(0) scale(0.5); }
+         50% { transform: translateY(-40px) scale(1.2); }
+         100% { opacity: 0; transform: translateY(-90px) scale(1); }
+      }
+
+      /* Progress Bar */
+      .progress-bar-container {
+         width: 80%;
+         max-width: 220px;
+         height: 8px;
+         background: #e5e7eb;
+         border-radius: 4px;
+         margin-top: 10px;
+         overflow: hidden;
+         z-index: 2;
+      }
+      .progress-bar-fill {
+         height: 100%;
+         background: linear-gradient(90deg, #475569, #475569dd);
+         border-radius: 4px;
+         transition: width 0.3s ease;
+         width: 0%;
+      }
+
+      /* Floating Particles */
+      .particle {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1rem;
+         opacity: 0;
+         animation: particleFloat 2.5s ease-out forwards;
+         z-index: 1;
+      }
+      @keyframes particleFloat {
+         0% { opacity: 0.8; transform: translateY(0) scale(0.6); }
+         100% { opacity: 0; transform: translateY(-120px) scale(1.2); }
+      }
+
+      /* Milestone Banner */
+      .milestone-banner {
+         position: fixed;
+         top: 80px;
+         left: 50%;
+         transform: translateX(-50%) scale(0.9);
+         background: linear-gradient(135deg, #7838f3, #a855f7);
+         color: white;
+         padding: 14px 28px;
+         border-radius: 12px;
+         font-weight: 700;
+         font-size: 1.1rem;
+         box-shadow: 0 10px 30px rgba(120, 56, 243, 0.3);
+         opacity: 0;
+         pointer-events: none;
+         transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+         z-index: 2000;
+      }
+      .milestone-banner.show {
+         opacity: 1;
+         transform: translateX(-50%) scale(1);
+      }
+
+      /* Sound Toggle */
+      .sound-toggle {
+         background: rgba(255,255,255,0.2);
+         border: none;
+         border-radius: 8px;
+         padding: 6px 10px;
+         color: white;
+         font-size: 1.1rem;
+         cursor: pointer;
+         transition: background 0.2s;
+      }
+      .sound-toggle:hover { background: rgba(255,255,255,0.35); }
+
+      /* Keyboard tip */
+      .keyboard-tip {
+         font-size: 0.75rem;
+         color: #888;
+         margin-top: 8px;
+         font-weight: 500;
+         z-index: 2;
+      }
+
+      /* FAQ Styles */
+      .faq-section { margin-bottom: 30px; }
+      .faq-item { margin-bottom: 14px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+      .faq-question {
+         font-size: 1.05rem;
+         font-weight: 600;
+         color: #333;
+         cursor: pointer;
+         padding: 10px 0;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         transition: color 0.2s;
+         margin: 0;
+      }
+      .faq-question:hover { color: #7838f3; }
+      .faq-question::after {
+         content: '+';
+         font-size: 1.3rem;
+         color: #7838f3;
+         transition: transform 0.3s;
+         font-weight: 400;
+      }
+      .faq-item.open .faq-question::after { transform: rotate(45deg); }
+      .faq-answer {
+         max-height: 0;
+         overflow: hidden;
+         transition: max-height 0.3s ease, opacity 0.3s ease;
+         opacity: 0;
+      }
+      .faq-item.open .faq-answer { max-height: 500px; opacity: 1; }
+      .faq-answer p { margin: 0 0 10px; font-size: 1rem; color: #555; }
+
+      /* Intro paragraphs */
+      .intro p { margin-bottom: 16px; line-height: 1.85; }
 
       /* Article Styles */
       .article-container {
@@ -766,15 +912,18 @@
 
       <!-- ===== GAME ===== -->
       <div class="game-wrapper" id="gameWrapper">
+         <div class="milestone-banner" id="milestoneBanner"></div>
          <div class="game-header">
             <h2>⚙️ GS Auto Clicker</h2>
             <div class="game-stats-bar">
                <span class="game-stat-pill" id="gStatTotal">0 Auto Clicks</span>
                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+               <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">🔊</button>
             </div>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
+               <div id="particleContainer" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;"></div>
                <button class="click-btn" id="clickBtn" aria-label="Automate Auto Click">
                   <span class="emoji">⚙️</span>
                </button>
@@ -784,6 +933,11 @@
                </div>
                <div class="per-second" id="perSecDisplay">0 auto clicks/sec</div>
                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+               <div class="combo-display" id="comboDisplay"></div>
+               <div class="progress-bar-container">
+                  <div class="progress-bar-fill" id="progressBarFill"></div>
+               </div>
+               <div class="keyboard-tip">Tip: Press SPACE to click!</div>
             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
@@ -863,52 +1017,104 @@
       </div>
 
       <!-- ===== ARTICLE CONTENT ===== -->
-      <article class="article-container">
+       <article class="article-container">
 
+          <div class="intro">
+             <p>GS Auto Clicker is a browser-based idle game that celebrates the history and humor of automation. Named as a playful homage to classic auto-clicking utilities, this game distills the satisfying essence of efficiency into a simple, addictive loop. Your currency is Auto Clicks, earned both through manual taps and powerful passive upgrades. Starting from a basic Speed Boost and climbing all the way to a Quantum Processor, each tier represents a leap in simulated computing power. Like all games on Spacebar Clicker, it requires no download and runs instantly in your browser.</p>
+             <p>The concept of automation has fascinated humanity for centuries. From the mechanical looms of the Industrial Revolution to modern software macros that handle repetitive tasks, we have always sought ways to multiply our output. Auto clickers themselves are a staple of PC gaming culture, often used to test hardware or automate grinding in games. GS Auto Clicker takes this idea and turns it into the core gameplay mechanic. Instead of breaking game rules, you are rewarded for building layers of legitimate automation within the game's own economy.</p>
+             <p>Idle games like GS Auto Clicker have become a genre unto themselves because they perfectly capture the fantasy of exponential growth. There is something deeply satisfying about watching a number climb higher and higher, knowing that your earlier investments are now working for you. The genre exploded with hits like Cookie Clicker and AdVenture Capitalist, proving that players love the combination of active clicking and passive reward. GS Auto Clicker continues this tradition with a tech-themed skin that appeals to anyone who has ever wished their computer could do the work for them.</p>
+             <p>This is a completely free browser game with no paywalls, timers, or energy systems. Your progress saves automatically to local storage, so you can close the tab and return whenever you like. Whether you are actively clicking to build combos or letting your Neural Network stack generate income while you work, GS Auto Clicker adapts to your play style. It is the perfect background game for multitaskers and productivity enthusiasts alike.</p>
+          </div>
 
-         <div class="intro">
-            This page is a <strong>browser idle game</strong> themed around automation jokes—it is <strong>not</strong> the
-            standalone Windows utility also called “GS Auto Clicker,” and it does not install hotkeys, move your OS cursor, or
-            send hardware click events. Here you bank abstract <strong>Auto Clicks</strong>, stack five passive tiers that add
-            “+clicks/sec” (simulated throughput, not real macros), and upgrade <strong>Click Power</strong> for manual bursts—same
-            math as <a href="/op-auto-clicker/">OP Auto Clicker</a> on this site with different skin text.
-         </div>
-         <section class="section">
-            <h2>Passive tiers (+Auto Clicks/sec)</h2>
-            <div class="feature-box">
-               <h3>Rows</h3>
-               <ul>
-                  <li><strong>Speed Boost</strong> — +1/sec.</li>
-                  <li><strong>Multi-Thread</strong> — +5/sec; humor, not OS threads.</li>
-                  <li><strong>Turbo Mode</strong> — +20/sec.</li>
-                  <li><strong>Neural Network</strong> — +100/sec.</li>
-                  <li><strong>Quantum Processor</strong> — +500/sec.</li>
-               </ul>
-            </div>
-            <p>Click Power controls how many Auto Clicks each tap adds—balance it against cloning passive tiers like any other idle page here.</p>
-         </section>
-         <section class="section">
-            <h2>Route</h2>
-            <ol class="tips-list">
-               <li><strong>This is not downloadable utility software.</strong> Play in the browser only.</li>
-               <li><strong>Bring Speed Boost online fast.</strong> Passive beats pure clicking indefinitely.</li>
-               <li><strong>Spam Multi-Thread before splurging on one Turbo.</strong></li>
-               <li><strong>Neural Network helps AFK sessions.</strong></li>
-               <li><strong>Quantum Processor rows inflate totals.</strong></li>
-               <li><strong>Invest in Click Power when taps shorten waits meaningfully.</strong></li>
-            </ol>
-         </section>
-         <section class="section">
-            <h2>Disclaimer</h2>
-            <p>Real desktop auto-clickers can break game rules; this page only increments pretend counters. Respect each platform’s
-               terms when using genuine automation elsewhere.</p>
-         </section>
+          <section class="section">
+             <h2>How to Play GS Auto Clicker</h2>
+             <ol class="tips-list">
+                <li><strong>Click the Gear Button:</strong> Begin by clicking the gear emoji to generate raw Auto Clicks manually.</li>
+                <li><strong>Activate Speed Boost:</strong> Buy your first Speed Boost at 15 clicks for +1 Auto Click per second of passive income.</li>
+                <li><strong>Enable Multi-Threading:</strong> At 100 clicks, unlock Multi-Thread to earn +5 clicks per second. Buy several for stacking returns.</li>
+                <li><strong>Engage Turbo Mode:</strong> When you reach 500 clicks, activate Turbo Mode for a massive +20 clicks per second jump.</li>
+                <li><strong>Deploy a Neural Network:</strong> Save 2,500 clicks to install a Neural Network, generating +100 clicks per second automatically.</li>
+                <li><strong>Boost Click Power:</strong> Invest 50 clicks into Click Power to double your manual tap output, essential for active sessions.</li>
+                <li><strong>Unlock Quantum Processing:</strong> The endgame is the Quantum Processor at 15,000 clicks, delivering +500 per second. Stack multiple for astronomical totals.</li>
+             </ol>
+          </section>
 
-         <div style="text-align: center;">
-            <a href="/" class="back-btn">Back to Home</a>
-         </div>
+          <section class="section">
+             <h2>GS Auto Clicker Strategy Guide</h2>
+             <p>In the early game, your manual clicks are your primary engine. Focus on buying Speed Boosts as soon as they are available. The key mistake many new players make is saving for expensive upgrades while ignoring cheap ones. Because each upgrade increases in cost exponentially, spreading your purchases across multiple Speed Boosts and Multi-Threads usually yields better returns than waiting for a single Turbo Mode. Think of it like a real computer: more threads running in parallel generally beat one faster core early on.</p>
+             <p>The mid-game transition happens when you unlock Turbo Mode and Neural Networks. At this point, you should evaluate your Click Power level. If you are still actively playing, upgrading Click Power can dramatically accelerate your progress by making every manual tap count for more. However, if you plan to step away, prioritize passive generators. The Neural Network's +100 per second can accumulate quickly, turning a short break into a meaningful income burst. Always check the progress bar below your score to see how close you are to the next affordable upgrade.</p>
+             <p>Late game optimization in GS Auto Clicker is about scale and synergy. Quantum Processors provide the highest base income, but do not abandon lower tiers entirely. A diversified portfolio of upgrades smooths out your income curve and prevents long dry spells. The combo system becomes increasingly valuable here—rapid clicking builds your combo multiplier, and every 10th consecutive click triggers a Critical Hit for double points. If you are aiming for the 1 million click milestone, plan active clicking sessions around your combo timer and use the sound toggle to customize your experience.</p>
+          </section>
 
-      </article>
+          <section class="section faq-section">
+             <h2>Frequently Asked Questions</h2>
+             <div class="faq-item">
+                <h3 class="faq-question">What is GS Auto Clicker?</h3>
+                <div class="faq-answer">
+                   <p>GS Auto Clicker is a free browser idle game where you earn Auto Clicks through manual tapping and passive upgrades themed around computing and automation.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">Is this the same as the desktop GS Auto Clicker program?</h3>
+                <div class="faq-answer">
+                   <p>No. This is a standalone browser game inspired by the concept of auto clickers. It does not interact with your operating system or other programs.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">How does the Critical Hit system work?</h3>
+                <div class="faq-answer">
+                   <p>Every 10th consecutive click within a 2-second window triggers a Critical Hit, doubling the points earned for that specific click.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">Can I play on my phone?</h3>
+                <div class="faq-answer">
+                   <p>Yes. The game is responsive and supports touch tapping on mobile browsers. The layout adjusts automatically for smaller screens.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">Will my progress be saved?</h3>
+                <div class="faq-answer">
+                   <p>Yes. Progress is saved automatically to your browser's local storage every 30 seconds. You can also save manually using the Save button.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">What do the milestones represent?</h3>
+                <div class="faq-answer">
+                   <p>Milestones at 1K, 10K, 100K, and 1M Auto Clicks are celebration banners that mark major achievements in your automation journey.</p>
+                </div>
+             </div>
+          </section>
+
+          <section class="section">
+             <h2>Why Play GS Auto Clicker?</h2>
+             <p>GS Auto Clicker appeals to the optimizer in all of us. There is a unique satisfaction in watching a system you built run itself, and this game delivers that feeling in its purest form. The tech-themed upgrades create a narrative of building a supercomputer from scratch, starting with a simple speed boost and culminating in quantum processing. For fans of automation, productivity tools, or computing history, the thematic wrapper adds an extra layer of enjoyment that generic clickers cannot match. It is also a fantastic game for second-screen multitasking.</p>
+             <p>Compared to animal or food-themed clickers, GS Auto Clicker offers a sleek, minimalist aesthetic that feels modern and focused. The slate-gray color scheme and gear emoji give it a professional, industrial vibe. Yet beneath the skin, it offers the same deeply satisfying progression loop. Whether you prefer the mechanical precision of GS Auto Clicker or the whimsical charm of Duck Clicker, the core math is solid and the pacing is carefully tuned. This page is ideal for players who want their clicker to feel like a productivity app rather than a cartoon.</p>
+          </section>
+
+          <section class="section">
+             <h2>Did You Know? Fun Facts About Automation</h2>
+             <div class="highlight-box">
+                <ul>
+                   <li>The first mechanical automaton, a duck that could eat and digest grain, was created by Jacques de Vaucanson in 1739.</li>
+                   <li>Modern auto clicker software can simulate thousands of clicks per second, far faster than any human.</li>
+                   <li>The term 'robot' comes from the Czech word 'robota,' meaning forced labor, coined by Karel Capek in 1920.</li>
+                   <li>Quantum computers use qubits that can exist in multiple states simultaneously, potentially revolutionizing processing power.</li>
+                   <li>The world's fastest supercomputer can perform over one quintillion calculations per second.</li>
+                </ul>
+             </div>
+          </section>
+
+          <section class="section">
+             <h2>Discover More Free Clicker Games</h2>
+             <p>If you enjoy GS Auto Clicker, explore <a href="/op-auto-clicker/">OP Auto Clicker</a> for a similar automation theme. Animal lovers should try <a href="/duck-clicker/">Duck Clicker</a> and <a href="/dog-clicker/">Dog Clicker</a> for charming critter-based gameplay. For something completely different, check out <a href="/italian-brainrot-clicker/">Italian Brainrot Clicker</a>. And for the classic experience, do not miss <a href="/cookie-clicker/">Cookie Clicker</a>.</p>
+          </section>
+
+          <div style="text-align: center;">
+             <a href="/" class="back-btn">Back to Home</a>
+          </div>
+
+       </article>
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
@@ -966,6 +1172,7 @@
          const SAVE_KEY = 'gs_auto_clicker_save';
          const UPGRADES = [{ "name": "Speed Boost", "emoji": "⚡", "baseCost": 15, "baseRate": 1, "desc": "+1 click/sec" }, { "name": "Multi-Thread", "emoji": "🔀", "baseCost": 100, "baseRate": 5, "desc": "+5 clicks/sec" }, { "name": "Turbo Mode", "emoji": "🚀", "baseCost": 500, "baseRate": 20, "desc": "+20 clicks/sec" }, { "name": "Neural Network", "emoji": "🧠", "baseCost": 2500, "baseRate": 100, "desc": "+100 clicks/sec" }, { "name": "Quantum Processor", "emoji": "💎", "baseCost": 15000, "baseRate": 500, "desc": "+500 clicks/sec" }];
          const COST_SCALE = 1.15;
+         const PARTICLE_EMOJI = '⚡';
 
          let score = 0;
          let totalEarned = 0;
@@ -975,6 +1182,20 @@
          let perSecond = 0;
          let upgradeOwned = UPGRADES.map(() => 0);
 
+         // Combo system
+         let lastClickTime = 0;
+         let comboCount = 0;
+         const COMBO_TIMEOUT = 2000;
+         const COMBO_CRIT_THRESHOLD = 10;
+
+         // Sound toggle
+         let soundEnabled = true;
+
+         // Milestones
+         const milestones = [1000, 10000, 100000, 1000000];
+         let milestonesReached = {};
+         milestones.forEach(m => milestonesReached[m] = false);
+
          // DOM
          const scoreNum = document.getElementById('scoreNum');
          const perSecDisplay = document.getElementById('perSecDisplay');
@@ -982,9 +1203,14 @@
          const gStatTotal = document.getElementById('gStatTotal');
          const gStatPerSec = document.getElementById('gStatPerSec');
          const clickBtn = document.getElementById('clickBtn');
-         const clickArea = document.getElementById('clickArea');
+          const clickArea = document.getElementById('clickArea');
+          const comboDisplay = document.getElementById('comboDisplay');
+          const progressBarFill = document.getElementById('progressBarFill');
+          const milestoneBanner = document.getElementById('milestoneBanner');
+          const soundToggle = document.getElementById('soundToggle');
+          const particleContainer = document.getElementById('particleContainer');
 
-         function formatNum(n) {
+          function formatNum(n) {
             if (n < 1000) return Math.floor(n).toLocaleString();
             if (n < 1e6) return (n / 1e3).toFixed(1) + 'K';
             if (n < 1e9) return (n / 1e6).toFixed(1) + 'M';
@@ -1033,37 +1259,77 @@
             }
          }
 
-         function showClickFloat(x, y) {
-            const el = document.createElement('div');
-            el.className = 'click-float';
-            el.textContent = '+' + formatNum(clickPower);
-            el.style.left = x + 'px';
-            el.style.top = y + 'px';
-            clickArea.style.position = 'relative';
-            clickArea.appendChild(el);
-            setTimeout(() => el.remove(), 700);
-         }
+          function showClickFloat(x, y, amount) {
+             const el = document.createElement('div');
+             el.className = 'click-float';
+             el.textContent = '+' + formatNum(amount || clickPower);
+             el.style.left = x + 'px';
+             el.style.top = y + 'px';
+             clickArea.style.position = 'relative';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 700);
+          }
 
-         function doClick(e) {
-            score += clickPower;
-            totalEarned += clickPower;
+          function showCriticalPopup(x, y) {
+             const el = document.createElement('div');
+             el.className = 'critical-popup';
+             el.textContent = 'CRITICAL HIT!';
+             el.style.left = x + 'px';
+             el.style.top = (y - 30) + 'px';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 800);
+          }
 
-            clickBtn.classList.add('pressed');
-            setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+          function showMilestoneBanner(m) {
+             milestoneBanner.textContent = '🎉 Milestone Reached: ' + formatNum(m) + '!';
+             milestoneBanner.classList.add('show');
+             setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
+          }
 
-            // Float position
-            const rect = clickArea.getBoundingClientRect();
-            let cx, cy;
-            if (e && e.clientX) {
-               cx = e.clientX - rect.left;
-               cy = e.clientY - rect.top;
-            } else {
-               cx = rect.width / 2 + (Math.random() - 0.5) * 40;
-               cy = rect.height / 2 - 30;
-            }
-            showClickFloat(cx, cy);
-            render();
-         }
+          function doClick(e) {
+             const now = Date.now();
+             let earned = clickPower;
+             if (now - lastClickTime <= COMBO_TIMEOUT) {
+                comboCount++;
+             } else {
+                comboCount = 1;
+             }
+             lastClickTime = now;
+
+             if (comboCount > 1) {
+                comboDisplay.textContent = comboCount + 'x Combo!';
+                comboDisplay.classList.add('active');
+                setTimeout(() => comboDisplay.classList.remove('active'), 100);
+             } else {
+                comboDisplay.textContent = '';
+             }
+
+             if (comboCount % COMBO_CRIT_THRESHOLD === 0) {
+                earned *= 2;
+             }
+
+             score += earned;
+             totalEarned += earned;
+
+             clickBtn.classList.add('pressed');
+             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+
+             // Float position
+             const rect = clickArea.getBoundingClientRect();
+             let cx, cy;
+             if (e && e.clientX) {
+                cx = e.clientX - rect.left;
+                cy = e.clientY - rect.top;
+             } else {
+                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+                cy = rect.height / 2 - 30;
+             }
+             showClickFloat(cx, cy, earned);
+             if (comboCount % COMBO_CRIT_THRESHOLD === 0) {
+                showCriticalPopup(cx, cy);
+             }
+             render();
+          }
 
          clickBtn.addEventListener('click', doClick);
          clickBtn.addEventListener('touchstart', (e) => {

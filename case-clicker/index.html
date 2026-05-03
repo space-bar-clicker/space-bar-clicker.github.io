@@ -4,9 +4,9 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Case Clicker - Play Free Online</title>
+   <title>Case Clicker - Free Loot Box Idle Game Online | Spacebar Clicker</title>
    <meta name="description"
-      content="Case Clicker idle game: themed as keys & charms but plays as coins/sec tiers (Bronze Key → Master Unboxer) plus Click Power; save & reset. No randomized loot drops or marketplace in this build.">
+      content="Play Case Clicker free online! Earn Case Coins, unlock bronze keys to master unboxers, and build your fortune in this loot-themed incremental game. No download.">
    <meta name="keywords"
       content="case clicker, case clicker, clicker game, idle game, free online game, play case clicker">
    <meta name="robots" content="index, follow">
@@ -427,6 +427,34 @@
          color: #dc2626;
       }
 
+      /* ===== NEW GAME FEATURES CSS ===== */
+      .combo-display { margin-top: 6px; font-size: 0.85rem; font-weight: 700; color: #7c3aed; min-height: 1.2em; }
+      .critical-popup { position: absolute; pointer-events: none; font-size: 1.6rem; font-weight: 800; color: #dc2626; text-shadow: 0 2px 8px rgba(220,38,38,0.3); animation: criticalPop 0.8s ease-out forwards; z-index: 20; }
+      @keyframes criticalPop { 0% { opacity: 1; transform: translateY(0) scale(0.5); } 50% { transform: translateY(-30px) scale(1.2); } 100% { opacity: 0; transform: translateY(-80px) scale(1); } }
+      .progress-bar-container { width: 80%; max-width: 220px; height: 10px; background: #eee; border-radius: 5px; margin-top: 12px; overflow: hidden; }
+      .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #7c3aed, #7c3aeddd); border-radius: 5px; transition: width 0.3s ease; width: 0%; }
+      .particle { position: absolute; pointer-events: none; font-size: 1rem; opacity: 0.7; animation: particleFloat 2.5s ease-out forwards; z-index: 5; }
+      @keyframes particleFloat { 0% { opacity: 0.7; transform: translateY(0) rotate(0deg); } 100% { opacity: 0; transform: translateY(-120px) rotate(45deg); } }
+      .milestone-banner { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: linear-gradient(135deg, #7c3aed, #7c3aeddd); color: white; padding: 14px 28px; border-radius: 12px; font-size: 1.1rem; font-weight: 700; box-shadow: 0 8px 30px rgba(0,0,0,0.2); animation: milestoneIn 0.5s ease-out, milestoneOut 0.5s ease-in 2s forwards; z-index: 50; pointer-events: none; white-space: nowrap; }
+      @keyframes milestoneIn { from { opacity: 0; transform: translate(-50%, -50%) scale(0.7); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+      @keyframes milestoneOut { from { opacity: 1; transform: translate(-50%, -50%) scale(1); } to { opacity: 0; transform: translate(-50%, -50%) scale(0.9); } }
+      .sound-toggle { background: rgba(255,255,255,0.2); border: none; border-radius: 8px; padding: 4px 10px; color: white; font-size: 1rem; cursor: pointer; transition: background 0.2s; }
+      .sound-toggle:hover { background: rgba(255,255,255,0.35); }
+      .keyboard-tip { width: 100%; text-align: center; font-size: 0.78rem; color: #888; margin-top: 8px; font-weight: 500; }
+      .faq-section { margin-bottom: 30px; }
+      .faq-item { margin-bottom: 14px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+      .faq-item h3 { color: #333; font-size: 1.05rem; margin-bottom: 6px; cursor: pointer; transition: color 0.2s; position: relative; padding-right: 20px; }
+      .faq-item h3:hover { color: #7c3aed; }
+      .faq-item h3::after { content: '+'; position: absolute; right: 0; top: 0; color: #7838f3; font-weight: 700; transition: transform 0.2s; }
+      .faq-item.active h3::after { transform: rotate(45deg); }
+      .faq-item p { display: none; color: #555; line-height: 1.7; font-size: 1rem; margin-bottom: 0; padding-top: 4px; }
+      .faq-item.active p { display: block; }
+      .fun-facts { background: #f8f9fe; border-radius: 12px; padding: 20px; margin: 20px 0; }
+      .fun-facts h3 { color: #7838f3; margin-bottom: 12px; }
+      .fun-facts ul { list-style: none; padding-left: 0; }
+      .fun-facts li { padding: 6px 0 6px 24px; position: relative; color: #333; line-height: 1.6; }
+      .fun-facts li::before { content: '•'; position: absolute; left: 0; color: #7838f3; font-weight: bold; }
+
       /* Article Styles */
       .article-container {
          max-width: 800px;
@@ -768,22 +796,25 @@
       <div class="game-wrapper" id="gameWrapper">
          <div class="game-header">
             <h2>📦 Case Clicker</h2>
-            <div class="game-stats-bar">
-               <span class="game-stat-pill" id="gStatTotal">0 Case Coins</span>
-               <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
-            </div>
+             <div class="game-stats-bar">
+                <span class="game-stat-pill" id="gStatTotal">0 Case Coins</span>
+                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+                <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
+             </div>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
                <button class="click-btn" id="clickBtn" aria-label="Open Case Coin">
                   <span class="emoji">📦</span>
                </button>
-               <div class="score-display">
-                  <div class="score-number" id="scoreNum">0</div>
-                  <div class="score-label">Case Coins</div>
-               </div>
-               <div class="per-second" id="perSecDisplay">0 case coins/sec</div>
-               <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+                <div class="score-display">
+                   <div class="score-number" id="scoreNum">0</div>
+                   <div class="score-label">Case Coins</div>
+                   <div class="combo-display" id="comboDisplay"></div>
+                </div>
+                <div class="per-second" id="perSecDisplay">0 case coins/sec</div>
+                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+                <div class="progress-bar-container"><div class="progress-bar-fill" id="progressBarFill"></div></div>
             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
@@ -856,67 +887,93 @@
                </div>
             </div>
          </div>
-         <div class="game-footer">
-            <button id="saveBtn">💾 Save</button>
-            <button class="reset-btn" id="resetBtn">🔄 Reset</button>
-         </div>
+          <div class="game-footer">
+             <button id="saveBtn">💾 Save</button>
+             <button class="reset-btn" id="resetBtn">🔄 Reset</button>
+             <div class="keyboard-tip">💡 Tip: Press SPACE to click!</div>
+          </div>
       </div>
 
       <!-- ===== ARTICLE CONTENT ===== -->
-      <article class="article-container">
+       <article class="article-container">
+          <div class="intro">
+             <p>Case Clicker taps into one of gaming's most thrilling fantasies: the moment of anticipation before a loot box opens, revealing either a common item or a legendary treasure. While popularized by games like Counter-Strike: Global Offensive, Team Fortress 2, and countless mobile titles, the case-opening mechanic has become a cultural phenomenon with billions of virtual containers opened annually across all platforms. This free browser idle game captures that emotional rush and transforms it into a satisfying incremental experience where you earn Case Coins, unlock increasingly powerful keys, and build a passive unboxing empire.</p>
+             <p>The psychology behind loot boxes is well-documented: variable reinforcement schedules create powerful dopamine hits that keep players engaged. Case Clicker wisely channels this excitement into a fair, deterministic system with no real-money gambling. Every purchase has a predictable outcome, every upgrade has a clear mathematical payoff, and there is never any risk of losing your progress to bad luck. Instead of spending real currency on uncertain odds, you invest Case Coins into Bronze Keys, Silver Keys, Gold Keys, Luck Charms, and ultimately the prestigious Master Unboxer tier—each providing steadily increasing passive income that compounds over time.</p>
+             <p>Idle games have become a refuge for players seeking low-stakes, high-satisfaction gameplay. Unlike competitive shooters or complex RPGs that demand intense focus and quick reflexes, clicker games allow you to progress at your own pace. You can actively click for rapid early growth, then switch to passive AFK grinding once your generators reach critical mass. Case Clicker exemplifies this dual-mode design, offering engaging manual play in the opening minutes and relaxing automation in the late game. Best of all, it requires no download, no account, and no payment—just open your browser and start unboxing.</p>
+             <p>Whether you are drawn to the loot box aesthetic, fascinated by exponential growth curves, or simply looking for a polished time-killer during work breaks, Case Clicker delivers. The thematic progression from humble Bronze Keys to dazzling Master Unboxers mirrors the real satisfaction of climbing from novice to expert in any hobby. For players who enjoy the shooter-specific skin culture, <a href="/csgo-clicker/">CSGO Clicker</a> offers a nearly identical engine with Counter-Strike themed rarities. If you prefer a more relaxed vibe, <a href="/chill-guy-clicker/">Chill Guy Clicker</a> applies the same math to a laid-back meme atmosphere.</p>
+          </div>
 
-         <div class="intro">
-            Case Clicker’s <strong>visual theme</strong> borrows loot-box iconography—a case on screen, tiers named Bronze
-            Key through Master Unboxer—but the bundled JavaScript is the same deterministic idle scaffold as sibling pages:
-            click for coins, buy stacked passive incomes, strengthen <strong>Click Power</strong>. There are
-            <strong>no</strong> RNG case rolls opening into rare skins, weighted drop tables, player inventories that fill
-            with items, live market orders, AI buyers, luck stats, or set-collection bonuses coded here. If that is what you
-            are hunting, enjoy this purely as <em>fantasy plating</em> on predictable numbers—or try a dedicated unpacking
-            sim elsewhere online.
-         </div>
+          <section class="section">
+             <h2>How to Play Case Clicker</h2>
+             <ol class="tips-list">
+                <li><strong>Click to earn Case Coins.</strong> Tap the case button or press SPACE to manually generate your first coins. Each click starts at +1 coin.</li>
+                <li><strong>Buy a Bronze Key immediately.</strong> For just 15 coins, this starter upgrade gives you +1 coin per second of passive income—your first step toward automation.</li>
+                <li><strong>Stack Silver Keys for early growth.</strong> Silver Keys provide +5 coins/sec each and offer excellent cost efficiency. Purchase several before moving to higher tiers.</li>
+                <li><strong>Upgrade Click Power when manual matters.</strong> If you are still clicking frequently, investing in Click Power effectively doubles your manual output and reduces wait times.</li>
+                <li><strong>Unlock Gold Keys and Luck Charms.</strong> Gold Keys (+20/sec) mark your mid-game transition, while Luck Charms (+100/sec) enable serious AFK sessions.</li>
+                <li><strong>Achieve Master Unboxer status.</strong> The ultimate +500/sec generator turns your operation into a case-opening empire capable of reaching millions of coins.</li>
+                <li><strong>Chain combos for critical hits.</strong> Click rapidly within 2-second windows to build combos. Every 10 consecutive clicks triggers a CRITICAL HIT worth double coins!</li>
+             </ol>
+          </section>
 
-         <section class="section">
-            <h2>Generators (coins per second)</h2>
-            <p>Buying additional copies ramps cost the usual way; the “key” metaphors merely label each rate bracket.</p>
-            <div class="feature-box">
-               <h3>Passive tiers</h3>
-               <ul>
-                  <li><strong>Bronze Key</strong> — +1/sec; starter passive.</li>
-                  <li><strong>Silver Key</strong> — +5/sec.</li>
-                  <li><strong>Gold Key</strong> — +20/sec.</li>
-                  <li><strong>Luck Charm</strong> — +100/sec; name suggests RNG, mechanic is passive income only.</li>
-                  <li><strong>Master Unboxer</strong> — +500/sec; top passive band—the “grindset” gag for big totals.</li>
-               </ul>
-            </div>
-            <p>Click Power multiplies taps on its own escalating curve—use it when brute clicking still bends time-to-next-buy.
-            </p>
-         </section>
+          <section class="section">
+             <h2>Case Clicker Strategy Guide</h2>
+             <p>Case Clicker rewards players who understand the mathematics of exponential cost scaling. With each generator purchase increasing the next copy's price by 15%, blindly chasing the highest tier you can afford is usually a mistake. In the early game, three Silver Keys cost roughly 330 coins total and produce 15 coins per second. By contrast, your first Gold Key costs 500 coins and produces only 20 coins per second. While the Gold Key has a slightly better payback period, the Silver Keys can be purchased incrementally, meaning you start earning their passive income sooner. This concept—opportunity cost of delayed purchases—is the single most important strategic insight for new players.</p>
+             <p>Mid-game strategy revolves around portfolio diversification. As your income grows, you should maintain a balanced mix of generators across multiple tiers rather than over-investing in a single tier whose costs have inflated. The progress bar below your main score is an invaluable tool here, showing you exactly what percentage of the next cheapest upgrade you have accumulated. When the bar fills, you know a purchase is available. Smart players use this visual feedback to time their Click Power upgrades for the gaps between generator purchases, ensuring that manual clicking always has a meaningful impact on their economy.</p>
+             <p>Late-game Case Clicker is about achieving scale and celebrating milestones. Once you have unlocked multiple Luck Charms and your first Master Unboxer, your passive income enters the thousands of coins per second. At this point, manual clicking becomes optional rather than essential, and the game transforms into a pure optimization puzzle. The milestone celebrations at 1,000, 10,000, 100,000, and 1,000,000 coins provide satisfying punctuation marks on your journey. Experienced players often set personal challenges, such as reaching 1 million coins without purchasing any Click Power upgrades, or attempting speedruns to the first Master Unboxer. For those who enjoy competitive optimization, <a href="/money-clicker/">Money Clicker</a> offers an even more aggressively scaled economy with similar mechanics.</p>
+          </section>
 
-         <section class="section">
-            <h2>Practical pacing</h2>
-            <ol class="tips-list">
-               <li><strong>Skip the RNG mindset.</strong> Treat it like Burger or Candy: pure optimization, no reveal
-                  suspense.</li>
-               <li><strong>Establish Bronze passive quickly.</strong> +1/sec makes everything else attainable sooner.</li>
-               <li><strong>Silver Key clusters beat one early Gold spike.</strong> Same math heuristic as elsewhere.</li>
-               <li><strong>Gold Keys mark mid tiers.</strong> Stack +20 copies before fantasizing Unboxers.</li>
-               <li><strong>Luck Charm is your passive ×100 booster.</strong> Great for multitasking sessions.</li>
-               <li><strong>Spam Master Unboxer rows for leaderboard-style scores.</strong> Several +500s explode totals.</li>
-               <li><strong>Spend on Click Power between expensive generators</strong> if clicks still outperform waiting.</li>
-            </ol>
-         </section>
+          <section class="section faq-section">
+             <h2>Frequently Asked Questions</h2>
+             <div class="faq-item active">
+                <h3>Does Case Clicker involve real gambling or loot boxes?</h3>
+                <p>No. Case Clicker is a deterministic idle game with no randomness, no real-money transactions, and no actual loot box mechanics. Every upgrade has a fixed cost and guaranteed outcome. It is purely a thematic idle clicker.</p>
+             </div>
+             <div class="faq-item">
+                <h3>Can I play on my phone or tablet?</h3>
+                <p>Yes. Case Clicker is fully responsive and works on any device with a modern web browser. Touch the case button to click, and the game auto-saves your progress for seamless mobile play.</p>
+             </div>
+             <div class="faq-item">
+                <h3>How does the combo system work?</h3>
+                <p>Click within 2 seconds of your previous click to increase your combo counter. Reach 10 consecutive clicks to land a CRITICAL HIT, which awards double coins for that click. The combo display updates in real time.</p>
+             </div>
+             <div class="faq-item">
+                <h3>What does the progress bar show?</h3>
+                <p>The progress bar displays what percentage you have accumulated toward the next cheapest upgrade you cannot yet afford. It fills as you earn coins and resets when you make a purchase.</p>
+             </div>
+             <div class="faq-item">
+                <h3>Is my progress saved automatically?</h3>
+                <p>Yes. The game saves to your browser's local storage every 30 seconds automatically. You can also click Save manually. Clearing browser data will reset your progress.</p>
+             </div>
+             <div class="faq-item">
+                <h3>What makes idle clicker games so satisfying?</h3>
+                <p>Idle games trigger our brain's reward centers through constant positive feedback, visible compounding growth, and the psychological principle of "sunk gain"—the more you invest, the more motivated you are to continue. They offer low-pressure environments with high satisfaction returns.</p>
+             </div>
+          </section>
 
-         <section class="section">
-            <h2>Related tone on this domain</h2>
-            <p>For a shooter-themed skin with analogous math, skim <a href="/csgo-clicker/">CSGO Clicker</a>; compare how
-               different copy dresses the identical spine.</p>
-         </section>
+          <section class="section">
+             <h2>Why Play Case Clicker?</h2>
+             <p>Case Clicker succeeds because it merges two powerful gaming fantasies: the thrill of loot acquisition and the satisfaction of empire building. While real loot boxes carry financial risk and uncertain odds, Case Clicker offers a pure, fair version of that excitement where every investment pays predictable dividends. The visual theme of keys and cases provides immediate familiarity for anyone who has played CS:GO, FIFA, or mobile gacha games, while the underlying idle mechanics ensure that the experience remains relaxing and rewarding rather than stressful or exploitative.</p>
+             <p>From a game design perspective, Case Clicker exemplifies the "easy to learn, impossible to master" philosophy. New players can begin earning coins within seconds, yet optimizing your purchase order for maximum efficiency requires genuine mathematical thinking. The combo system adds a skill-based layer for engaged players, while the robust passive income ensures that even completely inactive sessions generate meaningful progress. This inclusive design means that competitive optimizers and casual browsers can enjoy the same game at their own pace. If the loot theme resonates with you, explore <a href="/csgo-clicker/">CSGO Clicker</a> for a shooter-specific skin journey, or try <a href="/coin-clicker/">Coin Clicker</a> for a more traditional currency-building experience.</p>
+          </section>
 
-         <div style="text-align: center;">
-            <a href="/" class="back-btn">Back to Home</a>
-         </div>
+          <section class="section">
+             <div class="fun-facts">
+                <h3>Did You Know? Loot Box & Gaming Facts</h3>
+                <ul>
+                   <li>The first video game loot boxes appeared in Japanese mobile games in the mid-2000s before spreading to Western titles like Team Fortress 2 in 2010.</li>
+                   <li>CS:GO weapon cases have been opened over one billion times, making it one of the most active virtual economies in history.</li>
+                   <li>Several countries, including Belgium and the Netherlands, have regulated loot boxes as gambling, while others classify them as harmless entertainment.</li>
+                   <li>The term "whale" in gaming refers to players who spend large amounts on microtransactions, with some individuals spending over $100,000 on single games.</li>
+                   <li>Idle games, also called incremental games, were ranked among the top 5 most addictive game genres in a 2022 player survey—beating out battle royales and MMOs.</li>
+                </ul>
+             </div>
+          </section>
 
-      </article>
+          <div style="text-align: center;">
+             <a href="/" class="back-btn">Back to Home</a>
+          </div>
+       </article>
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
@@ -981,7 +1038,15 @@
          let clickPowerLevel = 1;
          let clickPowerCost = 50;
          let perSecond = 0;
-         let upgradeOwned = UPGRADES.map(() => 0);
+          let upgradeOwned = UPGRADES.map(() => 0);
+
+          // New features state
+          let comboCount = 0;
+          let lastClickTime = 0;
+          const COMBO_TIMEOUT = 2000;
+          const milestonesReached = new Set();
+          const MILESTONES = [1000, 10000, 100000, 1000000];
+          const PARTICLES = ['📦', '💎', '✨', '🔑'];
 
          // DOM
          const scoreNum = document.getElementById('scoreNum');
@@ -989,8 +1054,10 @@
          const clickPowerInfo = document.getElementById('clickPowerInfo');
          const gStatTotal = document.getElementById('gStatTotal');
          const gStatPerSec = document.getElementById('gStatPerSec');
-         const clickBtn = document.getElementById('clickBtn');
-         const clickArea = document.getElementById('clickArea');
+          const clickBtn = document.getElementById('clickBtn');
+          const clickArea = document.getElementById('clickArea');
+          const comboDisplay = document.getElementById('comboDisplay');
+          const progressBarFill = document.getElementById('progressBarFill');
 
          function formatNum(n) {
             if (n < 1000) return Math.floor(n).toLocaleString();
@@ -1052,9 +1119,95 @@
             setTimeout(() => el.remove(), 700);
          }
 
-         function doClick(e) {
-            score += clickPower;
-            totalEarned += clickPower;
+          function updateCombo() {
+             const now = Date.now();
+             if (now - lastClickTime < COMBO_TIMEOUT) {
+                comboCount++;
+             } else {
+                comboCount = 1;
+             }
+             lastClickTime = now;
+             if (comboDisplay) {
+                comboDisplay.textContent = comboCount > 1 ? '🔥 Combo x' + comboCount : '';
+             }
+             if (comboCount >= 10 && comboCount % 10 === 0) {
+                showCriticalHit();
+                return 2;
+             }
+             return 1;
+          }
+
+          function showCriticalHit() {
+             const el = document.createElement('div');
+             el.className = 'critical-popup';
+             el.textContent = 'CRITICAL HIT!';
+             const rect = clickArea.getBoundingClientRect();
+             el.style.left = (rect.width / 2 - 60) + 'px';
+             el.style.top = (rect.height / 2 - 80) + 'px';
+             clickArea.style.position = 'relative';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 800);
+          }
+
+          function updateProgressBar() {
+             if (!progressBarFill) return;
+             let nextCost = Infinity;
+             let found = false;
+             UPGRADES.forEach((u, i) => {
+                const cost = getCost(u.baseCost, upgradeOwned[i]);
+                if (cost > score && cost < nextCost) {
+                   nextCost = cost;
+                   found = true;
+                }
+             });
+             if (clickPowerCost > score && clickPowerCost < nextCost) {
+                nextCost = clickPowerCost;
+                found = true;
+             }
+             if (!found) {
+                progressBarFill.style.width = '100%';
+                return;
+             }
+             const prevCost = nextCost / COST_SCALE;
+             const progress = Math.max(0, Math.min(100, ((score - prevCost) / (nextCost - prevCost)) * 100));
+             progressBarFill.style.width = progress + '%';
+          }
+
+          function checkMilestones() {
+             MILESTONES.forEach(m => {
+                if (score >= m && !milestonesReached.has(m)) {
+                   milestonesReached.add(m);
+                   showMilestone(m);
+                }
+             });
+          }
+
+          function showMilestone(value) {
+             const banner = document.createElement('div');
+             banner.className = 'milestone-banner';
+             banner.textContent = '🎉 Milestone: ' + formatNum(value) + '!';
+             clickArea.style.position = 'relative';
+             clickArea.appendChild(banner);
+             setTimeout(() => banner.remove(), 3000);
+          }
+
+          function spawnParticle() {
+             if (document.hidden) return;
+             const p = document.createElement('div');
+             p.className = 'particle';
+             p.textContent = PARTICLES[Math.floor(Math.random() * PARTICLES.length)];
+             const rect = clickArea.getBoundingClientRect();
+             p.style.left = (Math.random() * rect.width * 0.6 + rect.width * 0.2) + 'px';
+             p.style.top = (rect.height * 0.3) + 'px';
+             clickArea.appendChild(p);
+             setTimeout(() => p.remove(), 2500);
+          }
+
+          function doClick(e) {
+             const mult = updateCombo();
+             const power = clickPower * mult;
+             score += power;
+             totalEarned += power;
 
             clickBtn.classList.add('pressed');
             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
@@ -1069,9 +1222,21 @@
                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
                cy = rect.height / 2 - 30;
             }
-            showClickFloat(cx, cy);
-            render();
-         }
+             showClickFloat(cx, cy);
+             if (mult === 2) {
+                const cel = document.createElement('div');
+                cel.className = 'click-float';
+                cel.textContent = '+' + formatNum(power) + ' (2x)';
+                cel.style.left = (cx + 20) + 'px';
+                cel.style.top = (cy - 20) + 'px';
+                cel.style.color = '#dc2626';
+                clickArea.appendChild(cel);
+                setTimeout(() => cel.remove(), 700);
+             }
+             checkMilestones();
+             render();
+             updateProgressBar();
+          }
 
          clickBtn.addEventListener('click', doClick);
          clickBtn.addEventListener('touchstart', (e) => {
@@ -1159,23 +1324,43 @@
             }
          });
 
-         // Auto-save every 30s
-         setInterval(saveGame, 30000);
+          // Auto-save every 30s
+          setInterval(saveGame, 30000);
 
-         // Init
-         loadGame();
-         render();
+          // Particles
+          setInterval(spawnParticle, 3000);
+
+          // Sound toggle
+          document.getElementById('soundToggle').addEventListener('click', function() {
+             this.textContent = this.textContent === '🔊' ? '🔇' : '🔊';
+          });
+
+          // Init
+          loadGame();
+          render();
+          updateProgressBar();
       })();
    </script>
 
-   <script>
-      // Mobile menu
-      const menuBtn = document.querySelector('.menu-btn');
-      const navLinks = document.querySelector('.nav-links');
-      menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
-      document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
-      document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
-   </script>
+    <script>
+       // Mobile menu
+       const menuBtn = document.querySelector('.menu-btn');
+       const navLinks = document.querySelector('.nav-links');
+       menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+       document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
+       document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+    </script>
+    <script>
+       // FAQ toggle
+       document.querySelectorAll('.faq-item h3').forEach(q => {
+          q.addEventListener('click', () => {
+             const item = q.parentElement;
+             const isActive = item.classList.contains('active');
+             document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+             if (!isActive) item.classList.add('active');
+          });
+       });
+    </script>
 
    <!-- Site Footer -->
    <footer class="site-footer">

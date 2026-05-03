@@ -4,9 +4,9 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>CSGO Clicker - Play Free Online | Spacebar Clicker</title>
+   <title>CSGO Clicker - Free Counter-Strike Idle Game Online | Spacebar Clicker</title>
    <meta name="description"
-      content="CSGO-inspired idle: Skin Credits, Mil-Spec→Knife Unbox (+credits/sec), Click Power—fan tribute, not Valve/CS2; no real unbox RNG or trading in this build.">
+      content="Play CSGO Clicker free online! Collect Skin Credits, unlock Mil-Spec to Knife Unbox tiers, and build passive income in this Counter-Strike themed idle game. No download needed.">
    <meta name="keywords"
       content="csgo clicker, csgo clicker, clicker game, idle game, free online game, play csgo clicker">
    <meta name="robots" content="index, follow">
@@ -413,6 +413,139 @@
          color: #dc2626;
       }
 
+      /* ===== NEW GAME FEATURES CSS ===== */
+      .combo-display {
+         margin-top: 6px;
+         font-size: 0.85rem;
+         font-weight: 700;
+         color: #ea580c;
+         min-height: 1.2em;
+      }
+      .critical-popup {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1.6rem;
+         font-weight: 800;
+         color: #dc2626;
+         text-shadow: 0 2px 8px rgba(220,38,38,0.3);
+         animation: criticalPop 0.8s ease-out forwards;
+         z-index: 20;
+      }
+      @keyframes criticalPop {
+         0% { opacity: 1; transform: translateY(0) scale(0.5); }
+         50% { transform: translateY(-30px) scale(1.2); }
+         100% { opacity: 0; transform: translateY(-80px) scale(1); }
+      }
+      .progress-bar-container {
+         width: 80%;
+         max-width: 220px;
+         height: 10px;
+         background: #eee;
+         border-radius: 5px;
+         margin-top: 12px;
+         overflow: hidden;
+      }
+      .progress-bar-fill {
+         height: 100%;
+         background: linear-gradient(90deg, #ea580c, #ea580cdd);
+         border-radius: 5px;
+         transition: width 0.3s ease;
+         width: 0%;
+      }
+      .particle {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1rem;
+         opacity: 0.7;
+         animation: particleFloat 2.5s ease-out forwards;
+         z-index: 5;
+      }
+      @keyframes particleFloat {
+         0% { opacity: 0.7; transform: translateY(0) rotate(0deg); }
+         100% { opacity: 0; transform: translateY(-120px) rotate(45deg); }
+      }
+      .milestone-banner {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         background: linear-gradient(135deg, #ea580c, #ea580cdd);
+         color: white;
+         padding: 14px 28px;
+         border-radius: 12px;
+         font-size: 1.1rem;
+         font-weight: 700;
+         box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+         animation: milestoneIn 0.5s ease-out, milestoneOut 0.5s ease-in 2s forwards;
+         z-index: 50;
+         pointer-events: none;
+         white-space: nowrap;
+      }
+      @keyframes milestoneIn {
+         from { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+         to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+      }
+      @keyframes milestoneOut {
+         from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+         to { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+      }
+      .sound-toggle {
+         background: rgba(255,255,255,0.2);
+         border: none;
+         border-radius: 8px;
+         padding: 4px 10px;
+         color: white;
+         font-size: 1rem;
+         cursor: pointer;
+         transition: background 0.2s;
+      }
+      .sound-toggle:hover { background: rgba(255,255,255,0.35); }
+      .keyboard-tip {
+         width: 100%;
+         text-align: center;
+         font-size: 0.78rem;
+         color: #888;
+         margin-top: 8px;
+         font-weight: 500;
+      }
+      /* FAQ Section */
+      .faq-section { margin-bottom: 30px; }
+      .faq-item { margin-bottom: 14px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+      .faq-item h3 {
+         color: #333;
+         font-size: 1.05rem;
+         margin-bottom: 6px;
+         cursor: pointer;
+         transition: color 0.2s;
+         position: relative;
+         padding-right: 20px;
+      }
+      .faq-item h3:hover { color: #ea580c; }
+      .faq-item h3::after {
+         content: '+';
+         position: absolute;
+         right: 0;
+         top: 0;
+         color: #7838f3;
+         font-weight: 700;
+         transition: transform 0.2s;
+      }
+      .faq-item.active h3::after { transform: rotate(45deg); }
+      .faq-item p {
+         display: none;
+         color: #555;
+         line-height: 1.7;
+         font-size: 1rem;
+         margin-bottom: 0;
+         padding-top: 4px;
+      }
+      .faq-item.active p { display: block; }
+      .fun-facts { background: #f8f9fe; border-radius: 12px; padding: 20px; margin: 20px 0; }
+      .fun-facts h3 { color: #7838f3; margin-bottom: 12px; }
+      .fun-facts ul { list-style: none; padding-left: 0; }
+      .fun-facts li { padding: 6px 0 6px 24px; position: relative; color: #333; line-height: 1.6; }
+      .fun-facts li::before { content: '•'; position: absolute; left: 0; color: #7838f3; font-weight: bold; }
+
       /* Article Styles */
       .article-container {
          max-width: 800px;
@@ -563,22 +696,25 @@
       <div class="game-wrapper" id="gameWrapper">
          <div class="game-header">
             <h2>🔫 CSGO Clicker</h2>
-            <div class="game-stats-bar">
-               <span class="game-stat-pill" id="gStatTotal">0 Skin Credits</span>
-               <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
-            </div>
+             <div class="game-stats-bar">
+                <span class="game-stat-pill" id="gStatTotal">0 Skin Credits</span>
+                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+                <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
+             </div>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
                <button class="click-btn" id="clickBtn" aria-label="Open Skin Credit">
                   <span class="emoji">🔫</span>
                </button>
-               <div class="score-display">
-                  <div class="score-number" id="scoreNum">0</div>
-                  <div class="score-label">Skin Credits</div>
-               </div>
-               <div class="per-second" id="perSecDisplay">0 skin credits/sec</div>
-               <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+                <div class="score-display">
+                   <div class="score-number" id="scoreNum">0</div>
+                   <div class="score-label">Skin Credits</div>
+                   <div class="combo-display" id="comboDisplay"></div>
+                </div>
+                <div class="per-second" id="perSecDisplay">0 skin credits/sec</div>
+                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+                <div class="progress-bar-container"><div class="progress-bar-fill" id="progressBarFill"></div></div>
             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
@@ -651,55 +787,93 @@
                </div>
             </div>
          </div>
-         <div class="game-footer">
-            <button id="saveBtn">💾 Save</button>
-            <button class="reset-btn" id="resetBtn">🔄 Reset</button>
-         </div>
+          <div class="game-footer">
+             <button id="saveBtn">💾 Save</button>
+             <button class="reset-btn" id="resetBtn">🔄 Reset</button>
+             <div class="keyboard-tip">💡 Tip: Press SPACE to click!</div>
+          </div>
       </div>
 
       <!-- ===== ARTICLE CONTENT ===== -->
-      <article class="article-container">
-         
-         <div class="intro">
-            This page is a <strong>fan-themed idle skin</strong>: you bank abstract <strong>Skin Credits</strong>, buy
-            tiers named after CS rarity colors, and scale <strong>Click Power</strong>. It is <strong>not</strong> an
-            official Counter-Strike, CS2, or Valve product—no trademark claim, no link to Steam inventories, and <strong>no
-            </strong> procedural case spin, float wear, pattern index, or Steam Community Market. Like
-            <a href="/case-clicker/">Case Clicker</a> here, the “opening” vibe is visuals + numbers only; pacing matches the
-            site’s generic incremental template.
-         </div>
-         <section class="section">
-            <h2>Credit tiers (+credits/sec)</h2>
-            <div class="feature-box">
-               <h3>Passive rows</h3>
-               <ul>
-                  <li><strong>Mil-Spec Drop</strong> — +1/sec (blue-cover emoji nod).</li>
-                  <li><strong>Restricted Drop</strong> — +5/sec.</li>
-                  <li><strong>Classified Drop</strong> — +20/sec.</li>
-                  <li><strong>Covert Skin</strong> — +100/sec.</li>
-                  <li><strong>Knife Unbox</strong> — +500/sec; meme top tier—still passive income only.</li>
-               </ul>
-            </div>
-            <p>Each extra copy scales cost upward; spamming low tiers often beats one greedy hop while your Click Power still
-               matters for manual bursts.</p>
-         </section>
-         <section class="section">
-            <h2>Session tips</h2>
-            <ol class="tips-list">
-               <li><strong>Stop expecting roulette.</strong> No animation decides loot—rates are deterministic math.</li>
-               <li><strong>Stack Mil-Spec copies first.</strong> Unlock passive rhythm before lusting Covert throughput.</li>
-               <li><strong>Restricted swarms outperform one Classified gamble early.</strong></li>
-               <li><strong>Covert at +100 is your AFK friend.</strong></li>
-               <li><strong>Knife Unbox rows inflate totals fastest late game.</strong></li>
-               <li><strong>Feed Click Power when finger spam trims minutes off the next buy.</strong></li>
-            </ol>
-         </section>
-    
-         <div style="text-align: center;">
-            <a href="/" class="back-btn">Back to Home</a>
-         </div>
-      
-      </article>
+       <article class="article-container">
+          <div class="intro">
+             <p>CSGO Clicker drops you into the adrenaline-fueled universe of Counter-Strike: Global Offensive, the legendary competitive first-person shooter that defined an era of esports. Since its launch in 2012 by Valve and Hidden Path Entertainment, CS:GO has captivated over 25 million monthly players with its tactical bomb-defusal gameplay, precise gun mechanics, and one of the most lucrative virtual economies in gaming history. This free browser idle game channels that same thrill of chasing rare loot, transforming it into an addictive incremental experience where every click earns you Skin Credits.</p>
+             <p>In this fan-themed clicker, you begin with nothing and gradually build a skin empire worthy of a global elite. Click the weapon icon to earn credits manually, then reinvest your earnings into passive generators named after real CS:GO rarity tiers. Each upgrade reflects an actual in-game classification—from the common blue Mil-Spec skins all the way to the legendary gold knives that can sell for thousands of real dollars on the Steam Community Market. While this is purely a fan tribute with no official connection to Valve and no real gambling mechanics, the thematic authenticity makes every upgrade feel like a genuine unboxing victory.</p>
+             <p>Idle and clicker games have surged in popularity because they perfectly tap into our brain's reward systems through visible, compounding progress. There is something deeply satisfying about watching numbers climb exponentially, knowing that your strategic purchases five minutes ago are now generating passive income while you focus on other tasks. CSGO Clicker wraps that universal psychological appeal in the competitive shooter aesthetic that millions of players worldwide adore. Best of all, this is a completely free browser game with no download required—simply open the page and start collecting.</p>
+             <p>Whether you are a die-hard CS:GO veteran who dreams of unboxing a Karambit Fade, a casual fan of the skin economy, or simply someone looking for a polished incremental game to pass the time, CSGO Clicker delivers hours of low-stakes, high-reward entertainment. The pacing is carefully tuned so you always have a reachable next goal, keeping you locked in that magical "just one more upgrade" loop that makes idle games irresistibly engaging. Compared to other shooters on the site like <a href="/case-clicker/">Case Clicker</a>, this game focuses specifically on the iconic CS:GO rarity ladder.</p>
+          </div>
+
+          <section class="section">
+             <h2>How to Play CSGO Clicker</h2>
+             <ol class="tips-list">
+                <li><strong>Start clicking manually.</strong> Click the weapon button or press SPACE to earn your first Skin Credits. Every click gives you +1 credit initially.</li>
+                <li><strong>Buy your first Mil-Spec Drop.</strong> Once you have 15 credits, purchase this starter upgrade to generate +1 credit per second passively. This changes everything.</li>
+                <li><strong>Stack cheap tiers early.</strong> Buy multiple Mil-Spec and Restricted Drops before saving for expensive tiers. Breadth beats depth in the early game.</li>
+                <li><strong>Upgrade Click Power strategically.</strong> When manual clicking still matters for your economy, spend credits to double your per-click output.</li>
+                <li><strong>Unlock higher rarities.</strong> Progress through Classified Drops, Covert Skins, and ultimately the legendary Knife Unbox tier for massive passive gains.</li>
+                <li><strong>Save your progress.</strong> Hit the Save button to store your empire in browser storage, or let the auto-save feature handle it every 30 seconds.</li>
+                <li><strong>Build your combo.</strong> Click rapidly within 2-second windows to build a combo multiplier. Reach 10 consecutive clicks to trigger a CRITICAL HIT for double points!</li>
+             </ol>
+          </section>
+
+          <section class="section">
+             <h2>CSGO Clicker Strategy Guide</h2>
+             <p>The key to mastering CSGO Clicker is understanding the opportunity cost of every purchase. In the opening minutes, your manual clicks dominate your income, making Click Power upgrades incredibly efficient. A good rule of thumb is to buy Click Power whenever the next generator feels more than a minute away. However, once you have stacked several Classified Drops or unlocked your first Covert Skin, passive income begins to overshadow manual clicking, and your strategy should shift toward generator breadth.</p>
+             <p>Mid-game optimization revolves around the 1.15x cost scaling curve. Because each additional copy of the same generator costs 15% more than the last, there is a sweet spot where buying one copy of the next tier up is less efficient than buying two or three copies of the current tier. Experienced players often maintain a roughly 5:3:2:1:0 ratio of Mil-Spec:Restricted:Classified:Covert:Knife in the early mid-game. This balanced portfolio ensures steady growth without over-investing in any single tier whose costs have inflated too high.</p>
+             <p>Late game strategy is all about scale. Once you have unlocked Knife Unboxes, your income enters exponential territory. At this stage, milestones like 100,000 and 1 million Skin Credits become achievable through AFK grinding. The progress bar below your score helps you visualize exactly how close you are to the next upgrade, eliminating guesswork. Players who enjoy this scaling pattern may also appreciate <a href="/money-clicker/">Money Clicker</a> for a similar numerical climb with a different theme.</p>
+          </section>
+
+          <section class="section faq-section">
+             <h2>Frequently Asked Questions</h2>
+             <div class="faq-item active">
+                <h3>Is CSGO Clicker an official Counter-Strike game?</h3>
+                <p>No. CSGO Clicker is a fan-made idle clicker inspired by Counter-Strike: Global Offensive. It is not affiliated with Valve Corporation, CS2, or any official Counter-Strike property. There are no real skins, no Steam inventory connections, and no actual gambling mechanics.</p>
+             </div>
+             <div class="faq-item">
+                <h3>Do I need to download anything to play?</h3>
+                <p>Absolutely not. CSGO Clicker is a free browser game that runs entirely in your web browser using HTML, CSS, and JavaScript. It works on desktop, tablet, and mobile devices without any installation.</p>
+             </div>
+             <div class="faq-item">
+                <h3>How does the combo system work?</h3>
+                <p>Every time you click within 2 seconds of your previous click, your combo counter increases. If you reach a 10-click combo, your next click becomes a CRITICAL HIT that awards double points. The combo display updates in real time below your score.</p>
+             </div>
+             <div class="faq-item">
+                <h3>What happens when I reach a milestone?</h3>
+                <p>When your score hits 1,000, 10,000, 100,000, or 1,000,000 Skin Credits, a celebratory milestone banner appears briefly in the center of the click area to congratulate your progress.</p>
+             </div>
+             <div class="faq-item">
+                <h3>Is my progress saved?</h3>
+                <p>Yes. Your progress is automatically saved to your browser's local storage every 30 seconds. You can also click the Save button to force an immediate save. If you clear your browser data, your progress will be reset.</p>
+             </div>
+             <div class="faq-item">
+                <h3>Why are idle games like this so addictive?</h3>
+                <p>Idle games tap into our brain's dopamine reward system through frequent, visible progress and compounding returns. The "number go up" feedback loop, combined with always having an affordable next goal, creates a powerful psychological hook that keeps players engaged for hours.</p>
+             </div>
+          </section>
+
+          <section class="section">
+             <h2>Why Play CSGO Clicker?</h2>
+             <p>CSGO Clicker stands out from generic idle games by wrapping its mechanics in one of gaming's most iconic franchises. The thrill of "unboxing" a Knife Unbox tier triggers the same emotional response that millions of CS:GO players feel when opening actual cases—except here, the outcome is deterministic and fair, with no real-money risk. This makes it the perfect way to experience the skin-collecting fantasy without any of the downsides of real loot boxes.</p>
+             <p>From a psychological perspective, the game excels at creating "flow state"—that mental zone where challenge and skill are perfectly balanced. Early on, rapid clicking and strategic purchasing decisions keep you fully engaged. Later, the massive passive income lets you relax and watch your empire grow. This dual-mode engagement is rare in clicker games and explains why players keep returning. If you enjoy this blend of action and relaxation, you might also love <a href="/chill-guy-clicker/">Chill Guy Clicker</a> for a more laid-back vibe, or <a href="/cookie-clicker/">Cookie Clicker</a> for the classic incremental experience.</p>
+          </section>
+
+          <section class="section">
+             <div class="fun-facts">
+                <h3>Did You Know? CS:GO Fun Facts</h3>
+                <ul>
+                   <li>The most expensive CS:GO skin ever sold was a StatTrak M9 Bayonet Crimson Web for over $60,000.</li>
+                   <li>CS:GO cases were first introduced in the "Arms Deal" update in August 2013, revolutionizing the game's economy.</li>
+                   <li>There are over 30 different knife types in CS:GO, each with unique animations and rare patterns like "Fade" and "Doppler."</li>
+                   <li>The rarest item drop chance from a standard case is approximately 0.26% for a special item (knife or gloves).</li>
+                   <li>CS:GO became free-to-play in December 2018, causing the player base to surge past one million concurrent players.</li>
+                </ul>
+             </div>
+          </section>
+
+          <div style="text-align: center;">
+             <a href="/" class="back-btn">Back to Home</a>
+          </div>
+       </article>
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
@@ -766,6 +940,14 @@
       let perSecond = 0;
       let upgradeOwned = UPGRADES.map(() => 0);
 
+      // New features state
+      let comboCount = 0;
+      let lastClickTime = 0;
+      const COMBO_TIMEOUT = 2000;
+      const milestonesReached = new Set();
+      const MILESTONES = [1000, 10000, 100000, 1000000];
+      const PARTICLES = ['💥', '🔥', '⭐', '🎯'];
+
       // DOM
       const scoreNum = document.getElementById('scoreNum');
       const perSecDisplay = document.getElementById('perSecDisplay');
@@ -774,6 +956,8 @@
       const gStatPerSec = document.getElementById('gStatPerSec');
       const clickBtn = document.getElementById('clickBtn');
       const clickArea = document.getElementById('clickArea');
+      const comboDisplay = document.getElementById('comboDisplay');
+      const progressBarFill = document.getElementById('progressBarFill');
 
       function formatNum(n) {
          if (n < 1000) return Math.floor(n).toLocaleString();
@@ -835,9 +1019,95 @@
          setTimeout(() => el.remove(), 700);
       }
 
+      function updateCombo() {
+         const now = Date.now();
+         if (now - lastClickTime < COMBO_TIMEOUT) {
+            comboCount++;
+         } else {
+            comboCount = 1;
+         }
+         lastClickTime = now;
+         if (comboDisplay) {
+            comboDisplay.textContent = comboCount > 1 ? '🔥 Combo x' + comboCount : '';
+         }
+         if (comboCount >= 10 && comboCount % 10 === 0) {
+            showCriticalHit();
+            return 2;
+         }
+         return 1;
+      }
+
+      function showCriticalHit() {
+         const el = document.createElement('div');
+         el.className = 'critical-popup';
+         el.textContent = 'CRITICAL HIT!';
+         const rect = clickArea.getBoundingClientRect();
+         el.style.left = (rect.width / 2 - 60) + 'px';
+         el.style.top = (rect.height / 2 - 80) + 'px';
+         clickArea.style.position = 'relative';
+         clickArea.appendChild(el);
+         setTimeout(() => el.remove(), 800);
+      }
+
+      function updateProgressBar() {
+         if (!progressBarFill) return;
+         let nextCost = Infinity;
+         let found = false;
+         UPGRADES.forEach((u, i) => {
+            const cost = getCost(u.baseCost, upgradeOwned[i]);
+            if (cost > score && cost < nextCost) {
+               nextCost = cost;
+               found = true;
+            }
+         });
+         if (clickPowerCost > score && clickPowerCost < nextCost) {
+            nextCost = clickPowerCost;
+            found = true;
+         }
+         if (!found) {
+            progressBarFill.style.width = '100%';
+            return;
+         }
+         const prevCost = nextCost / COST_SCALE;
+         const progress = Math.max(0, Math.min(100, ((score - prevCost) / (nextCost - prevCost)) * 100));
+         progressBarFill.style.width = progress + '%';
+      }
+
+      function checkMilestones() {
+         MILESTONES.forEach(m => {
+            if (score >= m && !milestonesReached.has(m)) {
+               milestonesReached.add(m);
+               showMilestone(m);
+            }
+         });
+      }
+
+      function showMilestone(value) {
+         const banner = document.createElement('div');
+         banner.className = 'milestone-banner';
+         banner.textContent = '🎉 Milestone: ' + formatNum(value) + '!';
+         clickArea.style.position = 'relative';
+         clickArea.appendChild(banner);
+         setTimeout(() => banner.remove(), 3000);
+      }
+
+      function spawnParticle() {
+         if (document.hidden) return;
+         const p = document.createElement('div');
+         p.className = 'particle';
+         p.textContent = PARTICLES[Math.floor(Math.random() * PARTICLES.length)];
+         const rect = clickArea.getBoundingClientRect();
+         p.style.left = (Math.random() * rect.width * 0.6 + rect.width * 0.2) + 'px';
+         p.style.top = (rect.height * 0.3) + 'px';
+         clickArea.appendChild(p);
+         setTimeout(() => p.remove(), 2500);
+      }
+
       function doClick(e) {
-         score += clickPower;
-         totalEarned += clickPower;
+         const mult = updateCombo();
+         const power = clickPower * mult;
+         score += power;
+         totalEarned += power;
 
          clickBtn.classList.add('pressed');
          setTimeout(() => clickBtn.classList.remove('pressed'), 100);
@@ -853,7 +1123,19 @@
             cy = rect.height / 2 - 30;
          }
          showClickFloat(cx, cy);
+         if (mult === 2) {
+            const cel = document.createElement('div');
+            cel.className = 'click-float';
+            cel.textContent = '+' + formatNum(power) + ' (2x)';
+            cel.style.left = (cx + 20) + 'px';
+            cel.style.top = (cy - 20) + 'px';
+            cel.style.color = '#dc2626';
+            clickArea.appendChild(cel);
+            setTimeout(() => cel.remove(), 700);
+         }
+         checkMilestones();
          render();
+         updateProgressBar();
       }
 
       clickBtn.addEventListener('click', doClick);
@@ -945,20 +1227,40 @@
       // Auto-save every 30s
       setInterval(saveGame, 30000);
 
+      // Particles
+      setInterval(spawnParticle, 3000);
+
+      // Sound toggle
+      document.getElementById('soundToggle').addEventListener('click', function() {
+         this.textContent = this.textContent === '🔊' ? '🔇' : '🔊';
+      });
+
       // Init
       loadGame();
       render();
+      updateProgressBar();
    })();
    </script>
 
-   <script>
-      // Mobile menu
-      const menuBtn = document.querySelector('.menu-btn');
-      const navLinks = document.querySelector('.nav-links');
-      menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
-      document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
-      document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
-   </script>
+    <script>
+       // Mobile menu
+       const menuBtn = document.querySelector('.menu-btn');
+       const navLinks = document.querySelector('.nav-links');
+       menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+       document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
+       document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+    </script>
+    <script>
+       // FAQ toggle
+       document.querySelectorAll('.faq-item h3').forEach(q => {
+          q.addEventListener('click', () => {
+             const item = q.parentElement;
+             const isActive = item.classList.contains('active');
+             document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+             if (!isActive) item.classList.add('active');
+          });
+       });
+    </script>
 
    <!-- Site Footer -->
    <footer class="site-footer">

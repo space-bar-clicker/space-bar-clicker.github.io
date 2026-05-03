@@ -4,9 +4,9 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Duck Duck Clicker 3D - Play Free Online</title>
+   <title>Duck Duck Clicker 3D - Play Free Online | Spacebar Clicker</title>
    <meta name="description"
-      content="Duck Duck Clicker 3D: 3D Duck Coins, tiers 3D Bread→Metaverse Duck (+coins/sec)—sci-fi names on same idle template; not a full 3D sim, camera, or RT engine in this HTML.">
+      content="Play Duck Duck Clicker 3D free online! Collect 3D Duck Coins, upgrade your GPU, and enter the Metaverse. No download needed!">
    <meta name="keywords"
       content="duck duck clicker 3d, duck duck clicker 3d, clicker game, idle game, free online game, play duck duck clicker 3d">
    <meta name="robots" content="index, follow">
@@ -149,6 +149,7 @@
          border-radius: 22px;
          box-shadow: 0 20px 55px rgba(120, 56, 243, 0.14);
          overflow: hidden;
+         position: relative;
       }
 
       .game-header {
@@ -205,6 +206,8 @@
          border-right: 1px solid #f0f0f0;
          background: #e0f2fe;
          min-height: 320px;
+         position: relative;
+         overflow: hidden;
       }
 
       @media (max-width: 700px) {
@@ -234,6 +237,7 @@
          line-height: 1;
          position: relative;
          outline: none;
+         z-index: 2;
       }
 
       .click-btn:hover {
@@ -426,6 +430,148 @@
          border-color: #dc2626;
          color: #dc2626;
       }
+
+      /* Combo System */
+      .combo-display {
+         margin-top: 6px;
+         font-size: 0.9rem;
+         font-weight: 700;
+         color: #ff6b35;
+         min-height: 1.3em;
+         transition: transform 0.1s;
+         z-index: 2;
+      }
+      .combo-display.active { transform: scale(1.15); }
+
+      .critical-popup {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1.5rem;
+         font-weight: 800;
+         color: #ff3d00;
+         text-shadow: 0 2px 8px rgba(255, 61, 0, 0.3);
+         animation: critPop 0.8s ease-out forwards;
+         z-index: 20;
+      }
+      @keyframes critPop {
+         0% { opacity: 1; transform: translateY(0) scale(0.5); }
+         50% { transform: translateY(-40px) scale(1.2); }
+         100% { opacity: 0; transform: translateY(-90px) scale(1); }
+      }
+
+      /* Progress Bar */
+      .progress-bar-container {
+         width: 80%;
+         max-width: 220px;
+         height: 8px;
+         background: #e5e7eb;
+         border-radius: 4px;
+         margin-top: 10px;
+         overflow: hidden;
+         z-index: 2;
+      }
+      .progress-bar-fill {
+         height: 100%;
+         background: linear-gradient(90deg, #0284c7, #0284c7dd);
+         border-radius: 4px;
+         transition: width 0.3s ease;
+         width: 0%;
+      }
+
+      /* Floating Particles */
+      .particle {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1rem;
+         opacity: 0;
+         animation: particleFloat 2.5s ease-out forwards;
+         z-index: 1;
+      }
+      @keyframes particleFloat {
+         0% { opacity: 0.8; transform: translateY(0) scale(0.6); }
+         100% { opacity: 0; transform: translateY(-120px) scale(1.2); }
+      }
+
+      /* Milestone Banner */
+      .milestone-banner {
+         position: fixed;
+         top: 80px;
+         left: 50%;
+         transform: translateX(-50%) scale(0.9);
+         background: linear-gradient(135deg, #7838f3, #a855f7);
+         color: white;
+         padding: 14px 28px;
+         border-radius: 12px;
+         font-weight: 700;
+         font-size: 1.1rem;
+         box-shadow: 0 10px 30px rgba(120, 56, 243, 0.3);
+         opacity: 0;
+         pointer-events: none;
+         transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+         z-index: 2000;
+      }
+      .milestone-banner.show {
+         opacity: 1;
+         transform: translateX(-50%) scale(1);
+      }
+
+      /* Sound Toggle */
+      .sound-toggle {
+         background: rgba(255,255,255,0.2);
+         border: none;
+         border-radius: 8px;
+         padding: 6px 10px;
+         color: white;
+         font-size: 1.1rem;
+         cursor: pointer;
+         transition: background 0.2s;
+      }
+      .sound-toggle:hover { background: rgba(255,255,255,0.35); }
+
+      /* Keyboard tip */
+      .keyboard-tip {
+         font-size: 0.75rem;
+         color: #888;
+         margin-top: 8px;
+         font-weight: 500;
+         z-index: 2;
+      }
+
+      /* FAQ Styles */
+      .faq-section { margin-bottom: 30px; }
+      .faq-item { margin-bottom: 14px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+      .faq-question {
+         font-size: 1.05rem;
+         font-weight: 600;
+         color: #333;
+         cursor: pointer;
+         padding: 10px 0;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         transition: color 0.2s;
+         margin: 0;
+      }
+      .faq-question:hover { color: #7838f3; }
+      .faq-question::after {
+         content: '+';
+         font-size: 1.3rem;
+         color: #7838f3;
+         transition: transform 0.3s;
+         font-weight: 400;
+      }
+      .faq-item.open .faq-question::after { transform: rotate(45deg); }
+      .faq-answer {
+         max-height: 0;
+         overflow: hidden;
+         transition: max-height 0.3s ease, opacity 0.3s ease;
+         opacity: 0;
+      }
+      .faq-item.open .faq-answer { max-height: 500px; opacity: 1; }
+      .faq-answer p { margin: 0 0 10px; font-size: 1rem; color: #555; }
+
+      /* Intro paragraphs */
+      .intro p { margin-bottom: 16px; line-height: 1.85; }
 
       /* Article Styles */
       .article-container {
@@ -766,15 +912,18 @@
 
       <!-- ===== GAME ===== -->
       <div class="game-wrapper" id="gameWrapper">
+         <div class="milestone-banner" id="milestoneBanner"></div>
          <div class="game-header">
             <h2>🦆 Duck Duck Clicker 3D</h2>
             <div class="game-stats-bar">
                <span class="game-stat-pill" id="gStatTotal">0 3D Duck Coins</span>
                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+               <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">🔊</button>
             </div>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
+               <div id="particleContainer" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;"></div>
                <button class="click-btn" id="clickBtn" aria-label="Render 3D Duck Coin">
                   <span class="emoji">🦆</span>
                </button>
@@ -784,6 +933,11 @@
                </div>
                <div class="per-second" id="perSecDisplay">0 3d duck coins/sec</div>
                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+               <div class="combo-display" id="comboDisplay"></div>
+               <div class="progress-bar-container">
+                  <div class="progress-bar-fill" id="progressBarFill"></div>
+               </div>
+               <div class="keyboard-tip">Tip: Press SPACE to click!</div>
             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
@@ -863,47 +1017,104 @@
       </div>
 
       <!-- ===== ARTICLE CONTENT ===== -->
-      <article class="article-container">
+       <article class="article-container">
 
-         <div class="intro">
-            The “3D” in the title is <strong>Flavor text</strong>: you still get a single-board idle UI with emoji, not a
-            rotating WebGL pond, ray-traced water, or orbital camera. Currency is <strong>3D Duck Coins</strong> and the
-            tiers—<strong>3D Bread → Metaverse Duck</strong>—nod to GPU memes while mechanically matching
-            <a href="/duck-duck-clicker/">Duck Duck Clicker</a>’s +1 → +500/sec ladder plus <strong>Click Power</strong>.
-            No habitat expansion map, physics splashes, spatial click bonuses, or rotating lenses exist in this lightweight
-            static build.
-         </div>
-         <section class="section">
-            <h2>Economy tiers</h2>
-            <div class="feature-box">
-               <h3>Passive +coins/sec</h3>
-               <ul>
-                  <li><strong>3D Bread</strong> — +1/sec.</li>
-                  <li><strong>3D Pond</strong> — +5/sec.</li>
-                  <li><strong>GPU Upgrade</strong> — +20/sec; gag label, still flat passive.</li>
-                  <li><strong>Ray Tracing</strong> — +100/sec; no shaders ship here.</li>
-                  <li><strong>Metaverse Duck</strong> — +500/sec.</li>
-               </ul>
-            </div>
-            <p>Otherwise identical loop: duplicated purchases raise costs, taps scale via Click Power, Save/Reset match other pages.</p>
-         </section>
-         <section class="section">
-            <h2>How to squeeze a run</h2>
-            <ol class="tips-list">
-               <li><strong>Treat tiers like Duck Duck sibling.</strong> Same breakpoints, sillier emoji.</li>
-               <li><strong>Stack Bread and Pond aggressively early.</strong></li>
-               <li><strong>GPU Upgrade is your mid escalation hop.</strong></li>
-               <li><strong>Ray Tracing sustains multitasking.</strong></li>
-               <li><strong>Metaverse Duck rows inflate totals fastest.</strong></li>
-               <li><strong>Spend on Click Power when taps still materially shorten buys.</strong></li>
-            </ol>
-         </section>
+          <div class="intro">
+             <p>Duck Duck Clicker 3D takes the beloved waterfowl formula and gives it a futuristic tech makeover. Do not let the '3D' in the title fool you—this is not a complex simulation requiring a powerful graphics card. Instead, it is a streamlined idle clicker that uses computing-themed upgrades to tell a story about rendering power and digital worlds. Your currency is 3D Duck Coins, and your journey takes you from basic 3D Bread all the way to the Metaverse Duck. It is a free browser game that requires no download and no account.</p>
+             <p>The history of 3D graphics is a fascinating tale of exponential growth. In the 1990s, real-time 3D was a novelty reserved for arcade cabinets and high-end workstations. Today, your phone can render photorealistic scenes that would have stunned animators decades ago. Terms like 'GPU Upgrade' and 'Ray Tracing' have entered everyday vocabulary thanks to the gaming industry. Duck Duck Clicker 3D playfully nods to this evolution by wrapping idle mechanics in tech jargon. You are not actually rendering anything, but the fantasy of building a digital duck empire is surprisingly compelling.</p>
+             <p>Clicker games are the unsung heroes of browser gaming. They require no tutorial, no loading screens, and no commitment. You can play for thirty seconds or three hours and still feel like you have accomplished something. The secret sauce is the combination of immediate feedback (every click matters) and delayed gratification (upgrades pay off over time). Duck Duck Clicker 3D respects this formula while adding a layer of tech-themed personality. The cool blue palette and futuristic upgrade names give it a vibe that is distinct from its more traditional sibling, Duck Duck Clicker.</p>
+             <p>Like all games on this site, Duck Duck Clicker 3D is completely free and saves your progress automatically. There are no microtransactions, no ads interrupting your flow, and no need to create an account. Just open the page, start clicking, and let your GPU Upgrades do the heavy lifting. Whether you are a tech enthusiast who appreciates the humor or a casual player looking for a new clicker, this game delivers a smooth, satisfying experience.</p>
+          </div>
 
-         <div style="text-align: center;">
-            <a href="/" class="back-btn">Back to Home</a>
-         </div>
+          <section class="section">
+             <h2>How to Play Duck Duck Clicker 3D</h2>
+             <ol class="tips-list">
+                <li><strong>Click the Duck Button:</strong> Tap the duck emoji to generate 3D Duck Coins manually.</li>
+                <li><strong>Drop 3D Bread:</strong> At 15 coins, buy 3D Bread to earn +1 coin per second passively.</li>
+                <li><strong>Fill a 3D Pond:</strong> When you reach 100 coins, unlock the 3D Pond for +5 coins per second.</li>
+                <li><strong>Install a GPU Upgrade:</strong> At 500 coins, install a GPU Upgrade to boost your rendering power to +20 coins per second.</li>
+                <li><strong>Enable Ray Tracing:</strong> Save 2,500 coins to unlock Ray Tracing, generating +100 coins per second of photorealistic income.</li>
+                <li><strong>Boost Click Power:</strong> Invest 50 coins into Click Power to double your manual tap output.</li>
+                <li><strong>Enter the Metaverse:</strong> The ultimate upgrade is the Metaverse Duck at 15,000 coins, delivering +500 coins per second. Stack them to dominate the digital pond.</li>
+             </ol>
+          </section>
 
-      </article>
+          <section class="section">
+             <h2>Duck Duck Clicker 3D Strategy Guide</h2>
+             <p>Early game strategy in Duck Duck Clicker 3D mirrors its 2D sibling but with a tech twist. 3D Bread is your foundation, and you should buy it as soon as possible. The exponential cost scaling means that buying multiple cheap upgrades early outperforms saving for one expensive upgrade. Think of it like building a render farm: one powerful GPU is nice, but a cluster of modest GPUs often gets the job done faster. Keep clicking to maintain your combo streak and trigger Critical Hits whenever possible.</p>
+             <p>The mid-game begins when you unlock GPU Upgrades and Ray Tracing. At this stage, your passive income should be growing steadily. Evaluate whether buying another 3D Pond or saving for a GPU Upgrade is more efficient. A good heuristic: if you can afford another cheap upgrade in under 10 seconds of clicking, buy it. If not, save for the next tier. Click Power upgrades are especially valuable here because they make active sessions much more productive, helping you bridge the gap between major purchases.</p>
+             <p>Late game optimization is about maximizing your Metaverse Duck count while maintaining lower-tier upgrades. Do not neglect your 3D Bread and Ponds just because they seem small. Every coin per second counts when you are chasing massive totals. The combo system becomes your best friend in the late game. By clicking rapidly within 2-second windows, you can build huge combos and trigger Critical Hits every 10 clicks. This effectively doubles your active income and can push you over milestone thresholds much faster. Use the progress bar to time your purchases perfectly.</p>
+          </section>
+
+          <section class="section faq-section">
+             <h2>Frequently Asked Questions</h2>
+             <div class="faq-item">
+                <h3 class="faq-question">What is Duck Duck Clicker 3D?</h3>
+                <div class="faq-answer">
+                   <p>Duck Duck Clicker 3D is a free browser idle game where you earn 3D Duck Coins and purchase tech-themed upgrades to generate passive income.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">Does this game require a powerful computer?</h3>
+                <div class="faq-answer">
+                   <p>No. It runs entirely in your browser and does not use any actual 3D rendering. The '3D' theme is purely cosmetic.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">How do I trigger Critical Hits?</h3>
+                <div class="faq-answer">
+                   <p>Maintain a combo by clicking at least once every 2 seconds. Every 10th consecutive click triggers a Critical Hit worth double points.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">Will my progress save automatically?</h3>
+                <div class="faq-answer">
+                   <p>Yes. The game saves to your browser's local storage every 30 seconds. You can also save manually at any time.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">What are milestones?</h3>
+                <div class="faq-answer">
+                   <p>Banners appear at 1K, 10K, 100K, and 1M coins to celebrate your achievements.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">Can I play on mobile?</h3>
+                <div class="faq-answer">
+                   <p>Yes. The game works on all modern mobile browsers. Just tap the duck button to click.</p>
+                </div>
+             </div>
+          </section>
+
+          <section class="section">
+             <h2>Why Play Duck Duck Clicker 3D?</h2>
+             <p>Duck Duck Clicker 3D is perfect for anyone who loves technology but wants a low-stakes gaming experience. The GPU and ray tracing references add a layer of humor that tech-savvy players will appreciate, while the solid idle mechanics ensure that casual players stay engaged. The blue color scheme is easy on the eyes, making it a great choice for late-night browsing sessions. Plus, the Metaverse Duck upgrade is genuinely satisfying to unlock.</p>
+             <p>If you enjoy Duck Duck Clicker 3D, you should definitely check out the original Duck Duck Clicker for a more traditional nature theme, or Duck Clicker for a simpler take on the same formula. For something completely different, try GS Auto Clicker or Italian Brainrot Clicker. But if you want a clicker that feels like it belongs in a tech convention, Duck Duck Clicker 3D is the one for you.</p>
+          </section>
+
+          <section class="section">
+             <h2>Did You Know? Fun Facts About 3D Graphics</h2>
+             <div class="highlight-box">
+                <ul>
+                   <li>The first 3D video game, 'Spasim,' was created in 1974 and ran on mainframe computers.</li>
+                   <li>Ray tracing simulates the way light interacts with objects to create photorealistic images, but it is extremely computationally expensive.</li>
+                   <li>The term 'metaverse' was coined by Neal Stephenson in his 1992 novel 'Snow Crash.'</li>
+                   <li>Modern GPUs can contain billions of transistors, making them some of the most complex chips ever manufactured.</li>
+                   <li>The original 'Duck Hunt' for the NES used a light gun that detected brightness from the screen to register hits.</li>
+                </ul>
+             </div>
+          </section>
+
+          <section class="section">
+             <h2>Discover More Free Clicker Games</h2>
+             <p>If you enjoy Duck Duck Clicker 3D, try <a href="/duck-duck-clicker/">Duck Duck Clicker</a> for the classic nature theme, or <a href="/duck-clicker/">Duck Clicker</a> for a simplified experience. Tech fans might also like <a href="/gs-auto-clicker/">GS Auto Clicker</a>. Animal lovers should check out <a href="/dog-clicker/">Dog Clicker</a>. And for the timeless classic, do not miss <a href="/cookie-clicker/">Cookie Clicker</a>.</p>
+          </section>
+
+          <div style="text-align: center;">
+             <a href="/" class="back-btn">Back to Home</a>
+          </div>
+
+       </article>
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
@@ -961,6 +1172,7 @@
          const SAVE_KEY = 'duck_duck_clicker_3d_save';
          const UPGRADES = [{ "name": "3D Bread", "emoji": "🍞", "baseCost": 15, "baseRate": 1, "desc": "+1 coin/sec" }, { "name": "3D Pond", "emoji": "🌊", "baseCost": 100, "baseRate": 5, "desc": "+5 coins/sec" }, { "name": "GPU Upgrade", "emoji": "🖥️", "baseCost": 500, "baseRate": 20, "desc": "+20 coins/sec" }, { "name": "Ray Tracing", "emoji": "💡", "baseCost": 2500, "baseRate": 100, "desc": "+100 coins/sec" }, { "name": "Metaverse Duck", "emoji": "🌐", "baseCost": 15000, "baseRate": 500, "desc": "+500 coins/sec" }];
          const COST_SCALE = 1.15;
+         const PARTICLE_EMOJI = '🖥️';
 
          let score = 0;
          let totalEarned = 0;
@@ -970,6 +1182,20 @@
          let perSecond = 0;
          let upgradeOwned = UPGRADES.map(() => 0);
 
+         // Combo system
+         let lastClickTime = 0;
+         let comboCount = 0;
+         const COMBO_TIMEOUT = 2000;
+         const COMBO_CRIT_THRESHOLD = 10;
+
+         // Sound toggle
+         let soundEnabled = true;
+
+         // Milestones
+         const milestones = [1000, 10000, 100000, 1000000];
+         let milestonesReached = {};
+         milestones.forEach(m => milestonesReached[m] = false);
+
          // DOM
          const scoreNum = document.getElementById('scoreNum');
          const perSecDisplay = document.getElementById('perSecDisplay');
@@ -977,9 +1203,14 @@
          const gStatTotal = document.getElementById('gStatTotal');
          const gStatPerSec = document.getElementById('gStatPerSec');
          const clickBtn = document.getElementById('clickBtn');
-         const clickArea = document.getElementById('clickArea');
+          const clickArea = document.getElementById('clickArea');
+          const comboDisplay = document.getElementById('comboDisplay');
+          const progressBarFill = document.getElementById('progressBarFill');
+          const milestoneBanner = document.getElementById('milestoneBanner');
+          const soundToggle = document.getElementById('soundToggle');
+          const particleContainer = document.getElementById('particleContainer');
 
-         function formatNum(n) {
+          function formatNum(n) {
             if (n < 1000) return Math.floor(n).toLocaleString();
             if (n < 1e6) return (n / 1e3).toFixed(1) + 'K';
             if (n < 1e9) return (n / 1e6).toFixed(1) + 'M';
@@ -1028,37 +1259,77 @@
             }
          }
 
-         function showClickFloat(x, y) {
-            const el = document.createElement('div');
-            el.className = 'click-float';
-            el.textContent = '+' + formatNum(clickPower);
-            el.style.left = x + 'px';
-            el.style.top = y + 'px';
-            clickArea.style.position = 'relative';
-            clickArea.appendChild(el);
-            setTimeout(() => el.remove(), 700);
-         }
+          function showClickFloat(x, y, amount) {
+             const el = document.createElement('div');
+             el.className = 'click-float';
+             el.textContent = '+' + formatNum(amount || clickPower);
+             el.style.left = x + 'px';
+             el.style.top = y + 'px';
+             clickArea.style.position = 'relative';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 700);
+          }
 
-         function doClick(e) {
-            score += clickPower;
-            totalEarned += clickPower;
+          function showCriticalPopup(x, y) {
+             const el = document.createElement('div');
+             el.className = 'critical-popup';
+             el.textContent = 'CRITICAL HIT!';
+             el.style.left = x + 'px';
+             el.style.top = (y - 30) + 'px';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 800);
+          }
 
-            clickBtn.classList.add('pressed');
-            setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+          function showMilestoneBanner(m) {
+             milestoneBanner.textContent = '🎉 Milestone Reached: ' + formatNum(m) + '!';
+             milestoneBanner.classList.add('show');
+             setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
+          }
 
-            // Float position
-            const rect = clickArea.getBoundingClientRect();
-            let cx, cy;
-            if (e && e.clientX) {
-               cx = e.clientX - rect.left;
-               cy = e.clientY - rect.top;
-            } else {
-               cx = rect.width / 2 + (Math.random() - 0.5) * 40;
-               cy = rect.height / 2 - 30;
-            }
-            showClickFloat(cx, cy);
-            render();
-         }
+          function doClick(e) {
+             const now = Date.now();
+             let earned = clickPower;
+             if (now - lastClickTime <= COMBO_TIMEOUT) {
+                comboCount++;
+             } else {
+                comboCount = 1;
+             }
+             lastClickTime = now;
+
+             if (comboCount > 1) {
+                comboDisplay.textContent = comboCount + 'x Combo!';
+                comboDisplay.classList.add('active');
+                setTimeout(() => comboDisplay.classList.remove('active'), 100);
+             } else {
+                comboDisplay.textContent = '';
+             }
+
+             if (comboCount % COMBO_CRIT_THRESHOLD === 0) {
+                earned *= 2;
+             }
+
+             score += earned;
+             totalEarned += earned;
+
+             clickBtn.classList.add('pressed');
+             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+
+             // Float position
+             const rect = clickArea.getBoundingClientRect();
+             let cx, cy;
+             if (e && e.clientX) {
+                cx = e.clientX - rect.left;
+                cy = e.clientY - rect.top;
+             } else {
+                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+                cy = rect.height / 2 - 30;
+             }
+             showClickFloat(cx, cy, earned);
+             if (comboCount % COMBO_CRIT_THRESHOLD === 0) {
+                showCriticalPopup(cx, cy);
+             }
+             render();
+          }
 
          clickBtn.addEventListener('click', doClick);
          clickBtn.addEventListener('touchstart', (e) => {

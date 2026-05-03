@@ -4,9 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Coin Clicker - Play Free Online</title>
-   <meta name="description"
-      content="Mint-and-vault incremental: Copper Press through Ancient Treasury pumps +coins/sec each; Click Power stamps harder taps; saves stay in-browser—no collectible album or RNG drops in this build.">
+   <title>Coin Clicker - Mint Your Fortune | Free Online Idle Game</title>
+   <meta name="description" content="Play Coin Clicker free online! Mint copper, silver & gold coins, build combos & reach milestones. Free browser idle clicker, no download needed!">
    <meta name="keywords"
       content="coin clicker, coin clicker, clicker game, idle game, free online game, play coin clicker">
    <meta name="robots" content="index, follow">
@@ -752,6 +751,164 @@
          box-shadow: 0 4px 12px rgba(120, 56, 243, 0.15);
          color: #3b0764;
       }
+   
+      /* ===== NEW GAME FEATURES CSS ===== */
+      .sound-toggle {
+         background: none;
+         border: 2px solid rgba(255,255,255,0.4);
+         color: white;
+         border-radius: 8px;
+         padding: 4px 10px;
+         cursor: pointer;
+         font-size: 1rem;
+         transition: all 0.2s ease;
+      }
+      .sound-toggle:hover {
+         background: rgba(255,255,255,0.15);
+         border-color: rgba(255,255,255,0.7);
+      }
+      .combo-display {
+         margin-top: 6px;
+         font-size: 0.85rem;
+         font-weight: 700;
+         color: #ca8a04;
+         min-height: 20px;
+         text-align: center;
+      }
+      .progress-bar-container {
+         width: 80%;
+         max-width: 220px;
+         height: 10px;
+         background: #eee;
+         border-radius: 5px;
+         margin-top: 10px;
+         overflow: hidden;
+      }
+      .progress-bar-fill {
+         height: 100%;
+         background: linear-gradient(90deg, #ca8a04, #ca8a0488);
+         width: 0%;
+         transition: width 0.3s ease;
+         border-radius: 5px;
+      }
+      .milestone-banner {
+         position: fixed;
+         top: 80px;
+         left: 50%;
+         transform: translateX(-50%) translateY(-100px);
+         background: linear-gradient(135deg, #ca8a04, #ca8a04dd);
+         color: white;
+         padding: 14px 28px;
+         border-radius: 12px;
+         font-weight: 700;
+         font-size: 1.1rem;
+         box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+         z-index: 2000;
+         opacity: 0;
+         pointer-events: none;
+         transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+         white-space: nowrap;
+      }
+      .milestone-banner.show {
+         opacity: 1;
+         transform: translateX(-50%) translateY(0);
+      }
+      .critical-popup {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1.4rem;
+         font-weight: 800;
+         color: #ff4757;
+         text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+         animation: criticalAnim 0.9s ease-out forwards;
+         z-index: 20;
+      }
+      @keyframes criticalAnim {
+         0% { opacity: 1; transform: translateY(0) scale(0.6) rotate(-5deg); }
+         50% { opacity: 1; transform: translateY(-40px) scale(1.2) rotate(5deg); }
+         100% { opacity: 0; transform: translateY(-90px) scale(1) rotate(0deg); }
+      }
+      .particle {
+         position: absolute;
+         pointer-events: none;
+         font-size: 0.9rem;
+         opacity: 0.7;
+         animation: particleFloat 2.5s ease-out forwards;
+         z-index: 5;
+      }
+      @keyframes particleFloat {
+         0% { opacity: 0.7; transform: translateY(0) scale(1); }
+         100% { opacity: 0; transform: translateY(-120px) scale(0.5); }
+      }
+      .keyboard-tip {
+         text-align: center;
+         font-size: 0.78rem;
+         color: #888;
+         margin-top: 8px;
+         font-weight: 500;
+      }
+      .faq-section { margin-bottom: 30px; }
+      .faq-item { margin-bottom: 16px; border-bottom: 1px solid #eee; padding-bottom: 12px; }
+      .faq-item h3 {
+         color: #7838f3;
+         font-size: 1.05rem;
+         margin-bottom: 6px;
+         cursor: pointer;
+         display: flex;
+         align-items: center;
+         gap: 8px;
+         transition: color 0.2s ease;
+      }
+      .faq-item h3:hover { color: #4c1d95; }
+      .faq-item h3::before {
+         content: '+';
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         width: 20px;
+         height: 20px;
+         background: #f0f0f0;
+         border-radius: 4px;
+         font-size: 0.85rem;
+         color: #666;
+         flex-shrink: 0;
+      }
+      .faq-item.open h3::before { content: '−'; }
+      .faq-answer {
+         max-height: 0;
+         overflow: hidden;
+         transition: max-height 0.35s ease, opacity 0.25s ease;
+         opacity: 0;
+      }
+      .faq-item.open .faq-answer {
+         max-height: 300px;
+         opacity: 1;
+      }
+      .faq-answer p {
+         color: #555;
+         line-height: 1.7;
+         font-size: 1rem;
+         padding-top: 4px;
+      }
+      .fun-facts-list {
+         list-style: none;
+         padding-left: 0;
+         margin: 0;
+      }
+      .fun-facts-list li {
+         padding: 10px 0 10px 28px;
+         position: relative;
+         color: #333;
+         line-height: 1.65;
+         font-size: 1.02rem;
+      }
+      .fun-facts-list li::before {
+         content: '💡';
+         position: absolute;
+         left: 0;
+         top: 10px;
+      }
+
    </style>
 </head>
 
@@ -774,26 +931,33 @@
 
       <!-- ===== GAME ===== -->
       <div class="game-wrapper" id="gameWrapper">
-         <div class="game-header">
-            <h2>🪙 Coin Clicker</h2>
-            <div class="game-stats-bar">
-               <span class="game-stat-pill" id="gStatTotal">0 Coins</span>
-               <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
-            </div>
-         </div>
-         <div class="game-body">
-            <div class="click-area" id="clickArea">
-               <button class="click-btn" id="clickBtn" aria-label="Mint Coin">
-                  <span class="emoji">🪙</span>
-               </button>
-               <div class="score-display">
-                  <div class="score-number" id="scoreNum">0</div>
-                  <div class="score-label">Coins</div>
-               </div>
-               <div class="per-second" id="perSecDisplay">0 coins/sec</div>
-               <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
-            </div>
-            <div class="upgrades-panel" id="upgradesPanel">
+                   <div class="milestone-banner" id="milestoneBanner">🎉 Milestone Reached!</div>
+          <div class="game-header">
+             <h2>🪙 Coin Clicker</h2>
+             <div class="game-stats-bar">
+                <span class="game-stat-pill" id="gStatTotal">0 Coins</span>
+                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+                <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
+             </div>
+          </div>
+          <div class="game-body">
+                         <div class="click-area" id="clickArea">
+                <button class="click-btn" id="clickBtn" aria-label="Mint Coin">
+                   <span class="emoji">🪙</span>
+                </button>
+                <div class="score-display">
+                   <div class="score-number" id="scoreNum">0</div>
+                   <div class="score-label">Coins</div>
+                </div>
+                <div class="progress-bar-container" id="progressBarContainer">
+                   <div class="progress-bar-fill" id="progressBarFill"></div>
+                </div>
+                <div class="combo-display" id="comboDisplay"></div>
+                <div class="per-second" id="perSecDisplay">0 coins/sec</div>
+                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+                <div class="keyboard-tip">Tip: Press SPACE to click!</div>
+             </div>
+             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
 
                <div class="upgrade-card locked" id="upg0" data-idx="0">
@@ -872,97 +1036,100 @@
 
       <!-- ===== ARTICLE CONTENT ===== -->
       <article class="article-container">
-
          <div class="intro">
-            <p>Coin Clicker wraps a single hoard number in <strong>minting-shop</strong> language: presses, forges,
-               vaults, and an <strong>Ancient Treasury</strong> passive line, plus <strong>Click Power</strong> for heavier
-               strikes on each tap or spacebar press. Tap to add coins manually; stacks of each tier dribble passive income
-               with the printed rates beside the buttons.</p>
-            <p>That theme is garnish only—you will not find numismatic slabs, collectible series, RNG rare drops, or storefront
-               trading layered on this page; if you wanted a coin album sim, look elsewhere on the web. Use <strong>Save</strong>
-               so your hoard survives a reload, and <strong>Reset</strong> when you want to start from scratch.</p>
+            <p><strong>Coin Clicker</strong> invites you to step into the shoes of a medieval mint master, transforming raw metal into gleaming currency through the satisfying rhythm of incremental gameplay. Unlike modern financial clickers that deal in abstract dollars, Coin Clicker celebrates the tangible craft of coinage—from the humble Copper Press to the legendary Ancient Treasury. The game taps into humanity's millennia-old fascination with precious metals and currency, offering a historically flavored twist on the idle clicker formula.</p>
+         <p>Coinage has shaped human civilization for over 2,600 years, starting with the Lydian stater in ancient Turkey. Throughout history, controlling the mint meant controlling the economy. Coin Clicker distills this powerful concept into pure gameplay: you start by manually striking copper blanks, then gradually automate with silver minting, gold forges, treasure vaults, and finally an Ancient Treasury that generates wealth beyond imagination. Each upgrade tier represents a leap in metallurgical and organizational sophistication that mirrors real historical developments.</p>
+         <p>The idle clicker genre has proven uniquely suited to mobile and browser gaming because it respects the player's time. Whether you have 30 seconds to tap furiously or want to leave a background tab earning passive income overnight, Coin Clicker adapts to your schedule. The game requires <strong>absolutely no download, no registration, and no payment</strong>—open your browser and start minting immediately.</p>
+         <p>Compared to <a href="/money-clicker/">Money Clicker</a>'s modern startup culture or <a href="/case-clicker/">Case Clicker</a>'s loot-box excitement, Coin Clicker offers a more timeless, tactile fantasy. The golden-yellow color palette evokes warmth and wealth, while the emoji progression (🟤 → ⚪ → 🟡 → 🏦 → 👑) tells a visual story of rising refinement. If you have ever dreamed of filling a dragon's hoard or gazing upon stacks of ancient treasure, Coin Clicker turns that fantasy into endlessly satisfying numbers.</p>
          </div>
 
          <section class="section">
-            <h2>Passive tiers (+coins/sec per owned copy)</h2>
-            <div class="feature-box">
-               <h3>Generators</h3>
-               <ul>
-                  <li><strong>Copper Press</strong> — +1/sec; first blanking presses you spam while the balance is shy.</li>
-                  <li><strong>Silver Mint</strong> — +5/sec; noticeably faster plating line once presses feel cheap.</li>
-                  <li><strong>Gold Forge</strong> — +20/sec; where brass-age budgets start to melt into heavier income.</li>
-                  <li><strong>Treasure Vault</strong> — +100/sec; the “pile it in cages” spike for tab-away grinding.</li>
-                  <li><strong>Ancient Treasury</strong> — +500/sec; crown-vault throughput for leaderboard-style hoards.</li>
-               </ul>
-            </div>
-            <p>Click Power adjusts coins per tap on its own escalating curve—compare it to passive before every purchase when
-               you are optimizing time-to-next tier.</p>
-         </section>
-
-         <section class="section">
-            <h2>Efficient run order</h2>
+            <h2>How to Play Coin Clicker</h2>
             <ol class="tips-list">
-               <li><strong>Land Copper passive early.</strong> Even +1/sec re-times every future buy.</li>
-               <li><strong>Often stack Silver before one lonely Gold Forge.</strong> Breadth beats one expensive spike early.</li>
-               <li><strong>Gold Forge stacks mark comfortable mid pacing.</strong></li>
-               <li><strong>Treasure Vault unlocks multitask sessions.</strong> +100/sec loves background tabs.</li>
-               <li><strong>Farm Ancient Treasury copies for leaderboard-style totals.</strong></li>
-               <li><strong>Invest in Click Power when taps still noticeably shorten waits.</strong></li>
+               <li>Click the coin button to strike your first coins manually—every great fortune starts with a single minting.</li>
+<li>Purchase a <strong>Copper Press</strong> (15 Coins) for +1 coin/sec, establishing your first automated production line.</li>
+<li>Continue clicking while your Copper Press runs to accelerate early accumulation.</li>
+<li>At 100 Coins, open a <strong>Silver Mint</strong> for +5/sec—silver represents your first major quality upgrade.</li>
+<li>Unlock the <strong>Gold Forge</strong> at 500 Coins for +20/sec, where true wealth begins to accumulate.</li>
+<li>Upgrade your <strong>Click Power</strong> periodically to keep manual minting relevant as costs increase.</li>
+<li>Build a <strong>Treasure Vault</strong> at 2,500 Coins for +100/sec, securing your hoard in reinforced storage.</li>
+<li>Establish an <strong>Ancient Treasury</strong> at 15,000 Coins for +500/sec and achieve minting immortality.</li>
+<li>Save your treasury regularly to protect centuries of accumulated wealth from browser resets.</li>
+<li>Press SPACE to click faster and build combos for spectacular Critical Hit minting bonuses!</li>
             </ol>
          </section>
 
          <section class="section">
-            <h2>Why a second Copper Press beats one desperate Gold Forge</h2>
-            <p>Here the fantasy is a minting line: <strong>Copper Press</strong> is your cheap blanking press, <strong>Silver
-               Mint</strong> and <strong>Gold Forge</strong> are the faster dies, and <strong>Treasure Vault</strong> /
-               <strong>Ancient Treasury</strong> are where the story pretends bulk coin is stored. Mechanically, every one of
-               those lines can be bought again. A second Copper Press always adds another full +1 coin/sec to the haul, the
-               same way a second Ancient Treasury adds another +500 coin/sec chunk—but the <em>check you write</em> for the
-               next purchase on that same line keeps growing, so the “cheapest” next step is often another cheap press or
-               mint rather than muscling a fourth copy of a top-tier vault before your balance can breathe.</p>
-            <p>Your on-screen “coins per second” is nothing fancier than adding up every tier’s rate times how many you
-               own: multiple presses, forges, and treasuries all pour into one river of coin. No hidden vault mechanics,
-               no rare-mint odds—just arithmetic dressed in stamp-and-ingot names.</p>
+            <h2>Strategy Guide</h2>
+            <p>The Copper Press is deceptively powerful. Because it only costs 15 Coins and pays back in 15 seconds, buying multiple presses early creates a snowball effect that outpaces saving for Silver Mint. A good opening strategy: buy Copper Press whenever you can afford it without dipping below 5 Coins, until the cost exceeds 30 Coins. Only then start saving for Silver.</p>
+<p>The jump from Gold Forge (+20) to Treasure Vault (+100) is where many players stumble. The 2,500 Coin price tag feels daunting when your income is +50-80/sec. The secret is to buy 2-3 Gold Forges first, pushing your income above +100/sec. At that rate, the Treasure Vault becomes affordable in under 30 seconds. Patience with intermediate upgrades pays massive dividends.</p>
+<p>Click Power follows exponential growth (1 → 2 → 4 → 8 → 16...), making it the ultimate late-game accelerator. However, each level costs 2.5x more than the last. The optimal Click Power purchase timing is when you can afford a new level in under 60 seconds of passive income. Any longer, and your Coins would generate more value if invested in passive upgrades instead.</p>
+<p>For AFK farming, always dump your entire balance into the highest unlocked tier before stepping away. A single Ancient Treasury generates +500/sec, meaning an 8-hour sleep session yields 14.4 million Coins. When you return, you can buy dozens of lower-tier upgrades instantly, creating a satisfying "shopping spree" effect.</p>
+         </section>
+
+         <section class="section faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                  <h3>What is Coin Clicker?</h3>
+                  <div class="faq-answer"><p>Coin Clicker is a free online idle clicker game themed around minting and collecting coins. You earn Coins by clicking and through passive upgrades like Copper Presses, Silver Mints, Gold Forges, Treasure Vaults, and Ancient Treasuries.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>Is Coin Clicker free to play?</h3>
+                  <div class="faq-answer"><p>Yes! Coin Clicker is 100% free with no downloads, ads, or in-app purchases. It runs entirely in your web browser using JavaScript and local storage for saving progress.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>How do I save my coin hoard?</h3>
+                  <div class="faq-answer"><p>Click the Save button or rely on the 30-second auto-save feature. Your progress stores in browser local storage. Note that clearing browser data will erase your save—there is no cloud backup.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>What upgrade should I buy first?</h3>
+                  <div class="faq-answer"><p>Always start with Copper Press (15 Coins). It pays for itself in 15 seconds and generates pure profit afterward. Building multiple Copper Presses creates the income foundation for everything else.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>How does Click Power work?</h3>
+                  <div class="faq-answer"><p>Click Power doubles your manual earnings per level (1, 2, 4, 8, 16...). It is the only upgrade that affects clicking rather than passive income. Buy it when you can afford a new level quickly.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>What are Critical Hits?</h3>
+                  <div class="faq-answer"><p>Achieve a 10-click combo by clicking at least once every 2 seconds, and your next click becomes a Critical Hit worth 2x the normal amount! A dramatic popup celebrates your minting mastery.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>Can I play Coin Clicker on mobile?</h3>
+                  <div class="faq-answer"><p>Yes! The game is fully responsive and works on phones and tablets. Touch the coin to mint, swipe to browse upgrades, and tap Save to protect your hoard.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>What happens after Ancient Treasury?</h3>
+                  <div class="faq-answer"><p>There is no hard cap! You can own unlimited Ancient Treasuries, though each copy costs 1.15x more than the last. With enough time and strategy, your coin count can reach astronomical numbers.</p></div>
+               </div>
          </section>
 
          <section class="section">
-            <h2>Striking by hand versus hiring the whole forge</h2>
-            <p><strong>Click Power</strong> is the only upgrade that makes each hammer-fall (or spacebar hit) worth more
-               coins; every passive row is “hire more of the named machine.” When you are short a few thousand coins for
-               your first <strong>Treasure Vault</strong>, buffing the strike so each click moves the total faster can beat
-               waiting on a trickle of +1s from extra Copper. When you are leaving the tab open while you work, piling
-               <strong>Ancient Treasury</strong> or Vault copies usually wins because they keep minting while your hands are
-               off the press.</p>
-            <p>Late in a Coin Clicker run, your balance is mostly the weight of Treasury stacks; Click Power still matters
-               when you want to punch through the next price wall in a burst instead of watching the per-second ticker
-               crawl. Choose whichever purchase gets you to the <em>next</em> unlock you care about in the fewest heartbeats.</p>
+            <h2>Why Play Coin Clicker?</h2>
+            <p>Coin Clicker appeals to a primal human fascination with hoarding treasure. While modern clickers abstract wealth into stocks and startups, Coin Clicker keeps things tangible—you can almost hear the clink of copper, silver, and gold. This physicality creates a more grounded, satisfying progression loop that resonates with history enthusiasts and fantasy fans alike.</p>
+<p>The warm golden aesthetic and metallurgical upgrade path give Coin Clicker a cozy, timeless quality. Compared to the high-energy chaos of <a href="/tung-tung-tung-sahur-clicker/">Tung Tung Tung Sahur Clicker</a> or the sensory overload of <a href="/stimulation-clicker/">Stimulation Clicker</a>, Coin Clicker offers a more meditative experience. It is the perfect background game for listening to podcasts, studying, or working from home.</p>
          </section>
 
          <section class="section">
-            <h2>Where your hoard lives (and how to melt it)</h2>
-            <p>There is no bank branch for this coin pile: <strong>Save</strong> writes your minted total, how many presses
-               and vaults you own, and your Click Power level into this browser’s storage only. Change devices, clear site
-               data, or block storage and the hoard vanishes unless you’ve kept a copy yourself—by design, nothing leaves
-               GitHub Pages to a server.</p>
-            <p><strong>Reset</strong> is the in-game way to dump the run and start from empty pockets without digging
-               through settings. Use it when you want a fresh speedrun of “first Copper Press to first Treasury” with the
-               routes you have already learned.</p>
+            <h2>Did You Know? Fun Facts</h2>
+            <ul class="fun-facts-list">
+               <li>The first known coins were minted around 600 BCE in Lydia (modern-day Turkey) using electrum, a natural alloy of gold and silver.</li>
+<li>Ancient Roman mints employed a three-person team: one held the die, one placed the blank, and one struck with a hammer—echoing Coin Clicker's manual-to-automated progression.</li>
+<li>The gold standard, which backed global currencies until the 20th century, made gold forges like the one in Coin Clicker literal centers of national economic power.</li>
+<li>The largest ancient treasury ever discovered belonged to the Chinese Emperor Qin Shi Huang, containing an estimated 10,000+ pounds of gold and silver artifacts.</li>
+<li>Coin Clicker's cost-scaling formula (1.15x per duplicate) is standard in idle game design and was popularized by Cookie Clicker, which itself was inspired by Candy Box and Cow Clicker.</li>
+            </ul>
          </section>
 
          <section class="section">
-            <h2>If you like Coin Clicker’s mint theme</h2>
-            <p><a href="/money-clicker/">Money Clicker</a> swaps the fantasy to cold cash and bank notes; <a
-                  href="/case-clicker/">Case Clicker</a> frames the same kind of ladder around opening loot-style tiers. The
-               math rhymes, but the words and fantasy are different—pick whichever skin matches the mood after you have
-               rinsed the Copper-to-Treasury climb here.</p>
+            <h2>Related Clicker Games</h2>
+            <p>Try <a href="/money-clicker/">Money Clicker</a> for a modern financial twist, <a href="/case-clicker/">Case Clicker</a> for loot-box thrills, or <a href="/pokemon-clicker/">Pokemon Clicker</a> if you prefer creature-collecting themes with your idle math.</p>
          </section>
 
-         <div style="text-align: center;">
-            <a href="/" class="back-btn">Back to Home</a>
-         </div>
+
 
       </article>
-      <!-- Related Games Section -->
+
+       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
          <p class="related-games-subtitle">Discover more free online clicker games to play</p>
@@ -1206,6 +1373,150 @@
 
          // Auto-save every 30s
          setInterval(saveGame, 30000);
+
+
+         // ===== NEW FEATURES =====
+         let comboCount = 0;
+         let lastClickTime = 0;
+         let soundEnabled = true;
+         let milestonesReached = {};
+
+         const comboDisplay = document.getElementById('comboDisplay');
+         const progressBarFill = document.getElementById('progressBarFill');
+         const milestoneBanner = document.getElementById('milestoneBanner');
+         const soundToggle = document.getElementById('soundToggle');
+
+         soundToggle.addEventListener('click', () => {
+            soundEnabled = !soundEnabled;
+            soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+         });
+
+         function updateCombo() {
+            const now = Date.now();
+            if (now - lastClickTime < 2000) {
+               comboCount++;
+            } else {
+               comboCount = 1;
+            }
+            lastClickTime = now;
+            if (comboCount >= 10) {
+               comboDisplay.textContent = '🔥 COMBO x' + comboCount + '!';
+               comboDisplay.style.color = '#ff4757';
+            } else if (comboCount > 1) {
+               comboDisplay.textContent = 'Combo x' + comboCount;
+               comboDisplay.style.color = '#ca8a04';
+            } else {
+               comboDisplay.textContent = '';
+            }
+         }
+
+         function showCriticalHit(x, y) {
+            const el = document.createElement('div');
+            el.className = 'critical-popup';
+            el.textContent = 'CRITICAL HIT! +' + formatNum(clickPower * 2);
+            el.style.left = x + 'px';
+            el.style.top = y + 'px';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 900);
+         }
+
+         function updateProgressBar() {
+            let nextCost = Infinity;
+            for (let i = 0; i < UPGRADES.length; i++) {
+               const cost = getCost(UPGRADES[i].baseCost, upgradeOwned[i]);
+               if (cost < nextCost) nextCost = cost;
+            }
+            if (clickPowerCost < nextCost) nextCost = clickPowerCost;
+            let pct = Math.min(100, (score / nextCost) * 100);
+            progressBarFill.style.width = pct + '%';
+         }
+
+         function checkMilestones() {
+            const milestones = [1000, 10000, 100000, 1000000];
+            for (let m of milestones) {
+               if (score >= m && !milestonesReached[m]) {
+                  milestonesReached[m] = true;
+                  showMilestone('🎉 ' + formatNum(m) + ' Coins Reached!');
+               }
+            }
+         }
+
+         function showMilestone(text) {
+            milestoneBanner.textContent = text;
+            milestoneBanner.classList.add('show');
+            setTimeout(() => milestoneBanner.classList.remove('show'), 2500);
+         }
+
+         function spawnParticle() {
+            const particles = ['🪙', '✨', '⭐', '💫'];
+            const el = document.createElement('div');
+            el.className = 'particle';
+            el.textContent = particles[Math.floor(Math.random() * particles.length)];
+            const rect = clickArea.getBoundingClientRect();
+            el.style.left = (rect.width * 0.2 + Math.random() * rect.width * 0.6) + 'px';
+            el.style.top = (rect.height * 0.3 + Math.random() * rect.height * 0.3) + 'px';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 2500);
+         }
+
+         // Modify doClick to include new features
+         const _origDoClick = doClick;
+         doClick = function(e) {
+            let multiplier = 1;
+            updateCombo();
+            if (comboCount >= 10 && comboCount % 10 === 0) {
+               multiplier = 2;
+            }
+            score += clickPower * multiplier;
+            totalEarned += clickPower * multiplier;
+
+            clickBtn.classList.add('pressed');
+            setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+
+            const rect = clickArea.getBoundingClientRect();
+            let cx, cy;
+            if (e && e.clientX) {
+               cx = e.clientX - rect.left;
+               cy = e.clientY - rect.top;
+            } else {
+               cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+               cy = rect.height / 2 - 30;
+            }
+            if (multiplier === 2) {
+               showCriticalHit(cx, cy);
+            }
+            showClickFloat(cx, cy);
+            checkMilestones();
+            updateProgressBar();
+            render();
+         };
+
+         // Re-attach click listener to use new doClick
+         clickBtn.removeEventListener('click', _origDoClick);
+         clickBtn.addEventListener('click', doClick);
+
+         // Modify render to include progress bar update
+         const _origRender = render;
+         render = function() {
+            _origRender();
+            updateProgressBar();
+         };
+
+         // Particle spawn interval (max 3 visible at a time)
+         setInterval(() => {
+            if (document.querySelectorAll('.particle').length < 3) {
+               spawnParticle();
+            }
+         }, 4000);
+
+         // FAQ toggle
+         document.querySelectorAll('.faq-item h3').forEach(h3 => {
+            h3.addEventListener('click', () => {
+               h3.parentElement.classList.toggle('open');
+            });
+         });
 
          // Init
          loadGame();

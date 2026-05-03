@@ -4,9 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Tube Clicker - Play Free Online</title>
-   <meta name="description"
-      content="Tube Clicker idle: Views/sec Better Camera→Play Button Award, Click Power—not upload sim, algorithm sim, or subscriber graph in this static build (unofficial creator theme).">
+   <title>Tube Clicker - Free Online Creator Idle Game | Go Viral!</title>
+   <meta name="description" content="Play Tube Clicker free online! Rack up Views, edit videos, land Brand Deals & hit combos. No download. Start your creator journey now!">
    <meta name="keywords"
       content="tube clicker, tube clicker, clicker game, idle game, free online game, play tube clicker">
    <meta name="robots" content="index, follow">
@@ -752,6 +751,172 @@
          box-shadow: 0 4px 12px rgba(120, 56, 243, 0.15);
          color: #3b0764;
       }
+      /* Combo System */
+      .combo-display {
+         margin-top: 6px;
+         font-size: 0.9rem;
+         font-weight: 700;
+         color: #dc2626;
+         opacity: 0;
+         transition: opacity 0.2s;
+         min-height: 1.2em;
+      }
+      .combo-display.active {
+         opacity: 1;
+      }
+
+      /* Critical Hit Popup */
+      .critical-popup {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1.5rem;
+         font-weight: 800;
+         color: #dc2626;
+         text-shadow: 0 2px 8px rgba(0,0,0,0.12);
+         animation: criticalPop 0.8s ease-out forwards;
+         z-index: 20;
+         white-space: nowrap;
+      }
+      @keyframes criticalPop {
+         0% { opacity: 1; transform: translateY(0) scale(0.6); }
+         50% { transform: translateY(-40px) scale(1.2); }
+         100% { opacity: 0; transform: translateY(-80px) scale(1); }
+      }
+
+      /* Progress Bar */
+      .progress-bar-container {
+         width: 80%;
+         max-width: 220px;
+         height: 10px;
+         background: #e5e7eb;
+         border-radius: 5px;
+         margin-top: 10px;
+         overflow: hidden;
+      }
+      .progress-bar-fill {
+         height: 100%;
+         background: linear-gradient(90deg, #dc2626, #f87171);
+         border-radius: 5px;
+         transition: width 0.3s ease;
+         width: 0%;
+      }
+
+      /* Floating Particles */
+      .particle {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1rem;
+         animation: particleFloat 2s ease-out forwards;
+         z-index: 5;
+      }
+      @keyframes particleFloat {
+         0% { opacity: 1; transform: translateY(0) scale(0.8); }
+         100% { opacity: 0; transform: translateY(-120px) scale(1.2); }
+      }
+
+      /* Milestone Banner */
+      .milestone-banner {
+         position: fixed;
+         top: 80px;
+         left: 50%;
+         transform: translateX(-50%) translateY(-20px);
+         background: linear-gradient(135deg, #dc2626, #991b1b);
+         color: white;
+         padding: 14px 32px;
+         border-radius: 30px;
+         font-weight: 700;
+         font-size: 1.1rem;
+         box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+         opacity: 0;
+         transition: all 0.5s ease;
+         z-index: 2000;
+         pointer-events: none;
+         text-align: center;
+      }
+      .milestone-banner.show {
+         opacity: 1;
+         transform: translateX(-50%) translateY(0);
+      }
+
+      /* FAQ Section */
+      .faq-section h3 {
+         color: #7838f3;
+         margin: 16px 0 0;
+         font-size: 1.1rem;
+         cursor: pointer;
+         padding: 12px 16px;
+         background: #f8f9fe;
+         border-radius: 8px;
+         transition: all 0.2s ease;
+         position: relative;
+         font-weight: 600;
+      }
+      .faq-section h3:hover {
+         background: #ede5ff;
+         transform: translateX(4px);
+      }
+      .faq-section h3::after {
+         content: '+';
+         position: absolute;
+         right: 16px;
+         top: 50%;
+         transform: translateY(-50%);
+         font-weight: 700;
+         color: #7838f3;
+         font-size: 1.2rem;
+      }
+      .faq-section h3.open::after {
+         content: '−';
+      }
+      .faq-section p {
+         display: none;
+         padding: 12px 16px;
+         margin: 0 0 10px;
+         color: #555;
+         line-height: 1.7;
+         background: #fff;
+         border-radius: 0 0 8px 8px;
+         border: 1px solid #f0f0f0;
+         border-top: none;
+      }
+      .faq-section p.open {
+         display: block;
+      }
+
+      /* Sound Toggle */
+      .sound-toggle {
+         background: rgba(255,255,255,0.25);
+         border: none;
+         font-size: 1.2rem;
+         cursor: pointer;
+         color: white;
+         padding: 4px 8px;
+         line-height: 1;
+         border-radius: 8px;
+         transition: all 0.2s;
+      }
+      .sound-toggle:hover {
+         background: rgba(255,255,255,0.4);
+      }
+
+      /* Keyboard hint */
+      .keyboard-hint {
+         text-align: center;
+         font-size: 0.8rem;
+         color: #999;
+         margin-top: 10px;
+         font-weight: 500;
+      }
+
+      /* Internal links styling consistency */
+      .article-container a {
+         color: #7838f3;
+         text-decoration: underline;
+         font-weight: 600;
+      }
+      .article-container a:hover {
+         color: #5b21b6;
+      }
    </style>
 </head>
 
@@ -780,6 +945,7 @@
                <span class="game-stat-pill" id="gStatTotal">0 Views</span>
                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
             </div>
+            <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
@@ -873,62 +1039,76 @@
       <!-- ===== ARTICLE CONTENT ===== -->
       <article class="article-container">
 
+          <div class="intro">
+             <p><strong>Tube Clicker</strong> drops you into the fast-paced world of online content creation, where every click represents another view on your latest video. Starting with nothing but a smartphone camera, you will climb the creator ladder through better gear, viral thumbnails, lucrative brand deals, and eventually the coveted Play Button Award. Your goal? Build a channel so massive that the views roll in faster than you can count them.</p>
+             <p>Online video platforms have fundamentally changed how we consume media, giving rise to a new generation of independent creators who build global audiences from their bedrooms. The journey from zero subscribers to millions of views is the modern-day dream, and Tube Clicker captures that hustle in incremental form. Every upgrade represents a real milestone that actual creators pursue: better equipment, editing skills, thumbnail mastery, and corporate sponsorships.</p>
+             <p>Idle clicker games are the perfect format for this theme because they mirror the reality of content creation. Early on, success requires relentless grinding manual clicks for every view. Over time, passive income takes over as your back catalog and audience base generate views while you sleep. It is a <strong>free browser game with no download needed</strong>, so you can start your creator career instantly from any device.</p>
+             <p>Whether you aspire to be a vlogger, a gamer, or an educator, Tube Clicker distills the creator journey into its most satisfying elements: growth, milestones, and the thrill of going viral. There are no copyright strikes, no demonetization worries, and no comment section toxicity. Just pure, uninterrupted growth.</p>
+          </div>
 
-         <div class="intro">
-            <p>This “Tube” fantasy is a gentle roast of creator hustle culture: <strong>Views</strong> are the only metric that
-               matters, stacked by <strong>Better Camera</strong> upgrades through a fake <strong>Play Button Award</strong>, while
-               <strong>Click Power</strong> lets you pretend each tap is “another Short uploaded from your phone.”</p>
-            <p>There is no COPPA drama, comment moderation, Studio analytics page, copyright strike flow, or Sponsor button wiring—if
-               you wanted the real video site, you already left. <strong>Save</strong> freezes your pretend channel; <strong>Reset</strong>
-               demonetizes the bit.</p>
-         </div>
-         <section class="section">
-            <h2>Gear path from vlog camera to plastic trophy</h2>
-            <div class="feature-box">
-               <h3>Gear check</h3>
-               <ul>
-                  <li><strong>Better Camera</strong> — +1/sec; “we film on iPhone” era.</li>
-                  <li><strong>Editor Software</strong> — +5/sec; DaVinci resolve cosplay without GPU fans.</li>
-                  <li><strong>Viral Thumbnail</strong> — +20/sec; red circles and shock faces by implication only.</li>
-                  <li><strong>Brand Deal</strong> — +100/sec; raid shadow legends jokes without the contract.</li>
-                  <li><strong>Play Button Award</strong> — +500/sec; shelf decoration for people who love comma counts.</li>
-               </ul>
-            </div>
-         </section>
-         <section class="section">
-            <h2>Livestream stamina vs scheduled uploads</h2>
-            <p>When you need a chunk of Views <em>right now</em> to unlock <strong>Brand Deal</strong>, buffing <strong>Click Power</strong> can feel
-               like an emergency livestream. When you are AFK, spamming <strong>Viral Thumbnail</strong> and award rows is closer to
-               bulk scheduling a content calendar—passive ticks keep rolling while you touch grass.</p>
-         </section>
-         <section class="section">
-            <h2>Where the “channel data” really lives</h2>
-            <p><strong>Save</strong> writes your pretend analytics under <code>tube_clicker_save</code>. No Content ID, no AdSense—just
-               localStorage on this device.</p>
-         </section>
-         <section class="section">
-            <h2>Creator workflow cheat sheet</h2>
-            <ol class="tips-list">
-               <li><strong>Better Camera when idle clicking still out-DPSes zero passive.</strong></li>
-               <li><strong>Editor Software is the classic second purchase on this ladder.</strong></li>
-               <li><strong>Viral Thumbnail is your midgame spike.</strong></li>
-               <li><strong>Brand Deal before long AFK stretches.</strong></li>
-               <li><strong>Play Button Award rows are for vanity totals.</strong></li>
-               <li><strong>Click Power</strong> when you are actively trying to spike before the bell.</li>
-            </ol>
-         </section>
-         <section class="section">
-            <h2>Adjacent parasocial silliness</h2>
-            <p>If you crave internet brain rot with music instead of views, drift to <a href="/sprunki-clicker/">Sprunki Clicker</a>;
-               if you want meme charts, <a href="/brainrot-clicker/">Brainrot Clicker</a> swaps Views for absurdity streaks.</p>
-         </section>
+          <section class="section">
+             <h2>How to Play Tube Clicker</h2>
+             <ol class="tips-list">
+                <li><strong>Upload Videos:</strong> Click the ▶️ play button to generate Views. Every click is another person watching your content.</li>
+                <li><strong>Upgrade Your Camera:</strong> Buy the <strong>Better Camera</strong> upgrade for +1 view per second. Quality gear is the first step to standing out in a crowded platform.</li>
+                <li><strong>Edit Like a Pro:</strong> Invest in <strong>Click Power</strong> to multiply your per-click views. A powerful click represents better editing that keeps audiences hooked.</li>
+                <li><strong>Master the Algorithm:</strong> Unlock <strong>Editor Software</strong> (+5/sec) and <strong>Viral Thumbnail</strong> (+20/sec) to start generating passive views around the clock.</li>
+                <li><strong>Monetize Everything:</strong> Save up for <strong>Brand Deal</strong> (+100/sec) and the legendary <strong>Play Button Award</strong> (+500/sec) to cement your status as a top creator.</li>
+                <li><strong>Viral Combos:</strong> Click rapidly within 2 seconds to build a combo streak. Every 10 clicks lands a <strong>Critical Hit</strong>, doubling your views for that upload!</li>
+             </ol>
+          </section>
 
-         <div style="text-align: center;">
-            <a href="/" class="back-btn">Back to Home</a>
-         </div>
+          <section class="section">
+             <h2>Tube Clicker Strategy Guide</h2>
+             <p><strong>Channel Launch:</strong> When you are just starting out, views are hard-won. Your first purchase should always be a Better Camera to establish passive growth. Even a single +1/sec upgrade will outpace manual clicking over time. Alternate between Cameras and Click Power upgrades in the early minutes. Remember: content is a marathon, not a sprint, and compounding passive income is your best friend.</p>
+             <p><strong>Algorithm Breakthrough:</strong> The mid-game is all about finding your rhythm. Viral Thumbnails offer a massive spike in passive views, but they are expensive. Do not be afraid to grind manually with a high Click Power level to bridge the gap. If you know you will be away from the computer, load up on Editor Software copies. They offer the best passive return for their price while you are AFK.</p>
+             <p><strong>Award Season:</strong> Once you unlock Play Button Awards, your channel enters the stratosphere. Each Award adds +500 views per second, making your total view count explode. At this elite level, the optimal play is to buy Awards whenever possible, using Click Power upgrades only when you plan an active clicking session. Do not forget to Save your progress before closing the tab, though auto-save has your back every 30 seconds.</p>
+          </section>
 
-      </article>
-      <!-- Related Games Section -->
+          <section class="section faq-section">
+             <h2>Frequently Asked Questions</h2>
+             <h3>What is Tube Clicker?</h3>
+             <p>Tube Clicker is a free browser idle game themed around online video creation. Players generate Views by clicking and invest in upgrades like Better Cameras, Viral Thumbnails, and Brand Deals to build passive income and grow their channel to legendary status.</p>
+             <h3>Is this game connected to YouTube?</h3>
+             <p>No, Tube Clicker is an unofficial fan-themed idle game. It is not affiliated with YouTube, Google, or any real video platform. The theme is purely for entertainment and flavor.</p>
+             <h3>How do I save my channel progress?</h3>
+             <p>Your progress saves automatically to your browser's local storage every 30 seconds. You can also press the 💾 Save button anytime for a manual backup. Clearing your browser data will reset your channel.</p>
+             <h3>Which upgrade is the most important?</h3>
+             <p>Better Camera is essential early on for passive income. Later, Viral Thumbnails and Brand Deals provide the best scaling. Click Power is always valuable when you are actively playing and trying to reach the next tier quickly.</p>
+             <h3>Can I play Tube Clicker on my phone?</h3>
+             <p>Yes! The game is fully mobile-responsive. Tap the play button to earn views and scroll through your upgrade list just like on desktop.</p>
+             <h3>What are Critical Hits and combos?</h3>
+             <p>A combo builds when you click within 2 seconds of your previous click. Every 10th consecutive click triggers a Critical Hit, awarding double views for that click. If you pause for more than 2 seconds, the combo resets to zero.</p>
+          </section>
+
+          <section class="section">
+             <h2>Why Play Tube Clicker?</h2>
+             <p>Tube Clicker resonates because it taps into one of the defining dreams of the digital age: becoming a successful creator. The game offers all the satisfaction of channel growth without the real-world pressures of algorithm changes, burnout, or equipment costs. It is a sandbox where your only job is to make the number go up, and that simplicity is genuinely therapeutic. The combo system adds just enough skill expression to keep active sessions engaging.</p>
+             <p>If you enjoy creator-themed games, Tube Clicker pairs nicely with <a href="/sprunki-clicker/">Sprunki Clicker</a> for a musical twist. For completely different vibes, <a href="/roblox-clicker/">Roblox Clicker</a> explores gaming platform culture, while <a href="/planet-clicker/">Planet Clicker</a> scales up to cosmic proportions. Each offers the same satisfying incremental core with a unique thematic wrapper.</p>
+          </section>
+
+          <section class="section">
+             <h2>Did You Know? Creator Fun Facts</h2>
+             <div class="highlight-box">
+                <ul>
+                   <li>YouTube was founded in February 2005 and the first video, 'Me at the zoo,' was uploaded by co-founder Jawed Karim.</li>
+                   <li>The most-viewed video on YouTube, 'Baby Shark Dance,' has surpassed 14 billion views worldwide.</li>
+                   <li>YouTube's creator partner program has paid out over $50 billion to creators since its inception.</li>
+                   <li>The platform processes over 500 hours of video uploads every single minute from creators around the globe.</li>
+                   <li>The diamond Play Button, awarded for 10 million subscribers, weighs over 2 pounds and is made from real metal and crystal.</li>
+                </ul>
+             </div>
+          </section>
+
+          <div style="text-align: center;">
+             <a href="/" class="back-btn">Back to Home</a>
+          </div>
+
+       </article>
+
+       <div class="milestone-banner" id="milestoneBanner">Milestone Reached!</div>
+
+       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
          <p class="related-games-subtitle">Discover more free online clicker games to play</p>
@@ -994,6 +1174,28 @@
          let perSecond = 0;
          let upgradeOwned = UPGRADES.map(() => 0);
 
+         // Combo system
+         let lastClickTime = 0;
+         let comboCount = 0;
+         const COMBO_WINDOW = 2000;
+         const comboDisplay = document.getElementById('comboDisplay');
+
+         // Sound toggle
+         let soundOn = true;
+         const soundToggle = document.getElementById('soundToggle');
+         soundToggle.addEventListener('click', () => {
+            soundOn = !soundOn;
+            soundToggle.textContent = soundOn ? '🔊' : '🔇';
+         });
+
+         // Progress bar
+         const progressBarFill = document.getElementById('progressBarFill');
+
+         // Milestones
+         const milestones = [1000, 10000, 100000, 1000000];
+         let reachedMilestones = new Set();
+         const milestoneBanner = document.getElementById('milestoneBanner');
+
          // DOM
          const scoreNum = document.getElementById('scoreNum');
          const perSecDisplay = document.getElementById('perSecDisplay');
@@ -1014,6 +1216,36 @@
          function getCost(baseC, owned) {
             return Math.floor(baseC * Math.pow(COST_SCALE, owned));
          }
+
+         function showCriticalPopup() {
+            const el = document.createElement('div');
+            el.className = 'critical-popup';
+            el.textContent = 'CRITICAL HIT!';
+            const rect = clickArea.getBoundingClientRect();
+            el.style.left = (rect.width/2 - 60) + 'px';
+            el.style.top = (rect.height/2 - 60) + 'px';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 800);
+         }
+
+         function showMilestoneBanner(text) {
+            milestoneBanner.textContent = 'Milestone Reached! ' + text + ' Views';
+            milestoneBanner.classList.add('show');
+            setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
+         }
+
+         // Particles
+         setInterval(() => {
+            if (document.hidden) return;
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.textContent = ['🟩', '💎', '⭐', '🎮'][Math.floor(Math.random()*4)];
+            const rect = clickArea.getBoundingClientRect();
+            p.style.left = (20 + Math.random() * (rect.width - 40)) + 'px';
+            p.style.top = (rect.height - 30) + 'px';
+            clickArea.appendChild(p);
+            setTimeout(() => p.remove(), 2000);
+         }, 3500);
 
          function recalcPerSecond() {
             perSecond = 0;
@@ -1041,6 +1273,24 @@
                }
             });
 
+            // Progress bar to next affordable upgrade
+            let nextCost = Infinity;
+            UPGRADES.forEach((u, i) => {
+               const c = getCost(u.baseCost, upgradeOwned[i]);
+               if (c < nextCost) nextCost = c;
+            });
+            if (clickPowerCost < nextCost) nextCost = clickPowerCost;
+            let progress = Math.min(100, (score / nextCost) * 100);
+            progressBarFill.style.width = progress + '%';
+
+            // Milestones
+            milestones.forEach(m => {
+               if (score >= m && !reachedMilestones.has(m)) {
+                  reachedMilestones.add(m);
+                  showMilestoneBanner(formatNum(m));
+               }
+            });
+
             // Click power upgrade
             const cpCard = document.getElementById('upgClickPower');
             document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
@@ -1064,8 +1314,31 @@
          }
 
          function doClick(e) {
-            score += clickPower;
-            totalEarned += clickPower;
+            let now = Date.now();
+            if (now - lastClickTime <= COMBO_WINDOW) {
+               comboCount++;
+            } else {
+               comboCount = 1;
+            }
+            lastClickTime = now;
+
+            let earned = clickPower;
+            if (comboCount >= 10 && comboCount % 10 === 0) {
+               earned *= 2;
+               showCriticalPopup();
+            }
+
+            score += earned;
+            totalEarned += earned;
+
+            if (comboCount > 1) {
+               comboDisplay.textContent = comboCount + 'x COMBO!';
+               comboDisplay.classList.add('active');
+               clearTimeout(comboDisplay._t);
+               comboDisplay._t = setTimeout(() => comboDisplay.classList.remove('active'), 1500);
+            } else {
+               comboDisplay.classList.remove('active');
+            }
 
             clickBtn.classList.add('pressed');
             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
@@ -1133,7 +1406,7 @@
 
          // Save / Load
          function saveGame() {
-            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned };
+            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, reachedMilestones: [...reachedMilestones] };
             try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
          }
 
@@ -1148,6 +1421,7 @@
                   clickPowerLevel = data.clickPowerLevel || 1;
                   clickPowerCost = data.clickPowerCost || 50;
                   upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                  if (data.reachedMilestones) reachedMilestones = new Set(data.reachedMilestones);
                   recalcPerSecond();
                }
             } catch (e) { }
@@ -1186,6 +1460,16 @@
       menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
       document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
       document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+   </script>
+
+   <script>
+      // FAQ Toggle
+      document.querySelectorAll('.faq-section h3').forEach(q => {
+         q.addEventListener('click', () => {
+            q.classList.toggle('open');
+            q.nextElementSibling.classList.toggle('open');
+         });
+      });
    </script>
 
    <!-- Site Footer -->

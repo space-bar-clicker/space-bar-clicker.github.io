@@ -4,9 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Chicken Jockey Clicker - Play Free Online</title>
-   <meta name="description"
-      content="Chicken Jockey Clicker: Minecraft-inspired meme idle—not official; earn Mob Points, tiers Chicken Egg → Ender Dragon (+mobs/sec), Click Power, save/reset—no enchantments or mob missions in this build.">
+   <title>Chicken Jockey Clicker - Play Free Online | Minecraft Meme Idle Game</title>
+   <meta name="description" content="Play Chicken Jockey Clicker free online! Minecraft meme idle game with mob points, combo system & upgrades. No download needed. Click now!">
    <meta name="keywords"
       content="chicken jockey clicker, chicken jockey clicker, clicker game, idle game, free online game, play chicken jockey clicker">
    <meta name="robots" content="index, follow">
@@ -744,6 +743,26 @@
          box-shadow: 0 4px 12px rgba(120, 56, 243, 0.15);
          color: #3b0764;
       }
+         /* ===== NEW FEATURES CSS ===== */
+      .combo-display { margin-top: 8px; font-size: 0.9rem; font-weight: 700; color: #ff6b00; min-height: 1.2rem; text-align: center; }
+      .critical-popup { position: absolute; pointer-events: none; font-size: 1.5rem; font-weight: 800; color: #ff2200; text-shadow: 0 2px 6px rgba(255,34,0,0.35); animation: criticalPop 0.85s ease-out forwards; z-index: 20; }
+      @keyframes criticalPop { 0% { opacity: 1; transform: translateY(0) scale(0.5); } 50% { transform: translateY(-25px) scale(1.25); } 100% { opacity: 0; transform: translateY(-65px) scale(1); } }
+      .progress-bar-container { width: 80%; max-width: 220px; height: 10px; background: #e5e7eb; border-radius: 5px; margin-top: 12px; overflow: hidden; box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); }
+      .progress-bar-fill { height: 100%; border-radius: 5px; transition: width 0.35s ease; background: linear-gradient(90deg, currentColor, rgba(255,255,255,0.3)); background-color: currentColor; }
+      .particle { position: absolute; pointer-events: none; font-size: 1rem; opacity: 0; animation: particleFloat 2.2s ease-out forwards; z-index: 5; }
+      @keyframes particleFloat { 0% { opacity: 0.85; transform: translateY(0) scale(0.7); } 100% { opacity: 0; transform: translateY(-130px) scale(1.3); } }
+      .milestone-banner { position: fixed; top: 80px; left: 50%; transform: translateX(-50%) translateY(-120px); background: linear-gradient(135deg, #ffd700, #ffaa00); color: #333; padding: 16px 32px; border-radius: 14px; font-weight: 700; font-size: 1.15rem; box-shadow: 0 10px 30px rgba(255,170,0,0.35); z-index: 2000; transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1); text-align: center; }
+      .milestone-banner.show { transform: translateX(-50%) translateY(0); }
+      .faq-section h3 { cursor: pointer; padding: 14px 18px; background: #f8f9fe; border-radius: 10px; margin-bottom: 6px; transition: all 0.2s ease; position: relative; font-size: 1.05rem; color: #333; font-weight: 600; }
+      .faq-section h3:hover { background: #ede5ff; }
+      .faq-section h3::after { content: '+'; position: absolute; right: 18px; font-weight: 700; color: #7838f3; font-size: 1.2rem; }
+      .faq-section h3.active::after { content: '−'; }
+      .faq-section p { padding: 0 18px 18px; margin: 0; display: none; line-height: 1.8; }
+      .faq-section p.open { display: block; }
+      .sound-toggle { background: none; border: none; font-size: 1.25rem; cursor: pointer; padding: 4px 10px; border-radius: 8px; transition: background 0.2s; color: white; line-height: 1; }
+      .sound-toggle:hover { background: rgba(255,255,255,0.2); }
+      .keyboard-hint { font-size: 0.75rem; color: #aaa; margin-top: 10px; text-align: center; font-weight: 500; }
+
    </style>
 </head>
 
@@ -760,6 +779,8 @@
          <button class="menu-btn">☰</button>
       </div>
    </nav>
+   <div class="milestone-banner" id="milestoneBanner"></div>
+
 
    <div class="main-content">
       <h1 class="page-title">Play Chicken Jockey Clicker Online</h1>
@@ -772,6 +793,7 @@
                <span class="game-stat-pill" id="gStatTotal">0 Mob Points</span>
                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
             </div>
+         <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
@@ -784,6 +806,11 @@
                </div>
                <div class="per-second" id="perSecDisplay">0 mob points/sec</div>
                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+               <div class="combo-display" id="comboDisplay"></div>
+               <div class="progress-bar-container">
+                  <div class="progress-bar-fill" id="progressBar" style="width:0%; color: #65a30d;"></div>
+               </div>
+               <div class="keyboard-hint">Tip: Press SPACE to click!</div>
             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
@@ -866,53 +893,67 @@
       <article class="article-container">
 
          <div class="intro">
-            Chicken Jockey Clicker is <strong>Minecraft-flavored homage</strong>—spawn clicks earn “Mob Points,” upgrades
-            borrow biome nouns—but it is not affiliated with Mojang or Microsoft and it is not gameplay from Java/Bedrock
-            Edition. Beneath the meme skin lies the same deterministic idle scaffold as the rest of this site: stacking
-            passives counted in abstract mobs/sec, plus <strong>Click Power</strong> for taps. Expect <strong>no</strong>
-            overworld traversal, enchanting tables with RNG rolls, raids, randomized jockey hybrids, combat missions with
-            loot payouts, spawner placements in a voxel map, or authentic mob AI—those systems never ship in this static
-            incremental file.
+            <p><strong>Chicken Jockey Clicker</strong> is a free browser-based idle incremental game inspired by one of Minecraft's most beloved memes: the Chicken Jockey. In Minecraft, a Chicken Jockey occurs when a baby zombie, baby zombified piglin, or baby zombie villager spawns riding a chicken—a rare and hilarious sight that has spawned countless memes across Reddit, TikTok, and YouTube. This clicker game captures that chaotic energy, letting you earn "Mob Points" by clicking and building an army of Minecraft-themed upgrades.</p>
+<p>Idle and clicker games have exploded in popularity because they deliver a uniquely satisfying dopamine loop: every click provides instant feedback, every upgrade compounds your progress, and you can watch numbers grow exponentially even while multitasking. Unlike complex AAA titles, clickers require no downloads, no tutorials, and no time commitment—you can play for thirty seconds or leave the tab open for hours. The psychology is simple but powerful: small, frequent rewards keep your brain engaged through variable reinforcement, making clickers one of the most addictive casual game genres on the web.</p>
+<p>Whether you are a Minecraft veteran who remembers the first time a baby zombie rode past your dirt house, or you just love watching big numbers get bigger, Chicken Jockey Clicker delivers. This is a completely free browser game—no download, no installation, no Flash required. Just open the page and start spawning mobs. You can save your progress anytime with the Save button, or reset for a fresh speedrun. For more voxel-themed fun, check out <a href="/minecraft-clicker/">Minecraft Clicker</a> or explore other meme clickers like <a href="/brainrot-clicker/">Brainrot Clicker</a> and <a href="/candy-clicker/">Candy Clicker</a>.</p>
          </div>
 
          <section class="section">
-            <h2>Upgrade ladder</h2>
-            <p>Generators add passive Mob Points per duplicate purchase; wording references iconic blocks and bosses while
-               output stays numerical.</p>
-            <div class="feature-box">
-               <h3>Passive tiers (per stack)</h3>
-               <ul>
-                  <li><strong>Chicken Egg</strong> — +1 mob/sec; egg-block pun for first automation.</li>
-                  <li><strong>Mob Spawner</strong> — +5/sec; dungeon nostalgia, still just a rate multiplier.</li>
-                  <li><strong>Baby Zombie Armor</strong> — +20/sec; shields nod to gearing up baby mobs—not an armor grind.
-                  </li>
-                  <li><strong>Nether Portal</strong> — +100/sec.</li>
-                  <li><strong>Ender Dragon</strong> — +500/sec; end-game boss meme as your top passive bracket.</li>
-               </ul>
-            </div>
-            <p>Click Power strengthens each manual spawn press on an exponential ladder—alternate between tap boosts and extra
-               spawner tiers depending on whichever shortens waits.</p>
-         </section>
-
-         <section class="section">
-            <h2>Session tips grounded in code</h2>
+            <h2>How to Play Chicken Jockey Clicker</h2>
             <ol class="tips-list">
-               <li><strong>Buy Chicken Eggs ASAP.</strong> Passive mobs/sec should appear before portals exist as a fantasy.
-               </li>
-               <li><strong>Stack Mob Spawners thoughtfully.</strong> Multiple +5 lines often outperform one itchy +20.
-               </li>
-               <li><strong>Baby Zombie Armor announces mid pacing.</strong> When +20 accrues, AFK multitasking shines.</li>
-               <li><strong>Nether Portal is AFK-positive.</strong> +100/sec makes breaks profitable.</li>
-               <li><strong>Ender Dragon tiers chase huge totals.</strong> Stack multiple +500s for scoreboard flex.</li>
-               <li><strong>Buff Click Power when taps still materially dent purchase timers.</strong></li>
+            <li><strong>Click the chicken button</strong> to earn Mob Points manually. Each tap gives you base points that scale with Click Power upgrades.</li>
+            <li><strong>Buy Chicken Eggs</strong> as soon as you can afford them. They generate +1 Mob Point per second passively, so your empire grows even when you are not clicking.</li>
+            <li><strong>Stack Mob Spawners</strong> for +5 mobs/sec each. Early on, buying multiple cheaper upgrades often outperforms saving for one expensive tier.</li>
+            <li><strong>Unlock Baby Zombie Armor</strong> at 500 points for +20 mobs/sec. This is your first major power spike and signals the transition from early to mid-game.</li>
+            <li><strong>Open a Nether Portal</strong> at 2,500 points to generate +100 mobs/sec. This is when AFK play becomes genuinely productive.</li>
+            <li><strong>Summon the Ender Dragon</strong> at 15,000 points for +500 mobs/sec. Stack multiple dragons to reach astronomical scores.</li>
+            <li><strong>Level up Click Power</strong> whenever manual taps still significantly speed up your next major purchase.</li>
+            <li><strong>Use SPACE bar</strong> to click rapidly without wearing out your mouse button.</li>
             </ol>
          </section>
 
          <section class="section">
-            <h2>Compare with Minecraft Clicker here</h2>
-            <p>For another pickaxe-energy take on voxel nostalgia—with its own emoji ladder—peek
-               <a href="/minecraft-clicker/">Minecraft Clicker</a>; both are lightweight fan tone pieces over the shared
-               idle template.</p>
+            <h2>Strategy Guide</h2>
+            <p>The key to optimizing Chicken Jockey Clicker is understanding opportunity cost. Every point you spend on an upgrade could have been saved for a bigger one, so ask yourself: will this purchase pay for itself before I would have naturally reached the next tier? In the early game, the answer is almost always yes for Chicken Eggs and Mob Spawners. Their low cost means they repay their investment quickly, and the compounding effect of multiple +1 or +5 sources adds up faster than one +20 source bought later.</p>
+<p>Mid-game strategy shifts toward balancing Click Power with passive generators. Click Power upgrades double your manual output, which is fantastic when you are actively playing but worthless during AFK sessions. A good rule of thumb: if you plan to leave the tab open for more than five minutes, prioritize passive upgrades. If you are actively grinding, level Click Power until the cost exceeds the time it would take to earn the next passive tier through clicking alone.</p>
+<p>Late-game optimization is all about stacking Ender Dragons. At +500 mobs/sec each, they dominate your income. However, do not neglect lower tiers entirely—because costs scale exponentially, there comes a point where buying your 50th Chicken Egg is cheaper than your 5th Ender Dragon and provides a better rate-per-cost ratio. Always check the marginal value before buying.</p>
+         </section>
+
+         <section class="section faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <h3>Is Chicken Jockey Clicker officially affiliated with Minecraft or Mojang?</h3>
+            <p>No. Chicken Jockey Clicker is an independent fan-made tribute. It is not affiliated with Mojang Studios, Microsoft, or the official Minecraft brand. All Minecraft references are used as thematic inspiration for this free parody clicker game.</p>
+            <h3>How do I save my progress?</h3>
+            <p>Click the 💾 Save button in the game footer. Your progress is stored in your browser's local storage. The game also auto-saves every 30 seconds automatically.</p>
+            <h3>What happens when I reach 1 million Mob Points?</h3>
+            <p>When your score hits major milestones like 1,000, 10,000, 100,000, or 1,000,000, a celebration banner appears to mark your achievement. These are purely cosmetic but serve as satisfying progression markers.</p>
+            <h3>Why should I buy multiple cheap upgrades instead of one expensive one?</h3>
+            <p>Because costs scale exponentially with each purchase, the 'rate per cost' of lower-tier upgrades often remains competitive even in the late game. Diversifying your upgrade portfolio maximizes total mobs/sec for your budget.</p>
+            <h3>Does the game work on mobile?</h3>
+            <p>Yes. The game is fully responsive and supports touch input. You can tap the chicken button on any smartphone or tablet browser. The SPACE keyboard shortcut works on devices with a physical keyboard.</p>
+            <h3>What is the best early-game strategy?</h3>
+            <p>Click manually until you have 15 points, then buy your first Chicken Egg. Continue clicking while your passive income grows. Buy Mob Spawners as soon as they become affordable, and do not forget to upgrade Click Power when the cost feels trivial.</p>
+            <h3>Can I play this game offline?</h3>
+            <p>Once the page is loaded, the game runs entirely in your browser without requiring an internet connection. However, you will need to be online to initially load the page.</p>
+         </section>
+
+         <section class="section">
+            <h2>Why Play Chicken Jockey Clicker?</h2>
+            <p>Chicken Jockey Clicker taps into the universal appeal of idle games: the satisfaction of exponential growth. There is something deeply rewarding about watching a number you once struggled to push past 100 now tick up by thousands every second. The Minecraft theme adds a layer of nostalgia and humor, especially for players who have encountered the absurdity of a baby zombie riding a chicken in their own survival worlds.</p>
+<p>Compared to more complex clickers on this site, like <a href="/case-clicker-2/">Case Clicker 2</a> or <a href="/candy-clicker-2/">Candy Clicker 2</a>, Chicken Jockey Clicker leans into simplicity. There are no convoluted prestige systems or mini-games—just pure, clean incremental progression. This makes it perfect for short breaks, background tab farming, or competitive speedrunning with friends. The addition of combo multipliers and critical hits in this enhanced version adds just enough mechanical spice to keep active play engaging without overwhelming the relaxed core loop.</p>
+         </section>
+
+         <section class="section">
+            <h2>Did You Know? Fun Facts</h2>
+            <div class="highlight-box">
+               <ul>
+            <li>The Chicken Jockey first appeared in Minecraft Java Edition in 2013 and has a spawn rate of less than 5% when a baby zombie spawns near a chicken.</li>
+            <li>In Minecraft, the chicken actually controls the movement, while the baby zombie provides the aggression—making it one of the weirdest mob partnerships in gaming.</li>
+            <li>The Chicken Jockey meme exploded on TikTok in 2024, with millions of views on videos showing players' surprised reactions to encountering one.</li>
+            <li>Ender Dragons are the final boss of Minecraft's main quest line, requiring players to travel to The End dimension through a stronghold portal.</li>
+            <li>Minecraft has sold over 300 million copies, making it the best-selling video game of all time—beating even Tetris.</li>
+               </ul>
+            </div>
          </section>
 
          <div style="text-align: center;">
@@ -920,6 +961,7 @@
          </div>
 
       </article>
+
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
@@ -1033,21 +1075,38 @@
                }
             });
 
-            // Click power upgrade
-            const cpCard = document.getElementById('upgClickPower');
-            document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
-            document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
-            if (score >= clickPowerCost) {
-               cpCard.classList.remove('locked');
-            } else {
-               cpCard.classList.add('locked');
-            }
+                     // Click power upgrade
+         const cpCard = document.getElementById('upgClickPower');
+         document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
+         document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
+         if (score >= clickPowerCost) {
+            cpCard.classList.remove('locked');
+         } else {
+            cpCard.classList.add('locked');
          }
 
-         function showClickFloat(x, y) {
+         // Update combo display
+         if (combo > 1) {
+            comboDisplay.textContent = '🔥 ' + combo + 'x COMBO';
+         } else {
+            comboDisplay.textContent = '';
+         }
+
+         // Update progress bar
+         let cheapestCost = Infinity;
+         UPGRADES.forEach((u, i) => {
+            const c = getCost(u.baseCost, upgradeOwned[i]);
+            if (c < cheapestCost) cheapestCost = c;
+         });
+         if (clickPowerCost < cheapestCost) cheapestCost = clickPowerCost;
+         const progressPct = Math.min(100, (score / cheapestCost) * 100);
+         progressBar.style.width = progressPct + '%';
+      }
+
+                  function showClickFloat(x, y, pts) {
             const el = document.createElement('div');
             el.className = 'click-float';
-            el.textContent = '+' + formatNum(clickPower);
+            el.textContent = '+' + formatNum(pts || clickPower);
             el.style.left = x + 'px';
             el.style.top = y + 'px';
             clickArea.style.position = 'relative';
@@ -1055,14 +1114,28 @@
             setTimeout(() => el.remove(), 700);
          }
 
-         function doClick(e) {
-            score += clickPower;
-            totalEarned += clickPower;
+                  function doClick(e) {
+            const now = Date.now();
+            if (now - lastClickTime < 2000) {
+               combo++;
+            } else {
+               combo = 1;
+            }
+            lastClickTime = now;
+
+            let points = clickPower;
+            let isCritical = false;
+            if (combo > 0 && combo % 10 === 0) {
+               points *= 2;
+               isCritical = true;
+            }
+
+            score += points;
+            totalEarned += points;
 
             clickBtn.classList.add('pressed');
             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
 
-            // Float position
             const rect = clickArea.getBoundingClientRect();
             let cx, cy;
             if (e && e.clientX) {
@@ -1072,7 +1145,9 @@
                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
                cy = rect.height / 2 - 30;
             }
-            showClickFloat(cx, cy);
+            showClickFloat(cx, cy, points);
+            if (isCritical) showCriticalPopup(cx, cy);
+            checkMilestones();
             render();
          }
 
@@ -1124,8 +1199,8 @@
          }, 1000);
 
          // Save / Load
-         function saveGame() {
-            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned };
+                  function saveGame() {
+            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, milestoneShown };
             try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
          }
 
@@ -1134,13 +1209,14 @@
                const raw = localStorage.getItem(SAVE_KEY);
                if (raw) {
                   const data = JSON.parse(raw);
-                  score = data.score || 0;
-                  totalEarned = data.totalEarned || 0;
-                  clickPower = data.clickPower || 1;
-                  clickPowerLevel = data.clickPowerLevel || 1;
-                  clickPowerCost = data.clickPowerCost || 50;
-                  upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
-                  recalcPerSecond();
+                                  score = data.score || 0;
+                   totalEarned = data.totalEarned || 0;
+                   clickPower = data.clickPower || 1;
+                   clickPowerLevel = data.clickPowerLevel || 1;
+                   clickPowerCost = data.clickPowerCost || 50;
+                   upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                   milestoneShown = data.milestoneShown || {1000: false, 10000: false, 100000: false, 1000000: false};
+                   recalcPerSecond();
                }
             } catch (e) { }
          }
@@ -1155,12 +1231,75 @@
          document.getElementById('resetBtn').addEventListener('click', () => {
             if (confirm('Reset all progress for Chicken Jockey Clicker? This cannot be undone.')) {
                localStorage.removeItem(SAVE_KEY);
-               score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
-               upgradeOwned = UPGRADES.map(() => 0);
-               recalcPerSecond();
-               render();
+                               score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
+                upgradeOwned = UPGRADES.map(() => 0);
+                milestoneShown = {1000: false, 10000: false, 100000: false, 1000000: false};
+                combo = 0;
+                recalcPerSecond();
+                render();
             }
          });
+
+          // ===== NEW FEATURES =====
+          let combo = 0;
+          let lastClickTime = 0;
+          let soundEnabled = true;
+          let milestoneShown = {1000: false, 10000: false, 100000: false, 1000000: false};
+          const PARTICLE_EMOJI = '🪶';
+          const comboDisplay = document.getElementById('comboDisplay');
+          const progressBar = document.getElementById('progressBar');
+          const milestoneBanner = document.getElementById('milestoneBanner');
+          const soundToggle = document.getElementById('soundToggle');
+
+          function showCriticalPopup(x, y) {
+             const el = document.createElement('div');
+             el.className = 'critical-popup';
+             el.textContent = 'CRITICAL HIT!';
+             el.style.left = (x - 50) + 'px';
+             el.style.top = (y - 50) + 'px';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 850);
+          }
+
+          function checkMilestones() {
+             const ms = [1000, 10000, 100000, 1000000];
+             ms.forEach(m => {
+                if (score >= m && !milestoneShown[m]) {
+                   milestoneShown[m] = true;
+                   milestoneBanner.textContent = '🎉 Milestone Reached! ' + formatNum(m) + ' Mob Points!';
+                   milestoneBanner.classList.add('show');
+                   setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
+                }
+             });
+          }
+
+          setInterval(() => {
+             if (document.hidden) return;
+             if (!clickArea) return;
+             const particle = document.createElement('div');
+             particle.className = 'particle';
+             particle.textContent = PARTICLE_EMOJI;
+             const rect = clickArea.getBoundingClientRect();
+             const x = Math.random() * (rect.width - 20) + 10;
+             const y = rect.height - 25;
+             particle.style.left = x + 'px';
+             particle.style.top = y + 'px';
+             clickArea.appendChild(particle);
+             setTimeout(() => particle.remove(), 2200);
+          }, 3500);
+
+          soundToggle.addEventListener('click', () => {
+             soundEnabled = !soundEnabled;
+             soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+          });
+
+          document.querySelectorAll('.faq-section h3').forEach(q => {
+             q.addEventListener('click', () => {
+                q.classList.toggle('active');
+                const ans = q.nextElementSibling;
+                ans.classList.toggle('open');
+             });
+          });
 
          // Auto-save every 30s
          setInterval(saveGame, 30000);

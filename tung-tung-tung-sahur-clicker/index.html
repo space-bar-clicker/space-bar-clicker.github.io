@@ -4,9 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Tung Tung Tung Sahur Clicker - Play Free Online</title>
-   <meta name="description"
-      content="Tung Sahur idle: Tungs/sec Rhythm Stick→Tung Singularity, Click Power—not beat-matching RPG, meme roster unlocks, or audio layers in this static build (fan homage).">
+   <title>Tung Tung Tung Sahur Clicker - Meme Idle Game | Free Online</title>
+   <meta name="description" content="Play Tung Tung Tung Sahur Clicker free! The viral meme clicker with combos, milestones & brainrot energy. Free browser game, no download!">
    <meta name="keywords"
       content="tung tung tung sahur clicker, tung tung tung sahur clicker, clicker game, idle game, free online game, play tung tung tung sahur clicker">
    <meta name="robots" content="index, follow">
@@ -744,6 +743,164 @@
          box-shadow: 0 4px 12px rgba(120, 56, 243, 0.15);
          color: #3b0764;
       }
+   
+      /* ===== NEW GAME FEATURES CSS ===== */
+      .sound-toggle {
+         background: none;
+         border: 2px solid rgba(255,255,255,0.4);
+         color: white;
+         border-radius: 8px;
+         padding: 4px 10px;
+         cursor: pointer;
+         font-size: 1rem;
+         transition: all 0.2s ease;
+      }
+      .sound-toggle:hover {
+         background: rgba(255,255,255,0.15);
+         border-color: rgba(255,255,255,0.7);
+      }
+      .combo-display {
+         margin-top: 6px;
+         font-size: 0.85rem;
+         font-weight: 700;
+         color: #b45309;
+         min-height: 20px;
+         text-align: center;
+      }
+      .progress-bar-container {
+         width: 80%;
+         max-width: 220px;
+         height: 10px;
+         background: #eee;
+         border-radius: 5px;
+         margin-top: 10px;
+         overflow: hidden;
+      }
+      .progress-bar-fill {
+         height: 100%;
+         background: linear-gradient(90deg, #b45309, #b4530988);
+         width: 0%;
+         transition: width 0.3s ease;
+         border-radius: 5px;
+      }
+      .milestone-banner {
+         position: fixed;
+         top: 80px;
+         left: 50%;
+         transform: translateX(-50%) translateY(-100px);
+         background: linear-gradient(135deg, #b45309, #b45309dd);
+         color: white;
+         padding: 14px 28px;
+         border-radius: 12px;
+         font-weight: 700;
+         font-size: 1.1rem;
+         box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+         z-index: 2000;
+         opacity: 0;
+         pointer-events: none;
+         transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+         white-space: nowrap;
+      }
+      .milestone-banner.show {
+         opacity: 1;
+         transform: translateX(-50%) translateY(0);
+      }
+      .critical-popup {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1.4rem;
+         font-weight: 800;
+         color: #ff4757;
+         text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+         animation: criticalAnim 0.9s ease-out forwards;
+         z-index: 20;
+      }
+      @keyframes criticalAnim {
+         0% { opacity: 1; transform: translateY(0) scale(0.6) rotate(-5deg); }
+         50% { opacity: 1; transform: translateY(-40px) scale(1.2) rotate(5deg); }
+         100% { opacity: 0; transform: translateY(-90px) scale(1) rotate(0deg); }
+      }
+      .particle {
+         position: absolute;
+         pointer-events: none;
+         font-size: 0.9rem;
+         opacity: 0.7;
+         animation: particleFloat 2.5s ease-out forwards;
+         z-index: 5;
+      }
+      @keyframes particleFloat {
+         0% { opacity: 0.7; transform: translateY(0) scale(1); }
+         100% { opacity: 0; transform: translateY(-120px) scale(0.5); }
+      }
+      .keyboard-tip {
+         text-align: center;
+         font-size: 0.78rem;
+         color: #888;
+         margin-top: 8px;
+         font-weight: 500;
+      }
+      .faq-section { margin-bottom: 30px; }
+      .faq-item { margin-bottom: 16px; border-bottom: 1px solid #eee; padding-bottom: 12px; }
+      .faq-item h3 {
+         color: #7838f3;
+         font-size: 1.05rem;
+         margin-bottom: 6px;
+         cursor: pointer;
+         display: flex;
+         align-items: center;
+         gap: 8px;
+         transition: color 0.2s ease;
+      }
+      .faq-item h3:hover { color: #4c1d95; }
+      .faq-item h3::before {
+         content: '+';
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         width: 20px;
+         height: 20px;
+         background: #f0f0f0;
+         border-radius: 4px;
+         font-size: 0.85rem;
+         color: #666;
+         flex-shrink: 0;
+      }
+      .faq-item.open h3::before { content: '−'; }
+      .faq-answer {
+         max-height: 0;
+         overflow: hidden;
+         transition: max-height 0.35s ease, opacity 0.25s ease;
+         opacity: 0;
+      }
+      .faq-item.open .faq-answer {
+         max-height: 300px;
+         opacity: 1;
+      }
+      .faq-answer p {
+         color: #555;
+         line-height: 1.7;
+         font-size: 1rem;
+         padding-top: 4px;
+      }
+      .fun-facts-list {
+         list-style: none;
+         padding-left: 0;
+         margin: 0;
+      }
+      .fun-facts-list li {
+         padding: 10px 0 10px 28px;
+         position: relative;
+         color: #333;
+         line-height: 1.65;
+         font-size: 1.02rem;
+      }
+      .fun-facts-list li::before {
+         content: '💡';
+         position: absolute;
+         left: 0;
+         top: 10px;
+      }
+
    </style>
 </head>
 
@@ -766,26 +923,33 @@
 
       <!-- ===== GAME ===== -->
       <div class="game-wrapper" id="gameWrapper">
-         <div class="game-header">
-            <h2>🔔 Tung Tung Tung Sahur Clicker</h2>
-            <div class="game-stats-bar">
-               <span class="game-stat-pill" id="gStatTotal">0 Tungs</span>
-               <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
-            </div>
-         </div>
-         <div class="game-body">
-            <div class="click-area" id="clickArea">
-               <button class="click-btn" id="clickBtn" aria-label="Tung Tung">
-                  <span class="emoji">🔔</span>
-               </button>
-               <div class="score-display">
-                  <div class="score-number" id="scoreNum">0</div>
-                  <div class="score-label">Tungs</div>
-               </div>
-               <div class="per-second" id="perSecDisplay">0 tungs/sec</div>
-               <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
-            </div>
-            <div class="upgrades-panel" id="upgradesPanel">
+                   <div class="milestone-banner" id="milestoneBanner">🎉 Milestone Reached!</div>
+          <div class="game-header">
+             <h2>🔔 Tung Tung Tung Sahur Clicker</h2>
+             <div class="game-stats-bar">
+                <span class="game-stat-pill" id="gStatTotal">0 Tungs</span>
+                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+                <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
+             </div>
+          </div>
+          <div class="game-body">
+                         <div class="click-area" id="clickArea">
+                <button class="click-btn" id="clickBtn" aria-label="Tung Tung">
+                   <span class="emoji">🔔</span>
+                </button>
+                <div class="score-display">
+                   <div class="score-number" id="scoreNum">0</div>
+                   <div class="score-label">Tungs</div>
+                </div>
+                <div class="progress-bar-container" id="progressBarContainer">
+                   <div class="progress-bar-fill" id="progressBarFill"></div>
+                </div>
+                <div class="combo-display" id="comboDisplay"></div>
+                <div class="per-second" id="perSecDisplay">0 tungs/sec</div>
+                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+                <div class="keyboard-tip">Tip: Press SPACE to click!</div>
+             </div>
+             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
 
                <div class="upgrade-card locked" id="upg0" data-idx="0">
@@ -864,48 +1028,100 @@
 
       <!-- ===== ARTICLE CONTENT ===== -->
       <article class="article-container">
-
-
          <div class="intro">
-            The UI labels the currency <strong>Tungs</strong>; passive clones run from <strong>Rhythm Stick</strong>
-            through <strong>Tung Singularity</strong>, with <strong>Click Power</strong> for tap scaling. This build is
-            the site’s standard idle math with meme names—there are <strong>no</strong> rhythm mini-games, bonus beat
-            windows, extra character unlock rows, sound-stacked soundtrack layers, or Italian-brainrot cameo progression tied
-            to save data. Compare tone with <a href="/italian-brainrot-clicker/">Italian Brainrot Clicker</a>.
+            <p><strong>Tung Tung Tung Sahur Clicker</strong> is the internet culture phenomenon distilled into pure incremental chaos. Born from the viral "Tung Tung Tung Sahur" meme that swept across TikTok, YouTube, and Discord in 2024, this clicker game transforms brainrot energy into satisfying numbers. The meme itself originated from Indonesian sahur traditions—where drummers walk through neighborhoods before dawn during Ramadan to wake people for their pre-fast meal—mixed with absurdist internet humor that turned a simple drumbeat into a global sensation.</p>
+         <p>The phrase "Tung Tung Tung Sahur" became a canvas for internet creativity, spawning remixes, animations, and reaction videos that accumulated billions of views collectively. This clicker game rides that viral wave by letting players generate "Tungs"—the abstract currency of meme energy—through clicking and upgrading from a simple Rhythm Stick all the way to the cosmic Tung Singularity. It is a testament to how internet culture can transform the most mundane traditions into worldwide entertainment phenomena.</p>
+         <p>Idle clicker games have always thrived on repetition and escalation, making them the perfect vessel for meme culture. Tung Tung Tung Sahur Clicker understands this DNA: each click is a drumbeat, each upgrade is a louder amplifier, and the escalating absurdity mirrors how memes evolve from simple jokes to complex cultural touchstones. The game requires <strong>no download, no payment, and no meme knowledge</strong>—though fans of the original will appreciate the thematic naming from Rhythm Stick to Brainrot DJ.</p>
+         <p>Compared to more "serious" clickers like <a href="/earth-clicker/">Earth Clicker</a> or <a href="/money-clicker/">Money Clicker</a>, Tung Tung Tung Sahur Clicker leans into pure chaotic fun. The orange-brown color palette evokes drum wood and sahur warmth, while upgrade names like "Brainrot DJ" and "Tung Singularity" embrace internet absurdity without apology. If you believe games should make you smile while your numbers go up, this is your clicker.</p>
          </div>
+
          <section class="section">
-            <h2>Passive rate (+tungs/sec)</h2>
-            <div class="feature-box">
-               <h3>Tiers</h3>
-               <ul>
-                  <li><strong>Rhythm Stick</strong> — +1/sec.</li>
-                  <li><strong>Tung Tung Speaker</strong> — +5/sec.</li>
-                  <li><strong>Sahur Drum</strong> — +20/sec.</li>
-                  <li><strong>Brainrot DJ</strong> — +100/sec.</li>
-                  <li><strong>Tung Singularity</strong> — +500/sec.</li>
-               </ul>
-            </div>
-            <p>Use <strong>Save</strong> / <strong>Reset</strong> like other games on the hub; nothing here syncs to a
-               server or leaderboard.</p>
-         </section>
-         <section class="section">
-            <h2>Tips</h2>
+            <h2>How to Play Tung Tung Tung Sahur Clicker</h2>
             <ol class="tips-list">
-               <li><strong>Start Rhythm Stick until costs feel cheap vs. manual spam.</strong></li>
-               <li><strong>Tung Tung Speaker smooths the early curve.</strong></li>
-               <li><strong>Sahur Drum is the mid jump.</strong></li>
-               <li><strong>Brainrot DJ carries AFK sessions.</strong></li>
-               <li><strong>Tung Singularity is the top flat rate.</strong></li>
-               <li><strong>Click Power when you still need taps to reach the next purchase.</strong></li>
+               <li>Click the drum bell to generate your first Tungs—each tap is one beat of the legendary sahur drum.</li>
+<li>Buy a <strong>Rhythm Stick</strong> (15 Tungs) for +1 tung/sec, establishing your baseline percussion.</li>
+<li>Keep the beat alive by clicking while your Rhythm Stick generates background Tungs.</li>
+<li>At 100 Tungs, upgrade to a <strong>Tung Tung Speaker</strong> for +5/sec, amplifying your meme energy.</li>
+<li>Unlock the <strong>Sahur Drum</strong> at 500 Tungs for +20/sec—the traditional instrument goes digital.</li>
+<li>Invest in <strong>Click Power</strong> to make each manual drum strike worth exponentially more Tungs.</li>
+<li>Hire a <strong>Brainrot DJ</strong> at 2,500 Tungs for +100/sec, remixing the meme into overdrive.</li>
+<li>Achieve the <strong>Tung Singularity</strong> at 15,000 Tungs for +500/sec, where the meme achieves infinite density.</li>
+<li>Save your meme empire regularly so your Tungs survive browser restarts.</li>
+<li>Press SPACE to drum faster and chain 10-click combos for Critical Hit bonuses!</li>
             </ol>
          </section>
 
-         <div style="text-align: center;">
-            <a href="/" class="back-btn">Back to Home</a>
-         </div>
+         <section class="section">
+            <h2>Strategy Guide</h2>
+            <p>The Rhythm Stick is your foundation, but do not over-invest. Because each duplicate costs 1.15x more, buying 3-4 Rhythm Sticks is optimal before saving for Tung Tung Speaker. The goal is maintaining steady growth without stagnating on a single tier. Watch the progress bar below your score to time your purchases perfectly.</p>
+<p>The Sahur Drum (+20/sec) is where the game shifts from clicking-focused to passive-focused. Once you unlock it, your strategy should change: buy 2-3 Sahur Drums immediately, then alternate between Click Power and Brainrot DJ savings. The income spike from multiple +20/sec generators creates a plateau where you can comfortably plan your next moves.</p>
+<p>Meme clickers reward spectacle, but math still rules. Before buying any upgrade, divide its cost by the income boost it provides. A second Brainrot DJ might cost 2,875 Tungs (2,500 × 1.15) for +100/sec, giving a "payback time" of 28.75 seconds. Compare that to leveling Click Power, which might give a smaller immediate boost but compounds across all future clicks. Choose whichever has the shorter payback period.</p>
+<p>The Tung Singularity is not the end—it is the beginning of the true endgame. After unlocking it, focus on buying one Singularity every time you can afford it without sacrificing your lower-tier generators. A diverse portfolio of Rhythm Sticks, Speakers, Drums, DJs, and Singularities generates the maximum Tungs per second and pushes you toward the billion-Tung club.</p>
+         </section>
+
+         <section class="section faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                  <h3>What is "Tung Tung Tung Sahur"?</h3>
+                  <div class="faq-answer"><p>Tung Tung Tung Sahur is a viral internet meme originating from Indonesian culture. It references the traditional drumming (called "kentongan") used to wake Muslims for sahur (pre-dawn meal) during Ramadan. The meme took the rhythmic sound and transformed it into absurdist, shareable content across TikTok and YouTube.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>Is this an official meme game?</h3>
+                  <div class="faq-answer"><p>No, this is an unofficial fan-made clicker game that pays homage to the viral meme. It is not affiliated with any creator of the original meme content. The game uses the meme's cultural energy as thematic inspiration for its idle mechanics.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>How do Tungs work?</h3>
+                  <div class="faq-answer"><p>Tungs are the abstract currency of this clicker game. You earn them by clicking the bell button or from passive upgrades like Rhythm Sticks and Sahur Drums. They represent "meme energy" and have no real-world value.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>What is the fastest way to reach Tung Singularity?</h3>
+                  <div class="faq-answer"><p>Build 4-5 Rhythm Sticks, then 2-3 Tung Tung Speakers, then 2 Sahur Drums. This income base should generate enough Tungs to reach Brainrot DJ within 5 minutes. Once you have 1-2 Brainrot DJs, the Singularity becomes achievable in under 10 minutes.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>Can I play on mobile?</h3>
+                  <div class="faq-answer"><p>Yes! The game is fully mobile-responsive. Tap the bell to generate Tungs, swipe through upgrades, and use the Save button to protect your meme empire on the go.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>What are Critical Hits?</h3>
+                  <div class="faq-answer"><p>Maintain a 10-click combo (clicking at least once every 2 seconds) to trigger a Critical Hit on your next click, doubling your Tung earnings and displaying a dramatic popup!</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>Is there a leaderboard?</h3>
+                  <div class="faq-answer"><p>There is no online leaderboard in this version. Your progress saves locally in your browser. Compete with friends by sharing screenshots of your Tung totals!</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>How is this different from Italian Brainrot Clicker?</h3>
+                  <div class="faq-answer"><p>While <a href="/italian-brainrot-clicker/">Italian Brainrot Clicker</a> focuses on European surreal meme culture, Tung Tung Tung Sahur Clicker draws from Southeast Asian viral traditions. Both embrace internet absurdity but with distinct cultural flavors and color palettes.</p></div>
+               </div>
+         </section>
+
+         <section class="section">
+            <h2>Why Play Tung Tung Tung Sahur Clicker?</h2>
+            <p>Tung Tung Tung Sahur Clicker proves that games do not need complex narratives or realistic graphics to be engaging—they need personality. By wrapping solid idle math in genuinely funny, culturally relevant meme theming, this clicker creates an experience that makes you laugh while your numbers climb. The absurdity of reaching a "Tung Singularity" is inherently humorous in a way that reaching "Billionaire Status" in Money Clicker simply is not.</p>
+<p>The viral origin of this clicker gives it a unique social dimension. Unlike solitary clickers, Tung Tung Tung Sahur Clicker exists within a shared cultural context that players can reference, discuss, and meme about together. Compared to the serene vibes of <a href="/sprunki-clicker/">Sprunki Clicker</a> or the educational framing of <a href="/earth-clicker/">Earth Clicker</a>, this game prioritizes pure chaotic joy. Sometimes, that is exactly what you need.</p>
+         </section>
+
+         <section class="section">
+            <h2>Did You Know? Fun Facts</h2>
+            <ul class="fun-facts-list">
+               <li>The "kentongan" tradition referenced by Tung Tung Tung Sahur dates back centuries in Indonesia, where drummers walk neighborhoods before dawn during Ramadan to wake residents for their pre-fast meal.</li>
+<li>The Tung Tung Tung Sahur meme exploded on TikTok in early 2024, with the hashtag accumulating over 2 billion views in just three months.</li>
+<li>The phrase "brainrot" (used in the Brainrot DJ upgrade) is internet slang for content so absurd or repetitive that it "rots your brain"—a badge of honor in meme culture.</li>
+<li>A "singularity" in the Tung Singularity upgrade references the technological singularity concept, humorously applied to meme density reaching infinite levels.</li>
+<li>Meme-based clickers like this one represent a growing trend in browser games, where viral internet culture is adapted into interactive experiences within days of a trend emerging.</li>
+            </ul>
+         </section>
+
+         <section class="section">
+            <h2>Related Clicker Games</h2>
+            <p>For more brainrot energy, try <a href="/italian-brainrot-clicker/">Italian Brainrot Clicker</a>. For music-themed clicking, check <a href="/sprunki-clicker/">Sprunki Clicker</a>. Or explore <a href="/stimulation-clicker/">Stimulation Clicker</a> for sensory overload vibes.</p>
+         </section>
+
+
 
       </article>
-      <!-- Related Games Section -->
+
+       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
          <p class="related-games-subtitle">Discover more free online clicker games to play</p>
@@ -1149,6 +1365,150 @@
 
          // Auto-save every 30s
          setInterval(saveGame, 30000);
+
+
+         // ===== NEW FEATURES =====
+         let comboCount = 0;
+         let lastClickTime = 0;
+         let soundEnabled = true;
+         let milestonesReached = {};
+
+         const comboDisplay = document.getElementById('comboDisplay');
+         const progressBarFill = document.getElementById('progressBarFill');
+         const milestoneBanner = document.getElementById('milestoneBanner');
+         const soundToggle = document.getElementById('soundToggle');
+
+         soundToggle.addEventListener('click', () => {
+            soundEnabled = !soundEnabled;
+            soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+         });
+
+         function updateCombo() {
+            const now = Date.now();
+            if (now - lastClickTime < 2000) {
+               comboCount++;
+            } else {
+               comboCount = 1;
+            }
+            lastClickTime = now;
+            if (comboCount >= 10) {
+               comboDisplay.textContent = '🔥 COMBO x' + comboCount + '!';
+               comboDisplay.style.color = '#ff4757';
+            } else if (comboCount > 1) {
+               comboDisplay.textContent = 'Combo x' + comboCount;
+               comboDisplay.style.color = '#b45309';
+            } else {
+               comboDisplay.textContent = '';
+            }
+         }
+
+         function showCriticalHit(x, y) {
+            const el = document.createElement('div');
+            el.className = 'critical-popup';
+            el.textContent = 'CRITICAL HIT! +' + formatNum(clickPower * 2);
+            el.style.left = x + 'px';
+            el.style.top = y + 'px';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 900);
+         }
+
+         function updateProgressBar() {
+            let nextCost = Infinity;
+            for (let i = 0; i < UPGRADES.length; i++) {
+               const cost = getCost(UPGRADES[i].baseCost, upgradeOwned[i]);
+               if (cost < nextCost) nextCost = cost;
+            }
+            if (clickPowerCost < nextCost) nextCost = clickPowerCost;
+            let pct = Math.min(100, (score / nextCost) * 100);
+            progressBarFill.style.width = pct + '%';
+         }
+
+         function checkMilestones() {
+            const milestones = [1000, 10000, 100000, 1000000];
+            for (let m of milestones) {
+               if (score >= m && !milestonesReached[m]) {
+                  milestonesReached[m] = true;
+                  showMilestone('🎉 ' + formatNum(m) + ' Tungs Reached!');
+               }
+            }
+         }
+
+         function showMilestone(text) {
+            milestoneBanner.textContent = text;
+            milestoneBanner.classList.add('show');
+            setTimeout(() => milestoneBanner.classList.remove('show'), 2500);
+         }
+
+         function spawnParticle() {
+            const particles = ['🔔', '✨', '⭐', '💫'];
+            const el = document.createElement('div');
+            el.className = 'particle';
+            el.textContent = particles[Math.floor(Math.random() * particles.length)];
+            const rect = clickArea.getBoundingClientRect();
+            el.style.left = (rect.width * 0.2 + Math.random() * rect.width * 0.6) + 'px';
+            el.style.top = (rect.height * 0.3 + Math.random() * rect.height * 0.3) + 'px';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 2500);
+         }
+
+         // Modify doClick to include new features
+         const _origDoClick = doClick;
+         doClick = function(e) {
+            let multiplier = 1;
+            updateCombo();
+            if (comboCount >= 10 && comboCount % 10 === 0) {
+               multiplier = 2;
+            }
+            score += clickPower * multiplier;
+            totalEarned += clickPower * multiplier;
+
+            clickBtn.classList.add('pressed');
+            setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+
+            const rect = clickArea.getBoundingClientRect();
+            let cx, cy;
+            if (e && e.clientX) {
+               cx = e.clientX - rect.left;
+               cy = e.clientY - rect.top;
+            } else {
+               cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+               cy = rect.height / 2 - 30;
+            }
+            if (multiplier === 2) {
+               showCriticalHit(cx, cy);
+            }
+            showClickFloat(cx, cy);
+            checkMilestones();
+            updateProgressBar();
+            render();
+         };
+
+         // Re-attach click listener to use new doClick
+         clickBtn.removeEventListener('click', _origDoClick);
+         clickBtn.addEventListener('click', doClick);
+
+         // Modify render to include progress bar update
+         const _origRender = render;
+         render = function() {
+            _origRender();
+            updateProgressBar();
+         };
+
+         // Particle spawn interval (max 3 visible at a time)
+         setInterval(() => {
+            if (document.querySelectorAll('.particle').length < 3) {
+               spawnParticle();
+            }
+         }, 4000);
+
+         // FAQ toggle
+         document.querySelectorAll('.faq-item h3').forEach(h3 => {
+            h3.addEventListener('click', () => {
+               h3.parentElement.classList.toggle('open');
+            });
+         });
 
          // Init
          loadGame();

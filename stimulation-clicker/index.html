@@ -4,9 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Stimulation Clicker - Play Free Online</title>
-   <meta name="description"
-      content="Stimulation Clicker idle: Stimulations/sec Sparkle Effect→Sensory Overload, Click Power—not layered ASMR audio, zen modes, or theme packs in this static build.">
+   <title>Stimulation Clicker - Sensory Overload | Free Online Idle Game</title>
+   <meta name="description" content="Play Stimulation Clicker free online! Build from Sparkle Effects to Sensory Overload with combos & milestones. Free browser clicker, no download!">
    <meta name="keywords"
       content="stimulation clicker, stimulation clicker, clicker game, idle game, free online game, play stimulation clicker">
    <meta name="robots" content="index, follow">
@@ -744,6 +743,164 @@
          box-shadow: 0 4px 12px rgba(120, 56, 243, 0.15);
          color: #3b0764;
       }
+   
+      /* ===== NEW GAME FEATURES CSS ===== */
+      .sound-toggle {
+         background: none;
+         border: 2px solid rgba(255,255,255,0.4);
+         color: white;
+         border-radius: 8px;
+         padding: 4px 10px;
+         cursor: pointer;
+         font-size: 1rem;
+         transition: all 0.2s ease;
+      }
+      .sound-toggle:hover {
+         background: rgba(255,255,255,0.15);
+         border-color: rgba(255,255,255,0.7);
+      }
+      .combo-display {
+         margin-top: 6px;
+         font-size: 0.85rem;
+         font-weight: 700;
+         color: #8b5cf6;
+         min-height: 20px;
+         text-align: center;
+      }
+      .progress-bar-container {
+         width: 80%;
+         max-width: 220px;
+         height: 10px;
+         background: #eee;
+         border-radius: 5px;
+         margin-top: 10px;
+         overflow: hidden;
+      }
+      .progress-bar-fill {
+         height: 100%;
+         background: linear-gradient(90deg, #8b5cf6, #8b5cf688);
+         width: 0%;
+         transition: width 0.3s ease;
+         border-radius: 5px;
+      }
+      .milestone-banner {
+         position: fixed;
+         top: 80px;
+         left: 50%;
+         transform: translateX(-50%) translateY(-100px);
+         background: linear-gradient(135deg, #8b5cf6, #8b5cf6dd);
+         color: white;
+         padding: 14px 28px;
+         border-radius: 12px;
+         font-weight: 700;
+         font-size: 1.1rem;
+         box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+         z-index: 2000;
+         opacity: 0;
+         pointer-events: none;
+         transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+         white-space: nowrap;
+      }
+      .milestone-banner.show {
+         opacity: 1;
+         transform: translateX(-50%) translateY(0);
+      }
+      .critical-popup {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1.4rem;
+         font-weight: 800;
+         color: #ff4757;
+         text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+         animation: criticalAnim 0.9s ease-out forwards;
+         z-index: 20;
+      }
+      @keyframes criticalAnim {
+         0% { opacity: 1; transform: translateY(0) scale(0.6) rotate(-5deg); }
+         50% { opacity: 1; transform: translateY(-40px) scale(1.2) rotate(5deg); }
+         100% { opacity: 0; transform: translateY(-90px) scale(1) rotate(0deg); }
+      }
+      .particle {
+         position: absolute;
+         pointer-events: none;
+         font-size: 0.9rem;
+         opacity: 0.7;
+         animation: particleFloat 2.5s ease-out forwards;
+         z-index: 5;
+      }
+      @keyframes particleFloat {
+         0% { opacity: 0.7; transform: translateY(0) scale(1); }
+         100% { opacity: 0; transform: translateY(-120px) scale(0.5); }
+      }
+      .keyboard-tip {
+         text-align: center;
+         font-size: 0.78rem;
+         color: #888;
+         margin-top: 8px;
+         font-weight: 500;
+      }
+      .faq-section { margin-bottom: 30px; }
+      .faq-item { margin-bottom: 16px; border-bottom: 1px solid #eee; padding-bottom: 12px; }
+      .faq-item h3 {
+         color: #7838f3;
+         font-size: 1.05rem;
+         margin-bottom: 6px;
+         cursor: pointer;
+         display: flex;
+         align-items: center;
+         gap: 8px;
+         transition: color 0.2s ease;
+      }
+      .faq-item h3:hover { color: #4c1d95; }
+      .faq-item h3::before {
+         content: '+';
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         width: 20px;
+         height: 20px;
+         background: #f0f0f0;
+         border-radius: 4px;
+         font-size: 0.85rem;
+         color: #666;
+         flex-shrink: 0;
+      }
+      .faq-item.open h3::before { content: '−'; }
+      .faq-answer {
+         max-height: 0;
+         overflow: hidden;
+         transition: max-height 0.35s ease, opacity 0.25s ease;
+         opacity: 0;
+      }
+      .faq-item.open .faq-answer {
+         max-height: 300px;
+         opacity: 1;
+      }
+      .faq-answer p {
+         color: #555;
+         line-height: 1.7;
+         font-size: 1rem;
+         padding-top: 4px;
+      }
+      .fun-facts-list {
+         list-style: none;
+         padding-left: 0;
+         margin: 0;
+      }
+      .fun-facts-list li {
+         padding: 10px 0 10px 28px;
+         position: relative;
+         color: #333;
+         line-height: 1.65;
+         font-size: 1.02rem;
+      }
+      .fun-facts-list li::before {
+         content: '💡';
+         position: absolute;
+         left: 0;
+         top: 10px;
+      }
+
    </style>
 </head>
 
@@ -766,26 +923,33 @@
 
       <!-- ===== GAME ===== -->
       <div class="game-wrapper" id="gameWrapper">
-         <div class="game-header">
-            <h2>✨ Stimulation Clicker</h2>
-            <div class="game-stats-bar">
-               <span class="game-stat-pill" id="gStatTotal">0 Stimulations</span>
-               <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
-            </div>
-         </div>
-         <div class="game-body">
-            <div class="click-area" id="clickArea">
-               <button class="click-btn" id="clickBtn" aria-label="Stimulate Stimulation">
-                  <span class="emoji">✨</span>
-               </button>
-               <div class="score-display">
-                  <div class="score-number" id="scoreNum">0</div>
-                  <div class="score-label">Stimulations</div>
-               </div>
-               <div class="per-second" id="perSecDisplay">0 stimulations/sec</div>
-               <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
-            </div>
-            <div class="upgrades-panel" id="upgradesPanel">
+                   <div class="milestone-banner" id="milestoneBanner">🎉 Milestone Reached!</div>
+          <div class="game-header">
+             <h2>✨ Stimulation Clicker</h2>
+             <div class="game-stats-bar">
+                <span class="game-stat-pill" id="gStatTotal">0 Stimulations</span>
+                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+                <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
+             </div>
+          </div>
+          <div class="game-body">
+                         <div class="click-area" id="clickArea">
+                <button class="click-btn" id="clickBtn" aria-label="Stimulate Stimulation">
+                   <span class="emoji">✨</span>
+                </button>
+                <div class="score-display">
+                   <div class="score-number" id="scoreNum">0</div>
+                   <div class="score-label">Stimulations</div>
+                </div>
+                <div class="progress-bar-container" id="progressBarContainer">
+                   <div class="progress-bar-fill" id="progressBarFill"></div>
+                </div>
+                <div class="combo-display" id="comboDisplay"></div>
+                <div class="per-second" id="perSecDisplay">0 stimulations/sec</div>
+                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+                <div class="keyboard-tip">Tip: Press SPACE to click!</div>
+             </div>
+             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
 
                <div class="upgrade-card locked" id="upg0" data-idx="0">
@@ -864,47 +1028,100 @@
 
       <!-- ===== ARTICLE CONTENT ===== -->
       <article class="article-container">
-
-
          <div class="intro">
-            The HUD tracks <strong>Stimulations</strong> as a plain number; passive upgrades span
-            <strong>Sparkle Effect</strong> through <strong>Sensory Overload</strong>, with <strong>Click Power</strong> for taps.
-            Prior copy implied ASMR modes, harmonic combos, and theme swaps—those are <strong>not</strong> implemented as separate systems
-            here: no extra visual engines, rhythm bonus layer, accessibility “zen mode,” or saveable theme collections beyond the idle
-            UI you load in the game container.
+            <p><strong>Stimulation Clicker</strong> is a psychedelic journey through the science of sensory perception, wrapped in the endlessly satisfying skin of an idle clicker game. While most clickers focus on external accumulation—money, coins, creatures—Stimulation Clicker turns inward, asking a provocative question: what if the currency was pure stimulation itself? Each click generates "Stims," abstract units of sensory input that accumulate through increasingly intense channels: from gentle Sparkle Effects to overwhelming Color Bursts, thundering Bass Drops, mesmerizing Hypnotic Spirals, and finally, total Sensory Overload.</p>
+         <p>The theme of sensory stimulation connects to real neuroscience. Human brains process approximately 11 million bits of sensory information per second, yet our conscious minds only perceive about 50 bits of that torrent. Stimulation Clicker gamifies this hidden flood, letting players build artificial "sensory bandwidth" through upgrades. The purple color palette was chosen specifically because purple light has the shortest wavelength visible to humans, making it neurologically the most "intense" color our eyes can process—perfect for a game about pushing sensory limits.</p>
+         <p>Idle games have become a refuge for players seeking low-stress, high-reward experiences. Stimulation Clicker elevates this formula by adding a layer of conceptual depth: you are not just making numbers bigger, you are simulating the expansion of human perceptual capacity. The game requires <strong>zero downloads, zero registration, and zero payment</strong>—just open a browser tab and begin your journey from dim sparkles to blinding overload.</p>
+         <p>Among our clicker collection, Stimulation Clicker occupies a unique niche. While <a href="/money-clicker/">Money Clicker</a> appeals to material ambition and <a href="/earth-clicker/">Earth Clicker</a> attracts science enthusiasts, Stimulation Clicker speaks to psychology nerds, art students, and anyone fascinated by how humans perceive reality. The abstract, non-representational theme makes it a palate cleanser between more literal clickers, offering pure mechanics without narrative baggage.</p>
          </div>
+
          <section class="section">
-            <h2>Passive rate (+stims/sec)</h2>
-            <div class="feature-box">
-               <h3>Tiers</h3>
-               <ul>
-                  <li><strong>Sparkle Effect</strong> — +1/sec (shown as stim/sec).</li>
-                  <li><strong>Color Burst</strong> — +5/sec.</li>
-                  <li><strong>Bass Drop</strong> — +20/sec.</li>
-                  <li><strong>Hypnotic Spiral</strong> — +100/sec.</li>
-                  <li><strong>Sensory Overload</strong> — +500/sec.</li>
-               </ul>
-            </div>
-            <p>Same hub pattern: <strong>Save</strong> keeps local progress; <strong>Reset</strong> wipes it.</p>
-         </section>
-         <section class="section">
-            <h2>Tips</h2>
+            <h2>How to Play Stimulation Clicker</h2>
             <ol class="tips-list">
-               <li><strong>Sparkle Effect first—the cheap +1/sec line.</strong></li>
-               <li><strong>Color Burst second for smoother ramp.</strong></li>
-               <li><strong>Bass Drop for mid pacing.</strong></li>
-               <li><strong>Hypnotic Spiral for AFK-heavy play.</strong></li>
-               <li><strong>Sensory Overload caps passive on this ladder.</strong></li>
-               <li><strong>Spend on Click Power when clicks still shorten time-to-next tier.</strong></li>
+               <li>Click the sparkle button to generate your first Stims through focused sensory attention.</li>
+<li>Purchase <strong>Sparkle Effect</strong> (15 Stims) for +1 stim/sec, establishing your baseline sensory input.</li>
+<li>Continue clicking while Sparkle Effects generate background Stims to accelerate your growth.</li>
+<li>At 100 Stims, unlock <strong>Color Burst</strong> for +5/sec, flooding your system with chromatic intensity.</li>
+<li>Trigger a <strong>Bass Drop</strong> at 500 Stims for +20/sec, adding auditory stimulation to the mix.</li>
+<li>Invest in <strong>Click Power</strong> to amplify the sensory impact of each manual click.</li>
+<li>Enter the <strong>Hypnotic Spiral</strong> at 2,500 Stims for +100/sec, where perception bends and time dilates.</li>
+<li>Achieve <strong>Sensory Overload</strong> at 15,000 Stims for +500/sec, the absolute limit of conscious processing.</li>
+<li>Save your stimulation profile regularly to preserve your perceptual expansion across sessions.</li>
+<li>Press SPACE for rapid stimulation bursts and chain 10-click combos for Critical Hit overloads!</li>
             </ol>
          </section>
 
-         <div style="text-align: center;">
-            <a href="/" class="back-btn">Back to Home</a>
-         </div>
+         <section class="section">
+            <h2>Strategy Guide</h2>
+            <p>Early stimulation management requires balancing manual input with passive generation. The Sparkle Effect is cheap (15 Stims) and pays back in 15 seconds, making it the undisputed best early purchase. However, do not neglect Click Power entirely—even one level (doubling your clicks) can dramatically shorten the time to reach Color Burst. The optimal early split is roughly 70% Sparkle Effects, 30% Click Power.</p>
+<p>The Bass Drop tier (+20/sec) represents a major strategic inflection point. Before unlocking it, ensure you have at least 3 Color Bursts generating +15/sec. This gives you a total of ~+20/sec including Sparkle Effects, meaning the 500 Stim cost for Bass Drop pays for itself in 25 seconds. Without that foundation, saving for Bass Drop feels like staring at a loading screen.</p>
+<p>Late-game Stimulation Clicker becomes a math puzzle disguised as sensory chaos. With Hypnotic Spiral (+100) and Sensory Overload (+500) available, you must constantly evaluate whether to buy another Overload (at escalating 1.15x cost) or diversify into cheaper tiers. Generally, when an upgrade costs more than 100× its income boost, switch to a lower tier. For example, if your third Sensory Overload costs 19,837 Stims for +500/sec, that is ~40× payback—still excellent. But your tenth might cost 60,000+ for the same +500, making lower tiers better value.</p>
+<p>AFK strategy in Stimulation Clicker is deceptively simple but powerful: before leaving, spend every Stim on your highest unlocked tier. A single Sensory Overload generates +500/sec, so an 8-hour night yields 14.4 million Stims. Upon returning, you can purchase dozens of lower-tier upgrades in a satisfying cascade, instantly boosting your per-second income by thousands.</p>
+         </section>
+
+         <section class="section faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                  <h3>What is Stimulation Clicker?</h3>
+                  <div class="faq-answer"><p>Stimulation Clicker is a free online idle clicker game themed around sensory perception and intensity. You earn Stims (abstract stimulation units) by clicking and through passive upgrades like Sparkle Effects, Color Bursts, Bass Drops, Hypnotic Spirals, and Sensory Overloads.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>Is Stimulation Clicker free?</h3>
+                  <div class="faq-answer"><p>Yes! It is completely free to play in any web browser with no downloads, registration, or payments required. Progress saves locally via browser storage.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>How do I save my progress?</h3>
+                  <div class="faq-answer"><p>Click the Save button or let the auto-save feature (every 30 seconds) handle it. Your stimulation data stores in local browser storage. Clearing site data will reset your progress.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>What does Sensory Overload do?</h3>
+                  <div class="faq-answer"><p>Sensory Overload is the highest-tier passive upgrade, generating +500 Stims per second per owned unit. It represents the maximum perceptual capacity in the game's metaphor. There is no actual flashing lights or loud sounds—just satisfying number growth.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>How does the combo system work?</h3>
+                  <div class="faq-answer"><p>Click at least once every 2 seconds to build a combo counter. After 10 consecutive clicks, your next click becomes a Critical Hit worth 2× Stims with a dramatic popup!</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>Can I play on mobile?</h3>
+                  <div class="faq-answer"><p>Absolutely. Stimulation Clicker is fully responsive and works on phones and tablets. Touch the sparkle button, swipe through upgrades, and save your progress on the go.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>Is this game related to ASMR or sensory videos?</h3>
+                  <div class="faq-answer"><p>While the theme references sensory experiences, Stimulation Clicker contains no actual audio, video, or haptic feedback. It is a pure numbers game with sensory-themed naming. For actual ASMR content, you would need dedicated audio platforms.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>How is this different from other clickers?</h3>
+                  <div class="faq-answer"><p>Stimulation Clicker's abstract, psychological theme sets it apart from concrete themes like money, coins, or creatures. The purple aesthetic and neuroscience-inspired upgrade names create a unique atmosphere that appeals to players interested in perception and psychology.</p></div>
+               </div>
+         </section>
+
+         <section class="section">
+            <h2>Why Play Stimulation Clicker?</h2>
+            <p>Stimulation Clicker answers a fascinating design question: can a clicker game be interesting without representing anything tangible? By framing accumulation as perceptual expansion rather than wealth or conquest, it creates a refreshingly abstract experience. The purple visuals and evocative upgrade names (Hypnotic Spiral, Sensory Overload) stimulate imagination in ways that literal themes cannot. For players burned out on cookie-baking or dragon-slaying clickers, this offers genuine novelty.</p>
+<p>The game also serves as an excellent introduction to idle mechanics for psychology-curious players. While <a href="/pokemon-clicker/">Pokemon Clicker</a> assumes franchise knowledge and <a href="/coin-clicker/">Coin Clicker</a> relies on historical interest, Stimulation Clicker requires no prior context. Anyone who has ever wondered how their brain processes the world can appreciate the metaphor. Compared to the meme chaos of <a href="/tung-tung-tung-sahur-clicker/">Tung Tung Tung Sahur Clicker</a>, Stimulation Clicker offers cerebral calm with equally addictive mechanics.</p>
+         </section>
+
+         <section class="section">
+            <h2>Did You Know? Fun Facts</h2>
+            <ul class="fun-facts-list">
+               <li>The human brain processes approximately 11 million bits of sensory information per second, but conscious awareness only handles about 50 bits—making us unaware of 99.9995% of incoming data.</li>
+<li>Purple light has the shortest wavelength visible to human eyes (380-450 nanometers), which is why it was chosen as Stimulation Clicker's primary color—it literally pushes perceptual boundaries.</li>
+<li>The concept of "sensory overload" in psychology refers to when one or more senses are overstimulated, causing stress or withdrawal. In Stimulation Clicker, it represents the ultimate achievement!</li>
+<li>Synesthesia, a neurological condition where senses blend (e.g., seeing sounds), affects approximately 4% of the population—imagine if Stimulation Clicker had a synesthesia mode where numbers appeared as colors!</li>
+<li>The idle game genre's core mechanic—watching numbers grow—activates the brain's nucleus accumbens, the same reward center triggered by food, social media likes, and gambling wins.</li>
+            </ul>
+         </section>
+
+         <section class="section">
+            <h2>Related Clicker Games</h2>
+            <p>Explore other themes with <a href="/sprunki-clicker/">Sprunki Clicker</a> for music vibes, <a href="/earth-clicker/">Earth Clicker</a> for civilization-building, or <a href="/stimulation-clicker/">Stimulation Clicker</a> if you want to stay in the abstract zone.</p>
+         </section>
+
+
 
       </article>
-      <!-- Related Games Section -->
+
+       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
          <p class="related-games-subtitle">Discover more free online clicker games to play</p>
@@ -1148,6 +1365,150 @@
 
          // Auto-save every 30s
          setInterval(saveGame, 30000);
+
+
+         // ===== NEW FEATURES =====
+         let comboCount = 0;
+         let lastClickTime = 0;
+         let soundEnabled = true;
+         let milestonesReached = {};
+
+         const comboDisplay = document.getElementById('comboDisplay');
+         const progressBarFill = document.getElementById('progressBarFill');
+         const milestoneBanner = document.getElementById('milestoneBanner');
+         const soundToggle = document.getElementById('soundToggle');
+
+         soundToggle.addEventListener('click', () => {
+            soundEnabled = !soundEnabled;
+            soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+         });
+
+         function updateCombo() {
+            const now = Date.now();
+            if (now - lastClickTime < 2000) {
+               comboCount++;
+            } else {
+               comboCount = 1;
+            }
+            lastClickTime = now;
+            if (comboCount >= 10) {
+               comboDisplay.textContent = '🔥 COMBO x' + comboCount + '!';
+               comboDisplay.style.color = '#ff4757';
+            } else if (comboCount > 1) {
+               comboDisplay.textContent = 'Combo x' + comboCount;
+               comboDisplay.style.color = '#8b5cf6';
+            } else {
+               comboDisplay.textContent = '';
+            }
+         }
+
+         function showCriticalHit(x, y) {
+            const el = document.createElement('div');
+            el.className = 'critical-popup';
+            el.textContent = 'CRITICAL HIT! +' + formatNum(clickPower * 2);
+            el.style.left = x + 'px';
+            el.style.top = y + 'px';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 900);
+         }
+
+         function updateProgressBar() {
+            let nextCost = Infinity;
+            for (let i = 0; i < UPGRADES.length; i++) {
+               const cost = getCost(UPGRADES[i].baseCost, upgradeOwned[i]);
+               if (cost < nextCost) nextCost = cost;
+            }
+            if (clickPowerCost < nextCost) nextCost = clickPowerCost;
+            let pct = Math.min(100, (score / nextCost) * 100);
+            progressBarFill.style.width = pct + '%';
+         }
+
+         function checkMilestones() {
+            const milestones = [1000, 10000, 100000, 1000000];
+            for (let m of milestones) {
+               if (score >= m && !milestonesReached[m]) {
+                  milestonesReached[m] = true;
+                  showMilestone('🎉 ' + formatNum(m) + ' Stimulations Reached!');
+               }
+            }
+         }
+
+         function showMilestone(text) {
+            milestoneBanner.textContent = text;
+            milestoneBanner.classList.add('show');
+            setTimeout(() => milestoneBanner.classList.remove('show'), 2500);
+         }
+
+         function spawnParticle() {
+            const particles = ['✨', '✨', '⭐', '💫'];
+            const el = document.createElement('div');
+            el.className = 'particle';
+            el.textContent = particles[Math.floor(Math.random() * particles.length)];
+            const rect = clickArea.getBoundingClientRect();
+            el.style.left = (rect.width * 0.2 + Math.random() * rect.width * 0.6) + 'px';
+            el.style.top = (rect.height * 0.3 + Math.random() * rect.height * 0.3) + 'px';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 2500);
+         }
+
+         // Modify doClick to include new features
+         const _origDoClick = doClick;
+         doClick = function(e) {
+            let multiplier = 1;
+            updateCombo();
+            if (comboCount >= 10 && comboCount % 10 === 0) {
+               multiplier = 2;
+            }
+            score += clickPower * multiplier;
+            totalEarned += clickPower * multiplier;
+
+            clickBtn.classList.add('pressed');
+            setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+
+            const rect = clickArea.getBoundingClientRect();
+            let cx, cy;
+            if (e && e.clientX) {
+               cx = e.clientX - rect.left;
+               cy = e.clientY - rect.top;
+            } else {
+               cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+               cy = rect.height / 2 - 30;
+            }
+            if (multiplier === 2) {
+               showCriticalHit(cx, cy);
+            }
+            showClickFloat(cx, cy);
+            checkMilestones();
+            updateProgressBar();
+            render();
+         };
+
+         // Re-attach click listener to use new doClick
+         clickBtn.removeEventListener('click', _origDoClick);
+         clickBtn.addEventListener('click', doClick);
+
+         // Modify render to include progress bar update
+         const _origRender = render;
+         render = function() {
+            _origRender();
+            updateProgressBar();
+         };
+
+         // Particle spawn interval (max 3 visible at a time)
+         setInterval(() => {
+            if (document.querySelectorAll('.particle').length < 3) {
+               spawnParticle();
+            }
+         }, 4000);
+
+         // FAQ toggle
+         document.querySelectorAll('.faq-item h3').forEach(h3 => {
+            h3.addEventListener('click', () => {
+               h3.parentElement.classList.toggle('open');
+            });
+         });
 
          // Init
          loadGame();

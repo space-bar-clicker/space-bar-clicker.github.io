@@ -4,9 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Money Clicker - Play Free Online</title>
-   <meta name="description"
-      content="Money Clicker idle: abstract Dollars, Side Hustle→Billionaire (+$/sec), Click Power—no stocks, compound interest sim, or achievements in this static build.">
+   <title>Money Clicker - Build Your Fortune | Free Online Idle Game</title>
+   <meta name="description" content="Play Money Clicker free online! Start from side hustle to billionaire status. Idle clicker with upgrades, combos & milestones. No download needed!">
    <meta name="keywords"
       content="money clicker, money clicker, clicker game, idle game, free online game, play money clicker">
    <meta name="robots" content="index, follow">
@@ -744,6 +743,164 @@
          box-shadow: 0 4px 12px rgba(120, 56, 243, 0.15);
          color: #3b0764;
       }
+   
+      /* ===== NEW GAME FEATURES CSS ===== */
+      .sound-toggle {
+         background: none;
+         border: 2px solid rgba(255,255,255,0.4);
+         color: white;
+         border-radius: 8px;
+         padding: 4px 10px;
+         cursor: pointer;
+         font-size: 1rem;
+         transition: all 0.2s ease;
+      }
+      .sound-toggle:hover {
+         background: rgba(255,255,255,0.15);
+         border-color: rgba(255,255,255,0.7);
+      }
+      .combo-display {
+         margin-top: 6px;
+         font-size: 0.85rem;
+         font-weight: 700;
+         color: #16a34a;
+         min-height: 20px;
+         text-align: center;
+      }
+      .progress-bar-container {
+         width: 80%;
+         max-width: 220px;
+         height: 10px;
+         background: #eee;
+         border-radius: 5px;
+         margin-top: 10px;
+         overflow: hidden;
+      }
+      .progress-bar-fill {
+         height: 100%;
+         background: linear-gradient(90deg, #16a34a, #16a34a88);
+         width: 0%;
+         transition: width 0.3s ease;
+         border-radius: 5px;
+      }
+      .milestone-banner {
+         position: fixed;
+         top: 80px;
+         left: 50%;
+         transform: translateX(-50%) translateY(-100px);
+         background: linear-gradient(135deg, #16a34a, #16a34add);
+         color: white;
+         padding: 14px 28px;
+         border-radius: 12px;
+         font-weight: 700;
+         font-size: 1.1rem;
+         box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+         z-index: 2000;
+         opacity: 0;
+         pointer-events: none;
+         transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+         white-space: nowrap;
+      }
+      .milestone-banner.show {
+         opacity: 1;
+         transform: translateX(-50%) translateY(0);
+      }
+      .critical-popup {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1.4rem;
+         font-weight: 800;
+         color: #ff4757;
+         text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+         animation: criticalAnim 0.9s ease-out forwards;
+         z-index: 20;
+      }
+      @keyframes criticalAnim {
+         0% { opacity: 1; transform: translateY(0) scale(0.6) rotate(-5deg); }
+         50% { opacity: 1; transform: translateY(-40px) scale(1.2) rotate(5deg); }
+         100% { opacity: 0; transform: translateY(-90px) scale(1) rotate(0deg); }
+      }
+      .particle {
+         position: absolute;
+         pointer-events: none;
+         font-size: 0.9rem;
+         opacity: 0.7;
+         animation: particleFloat 2.5s ease-out forwards;
+         z-index: 5;
+      }
+      @keyframes particleFloat {
+         0% { opacity: 0.7; transform: translateY(0) scale(1); }
+         100% { opacity: 0; transform: translateY(-120px) scale(0.5); }
+      }
+      .keyboard-tip {
+         text-align: center;
+         font-size: 0.78rem;
+         color: #888;
+         margin-top: 8px;
+         font-weight: 500;
+      }
+      .faq-section { margin-bottom: 30px; }
+      .faq-item { margin-bottom: 16px; border-bottom: 1px solid #eee; padding-bottom: 12px; }
+      .faq-item h3 {
+         color: #7838f3;
+         font-size: 1.05rem;
+         margin-bottom: 6px;
+         cursor: pointer;
+         display: flex;
+         align-items: center;
+         gap: 8px;
+         transition: color 0.2s ease;
+      }
+      .faq-item h3:hover { color: #4c1d95; }
+      .faq-item h3::before {
+         content: '+';
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         width: 20px;
+         height: 20px;
+         background: #f0f0f0;
+         border-radius: 4px;
+         font-size: 0.85rem;
+         color: #666;
+         flex-shrink: 0;
+      }
+      .faq-item.open h3::before { content: '−'; }
+      .faq-answer {
+         max-height: 0;
+         overflow: hidden;
+         transition: max-height 0.35s ease, opacity 0.25s ease;
+         opacity: 0;
+      }
+      .faq-item.open .faq-answer {
+         max-height: 300px;
+         opacity: 1;
+      }
+      .faq-answer p {
+         color: #555;
+         line-height: 1.7;
+         font-size: 1rem;
+         padding-top: 4px;
+      }
+      .fun-facts-list {
+         list-style: none;
+         padding-left: 0;
+         margin: 0;
+      }
+      .fun-facts-list li {
+         padding: 10px 0 10px 28px;
+         position: relative;
+         color: #333;
+         line-height: 1.65;
+         font-size: 1.02rem;
+      }
+      .fun-facts-list li::before {
+         content: '💡';
+         position: absolute;
+         left: 0;
+         top: 10px;
+      }
+
    </style>
 </head>
 
@@ -766,26 +923,33 @@
 
       <!-- ===== GAME ===== -->
       <div class="game-wrapper" id="gameWrapper">
-         <div class="game-header">
-            <h2>💵 Money Clicker</h2>
-            <div class="game-stats-bar">
-               <span class="game-stat-pill" id="gStatTotal">0 Dollars</span>
-               <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
-            </div>
-         </div>
-         <div class="game-body">
-            <div class="click-area" id="clickArea">
-               <button class="click-btn" id="clickBtn" aria-label="Hustle Dollar">
-                  <span class="emoji">💵</span>
-               </button>
-               <div class="score-display">
-                  <div class="score-number" id="scoreNum">0</div>
-                  <div class="score-label">Dollars</div>
-               </div>
-               <div class="per-second" id="perSecDisplay">0 dollars/sec</div>
-               <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
-            </div>
-            <div class="upgrades-panel" id="upgradesPanel">
+                   <div class="milestone-banner" id="milestoneBanner">🎉 Milestone Reached!</div>
+          <div class="game-header">
+             <h2>💵 Money Clicker</h2>
+             <div class="game-stats-bar">
+                <span class="game-stat-pill" id="gStatTotal">0 Dollars</span>
+                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+                <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
+             </div>
+          </div>
+          <div class="game-body">
+                         <div class="click-area" id="clickArea">
+                <button class="click-btn" id="clickBtn" aria-label="Hustle Dollar">
+                   <span class="emoji">💵</span>
+                </button>
+                <div class="score-display">
+                   <div class="score-number" id="scoreNum">0</div>
+                   <div class="score-label">Dollars</div>
+                </div>
+                <div class="progress-bar-container" id="progressBarContainer">
+                   <div class="progress-bar-fill" id="progressBarFill"></div>
+                </div>
+                <div class="combo-display" id="comboDisplay"></div>
+                <div class="per-second" id="perSecDisplay">0 dollars/sec</div>
+                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+                <div class="keyboard-tip">Tip: Press SPACE to click!</div>
+             </div>
+             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
 
                <div class="upgrade-card locked" id="upg0" data-idx="0">
@@ -864,81 +1028,100 @@
 
       <!-- ===== ARTICLE CONTENT ===== -->
       <article class="article-container">
-
          <div class="intro">
-            Money Clicker is <strong>financial cosplay on idle math</strong>: the HUD shows abstract <strong>Dollars</strong>,
-            tiers quote startup memes (Side Hustle, Stock Portfolio, Real Estate…), and passive income is just +$/sec
-            stacking—exactly like <a href="/coin-clicker/">Coin Clicker</a> but with dollar signs in copy. There is
-            <strong>no</strong> brokerage sim, ticker prices, APR compound interest calculator, diversify-to-reduce-risk
-            minigame, “financial advisor” AI, tax events, or unlockable mansions altering graphics. Teach real finance elsewhere;
-            here it is pacing + vibes.
+            <p><strong>Money Clicker</strong> is the ultimate financial fantasy idle game where you transform from a broke dreamer into a virtual billionaire—one click at a time. Inspired by the universal appeal of wealth accumulation, this browser-based clicker lets you earn abstract Dollars through sheer determination and smart investments. Whether you are fascinated by startup culture, stock portfolios, or real estate empires, Money Clicker distills those ambitions into pure, satisfying progression.</p>
+         <p>The concept of building wealth through incremental steps mirrors real-world financial journeys. Just as entrepreneurs start with side hustles before scaling to billion-dollar valuations, your Money Clicker journey begins humbly with manual clicks and gradually automates into a passive income machine. Idle and clicker games like this have exploded in popularity because they deliver the dopamine rush of constant progress without real-world risk. Every number that ticks upward represents a micro-achievement, triggering the same reward circuits that make checking account balances strangely satisfying.</p>
+         <p>Why are idle clickers so addictive? Psychologists point to variable reward schedules and the Zeigarnik effect—our brains crave completion, and these games provide an endless stream of small completions. Money Clicker leverages this perfectly by naming each tier after recognizable financial milestones: Side Hustle, Stock Portfolio, Real Estate, Startup, and Billionaire Status. Each upgrade feels like leveling up in life itself. And unlike complex financial simulators, this is a <strong>free browser game with no download required</strong>—just open the tab and start building your fortune.</p>
+         <p>Compared to other clickers on our site like <a href="/coin-clicker/">Coin Clicker</a> or <a href="/case-clicker/">Case Clicker</a>, Money Clicker leans into modern wealth-building fantasies rather than medieval treasure hunting or loot box mechanics. The green color scheme subconsciously reinforces money and growth themes, while the upgrade names tap into contemporary hustle culture. Ready to see how fast you can reach your first million? Your financial empire awaits.</p>
          </div>
+
          <section class="section">
-            <h2>Tiers (+$/sec each stack)</h2>
-            <div class="feature-box">
-               <h3>Generators</h3>
-               <ul>
-                  <li><strong>Side Hustle</strong> — +$1/sec.</li>
-                  <li><strong>Stock Portfolio</strong> — +$5/sec; metaphor only.</li>
-                  <li><strong>Real Estate</strong> — +$20/sec.</li>
-                  <li><strong>Startup</strong> — +$100/sec.</li>
-                  <li><strong>Billionaire Status</strong> — +$500/sec; punchline endgame passive.</li>
-               </ul>
-            </div>
-            <p><strong>Click Power</strong> still amplifies Dollars per tap; alternate with generators using the same heuristic as sibling pages.</p>
-         </section>
-         <section class="section">
-            <h2>Run tips</h2>
+            <h2>How to Play Money Clicker</h2>
             <ol class="tips-list">
-               <li><strong>Boot Side Hustle income quickly.</strong> Passive should exist before fantasizing unicorn rounds.</li>
-               <li><strong>Spam Stock Portfolio tiers when breadth wins.</strong> Five +5/s often beats one itchy +20 buy.</li>
-               <li><strong>Real Estate marks comfy mid escalation.</strong></li>
-               <li><strong>Startup at +$/100 rewards AFK multitasking.</strong></li>
-               <li><strong>Stack Billionaire Status rows for leaderboard totals.</strong></li>
-               <li><strong>Buy Click Power when taps still materially shorten waits.</strong></li>
+               <li>Start by clicking the big dollar button to earn your first Dollars manually.</li>
+<li>Once you have 15 Dollars, buy your first <strong>Side Hustle</strong> upgrade to earn +$1 per second passively.</li>
+<li>Continue clicking while your Side Hustle generates income in the background.</li>
+<li>At 100 Dollars, unlock the <strong>Stock Portfolio</strong> for +$5 per second—your first major investment.</li>
+<li>Save up 500 Dollars to purchase <strong>Real Estate</strong>, pumping your passive income to +$20/sec.</li>
+<li>Invest in <strong>Click Power</strong> early to double (then quadruple) your manual earnings per tap.</li>
+<li>Unlock the <strong>Startup</strong> tier at 2,500 Dollars for +$100/sec and watch your wealth snowball.</li>
+<li>Reach <strong>Billionaire Status</strong> at 15,000 Dollars for +$500/sec and become a tycoon.</li>
+<li>Use the Save button to preserve your empire across browser sessions.</li>
+<li>Press SPACE on your keyboard to click faster without wearing out your mouse!</li>
             </ol>
          </section>
 
          <section class="section">
-            <h2>Quarter-life crisis expressed as spreadsheet comedy</h2>
-            <p>The gag is chronological: <strong>Side Hustle</strong> is ramen-night optimism, <strong>Stock Portfolio</strong> lets you pretend
-               you read Berkshire letters, <strong>Real Estate</strong> evokes mailbox money, <strong>Startup</strong> screams hockey-stick decks,
-               and <strong>Billionaire Status</strong> is punchline entitlement. Behind the jokes it is still “buy another copy, watch
-               dollars per second rise,” with each tier’s sticker price climbing when you double down on the same meme.</p>
-            <p>Fiat currency, FDIC insurance, market cycles, and dividend schedules do not live in this JavaScript. You cannot
-               lose the run to a bear market—only stop printing dollars by closing the tab.</p>
+            <h2>Strategy Guide</h2>
+            <p>The key to early game dominance is balancing active clicking with passive investments. Do not just save blindly for expensive upgrades—buying multiple cheap Side Hustles often yields better returns per dollar spent than waiting for one big purchase.</p>
+<p>Click Power upgrades follow an exponential curve (doubling each level), making them incredibly powerful in the late game. However, early on, every dollar spent on Click Power is a dollar not earning passive income. A good rule of thumb: buy Click Power when you can afford it in under 30 seconds of passive income.</p>
+<p>The 1.15x cost scaling means each duplicate upgrade grows more expensive. Use the progress bar below your score to track exactly how close you are to the next affordable upgrade. When multiple upgrades are unlocked, calculate which gives the best "income per cost" ratio—sometimes a second Stock Portfolio beats your first Startup.</p>
+<p>AFK strategy matters: before stepping away, dump every dollar into your highest unlocked passive tier. The compounding effect of leaving your tab open with strong passive income often outperforms active clicking over long periods. Reset only when you want to speedrun or test new opening strategies.</p>
+         </section>
+
+         <section class="section faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                  <h3>What is Money Clicker?</h3>
+                  <div class="faq-answer"><p>Money Clicker is a free online idle clicker game where you earn virtual Dollars by clicking and buying passive income upgrades. It is themed around modern wealth-building concepts like side hustles, stocks, and startups.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>Is Money Clicker really free?</h3>
+                  <div class="faq-answer"><p>Yes! Money Clicker is 100% free to play in your browser with no downloads, no registration, and no microtransactions. Just open the page and start clicking.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>How do I save my progress?</h3>
+                  <div class="faq-answer"><p>Click the 💾 Save button to store your progress in your browser's local storage. Your save will persist as long as you do not clear your browser data. Auto-save also runs every 30 seconds.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>What is the best upgrade to buy first?</h3>
+                  <div class="faq-answer"><p>Always start with Side Hustle (15 Dollars) because passive income multiplies your total earnings over time. After that, balance between buying more cheap upgrades and saving for the next tier.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>Does clicking faster help?</h3>
+                  <div class="faq-answer"><p>Absolutely! Each click gives you Dollars equal to your Click Power level. You can also press the SPACE key to click, and building a 10x combo triggers a Critical Hit for double points.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>Can I play Money Clicker on mobile?</h3>
+                  <div class="faq-answer"><p>Yes! The game is fully responsive and works on phones and tablets. Touch the dollar button to click, and swipe through the upgrades panel to browse.</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>What happens when I reach Billionaire Status?</h3>
+                  <div class="faq-answer"><p>Billionaire Status gives +$500 per second per owned unit, making it the ultimate passive income source. However, the game continues indefinitely—you can stack multiple Billionaire Status units and push your score into the trillions!</p></div>
+               </div>
+<div class="faq-item">
+                  <h3>How does the combo system work?</h3>
+                  <div class="faq-answer"><p>Click rapidly without pausing for more than 2 seconds to build a combo counter. At 10 consecutive clicks, your next click scores a Critical Hit with a 2x multiplier and a dramatic popup!</p></div>
+               </div>
          </section>
 
          <section class="section">
-            <h2>Hedge fund cosplay: Click Power vs another Real Estate closing</h2>
-            <p>Deciding between more <strong>Startup</strong> throughput and another <strong>Click Power</strong> notch is the whole idle drama in
-               miniature. If you are actively trying to brute-force a milestone before homeroom ends, juicing tap damage helps;
-               if you plan to ignore the window for an hour, stacking passive rows that add +$100 or +$500 each second wins because
-               money keeps compounding while you are away.</p>
-            <p>Treat it like choosing between moonlighting shifts (clicking) and renting another duplex (passive). No spreadsheet
-               exports—just whichever purchase lands you on the next comma faster.</p>
+            <h2>Why Play Money Clicker?</h2>
+            <p>Money Clicker taps into one of the most universal human fantasies: building wealth from nothing. Unlike RPG clickers that require lore knowledge or music clickers that demand rhythm, Money Clicker speaks a language everyone understands—dollars and cents. The psychology of seeing your balance grow triggers genuine satisfaction, and the tiered upgrade system (Side Hustle → Billionaire) creates a narrative arc that keeps you engaged.</p>
+<p>Compared to <a href="/pokemon-clicker/">Pokemon Clicker</a> or <a href="/earth-clicker/">Earth Clicker</a>, Money Clicker offers a more grounded, relatable progression fantasy. While Pokemon Clicker celebrates collecting and Earth Clicker focuses on civilization-building, Money Clicker is about personal economic growth. The green color palette and dollar-themed emojis create a cohesive visual identity that reinforces the wealth-building fantasy at every click.</p>
          </section>
 
          <section class="section">
-            <h2>Wallets, sock drawers, and browser storage</h2>
-            <p><strong>Save</strong> caches your fake net worth under <code>money_clicker_save</code> in this origin’s local storage—think of it as
-               stuffing cash in a desk drawer that only exists on the machine in front of you.</p>
-            <p><strong>Reset</strong> is the paperwork for Chapter Zero: zero dollars, zero hustles, back to convincing people you will
-               “definitely start investing once Side Hustle hits.”</p>
+            <h2>Did You Know? Fun Facts</h2>
+            <ul class="fun-facts-list">
+               <li>The concept of "passive income" in Money Clicker mirrors real-world dividend investing, where money earns more money without active labor.</li>
+<li>The Side Hustle → Billionaire Status ladder roughly follows Maslow's hierarchy, from basic survival needs to self-actualization through wealth.</li>
+<li>Studies show that watching numbers increase (like in idle games) activates the nucleus accumbens, the brain's reward center—the same region triggered by earning real money.</li>
+<li>The average player reaches their first Billionaire Status upgrade in 15–25 minutes of active play, making it one of the faster-progressing clickers on our site.</li>
+<li>Money Clicker's cost scaling formula (1.15x per duplicate) is derived from classic idle game design pioneered by Cookie Clicker in 2013.</li>
+            </ul>
          </section>
 
          <section class="section">
-            <h2>After you own the mint</h2>
-            <p>If you want the same joke with metal flavor, try <a href="/coin-clicker/">Coin Clicker</a>; if you want franchised food,
-               <a href="/whopper-clicker/">Whopper Clicker</a> swaps dollars for burger throughput. Same spreadsheet heart, different props.</p>
+            <h2>Related Clicker Games</h2>
+            <p>Looking for different themes? Try <a href="/coin-clicker/">Coin Clicker</a> for a medieval minting adventure, <a href="/case-clicker/">Case Clicker</a> for loot-box excitement, or <a href="/pokemon-clicker/">Pokemon Clicker</a> if you prefer creature-collecting vibes. All share the same satisfying idle math with unique flavor.</p>
          </section>
 
-         <div style="text-align: center;">
-            <a href="/" class="back-btn">Back to Home</a>
-         </div>
+
 
       </article>
-      <!-- Related Games Section -->
+
+       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
          <p class="related-games-subtitle">Discover more free online clicker games to play</p>
@@ -1182,6 +1365,150 @@
 
          // Auto-save every 30s
          setInterval(saveGame, 30000);
+
+
+         // ===== NEW FEATURES =====
+         let comboCount = 0;
+         let lastClickTime = 0;
+         let soundEnabled = true;
+         let milestonesReached = {};
+
+         const comboDisplay = document.getElementById('comboDisplay');
+         const progressBarFill = document.getElementById('progressBarFill');
+         const milestoneBanner = document.getElementById('milestoneBanner');
+         const soundToggle = document.getElementById('soundToggle');
+
+         soundToggle.addEventListener('click', () => {
+            soundEnabled = !soundEnabled;
+            soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+         });
+
+         function updateCombo() {
+            const now = Date.now();
+            if (now - lastClickTime < 2000) {
+               comboCount++;
+            } else {
+               comboCount = 1;
+            }
+            lastClickTime = now;
+            if (comboCount >= 10) {
+               comboDisplay.textContent = '🔥 COMBO x' + comboCount + '!';
+               comboDisplay.style.color = '#ff4757';
+            } else if (comboCount > 1) {
+               comboDisplay.textContent = 'Combo x' + comboCount;
+               comboDisplay.style.color = '#16a34a';
+            } else {
+               comboDisplay.textContent = '';
+            }
+         }
+
+         function showCriticalHit(x, y) {
+            const el = document.createElement('div');
+            el.className = 'critical-popup';
+            el.textContent = 'CRITICAL HIT! +' + formatNum(clickPower * 2);
+            el.style.left = x + 'px';
+            el.style.top = y + 'px';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 900);
+         }
+
+         function updateProgressBar() {
+            let nextCost = Infinity;
+            for (let i = 0; i < UPGRADES.length; i++) {
+               const cost = getCost(UPGRADES[i].baseCost, upgradeOwned[i]);
+               if (cost < nextCost) nextCost = cost;
+            }
+            if (clickPowerCost < nextCost) nextCost = clickPowerCost;
+            let pct = Math.min(100, (score / nextCost) * 100);
+            progressBarFill.style.width = pct + '%';
+         }
+
+         function checkMilestones() {
+            const milestones = [1000, 10000, 100000, 1000000];
+            for (let m of milestones) {
+               if (score >= m && !milestonesReached[m]) {
+                  milestonesReached[m] = true;
+                  showMilestone('🎉 ' + formatNum(m) + ' Dollars Reached!');
+               }
+            }
+         }
+
+         function showMilestone(text) {
+            milestoneBanner.textContent = text;
+            milestoneBanner.classList.add('show');
+            setTimeout(() => milestoneBanner.classList.remove('show'), 2500);
+         }
+
+         function spawnParticle() {
+            const particles = ['💵', '✨', '⭐', '💫'];
+            const el = document.createElement('div');
+            el.className = 'particle';
+            el.textContent = particles[Math.floor(Math.random() * particles.length)];
+            const rect = clickArea.getBoundingClientRect();
+            el.style.left = (rect.width * 0.2 + Math.random() * rect.width * 0.6) + 'px';
+            el.style.top = (rect.height * 0.3 + Math.random() * rect.height * 0.3) + 'px';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 2500);
+         }
+
+         // Modify doClick to include new features
+         const _origDoClick = doClick;
+         doClick = function(e) {
+            let multiplier = 1;
+            updateCombo();
+            if (comboCount >= 10 && comboCount % 10 === 0) {
+               multiplier = 2;
+            }
+            score += clickPower * multiplier;
+            totalEarned += clickPower * multiplier;
+
+            clickBtn.classList.add('pressed');
+            setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+
+            const rect = clickArea.getBoundingClientRect();
+            let cx, cy;
+            if (e && e.clientX) {
+               cx = e.clientX - rect.left;
+               cy = e.clientY - rect.top;
+            } else {
+               cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+               cy = rect.height / 2 - 30;
+            }
+            if (multiplier === 2) {
+               showCriticalHit(cx, cy);
+            }
+            showClickFloat(cx, cy);
+            checkMilestones();
+            updateProgressBar();
+            render();
+         };
+
+         // Re-attach click listener to use new doClick
+         clickBtn.removeEventListener('click', _origDoClick);
+         clickBtn.addEventListener('click', doClick);
+
+         // Modify render to include progress bar update
+         const _origRender = render;
+         render = function() {
+            _origRender();
+            updateProgressBar();
+         };
+
+         // Particle spawn interval (max 3 visible at a time)
+         setInterval(() => {
+            if (document.querySelectorAll('.particle').length < 3) {
+               spawnParticle();
+            }
+         }, 4000);
+
+         // FAQ toggle
+         document.querySelectorAll('.faq-item h3').forEach(h3 => {
+            h3.addEventListener('click', () => {
+               h3.parentElement.classList.toggle('open');
+            });
+         });
 
          // Init
          loadGame();

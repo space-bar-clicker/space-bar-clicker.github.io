@@ -4,9 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Burger Clicker - Play Free Online</title>
-   <meta name="description"
-      content="Burger Clicker: click for burgers/sec, stack Better Buns through Fast Food Chain, level Click Power (exponential taps), save or reset. Browser idle incremental—no recipe or customer sim in this build.">
+   <title>Burger Clicker - Play Free Online | Fast Food Idle Incremental Game</title>
+   <meta name="description" content="Flip Burger Clicker free online! Fast food idle game with burger upgrades, combo system & milestones. No download needed. Start clicking!">
    <meta name="keywords"
       content="burger clicker, burger clicker, clicker game, idle game, free online game, play burger clicker">
    <meta name="robots" content="index, follow">
@@ -744,6 +743,26 @@
          box-shadow: 0 4px 12px rgba(120, 56, 243, 0.15);
          color: #3b0764;
       }
+         /* ===== NEW FEATURES CSS ===== */
+      .combo-display { margin-top: 8px; font-size: 0.9rem; font-weight: 700; color: #ff6b00; min-height: 1.2rem; text-align: center; }
+      .critical-popup { position: absolute; pointer-events: none; font-size: 1.5rem; font-weight: 800; color: #ff2200; text-shadow: 0 2px 6px rgba(255,34,0,0.35); animation: criticalPop 0.85s ease-out forwards; z-index: 20; }
+      @keyframes criticalPop { 0% { opacity: 1; transform: translateY(0) scale(0.5); } 50% { transform: translateY(-25px) scale(1.25); } 100% { opacity: 0; transform: translateY(-65px) scale(1); } }
+      .progress-bar-container { width: 80%; max-width: 220px; height: 10px; background: #e5e7eb; border-radius: 5px; margin-top: 12px; overflow: hidden; box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); }
+      .progress-bar-fill { height: 100%; border-radius: 5px; transition: width 0.35s ease; background: linear-gradient(90deg, currentColor, rgba(255,255,255,0.3)); background-color: currentColor; }
+      .particle { position: absolute; pointer-events: none; font-size: 1rem; opacity: 0; animation: particleFloat 2.2s ease-out forwards; z-index: 5; }
+      @keyframes particleFloat { 0% { opacity: 0.85; transform: translateY(0) scale(0.7); } 100% { opacity: 0; transform: translateY(-130px) scale(1.3); } }
+      .milestone-banner { position: fixed; top: 80px; left: 50%; transform: translateX(-50%) translateY(-120px); background: linear-gradient(135deg, #ffd700, #ffaa00); color: #333; padding: 16px 32px; border-radius: 14px; font-weight: 700; font-size: 1.15rem; box-shadow: 0 10px 30px rgba(255,170,0,0.35); z-index: 2000; transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1); text-align: center; }
+      .milestone-banner.show { transform: translateX(-50%) translateY(0); }
+      .faq-section h3 { cursor: pointer; padding: 14px 18px; background: #f8f9fe; border-radius: 10px; margin-bottom: 6px; transition: all 0.2s ease; position: relative; font-size: 1.05rem; color: #333; font-weight: 600; }
+      .faq-section h3:hover { background: #ede5ff; }
+      .faq-section h3::after { content: '+'; position: absolute; right: 18px; font-weight: 700; color: #7838f3; font-size: 1.2rem; }
+      .faq-section h3.active::after { content: '−'; }
+      .faq-section p { padding: 0 18px 18px; margin: 0; display: none; line-height: 1.8; }
+      .faq-section p.open { display: block; }
+      .sound-toggle { background: none; border: none; font-size: 1.25rem; cursor: pointer; padding: 4px 10px; border-radius: 8px; transition: background 0.2s; color: white; line-height: 1; }
+      .sound-toggle:hover { background: rgba(255,255,255,0.2); }
+      .keyboard-hint { font-size: 0.75rem; color: #aaa; margin-top: 10px; text-align: center; font-weight: 500; }
+
    </style>
 </head>
 
@@ -760,6 +779,8 @@
          <button class="menu-btn">☰</button>
       </div>
    </nav>
+   <div class="milestone-banner" id="milestoneBanner"></div>
+
 
    <div class="main-content">
       <h1 class="page-title">Play Burger Clicker Online</h1>
@@ -772,6 +793,7 @@
                <span class="game-stat-pill" id="gStatTotal">0 Burgers</span>
                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
             </div>
+         <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
@@ -784,6 +806,11 @@
                </div>
                <div class="per-second" id="perSecDisplay">0 burgers/sec</div>
                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+               <div class="combo-display" id="comboDisplay"></div>
+               <div class="progress-bar-container">
+                  <div class="progress-bar-fill" id="progressBar" style="width:0%; color: #ca8a04;"></div>
+               </div>
+               <div class="keyboard-hint">Tip: Press SPACE to click!</div>
             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
@@ -866,58 +893,67 @@
       <article class="article-container">
 
          <div class="intro">
-            This build is a <strong>compact idle economy</strong> dressed in fast-food flavor: you earn “burgers” as a
-            score, click for burst income, buy five named generator tiers for passive burgers per second, and separately
-            level <strong>Click Power</strong> so manual taps stay relevant while numbers climb. There are
-            <strong>no</strong> customer queues, recipes, VIP orders, maps, or franchise sim layers—those would be fun in
-            a different game; here the loop is deliberately simple so you can focus on pacing and arithmetic. Progress
-            persists in-browser via <strong>Save</strong>; <strong>Reset</strong> wipes the run for a clean start.
+            <p><strong>Burger Clicker</strong> is a mouth-watering free browser idle game that transforms America's favorite fast food into exponential growth. The hamburger was invented in the late 19th or early 20th century—depending on whether you believe the Menches brothers, Charlie Nagreen, or Louis Lassen—and has since become a $100 billion global industry. From backyard grills to Michelin-starred kitchens, the burger represents comfort, creativity, and pure indulgence. This clicker game lets you build your own burger empire from a single patty to a worldwide fast food chain.</p>
+<p>Idle games have conquered the casual gaming space because they offer something no other genre can: guaranteed progress. Every second you spend in a clicker game makes you stronger, richer, or more powerful. There are no losing conditions, no enemies to outplay, and no complex controls to master. Burger Clicker extends this philosophy into the culinary world, letting you flip virtual burgers while your real-world stress melts away. The satisfaction of watching your 'burgers per second' climb from 1 to 1,000 to 1,000,000 is genuinely therapeutic.</p>
+<p>This is a completely free browser game with no downloads, no microtransactions, and no registration required. Save your progress anytime, or reset for a fresh speedrun. If burgers are not your only craving, also try <a href="/pizza-clicker/">Pizza Clicker</a> and <a href="/whopper-clicker/">Whopper Clicker</a> for more fast-food incremental fun, or explore <a href="/candy-clicker/">Candy Clicker</a> for something sweeter.</p>
          </div>
 
          <section class="section">
-            <h2>What you are actually buying</h2>
-            <p>Each row is a stackable passive source. Costs rise with ownership, so the “correct” moment to buy the next
-               copy is whenever it shortens time-to-next-big-tick more than banking the same coins would.</p>
-            <div class="feature-box">
-               <h3>Generators (passive burgers/sec per stack)</h3>
-               <ul>
-                  <li><strong>Better Buns</strong> — +1/sec; starter throughput, first rung on the ladder.</li>
-                  <li><strong>Fry Cook</strong> — +5/sec; early mid-tier when one click still beats one second of Buns.</li>
-                  <li><strong>Double Grill</strong> — +20/sec; feel the kitchen “scale” without new UI—a pure rate bump.</li>
-                  <li><strong>Food Truck</strong> — +100/sec; the point where AFK tabs start to earn meaningfully.</li>
-                  <li><strong>Fast Food Chain</strong> — +500/sec; late-run anchor; stacking these is how you chase big totals.</li>
-               </ul>
-            </div>
-            <p><strong>Click Power</strong> is separate: each purchase increases burgers <em>per manual click</em> on an
-               exponential curve (starting at +1 per click, doubling effective tap damage as levels climb—check the HUD’s
-               “per click” readout). Its price escalates too, so you alternate between feeding generators when passive is
-               weak and buffing clicks when the next passive tier is still expensive.</p>
-         </section>
-
-         <section class="section">
-            <h2>How to pace a satisfying session</h2>
+            <h2>How to Play Burger Clicker</h2>
             <ol class="tips-list">
-               <li><strong>Open with clicks + Better Buns.</strong> Passive income should appear early so you are not
-                  purely hammering one button forever.</li>
-               <li><strong>Don’t skip Fry Cook envy.</strong> Five/sec stacks add up; sometimes two Fry Cooks beat one
-                  impatient Double Grill purchase.</li>
-               <li><strong>Use Double Grill as a milestone.</strong> When +20 stacks multiply, passive overtakes casual
-                  clicking unless your Click Power is leveled.</li>
-               <li><strong>Food Truck is your AFK breakpoint.</strong> +100 makes leaving the tab open feel rewarding.</li>
-               <li><strong>Fast Food Chain is endgame throughput.</strong> Once several are rolling, totals climb quickly—good
-                  for chasing personal bests.</li>
-               <li><strong>Buy Click Power when clicks still shave minutes off the next tier.</strong> If you can halve the
-                  wait to Food Truck #3 with taps, do it.</li>
+            <li><strong>Click the burger button</strong> to flip burgers manually. Each click produces burgers based on your Click Power level.</li>
+            <li><strong>Upgrade to Better Buns</strong> at 15 burgers for +1 burger/sec. This is your first passive income and the foundation of your franchise.</li>
+            <li><strong>Hire Fry Cooks</strong> at 100 burgers for +5 burgers/sec. Stack multiple cooks early for compound kitchen growth.</li>
+            <li><strong>Install a Double Grill</strong> at 500 burgers for +20 burgers/sec. This mid-tier upgrade doubles your cooking capacity.</li>
+            <li><strong>Launch a Food Truck</strong> at 2,500 burgers for +100 burgers/sec. Now your brand hits the streets even while you are AFK.</li>
+            <li><strong>Expand into a Fast Food Chain</strong> at 15,000 burgers for +500 burgers/sec. This endgame upgrade turns your diner into an empire.</li>
+            <li><strong>Upgrade Click Power</strong> whenever active flipping can meaningfully accelerate your next unlock.</li>
+            <li><strong>Press SPACE</strong> to flip rapidly and maintain your combo streak for critical hit bonuses.</li>
             </ol>
          </section>
 
          <section class="section">
-            <h2>Why the burger theme still works without a sim layer</h2>
-            <p>Incremental games borrow <em>fantasy nouns</em>—cookies, planets, burgers—to make identical math feel novel.
-               Here the fantasy is shorthand for “cheap snack becomes vertical integration.” Your brain fills in grills
-               and trucks even though the UI only shows numbers and emoji. If you like this skeleton, compare pacing with
-               <a href="/pizza-clicker/">Pizza Clicker</a> or <a href="/whopper-clicker/">Whopper Clicker</a> on this
-               site—same genre, different seasoning.</p>
+            <h2>Strategy Guide</h2>
+            <p>Burger Clicker rewards aggressive franchising. Better Buns and Fry Cooks are so cheap that they should be purchased the instant they become affordable. Do not save for a Double Grill if buying four Fry Cooks first gets you there faster. The compounding math of idle games is unforgiving: every second of delayed investment is lost forever. Maximize your passive income as early as possible.</p>
+<p>The mid-game Food Truck unlock at 2,500 burgers is a watershed moment. At +100 burgers/sec, it is the first upgrade that makes AFK play genuinely productive. Once you own two or three Trucks, your hourly output exceeds what manual clicking could achieve in the same timeframe. At this stage, Click Power upgrades become luxury purchases rather than necessities. Buy them when you are actively grinding for a milestone; otherwise, invest in passive generators.</p>
+<p>Late-game strategy centers on Fast Food Chain stacking. Each Chain adds +500 burgers/sec, but costs escalate quickly. Smart franchise owners periodically revisit cheaper tiers. Your 40th Better Bun may cost less than your 4th Fast Food Chain while still contributing meaningful output. The optimal burger empire is not a skyscraper but a pyramid: a broad foundation of cheap upgrades supporting a modest number of premium locations.</p>
+         </section>
+
+         <section class="section faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <h3>Is Burger Clicker affiliated with any real restaurant chain?</h3>
+            <p>No. Burger Clicker is an independent fan-made idle game with no affiliation to McDonald's, Burger King, Wendy's, or any other real-world fast food brand. The theme is purely for entertainment.</p>
+            <h3>How does the combo system work?</h3>
+            <p>Click at least once every 2 seconds to build a combo streak. Every 10th consecutive click triggers a CRITICAL HIT that awards double burgers. Keep clicking to maintain your streak!</p>
+            <h3>Can I save my progress?</h3>
+            <p>Yes. Click the 💾 Save button to store your progress in browser local storage. Auto-save also runs every 30 seconds automatically.</p>
+            <h3>What does the progress bar show?</h3>
+            <p>The progress bar displays your percentage progress toward the next cheapest upgrade you cannot yet afford. It fills in real time as you earn burgers.</p>
+            <h3>Can I play on mobile?</h3>
+            <p>Yes. Burger Clicker is fully responsive and works on smartphones, tablets, and any modern mobile browser. Tap the burger button to flip.</p>
+            <h3>Is there a reset or prestige system?</h3>
+            <p>You can manually reset all progress using the 🔄 Reset button. This wipes your local save and starts a fresh run. There is no automatic prestige layer.</p>
+            <h3>What happens when I hit milestones?</h3>
+            <p>Reaching 1,000, 10,000, 100,000, or 1,000,000 burgers triggers a golden celebration banner. These are cosmetic achievements marking your progression.</p>
+         </section>
+
+         <section class="section">
+            <h2>Why Play Burger Clicker?</h2>
+            <p>Burger Clicker taps into one of modern life's simplest pleasures: the satisfaction of a well-cooked meal. The golden-yellow color scheme, grill-themed upgrades, and fast-food fantasy create an atmosphere of casual abundance that is perfect for unwinding after a long day. While competitive games demand focus and energy, Burger Clicker asks only that you click, upgrade, and smile.</p>
+<p>Compared to sweeter clickers like <a href="/candy-clicker/">Candy Clicker</a>, Burger Clicker feels more grounded and savory. The progression from backyard grill to global chain tells a satisfying entrepreneurial story without requiring any actual business knowledge. The combo system and milestone banners add structure for goal-oriented players, while the robust passive generators ensure that even the most casual player can eventually reach astronomical scores. It is fast food gaming at its finest—quick, satisfying, and completely free.</p>
+         </section>
+
+         <section class="section">
+            <h2>Did You Know? Fun Facts</h2>
+            <div class="highlight-box">
+               <ul>
+            <li>The world's most expensive burger, sold in London for $5,000, was made with Wagyu beef, white truffles, and edible gold leaf.</li>
+            <li>Americans eat approximately 50 billion burgers per year, averaging about three burgers per week per person.</li>
+            <li>The largest burger ever made weighed over 2,000 pounds and was cooked in Minnesota in 2012.</li>
+            <li>The hamburger bun was popularized in 1916 by a fry cook named Walter Anderson, who later co-founded White Castle.</li>
+            <li>In Japan, burgers with ramen noodle buns and patties made of Wagyu beef are popular gourmet variations.</li>
+               </ul>
+            </div>
          </section>
 
          <div style="text-align: center;">
@@ -925,6 +961,7 @@
          </div>
 
       </article>
+
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
@@ -1038,21 +1075,38 @@
                }
             });
 
-            // Click power upgrade
-            const cpCard = document.getElementById('upgClickPower');
-            document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
-            document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
-            if (score >= clickPowerCost) {
-               cpCard.classList.remove('locked');
-            } else {
-               cpCard.classList.add('locked');
-            }
+                     // Click power upgrade
+         const cpCard = document.getElementById('upgClickPower');
+         document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
+         document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
+         if (score >= clickPowerCost) {
+            cpCard.classList.remove('locked');
+         } else {
+            cpCard.classList.add('locked');
          }
 
-         function showClickFloat(x, y) {
+         // Update combo display
+         if (combo > 1) {
+            comboDisplay.textContent = '🔥 ' + combo + 'x COMBO';
+         } else {
+            comboDisplay.textContent = '';
+         }
+
+         // Update progress bar
+         let cheapestCost = Infinity;
+         UPGRADES.forEach((u, i) => {
+            const c = getCost(u.baseCost, upgradeOwned[i]);
+            if (c < cheapestCost) cheapestCost = c;
+         });
+         if (clickPowerCost < cheapestCost) cheapestCost = clickPowerCost;
+         const progressPct = Math.min(100, (score / cheapestCost) * 100);
+         progressBar.style.width = progressPct + '%';
+      }
+
+                  function showClickFloat(x, y, pts) {
             const el = document.createElement('div');
             el.className = 'click-float';
-            el.textContent = '+' + formatNum(clickPower);
+            el.textContent = '+' + formatNum(pts || clickPower);
             el.style.left = x + 'px';
             el.style.top = y + 'px';
             clickArea.style.position = 'relative';
@@ -1060,14 +1114,28 @@
             setTimeout(() => el.remove(), 700);
          }
 
-         function doClick(e) {
-            score += clickPower;
-            totalEarned += clickPower;
+                  function doClick(e) {
+            const now = Date.now();
+            if (now - lastClickTime < 2000) {
+               combo++;
+            } else {
+               combo = 1;
+            }
+            lastClickTime = now;
+
+            let points = clickPower;
+            let isCritical = false;
+            if (combo > 0 && combo % 10 === 0) {
+               points *= 2;
+               isCritical = true;
+            }
+
+            score += points;
+            totalEarned += points;
 
             clickBtn.classList.add('pressed');
             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
 
-            // Float position
             const rect = clickArea.getBoundingClientRect();
             let cx, cy;
             if (e && e.clientX) {
@@ -1077,7 +1145,9 @@
                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
                cy = rect.height / 2 - 30;
             }
-            showClickFloat(cx, cy);
+            showClickFloat(cx, cy, points);
+            if (isCritical) showCriticalPopup(cx, cy);
+            checkMilestones();
             render();
          }
 
@@ -1129,8 +1199,8 @@
          }, 1000);
 
          // Save / Load
-         function saveGame() {
-            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned };
+                  function saveGame() {
+            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, milestoneShown };
             try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
          }
 
@@ -1139,13 +1209,14 @@
                const raw = localStorage.getItem(SAVE_KEY);
                if (raw) {
                   const data = JSON.parse(raw);
-                  score = data.score || 0;
-                  totalEarned = data.totalEarned || 0;
-                  clickPower = data.clickPower || 1;
-                  clickPowerLevel = data.clickPowerLevel || 1;
-                  clickPowerCost = data.clickPowerCost || 50;
-                  upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
-                  recalcPerSecond();
+                                  score = data.score || 0;
+                   totalEarned = data.totalEarned || 0;
+                   clickPower = data.clickPower || 1;
+                   clickPowerLevel = data.clickPowerLevel || 1;
+                   clickPowerCost = data.clickPowerCost || 50;
+                   upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                   milestoneShown = data.milestoneShown || {1000: false, 10000: false, 100000: false, 1000000: false};
+                   recalcPerSecond();
                }
             } catch (e) { }
          }
@@ -1160,12 +1231,75 @@
          document.getElementById('resetBtn').addEventListener('click', () => {
             if (confirm('Reset all progress for Burger Clicker? This cannot be undone.')) {
                localStorage.removeItem(SAVE_KEY);
-               score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
-               upgradeOwned = UPGRADES.map(() => 0);
-               recalcPerSecond();
-               render();
+                               score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
+                upgradeOwned = UPGRADES.map(() => 0);
+                milestoneShown = {1000: false, 10000: false, 100000: false, 1000000: false};
+                combo = 0;
+                recalcPerSecond();
+                render();
             }
          });
+
+          // ===== NEW FEATURES =====
+          let combo = 0;
+          let lastClickTime = 0;
+          let soundEnabled = true;
+          let milestoneShown = {1000: false, 10000: false, 100000: false, 1000000: false};
+          const PARTICLE_EMOJI = '🍟';
+          const comboDisplay = document.getElementById('comboDisplay');
+          const progressBar = document.getElementById('progressBar');
+          const milestoneBanner = document.getElementById('milestoneBanner');
+          const soundToggle = document.getElementById('soundToggle');
+
+          function showCriticalPopup(x, y) {
+             const el = document.createElement('div');
+             el.className = 'critical-popup';
+             el.textContent = 'CRITICAL HIT!';
+             el.style.left = (x - 50) + 'px';
+             el.style.top = (y - 50) + 'px';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 850);
+          }
+
+          function checkMilestones() {
+             const ms = [1000, 10000, 100000, 1000000];
+             ms.forEach(m => {
+                if (score >= m && !milestoneShown[m]) {
+                   milestoneShown[m] = true;
+                   milestoneBanner.textContent = '🎉 Milestone Reached! ' + formatNum(m) + ' Burgers!';
+                   milestoneBanner.classList.add('show');
+                   setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
+                }
+             });
+          }
+
+          setInterval(() => {
+             if (document.hidden) return;
+             if (!clickArea) return;
+             const particle = document.createElement('div');
+             particle.className = 'particle';
+             particle.textContent = PARTICLE_EMOJI;
+             const rect = clickArea.getBoundingClientRect();
+             const x = Math.random() * (rect.width - 20) + 10;
+             const y = rect.height - 25;
+             particle.style.left = x + 'px';
+             particle.style.top = y + 'px';
+             clickArea.appendChild(particle);
+             setTimeout(() => particle.remove(), 2200);
+          }, 3500);
+
+          soundToggle.addEventListener('click', () => {
+             soundEnabled = !soundEnabled;
+             soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+          });
+
+          document.querySelectorAll('.faq-section h3').forEach(q => {
+             q.addEventListener('click', () => {
+                q.classList.toggle('active');
+                const ans = q.nextElementSibling;
+                ans.classList.toggle('open');
+             });
+          });
 
          // Auto-save every 30s
          setInterval(saveGame, 30000);

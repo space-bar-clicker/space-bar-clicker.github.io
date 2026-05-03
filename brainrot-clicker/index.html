@@ -4,9 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Brainrot Clicker - Play Free Online</title>
-   <meta name="description"
-      content="Brainrot Clicker idle game: earn brainrot/sec from Skibidi Toilet through Brainrot Overlord, level Click Power, save or reset. Meme-flavored incremental—no meter, prestige, or live trend updates in this build.">
+   <title>Brainrot Clicker - Play Free Online | Internet Meme Idle Game</title>
+   <meta name="description" content="Dive into Brainrot Clicker free online! Internet meme idle game with brainrot points, combos & viral upgrades. No download needed. Click now!">
    <meta name="keywords"
       content="brainrot clicker, brainrot clicker, clicker game, idle game, free online game, play brainrot clicker">
    <meta name="robots" content="index, follow">
@@ -744,6 +743,26 @@
          box-shadow: 0 4px 12px rgba(120, 56, 243, 0.15);
          color: #3b0764;
       }
+         /* ===== NEW FEATURES CSS ===== */
+      .combo-display { margin-top: 8px; font-size: 0.9rem; font-weight: 700; color: #ff6b00; min-height: 1.2rem; text-align: center; }
+      .critical-popup { position: absolute; pointer-events: none; font-size: 1.5rem; font-weight: 800; color: #ff2200; text-shadow: 0 2px 6px rgba(255,34,0,0.35); animation: criticalPop 0.85s ease-out forwards; z-index: 20; }
+      @keyframes criticalPop { 0% { opacity: 1; transform: translateY(0) scale(0.5); } 50% { transform: translateY(-25px) scale(1.25); } 100% { opacity: 0; transform: translateY(-65px) scale(1); } }
+      .progress-bar-container { width: 80%; max-width: 220px; height: 10px; background: #e5e7eb; border-radius: 5px; margin-top: 12px; overflow: hidden; box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); }
+      .progress-bar-fill { height: 100%; border-radius: 5px; transition: width 0.35s ease; background: linear-gradient(90deg, currentColor, rgba(255,255,255,0.3)); background-color: currentColor; }
+      .particle { position: absolute; pointer-events: none; font-size: 1rem; opacity: 0; animation: particleFloat 2.2s ease-out forwards; z-index: 5; }
+      @keyframes particleFloat { 0% { opacity: 0.85; transform: translateY(0) scale(0.7); } 100% { opacity: 0; transform: translateY(-130px) scale(1.3); } }
+      .milestone-banner { position: fixed; top: 80px; left: 50%; transform: translateX(-50%) translateY(-120px); background: linear-gradient(135deg, #ffd700, #ffaa00); color: #333; padding: 16px 32px; border-radius: 14px; font-weight: 700; font-size: 1.15rem; box-shadow: 0 10px 30px rgba(255,170,0,0.35); z-index: 2000; transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1); text-align: center; }
+      .milestone-banner.show { transform: translateX(-50%) translateY(0); }
+      .faq-section h3 { cursor: pointer; padding: 14px 18px; background: #f8f9fe; border-radius: 10px; margin-bottom: 6px; transition: all 0.2s ease; position: relative; font-size: 1.05rem; color: #333; font-weight: 600; }
+      .faq-section h3:hover { background: #ede5ff; }
+      .faq-section h3::after { content: '+'; position: absolute; right: 18px; font-weight: 700; color: #7838f3; font-size: 1.2rem; }
+      .faq-section h3.active::after { content: '−'; }
+      .faq-section p { padding: 0 18px 18px; margin: 0; display: none; line-height: 1.8; }
+      .faq-section p.open { display: block; }
+      .sound-toggle { background: none; border: none; font-size: 1.25rem; cursor: pointer; padding: 4px 10px; border-radius: 8px; transition: background 0.2s; color: white; line-height: 1; }
+      .sound-toggle:hover { background: rgba(255,255,255,0.2); }
+      .keyboard-hint { font-size: 0.75rem; color: #aaa; margin-top: 10px; text-align: center; font-weight: 500; }
+
    </style>
 </head>
 
@@ -760,6 +779,8 @@
          <button class="menu-btn">☰</button>
       </div>
    </nav>
+   <div class="milestone-banner" id="milestoneBanner"></div>
+
 
    <div class="main-content">
       <h1 class="page-title">Play Brainrot Clicker Online</h1>
@@ -772,6 +793,7 @@
                <span class="game-stat-pill" id="gStatTotal">0 Brainrots</span>
                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
             </div>
+         <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
@@ -784,6 +806,11 @@
                </div>
                <div class="per-second" id="perSecDisplay">0 brainrots/sec</div>
                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+               <div class="combo-display" id="comboDisplay"></div>
+               <div class="progress-bar-container">
+                  <div class="progress-bar-fill" id="progressBar" style="width:0%; color: #e11d48;"></div>
+               </div>
+               <div class="keyboard-hint">Tip: Press SPACE to click!</div>
             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
@@ -866,61 +893,67 @@
       <article class="article-container">
 
          <div class="intro">
-            This page is a <strong>tight incremental loop</strong> with meme-stained labels: your score is abstract
-            “brainrot,” clicks spike income, five stackable generators add passive brainrot per second, and
-            <strong>Click Power</strong> scales manual taps so active play stays viable. Names like <em>Skibidi Toilet</em>
-            or <em>Sigma Grindset</em> are flavor text on top of standard idle math—there is <strong>no</strong> separate
-            brainrot meter, seasonal events, achievement list, prestige layer, or rolling content updates in this build.
-            Use <strong>Save</strong> to persist locally; <strong>Reset</strong> clears the run.
+            <p><strong>Brainrot Clicker</strong> is a free browser idle game that celebrates the beautiful absurdity of internet meme culture. 'Brainrot' is a term coined by Gen Z and Gen Alpha to describe the psychological effect of consuming too much short-form content—TikTok loops, surreal memes, and viral audio clips that burrow into your consciousness until you can think of nothing else. This clicker game turns that phenomenon into a productive force: click to generate Brainrot points, hire meme generators, and eventually command the TikTok Algorithm itself.</p>
+<p>Idle games are the perfect format for exploring internet culture because both are built on compounding engagement. Just as a viral meme spreads exponentially through shares and remixes, your Brainrot empire grows through stacked passive upgrades. The genre was essentially born in internet forums, with early clickers like Cookie Clicker spreading through Reddit and 4chan before reaching mainstream audiences. Brainrot Clicker pays homage to that lineage while embracing the specific vocabulary of modern meme culture: Skibidi Toilet, Sigma Grindset, and the omnipresent Algorithm.</p>
+<p>This is a completely free browser game with no downloads, no registration, and no paywalls. Your progress saves to local storage automatically. If you enjoy the chaotic energy of Brainrot Clicker, also try <a href="/italian-brainrot-clicker/">Italian Brainrot Clicker</a> for a regional variant, or explore <a href="/chicken-jockey-clicker/">Chicken Jockey Clicker</a> and <a href="/candy-clicker/">Candy Clicker</a> for more themed incremental experiences.</p>
          </div>
 
          <section class="section">
-            <h2>Generators (what the joke names map to)</h2>
-            <p>Each row is the same progression pattern as other games on this subdomain: buy copies, prices rise, rates
-               stack. The humor is in the nouns; the strategy is in the numbers.</p>
-            <div class="feature-box">
-               <h3>Passive tiers (per stack)</h3>
-               <ul>
-                  <li><strong>Skibidi Toilet</strong> — +1/sec; entry-level passive, the punchline that starts the snowball.
-                  </li>
-                  <li><strong>Sigma Grindset</strong> — +5/sec; early grind tier when manual clicking still competes.</li>
-                  <li><strong>Meme Generator</strong> — +20/sec; mid-run bump—think “content factory” as a single stat line.
-                  </li>
-                  <li><strong>TikTok Algorithm</strong> — +100/sec; when leaving the tab open meaningfully prints points.
-                  </li>
-                  <li><strong>Brainrot Overlord</strong> — +500/sec; late anchor for big totals and speedrunning a personal
-                     best.</li>
-               </ul>
-            </div>
-            <p><strong>Click Power</strong> levels separately: each purchase raises brainrot <em>per click</em> on an
-               exponential curve (check the on-screen “per click” display). Balance it against buying the next generator
-               copy when passive is still catching up.</p>
-         </section>
-
-         <section class="section">
-            <h2>Practical tips for this build</h2>
+            <h2>How to Play Brainrot Clicker</h2>
             <ol class="tips-list">
-               <li><strong>Don’t stay on Skibidi alone.</strong> First passive row should land early so you are not
-                  clicking forever.</li>
-               <li><strong>Compare Sigma stacks to one Meme Generator.</strong> Sometimes extra +5s beat one expensive +20
-                  hop.</li>
-               <li><strong>Meme Generator is your “midgame” signal.</strong> When +20 stacks pile up, AFK becomes tempting.
-               </li>
-               <li><strong>TikTok Algorithm is the AFK breakpoint.</strong> +100/sec is where multitasking pays off.</li>
-               <li><strong>Farm Brainrot Overlord for huge numbers.</strong> Several +500/sec rows accelerate totals sharply.
-               </li>
-               <li><strong>Feed Click Power when clicks still shorten buy timers.</strong> If the UI says your tap damage is
-                  low versus the next tier’s cost, level clicks before another passive copy.</li>
+            <li><strong>Click the brain button</strong> to generate Brainrot points manually. Each click yields points scaled by your Click Power level.</li>
+            <li><strong>Summon a Skibidi Toilet</strong> at 15 points for +1 brainrot/sec. This is your first passive meme generator.</li>
+            <li><strong>Activate Sigma Grindset</strong> at 100 points for +5 brainrots/sec. Stack multiple grindsets for early hustle culture growth.</li>
+            <li><strong>Build a Meme Generator</strong> at 500 points for +20 brainrots/sec. This mid-tier upgrade industrializes your content production.</li>
+            <li><strong>Hack the TikTok Algorithm</strong> at 2,500 points for +100 brainrots/sec. Now your brainrot spreads virally even while you are AFK.</li>
+            <li><strong>Become the Brainrot Overlord</strong> at 15,000 points for +500 brainrots/sec. This endgame upgrade makes you the undisputed king of internet chaos.</li>
+            <li><strong>Upgrade Click Power</strong> when actively clicking can meaningfully speed up your next viral unlock.</li>
+            <li><strong>Press SPACE</strong> to click rapidly and maintain your combo streak for critical hit bonuses.</li>
             </ol>
          </section>
 
          <section class="section">
-            <h2>Culture note: “brainrot” without overstating the game</h2>
-            <p>Online, <em>brainrot</em> jokingly describes overexposure to absurdist short-form clips—audio loops,
-               uncanny sprites, lore that barely exists. This clicker borrows that mood as <strong>aesthetic seasoning</strong>,
-               not a documentary. For a sibling page with overlapping meme energy (still its own stats), try
-               <a href="/italian-brainrot-clicker/">Italian Brainrot Clicker</a>; compare pacing if you enjoy re-running
-               the same idle skeleton with different skins.</p>
+            <h2>Strategy Guide</h2>
+            <p>Brainrot Clicker rewards relentless content creation. Skibidi Toilets and Sigma Grindsets are so inexpensive that they should be purchased instantly. Do not save for a Meme Generator if buying five Grindsets first gets you there faster. The exponential math of viral growth applies equally to idle games: every second of delayed investment is lost compound interest.</p>
+<p>The mid-game TikTok Algorithm unlock at 2,500 points is your first truly viral-tier upgrade. At +100 brainrots/sec, it transforms your operation from a hobby into a content farm. Once you own two or three Algorithms, your passive output exceeds what manual clicking can achieve in reasonable timeframes. Click Power upgrades become situational: buy them before active grinding sessions, ignore them before AFK breaks.</p>
+<p>Late-game strategy centers on Brainrot Overlord stacking. Each Overlord adds +500 brainrots/sec, but costs escalate rapidly. Smart content creators periodically revisit cheaper tiers. Your 42nd Skibidi Toilet may cost less than your 4th Overlord while still contributing meaningful output. The ultimate meme empire is built on volume: a thousand small memes supporting a handful of viral hits.</p>
+         </section>
+
+         <section class="section faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <h3>What does 'brainrot' mean?</h3>
+            <p>'Brainrot' is internet slang for the mental state caused by overconsumption of short-form, absurdist content. It is used affectionately within meme culture to describe being deeply immersed in online humor.</p>
+            <h3>Is Brainrot Clicker affiliated with TikTok or any social platform?</h3>
+            <p>No. Brainrot Clicker is an independent fan-made game with no affiliation to TikTok, ByteDance, or any social media company. Platform names are used as thematic flavor only.</p>
+            <h3>How do combos work?</h3>
+            <p>Click at least once every 2 seconds to build a combo streak. Every 10th consecutive click triggers a CRITICAL HIT that awards double brainrot points. If you pause too long, the combo resets.</p>
+            <h3>Can I save my progress?</h3>
+            <p>Yes. Click the 💾 Save button or rely on the auto-save every 30 seconds. Progress is stored in browser local storage.</p>
+            <h3>What are milestones?</h3>
+            <p>Reaching 1,000, 10,000, 100,000, or 1,000,000 brainrot points triggers a golden celebration banner. These cosmetic achievements mark major progression milestones.</p>
+            <h3>Can I play on mobile?</h3>
+            <p>Yes. Brainrot Clicker is fully responsive and works on all modern smartphones and tablets. Tap the brain button to generate points.</p>
+            <h3>Is the game free?</h3>
+            <p>Yes. Brainrot Clicker is 100% free with no ads, no microtransactions, and no registration. It runs entirely in your browser.</p>
+         </section>
+
+         <section class="section">
+            <h2>Why Play Brainrot Clicker?</h2>
+            <p>Brainrot Clicker is a love letter to the chaos of modern internet culture. While many clickers adopt safe, commercial themes like candy or space, this game dives headfirst into the surreal vocabulary of TikTok comments and Discord memes. The result is a clicker that feels genuinely contemporary—one that speaks the language of its audience rather than talking down to them.</p>
+<p>Compared to more sedate clickers like <a href="/capybara-clicker/">Capybara Clicker</a>, Brainrot Clicker is energetic, irreverent, and proudly absurd. The red color scheme and meme-themed upgrades create an atmosphere of high-speed internet chaos. The combo system and critical hits add mechanical depth for active players, while the robust passive generators ensure that even lurkers can eventually ascend to Brainrot Overlord status. For anyone who has ever said 'sigma' unironically or knows what Skibidi Toilet is, this game is essential clicking.</p>
+         </section>
+
+         <section class="section">
+            <h2>Did You Know? Fun Facts</h2>
+            <div class="highlight-box">
+               <ul>
+            <li>The term 'sigma male' originated in the manosphere but was ironically reclaimed by meme culture to describe lone wolves who reject social hierarchies.</li>
+            <li>Skibidi Toilet videos, created by YouTuber DaFuq!?Boom!, have accumulated billions of views and spawned an entire genre of 3D animated memes.</li>
+            <li>TikTok's recommendation algorithm is considered one of the most addictive in tech history, using machine learning to optimize for watch time above all else.</li>
+            <li>The word 'brainrot' first gained mainstream traction on Twitter and TikTok in 2022, often used to describe hyper-specific meme knowledge.</li>
+            <li>Internet memes spread through a process similar to biological evolution: successful variants are copied and mutated, while unsuccessful ones die out quickly.</li>
+               </ul>
+            </div>
          </section>
 
          <div style="text-align: center;">
@@ -928,6 +961,7 @@
          </div>
 
       </article>
+
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
@@ -1041,21 +1075,38 @@
                }
             });
 
-            // Click power upgrade
-            const cpCard = document.getElementById('upgClickPower');
-            document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
-            document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
-            if (score >= clickPowerCost) {
-               cpCard.classList.remove('locked');
-            } else {
-               cpCard.classList.add('locked');
-            }
+                     // Click power upgrade
+         const cpCard = document.getElementById('upgClickPower');
+         document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
+         document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
+         if (score >= clickPowerCost) {
+            cpCard.classList.remove('locked');
+         } else {
+            cpCard.classList.add('locked');
          }
 
-         function showClickFloat(x, y) {
+         // Update combo display
+         if (combo > 1) {
+            comboDisplay.textContent = '🔥 ' + combo + 'x COMBO';
+         } else {
+            comboDisplay.textContent = '';
+         }
+
+         // Update progress bar
+         let cheapestCost = Infinity;
+         UPGRADES.forEach((u, i) => {
+            const c = getCost(u.baseCost, upgradeOwned[i]);
+            if (c < cheapestCost) cheapestCost = c;
+         });
+         if (clickPowerCost < cheapestCost) cheapestCost = clickPowerCost;
+         const progressPct = Math.min(100, (score / cheapestCost) * 100);
+         progressBar.style.width = progressPct + '%';
+      }
+
+                  function showClickFloat(x, y, pts) {
             const el = document.createElement('div');
             el.className = 'click-float';
-            el.textContent = '+' + formatNum(clickPower);
+            el.textContent = '+' + formatNum(pts || clickPower);
             el.style.left = x + 'px';
             el.style.top = y + 'px';
             clickArea.style.position = 'relative';
@@ -1063,14 +1114,28 @@
             setTimeout(() => el.remove(), 700);
          }
 
-         function doClick(e) {
-            score += clickPower;
-            totalEarned += clickPower;
+                  function doClick(e) {
+            const now = Date.now();
+            if (now - lastClickTime < 2000) {
+               combo++;
+            } else {
+               combo = 1;
+            }
+            lastClickTime = now;
+
+            let points = clickPower;
+            let isCritical = false;
+            if (combo > 0 && combo % 10 === 0) {
+               points *= 2;
+               isCritical = true;
+            }
+
+            score += points;
+            totalEarned += points;
 
             clickBtn.classList.add('pressed');
             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
 
-            // Float position
             const rect = clickArea.getBoundingClientRect();
             let cx, cy;
             if (e && e.clientX) {
@@ -1080,7 +1145,9 @@
                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
                cy = rect.height / 2 - 30;
             }
-            showClickFloat(cx, cy);
+            showClickFloat(cx, cy, points);
+            if (isCritical) showCriticalPopup(cx, cy);
+            checkMilestones();
             render();
          }
 
@@ -1132,8 +1199,8 @@
          }, 1000);
 
          // Save / Load
-         function saveGame() {
-            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned };
+                  function saveGame() {
+            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, milestoneShown };
             try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
          }
 
@@ -1142,13 +1209,14 @@
                const raw = localStorage.getItem(SAVE_KEY);
                if (raw) {
                   const data = JSON.parse(raw);
-                  score = data.score || 0;
-                  totalEarned = data.totalEarned || 0;
-                  clickPower = data.clickPower || 1;
-                  clickPowerLevel = data.clickPowerLevel || 1;
-                  clickPowerCost = data.clickPowerCost || 50;
-                  upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
-                  recalcPerSecond();
+                                  score = data.score || 0;
+                   totalEarned = data.totalEarned || 0;
+                   clickPower = data.clickPower || 1;
+                   clickPowerLevel = data.clickPowerLevel || 1;
+                   clickPowerCost = data.clickPowerCost || 50;
+                   upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                   milestoneShown = data.milestoneShown || {1000: false, 10000: false, 100000: false, 1000000: false};
+                   recalcPerSecond();
                }
             } catch (e) { }
          }
@@ -1163,12 +1231,75 @@
          document.getElementById('resetBtn').addEventListener('click', () => {
             if (confirm('Reset all progress for Brainrot Clicker? This cannot be undone.')) {
                localStorage.removeItem(SAVE_KEY);
-               score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
-               upgradeOwned = UPGRADES.map(() => 0);
-               recalcPerSecond();
-               render();
+                               score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
+                upgradeOwned = UPGRADES.map(() => 0);
+                milestoneShown = {1000: false, 10000: false, 100000: false, 1000000: false};
+                combo = 0;
+                recalcPerSecond();
+                render();
             }
          });
+
+          // ===== NEW FEATURES =====
+          let combo = 0;
+          let lastClickTime = 0;
+          let soundEnabled = true;
+          let milestoneShown = {1000: false, 10000: false, 100000: false, 1000000: false};
+          const PARTICLE_EMOJI = '🧠';
+          const comboDisplay = document.getElementById('comboDisplay');
+          const progressBar = document.getElementById('progressBar');
+          const milestoneBanner = document.getElementById('milestoneBanner');
+          const soundToggle = document.getElementById('soundToggle');
+
+          function showCriticalPopup(x, y) {
+             const el = document.createElement('div');
+             el.className = 'critical-popup';
+             el.textContent = 'CRITICAL HIT!';
+             el.style.left = (x - 50) + 'px';
+             el.style.top = (y - 50) + 'px';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 850);
+          }
+
+          function checkMilestones() {
+             const ms = [1000, 10000, 100000, 1000000];
+             ms.forEach(m => {
+                if (score >= m && !milestoneShown[m]) {
+                   milestoneShown[m] = true;
+                   milestoneBanner.textContent = '🎉 Milestone Reached! ' + formatNum(m) + ' Brainrots!';
+                   milestoneBanner.classList.add('show');
+                   setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
+                }
+             });
+          }
+
+          setInterval(() => {
+             if (document.hidden) return;
+             if (!clickArea) return;
+             const particle = document.createElement('div');
+             particle.className = 'particle';
+             particle.textContent = PARTICLE_EMOJI;
+             const rect = clickArea.getBoundingClientRect();
+             const x = Math.random() * (rect.width - 20) + 10;
+             const y = rect.height - 25;
+             particle.style.left = x + 'px';
+             particle.style.top = y + 'px';
+             clickArea.appendChild(particle);
+             setTimeout(() => particle.remove(), 2200);
+          }, 3500);
+
+          soundToggle.addEventListener('click', () => {
+             soundEnabled = !soundEnabled;
+             soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+          });
+
+          document.querySelectorAll('.faq-section h3').forEach(q => {
+             q.addEventListener('click', () => {
+                q.classList.toggle('active');
+                const ans = q.nextElementSibling;
+                ans.classList.toggle('open');
+             });
+          });
 
          // Auto-save every 30s
          setInterval(saveGame, 30000);

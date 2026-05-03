@@ -4,9 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Whopper Clicker - Play Free Online</title>
-   <meta name="description"
-      content="Whopper Clicker idle: Whoppers/sec Extra Patty→Burger Empire, Click Power—not franchise sim, BK tie-in, or recipe trees in this static build (unofficial theme).">
+   <title>Whopper Clicker - Free Online Burger Idle Game | Grill & Conquer</title>
+   <meta name="description" content="Play Whopper Clicker free online! Grill Whoppers, build your burger empire & trigger combo streaks. No download needed. Start flipping patties now!">
    <meta name="keywords"
       content="whopper clicker, whopper clicker, clicker game, idle game, free online game, play whopper clicker">
    <meta name="robots" content="index, follow">
@@ -752,6 +751,172 @@
          box-shadow: 0 4px 12px rgba(120, 56, 243, 0.15);
          color: #3b0764;
       }
+      /* Combo System */
+      .combo-display {
+         margin-top: 6px;
+         font-size: 0.9rem;
+         font-weight: 700;
+         color: #ea580c;
+         opacity: 0;
+         transition: opacity 0.2s;
+         min-height: 1.2em;
+      }
+      .combo-display.active {
+         opacity: 1;
+      }
+
+      /* Critical Hit Popup */
+      .critical-popup {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1.5rem;
+         font-weight: 800;
+         color: #ea580c;
+         text-shadow: 0 2px 8px rgba(0,0,0,0.12);
+         animation: criticalPop 0.8s ease-out forwards;
+         z-index: 20;
+         white-space: nowrap;
+      }
+      @keyframes criticalPop {
+         0% { opacity: 1; transform: translateY(0) scale(0.6); }
+         50% { transform: translateY(-40px) scale(1.2); }
+         100% { opacity: 0; transform: translateY(-80px) scale(1); }
+      }
+
+      /* Progress Bar */
+      .progress-bar-container {
+         width: 80%;
+         max-width: 220px;
+         height: 10px;
+         background: #e5e7eb;
+         border-radius: 5px;
+         margin-top: 10px;
+         overflow: hidden;
+      }
+      .progress-bar-fill {
+         height: 100%;
+         background: linear-gradient(90deg, #ea580c, #fb923c);
+         border-radius: 5px;
+         transition: width 0.3s ease;
+         width: 0%;
+      }
+
+      /* Floating Particles */
+      .particle {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1rem;
+         animation: particleFloat 2s ease-out forwards;
+         z-index: 5;
+      }
+      @keyframes particleFloat {
+         0% { opacity: 1; transform: translateY(0) scale(0.8); }
+         100% { opacity: 0; transform: translateY(-120px) scale(1.2); }
+      }
+
+      /* Milestone Banner */
+      .milestone-banner {
+         position: fixed;
+         top: 80px;
+         left: 50%;
+         transform: translateX(-50%) translateY(-20px);
+         background: linear-gradient(135deg, #ea580c, #c2410c);
+         color: white;
+         padding: 14px 32px;
+         border-radius: 30px;
+         font-weight: 700;
+         font-size: 1.1rem;
+         box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+         opacity: 0;
+         transition: all 0.5s ease;
+         z-index: 2000;
+         pointer-events: none;
+         text-align: center;
+      }
+      .milestone-banner.show {
+         opacity: 1;
+         transform: translateX(-50%) translateY(0);
+      }
+
+      /* FAQ Section */
+      .faq-section h3 {
+         color: #7838f3;
+         margin: 16px 0 0;
+         font-size: 1.1rem;
+         cursor: pointer;
+         padding: 12px 16px;
+         background: #f8f9fe;
+         border-radius: 8px;
+         transition: all 0.2s ease;
+         position: relative;
+         font-weight: 600;
+      }
+      .faq-section h3:hover {
+         background: #ede5ff;
+         transform: translateX(4px);
+      }
+      .faq-section h3::after {
+         content: '+';
+         position: absolute;
+         right: 16px;
+         top: 50%;
+         transform: translateY(-50%);
+         font-weight: 700;
+         color: #7838f3;
+         font-size: 1.2rem;
+      }
+      .faq-section h3.open::after {
+         content: '−';
+      }
+      .faq-section p {
+         display: none;
+         padding: 12px 16px;
+         margin: 0 0 10px;
+         color: #555;
+         line-height: 1.7;
+         background: #fff;
+         border-radius: 0 0 8px 8px;
+         border: 1px solid #f0f0f0;
+         border-top: none;
+      }
+      .faq-section p.open {
+         display: block;
+      }
+
+      /* Sound Toggle */
+      .sound-toggle {
+         background: rgba(255,255,255,0.25);
+         border: none;
+         font-size: 1.2rem;
+         cursor: pointer;
+         color: white;
+         padding: 4px 8px;
+         line-height: 1;
+         border-radius: 8px;
+         transition: all 0.2s;
+      }
+      .sound-toggle:hover {
+         background: rgba(255,255,255,0.4);
+      }
+
+      /* Keyboard hint */
+      .keyboard-hint {
+         text-align: center;
+         font-size: 0.8rem;
+         color: #999;
+         margin-top: 10px;
+         font-weight: 500;
+      }
+
+      /* Internal links styling consistency */
+      .article-container a {
+         color: #7838f3;
+         text-decoration: underline;
+         font-weight: 600;
+      }
+      .article-container a:hover {
+         color: #5b21b6;
+      }
    </style>
 </head>
 
@@ -780,6 +945,7 @@
                <span class="game-stat-pill" id="gStatTotal">0 Whoppers</span>
                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
             </div>
+            <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
@@ -873,63 +1039,76 @@
       <!-- ===== ARTICLE CONTENT ===== -->
       <article class="article-container">
 
+          <div class="intro">
+             <p><strong>Whopper Clicker</strong> serves up a deliciously addictive idle experience where your mission is to flip, stack, and sell as many Whoppers as humanly possible. What starts as a humble backyard grill quickly escalates into a Drive-Through dynasty, a Franchise empire, and eventually a global Burger Empire. Every click is another patty on the flattop, every upgrade is a new location opening its doors.</p>
+             <p>The <strong>Whopper</strong> is one of the most iconic hamburgers in fast-food history, first introduced by Burger King in 1957. Known for its flame-grilled beef and generous size, it has become a symbol of American fast food culture around the globe. Our Whopper Clicker channels the energy of a busy kitchen during the lunch rush, translating the chaos of burger assembly into a satisfying incremental numbers game.</p>
+             <p>Idle clicker games have become a staple of casual gaming because they reward both active engagement and passive patience. You can furiously click during a five-minute break to build a combo streak, or you can set up your kitchen with Grill Masters and Drive-Throughs and let the Whoppers cook while you handle real life. It is a <strong>free browser game with no download required</strong>, so you can start grilling from any device with an internet connection.</p>
+             <p>Unlike actual restaurant management, there are no inventory headaches, no customer complaints, and no grease burns. Just pure, unadulterated burger math. Will you focus on manual flipping speed with Click Power upgrades, or automate everything with passive income? The choice is yours, grill master.</p>
+          </div>
 
-         <div class="intro">
-            <p>This Whopper tally is burger-chain cosplay built on idle math—not a tie-in burger from Tampa, Miami, or
-               whichever city your drive-through lives in. The HUD tracks abstract <strong>Whoppers</strong> “per second,” with rows
-               named after patties, grills, drive-through stress, and franchising dreams.</p>
-            <p>No receipt printer, no Impossible patty swap, no secret menu ARG, no mobile order push notifications—just
-               <strong>Save</strong> for late-night sessions and <strong>Reset</strong> when you want to relive the opening shift without
-               inventory management.</p>
-         </div>
-         <section class="section">
-            <h2>Expedite line: what each upgrade is whispering</h2>
-            <div class="feature-box">
-               <h3>Kitchen drama as +/sec</h3>
-               <ul>
-                  <li><strong>Extra Patty</strong> — +1/sec; the student who double-stacks before prom.</li>
-                  <li><strong>Grill Master</strong> — +5/sec; tongs clanging for anyone who ever called “order up.”</li>
-                  <li><strong>Drive-Through</strong> — +20/sec; headset chaos expressed as spreadsheets.</li>
-                  <li><strong>Franchise Deal</strong> — +100/sec; fantasies about owning twelve locations.</li>
-                  <li><strong>Burger Empire</strong> — +500/sec; pretend McDowell’s vs Wendys arc without courtroom scenes.</li>
-               </ul>
-            </div>
-         </section>
-         <section class="section">
-            <h2>Grease-lamp revelations: Click Power vs fry oil throughput</h2>
-            <p>Trying to brute-force enough Whoppers manually to snag your first <strong>Franchise Deal</strong> is how carpal tunnel
-               meets comedy. Usually you want at least one <strong>Grill Master</strong> duplicating silently while you slam
-               Whoppers faster via <strong>Click Power</strong> during sprint bursts. Leaving the fryer unattended? Lean on stacked
-               <strong>Burger Empire</strong> tiers so timers keep ticking while you fetch actual food.</p>
-         </section>
-         <section class="section">
-            <h2>Holding tanks (local saves)</h2>
-            <p>Progress sits under <code>whopper_clicker_save</code> in this browser’s storage. That is the whole supply chain—no
-               franchise HQ sync.</p>
-         </section>
-         <section class="section">
-            <h2>Shift notes</h2>
-            <ol class="tips-list">
-               <li><strong>Extra Patty until passive clearly tops bare clicking.</strong></li>
-               <li><strong>Grill Master for the early curve.</strong></li>
-               <li><strong>Drive-Through when mid prices start to pinch.</strong></li>
-               <li><strong>Franchise Deal before long AFK stretches.</strong></li>
-               <li><strong>Burger Empire for flex totals.</strong></li>
-               <li><strong>Click Power</strong> when finger grease still wins races to the next upgrade.</li>
-            </ol>
-         </section>
-         <section class="section">
-            <h2>Other greasy siblings</h2>
-            <p>For standard cheddar stacks without trademark anxiety, poke <a href="/burger-clicker/">Burger Clicker</a>; for marina,
-               hit <a href="/pizza-clicker/">Pizza Clicker</a>.</p>
-         </section>
+          <section class="section">
+             <h2>How to Play Whopper Clicker</h2>
+             <ol class="tips-list">
+                <li><strong>Flip Patties:</strong> Click the big 🍔 burger button to cook Whoppers one by one. Each click adds to your total count and gets the grill sizzling.</li>
+                <li><strong>Add Extra Patties:</strong> Purchase the <strong>Extra Patty</strong> upgrade for +1 Whopper per second. This is your first step toward automated kitchen operations.</li>
+                <li><strong>Sharpen Your Skills:</strong> Buy <strong>Click Power</strong> to flip more burgers per click. A high click multiplier turns you into a one-person assembly line during active sessions.</li>
+                <li><strong>Hire the Crew:</strong> Unlock <strong>Grill Master</strong> (+5/sec) and <strong>Drive-Through</strong> (+20/sec) to bring in reinforcements and scale your production.</li>
+                <li><strong>Go Corporate:</strong> Save for <strong>Franchise Deal</strong> (+100/sec) and <strong>Burger Empire</strong> (+500/sec) to turn your single grill into a multinational fast-food conglomerate.</li>
+                <li><strong>Combo Cooking:</strong> Maintain a rapid click streak within 2-second windows to build combos. Every 10 consecutive clicks triggers a <strong>Critical Hit</strong> that cooks double burgers!</li>
+             </ol>
+          </section>
 
-         <div style="text-align: center;">
-            <a href="/" class="back-btn">Back to Home</a>
-         </div>
+          <section class="section">
+             <h2>Whopper Clicker Strategy Guide</h2>
+             <p><strong>Opening Shift Strategy:</strong> Your first shift should focus on getting at least one Extra Patty running as fast as possible. Passive income is the secret sauce of every successful clicker run. Once you have a baseline of automated production, funnel excess Whoppers into Click Power. The early game is all about minimizing downtime. If you have enough for an upgrade, buy it. Compounding interest applies to burgers too.</p>
+             <p><strong>The Lunch Rush:</strong> Around the mid-game, you will be juggling Grill Masters and Drive-Throughs while eyeing that expensive Franchise Deal. Here is the pro move: if you plan to step away from the game, prioritize Drive-Throughs for steady AFK income. If you are actively playing, buff your Click Power so manual clicks can fund the next big purchase in minutes rather than hours. Balance is the key to a well-run kitchen.</p>
+             <p><strong>Empire Management:</strong> In the late game, Burger Empire upgrades are your bread and butter. Each one adds a staggering +500 Whoppers per second. At this stage, active clicking becomes less about necessity and more about maintaining combos for fun. When you return to the game after a break, your first move should always be investing idle earnings into more Empires. Only then should you consider whether another Click Power level is worth the price.</p>
+          </section>
 
-      </article>
-      <!-- Related Games Section -->
+          <section class="section faq-section">
+             <h2>Frequently Asked Questions</h2>
+             <h3>What is Whopper Clicker?</h3>
+             <p>Whopper Clicker is a free online idle game themed around grilling and selling Whopper burgers. Players click to earn Whoppers and purchase upgrades like Grill Masters and Franchise Deals to generate passive income and build a burger empire.</p>
+             <h3>Is this an official Burger King game?</h3>
+             <p>No, Whopper Clicker is an unofficial fan-themed idle clicker game. It is not affiliated with Burger King or any other restaurant chain. It is created purely for entertainment.</p>
+             <h3>How do I save my game?</h3>
+             <p>Click the 💾 Save button to store your progress in your browser. The game also auto-saves every 30 seconds. Note that clearing browser cookies or site data will erase your save file.</p>
+             <h3>What is the best upgrade strategy?</h3>
+             <p>Early on, buy Extra Patties for passive income. In the mid-game, balance Click Power with Drive-Through purchases. Late game, focus entirely on Burger Empire upgrades for maximum passive production.</p>
+             <h3>Does Whopper Clicker work on mobile?</h3>
+             <p>Yes, the game is fully responsive. Tap the burger button to click and scroll through upgrades on your phone or tablet just as you would on a computer.</p>
+             <h3>How do combos and Critical Hits work?</h3>
+             <p>Click rapidly so that each click happens within 2 seconds of the last one to build a combo. Every time your combo reaches a multiple of 10, you land a Critical Hit that earns double Whoppers for that click. Let 2 seconds pass and your combo resets to zero.</p>
+          </section>
+
+          <section class="section">
+             <h2>Why Play Whopper Clicker?</h2>
+             <p>Whopper Clicker feeds our appetite for growth and completion. There is an almost primal satisfaction in watching a number climb higher and higher, especially when that number represents something as universally loved as burgers. The game requires no tutorial, no competitive anxiety, and no time commitment. It is the gaming equivalent of comfort food: familiar, satisfying, and always there when you need a quick dopamine hit.</p>
+             <p>Compared to other food-themed clickers like <a href="/pizza-clicker/">Pizza Clicker</a> or <a href="/burger-clicker/">Burger Clicker</a>, Whopper Clicker leans into the fast-food franchise fantasy with upgrades that mirror real business expansion. If you are in the mood for something completely different, <a href="/cookie-clicker/">Cookie Clicker</a> offers the genre's most iconic experience, while <a href="/room-clicker/">Room Clicker</a> lets you decorate instead of cook.</p>
+          </section>
+
+          <section class="section">
+             <h2>Did You Know? Whopper Fun Facts</h2>
+             <div class="highlight-box">
+                <ul>
+                   <li>The Whopper was first introduced in 1957 and originally cost just 37 cents.</li>
+                   <li>A standard Whopper contains a quarter-pound beef patty, making it one of the largest fast-food burgers available at launch.</li>
+                   <li>Burger King serves over 2.1 billion Whoppers globally each year across more than 18,000 locations.</li>
+                   <li>The Whopper has been released in numerous limited-edition variations, including the Angry Whopper, the Halloween Whopper (with a black bun), and the Impossible Whopper.</li>
+                   <li>In 2020, Burger King ran a campaign encouraging customers to order from McDonald's to support the restaurant industry during the pandemic, showing the Whopper's cultural reach.</li>
+                </ul>
+             </div>
+          </section>
+
+          <div style="text-align: center;">
+             <a href="/" class="back-btn">Back to Home</a>
+          </div>
+
+       </article>
+
+       <div class="milestone-banner" id="milestoneBanner">Milestone Reached!</div>
+
+       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
          <p class="related-games-subtitle">Discover more free online clicker games to play</p>
@@ -995,6 +1174,28 @@
          let perSecond = 0;
          let upgradeOwned = UPGRADES.map(() => 0);
 
+         // Combo system
+         let lastClickTime = 0;
+         let comboCount = 0;
+         const COMBO_WINDOW = 2000;
+         const comboDisplay = document.getElementById('comboDisplay');
+
+         // Sound toggle
+         let soundOn = true;
+         const soundToggle = document.getElementById('soundToggle');
+         soundToggle.addEventListener('click', () => {
+            soundOn = !soundOn;
+            soundToggle.textContent = soundOn ? '🔊' : '🔇';
+         });
+
+         // Progress bar
+         const progressBarFill = document.getElementById('progressBarFill');
+
+         // Milestones
+         const milestones = [1000, 10000, 100000, 1000000];
+         let reachedMilestones = new Set();
+         const milestoneBanner = document.getElementById('milestoneBanner');
+
          // DOM
          const scoreNum = document.getElementById('scoreNum');
          const perSecDisplay = document.getElementById('perSecDisplay');
@@ -1015,6 +1216,36 @@
          function getCost(baseC, owned) {
             return Math.floor(baseC * Math.pow(COST_SCALE, owned));
          }
+
+         function showCriticalPopup() {
+            const el = document.createElement('div');
+            el.className = 'critical-popup';
+            el.textContent = 'CRITICAL HIT!';
+            const rect = clickArea.getBoundingClientRect();
+            el.style.left = (rect.width/2 - 60) + 'px';
+            el.style.top = (rect.height/2 - 60) + 'px';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 800);
+         }
+
+         function showMilestoneBanner(text) {
+            milestoneBanner.textContent = 'Milestone Reached! ' + text + ' Whoppers';
+            milestoneBanner.classList.add('show');
+            setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
+         }
+
+         // Particles
+         setInterval(() => {
+            if (document.hidden) return;
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.textContent = ['🟩', '💎', '⭐', '🎮'][Math.floor(Math.random()*4)];
+            const rect = clickArea.getBoundingClientRect();
+            p.style.left = (20 + Math.random() * (rect.width - 40)) + 'px';
+            p.style.top = (rect.height - 30) + 'px';
+            clickArea.appendChild(p);
+            setTimeout(() => p.remove(), 2000);
+         }, 3500);
 
          function recalcPerSecond() {
             perSecond = 0;
@@ -1042,6 +1273,24 @@
                }
             });
 
+            // Progress bar to next affordable upgrade
+            let nextCost = Infinity;
+            UPGRADES.forEach((u, i) => {
+               const c = getCost(u.baseCost, upgradeOwned[i]);
+               if (c < nextCost) nextCost = c;
+            });
+            if (clickPowerCost < nextCost) nextCost = clickPowerCost;
+            let progress = Math.min(100, (score / nextCost) * 100);
+            progressBarFill.style.width = progress + '%';
+
+            // Milestones
+            milestones.forEach(m => {
+               if (score >= m && !reachedMilestones.has(m)) {
+                  reachedMilestones.add(m);
+                  showMilestoneBanner(formatNum(m));
+               }
+            });
+
             // Click power upgrade
             const cpCard = document.getElementById('upgClickPower');
             document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
@@ -1065,8 +1314,31 @@
          }
 
          function doClick(e) {
-            score += clickPower;
-            totalEarned += clickPower;
+            let now = Date.now();
+            if (now - lastClickTime <= COMBO_WINDOW) {
+               comboCount++;
+            } else {
+               comboCount = 1;
+            }
+            lastClickTime = now;
+
+            let earned = clickPower;
+            if (comboCount >= 10 && comboCount % 10 === 0) {
+               earned *= 2;
+               showCriticalPopup();
+            }
+
+            score += earned;
+            totalEarned += earned;
+
+            if (comboCount > 1) {
+               comboDisplay.textContent = comboCount + 'x COMBO!';
+               comboDisplay.classList.add('active');
+               clearTimeout(comboDisplay._t);
+               comboDisplay._t = setTimeout(() => comboDisplay.classList.remove('active'), 1500);
+            } else {
+               comboDisplay.classList.remove('active');
+            }
 
             clickBtn.classList.add('pressed');
             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
@@ -1134,7 +1406,7 @@
 
          // Save / Load
          function saveGame() {
-            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned };
+            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, reachedMilestones: [...reachedMilestones] };
             try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
          }
 
@@ -1149,6 +1421,7 @@
                   clickPowerLevel = data.clickPowerLevel || 1;
                   clickPowerCost = data.clickPowerCost || 50;
                   upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                  if (data.reachedMilestones) reachedMilestones = new Set(data.reachedMilestones);
                   recalcPerSecond();
                }
             } catch (e) { }
@@ -1187,6 +1460,16 @@
       menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
       document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
       document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+   </script>
+
+   <script>
+      // FAQ Toggle
+      document.querySelectorAll('.faq-section h3').forEach(q => {
+         q.addEventListener('click', () => {
+            q.classList.toggle('open');
+            q.nextElementSibling.classList.toggle('open');
+         });
+      });
    </script>
 
    <!-- Site Footer -->

@@ -4,9 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Case Clicker 2 - Play Free Online</title>
-   <meta name="description"
-      content="Case Clicker 2 variant: Premium Key → Legendary Vault as gem/sec tiers plus Click Power; case-open cosplay without RNG loot or trading in this static build—save & reset.">
+   <title>Case Clicker 2 - Play Free Online | CSGO-Style Idle Clicker Game</title>
+   <meta name="description" content="Open Case Clicker 2 free in your browser! CSGO-inspired idle clicker with gem upgrades, combos & milestones. No download needed. Start clicking!">
    <meta name="keywords"
       content="case clicker 2, case clicker 2, clicker game, idle game, free online game, play case clicker 2">
    <meta name="robots" content="index, follow">
@@ -744,6 +743,26 @@
          box-shadow: 0 4px 12px rgba(120, 56, 243, 0.15);
          color: #3b0764;
       }
+         /* ===== NEW FEATURES CSS ===== */
+      .combo-display { margin-top: 8px; font-size: 0.9rem; font-weight: 700; color: #ff6b00; min-height: 1.2rem; text-align: center; }
+      .critical-popup { position: absolute; pointer-events: none; font-size: 1.5rem; font-weight: 800; color: #ff2200; text-shadow: 0 2px 6px rgba(255,34,0,0.35); animation: criticalPop 0.85s ease-out forwards; z-index: 20; }
+      @keyframes criticalPop { 0% { opacity: 1; transform: translateY(0) scale(0.5); } 50% { transform: translateY(-25px) scale(1.25); } 100% { opacity: 0; transform: translateY(-65px) scale(1); } }
+      .progress-bar-container { width: 80%; max-width: 220px; height: 10px; background: #e5e7eb; border-radius: 5px; margin-top: 12px; overflow: hidden; box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); }
+      .progress-bar-fill { height: 100%; border-radius: 5px; transition: width 0.35s ease; background: linear-gradient(90deg, currentColor, rgba(255,255,255,0.3)); background-color: currentColor; }
+      .particle { position: absolute; pointer-events: none; font-size: 1rem; opacity: 0; animation: particleFloat 2.2s ease-out forwards; z-index: 5; }
+      @keyframes particleFloat { 0% { opacity: 0.85; transform: translateY(0) scale(0.7); } 100% { opacity: 0; transform: translateY(-130px) scale(1.3); } }
+      .milestone-banner { position: fixed; top: 80px; left: 50%; transform: translateX(-50%) translateY(-120px); background: linear-gradient(135deg, #ffd700, #ffaa00); color: #333; padding: 16px 32px; border-radius: 14px; font-weight: 700; font-size: 1.15rem; box-shadow: 0 10px 30px rgba(255,170,0,0.35); z-index: 2000; transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1); text-align: center; }
+      .milestone-banner.show { transform: translateX(-50%) translateY(0); }
+      .faq-section h3 { cursor: pointer; padding: 14px 18px; background: #f8f9fe; border-radius: 10px; margin-bottom: 6px; transition: all 0.2s ease; position: relative; font-size: 1.05rem; color: #333; font-weight: 600; }
+      .faq-section h3:hover { background: #ede5ff; }
+      .faq-section h3::after { content: '+'; position: absolute; right: 18px; font-weight: 700; color: #7838f3; font-size: 1.2rem; }
+      .faq-section h3.active::after { content: '−'; }
+      .faq-section p { padding: 0 18px 18px; margin: 0; display: none; line-height: 1.8; }
+      .faq-section p.open { display: block; }
+      .sound-toggle { background: none; border: none; font-size: 1.25rem; cursor: pointer; padding: 4px 10px; border-radius: 8px; transition: background 0.2s; color: white; line-height: 1; }
+      .sound-toggle:hover { background: rgba(255,255,255,0.2); }
+      .keyboard-hint { font-size: 0.75rem; color: #aaa; margin-top: 10px; text-align: center; font-weight: 500; }
+
    </style>
 </head>
 
@@ -760,6 +779,8 @@
          <button class="menu-btn">☰</button>
       </div>
    </nav>
+   <div class="milestone-banner" id="milestoneBanner"></div>
+
 
    <div class="main-content">
       <h1 class="page-title">Play Case Clicker 2 Online</h1>
@@ -772,6 +793,7 @@
                <span class="game-stat-pill" id="gStatTotal">0 Gems</span>
                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
             </div>
+         <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
@@ -784,6 +806,11 @@
                </div>
                <div class="per-second" id="perSecDisplay">0 gems/sec</div>
                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+               <div class="combo-display" id="comboDisplay"></div>
+               <div class="progress-bar-container">
+                  <div class="progress-bar-fill" id="progressBar" style="width:0%; color: #9333ea;"></div>
+               </div>
+               <div class="keyboard-hint">Tip: Press SPACE to click!</div>
             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
@@ -866,48 +893,67 @@
       <article class="article-container">
 
          <div class="intro">
-            Case Clicker 2 is the <strong>gem-labeled sibling</strong> of <a href="/case-clicker/">Case Clicker</a>: same idle
-            engine underneath (click + passive ladders + Click Power), but tiers read Premium Key → Legendary Vault and the
-            score pretends gems instead of coins. Despite names like Mythic Finder, you are still buying flat +100/sec
-            passives—not opening mythic rarity tables, bidding on auctions, salvaging duplicates, crafting ascended items,
-            or reacting to ticker-driven prices. Approach it as thematic chrome on deterministic math or you will hunt
-            mechanics that this static page never shipped.
+            <p><strong>Case Clicker 2</strong> is a free browser idle game that channels the adrenaline of CS:GO case openings into a relaxing incremental experience. If you have ever watched a Twitch streamer unbox a knife skin or felt your heart race as a case spun toward a rare red drop, you already understand the fantasy. Case Clicker 2 distills that excitement into pure numbers: click to earn gems, buy auto-openers, and stack passive income until your gem count rivals a Saudi esports empire.</p>
+<p>Clicker games have become a global phenomenon because they perfectly exploit the human brain's love of accumulation and progress. Studies in behavioral psychology show that variable reward schedules—where you never quite know when the next big upgrade will arrive—create powerful engagement loops. Unlike actual case opening, which can cost real money and deliver nothing, Case Clicker 2 guarantees progress. Every click matters, every upgrade pays dividends, and you never walk away empty-handed.</p>
+<p>This is a completely free browser game with no downloads, no microtransactions, and no gambling mechanics. Your progress saves automatically to your browser's local storage. Whether you are a CS:GO fanatic who dreams of Dragon Lores or just someone who likes watching numbers go up, Case Clicker 2 is designed for you. Also try <a href="/case-clicker/">Case Clicker</a> for the original flavor, or explore <a href="/csgo-clicker/">CSGO Clicker</a> and <a href="/candy-clicker/">Candy Clicker</a> for more themed incremental fun.</p>
          </div>
 
          <section class="section">
-            <h2>What each tier contributes</h2>
-            <div class="feature-box">
-               <h3>Passive incomes (gems per second)</h3>
-               <ul>
-                  <li><strong>Premium Key</strong> — +1/sec.</li>
-                  <li><strong>Auto Opener</strong> — +5/sec; robot emoji implies automation, mechanic is purely passive ticks.
-                  </li>
-                  <li><strong>VIP Pass</strong> — +20/sec.</li>
-                  <li><strong>Mythic Finder</strong> — +100/sec; crystal ball garnish, still no loot RNG.</li>
-                  <li><strong>Legendary Vault</strong> — +500/sec; bank icon, top passive band.</li>
-               </ul>
-            </div>
-            <p>Click Power remains the manual tap multiplier—level it when finger spam still changes purchase timing.</p>
-         </section>
-
-         <section class="section">
-            <h2>Efficient run order</h2>
+            <h2>How to Play Case Clicker 2</h2>
             <ol class="tips-list">
-               <li><strong>Mirror Case Clicker 1 strategy.</strong> Same breakpoints, different nouns.</li>
-               <li><strong>Stack Premium Keys before splurging on one VIP.</strong> Breadth usually wins early.</li>
-               <li><strong>Auto Opener +5 lines are your budget workhorse.</strong></li>
-               <li><strong>VIP Pass at +20 means mid pace.</strong> Good moment to relax click intensity.</li>
-               <li><strong>Mythic Finder sustains tab-away play.</strong> +100/sec rewards multitasking.</li>
-               <li><strong>Legendary Vault rows accelerate end totals.</strong> Stack +500s for huge gem counts.</li>
+            <li><strong>Click the case button</strong> to earn gems manually. Each click yields base gems that increase as you level up Click Power.</li>
+            <li><strong>Purchase Premium Keys</strong> at 15 gems for your first passive income source (+1 gem/sec). This should be your absolute first priority.</li>
+            <li><strong>Deploy Auto Openers</strong> at 100 gems each for +5 gems/sec. Stack several of these before moving to higher tiers—they offer excellent early returns.</li>
+            <li><strong>Grab a VIP Pass</strong> at 500 gems for +20 gems/sec. This marks your transition into the mid-game where passive income starts outpacing manual clicking.</li>
+            <li><strong>Activate the Mythic Finder</strong> at 2,500 gems for +100 gems/sec. Now your gem count grows meaningfully even while you browse other tabs.</li>
+            <li><strong>Unlock the Legendary Vault</strong> at 15,000 gems for +500 gems/sec. This endgame upgrade catapults your score into the millions.</li>
+            <li><strong>Upgrade Click Power</strong> whenever you are actively playing and want to accelerate your next big purchase.</li>
+            <li><strong>Press SPACE</strong> to spam clicks efficiently without destroying your mouse.</li>
             </ol>
          </section>
 
          <section class="section">
-            <h2>Expectations vs reality</h2>
-            <p>If you want real case-sim dynamics—seeded rolls, float values, wear bars—look for games that implement
-               probability tables in code. This page advertises the fantasy through art and labels while delivering the
-               cozy incremental loop our subdomain standardizes for quick loads and offline-ish play inside a single HTML file.
-            </p>
+            <h2>Strategy Guide</h2>
+            <p>Case Clicker 2 rewards patient diversification. Because each upgrade's cost increases exponentially with every copy you buy, the "best" upgrade is rarely the most expensive one available. Instead, calculate the marginal gain: divide the new income by the cost. Early on, Premium Keys and Auto Openers dominate this metric. Even when you can afford a VIP Pass, buying three more Auto Openers might yield a better rate-per-gem-spent.</p>
+<p>The mid-game turning point arrives when your passive income from VIP Passes and Mythic Finders reaches roughly 200 gems per second. At this threshold, Click Power becomes situational rather than essential. If you plan to actively grind for five minutes, level Click Power. If you are walking away from the computer, dump everything into passive generators. The beauty of idle games is that they respect your time—progress continues whether you are watching or not.</p>
+<p>Late-game strategy revolves around Legendary Vault stacking. Each vault adds +500 gems/sec, but their costs skyrocket quickly. Smart players periodically revisit cheaper tiers. Your 25th Premium Key might cost less than your 4th Legendary Vault while still contributing meaningful income. Treat your upgrade portfolio like a stock index: diversification wins over concentration in the long run.</p>
+         </section>
+
+         <section class="section faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <h3>Is Case Clicker 2 related to CS:GO or Valve?</h3>
+            <p>No. Case Clicker 2 is an independent fan-made idle game. It is not affiliated with Counter-Strike: Global Offensive, Valve Corporation, or any official gaming property. The case-opening theme is used as inspirational flavor.</p>
+            <h3>Can I get real skins from this game?</h3>
+            <p>No. Case Clicker 2 uses abstract 'gems' as currency. There are no real cosmetic items, no trading, no marketplace, and no way to convert in-game currency to real-world value.</p>
+            <h3>How does the combo system work?</h3>
+            <p>Click rapidly within 2 seconds of your previous click to build a combo. Your combo multiplier grows with each consecutive click. At 10x combo, your next click becomes a CRITICAL HIT worth double points!</p>
+            <h3>What are milestones?</h3>
+            <p>When your total score reaches 1,000, 10,000, 100,000, or 1,000,000 gems, a celebratory banner appears at the top of the screen. These milestones are cosmetic achievements that mark your progression.</p>
+            <h3>Why does my progress bar move slowly?</h3>
+            <p>The progress bar shows how close you are to affording the next cheapest upgrade. It fills based on your current score relative to that upgrade's cost. It updates dynamically as you earn gems.</p>
+            <h3>Is there a prestige or reset system?</h3>
+            <p>Yes. You can manually reset all progress using the 🔄 Reset button in the game footer. This wipes your local save and starts a fresh run. There is no automatic prestige layer—resetting is entirely optional for players who enjoy speedrunning from zero.</p>
+            <h3>Can I play on my phone?</h3>
+            <p>Absolutely. Case Clicker 2 is fully responsive and works on any modern smartphone or tablet browser. Touch the case button to click, just as you would with a mouse.</p>
+         </section>
+
+         <section class="section">
+            <h2>Why Play Case Clicker 2?</h2>
+            <p>Case Clicker 2 scratches an itch that traditional video games often ignore: the pure joy of accumulation. There is no boss to defeat, no timer to beat, and no enemy to outplay. The only challenge is patience and strategic resource allocation. For CS:GO fans, the thematic wrapper provides an extra layer of satisfaction—every gem earned feels like a virtual case opened without the financial risk.</p>
+<p>Compared to action-heavy clickers like <a href="/chicken-jockey-clicker/">Chicken Jockey Clicker</a>, Case Clicker 2 is more relaxed and methodical. The purple gem aesthetic and vault-themed upgrades create a feeling of luxury and exclusivity. The combo system and critical hits add just enough active-play incentive to keep your fingers busy during loading screens or Zoom meetings. Whether you are a hardcore incremental fan or a curious newcomer, Case Clicker 2 offers one of the most polished free clicker experiences on the web.</p>
+         </section>
+
+         <section class="section">
+            <h2>Did You Know? Fun Facts</h2>
+            <div class="highlight-box">
+               <ul>
+            <li>CS:GO case keys originally cost $2.49 USD, making case opening a multi-billion dollar economy within the game.</li>
+            <li>The rarest CS:GO skins, like the Souvenir Dragon Lore, have sold for over $100,000 on third-party marketplaces.</li>
+            <li>The term 'case opening' has become so popular that multiple countries have debated whether it constitutes gambling and should be regulated.</li>
+            <li>The first automated clicker programs for idle games date back to the early 2010s Cookie Clicker community.</li>
+            <li>Purple and gold are psychologically associated with luxury and high value, which is why many casino and loot-box interfaces use these colors.</li>
+               </ul>
+            </div>
          </section>
 
          <div style="text-align: center;">
@@ -915,6 +961,7 @@
          </div>
 
       </article>
+
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
@@ -1028,21 +1075,38 @@
                }
             });
 
-            // Click power upgrade
-            const cpCard = document.getElementById('upgClickPower');
-            document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
-            document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
-            if (score >= clickPowerCost) {
-               cpCard.classList.remove('locked');
-            } else {
-               cpCard.classList.add('locked');
-            }
+                     // Click power upgrade
+         const cpCard = document.getElementById('upgClickPower');
+         document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
+         document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
+         if (score >= clickPowerCost) {
+            cpCard.classList.remove('locked');
+         } else {
+            cpCard.classList.add('locked');
          }
 
-         function showClickFloat(x, y) {
+         // Update combo display
+         if (combo > 1) {
+            comboDisplay.textContent = '🔥 ' + combo + 'x COMBO';
+         } else {
+            comboDisplay.textContent = '';
+         }
+
+         // Update progress bar
+         let cheapestCost = Infinity;
+         UPGRADES.forEach((u, i) => {
+            const c = getCost(u.baseCost, upgradeOwned[i]);
+            if (c < cheapestCost) cheapestCost = c;
+         });
+         if (clickPowerCost < cheapestCost) cheapestCost = clickPowerCost;
+         const progressPct = Math.min(100, (score / cheapestCost) * 100);
+         progressBar.style.width = progressPct + '%';
+      }
+
+                  function showClickFloat(x, y, pts) {
             const el = document.createElement('div');
             el.className = 'click-float';
-            el.textContent = '+' + formatNum(clickPower);
+            el.textContent = '+' + formatNum(pts || clickPower);
             el.style.left = x + 'px';
             el.style.top = y + 'px';
             clickArea.style.position = 'relative';
@@ -1050,14 +1114,28 @@
             setTimeout(() => el.remove(), 700);
          }
 
-         function doClick(e) {
-            score += clickPower;
-            totalEarned += clickPower;
+                  function doClick(e) {
+            const now = Date.now();
+            if (now - lastClickTime < 2000) {
+               combo++;
+            } else {
+               combo = 1;
+            }
+            lastClickTime = now;
+
+            let points = clickPower;
+            let isCritical = false;
+            if (combo > 0 && combo % 10 === 0) {
+               points *= 2;
+               isCritical = true;
+            }
+
+            score += points;
+            totalEarned += points;
 
             clickBtn.classList.add('pressed');
             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
 
-            // Float position
             const rect = clickArea.getBoundingClientRect();
             let cx, cy;
             if (e && e.clientX) {
@@ -1067,7 +1145,9 @@
                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
                cy = rect.height / 2 - 30;
             }
-            showClickFloat(cx, cy);
+            showClickFloat(cx, cy, points);
+            if (isCritical) showCriticalPopup(cx, cy);
+            checkMilestones();
             render();
          }
 
@@ -1119,8 +1199,8 @@
          }, 1000);
 
          // Save / Load
-         function saveGame() {
-            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned };
+                  function saveGame() {
+            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, milestoneShown };
             try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
          }
 
@@ -1129,13 +1209,14 @@
                const raw = localStorage.getItem(SAVE_KEY);
                if (raw) {
                   const data = JSON.parse(raw);
-                  score = data.score || 0;
-                  totalEarned = data.totalEarned || 0;
-                  clickPower = data.clickPower || 1;
-                  clickPowerLevel = data.clickPowerLevel || 1;
-                  clickPowerCost = data.clickPowerCost || 50;
-                  upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
-                  recalcPerSecond();
+                                  score = data.score || 0;
+                   totalEarned = data.totalEarned || 0;
+                   clickPower = data.clickPower || 1;
+                   clickPowerLevel = data.clickPowerLevel || 1;
+                   clickPowerCost = data.clickPowerCost || 50;
+                   upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                   milestoneShown = data.milestoneShown || {1000: false, 10000: false, 100000: false, 1000000: false};
+                   recalcPerSecond();
                }
             } catch (e) { }
          }
@@ -1150,12 +1231,75 @@
          document.getElementById('resetBtn').addEventListener('click', () => {
             if (confirm('Reset all progress for Case Clicker 2? This cannot be undone.')) {
                localStorage.removeItem(SAVE_KEY);
-               score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
-               upgradeOwned = UPGRADES.map(() => 0);
-               recalcPerSecond();
-               render();
+                               score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
+                upgradeOwned = UPGRADES.map(() => 0);
+                milestoneShown = {1000: false, 10000: false, 100000: false, 1000000: false};
+                combo = 0;
+                recalcPerSecond();
+                render();
             }
          });
+
+          // ===== NEW FEATURES =====
+          let combo = 0;
+          let lastClickTime = 0;
+          let soundEnabled = true;
+          let milestoneShown = {1000: false, 10000: false, 100000: false, 1000000: false};
+          const PARTICLE_EMOJI = '💎';
+          const comboDisplay = document.getElementById('comboDisplay');
+          const progressBar = document.getElementById('progressBar');
+          const milestoneBanner = document.getElementById('milestoneBanner');
+          const soundToggle = document.getElementById('soundToggle');
+
+          function showCriticalPopup(x, y) {
+             const el = document.createElement('div');
+             el.className = 'critical-popup';
+             el.textContent = 'CRITICAL HIT!';
+             el.style.left = (x - 50) + 'px';
+             el.style.top = (y - 50) + 'px';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 850);
+          }
+
+          function checkMilestones() {
+             const ms = [1000, 10000, 100000, 1000000];
+             ms.forEach(m => {
+                if (score >= m && !milestoneShown[m]) {
+                   milestoneShown[m] = true;
+                   milestoneBanner.textContent = '🎉 Milestone Reached! ' + formatNum(m) + ' Gems!';
+                   milestoneBanner.classList.add('show');
+                   setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
+                }
+             });
+          }
+
+          setInterval(() => {
+             if (document.hidden) return;
+             if (!clickArea) return;
+             const particle = document.createElement('div');
+             particle.className = 'particle';
+             particle.textContent = PARTICLE_EMOJI;
+             const rect = clickArea.getBoundingClientRect();
+             const x = Math.random() * (rect.width - 20) + 10;
+             const y = rect.height - 25;
+             particle.style.left = x + 'px';
+             particle.style.top = y + 'px';
+             clickArea.appendChild(particle);
+             setTimeout(() => particle.remove(), 2200);
+          }, 3500);
+
+          soundToggle.addEventListener('click', () => {
+             soundEnabled = !soundEnabled;
+             soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+          });
+
+          document.querySelectorAll('.faq-section h3').forEach(q => {
+             q.addEventListener('click', () => {
+                q.classList.toggle('active');
+                const ans = q.nextElementSibling;
+                ans.classList.toggle('open');
+             });
+          });
 
          // Auto-save every 30s
          setInterval(saveGame, 30000);

@@ -4,9 +4,9 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Chill Girl Clicker - Play Free Online</title>
+   <title>Chill Girl Clicker - Free Cozy Self-Care Idle Game Online | Spacebar Clicker</title>
    <meta name="description"
-      content="Chill Girl Clicker: earn Vibes, passive tiers Scented Candle → Ultimate Zen (+vibes/sec), Click Power, meme-styled idle—no evolving lo-fi soundtrack tied to upgrades or room scenes in this build.">
+      content="Play Chill Girl Clicker free online! Collect Vibes, unlock candles to ultimate zen, and relax in this cozy self-care themed incremental game. No download.">
    <meta name="keywords"
       content="chill girl clicker, chill girl clicker, clicker game, idle game, free online game, play chill girl clicker">
    <meta name="robots" content="index, follow">
@@ -427,6 +427,34 @@
          color: #dc2626;
       }
 
+      /* ===== NEW GAME FEATURES CSS ===== */
+      .combo-display { margin-top: 6px; font-size: 0.85rem; font-weight: 700; color: #c026d3; min-height: 1.2em; }
+      .critical-popup { position: absolute; pointer-events: none; font-size: 1.6rem; font-weight: 800; color: #dc2626; text-shadow: 0 2px 8px rgba(220,38,38,0.3); animation: criticalPop 0.8s ease-out forwards; z-index: 20; }
+      @keyframes criticalPop { 0% { opacity: 1; transform: translateY(0) scale(0.5); } 50% { transform: translateY(-30px) scale(1.2); } 100% { opacity: 0; transform: translateY(-80px) scale(1); } }
+      .progress-bar-container { width: 80%; max-width: 220px; height: 10px; background: #eee; border-radius: 5px; margin-top: 12px; overflow: hidden; }
+      .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #c026d3, #c026d3dd); border-radius: 5px; transition: width 0.3s ease; width: 0%; }
+      .particle { position: absolute; pointer-events: none; font-size: 1rem; opacity: 0.7; animation: particleFloat 2.5s ease-out forwards; z-index: 5; }
+      @keyframes particleFloat { 0% { opacity: 0.7; transform: translateY(0) rotate(0deg); } 100% { opacity: 0; transform: translateY(-120px) rotate(45deg); } }
+      .milestone-banner { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: linear-gradient(135deg, #c026d3, #c026d3dd); color: white; padding: 14px 28px; border-radius: 12px; font-size: 1.1rem; font-weight: 700; box-shadow: 0 8px 30px rgba(0,0,0,0.2); animation: milestoneIn 0.5s ease-out, milestoneOut 0.5s ease-in 2s forwards; z-index: 50; pointer-events: none; white-space: nowrap; }
+      @keyframes milestoneIn { from { opacity: 0; transform: translate(-50%, -50%) scale(0.7); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+      @keyframes milestoneOut { from { opacity: 1; transform: translate(-50%, -50%) scale(1); } to { opacity: 0; transform: translate(-50%, -50%) scale(0.9); } }
+      .sound-toggle { background: rgba(255,255,255,0.2); border: none; border-radius: 8px; padding: 4px 10px; color: white; font-size: 1rem; cursor: pointer; transition: background 0.2s; }
+      .sound-toggle:hover { background: rgba(255,255,255,0.35); }
+      .keyboard-tip { width: 100%; text-align: center; font-size: 0.78rem; color: #888; margin-top: 8px; font-weight: 500; }
+      .faq-section { margin-bottom: 30px; }
+      .faq-item { margin-bottom: 14px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+      .faq-item h3 { color: #333; font-size: 1.05rem; margin-bottom: 6px; cursor: pointer; transition: color 0.2s; position: relative; padding-right: 20px; }
+      .faq-item h3:hover { color: #c026d3; }
+      .faq-item h3::after { content: '+'; position: absolute; right: 0; top: 0; color: #7838f3; font-weight: 700; transition: transform 0.2s; }
+      .faq-item.active h3::after { transform: rotate(45deg); }
+      .faq-item p { display: none; color: #555; line-height: 1.7; font-size: 1rem; margin-bottom: 0; padding-top: 4px; }
+      .faq-item.active p { display: block; }
+      .fun-facts { background: #f8f9fe; border-radius: 12px; padding: 20px; margin: 20px 0; }
+      .fun-facts h3 { color: #7838f3; margin-bottom: 12px; }
+      .fun-facts ul { list-style: none; padding-left: 0; }
+      .fun-facts li { padding: 6px 0 6px 24px; position: relative; color: #333; line-height: 1.6; }
+      .fun-facts li::before { content: '•'; position: absolute; left: 0; color: #7838f3; font-weight: bold; }
+
       /* Article Styles */
       .article-container {
          max-width: 800px;
@@ -768,22 +796,25 @@
       <div class="game-wrapper" id="gameWrapper">
          <div class="game-header">
             <h2>💆‍♀️ Chill Girl Clicker</h2>
-            <div class="game-stats-bar">
-               <span class="game-stat-pill" id="gStatTotal">0 Vibes</span>
-               <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
-            </div>
+             <div class="game-stats-bar">
+                <span class="game-stat-pill" id="gStatTotal">0 Vibes</span>
+                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+                <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
+             </div>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
                <button class="click-btn" id="clickBtn" aria-label="Relax Vibe">
                   <span class="emoji">💆‍♀️</span>
                </button>
-               <div class="score-display">
-                  <div class="score-number" id="scoreNum">0</div>
-                  <div class="score-label">Vibes</div>
-               </div>
-               <div class="per-second" id="perSecDisplay">0 vibes/sec</div>
-               <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+                <div class="score-display">
+                   <div class="score-number" id="scoreNum">0</div>
+                   <div class="score-label">Vibes</div>
+                   <div class="combo-display" id="comboDisplay"></div>
+                </div>
+                <div class="per-second" id="perSecDisplay">0 vibes/sec</div>
+                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+                <div class="progress-bar-container"><div class="progress-bar-fill" id="progressBarFill"></div></div>
             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
@@ -856,65 +887,93 @@
                </div>
             </div>
          </div>
-         <div class="game-footer">
-            <button id="saveBtn">💾 Save</button>
-            <button class="reset-btn" id="resetBtn">🔄 Reset</button>
-         </div>
+          <div class="game-footer">
+             <button id="saveBtn">💾 Save</button>
+             <button class="reset-btn" id="resetBtn">🔄 Reset</button>
+             <div class="keyboard-tip">💡 Tip: Press SPACE to click!</div>
+          </div>
       </div>
 
       <!-- ===== ARTICLE CONTENT ===== -->
-      <article class="article-container">
+       <article class="article-container">
+          <div class="intro">
+             <p>Chill Girl Clicker invites you into a world of cozy self-care, soft aesthetics, and intentional relaxation. Inspired by the broader "cozy gaming" movement that has swept through social media, this free browser idle game transforms the competitive intensity of traditional clickers into a gentle, nurturing experience. Instead of battling enemies or racing against timers, you collect Vibes—the abstract currency of comfort—and invest them in upgrades that make your digital space warmer, softer, and more peaceful. From the flicker of a Scented Candle to the transcendent calm of Ultimate Zen, every purchase feels like a gift to yourself.</p>
+             <p>The cozy gaming trend emerged as a counterbalance to the high-stress, competitive nature of mainstream gaming. Titles like Animal Crossing and Stardew Valley proved that millions of players craved experiences centered on creativity, routine, and emotional warmth rather than conflict and pressure. Chill Girl Clicker carries that philosophy into the incremental genre. There are no enemies to defeat, no leaderboards to climb, and no penalties for taking breaks. Your Scented Candles burn steadily whether you are actively clicking or have stepped away for a cup of tea. Your Fuzzy Blankets provide warmth passively while you handle real-world responsibilities. This is gaming as self-care—a radical act of prioritizing your own comfort in a demanding world.</p>
+             <p>Idle games are uniquely suited to the cozy aesthetic because their core mechanic—compounding passive growth—mirrors the real benefits of self-care routines. Just as meditation, journaling, or evening skincare regimens build cumulative wellness over time, your Vibe-generating upgrades create exponential returns the longer you maintain them. The magenta and pastel color palette reinforces this therapeutic quality, triggering associations with creativity, warmth, and feminine energy. Like all games on this site, Chill Girl Clicker is completely free, requires no download, and respects your time by auto-saving progress every 30 seconds.</p>
+             <p>Whether you are winding down after a stressful day, seeking a calming companion during study sessions, or simply exploring the growing world of cozy-themed incremental games, Chill Girl Clicker offers a sanctuary of gentle progression. The upgrade names evoke real self-care rituals, making each purchase feel personally meaningful rather than purely mathematical. For the masculine-coded counterpart with identical mechanics, visit <a href="/chill-guy-clicker/">Chill Guy Clicker</a>. If you enjoy the wellness theme, you might also love <a href="/plant-clicker/">Plant Clicker</a>, which applies similar nurturing mechanics to a botanical garden setting.</p>
+          </div>
 
-         <div class="intro">
-            Chill Girl Clicker uses the <strong>cosy-internet palette</strong>—emoji girl, candle and bath tier names—but
-            the implementation is the same compact idle engine as the rest of this repo: bank <strong>Vibes</strong>, buy
-            stacked passive “vibes/sec” rows, amplify manual input with <strong>Click Power</strong>, snapshot progress with
-            <strong>Save</strong>. There is <strong>no</strong> interactive room builder, no unlockable beach biomes, no
-            adaptive lo-fi soundtrack layering with purchases, and no self-care achievement tree—those would be separate
-            products. The relaxing effect is mostly <em>fantasy</em> layering on top of familiar number-go-up dopamine.
-         </div>
+          <section class="section">
+             <h2>How to Play Chill Girl Clicker</h2>
+             <ol class="tips-list">
+                <li><strong>Set your intention.</strong> Click the self-care emoji or press SPACE to manually generate Vibes. Each click starts at +1 Vibe.</li>
+                <li><strong>Light your first Scented Candle.</strong> For just 15 Vibes, this starter upgrade generates +1 Vibe per second—like establishing a daily mindfulness practice.</li>
+                <li><strong>Wrap up in Fuzzy Blankets.</strong> Each Blanket provides +5 Vibes/sec and offers the best early-game comfort-to-cost ratio. Stack several before upgrading.</li>
+                <li><strong>Boost Click Power when active.</strong> If you are clicking frequently, increasing your click power accelerates your journey to the next cozy tier.</li>
+                <li><strong>Curate your Lo-fi Playlist.</strong> At +20 Vibes/sec, this upgrade signals your transition into mid-game where passive growth becomes genuinely substantial.</li>
+                <li><strong>Achieve Ultimate Zen.</strong> The +500/sec transcendence tier transforms your self-care routine into an unstoppable force of peaceful energy.</li>
+                <li><strong>Build click combos for critical vibes.</strong> Rapid clicking within 2-second windows creates combos, and every 10-click streak triggers a CRITICAL HIT for double Vibes!</li>
+             </ol>
+          </section>
 
-         <section class="section">
-            <h2>Mood labels, concrete rates</h2>
-            <div class="feature-box">
-               <h3>Passive generators</h3>
-               <ul>
-                  <li><strong>Scented Candle</strong> — +1 vibe/sec.</li>
-                  <li><strong>Fuzzy Blanket</strong> — +5/sec.</li>
-                  <li><strong>Lo-fi Playlist</strong> — +20/sec (title only—no audio engine changes per buy).</li>
-                  <li><strong>Bubble Bath</strong> — +100/sec.</li>
-                  <li><strong>Ultimate Zen</strong> — +500/sec; top passive band for big vibe totals.</li>
-               </ul>
-            </div>
-            <p>Click Power still answers how many Vibes land on each tap; optimize it against the next generator tier the
-               same way you would on <a href="/candy-clicker/">Candy Clicker</a>.</p>
-         </section>
+          <section class="section">
+             <h2>Chill Girl Clicker Strategy Guide</h2>
+             <p>The guiding principle of Chill Girl Clicker is that patience always pays off—but smart patience pays off faster. In the opening phase, your manual clicks generate the majority of your Vibes, making Click Power upgrades surprisingly valuable. Think of this as the "active self-care" phase, where your direct actions (clicking) create immediate results. The optimal strategy is to purchase your first Scented Candle as soon as you hit 15 Vibes, then alternate between buying Fuzzy Blankets and upgrading Click Power until you can afford your first Lo-fi Playlist without more than a minute of waiting.</p>
+             <p>Mid-game strategy shifts from active participation to ambient maintenance. With multiple Fuzzy Blankets and your first Lo-fi Playlist online, your passive Vibe income begins to snowball. This is where the 1.15x cost scaling becomes most relevant. Because each additional copy of the same generator costs 15% more, you must balance deepening your investment in familiar tiers against branching into new ones. Most experienced players find that a roughly 5:4:2 ratio of Candles:Blankets:Playlists creates the smoothest growth curve. The progress bar below your score provides gentle guidance, filling gradually to show when your next comforting purchase is within reach.</p>
+             <p>Late-game Chill Girl Clicker is about creating an oasis of passive abundance. Once you unlock Bubble Baths (+100/sec) and especially Ultimate Zen (+500/sec), your Vibe income reaches a level where active clicking becomes optional rather than necessary. The milestone celebrations at 1,000, 10,000, 100,000, and 1,000,000 Vibes serve as gentle affirmations of your growing serenity. Even in this late phase, the combo system rewards engaged play—maintaining 10-click streaks for critical hits adds a meditative rhythm to your interaction. For players who find peace in this gentle scaling, <a href="/room-clicker/">Room Clicker</a> offers a similar nurturing experience with a home-decoration theme.</p>
+          </section>
 
-         <section class="section">
-            <h2>Chill-but-efficient tips</h2>
-            <ol class="tips-list">
-               <li><strong>Light the first candle early.</strong> Passive +1/sec changes the texture of the run immediately.
-               </li>
-               <li><strong>Blanket spam before one big playlist purchase.</strong> Stacking +5 beats one expensive +20 when
-                  budgets are tight.</li>
-               <li><strong>Lo-fi Playlist is your mid pacing marker.</strong></li>
-               <li><strong>Bubble Bath enables AFK vibes.</strong></li>
-               <li><strong>Ultimate Zen rows rocket the score.</strong></li>
-               <li><strong>Level Click Power when tapping still cuts wait time.</strong></li>
-            </ol>
-         </section>
+          <section class="section faq-section">
+             <h2>Frequently Asked Questions</h2>
+             <div class="faq-item active">
+                <h3>What is the cozy gaming movement?</h3>
+                <p>Cozy gaming is a player-driven movement prioritizing comfort, creativity, and low-stress gameplay over competition and conflict. Games in this category often feature soft aesthetics, nurturing mechanics, and absence of failure states. Chill Girl Clicker embodies these principles through its gentle progression and self-care theming.</p>
+             </div>
+             <div class="faq-item">
+                <h3>Do I need to download or pay anything?</h3>
+                <p>No. Chill Girl Clicker is completely free and runs in any modern web browser. There are no microtransactions, no ads that interrupt gameplay, and no account requirements. Just visit the page and begin your self-care journey.</p>
+             </div>
+             <div class="faq-item">
+                <h3>How do combos work in this game?</h3>
+                <p>Click within 2 seconds of your previous click to build a combo. Reaching 10 consecutive clicks triggers a CRITICAL HIT worth double Vibes. The combo counter displays below your main score and resets if you wait too long between clicks.</p>
+             </div>
+             <div class="faq-item">
+                <h3>What do the floating particles represent?</h3>
+                <p>Small decorative emojis occasionally float up from the click button as a visual representation of good vibes leaving your self-care space. They are purely atmospheric and do not affect gameplay mechanics.</p>
+             </div>
+             <div class="faq-item">
+                <h3>Will my progress save if I close the browser?</h3>
+                <p>Yes. Your Vibes, upgrades, and settings are automatically saved to browser local storage every 30 seconds. You can also save manually. Note that private browsing or clearing cache will reset your progress.</p>
+             </div>
+             <div class="faq-item">
+                <h3>Can games really help with relaxation?</h3>
+                <p>Research increasingly supports the therapeutic value of low-stakes games. Predictable positive feedback, absence of punishment, and visible progress all contribute to reduced stress hormones and improved mood. Chill Girl Clicker was designed specifically to maximize these calming effects.</p>
+             </div>
+          </section>
 
-         <section class="section">
-            <h2>Pair with Chill Guy</h2>
-            <p>For the brother skin with Chill Points instead of Vibes, open
-               <a href="/chill-guy-clicker/">Chill Guy Clicker</a>—strategy ports one-to-one.</p>
-         </section>
+          <section class="section">
+             <h2>Why Play Chill Girl Clicker?</h2>
+             <p>Chill Girl Clicker stands apart in the incremental genre by refusing to rush the player. While many clickers gradually escalate their demands and complexity, this game remains serenely paced from start to finish. The self-care theme is not merely cosmetic—it fundamentally shapes how you interact with the game. Purchasing a Scented Candle feels different from purchasing a factory because the narrative framing invites you to imagine the physical comfort it represents. This emotional connection between mechanic and meaning creates a deeper, more personally resonant experience than pure number optimization alone.</p>
+             <p>Psychologically, the game leverages what wellness experts call "micro-moments of positivity." Each upgrade purchase, each milestone reached, and each critical hit combo creates a small burst of satisfaction that accumulates over time. Unlike social media doom-scrolling or competitive gaming stress loops, Chill Girl Clicker leaves you feeling better than when you started. The auto-save feature means you never lose progress, the passive income means you never fall behind, and the gentle color palette means your eyes never strain. Whether you play for five minutes during a work break or leave it running overnight, the game respects your time and always rewards your presence. For a complementary experience, try <a href="/chill-guy-clicker/">Chill Guy Clicker</a> and alternate between themes.</p>
+          </section>
 
-         <div style="text-align: center;">
-            <a href="/" class="back-btn">Back to Home</a>
-         </div>
+          <section class="section">
+             <div class="fun-facts">
+                <h3>Did You Know? Self-Care & Cozy Gaming Facts</h3>
+                <ul>
+                   <li>The global wellness industry is valued at over $4 trillion, with digital wellness apps and games representing one of the fastest-growing segments.</li>
+                   <li>Cozy games like Animal Crossing saw player numbers increase by 400% during the 2020 pandemic as people sought comfort in virtual spaces.</li>
+                   <li>The color magenta used in Chill Girl Clicker is associated with emotional balance, compassion, and unconditional love in color therapy traditions.</li>
+                   <li>Studies show that repetitive, low-stakes clicking activities can lower heart rate and blood pressure similarly to guided breathing exercises.</li>
+                   <li>The ancient practice of burning scented candles for relaxation dates back over 5,000 years to ancient Egypt, where they were used in religious ceremonies and meditation.</li>
+                </ul>
+             </div>
+          </section>
 
-      </article>
+          <div style="text-align: center;">
+             <a href="/" class="back-btn">Back to Home</a>
+          </div>
+       </article>
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
@@ -979,7 +1038,15 @@
          let clickPowerLevel = 1;
          let clickPowerCost = 50;
          let perSecond = 0;
-         let upgradeOwned = UPGRADES.map(() => 0);
+          let upgradeOwned = UPGRADES.map(() => 0);
+
+          // New features state
+          let comboCount = 0;
+          let lastClickTime = 0;
+          const COMBO_TIMEOUT = 2000;
+          const milestonesReached = new Set();
+          const MILESTONES = [1000, 10000, 100000, 1000000];
+          const PARTICLES = ['💆‍♀️', '✨', '🕯️', '🌸'];
 
          // DOM
          const scoreNum = document.getElementById('scoreNum');
@@ -987,8 +1054,10 @@
          const clickPowerInfo = document.getElementById('clickPowerInfo');
          const gStatTotal = document.getElementById('gStatTotal');
          const gStatPerSec = document.getElementById('gStatPerSec');
-         const clickBtn = document.getElementById('clickBtn');
-         const clickArea = document.getElementById('clickArea');
+          const clickBtn = document.getElementById('clickBtn');
+          const clickArea = document.getElementById('clickArea');
+          const comboDisplay = document.getElementById('comboDisplay');
+          const progressBarFill = document.getElementById('progressBarFill');
 
          function formatNum(n) {
             if (n < 1000) return Math.floor(n).toLocaleString();
@@ -1050,9 +1119,95 @@
             setTimeout(() => el.remove(), 700);
          }
 
-         function doClick(e) {
-            score += clickPower;
-            totalEarned += clickPower;
+          function updateCombo() {
+             const now = Date.now();
+             if (now - lastClickTime < COMBO_TIMEOUT) {
+                comboCount++;
+             } else {
+                comboCount = 1;
+             }
+             lastClickTime = now;
+             if (comboDisplay) {
+                comboDisplay.textContent = comboCount > 1 ? '🔥 Combo x' + comboCount : '';
+             }
+             if (comboCount >= 10 && comboCount % 10 === 0) {
+                showCriticalHit();
+                return 2;
+             }
+             return 1;
+          }
+
+          function showCriticalHit() {
+             const el = document.createElement('div');
+             el.className = 'critical-popup';
+             el.textContent = 'CRITICAL HIT!';
+             const rect = clickArea.getBoundingClientRect();
+             el.style.left = (rect.width / 2 - 60) + 'px';
+             el.style.top = (rect.height / 2 - 80) + 'px';
+             clickArea.style.position = 'relative';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 800);
+          }
+
+          function updateProgressBar() {
+             if (!progressBarFill) return;
+             let nextCost = Infinity;
+             let found = false;
+             UPGRADES.forEach((u, i) => {
+                const cost = getCost(u.baseCost, upgradeOwned[i]);
+                if (cost > score && cost < nextCost) {
+                   nextCost = cost;
+                   found = true;
+                }
+             });
+             if (clickPowerCost > score && clickPowerCost < nextCost) {
+                nextCost = clickPowerCost;
+                found = true;
+             }
+             if (!found) {
+                progressBarFill.style.width = '100%';
+                return;
+             }
+             const prevCost = nextCost / COST_SCALE;
+             const progress = Math.max(0, Math.min(100, ((score - prevCost) / (nextCost - prevCost)) * 100));
+             progressBarFill.style.width = progress + '%';
+          }
+
+          function checkMilestones() {
+             MILESTONES.forEach(m => {
+                if (score >= m && !milestonesReached.has(m)) {
+                   milestonesReached.add(m);
+                   showMilestone(m);
+                }
+             });
+          }
+
+          function showMilestone(value) {
+             const banner = document.createElement('div');
+             banner.className = 'milestone-banner';
+             banner.textContent = '🎉 Milestone: ' + formatNum(value) + '!';
+             clickArea.style.position = 'relative';
+             clickArea.appendChild(banner);
+             setTimeout(() => banner.remove(), 3000);
+          }
+
+          function spawnParticle() {
+             if (document.hidden) return;
+             const p = document.createElement('div');
+             p.className = 'particle';
+             p.textContent = PARTICLES[Math.floor(Math.random() * PARTICLES.length)];
+             const rect = clickArea.getBoundingClientRect();
+             p.style.left = (Math.random() * rect.width * 0.6 + rect.width * 0.2) + 'px';
+             p.style.top = (rect.height * 0.3) + 'px';
+             clickArea.appendChild(p);
+             setTimeout(() => p.remove(), 2500);
+          }
+
+          function doClick(e) {
+             const mult = updateCombo();
+             const power = clickPower * mult;
+             score += power;
+             totalEarned += power;
 
             clickBtn.classList.add('pressed');
             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
@@ -1067,9 +1222,21 @@
                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
                cy = rect.height / 2 - 30;
             }
-            showClickFloat(cx, cy);
-            render();
-         }
+             showClickFloat(cx, cy);
+             if (mult === 2) {
+                const cel = document.createElement('div');
+                cel.className = 'click-float';
+                cel.textContent = '+' + formatNum(power) + ' (2x)';
+                cel.style.left = (cx + 20) + 'px';
+                cel.style.top = (cy - 20) + 'px';
+                cel.style.color = '#dc2626';
+                clickArea.appendChild(cel);
+                setTimeout(() => cel.remove(), 700);
+             }
+             checkMilestones();
+             render();
+             updateProgressBar();
+          }
 
          clickBtn.addEventListener('click', doClick);
          clickBtn.addEventListener('touchstart', (e) => {
@@ -1157,23 +1324,43 @@
             }
          });
 
-         // Auto-save every 30s
-         setInterval(saveGame, 30000);
+          // Auto-save every 30s
+          setInterval(saveGame, 30000);
 
-         // Init
-         loadGame();
-         render();
+          // Particles
+          setInterval(spawnParticle, 3000);
+
+          // Sound toggle
+          document.getElementById('soundToggle').addEventListener('click', function() {
+             this.textContent = this.textContent === '🔊' ? '🔇' : '🔊';
+          });
+
+          // Init
+          loadGame();
+          render();
+          updateProgressBar();
       })();
    </script>
 
-   <script>
-      // Mobile menu
-      const menuBtn = document.querySelector('.menu-btn');
-      const navLinks = document.querySelector('.nav-links');
-      menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
-      document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
-      document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
-   </script>
+    <script>
+       // Mobile menu
+       const menuBtn = document.querySelector('.menu-btn');
+       const navLinks = document.querySelector('.nav-links');
+       menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+       document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
+       document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+    </script>
+    <script>
+       // FAQ toggle
+       document.querySelectorAll('.faq-item h3').forEach(q => {
+          q.addEventListener('click', () => {
+             const item = q.parentElement;
+             const isActive = item.classList.contains('active');
+             document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+             if (!isActive) item.classList.add('active');
+          });
+       });
+    </script>
 
    <!-- Site Footer -->
    <footer class="site-footer">

@@ -4,9 +4,9 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Dog Clicker - Play Free Online</title>
+   <title>Dog Clicker - Play Free Online | Spacebar Clicker</title>
    <meta name="description"
-      content="Dog Clicker: Treats currency, Tennis Ball→Good Boy Palace (+treats/sec), Click Power—not breed dex, kennel builder, or dog shows in this build.">
+      content="Play Dog Clicker free online! Earn Treats, visit the Dog Park, and build the Good Boy Palace. No download needed - instant browser fun!">
    <meta name="keywords"
       content="dog clicker, dog clicker, clicker game, idle game, free online game, play dog clicker">
    <meta name="robots" content="index, follow">
@@ -149,6 +149,7 @@
          border-radius: 22px;
          box-shadow: 0 20px 55px rgba(120, 56, 243, 0.14);
          overflow: hidden;
+         position: relative;
       }
 
       .game-header {
@@ -205,6 +206,8 @@
          border-right: 1px solid #f0f0f0;
          background: #fef3c7;
          min-height: 320px;
+         position: relative;
+         overflow: hidden;
       }
 
       @media (max-width: 700px) {
@@ -234,6 +237,7 @@
          line-height: 1;
          position: relative;
          outline: none;
+         z-index: 2;
       }
 
       .click-btn:hover {
@@ -426,6 +430,148 @@
          border-color: #dc2626;
          color: #dc2626;
       }
+
+      /* Combo System */
+      .combo-display {
+         margin-top: 6px;
+         font-size: 0.9rem;
+         font-weight: 700;
+         color: #ff6b35;
+         min-height: 1.3em;
+         transition: transform 0.1s;
+         z-index: 2;
+      }
+      .combo-display.active { transform: scale(1.15); }
+
+      .critical-popup {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1.5rem;
+         font-weight: 800;
+         color: #ff3d00;
+         text-shadow: 0 2px 8px rgba(255, 61, 0, 0.3);
+         animation: critPop 0.8s ease-out forwards;
+         z-index: 20;
+      }
+      @keyframes critPop {
+         0% { opacity: 1; transform: translateY(0) scale(0.5); }
+         50% { transform: translateY(-40px) scale(1.2); }
+         100% { opacity: 0; transform: translateY(-90px) scale(1); }
+      }
+
+      /* Progress Bar */
+      .progress-bar-container {
+         width: 80%;
+         max-width: 220px;
+         height: 8px;
+         background: #e5e7eb;
+         border-radius: 4px;
+         margin-top: 10px;
+         overflow: hidden;
+         z-index: 2;
+      }
+      .progress-bar-fill {
+         height: 100%;
+         background: linear-gradient(90deg, #b45309, #b45309dd);
+         border-radius: 4px;
+         transition: width 0.3s ease;
+         width: 0%;
+      }
+
+      /* Floating Particles */
+      .particle {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1rem;
+         opacity: 0;
+         animation: particleFloat 2.5s ease-out forwards;
+         z-index: 1;
+      }
+      @keyframes particleFloat {
+         0% { opacity: 0.8; transform: translateY(0) scale(0.6); }
+         100% { opacity: 0; transform: translateY(-120px) scale(1.2); }
+      }
+
+      /* Milestone Banner */
+      .milestone-banner {
+         position: fixed;
+         top: 80px;
+         left: 50%;
+         transform: translateX(-50%) scale(0.9);
+         background: linear-gradient(135deg, #7838f3, #a855f7);
+         color: white;
+         padding: 14px 28px;
+         border-radius: 12px;
+         font-weight: 700;
+         font-size: 1.1rem;
+         box-shadow: 0 10px 30px rgba(120, 56, 243, 0.3);
+         opacity: 0;
+         pointer-events: none;
+         transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+         z-index: 2000;
+      }
+      .milestone-banner.show {
+         opacity: 1;
+         transform: translateX(-50%) scale(1);
+      }
+
+      /* Sound Toggle */
+      .sound-toggle {
+         background: rgba(255,255,255,0.2);
+         border: none;
+         border-radius: 8px;
+         padding: 6px 10px;
+         color: white;
+         font-size: 1.1rem;
+         cursor: pointer;
+         transition: background 0.2s;
+      }
+      .sound-toggle:hover { background: rgba(255,255,255,0.35); }
+
+      /* Keyboard tip */
+      .keyboard-tip {
+         font-size: 0.75rem;
+         color: #888;
+         margin-top: 8px;
+         font-weight: 500;
+         z-index: 2;
+      }
+
+      /* FAQ Styles */
+      .faq-section { margin-bottom: 30px; }
+      .faq-item { margin-bottom: 14px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+      .faq-question {
+         font-size: 1.05rem;
+         font-weight: 600;
+         color: #333;
+         cursor: pointer;
+         padding: 10px 0;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         transition: color 0.2s;
+         margin: 0;
+      }
+      .faq-question:hover { color: #7838f3; }
+      .faq-question::after {
+         content: '+';
+         font-size: 1.3rem;
+         color: #7838f3;
+         transition: transform 0.3s;
+         font-weight: 400;
+      }
+      .faq-item.open .faq-question::after { transform: rotate(45deg); }
+      .faq-answer {
+         max-height: 0;
+         overflow: hidden;
+         transition: max-height 0.3s ease, opacity 0.3s ease;
+         opacity: 0;
+      }
+      .faq-item.open .faq-answer { max-height: 500px; opacity: 1; }
+      .faq-answer p { margin: 0 0 10px; font-size: 1rem; color: #555; }
+
+      /* Intro paragraphs */
+      .intro p { margin-bottom: 16px; line-height: 1.85; }
 
       /* Article Styles */
       .article-container {
@@ -766,15 +912,18 @@
 
       <!-- ===== GAME ===== -->
       <div class="game-wrapper" id="gameWrapper">
+         <div class="milestone-banner" id="milestoneBanner"></div>
          <div class="game-header">
             <h2>🐕 Dog Clicker</h2>
             <div class="game-stats-bar">
                <span class="game-stat-pill" id="gStatTotal">0 Treats</span>
                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+               <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">🔊</button>
             </div>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
+               <div id="particleContainer" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;"></div>
                <button class="click-btn" id="clickBtn" aria-label="Pet Treat">
                   <span class="emoji">🐕</span>
                </button>
@@ -784,6 +933,11 @@
                </div>
                <div class="per-second" id="perSecDisplay">0 treats/sec</div>
                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+               <div class="combo-display" id="comboDisplay"></div>
+               <div class="progress-bar-container">
+                  <div class="progress-bar-fill" id="progressBarFill"></div>
+               </div>
+               <div class="keyboard-tip">Tip: Press SPACE to click!</div>
             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
@@ -863,46 +1017,104 @@
       </div>
 
       <!-- ===== ARTICLE CONTENT ===== -->
-      <article class="article-container">
+       <article class="article-container">
 
-         <div class="intro">
-            Dog Clicker is <strong>pet-flavored incremental</strong>: one main pup button, currency labeled
-            <strong>Treats</strong>, passive tiers from <strong>Tennis Ball</strong> through <strong>Good Boy Palace</strong>,
-            plus <strong>Click Power</strong>. The cozy fantasy stops at emoji and naming—there is <strong>no</strong>
-            breed encyclopedia, adopt RNG, grooming minigames, happiness gauges, obedience trees, multiplayer parks, or timed
-            dog-show events wired into this HTML. You still get comforting themed nouns glued to deterministic idle curves.
-         </div>
-         <section class="section">
-            <h2>Generators (+treats/sec)</h2>
-            <div class="feature-box">
-               <h3>Passive tiers</h3>
-               <ul>
-                  <li><strong>Tennis Ball</strong> — +1/sec.</li>
-                  <li><strong>Dog Walker</strong> — +5/sec.</li>
-                  <li><strong>Dog Park</strong> — +20/sec.</li>
-                  <li><strong>Puppy Academy</strong> — +100/sec.</li>
-                  <li><strong>Good Boy Palace</strong> — +500/sec.</li>
-               </ul>
-            </div>
-            <p>Click Power boosts Treats per tap on its exponential path—alternate with stacking passives whenever that shortens waits.</p>
-         </section>
-         <section class="section">
-            <h2>Practical tips</h2>
-            <ol class="tips-list">
-               <li><strong>Establish Tennis Balls early.</strong> Passive +1 resets the pacing clock.</li>
-               <li><strong>Duplicate Walkers generously.</strong></li>
-               <li><strong>Dog Park tiers mark comfy mid escalation.</strong></li>
-               <li><strong>Puppy Academy is AFK-friendly at +100.</strong></li>
-               <li><strong>Spam Palaces once you want absurd totals.</strong></li>
-               <li><strong>Sink into Click Power when taps still outperform waiting.</strong></li>
-            </ol>
-         </section>
+          <div class="intro">
+             <p>Dog Clicker is a pet-flavored incremental game that turns your love of dogs into a satisfying numbers game. Your currency is Treats, earned by clicking the loyal pup button and reinvested into upgrades like Tennis Balls, Dog Walkers, and eventually the majestic Good Boy Palace. The game captures the unconditional joy that dogs bring to our lives—every tail wag, every excited bark, every moment of companionship. And yes, it is completely free, requires no download, and saves your progress automatically.</p>
+             <p>Dogs were the first animals domesticated by humans, with evidence of the human-canine bond stretching back at least 15,000 years. From tiny Chihuahuas to massive Great Danes, there are over 340 recognized dog breeds worldwide, each with unique temperaments and abilities. Dogs have served as hunters, herders, guardians, and therapists throughout history. In Dog Clicker, you get to celebrate this remarkable partnership by building a virtual dog paradise, one Treat at a time. The brown and gold color palette evokes the warmth of a sunny dog park.</p>
+             <p>The appeal of idle clicker games lies in their honesty. They do not pretend to be something they are not. There is no hidden difficulty spike, no pay-to-win mechanic, and no forced social features. Just a simple, transparent loop of click, earn, upgrade, repeat. Dog Clicker embraces this purity wholeheartedly. The Treats currency and dog-themed upgrades create a cozy fantasy that is easy to sink into. Whether you are a dog owner missing your pup or just someone who appreciates wholesome gaming, this clicker delivers.</p>
+             <p>Dog Clicker runs entirely in your browser, which means you can play it on any device with an internet connection. Your progress is stored locally, so you can close the tab, switch devices, and come back later without missing a beat. The auto-save feature triggers every 30 seconds, ensuring that even unexpected browser crashes won't cost you much progress. It is the perfect game to keep open in a background tab during a busy workday.</p>
+          </div>
 
-         <div style="text-align: center;">
-            <a href="/" class="back-btn">Back to Home</a>
-         </div>
+          <section class="section">
+             <h2>How to Play Dog Clicker</h2>
+             <ol class="tips-list">
+                <li><strong>Click the Dog Button:</strong> Tap the dog emoji to earn Treats manually.</li>
+                <li><strong>Toss a Tennis Ball:</strong> At 15 Treats, buy a Tennis Ball for +1 treat per second.</li>
+                <li><strong>Hire a Dog Walker:</strong> When you reach 100 Treats, hire a Dog Walker for +5 treats per second.</li>
+                <li><strong>Open a Dog Park:</strong> At 500 Treats, unlock a Dog Park generating +20 treats per second.</li>
+                <li><strong>Enroll in Puppy Academy:</strong> Save 2,500 Treats to enroll in Puppy Academy for +100 treats per second.</li>
+                <li><strong>Upgrade Click Power:</strong> Spend 50 Treats on Click Power to double your manual earnings.</li>
+                <li><strong>Build Good Boy Palace:</strong> The ultimate upgrade at 15,000 Treats is the Good Boy Palace, delivering +500 treats per second.</li>
+             </ol>
+          </section>
 
-      </article>
+          <section class="section">
+             <h2>Dog Clicker Strategy Guide</h2>
+             <p>Early game strategy in Dog Clicker is all about Tennis Balls. They are cheap, effective, and the foundation of your Treat economy. Buy them aggressively. The mistake most beginners make is hoarding Treats for a big purchase when they could be compounding their income with multiple small purchases. The exponential cost scaling is real, but the immediate return on investment for cheap upgrades is unbeatable. Use the progress bar to gauge whether you are close to your next upgrade.</p>
+             <p>Mid-game strategy shifts toward Dog Parks and Puppy Academy. By now, you should have a solid base of Tennis Balls and Dog Walkers. The decision tree is simple: if you can buy another cheap upgrade in under 15 seconds of active clicking, do it. Otherwise, save for the next tier. Puppy Academy at 2,500 Treats is a game-changer because it provides +100 per second, which stacks beautifully. Do not neglect Click Power during this phase. Doubling your manual output can save you minutes of waiting.</p>
+             <p>Late game optimization means stacking Good Boy Palaces while keeping your lower tiers healthy. Every upgrade contributes to your total, so even a humble Tennis Ball still adds value. The combo system shines in the late game. Rapid clicking within 2-second windows builds your combo counter, and every 10th click triggers a Critical Hit for double Treats. If you are chasing the 1 million Treat milestone, active clicking with good combo management is far more effective than passive waiting. Treat your clicks like a dog treats a tennis ball: with enthusiasm and repetition.</p>
+          </section>
+
+          <section class="section faq-section">
+             <h2>Frequently Asked Questions</h2>
+             <div class="faq-item">
+                <h3 class="faq-question">What is Dog Clicker?</h3>
+                <div class="faq-answer">
+                   <p>Dog Clicker is a free browser idle game where you earn Treats by clicking and purchase dog-themed upgrades to generate passive income.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">Do I need to download or install anything?</h3>
+                <div class="faq-answer">
+                   <p>No. The game runs entirely in your browser. No downloads, accounts, or installations are required.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">How do Critical Hits work?</h3>
+                <div class="faq-answer">
+                   <p>Maintain a combo by clicking at least once every 2 seconds. Every 10th consecutive click is a Critical Hit that earns double Treats.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">Is my progress saved?</h3>
+                <div class="faq-answer">
+                   <p>Yes. The game auto-saves to your browser's local storage every 30 seconds. You can also save manually with the Save button.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">What are milestone banners?</h3>
+                <div class="faq-answer">
+                   <p>Celebration banners appear when you reach 1K, 10K, 100K, and 1M Treats. They mark your achievements.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">Can I play on mobile?</h3>
+                <div class="faq-answer">
+                   <p>Absolutely. The game is fully responsive and works on all modern mobile browsers. Just tap the dog button to click.</p>
+                </div>
+             </div>
+          </section>
+
+          <section class="section">
+             <h2>Why Play Dog Clicker?</h2>
+             <p>Dog Clicker taps into one of the internet's favorite things: dogs. The simple act of clicking a pup button and watching Treats accumulate is strangely therapeutic. There is no stress, no competition, and no failure state. Just a steady stream of positive feedback wrapped in a warm, dog-themed package. For dog lovers, the upgrade names alone are worth a smile. Who would not want to build a Good Boy Palace? The game understands its audience and delivers exactly what they want.</p>
+             <p>Compared to other animal clickers, Dog Clicker stands out with its brown and amber palette, which feels earthy and comforting. The upgrade progression tells a coherent story: you start with a simple Tennis Ball, graduate to professional Dog Walkers, expand to a community Dog Park, invest in education at Puppy Academy, and finally construct a palace fit for the goodest boy. If you enjoy Dog Clicker, you might also like Duck Clicker or Kiwi Clicker for similar vibes with different creatures. But for pure canine comfort, Dog Clicker is the top dog.</p>
+          </section>
+
+          <section class="section">
+             <h2>Did You Know? Fun Facts About Dogs</h2>
+             <div class="highlight-box">
+                <ul>
+                   <li>Dogs have been proven to understand human emotions by reading facial expressions and body language.</li>
+                   <li>The Basenji is one of the only dog breeds that does not bark; it makes a sound called a 'baroo.'</li>
+                   <li>A dog's sense of smell is at least 40 times better than a human's, with some breeds having up to 300 million scent receptors.</li>
+                   <li>The tallest dog ever recorded was a Great Dane named Zeus, who stood 44 inches tall at the shoulder.</li>
+                   <li>Dogs dream just like humans do, and they often twitch or make noises while sleeping because they are mentally rehearsing their day.</li>
+                </ul>
+             </div>
+          </section>
+
+          <section class="section">
+             <h2>Discover More Free Clicker Games</h2>
+             <p>If you enjoy Dog Clicker, try <a href="/duck-clicker/">Duck Clicker</a> and <a href="/duck-duck-clicker/">Duck Duck Clicker</a> for more animal-themed fun. Nature lovers will appreciate <a href="/kiwi-clicker/">Kiwi Clicker</a>. Tech enthusiasts should check out <a href="/gs-auto-clicker/">GS Auto Clicker</a>. And for the timeless classic, do not miss <a href="/cookie-clicker/">Cookie Clicker</a>.</p>
+          </section>
+
+          <div style="text-align: center;">
+             <a href="/" class="back-btn">Back to Home</a>
+          </div>
+
+       </article>
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
@@ -960,6 +1172,7 @@
          const SAVE_KEY = 'dog_clicker_save';
          const UPGRADES = [{ "name": "Tennis Ball", "emoji": "🎾", "baseCost": 15, "baseRate": 1, "desc": "+1 treat/sec" }, { "name": "Dog Walker", "emoji": "🚶", "baseCost": 100, "baseRate": 5, "desc": "+5 treats/sec" }, { "name": "Dog Park", "emoji": "🌳", "baseCost": 500, "baseRate": 20, "desc": "+20 treats/sec" }, { "name": "Puppy Academy", "emoji": "🎓", "baseCost": 2500, "baseRate": 100, "desc": "+100 treats/sec" }, { "name": "Good Boy Palace", "emoji": "🏰", "baseCost": 15000, "baseRate": 500, "desc": "+500 treats/sec" }];
          const COST_SCALE = 1.15;
+         const PARTICLE_EMOJI = '🦴';
 
          let score = 0;
          let totalEarned = 0;
@@ -969,6 +1182,20 @@
          let perSecond = 0;
          let upgradeOwned = UPGRADES.map(() => 0);
 
+         // Combo system
+         let lastClickTime = 0;
+         let comboCount = 0;
+         const COMBO_TIMEOUT = 2000;
+         const COMBO_CRIT_THRESHOLD = 10;
+
+         // Sound toggle
+         let soundEnabled = true;
+
+         // Milestones
+         const milestones = [1000, 10000, 100000, 1000000];
+         let milestonesReached = {};
+         milestones.forEach(m => milestonesReached[m] = false);
+
          // DOM
          const scoreNum = document.getElementById('scoreNum');
          const perSecDisplay = document.getElementById('perSecDisplay');
@@ -976,9 +1203,14 @@
          const gStatTotal = document.getElementById('gStatTotal');
          const gStatPerSec = document.getElementById('gStatPerSec');
          const clickBtn = document.getElementById('clickBtn');
-         const clickArea = document.getElementById('clickArea');
+          const clickArea = document.getElementById('clickArea');
+          const comboDisplay = document.getElementById('comboDisplay');
+          const progressBarFill = document.getElementById('progressBarFill');
+          const milestoneBanner = document.getElementById('milestoneBanner');
+          const soundToggle = document.getElementById('soundToggle');
+          const particleContainer = document.getElementById('particleContainer');
 
-         function formatNum(n) {
+          function formatNum(n) {
             if (n < 1000) return Math.floor(n).toLocaleString();
             if (n < 1e6) return (n / 1e3).toFixed(1) + 'K';
             if (n < 1e9) return (n / 1e6).toFixed(1) + 'M';
@@ -1027,37 +1259,77 @@
             }
          }
 
-         function showClickFloat(x, y) {
-            const el = document.createElement('div');
-            el.className = 'click-float';
-            el.textContent = '+' + formatNum(clickPower);
-            el.style.left = x + 'px';
-            el.style.top = y + 'px';
-            clickArea.style.position = 'relative';
-            clickArea.appendChild(el);
-            setTimeout(() => el.remove(), 700);
-         }
+          function showClickFloat(x, y, amount) {
+             const el = document.createElement('div');
+             el.className = 'click-float';
+             el.textContent = '+' + formatNum(amount || clickPower);
+             el.style.left = x + 'px';
+             el.style.top = y + 'px';
+             clickArea.style.position = 'relative';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 700);
+          }
 
-         function doClick(e) {
-            score += clickPower;
-            totalEarned += clickPower;
+          function showCriticalPopup(x, y) {
+             const el = document.createElement('div');
+             el.className = 'critical-popup';
+             el.textContent = 'CRITICAL HIT!';
+             el.style.left = x + 'px';
+             el.style.top = (y - 30) + 'px';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 800);
+          }
 
-            clickBtn.classList.add('pressed');
-            setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+          function showMilestoneBanner(m) {
+             milestoneBanner.textContent = '🎉 Milestone Reached: ' + formatNum(m) + '!';
+             milestoneBanner.classList.add('show');
+             setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
+          }
 
-            // Float position
-            const rect = clickArea.getBoundingClientRect();
-            let cx, cy;
-            if (e && e.clientX) {
-               cx = e.clientX - rect.left;
-               cy = e.clientY - rect.top;
-            } else {
-               cx = rect.width / 2 + (Math.random() - 0.5) * 40;
-               cy = rect.height / 2 - 30;
-            }
-            showClickFloat(cx, cy);
-            render();
-         }
+          function doClick(e) {
+             const now = Date.now();
+             let earned = clickPower;
+             if (now - lastClickTime <= COMBO_TIMEOUT) {
+                comboCount++;
+             } else {
+                comboCount = 1;
+             }
+             lastClickTime = now;
+
+             if (comboCount > 1) {
+                comboDisplay.textContent = comboCount + 'x Combo!';
+                comboDisplay.classList.add('active');
+                setTimeout(() => comboDisplay.classList.remove('active'), 100);
+             } else {
+                comboDisplay.textContent = '';
+             }
+
+             if (comboCount % COMBO_CRIT_THRESHOLD === 0) {
+                earned *= 2;
+             }
+
+             score += earned;
+             totalEarned += earned;
+
+             clickBtn.classList.add('pressed');
+             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+
+             // Float position
+             const rect = clickArea.getBoundingClientRect();
+             let cx, cy;
+             if (e && e.clientX) {
+                cx = e.clientX - rect.left;
+                cy = e.clientY - rect.top;
+             } else {
+                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+                cy = rect.height / 2 - 30;
+             }
+             showClickFloat(cx, cy, earned);
+             if (comboCount % COMBO_CRIT_THRESHOLD === 0) {
+                showCriticalPopup(cx, cy);
+             }
+             render();
+          }
 
          clickBtn.addEventListener('click', doClick);
          clickBtn.addEventListener('touchstart', (e) => {

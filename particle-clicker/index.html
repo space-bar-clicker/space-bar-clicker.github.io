@@ -4,9 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Particle Clicker - Play Free Online</title>
-   <meta name="description"
-      content="Particle Clicker idle: Data Points/sec from Junior Researcher to Higgs Discovery, Click Power, Save—no real collider sim, Standard Model unlock tree, or CERN gameplay in this build.">
+   <title>Particle Clicker - Free Online Science Idle Game | Discover the Higgs</title>
+   <meta name="description" content="Play Particle Clicker free online! Collide particles, collect data & discover the Higgs boson. Combo system included. No download needed!">
    <meta name="keywords"
       content="particle clicker, particle clicker, clicker game, idle game, free online game, play particle clicker">
    <meta name="robots" content="index, follow">
@@ -752,6 +751,172 @@
          box-shadow: 0 4px 12px rgba(120, 56, 243, 0.15);
          color: #3b0764;
       }
+      /* Combo System */
+      .combo-display {
+         margin-top: 6px;
+         font-size: 0.9rem;
+         font-weight: 700;
+         color: #2563eb;
+         opacity: 0;
+         transition: opacity 0.2s;
+         min-height: 1.2em;
+      }
+      .combo-display.active {
+         opacity: 1;
+      }
+
+      /* Critical Hit Popup */
+      .critical-popup {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1.5rem;
+         font-weight: 800;
+         color: #2563eb;
+         text-shadow: 0 2px 8px rgba(0,0,0,0.12);
+         animation: criticalPop 0.8s ease-out forwards;
+         z-index: 20;
+         white-space: nowrap;
+      }
+      @keyframes criticalPop {
+         0% { opacity: 1; transform: translateY(0) scale(0.6); }
+         50% { transform: translateY(-40px) scale(1.2); }
+         100% { opacity: 0; transform: translateY(-80px) scale(1); }
+      }
+
+      /* Progress Bar */
+      .progress-bar-container {
+         width: 80%;
+         max-width: 220px;
+         height: 10px;
+         background: #e5e7eb;
+         border-radius: 5px;
+         margin-top: 10px;
+         overflow: hidden;
+      }
+      .progress-bar-fill {
+         height: 100%;
+         background: linear-gradient(90deg, #2563eb, #60a5fa);
+         border-radius: 5px;
+         transition: width 0.3s ease;
+         width: 0%;
+      }
+
+      /* Floating Particles */
+      .particle {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1rem;
+         animation: particleFloat 2s ease-out forwards;
+         z-index: 5;
+      }
+      @keyframes particleFloat {
+         0% { opacity: 1; transform: translateY(0) scale(0.8); }
+         100% { opacity: 0; transform: translateY(-120px) scale(1.2); }
+      }
+
+      /* Milestone Banner */
+      .milestone-banner {
+         position: fixed;
+         top: 80px;
+         left: 50%;
+         transform: translateX(-50%) translateY(-20px);
+         background: linear-gradient(135deg, #2563eb, #1e40af);
+         color: white;
+         padding: 14px 32px;
+         border-radius: 30px;
+         font-weight: 700;
+         font-size: 1.1rem;
+         box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+         opacity: 0;
+         transition: all 0.5s ease;
+         z-index: 2000;
+         pointer-events: none;
+         text-align: center;
+      }
+      .milestone-banner.show {
+         opacity: 1;
+         transform: translateX(-50%) translateY(0);
+      }
+
+      /* FAQ Section */
+      .faq-section h3 {
+         color: #7838f3;
+         margin: 16px 0 0;
+         font-size: 1.1rem;
+         cursor: pointer;
+         padding: 12px 16px;
+         background: #f8f9fe;
+         border-radius: 8px;
+         transition: all 0.2s ease;
+         position: relative;
+         font-weight: 600;
+      }
+      .faq-section h3:hover {
+         background: #ede5ff;
+         transform: translateX(4px);
+      }
+      .faq-section h3::after {
+         content: '+';
+         position: absolute;
+         right: 16px;
+         top: 50%;
+         transform: translateY(-50%);
+         font-weight: 700;
+         color: #7838f3;
+         font-size: 1.2rem;
+      }
+      .faq-section h3.open::after {
+         content: '−';
+      }
+      .faq-section p {
+         display: none;
+         padding: 12px 16px;
+         margin: 0 0 10px;
+         color: #555;
+         line-height: 1.7;
+         background: #fff;
+         border-radius: 0 0 8px 8px;
+         border: 1px solid #f0f0f0;
+         border-top: none;
+      }
+      .faq-section p.open {
+         display: block;
+      }
+
+      /* Sound Toggle */
+      .sound-toggle {
+         background: rgba(255,255,255,0.25);
+         border: none;
+         font-size: 1.2rem;
+         cursor: pointer;
+         color: white;
+         padding: 4px 8px;
+         line-height: 1;
+         border-radius: 8px;
+         transition: all 0.2s;
+      }
+      .sound-toggle:hover {
+         background: rgba(255,255,255,0.4);
+      }
+
+      /* Keyboard hint */
+      .keyboard-hint {
+         text-align: center;
+         font-size: 0.8rem;
+         color: #999;
+         margin-top: 10px;
+         font-weight: 500;
+      }
+
+      /* Internal links styling consistency */
+      .article-container a {
+         color: #7838f3;
+         text-decoration: underline;
+         font-weight: 600;
+      }
+      .article-container a:hover {
+         color: #5b21b6;
+      }
    </style>
 </head>
 
@@ -780,6 +945,7 @@
                <span class="game-stat-pill" id="gStatTotal">0 Data Points</span>
                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
             </div>
+            <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
@@ -873,63 +1039,76 @@
       <!-- ===== ARTICLE CONTENT ===== -->
       <article class="article-container">
 
+          <div class="intro">
+             <p><strong>Particle Clicker</strong> puts you in charge of a particle physics laboratory, tasking you with collecting Data Points through high-energy collisions. Starting with a single Junior Researcher, you will build a world-class team, upgrade your accelerator, secure CERN Grants, and ultimately make the groundbreaking Higgs Discovery. It is science, strategy, and satisfying number growth rolled into one browser-based experiment.</p>
+             <p><strong>Particle physics</strong> is the branch of science that studies the fundamental building blocks of the universe. Facilities like CERN's Large Hadron Collider smash protons together at near-light speeds, producing showers of data that physicists analyze for years. The 2012 discovery of the Higgs boson was one of the greatest scientific achievements of the 21st century, confirming how particles acquire mass. Particle Clicker turns this monumental endeavor into an accessible incremental adventure.</p>
+             <p>Idle clicker games and science are a surprisingly perfect match. Both involve starting small, making incremental improvements, and eventually achieving breakthroughs that change everything. In Particle Clicker, your Data Points represent the raw output of countless collisions. Your upgrades represent real investments in scientific infrastructure: hiring postdocs, improving accelerators, and securing funding. It is a <strong>free browser game requiring no download</strong>, so you can conduct research from anywhere.</p>
+             <p>Whether you are a science enthusiast or just love watching numbers grow, Particle Clicker offers a unique thematic depth. Every upgrade tells a story about how modern physics actually works. You will appreciate why funding matters, why bigger colliders produce better data, and why it takes thousands of researchers to make one discovery. And unlike real particle physics, you will see results in minutes instead of decades.</p>
+          </div>
 
-         <div class="intro">
-            <p>Particle Clicker drapes PhD-humor over the same idle scaffold: <strong>Data Points</strong> tick up like fake
-               collider spills, passives borrow <strong>Junior Researcher</strong> through <strong>Higgs Discovery</strong> names, and
-               <strong>Click Power</strong> represents “what if you smacked the detector harder with your mouse.”</p>
-            <p>This is not Open Data from CERN: there are no ROOT files, track fits, ATLAS event displays, grid certificates, or
-               shift slots on the real experiment. The <strong>CERN Grant</strong> line is a budget punchline, not a wire transfer.
-               Enjoy the cosplay; publish real papers elsewhere.</p>
-         </div>
-         <section class="section">
-            <h2>Lab staffing table (what each hire actually does)</h2>
-            <div class="feature-box">
-               <h3>Throughput, not thesis defense</h3>
-               <ul>
-                  <li><strong>Junior Researcher</strong> — +1 data/sec; cannon fodder postdocs grinding plots.</li>
-                  <li><strong>Postdoc Team</strong> — +5/sec; when caffeine becomes a lab supply.</li>
-                  <li><strong>Accelerator Upgrade</strong> — +20/sec; ring upgrade fantasy without cryo schematics.</li>
-                  <li><strong>CERN Grant</strong> — +100/sec; soft-money dream; still no wire to Switzerland.</li>
-                  <li><strong>Higgs Discovery</strong> — +500/sec; Nobel meme for people who just like big numbers.</li>
-               </ul>
-            </div>
-         </section>
-         <section class="section">
-            <h2>Grant-writing night vs stay-up-and-click night</h2>
-            <p>When you desperately need the next <strong>Accelerator Upgrade</strong> but the price is still a few kilo-data away,
-               stacking another <strong>Postdoc Team</strong> might still win the budget war. If you are babysitting the tab for a
-               Zoom class, lean on <strong>CERN Grant</strong> copies so data accrues without finger strain. <strong>Click Power</strong> is your
-               hail-mary “PI approved overtime” button for manual bursts.</p>
-         </section>
-         <section class="section">
-            <h2>Preprints stored in your browser cache</h2>
-            <p><strong>Save</strong> freezes the run under <code>particle_clicker_save</code>; <strong>Reset</strong> is the cruel desk reject.
-               No arXiv webhook, no doi—just localStorage on this machine.</p>
-         </section>
-         <section class="section">
-            <h2>Luminosity checklist</h2>
-            <ol class="tips-list">
-               <li><strong>Fund Junior Researchers</strong> before you role-play Higgs plots.</li>
-               <li><strong>Stack Postdocs</strong> whenever early breadth still crushes one lonely accelerator purchase.</li>
-               <li><strong>Accelerator Upgrade is the realistic mid-run gear shift.</strong></li>
-               <li><strong>CERN Grant feeds AFK sessions</strong> once you need hundreds of data/sec passively.</li>
-               <li><strong>Higgs Discovery rows are your “tenure track” flex number.</strong></li>
-               <li><strong>Bump Click Power</strong> whenever you can still feel clicks shaving seconds off the next buy.</li>
-            </ol>
-         </section>
-         <section class="section">
-            <h2>If you want more cosmic scale</h2>
-            <p>Try <a href="/planet-clicker/">Planet Clicker</a> for planetary energy nouns, or <a href="/earth-clicker/">Earth Clicker</a> for
-               civ-scale comedy with the same pacing.</p>
-         </section>
+          <section class="section">
+             <h2>How to Play Particle Clicker</h2>
+             <ol class="tips-list">
+                <li><strong>Collide Particles:</strong> Click the ⚛️ atom button to collect Data Points from simulated particle collisions. Each click represents another run of the experiment.</li>
+                <li><strong>Hire Researchers:</strong> Buy a <strong>Junior Researcher</strong> for +1 data point per second. Science is a team sport, and your first hire is the foundation of your lab.</li>
+                <li><strong>Boost Precision:</strong> Invest in <strong>Click Power</strong> to collect more data per collision. Higher click power represents better detectors and more sensitive instruments.</li>
+                <li><strong>Upgrade the Lab:</strong> Unlock <strong>Postdoc Teams</strong> (+5/sec) and <strong>Accelerator Upgrades</strong> (+20/sec) to dramatically increase your passive data generation.</li>
+                <li><strong>Make History:</strong> Save for <strong>CERN Grants</strong> (+100/sec) and the ultimate <strong>Higgs Discovery</strong> (+500/sec) to push the boundaries of human knowledge.</li>
+                <li><strong>Chain Reactions:</strong> Maintain a rapid click streak within 2-second windows to build combos. Every 10th click triggers a <strong>Critical Hit</strong>, yielding double data!</li>
+             </ol>
+          </section>
 
-         <div style="text-align: center;">
-            <a href="/" class="back-btn">Back to Home</a>
-         </div>
+          <section class="section">
+             <h2>Particle Clicker Strategy Guide</h2>
+             <p><strong>Lab Startup:</strong> Every great experiment begins with a small team. Your absolute first priority is hiring at least one Junior Researcher. Passive data generation is essential because manual clicking alone will never fund a particle accelerator. After your first hire, split your Data Points between Click Power and additional researchers. The compounding effect of even small passive gains will snowball faster than you expect.</p>
+             <p><strong>Grant Season:</strong> The mid-game transition happens when you can afford Accelerator Upgrades. At +20 data points per second, these represent a massive leap in capability. However, do not neglect Postdoc Teams. Sometimes three Postdocs (+15/sec total) cost less than one Accelerator and provide nearly the same benefit. Always calculate the return on investment. If you plan to step away, load up on the highest passive tier you can afford.</p>
+             <p><strong>Nobel Territory:</strong> Higgs Discovery is the endgame, adding a staggering +500 data points per second. Once you unlock this tier, your lab operates at an industrial scale. The smartest late-game strategy is to buy Higgs Discoveries whenever possible and only invest in Click Power when you plan an active session. Remember, even the greatest physicists need to save their work. Use the Save button or trust the 30-second auto-save.</p>
+          </section>
 
-      </article>
-      <!-- Related Games Section -->
+          <section class="section faq-section">
+             <h2>Frequently Asked Questions</h2>
+             <h3>What is Particle Clicker?</h3>
+             <p>Particle Clicker is a free browser idle game themed around particle physics research. Players collect Data Points by clicking and invest in scientific upgrades like researchers, accelerators, and grants to generate passive data and eventually make the Higgs Discovery.</p>
+             <h3>Is this an official CERN game?</h3>
+             <p>No, Particle Clicker is an unofficial fan-themed idle game. It is not affiliated with CERN, NASA, or any scientific institution. It is created for entertainment and educational flavor only.</p>
+             <h3>How do I save my experiment progress?</h3>
+             <p>Click the 💾 Save button to store your lab's progress in your browser's local storage. Auto-save also runs every 30 seconds. Note that clearing browser data will erase your research.</p>
+             <h3>What is the best upgrade to buy?</h3>
+             <p>Junior Researchers are the best early investment. In the mid-game, Accelerator Upgrades offer excellent scaling. Late game, focus exclusively on Higgs Discoveries for maximum passive data output.</p>
+             <h3>Can I play on mobile devices?</h3>
+             <p>Yes, Particle Clicker is fully responsive and works on phones and tablets. Tap the atom button to collect data and browse upgrades with touch scrolling.</p>
+             <h3>How do combos and Critical Hits work?</h3>
+             <p>Click within 2 seconds of your previous click to maintain a combo. Every time your combo reaches a multiple of 10, you score a Critical Hit that doubles your Data Points for that collision. Wait longer than 2 seconds and the combo resets.</p>
+          </section>
+
+          <section class="section">
+             <h2>Why Play Particle Clicker?</h2>
+             <p>Particle Clicker appeals to the curious mind. There is something deeply satisfying about simulating the scientific process, even in simplified form. The game honors the reality that great discoveries require patience, funding, and teamwork. Unlike action games that rely on reflexes, Particle Clicker rewards planning and strategic thinking. It is a clicker for people who like to feel smart while they relax.</p>
+             <p>The science theme gives it a unique identity in the clicker genre. While <a href="/cookie-clicker/">Cookie Clicker</a> bakes and <a href="/planet-clicker/">Planet Clicker</a> explores space, Particle Clicker delves into the quantum realm. If you enjoy cerebral themes, you might also appreciate <a href="/earth-clicker/">Earth Clicker</a> for civilizational scale or <a href="/room-clicker/">Room Clicker</a> for interior design creativity.</p>
+          </section>
+
+          <section class="section">
+             <h2>Did You Know? Particle Physics Fun Facts</h2>
+             <div class="highlight-box">
+                <ul>
+                   <li>The Large Hadron Collider (LHC) at CERN is the world's largest particle accelerator, with a circumference of 27 kilometers buried beneath the Swiss-French border.</li>
+                   <li>The Higgs boson, discovered in 2012, is often called the 'God Particle' after the title of Leon Lederman's popular science book, though physicists generally dislike the nickname.</li>
+                   <li>Protons in the LHC travel at 99.9999991% the speed of light, completing over 11,000 circuits per second.</li>
+                   <li>The data generated by the LHC is enormous. In 2024 alone, experiments produced over 100 petabytes of data, enough to fill millions of high-capacity hard drives.</li>
+                   <li>Particle detectors like ATLAS and CMS are roughly the size of cathedrals and contain over 100 million individual sensors to track collision debris.</li>
+                </ul>
+             </div>
+          </section>
+
+          <div style="text-align: center;">
+             <a href="/" class="back-btn">Back to Home</a>
+          </div>
+
+       </article>
+
+       <div class="milestone-banner" id="milestoneBanner">Milestone Reached!</div>
+
+       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
          <p class="related-games-subtitle">Discover more free online clicker games to play</p>
@@ -995,6 +1174,28 @@
          let perSecond = 0;
          let upgradeOwned = UPGRADES.map(() => 0);
 
+         // Combo system
+         let lastClickTime = 0;
+         let comboCount = 0;
+         const COMBO_WINDOW = 2000;
+         const comboDisplay = document.getElementById('comboDisplay');
+
+         // Sound toggle
+         let soundOn = true;
+         const soundToggle = document.getElementById('soundToggle');
+         soundToggle.addEventListener('click', () => {
+            soundOn = !soundOn;
+            soundToggle.textContent = soundOn ? '🔊' : '🔇';
+         });
+
+         // Progress bar
+         const progressBarFill = document.getElementById('progressBarFill');
+
+         // Milestones
+         const milestones = [1000, 10000, 100000, 1000000];
+         let reachedMilestones = new Set();
+         const milestoneBanner = document.getElementById('milestoneBanner');
+
          // DOM
          const scoreNum = document.getElementById('scoreNum');
          const perSecDisplay = document.getElementById('perSecDisplay');
@@ -1015,6 +1216,36 @@
          function getCost(baseC, owned) {
             return Math.floor(baseC * Math.pow(COST_SCALE, owned));
          }
+
+         function showCriticalPopup() {
+            const el = document.createElement('div');
+            el.className = 'critical-popup';
+            el.textContent = 'CRITICAL HIT!';
+            const rect = clickArea.getBoundingClientRect();
+            el.style.left = (rect.width/2 - 60) + 'px';
+            el.style.top = (rect.height/2 - 60) + 'px';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 800);
+         }
+
+         function showMilestoneBanner(text) {
+            milestoneBanner.textContent = 'Milestone Reached! ' + text + ' Data Points';
+            milestoneBanner.classList.add('show');
+            setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
+         }
+
+         // Particles
+         setInterval(() => {
+            if (document.hidden) return;
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.textContent = ['🟩', '💎', '⭐', '🎮'][Math.floor(Math.random()*4)];
+            const rect = clickArea.getBoundingClientRect();
+            p.style.left = (20 + Math.random() * (rect.width - 40)) + 'px';
+            p.style.top = (rect.height - 30) + 'px';
+            clickArea.appendChild(p);
+            setTimeout(() => p.remove(), 2000);
+         }, 3500);
 
          function recalcPerSecond() {
             perSecond = 0;
@@ -1042,6 +1273,24 @@
                }
             });
 
+            // Progress bar to next affordable upgrade
+            let nextCost = Infinity;
+            UPGRADES.forEach((u, i) => {
+               const c = getCost(u.baseCost, upgradeOwned[i]);
+               if (c < nextCost) nextCost = c;
+            });
+            if (clickPowerCost < nextCost) nextCost = clickPowerCost;
+            let progress = Math.min(100, (score / nextCost) * 100);
+            progressBarFill.style.width = progress + '%';
+
+            // Milestones
+            milestones.forEach(m => {
+               if (score >= m && !reachedMilestones.has(m)) {
+                  reachedMilestones.add(m);
+                  showMilestoneBanner(formatNum(m));
+               }
+            });
+
             // Click power upgrade
             const cpCard = document.getElementById('upgClickPower');
             document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
@@ -1065,8 +1314,31 @@
          }
 
          function doClick(e) {
-            score += clickPower;
-            totalEarned += clickPower;
+            let now = Date.now();
+            if (now - lastClickTime <= COMBO_WINDOW) {
+               comboCount++;
+            } else {
+               comboCount = 1;
+            }
+            lastClickTime = now;
+
+            let earned = clickPower;
+            if (comboCount >= 10 && comboCount % 10 === 0) {
+               earned *= 2;
+               showCriticalPopup();
+            }
+
+            score += earned;
+            totalEarned += earned;
+
+            if (comboCount > 1) {
+               comboDisplay.textContent = comboCount + 'x COMBO!';
+               comboDisplay.classList.add('active');
+               clearTimeout(comboDisplay._t);
+               comboDisplay._t = setTimeout(() => comboDisplay.classList.remove('active'), 1500);
+            } else {
+               comboDisplay.classList.remove('active');
+            }
 
             clickBtn.classList.add('pressed');
             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
@@ -1134,7 +1406,7 @@
 
          // Save / Load
          function saveGame() {
-            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned };
+            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, reachedMilestones: [...reachedMilestones] };
             try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
          }
 
@@ -1149,6 +1421,7 @@
                   clickPowerLevel = data.clickPowerLevel || 1;
                   clickPowerCost = data.clickPowerCost || 50;
                   upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                  if (data.reachedMilestones) reachedMilestones = new Set(data.reachedMilestones);
                   recalcPerSecond();
                }
             } catch (e) { }
@@ -1187,6 +1460,16 @@
       menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
       document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
       document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+   </script>
+
+   <script>
+      // FAQ Toggle
+      document.querySelectorAll('.faq-section h3').forEach(q => {
+         q.addEventListener('click', () => {
+            q.classList.toggle('open');
+            q.nextElementSibling.classList.toggle('open');
+         });
+      });
    </script>
 
    <!-- Site Footer -->

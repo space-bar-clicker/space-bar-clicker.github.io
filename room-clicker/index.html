@@ -4,9 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Room Clicker - Play Free Online</title>
-   <meta name="description"
-      content="Room Clicker idle: Design Points/sec House Plant→Dream Mansion, Click Power—not 3D room editor, themes, challenges, or share flow in this static build.">
+   <title>Room Clicker - Free Online Design Idle Game | Decorate Your Dream Home</title>
+   <meta name="description" content="Play Room Clicker free online! Earn Design Points, furnish rooms & build your Dream Mansion. Combo system included. No download needed!">
    <meta name="keywords"
       content="room clicker, room clicker, clicker game, idle game, free online game, play room clicker">
    <meta name="robots" content="index, follow">
@@ -752,6 +751,172 @@
          box-shadow: 0 4px 12px rgba(120, 56, 243, 0.15);
          color: #3b0764;
       }
+      /* Combo System */
+      .combo-display {
+         margin-top: 6px;
+         font-size: 0.9rem;
+         font-weight: 700;
+         color: #be185d;
+         opacity: 0;
+         transition: opacity 0.2s;
+         min-height: 1.2em;
+      }
+      .combo-display.active {
+         opacity: 1;
+      }
+
+      /* Critical Hit Popup */
+      .critical-popup {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1.5rem;
+         font-weight: 800;
+         color: #be185d;
+         text-shadow: 0 2px 8px rgba(0,0,0,0.12);
+         animation: criticalPop 0.8s ease-out forwards;
+         z-index: 20;
+         white-space: nowrap;
+      }
+      @keyframes criticalPop {
+         0% { opacity: 1; transform: translateY(0) scale(0.6); }
+         50% { transform: translateY(-40px) scale(1.2); }
+         100% { opacity: 0; transform: translateY(-80px) scale(1); }
+      }
+
+      /* Progress Bar */
+      .progress-bar-container {
+         width: 80%;
+         max-width: 220px;
+         height: 10px;
+         background: #e5e7eb;
+         border-radius: 5px;
+         margin-top: 10px;
+         overflow: hidden;
+      }
+      .progress-bar-fill {
+         height: 100%;
+         background: linear-gradient(90deg, #be185d, #f472b6);
+         border-radius: 5px;
+         transition: width 0.3s ease;
+         width: 0%;
+      }
+
+      /* Floating Particles */
+      .particle {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1rem;
+         animation: particleFloat 2s ease-out forwards;
+         z-index: 5;
+      }
+      @keyframes particleFloat {
+         0% { opacity: 1; transform: translateY(0) scale(0.8); }
+         100% { opacity: 0; transform: translateY(-120px) scale(1.2); }
+      }
+
+      /* Milestone Banner */
+      .milestone-banner {
+         position: fixed;
+         top: 80px;
+         left: 50%;
+         transform: translateX(-50%) translateY(-20px);
+         background: linear-gradient(135deg, #be185d, #9d174d);
+         color: white;
+         padding: 14px 32px;
+         border-radius: 30px;
+         font-weight: 700;
+         font-size: 1.1rem;
+         box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+         opacity: 0;
+         transition: all 0.5s ease;
+         z-index: 2000;
+         pointer-events: none;
+         text-align: center;
+      }
+      .milestone-banner.show {
+         opacity: 1;
+         transform: translateX(-50%) translateY(0);
+      }
+
+      /* FAQ Section */
+      .faq-section h3 {
+         color: #7838f3;
+         margin: 16px 0 0;
+         font-size: 1.1rem;
+         cursor: pointer;
+         padding: 12px 16px;
+         background: #f8f9fe;
+         border-radius: 8px;
+         transition: all 0.2s ease;
+         position: relative;
+         font-weight: 600;
+      }
+      .faq-section h3:hover {
+         background: #ede5ff;
+         transform: translateX(4px);
+      }
+      .faq-section h3::after {
+         content: '+';
+         position: absolute;
+         right: 16px;
+         top: 50%;
+         transform: translateY(-50%);
+         font-weight: 700;
+         color: #7838f3;
+         font-size: 1.2rem;
+      }
+      .faq-section h3.open::after {
+         content: '−';
+      }
+      .faq-section p {
+         display: none;
+         padding: 12px 16px;
+         margin: 0 0 10px;
+         color: #555;
+         line-height: 1.7;
+         background: #fff;
+         border-radius: 0 0 8px 8px;
+         border: 1px solid #f0f0f0;
+         border-top: none;
+      }
+      .faq-section p.open {
+         display: block;
+      }
+
+      /* Sound Toggle */
+      .sound-toggle {
+         background: rgba(255,255,255,0.25);
+         border: none;
+         font-size: 1.2rem;
+         cursor: pointer;
+         color: white;
+         padding: 4px 8px;
+         line-height: 1;
+         border-radius: 8px;
+         transition: all 0.2s;
+      }
+      .sound-toggle:hover {
+         background: rgba(255,255,255,0.4);
+      }
+
+      /* Keyboard hint */
+      .keyboard-hint {
+         text-align: center;
+         font-size: 0.8rem;
+         color: #999;
+         margin-top: 10px;
+         font-weight: 500;
+      }
+
+      /* Internal links styling consistency */
+      .article-container a {
+         color: #7838f3;
+         text-decoration: underline;
+         font-weight: 600;
+      }
+      .article-container a:hover {
+         color: #5b21b6;
+      }
    </style>
 </head>
 
@@ -780,6 +945,7 @@
                <span class="game-stat-pill" id="gStatTotal">0 Design Points</span>
                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
             </div>
+            <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
@@ -873,62 +1039,76 @@
       <!-- ===== ARTICLE CONTENT ===== -->
       <article class="article-container">
 
-         <div class="intro">
-            <p>Room Clicker never hands you a furniture grid. The only number that pretends to be “interior design” is abstract
-               <strong>Design Points</strong>, milked from tiers named <strong>House Plant</strong> up to <strong>Dream Mansion</strong> while
-               <strong>Click Power</strong> makes each tap feel like a bolder mood board swipe.</p>
-            <p>You will not orbit a 3D room, drag lamps, unlock wallpaper packs, invite friends for walkthroughs, or export
-               mood shots for Instagram—those features were marketing fiction. What exists is incremental math with domestic
-               emoji. <strong>Save</strong> keeps the scoreboard; <strong>Reset</strong> tears the moodboard down.</p>
-         </div>
-         <section class="section">
-            <h2>Feng shui translated into +points per second</h2>
-            <div class="feature-box">
-               <h3>Rent-staging by tier</h3>
-               <ul>
-                  <li><strong>House Plant</strong> — +1/sec; the tiny succulent that keeps your streak feeling “curated.”</li>
-                  <li><strong>Cozy Lamp</strong> — +5/sec; warm bulb fiction for people who main Pinterest boards.</li>
-                  <li><strong>Designer Sofa</strong> — +20/sec; still no sofa mesh—just throughput.</li>
-                  <li><strong>Smart Home</strong> — +100/sec; Philips Hue brain, minus the API key.</li>
-                  <li><strong>Dream Mansion</strong> — +500/sec; McMansion energy for seven-figure imaginary square footage.</li>
-               </ul>
-            </div>
-         </section>
-         <section class="section">
-            <h2>When another lamp beats smashing the click button</h2>
-            <p>Because every tier can be duplicated, your “interior budget” question is the same as every other idle sheet:
-               does another <strong>Cozy Lamp</strong> pay for itself before a <strong>Designer Sofa</strong> copy would, or should you pump
-               <strong>Click Power</strong> so hand-clicks finish the next purchase during a short break? Long AFK stretches love
-               stacking <strong>Smart Home</strong> and Mansion rows; panic clicking before the bell rings loves buffed taps.</p>
-         </section>
-         <section class="section">
-            <h2>Mood files stored next to your cookie jar</h2>
-            <p><strong>Save</strong> records your Design Points under <code>room_clicker_save</code> in this browser only. That is the whole
-               staging contract—no Pinterest sync, no roommate co-op cloud.</p>
-         </section>
-         <section class="section">
-            <h2>Show house checklist</h2>
-            <ol class="tips-list">
-               <li><strong>Queue House Plant income before you fantasize Smart Home splurges.</strong></li>
-               <li><strong>Stack Cozy Lamps</strong> whenever math says breadth wins.</li>
-               <li><strong>Designer Sofa is the “we finally moved past futon” tier.</strong></li>
-               <li><strong>Smart Home propels overnight tab marathons.</strong></li>
-               <li><strong>Dream Mansion spam is how you flex fake square footage.</strong></li>
-               <li><strong>Click Power</strong> when you still care about micro-optimizing lunchtime sessions.</li>
-            </ol>
-         </section>
-         <section class="section">
-            <h2>Other domestic fantasies</h2>
-            <p>Compare <a href="/plant-clicker/">Plant Clicker</a> if you want literal chlorophyll flavor, or <a
-                  href="/earth-clicker/">Earth Clicker</a> if your taste runs civilizational instead of throw pillows.</p>
-         </section>
+          <div class="intro">
+             <p><strong>Room Clicker</strong> invites you to become the ultimate interior designer, one click at a time. Starting with a single House Plant, you will curate cozy lamps, designer sofas, smart home systems, and eventually sprawling Dream Mansions. Every click earns Design Points, and every upgrade transforms your space into something more spectacular. It is interior design distilled into its most satisfying form: pure creative accumulation.</p>
+             <p><strong>Interior design</strong> is the art and science of enhancing the interior of a building to achieve a healthier and more aesthetically pleasing environment. From ancient Egyptian palaces to modern Scandinavian minimalism, humans have always sought to beautify their living spaces. Today, platforms like Pinterest and Instagram have made home decor a global obsession. Room Clicker channels that passion into an incremental game where your dream home grows with every interaction.</p>
+             <p>Idle clicker games are a natural fit for the design theme because they mirror the real process of gradually improving a space. You do not furnish a mansion in one day; you collect pieces over time, layer by layer, until the vision comes together. Room Clicker captures that journey. It is a <strong>free browser game with no download required</strong>, meaning you can start designing from your phone during a commute or from your laptop during a coffee break.</p>
+             <p>There are no budget constraints, no contractor delays, and no arguments about paint colors. Just you, your creativity, and an endless stream of Design Points. Will you focus on rapid clicking to hand-pick every item, or will you automate your design studio with passive upgrades and return to a fully furnished mansion? The choice is yours, designer.</p>
+          </div>
 
-         <div style="text-align: center;">
-            <a href="/" class="back-btn">Back to Home</a>
-         </div>
+          <section class="section">
+             <h2>How to Play Room Clicker</h2>
+             <ol class="tips-list">
+                <li><strong>Design Your Space:</strong> Click the 🏠 house button to earn Design Points. Each click represents a new decor choice, color palette, or furniture piece added to your room.</li>
+                <li><strong>Add Greenery:</strong> Purchase a <strong>House Plant</strong> for +1 Design Point per second. Every great room starts with a touch of nature.</li>
+                <li><strong>Refine Your Taste:</strong> Invest in <strong>Click Power</strong> to earn more points per click. A higher click power represents sharper design instincts and faster decision-making.</li>
+                <li><strong>Furnish in Style:</strong> Unlock <strong>Cozy Lamps</strong> (+5/sec) and <strong>Designer Sofas</strong> (+20/sec) to automate your design process and generate passive income.</li>
+                <li><strong>Live in Luxury:</strong> Save for <strong>Smart Home</strong> (+100/sec) and the ultimate <strong>Dream Mansion</strong> (+500/sec) to create a living space worthy of a magazine cover.</li>
+                <li><strong>Design Combos:</strong> Click rapidly within 2 seconds to maintain a combo streak. Every 10th click scores a <strong>Critical Hit</strong>, doubling your Design Points for that creative burst!</li>
+             </ol>
+          </section>
 
-      </article>
-      <!-- Related Games Section -->
+          <section class="section">
+             <h2>Room Clicker Strategy Guide</h2>
+             <p><strong>First Impressions:</strong> When you are starting with an empty room, your first goal is always to buy a House Plant. Passive income is the backbone of every successful design project. Once you have one plant generating points, alternate between Click Power and more plants. The early game rewards constant activity; buy something whenever you can afford it, and never let your Design Points sit unused.</p>
+             <p><strong>Curated Growth:</strong> The mid-game is where your design vision takes shape. Designer Sofas offer a significant passive boost, but they are pricey. If you are actively playing, a high Click Power level will help you afford that sofa much faster. If you are going AFK, load up on Cozy Lamps instead. They provide steady passive income at a fraction of the cost. Smart interior design is about balancing beauty with budget.</p>
+             <p><strong>Mansion Living:</strong> Dream Mansions are the endgame, adding +500 Design Points per second. Once you unlock this tier, you are no longer decorating a room; you are managing an estate. The optimal strategy is to buy Dream Mansions whenever you have the points, treating Click Power as a secondary luxury. When you return after a break, your passive income will have funded multiple new mansions. Just remember to Save your masterpiece.</p>
+          </section>
+
+          <section class="section faq-section">
+             <h2>Frequently Asked Questions</h2>
+             <h3>What is Room Clicker?</h3>
+             <p>Room Clicker is a free browser idle game themed around interior design and home decoration. Players earn Design Points by clicking and purchase upgrades like furniture and smart home systems to generate passive income and build their dream living space.</p>
+             <h3>Is this a real interior design tool?</h3>
+             <p>No, Room Clicker is a casual idle clicker game for entertainment. It does not allow actual 3D room design, furniture placement, or export design files. It is purely an incremental numbers game with a design theme.</p>
+             <h3>How do I save my design progress?</h3>
+             <p>Press the 💾 Save button to store your Design Points and upgrades in your browser's local storage. The game also auto-saves every 30 seconds. Clearing your browser data will reset your design portfolio.</p>
+             <h3>Which upgrade should I buy first?</h3>
+             <p>Always start with House Plants for passive income. Then balance Click Power with the next furniture tier you can afford. Late game, Dream Mansions provide the best return on investment.</p>
+             <h3>Can I play Room Clicker on mobile?</h3>
+             <p>Yes, the game is fully responsive and optimized for touchscreens. Tap the house button to earn Design Points and swipe through upgrades on your phone or tablet.</p>
+             <h3>What are Critical Hits?</h3>
+             <p>Critical Hits occur every 10 consecutive clicks within a 2-second combo window. They award double Design Points for that click. If you pause longer than 2 seconds between clicks, your combo resets to zero.</p>
+          </section>
+
+          <section class="section">
+             <h2>Why Play Room Clicker?</h2>
+             <p>Room Clicker speaks to the universal desire to create a beautiful home. There is something inherently satisfying about curating a space, even in abstract form. The game offers all the pleasure of redecorating without the expense, mess, or decision fatigue. It is relaxing, rewarding, and perfectly suited for short play sessions. The combo system adds a touch of excitement for those moments when you want to actively engage rather than passively accumulate.</p>
+             <p>For fans of creative clickers, Room Clicker pairs beautifully with <a href="/plant-clicker/">Plant Clicker</a> for botanical themes. If you prefer different aesthetics, <a href="/pizza-clicker/">Pizza Clicker</a> brings culinary creativity, while <a href="/candy-clicker/">Candy Clicker</a> offers a sweeter design palette. Each game shares the same satisfying core with a unique thematic wrapper.</p>
+          </section>
+
+          <section class="section">
+             <h2>Did You Know? Interior Design Fun Facts</h2>
+             <div class="highlight-box">
+                <ul>
+                   <li>The ancient Egyptians decorated their homes with ornate furniture made from ivory, gold, and ebony as early as 3000 BCE.</li>
+                   <li>The term 'interior design' was first coined in the United States in the early 1900s, though the practice itself dates back millennia.</li>
+                   <li>Studies show that houseplants can improve indoor air quality and reduce stress, which is why the House Plant is Room Clicker's first upgrade.</li>
+                   <li>The world's most expensive home ever sold was a French chateau purchased for over $300 million, featuring a gold-leafed ballroom and an underground cinema.</li>
+                   <li>Smart home technology, represented in Room Clicker by the Smart Home upgrade, is projected to be a $300 billion global industry by 2030.</li>
+                </ul>
+             </div>
+          </section>
+
+          <div style="text-align: center;">
+             <a href="/" class="back-btn">Back to Home</a>
+          </div>
+
+       </article>
+
+       <div class="milestone-banner" id="milestoneBanner">Milestone Reached!</div>
+
+       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
          <p class="related-games-subtitle">Discover more free online clicker games to play</p>
@@ -994,6 +1174,28 @@
          let perSecond = 0;
          let upgradeOwned = UPGRADES.map(() => 0);
 
+         // Combo system
+         let lastClickTime = 0;
+         let comboCount = 0;
+         const COMBO_WINDOW = 2000;
+         const comboDisplay = document.getElementById('comboDisplay');
+
+         // Sound toggle
+         let soundOn = true;
+         const soundToggle = document.getElementById('soundToggle');
+         soundToggle.addEventListener('click', () => {
+            soundOn = !soundOn;
+            soundToggle.textContent = soundOn ? '🔊' : '🔇';
+         });
+
+         // Progress bar
+         const progressBarFill = document.getElementById('progressBarFill');
+
+         // Milestones
+         const milestones = [1000, 10000, 100000, 1000000];
+         let reachedMilestones = new Set();
+         const milestoneBanner = document.getElementById('milestoneBanner');
+
          // DOM
          const scoreNum = document.getElementById('scoreNum');
          const perSecDisplay = document.getElementById('perSecDisplay');
@@ -1014,6 +1216,36 @@
          function getCost(baseC, owned) {
             return Math.floor(baseC * Math.pow(COST_SCALE, owned));
          }
+
+         function showCriticalPopup() {
+            const el = document.createElement('div');
+            el.className = 'critical-popup';
+            el.textContent = 'CRITICAL HIT!';
+            const rect = clickArea.getBoundingClientRect();
+            el.style.left = (rect.width/2 - 60) + 'px';
+            el.style.top = (rect.height/2 - 60) + 'px';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 800);
+         }
+
+         function showMilestoneBanner(text) {
+            milestoneBanner.textContent = 'Milestone Reached! ' + text + ' Design Points';
+            milestoneBanner.classList.add('show');
+            setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
+         }
+
+         // Particles
+         setInterval(() => {
+            if (document.hidden) return;
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.textContent = ['🟩', '💎', '⭐', '🎮'][Math.floor(Math.random()*4)];
+            const rect = clickArea.getBoundingClientRect();
+            p.style.left = (20 + Math.random() * (rect.width - 40)) + 'px';
+            p.style.top = (rect.height - 30) + 'px';
+            clickArea.appendChild(p);
+            setTimeout(() => p.remove(), 2000);
+         }, 3500);
 
          function recalcPerSecond() {
             perSecond = 0;
@@ -1041,6 +1273,24 @@
                }
             });
 
+            // Progress bar to next affordable upgrade
+            let nextCost = Infinity;
+            UPGRADES.forEach((u, i) => {
+               const c = getCost(u.baseCost, upgradeOwned[i]);
+               if (c < nextCost) nextCost = c;
+            });
+            if (clickPowerCost < nextCost) nextCost = clickPowerCost;
+            let progress = Math.min(100, (score / nextCost) * 100);
+            progressBarFill.style.width = progress + '%';
+
+            // Milestones
+            milestones.forEach(m => {
+               if (score >= m && !reachedMilestones.has(m)) {
+                  reachedMilestones.add(m);
+                  showMilestoneBanner(formatNum(m));
+               }
+            });
+
             // Click power upgrade
             const cpCard = document.getElementById('upgClickPower');
             document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
@@ -1064,8 +1314,31 @@
          }
 
          function doClick(e) {
-            score += clickPower;
-            totalEarned += clickPower;
+            let now = Date.now();
+            if (now - lastClickTime <= COMBO_WINDOW) {
+               comboCount++;
+            } else {
+               comboCount = 1;
+            }
+            lastClickTime = now;
+
+            let earned = clickPower;
+            if (comboCount >= 10 && comboCount % 10 === 0) {
+               earned *= 2;
+               showCriticalPopup();
+            }
+
+            score += earned;
+            totalEarned += earned;
+
+            if (comboCount > 1) {
+               comboDisplay.textContent = comboCount + 'x COMBO!';
+               comboDisplay.classList.add('active');
+               clearTimeout(comboDisplay._t);
+               comboDisplay._t = setTimeout(() => comboDisplay.classList.remove('active'), 1500);
+            } else {
+               comboDisplay.classList.remove('active');
+            }
 
             clickBtn.classList.add('pressed');
             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
@@ -1133,7 +1406,7 @@
 
          // Save / Load
          function saveGame() {
-            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned };
+            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, reachedMilestones: [...reachedMilestones] };
             try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
          }
 
@@ -1148,6 +1421,7 @@
                   clickPowerLevel = data.clickPowerLevel || 1;
                   clickPowerCost = data.clickPowerCost || 50;
                   upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                  if (data.reachedMilestones) reachedMilestones = new Set(data.reachedMilestones);
                   recalcPerSecond();
                }
             } catch (e) { }
@@ -1186,6 +1460,16 @@
       menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
       document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
       document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+   </script>
+
+   <script>
+      // FAQ Toggle
+      document.querySelectorAll('.faq-section h3').forEach(q => {
+         q.addEventListener('click', () => {
+            q.classList.toggle('open');
+            q.nextElementSibling.classList.toggle('open');
+         });
+      });
    </script>
 
    <!-- Site Footer -->

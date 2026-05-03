@@ -4,9 +4,9 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Italian Brainrot Clicker - Play Free Online</title>
+   <title>Italian Brainrot Clicker - Play Free Online | Spacebar Clicker</title>
    <meta name="description"
-      content="Italian Brainrot Clicker idle: meme-flavored tiers Tralalero→Brainrot Singularity (+brainrots/sec), Click Power—not character unlocks, viral audio engine, or events in this build.">
+      content="Play Italian Brainrot Clicker free online! Collect Brainrots, unlock meme upgrades, and embrace absurdity. No download needed - instant browser fun!">
    <meta name="keywords"
       content="italian brainrot clicker, italian brainrot clicker, clicker game, idle game, free online game, play italian brainrot clicker">
    <meta name="robots" content="index, follow">
@@ -149,6 +149,7 @@
          border-radius: 22px;
          box-shadow: 0 20px 55px rgba(120, 56, 243, 0.14);
          overflow: hidden;
+         position: relative;
       }
 
       .game-header {
@@ -205,6 +206,8 @@
          border-right: 1px solid #f0f0f0;
          background: #d1fae5;
          min-height: 320px;
+         position: relative;
+         overflow: hidden;
       }
 
       @media (max-width: 700px) {
@@ -234,6 +237,7 @@
          line-height: 1;
          position: relative;
          outline: none;
+         z-index: 2;
       }
 
       .click-btn:hover {
@@ -426,6 +430,148 @@
          border-color: #dc2626;
          color: #dc2626;
       }
+
+      /* Combo System */
+      .combo-display {
+         margin-top: 6px;
+         font-size: 0.9rem;
+         font-weight: 700;
+         color: #ff6b35;
+         min-height: 1.3em;
+         transition: transform 0.1s;
+         z-index: 2;
+      }
+      .combo-display.active { transform: scale(1.15); }
+
+      .critical-popup {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1.5rem;
+         font-weight: 800;
+         color: #ff3d00;
+         text-shadow: 0 2px 8px rgba(255, 61, 0, 0.3);
+         animation: critPop 0.8s ease-out forwards;
+         z-index: 20;
+      }
+      @keyframes critPop {
+         0% { opacity: 1; transform: translateY(0) scale(0.5); }
+         50% { transform: translateY(-40px) scale(1.2); }
+         100% { opacity: 0; transform: translateY(-90px) scale(1); }
+      }
+
+      /* Progress Bar */
+      .progress-bar-container {
+         width: 80%;
+         max-width: 220px;
+         height: 8px;
+         background: #e5e7eb;
+         border-radius: 4px;
+         margin-top: 10px;
+         overflow: hidden;
+         z-index: 2;
+      }
+      .progress-bar-fill {
+         height: 100%;
+         background: linear-gradient(90deg, #059669, #059669dd);
+         border-radius: 4px;
+         transition: width 0.3s ease;
+         width: 0%;
+      }
+
+      /* Floating Particles */
+      .particle {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1rem;
+         opacity: 0;
+         animation: particleFloat 2.5s ease-out forwards;
+         z-index: 1;
+      }
+      @keyframes particleFloat {
+         0% { opacity: 0.8; transform: translateY(0) scale(0.6); }
+         100% { opacity: 0; transform: translateY(-120px) scale(1.2); }
+      }
+
+      /* Milestone Banner */
+      .milestone-banner {
+         position: fixed;
+         top: 80px;
+         left: 50%;
+         transform: translateX(-50%) scale(0.9);
+         background: linear-gradient(135deg, #7838f3, #a855f7);
+         color: white;
+         padding: 14px 28px;
+         border-radius: 12px;
+         font-weight: 700;
+         font-size: 1.1rem;
+         box-shadow: 0 10px 30px rgba(120, 56, 243, 0.3);
+         opacity: 0;
+         pointer-events: none;
+         transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+         z-index: 2000;
+      }
+      .milestone-banner.show {
+         opacity: 1;
+         transform: translateX(-50%) scale(1);
+      }
+
+      /* Sound Toggle */
+      .sound-toggle {
+         background: rgba(255,255,255,0.2);
+         border: none;
+         border-radius: 8px;
+         padding: 6px 10px;
+         color: white;
+         font-size: 1.1rem;
+         cursor: pointer;
+         transition: background 0.2s;
+      }
+      .sound-toggle:hover { background: rgba(255,255,255,0.35); }
+
+      /* Keyboard tip */
+      .keyboard-tip {
+         font-size: 0.75rem;
+         color: #888;
+         margin-top: 8px;
+         font-weight: 500;
+         z-index: 2;
+      }
+
+      /* FAQ Styles */
+      .faq-section { margin-bottom: 30px; }
+      .faq-item { margin-bottom: 14px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+      .faq-question {
+         font-size: 1.05rem;
+         font-weight: 600;
+         color: #333;
+         cursor: pointer;
+         padding: 10px 0;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         transition: color 0.2s;
+         margin: 0;
+      }
+      .faq-question:hover { color: #7838f3; }
+      .faq-question::after {
+         content: '+';
+         font-size: 1.3rem;
+         color: #7838f3;
+         transition: transform 0.3s;
+         font-weight: 400;
+      }
+      .faq-item.open .faq-question::after { transform: rotate(45deg); }
+      .faq-answer {
+         max-height: 0;
+         overflow: hidden;
+         transition: max-height 0.3s ease, opacity 0.3s ease;
+         opacity: 0;
+      }
+      .faq-item.open .faq-answer { max-height: 500px; opacity: 1; }
+      .faq-answer p { margin: 0 0 10px; font-size: 1rem; color: #555; }
+
+      /* Intro paragraphs */
+      .intro p { margin-bottom: 16px; line-height: 1.85; }
 
       /* Article Styles */
       .article-container {
@@ -766,15 +912,18 @@
 
       <!-- ===== GAME ===== -->
       <div class="game-wrapper" id="gameWrapper">
+         <div class="milestone-banner" id="milestoneBanner"></div>
          <div class="game-header">
             <h2>🇮🇹 Italian Brainrot Clicker</h2>
             <div class="game-stats-bar">
                <span class="game-stat-pill" id="gStatTotal">0 Brainrots</span>
                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+               <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">🔊</button>
             </div>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
+               <div id="particleContainer" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;"></div>
                <button class="click-btn" id="clickBtn" aria-label="Meme Brainrot">
                   <span class="emoji">🇮🇹</span>
                </button>
@@ -784,6 +933,11 @@
                </div>
                <div class="per-second" id="perSecDisplay">0 brainrots/sec</div>
                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+               <div class="combo-display" id="comboDisplay"></div>
+               <div class="progress-bar-container">
+                  <div class="progress-bar-fill" id="progressBarFill"></div>
+               </div>
+               <div class="keyboard-tip">Tip: Press SPACE to click!</div>
             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
@@ -863,52 +1017,104 @@
       </div>
 
       <!-- ===== ARTICLE CONTENT ===== -->
-      <article class="article-container">
+       <article class="article-container">
 
+          <div class="intro">
+             <p>Italian Brainrot Clicker is a chaotic celebration of one of the internet's most surreal meme movements. If you have spent any time on social media, you have probably encountered the absurdist blend of Italian stereotypes, mangled language, and bizarre imagery that defines 'Italian brainrot.' This clicker game channels that energy into an addictive idle experience where you collect Brainrots, the currency of internet absurdity. From Tralalero to the Brainrot Singularity, every upgrade is named after a piece of meme lore. Best of all, it is completely free and runs right in your browser with no downloads.</p>
+             <p>The Italian brainrot meme phenomenon emerged from the collision of TikTok culture, AI-generated content, and good old-fashioned internet randomness. Videos featuring characters like Tralalero Tralala—a crocodile-plane hybrid—alongside explosive espresso references and pasta-powered machinery, have racked up millions of views. The humor is deliberately nonsensical, celebrating the joy of pure absurdity over coherent storytelling. Italian Brainrot Clicker captures this spirit by wrapping solid idle game mechanics in a layer of playful meme references that will make fans smile.</p>
+             <p>Idle clicker games are the perfect vessel for meme culture because both thrive on repetition and escalation. Just as a meme gets funnier the more you see it, a clicker game gets more satisfying the longer you play. The genre's core loop—click, upgrade, watch numbers grow—mirrors the way viral content spreads exponentially across the internet. Italian Brainrot Clicker leans into this parallel, offering players a tangible way to experience the feeling of something small and silly growing into an unstoppable force of nature.</p>
+             <p>Whether you are a die-hard fan of Italian brainrot memes or just looking for a quirky new clicker to pass the time, this game delivers. There is no account needed, no paywall, and no complicated tutorial. Just click the flag, earn Brainrots, and watch your meme empire expand. The game saves automatically, so you can close your browser and return to your growing Singularity whenever the brainrot calls you back.</p>
+          </div>
 
-         <div class="intro">
-            Italian Brainrot Clicker applies <strong>Italy-meets-absurdist meme seasoning</strong> to the subdomain’s standard
-            idle engine: click to bank abstract “brainrot/sec,” stack five named generators, scale <strong>Click Power</strong>. Icon
-            names evoke viral posts, but this static page does <strong>not</strong> ship collectible character cards, hidden
-            meme soundboards, random crit events, achievement popups, or Twitch chat integration—only numbers. For the non-Italian
-            skin, see <a href="/brainrot-clicker/">Brainrot Clicker</a>; strategy matches.
-         </div>
-         <section class="section">
-            <h2>Passive tiers (+brainrots/sec)</h2>
-            <div class="feature-box">
-               <h3>List</h3>
-               <ul>
-                  <li><strong>Tralalero</strong> — +1/sec (croc-plane meme nod).</li>
-                  <li><strong>Bombardiro</strong> — +5/sec.</li>
-                  <li><strong>Pasta Power</strong> — +20/sec.</li>
-                  <li><strong>Espresso Turbo</strong> — +100/sec.</li>
-                  <li><strong>Brainrot Singularity</strong> — +500/sec.</li>
-               </ul>
-            </div>
-            <p>Click Power still controls tap damage; optimize it against generator copies like every cousin page.</p>
-         </section>
-         <section class="section">
-            <h2>Run tips</h2>
-            <ol class="tips-list">
-               <li><strong>Stack Tralalero early.</strong></li>
-               <li><strong>Flood Bombardiro before one huge Pasta hop when math prefers breadth.</strong></li>
-               <li><strong>Pasta Power marks comfy mid-game.</strong></li>
-               <li><strong>Espresso Turbo excels when AFK.</strong></li>
-               <li><strong>Singularity tiers chase record totals.</strong></li>
-               <li><strong>Feed Click Power whenever taps still shorten buy delays.</strong></li>
-            </ol>
-         </section>
-         <section class="section">
-            <h2>Cultural context (non-gameplay)</h2>
-            <p>Italian brainrot memes remix language, animals, and chaotic props for surreal humor. This clicker borrows the
-               tone, not authoritative commentary on Italy—treat it as playful internet absurdism layered on idle pacing.</p>
-         </section>
+          <section class="section">
+             <h2>How to Play Italian Brainrot Clicker</h2>
+             <ol class="tips-list">
+                <li><strong>Click the Italian Flag:</strong> Start by tapping the Italian flag emoji to generate Brainrots manually.</li>
+                <li><strong>Summon Tralalero:</strong> At 15 Brainrots, summon Tralalero to earn +1 Brainrot per second passively.</li>
+                <li><strong>Launch Bombardiro:</strong> When you reach 100 Brainrots, launch Bombardiro for +5 per second. Stack several for rapid growth.</li>
+                <li><strong>Harness Pasta Power:</strong> At 500 Brainrots, unlock Pasta Power to generate +20 Brainrots per second.</li>
+                <li><strong>Brew Espresso Turbo:</strong> Save 2,500 Brainrots for Espresso Turbo, delivering +100 per second of pure caffeine-fueled income.</li>
+                <li><strong>Upgrade Click Power:</strong> Invest 50 Brainrots into Click Power to double your manual generation. Critical for active meme farming.</li>
+                <li><strong>Achieve Brainrot Singularity:</strong> The ultimate upgrade is the Brainrot Singularity at 15,000 Brainrots, generating +500 per second. Amass them to break the internet.</li>
+             </ol>
+          </section>
 
-         <div style="text-align: center;">
-            <a href="/" class="back-btn">Back to Home</a>
-         </div>
+          <section class="section">
+             <h2>Italian Brainrot Clicker Strategy Guide</h2>
+             <p>Early game strategy in Italian Brainrot Clicker is about momentum. Tralalero may seem weak at +1 per second, but buying multiple copies early creates a snowball effect. Do not underestimate the power of small, frequent purchases. The exponential cost scaling means that waiting too long for Bombardiro can actually slow you down compared to stacking five or six Tralaleros. Keep an eye on the progress bar to see exactly how close you are to each upgrade threshold.</p>
+             <p>The mid-game is where Pasta Power and Espresso Turbo shine. Once you hit 500 Brainrots, evaluate whether your current passive income justifies waiting for Pasta Power or if more Bombardiros would bridge the gap faster. Espresso Turbo at 2,500 Brainrots is your first major AFK milestone. If you unlock it and step away for even a few minutes, you will return to a significant pile of Brainrots. During active play, maintain your combo streak by clicking at least once every 2 seconds. The Critical Hits at 10x combos provide a substantial boost.</p>
+             <p>Late game optimization is pure meme empire building. Brainrot Singularity upgrades provide massive income, but their costs rise quickly. Maintain a balance: do not sell off your lower-tier upgrades mentally by ignoring them. Each additional Tralalero or Bombardiro still contributes to your total per-second income. The combo system rewards rapid clicking, so if you are pushing for a milestone like 1 million Brainrots, chain your clicks within 2-second windows to build combos and trigger Critical Hits. Every 10th combo click doubles your output, making active sessions incredibly productive.</p>
+          </section>
 
-      </article>
+          <section class="section faq-section">
+             <h2>Frequently Asked Questions</h2>
+             <div class="faq-item">
+                <h3 class="faq-question">What is Italian Brainrot Clicker?</h3>
+                <div class="faq-answer">
+                   <p>Italian Brainrot Clicker is a free browser idle game where you collect Brainrots by clicking and purchase meme-themed upgrades to generate passive income.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">Do I need to download anything?</h3>
+                <div class="faq-answer">
+                   <p>No. The game runs entirely in your browser. Just open the page and start clicking—no downloads, accounts, or installations.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">How do combos and Critical Hits work?</h3>
+                <div class="faq-answer">
+                   <p>Click at least once every 2 seconds to maintain a combo. Every 10th consecutive click is a Critical Hit that earns double points.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">Is my progress saved?</h3>
+                <div class="faq-answer">
+                   <p>Yes. The game auto-saves to your browser's local storage every 30 seconds. You can also save manually with the Save button.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">What are the milestone banners?</h3>
+                <div class="faq-answer">
+                   <p>Celebration banners appear when you reach 1K, 10K, 100K, and 1M Brainrots. They are visual rewards for your progress.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">Can I play on mobile?</h3>
+                <div class="faq-answer">
+                   <p>Absolutely. The game is fully responsive and works great on phones and tablets. Just tap the flag to click.</p>
+                </div>
+             </div>
+          </section>
+
+          <section class="section">
+             <h2>Why Play Italian Brainrot Clicker?</h2>
+             <p>Italian Brainrot Clicker is a love letter to internet culture. It transforms the passive, meditative loop of an idle game into an interactive museum of viral memes. Every upgrade name is a reference that dedicated fans will recognize and appreciate. The psychological appeal is twofold: you get the standard satisfaction of numerical growth, plus the warm fuzzy feeling of being 'in on the joke.' In a world of increasingly serious games, there is something refreshing about a clicker that refuses to take itself seriously.</p>
+             <p>Compared to more traditional clickers like Cookie Clicker or Coin Clicker, Italian Brainrot Clicker stands out through sheer personality. The emerald green theme and chaotic upgrade names create a vibe that is completely its own. Yet underneath the meme sauce, the math is solid and the pacing is fair. It is proof that a game does not need realistic graphics or a complex story to be engaging—it just needs a strong core loop and a voice. If you enjoy absurd humor and exponential growth, this is your new favorite time-waster.</p>
+          </section>
+
+          <section class="section">
+             <h2>Did You Know? Fun Facts About Italian Brainrot Memes</h2>
+             <div class="highlight-box">
+                <ul>
+                   <li>The term 'brainrot' refers to the idea that consuming too much absurd internet content literally rots your brain.</li>
+                   <li>Italian brainrot memes often mix real Italian words with gibberish, creating a pseudo-language that sounds authentic to non-speakers.</li>
+                   <li>Tralalero Tralala, the crocodile-plane character, has inspired countless fan animations and remixes across TikTok and YouTube.</li>
+                   <li>The genre exploded in popularity in 2024, with AI-generated voices and images making it easier than ever to create surreal content.</li>
+                   <li>Many Italian brainrot videos use distorted versions of classic Italian songs, adding a layer of nostalgic irony to the chaos.</li>
+                </ul>
+             </div>
+          </section>
+
+          <section class="section">
+             <h2>Discover More Free Clicker Games</h2>
+             <p>If you enjoy Italian Brainrot Clicker, try <a href="/brainrot-clicker/">Brainrot Clicker</a> for more meme madness. Animal fans will love <a href="/duck-duck-clicker/">Duck Duck Clicker</a> and <a href="/dog-clicker/">Dog Clicker</a>. Nature lovers should check out <a href="/kiwi-clicker/">Kiwi Clicker</a>. And for the timeless classic, do not miss <a href="/cookie-clicker/">Cookie Clicker</a>.</p>
+          </section>
+
+          <div style="text-align: center;">
+             <a href="/" class="back-btn">Back to Home</a>
+          </div>
+
+       </article>
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
@@ -966,6 +1172,7 @@
          const SAVE_KEY = 'italian_brainrot_clicker_save';
          const UPGRADES = [{ "name": "Tralalero", "emoji": "🐊", "baseCost": 15, "baseRate": 1, "desc": "+1 brainrot/sec" }, { "name": "Bombardiro", "emoji": "✈️", "baseCost": 100, "baseRate": 5, "desc": "+5 brainrots/sec" }, { "name": "Pasta Power", "emoji": "🍝", "baseCost": 500, "baseRate": 20, "desc": "+20 brainrots/sec" }, { "name": "Espresso Turbo", "emoji": "☕", "baseCost": 2500, "baseRate": 100, "desc": "+100 brainrots/sec" }, { "name": "Brainrot Singularity", "emoji": "🌀", "baseCost": 15000, "baseRate": 500, "desc": "+500 brainrots/sec" }];
          const COST_SCALE = 1.15;
+         const PARTICLE_EMOJI = '🌀';
 
          let score = 0;
          let totalEarned = 0;
@@ -975,6 +1182,20 @@
          let perSecond = 0;
          let upgradeOwned = UPGRADES.map(() => 0);
 
+         // Combo system
+         let lastClickTime = 0;
+         let comboCount = 0;
+         const COMBO_TIMEOUT = 2000;
+         const COMBO_CRIT_THRESHOLD = 10;
+
+         // Sound toggle
+         let soundEnabled = true;
+
+         // Milestones
+         const milestones = [1000, 10000, 100000, 1000000];
+         let milestonesReached = {};
+         milestones.forEach(m => milestonesReached[m] = false);
+
          // DOM
          const scoreNum = document.getElementById('scoreNum');
          const perSecDisplay = document.getElementById('perSecDisplay');
@@ -982,9 +1203,14 @@
          const gStatTotal = document.getElementById('gStatTotal');
          const gStatPerSec = document.getElementById('gStatPerSec');
          const clickBtn = document.getElementById('clickBtn');
-         const clickArea = document.getElementById('clickArea');
+          const clickArea = document.getElementById('clickArea');
+          const comboDisplay = document.getElementById('comboDisplay');
+          const progressBarFill = document.getElementById('progressBarFill');
+          const milestoneBanner = document.getElementById('milestoneBanner');
+          const soundToggle = document.getElementById('soundToggle');
+          const particleContainer = document.getElementById('particleContainer');
 
-         function formatNum(n) {
+          function formatNum(n) {
             if (n < 1000) return Math.floor(n).toLocaleString();
             if (n < 1e6) return (n / 1e3).toFixed(1) + 'K';
             if (n < 1e9) return (n / 1e6).toFixed(1) + 'M';
@@ -1033,37 +1259,77 @@
             }
          }
 
-         function showClickFloat(x, y) {
-            const el = document.createElement('div');
-            el.className = 'click-float';
-            el.textContent = '+' + formatNum(clickPower);
-            el.style.left = x + 'px';
-            el.style.top = y + 'px';
-            clickArea.style.position = 'relative';
-            clickArea.appendChild(el);
-            setTimeout(() => el.remove(), 700);
-         }
+          function showClickFloat(x, y, amount) {
+             const el = document.createElement('div');
+             el.className = 'click-float';
+             el.textContent = '+' + formatNum(amount || clickPower);
+             el.style.left = x + 'px';
+             el.style.top = y + 'px';
+             clickArea.style.position = 'relative';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 700);
+          }
 
-         function doClick(e) {
-            score += clickPower;
-            totalEarned += clickPower;
+          function showCriticalPopup(x, y) {
+             const el = document.createElement('div');
+             el.className = 'critical-popup';
+             el.textContent = 'CRITICAL HIT!';
+             el.style.left = x + 'px';
+             el.style.top = (y - 30) + 'px';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 800);
+          }
 
-            clickBtn.classList.add('pressed');
-            setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+          function showMilestoneBanner(m) {
+             milestoneBanner.textContent = '🎉 Milestone Reached: ' + formatNum(m) + '!';
+             milestoneBanner.classList.add('show');
+             setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
+          }
 
-            // Float position
-            const rect = clickArea.getBoundingClientRect();
-            let cx, cy;
-            if (e && e.clientX) {
-               cx = e.clientX - rect.left;
-               cy = e.clientY - rect.top;
-            } else {
-               cx = rect.width / 2 + (Math.random() - 0.5) * 40;
-               cy = rect.height / 2 - 30;
-            }
-            showClickFloat(cx, cy);
-            render();
-         }
+          function doClick(e) {
+             const now = Date.now();
+             let earned = clickPower;
+             if (now - lastClickTime <= COMBO_TIMEOUT) {
+                comboCount++;
+             } else {
+                comboCount = 1;
+             }
+             lastClickTime = now;
+
+             if (comboCount > 1) {
+                comboDisplay.textContent = comboCount + 'x Combo!';
+                comboDisplay.classList.add('active');
+                setTimeout(() => comboDisplay.classList.remove('active'), 100);
+             } else {
+                comboDisplay.textContent = '';
+             }
+
+             if (comboCount % COMBO_CRIT_THRESHOLD === 0) {
+                earned *= 2;
+             }
+
+             score += earned;
+             totalEarned += earned;
+
+             clickBtn.classList.add('pressed');
+             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+
+             // Float position
+             const rect = clickArea.getBoundingClientRect();
+             let cx, cy;
+             if (e && e.clientX) {
+                cx = e.clientX - rect.left;
+                cy = e.clientY - rect.top;
+             } else {
+                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+                cy = rect.height / 2 - 30;
+             }
+             showClickFloat(cx, cy, earned);
+             if (comboCount % COMBO_CRIT_THRESHOLD === 0) {
+                showCriticalPopup(cx, cy);
+             }
+             render();
+          }
 
          clickBtn.addEventListener('click', doClick);
          clickBtn.addEventListener('touchstart', (e) => {

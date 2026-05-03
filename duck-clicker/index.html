@@ -6,7 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Duck Clicker - Play Free Online | Spacebar Clicker</title>
    <meta name="description"
-      content="Duck Clicker: Quacks currency, Duck Whistle→Quack Overlord (+quacks/sec), Click Power—not duck variety ladder or biome unlocks in this build.">
+      content="Play Duck Clicker free online! Collect Quacks, build your flock, and become the Quack Overlord. No download needed - instant browser fun!">
    <meta name="keywords"
       content="duck clicker, duck clicker, clicker game, idle game, free online game, play duck clicker">
    <meta name="robots" content="index, follow">
@@ -143,6 +143,7 @@
          border-radius: 22px;
          box-shadow: 0 20px 55px rgba(120, 56, 243, 0.14);
          overflow: hidden;
+         position: relative;
       }
 
       .game-header {
@@ -199,6 +200,8 @@
          border-right: 1px solid #f0f0f0;
          background: #fef9c3;
          min-height: 320px;
+         position: relative;
+         overflow: hidden;
       }
 
       @media (max-width: 700px) {
@@ -228,6 +231,7 @@
          line-height: 1;
          position: relative;
          outline: none;
+         z-index: 2;
       }
 
       .click-btn:hover {
@@ -413,6 +417,148 @@
          color: #dc2626;
       }
 
+      /* Combo System */
+      .combo-display {
+         margin-top: 6px;
+         font-size: 0.9rem;
+         font-weight: 700;
+         color: #ff6b35;
+         min-height: 1.3em;
+         transition: transform 0.1s;
+         z-index: 2;
+      }
+      .combo-display.active { transform: scale(1.15); }
+
+      .critical-popup {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1.5rem;
+         font-weight: 800;
+         color: #ff3d00;
+         text-shadow: 0 2px 8px rgba(255, 61, 0, 0.3);
+         animation: critPop 0.8s ease-out forwards;
+         z-index: 20;
+      }
+      @keyframes critPop {
+         0% { opacity: 1; transform: translateY(0) scale(0.5); }
+         50% { transform: translateY(-40px) scale(1.2); }
+         100% { opacity: 0; transform: translateY(-90px) scale(1); }
+      }
+
+      /* Progress Bar */
+      .progress-bar-container {
+         width: 80%;
+         max-width: 220px;
+         height: 8px;
+         background: #e5e7eb;
+         border-radius: 4px;
+         margin-top: 10px;
+         overflow: hidden;
+         z-index: 2;
+      }
+      .progress-bar-fill {
+         height: 100%;
+         background: linear-gradient(90deg, #eab308, #eab308dd);
+         border-radius: 4px;
+         transition: width 0.3s ease;
+         width: 0%;
+      }
+
+      /* Floating Particles */
+      .particle {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1rem;
+         opacity: 0;
+         animation: particleFloat 2.5s ease-out forwards;
+         z-index: 1;
+      }
+      @keyframes particleFloat {
+         0% { opacity: 0.8; transform: translateY(0) scale(0.6); }
+         100% { opacity: 0; transform: translateY(-120px) scale(1.2); }
+      }
+
+      /* Milestone Banner */
+      .milestone-banner {
+         position: fixed;
+         top: 80px;
+         left: 50%;
+         transform: translateX(-50%) scale(0.9);
+         background: linear-gradient(135deg, #7838f3, #a855f7);
+         color: white;
+         padding: 14px 28px;
+         border-radius: 12px;
+         font-weight: 700;
+         font-size: 1.1rem;
+         box-shadow: 0 10px 30px rgba(120, 56, 243, 0.3);
+         opacity: 0;
+         pointer-events: none;
+         transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+         z-index: 2000;
+      }
+      .milestone-banner.show {
+         opacity: 1;
+         transform: translateX(-50%) scale(1);
+      }
+
+      /* Sound Toggle */
+      .sound-toggle {
+         background: rgba(255,255,255,0.2);
+         border: none;
+         border-radius: 8px;
+         padding: 6px 10px;
+         color: white;
+         font-size: 1.1rem;
+         cursor: pointer;
+         transition: background 0.2s;
+      }
+      .sound-toggle:hover { background: rgba(255,255,255,0.35); }
+
+      /* Keyboard tip */
+      .keyboard-tip {
+         font-size: 0.75rem;
+         color: #888;
+         margin-top: 8px;
+         font-weight: 500;
+         z-index: 2;
+      }
+
+      /* FAQ Styles */
+      .faq-section { margin-bottom: 30px; }
+      .faq-item { margin-bottom: 14px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+      .faq-question {
+         font-size: 1.05rem;
+         font-weight: 600;
+         color: #333;
+         cursor: pointer;
+         padding: 10px 0;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         transition: color 0.2s;
+         margin: 0;
+      }
+      .faq-question:hover { color: #7838f3; }
+      .faq-question::after {
+         content: '+';
+         font-size: 1.3rem;
+         color: #7838f3;
+         transition: transform 0.3s;
+         font-weight: 400;
+      }
+      .faq-item.open .faq-question::after { transform: rotate(45deg); }
+      .faq-answer {
+         max-height: 0;
+         overflow: hidden;
+         transition: max-height 0.3s ease, opacity 0.3s ease;
+         opacity: 0;
+      }
+      .faq-item.open .faq-answer { max-height: 500px; opacity: 1; }
+      .faq-answer p { margin: 0 0 10px; font-size: 1rem; color: #555; }
+
+      /* Intro paragraphs */
+      .intro p { margin-bottom: 16px; line-height: 1.85; }
+
       /* Article Styles */
       .article-container {
          max-width: 800px;
@@ -561,15 +707,18 @@
 
       <!-- ===== GAME ===== -->
       <div class="game-wrapper" id="gameWrapper">
+         <div class="milestone-banner" id="milestoneBanner"></div>
          <div class="game-header">
             <h2>🐤 Duck Clicker</h2>
             <div class="game-stats-bar">
                <span class="game-stat-pill" id="gStatTotal">0 Quacks</span>
                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+               <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">🔊</button>
             </div>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
+               <div id="particleContainer" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;"></div>
                <button class="click-btn" id="clickBtn" aria-label="Quack Quack">
                   <span class="emoji">🐤</span>
                </button>
@@ -579,6 +728,11 @@
                </div>
                <div class="per-second" id="perSecDisplay">0 quacks/sec</div>
                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+               <div class="combo-display" id="comboDisplay"></div>
+               <div class="progress-bar-container">
+                  <div class="progress-bar-fill" id="progressBarFill"></div>
+               </div>
+               <div class="keyboard-tip">Tip: Press SPACE to click!</div>
             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
@@ -658,46 +812,104 @@
       </div>
 
       <!-- ===== ARTICLE CONTENT ===== -->
-      <article class="article-container">
-         
-         <div class="intro">
-            Duck Clicker is a compact idle loop where your score reads as abstract <strong>Quacks</strong>, manually
-            earned per tap plus passives counted in “quacks/sec.” Tiers escalate from <strong>Duck Whistle</strong> to
-            <strong>Quack Overlord</strong> with the usual +1 → +500 ladder—no migrating flocks, no unlockable ponds that
-            change art, no rare duck RNG, multiplayer races, or season passes—just themed labels on deterministic math identical
-            to <a href="/duck-duck-clicker/">Duck Duck Clicker</a>’s cousins on this subdomain.
-         </div>
-         <section class="section">
-            <h2>Generators (+quacks/sec)</h2>
-            <div class="feature-box">
-               <h3>Tiers</h3>
-               <ul>
-                  <li><strong>Duck Whistle</strong> — +1/sec.</li>
-                  <li><strong>Duck Family</strong> — +5/sec.</li>
-                  <li><strong>Duck Lake</strong> — +20/sec.</li>
-                  <li><strong>Mega Duck</strong> — +100/sec.</li>
-                  <li><strong>Quack Overlord</strong> — +500/sec.</li>
-               </ul>
-            </div>
-            <p><strong>Click Power</strong> scales taps; compare its next level cost to another passive duplicate before you buy.</p>
-         </section>
-         <section class="section">
-            <h2>Tips</h2>
-            <ol class="tips-list">
-               <li><strong>Whistle ASAP.</strong> Passive quacks/sec should unlock before fantasizing Overlord stacks.</li>
-               <li><strong>Spam Families when +5 multiples beat pricey Lake hops.</strong></li>
-               <li><strong>Lake tier indicates mid escalation.</strong></li>
-               <li><strong>Mega Duck is AFK-friendly.</strong></li>
-               <li><strong>Stack Overlords for huge totals.</strong></li>
-               <li><strong>Feed Click Power when taps still carve minutes off buys.</strong></li>
-            </ol>
-         </section>
-    
-         <div style="text-align: center;">
-            <a href="/" class="back-btn">Back to Home</a>
-         </div>
-      
-      </article>
+       <article class="article-container">
+
+          <div class="intro">
+             <p>Duck Clicker is a compact idle loop where your score reads as abstract Quacks, manually earned per tap plus passives counted in quacks per second. Tiers escalate from Duck Whistle to Quack Overlord with the usual +1 to +500 ladder. There are no migrating flocks, no unlockable ponds that change art, no rare duck RNG, multiplayer races, or season passes—just themed labels on deterministic math. It is a free browser game that requires no download and no account, making it the perfect quick distraction.</p>
+             <p>Ducklings are among the most endearing baby animals in the world. Born fluffy and yellow, they imprint on the first moving object they see, often following their mother in a tidy line. This behavior, called imprinting, was famously studied by Konrad Lorenz, who showed that ducklings could imprint on humans too. In the wild, ducklings learn to swim within days of hatching and can dive underwater to escape predators. Duck Clicker channels this innocent charm into a simple game where every click feels like feeding a hungry duckling.</p>
+             <p>Clicker games have a unique psychological appeal that other genres struggle to replicate. The loop is pure: action leads to reward, which enables more action. There are no false walls, no artificial scarcity, and no competitive pressure. Duck Clicker distills this loop to its essence. The yellow color palette, the cute duckling emoji, and the gentle upgrade names create an atmosphere of uncomplicated fun. It is the gaming equivalent of comfort food.</p>
+             <p>Because Duck Clicker runs in your browser with automatic saving, you never have to worry about losing progress. Close the tab, shut down your computer, and come back tomorrow. Your Quack Overlord stacks will still be there, patiently generating Quacks. The game respects your time and attention, offering a persistent world that grows whether you are watching or not. That is the magic of idle games, and Duck Clicker executes it flawlessly.</p>
+          </div>
+
+          <section class="section">
+             <h2>How to Play Duck Clicker</h2>
+             <ol class="tips-list">
+                <li><strong>Click the Duckling Button:</strong> Tap the duckling emoji to generate Quacks manually.</li>
+                <li><strong>Blow the Duck Whistle:</strong> At 15 Quacks, buy a Duck Whistle for +1 quack per second.</li>
+                <li><strong>Gather a Duck Family:</strong> When you reach 100 Quacks, unlock Duck Family for +5 quacks per second.</li>
+                <li><strong>Create a Duck Lake:</strong> At 500 Quacks, build a Duck Lake generating +20 quacks per second.</li>
+                <li><strong>Spawn a Mega Duck:</strong> Save 2,500 Quacks to summon a Mega Duck for +100 quacks per second.</li>
+                <li><strong>Upgrade Click Power:</strong> Spend 50 Quacks on Click Power to double your manual earnings.</li>
+                <li><strong>Become the Quack Overlord:</strong> The ultimate upgrade at 15,000 Quacks gives +500 per second. Stack them to rule the flock.</li>
+             </ol>
+          </section>
+
+          <section class="section">
+             <h2>Duck Clicker Strategy Guide</h2>
+             <p>Early game success in Duck Clicker comes from aggressive investment in Duck Whistles. Do not let your Quacks sit idle. The moment you can afford another Whistle, buy it. The power of compounding means that even small +1 increments add up quickly when you have ten or twenty of them. Watch the progress bar to see exactly how close you are to your next purchase. If you are within a few clicks, keep clicking. If you are far away, consider saving for a Duck Family instead.</p>
+             <p>The mid-game transition to Duck Lake and Mega Duck is where your income really starts to snowball. At this stage, you should have a solid foundation of Whistles and Families. Do not be tempted to skip straight to Mega Duck without building up your lower tiers first. The math favors breadth over depth in the early and mid-game. Click Power upgrades become increasingly valuable here, as they allow you to generate manual income much faster, bridging the gaps between passive upgrades.</p>
+             <p>Late game optimization is about stacking Mega Ducks and Quack Overlords while keeping your lower tiers topped up. Every upgrade contributes to your total per-second income, so even cheap Whistles still matter. The combo system is your secret weapon for reaching milestones quickly. Rapid clicking within 2-second windows builds your combo, and every 10th click deals double damage to your goal. If you are pushing for 1 million Quacks, dedicate time to active clicking with combo management rather than pure AFK waiting.</p>
+          </section>
+
+          <section class="section faq-section">
+             <h2>Frequently Asked Questions</h2>
+             <div class="faq-item">
+                <h3 class="faq-question">What is Duck Clicker?</h3>
+                <div class="faq-answer">
+                   <p>Duck Clicker is a free browser idle game where you earn Quacks by clicking and purchase upgrades to generate passive income.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">Do I need to download anything?</h3>
+                <div class="faq-answer">
+                   <p>No. Duck Clicker runs entirely in your web browser with no installation or account required.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">How do combos and Critical Hits work?</h3>
+                <div class="faq-answer">
+                   <p>Click within 2 seconds of your last click to build a combo. Every 10th consecutive click scores a Critical Hit worth double points.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">Will I lose progress if I close the tab?</h3>
+                <div class="faq-answer">
+                   <p>No. Your game auto-saves every 30 seconds. You can also manually save at any time.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">What are the milestone celebrations?</h3>
+                <div class="faq-answer">
+                   <p>Banners appear when you hit 1K, 10K, 100K, and 1M Quacks. They are visual rewards for your dedication.</p>
+                </div>
+             </div>
+             <div class="faq-item">
+                <h3 class="faq-question">Can I play on my phone?</h3>
+                <div class="faq-answer">
+                   <p>Yes. The game is fully responsive and works on mobile browsers. Just tap the duckling to click.</p>
+                </div>
+             </div>
+          </section>
+
+          <section class="section">
+             <h2>Why Play Duck Clicker?</h2>
+             <p>Duck Clicker is the definition of a palate-cleanser game. After a long session of competitive multiplayer or a complex RPG, there is something deeply therapeutic about a game that asks nothing of you except a few clicks. The duckling theme adds a layer of charm that elevates it above generic number generators. You are not just watching a number go up; you are imagining a tiny yellow duckling growing into a Quack Overlord. That narrative spark, however small, makes all the difference.</p>
+             <p>If you are looking for similar experiences, Duck Duck Clicker offers a more elaborate duck-themed adventure with additional upgrades, while Duck Duck Clicker 3D adds a tech twist. But Duck Clicker remains the purest expression of the formula. It is small, fast, and endlessly replayable. The yellow theme is bright and cheerful, and the upgrade names tell a fun story. For anyone who needs a five-minute mood boost, Duck Clicker is the perfect prescription.</p>
+          </section>
+
+          <section class="section">
+             <h2>Did You Know? Fun Facts About Ducklings</h2>
+             <div class="highlight-box">
+                <ul>
+                   <li>Ducklings can communicate with their siblings before they even hatch, making soft calls through the eggshell.</li>
+                   <li>A mother duck will often lead her ducklings miles over land to reach a suitable pond.</li>
+                   <li>Ducklings are born with a layer of down that is not waterproof, so they rely on their mother's oils initially.</li>
+                   <li>The famous 'make way for ducklings' statues in Boston Public Garden commemorate a children's book about a mallard family.</li>
+                   <li>Ducklings learn to fly at around two months old, though some domestic breeds are too heavy to achieve lift.</li>
+                </ul>
+             </div>
+          </section>
+
+          <section class="section">
+             <h2>Discover More Free Clicker Games</h2>
+             <p>If you enjoy Duck Clicker, check out <a href="/duck-duck-clicker/">Duck Duck Clicker</a> for a fuller duck experience, or <a href="/duck-duck-clicker-3d/">Duck Duck Clicker 3D</a> for a tech-themed twist. Animal lovers should also try <a href="/dog-clicker/">Dog Clicker</a> and <a href="/kiwi-clicker/">Kiwi Clicker</a>. For the classic experience, do not miss <a href="/cookie-clicker/">Cookie Clicker</a>.</p>
+          </section>
+
+          <div style="text-align: center;">
+             <a href="/" class="back-btn">Back to Home</a>
+          </div>
+
+       </article>
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
@@ -755,6 +967,7 @@
       const SAVE_KEY = 'duck_clicker_save';
       const UPGRADES = [{"name":"Duck Whistle","emoji":"📯","baseCost":15,"baseRate":1,"desc":"+1 quack/sec"},{"name":"Duck Family","emoji":"🦆","baseCost":100,"baseRate":5,"desc":"+5 quacks/sec"},{"name":"Duck Lake","emoji":"🏞️","baseCost":500,"baseRate":20,"desc":"+20 quacks/sec"},{"name":"Mega Duck","emoji":"🦢","baseCost":2500,"baseRate":100,"desc":"+100 quacks/sec"},{"name":"Quack Overlord","emoji":"👑","baseCost":15000,"baseRate":500,"desc":"+500 quacks/sec"}];
       const COST_SCALE = 1.15;
+      const PARTICLE_EMOJI = '🐤';
 
       let score = 0;
       let totalEarned = 0;
@@ -764,6 +977,20 @@
       let perSecond = 0;
       let upgradeOwned = UPGRADES.map(() => 0);
 
+      // Combo system
+      let lastClickTime = 0;
+      let comboCount = 0;
+      const COMBO_TIMEOUT = 2000;
+      const COMBO_CRIT_THRESHOLD = 10;
+
+      // Sound toggle
+      let soundEnabled = true;
+
+      // Milestones
+      const milestones = [1000, 10000, 100000, 1000000];
+      let milestonesReached = {};
+      milestones.forEach(m => milestonesReached[m] = false);
+
       // DOM
       const scoreNum = document.getElementById('scoreNum');
       const perSecDisplay = document.getElementById('perSecDisplay');
@@ -772,6 +999,11 @@
       const gStatPerSec = document.getElementById('gStatPerSec');
       const clickBtn = document.getElementById('clickBtn');
       const clickArea = document.getElementById('clickArea');
+      const comboDisplay = document.getElementById('comboDisplay');
+      const progressBarFill = document.getElementById('progressBarFill');
+      const milestoneBanner = document.getElementById('milestoneBanner');
+      const soundToggle = document.getElementById('soundToggle');
+      const particleContainer = document.getElementById('particleContainer');
 
       function formatNum(n) {
          if (n < 1000) return Math.floor(n).toLocaleString();
@@ -822,37 +1054,77 @@
          }
       }
 
-      function showClickFloat(x, y) {
-         const el = document.createElement('div');
-         el.className = 'click-float';
-         el.textContent = '+' + formatNum(clickPower);
-         el.style.left = x + 'px';
-         el.style.top = y + 'px';
-         clickArea.style.position = 'relative';
-         clickArea.appendChild(el);
-         setTimeout(() => el.remove(), 700);
-      }
+       function showClickFloat(x, y, amount) {
+          const el = document.createElement('div');
+          el.className = 'click-float';
+          el.textContent = '+' + formatNum(amount || clickPower);
+          el.style.left = x + 'px';
+          el.style.top = y + 'px';
+          clickArea.style.position = 'relative';
+          clickArea.appendChild(el);
+          setTimeout(() => el.remove(), 700);
+       }
 
-      function doClick(e) {
-         score += clickPower;
-         totalEarned += clickPower;
+       function showCriticalPopup(x, y) {
+          const el = document.createElement('div');
+          el.className = 'critical-popup';
+          el.textContent = 'CRITICAL HIT!';
+          el.style.left = x + 'px';
+          el.style.top = (y - 30) + 'px';
+          clickArea.appendChild(el);
+          setTimeout(() => el.remove(), 800);
+       }
 
-         clickBtn.classList.add('pressed');
-         setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+       function showMilestoneBanner(m) {
+          milestoneBanner.textContent = '🎉 Milestone Reached: ' + formatNum(m) + '!';
+          milestoneBanner.classList.add('show');
+          setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
+       }
 
-         // Float position
-         const rect = clickArea.getBoundingClientRect();
-         let cx, cy;
-         if (e && e.clientX) {
-            cx = e.clientX - rect.left;
-            cy = e.clientY - rect.top;
-         } else {
-            cx = rect.width / 2 + (Math.random() - 0.5) * 40;
-            cy = rect.height / 2 - 30;
-         }
-         showClickFloat(cx, cy);
-         render();
-      }
+       function doClick(e) {
+          const now = Date.now();
+          let earned = clickPower;
+          if (now - lastClickTime <= COMBO_TIMEOUT) {
+             comboCount++;
+          } else {
+             comboCount = 1;
+          }
+          lastClickTime = now;
+
+          if (comboCount > 1) {
+             comboDisplay.textContent = comboCount + 'x Combo!';
+             comboDisplay.classList.add('active');
+             setTimeout(() => comboDisplay.classList.remove('active'), 100);
+          } else {
+             comboDisplay.textContent = '';
+          }
+
+          if (comboCount % COMBO_CRIT_THRESHOLD === 0) {
+             earned *= 2;
+          }
+
+          score += earned;
+          totalEarned += earned;
+
+          clickBtn.classList.add('pressed');
+          setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+
+          // Float position
+          const rect = clickArea.getBoundingClientRect();
+          let cx, cy;
+          if (e && e.clientX) {
+             cx = e.clientX - rect.left;
+             cy = e.clientY - rect.top;
+          } else {
+             cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+             cy = rect.height / 2 - 30;
+          }
+          showClickFloat(cx, cy, earned);
+          if (comboCount % COMBO_CRIT_THRESHOLD === 0) {
+             showCriticalPopup(cx, cy);
+          }
+          render();
+       }
 
       clickBtn.addEventListener('click', doClick);
       clickBtn.addEventListener('touchstart', (e) => {

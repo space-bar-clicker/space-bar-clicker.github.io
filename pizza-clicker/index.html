@@ -4,9 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Pizza Clicker - Play Free Online</title>
-   <meta name="description"
-      content="Pizza Clicker idle: Pizzas/sec tiers Extra Cheese→Pizza Empire, Click Power—not recipe menus, ovens, or delivery sim in this static build.">
+   <title>Pizza Clicker - Free Online Pizza Idle Game | Bake Your Empire</title>
+   <meta name="description" content="Play Pizza Clicker free online! Bake pizzas, fire up wood ovens & build a global Pizza Empire. Combo streaks included. No download needed!">
    <meta name="keywords"
       content="pizza clicker, pizza clicker, clicker game, idle game, free online game, play pizza clicker">
    <meta name="robots" content="index, follow">
@@ -752,6 +751,172 @@
          box-shadow: 0 4px 12px rgba(120, 56, 243, 0.15);
          color: #3b0764;
       }
+      /* Combo System */
+      .combo-display {
+         margin-top: 6px;
+         font-size: 0.9rem;
+         font-weight: 700;
+         color: #dc2626;
+         opacity: 0;
+         transition: opacity 0.2s;
+         min-height: 1.2em;
+      }
+      .combo-display.active {
+         opacity: 1;
+      }
+
+      /* Critical Hit Popup */
+      .critical-popup {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1.5rem;
+         font-weight: 800;
+         color: #dc2626;
+         text-shadow: 0 2px 8px rgba(0,0,0,0.12);
+         animation: criticalPop 0.8s ease-out forwards;
+         z-index: 20;
+         white-space: nowrap;
+      }
+      @keyframes criticalPop {
+         0% { opacity: 1; transform: translateY(0) scale(0.6); }
+         50% { transform: translateY(-40px) scale(1.2); }
+         100% { opacity: 0; transform: translateY(-80px) scale(1); }
+      }
+
+      /* Progress Bar */
+      .progress-bar-container {
+         width: 80%;
+         max-width: 220px;
+         height: 10px;
+         background: #e5e7eb;
+         border-radius: 5px;
+         margin-top: 10px;
+         overflow: hidden;
+      }
+      .progress-bar-fill {
+         height: 100%;
+         background: linear-gradient(90deg, #dc2626, #f87171);
+         border-radius: 5px;
+         transition: width 0.3s ease;
+         width: 0%;
+      }
+
+      /* Floating Particles */
+      .particle {
+         position: absolute;
+         pointer-events: none;
+         font-size: 1rem;
+         animation: particleFloat 2s ease-out forwards;
+         z-index: 5;
+      }
+      @keyframes particleFloat {
+         0% { opacity: 1; transform: translateY(0) scale(0.8); }
+         100% { opacity: 0; transform: translateY(-120px) scale(1.2); }
+      }
+
+      /* Milestone Banner */
+      .milestone-banner {
+         position: fixed;
+         top: 80px;
+         left: 50%;
+         transform: translateX(-50%) translateY(-20px);
+         background: linear-gradient(135deg, #dc2626, #991b1b);
+         color: white;
+         padding: 14px 32px;
+         border-radius: 30px;
+         font-weight: 700;
+         font-size: 1.1rem;
+         box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+         opacity: 0;
+         transition: all 0.5s ease;
+         z-index: 2000;
+         pointer-events: none;
+         text-align: center;
+      }
+      .milestone-banner.show {
+         opacity: 1;
+         transform: translateX(-50%) translateY(0);
+      }
+
+      /* FAQ Section */
+      .faq-section h3 {
+         color: #7838f3;
+         margin: 16px 0 0;
+         font-size: 1.1rem;
+         cursor: pointer;
+         padding: 12px 16px;
+         background: #f8f9fe;
+         border-radius: 8px;
+         transition: all 0.2s ease;
+         position: relative;
+         font-weight: 600;
+      }
+      .faq-section h3:hover {
+         background: #ede5ff;
+         transform: translateX(4px);
+      }
+      .faq-section h3::after {
+         content: '+';
+         position: absolute;
+         right: 16px;
+         top: 50%;
+         transform: translateY(-50%);
+         font-weight: 700;
+         color: #7838f3;
+         font-size: 1.2rem;
+      }
+      .faq-section h3.open::after {
+         content: '−';
+      }
+      .faq-section p {
+         display: none;
+         padding: 12px 16px;
+         margin: 0 0 10px;
+         color: #555;
+         line-height: 1.7;
+         background: #fff;
+         border-radius: 0 0 8px 8px;
+         border: 1px solid #f0f0f0;
+         border-top: none;
+      }
+      .faq-section p.open {
+         display: block;
+      }
+
+      /* Sound Toggle */
+      .sound-toggle {
+         background: rgba(255,255,255,0.25);
+         border: none;
+         font-size: 1.2rem;
+         cursor: pointer;
+         color: white;
+         padding: 4px 8px;
+         line-height: 1;
+         border-radius: 8px;
+         transition: all 0.2s;
+      }
+      .sound-toggle:hover {
+         background: rgba(255,255,255,0.4);
+      }
+
+      /* Keyboard hint */
+      .keyboard-hint {
+         text-align: center;
+         font-size: 0.8rem;
+         color: #999;
+         margin-top: 10px;
+         font-weight: 500;
+      }
+
+      /* Internal links styling consistency */
+      .article-container a {
+         color: #7838f3;
+         text-decoration: underline;
+         font-weight: 600;
+      }
+      .article-container a:hover {
+         color: #5b21b6;
+      }
    </style>
 </head>
 
@@ -780,6 +945,7 @@
                <span class="game-stat-pill" id="gStatTotal">0 Pizzas</span>
                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
             </div>
+            <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
@@ -873,65 +1039,76 @@
       <!-- ===== ARTICLE CONTENT ===== -->
       <article class="article-container">
 
-         <div class="intro">
-            <p>Pizza Clicker is marinara cosplay for incremental nerds: abstract <strong>Pizzas</strong> tick up while you stack
-               <strong>Extra Cheese</strong> through <strong>Pizza Empire</strong> and upgrade <strong>Click Power</strong> so each tap flings more slices.
-               The copy wants you to smell oregano; the code is still the five-generator ladder you have already met on other skins.</p>
-            <p>Forget ticket printers, topping stations, staff schedules, or Yelp reviews—none of that exists. You are not
-               micromanaging a restaurant sim; you are babysitting a glorified oven timer with Parmesan adjectives. <strong>Save</strong>
-               freezes the pie count; <strong>Reset</strong> tosses leftovers.</p>
-         </div>
-         <section class="section">
-            <h2>From first cheese pull to franchised fantasy</h2>
-            <div class="feature-box">
-               <h3>What each row is chef-screaming about</h3>
-               <ul>
-                  <li><strong>Extra Cheese</strong> — +1/sec; metaphor for “we finally bought premade dough.”</li>
-                  <li><strong>Wood-Fire Oven</strong> — +5/sec; the moment you swear everything tastes artisanal.</li>
-                  <li><strong>Pizza Chef</strong> — +20/sec; still no minigame—you do not toss dough in the sky here.</li>
-                  <li><strong>Delivery Fleet</strong> — +100/sec; when the idle graph pretends DoorDash exists citywide.</li>
-                  <li><strong>Pizza Empire</strong> — +500/sec; global domination meme for people who really want comma spam.</li>
-               </ul>
-            </div>
-            <p>Stack any row as many times as you can afford; each extra copy adds another full +/sec slice and makes the next
-               duplicate pricier.</p>
-         </section>
-         <section class="section">
-            <h2>Wood-fire focus vs pepperoni click spam</h2>
-            <p>When your bank is a few hundred Pizzas short of <strong>Delivery Fleet</strong>, sometimes the winning line is another
-               <strong>Wood-Fire Oven</strong> duplicate, sometimes it is <strong>Click Power</strong> so you can brute-force the remainder before
-               Study Hall ends. When you are leaving the tab dormant, favor <strong>Pizza Empire</strong> and Fleet copies so the pie
-               ticker keeps climbing while you doomscroll elsewhere.</p>
-         </section>
-         <section class="section">
-            <h2>Leftovers in your browser fridge</h2>
-            <p><strong>Save</strong> writes to <code>pizza_clicker_save</code> in local storage—no cloud pizzeria. Clear site data and the
-               backlog vanishes like morning slices in a broke college kitchen.</p>
-         </section>
-         <section class="section">
-            <h2>Service industry adjacent</h2>
-            <ol class="tips-list">
-               <li><strong>Lock Extra Cheese passive before you envision Empire.</strong></li>
-               <li><strong>Stack Wood-Fire Ovens</strong> whenever two cheap lines beat one premature Chef splurge.</li>
-               <li><strong>Pizza Chef kicks in once midgame costs feel chunky.</strong></li>
-               <li><strong>Delivery Fleet is the “start the tab and walk away” spike.</strong></li>
-               <li><strong>Pizza Empire rows are how you flex seven-figure fake revenue.</strong></li>
-               <li><strong>Bump Click Power</strong> whenever finger grease still shortens the wait to the next neon price.</li>
-            </ol>
-         </section>
+          <div class="intro">
+             <p><strong>Pizza Clicker</strong> is a mouthwatering idle game where your goal is to bake, sell, and deliver as many pizzas as possible. Starting with a simple Extra Cheese topping, you will graduate to Wood-Fire Ovens, hire master Pizza Chefs, launch a Delivery Fleet, and ultimately build a global Pizza Empire. Every click is another pie out of the oven, and every upgrade is a new location serving hungry customers.</p>
+             <p><strong>Pizza</strong> is one of the most beloved foods on the planet, with origins tracing back to ancient flatbreads in Naples, Italy. The modern pizza as we know it emerged in the 18th century, and today it is a multi-billion-dollar industry spanning every corner of the globe. From New York's thin crust to Chicago's deep dish, pizza is a universal language. Pizza Clicker celebrates that legacy by turning the art of pizzeria management into a deliciously addictive incremental experience.</p>
+             <p>Idle clicker games and pizza are a match made in heaven. Both are universally loved, endlessly customizable, and deeply satisfying. In Pizza Clicker, you can experience the joy of running a pizzeria without the real-world headaches of food costs, health inspections, or late-night dough prep. It is a <strong>free browser game with no download required</strong>, so you can start baking from any device, anywhere, anytime.</p>
+             <p>Whether you are a fan of margherita simplicity or supreme extravagance, Pizza Clicker has something for you. The upgrade path mirrors the real growth of a pizzeria: starting small, mastering the craft, scaling delivery, and eventually franchising worldwide. Will you be a hands-on chef who clicks their way to glory, or a savvy entrepreneur who automates everything? Fire up the oven and find out.</p>
+          </div>
 
-         <section class="section">
-            <h2>Competing kitchens on the same block</h2>
-            <p>Craving beef instead? <a href="/burger-clicker/">Burger Clicker</a> names the same scaffolding after patties. Prefer coin
-               minting? Try <a href="/coin-clicker/">Coin Clicker</a>. You are sampling sauces, not swapping engines.</p>
-         </section>
+          <section class="section">
+             <h2>How to Play Pizza Clicker</h2>
+             <ol class="tips-list">
+                <li><strong>Bake Pizzas:</strong> Click the 🍕 pizza button to bake delicious pizzas one at a time. Each click adds to your total pie count.</li>
+                <li><strong>Add Extra Cheese:</strong> Buy the <strong>Extra Cheese</strong> upgrade for +1 pizza per second. Even a little extra topping goes a long way toward passive income.</li>
+                <li><strong>Stoke the Flames:</strong> Invest in <strong>Click Power</strong> to bake multiple pizzas per click. Higher click power means hotter ovens and faster output.</li>
+                <li><strong>Build the Team:</strong> Unlock <strong>Wood-Fire Ovens</strong> (+5/sec) and <strong>Pizza Chefs</strong> (+20/sec) to bring professional talent into your kitchen.</li>
+                <li><strong>Deliver Worldwide:</strong> Save for <strong>Delivery Fleet</strong> (+100/sec) and the legendary <strong>Pizza Empire</strong> (+500/sec) to turn your local pizzeria into a multinational chain.</li>
+                <li><strong>Perfect Your Dough:</strong> Maintain a rapid click streak within 2-second windows to build combos. Every 10th click triggers a <strong>Critical Hit</strong>, baking double pizzas!</li>
+             </ol>
+          </section>
 
-         <div style="text-align: center;">
-            <a href="/" class="back-btn">Back to Home</a>
-         </div>
+          <section class="section">
+             <h2>Pizza Clicker Strategy Guide</h2>
+             <p><strong>Grand Opening:</strong> Every successful pizzeria starts with a solid foundation. Your first purchase should always be Extra Cheese for passive income. Even one +1/sec upgrade will outperform manual clicking over time. After your first passive stream is flowing, alternate between Click Power and more Extra Cheese. In the opening minutes, spend every point you earn. The sooner you reinvest, the faster your kitchen grows.</p>
+             <p><strong>The Dinner Rush:</strong> The mid-game is where strategy matters most. Pizza Chefs offer a huge boost at +20/sec, but they are expensive. If you are actively playing, a buffed Click Power can help you reach that Chef milestone in a single session. If you are stepping away, stock up on Wood-Fire Ovens. They provide excellent passive value for their cost and will keep the dough rising while you are gone.</p>
+             <p><strong>Franchise Domination:</strong> Pizza Empire is the ultimate upgrade, adding +500 pizzas per second. Once unlocked, your operation is no longer a pizzeria; it is an institution. The smartest late-game play is to buy Pizza Empires whenever possible. Use Click Power upgrades only when you plan an active clicking spree. When you return from AFK, your Delivery Fleets and Empires will have baked a fortune. Do not forget to Save your progress.</p>
+          </section>
 
-      </article>
-      <!-- Related Games Section -->
+          <section class="section faq-section">
+             <h2>Frequently Asked Questions</h2>
+             <h3>What is Pizza Clicker?</h3>
+             <p>Pizza Clicker is a free browser idle game themed around baking and selling pizzas. Players click to earn pizzas and purchase upgrades like ovens, chefs, and delivery fleets to generate passive income and build a global pizza empire.</p>
+             <h3>Is this an official pizza restaurant game?</h3>
+             <p>No, Pizza Clicker is an unofficial fan-themed idle clicker game. It is not affiliated with any real pizza chain or restaurant. It is created purely for entertainment.</p>
+             <h3>How do I save my pizzeria progress?</h3>
+             <p>Click the 💾 Save button to store your pizza count and upgrades in your browser's local storage. The game also auto-saves every 30 seconds. Clearing browser data will erase your save.</p>
+             <h3>What upgrade should I buy first?</h3>
+             <p>Always start with Extra Cheese for passive income. Then balance Click Power with the next tier. Late game, Pizza Empires are the most efficient purchase for massive passive production.</p>
+             <h3>Can I play Pizza Clicker on my phone?</h3>
+             <p>Yes! Pizza Clicker is fully responsive. Tap the pizza button to bake and scroll through upgrades on your mobile device.</p>
+             <h3>How do combos and Critical Hits work?</h3>
+             <p>Click within 2 seconds of your previous click to maintain a combo. Every 10th consecutive click triggers a Critical Hit, baking double pizzas for that click. Wait longer than 2 seconds and the combo resets.</p>
+          </section>
+
+          <section class="section">
+             <h2>Why Play Pizza Clicker?</h2>
+             <p>Pizza Clicker is comfort gaming at its finest. Pizza is universally loved, and turning it into an incremental game creates an immediate emotional connection. The game is relaxing, rewarding, and requires zero learning curve. You can play for thirty seconds or three hours, and the progression curve always gives you something to look forward to. The combo system adds just enough skill to keep active sessions engaging without introducing stress.</p>
+             <p>Among food-themed clickers, Pizza Clicker holds its own against <a href="/burger-clicker/">Burger Clicker</a> and <a href="/cookie-clicker/">Cookie Clicker</a>. If you want a different culinary experience, <a href="/whopper-clicker/">Whopper Clicker</a> offers fast-food franchise flavor, while <a href="/candy-clicker/">Candy Clicker</a> satisfies your sweet tooth. For non-food themes, <a href="/roblox-clicker/">Roblox Clicker</a> and <a href="/planet-clicker/">Planet Clicker</a> deliver equally addictive loops.</p>
+          </section>
+
+          <section class="section">
+             <h2>Did You Know? Pizza Fun Facts</h2>
+             <div class="highlight-box">
+                <ul>
+                   <li>The word 'pizza' was first documented in 997 AD in Gaeta, Italy, though flatbreads with toppings existed for thousands of years before.</li>
+                   <li>The world's most expensive pizza, the 'Louis XIII,' costs over $12,000 and is topped with caviar, lobster, and rare Mediterranean sea salt.</li>
+                   <li>Americans eat approximately 3 billion pizzas per year, which averages to about 46 slices per person annually.</li>
+                   <li>The largest pizza ever made was over 13,000 square feet, created in Rome in 2012 and named 'Ottavia' after a Roman emperor.</li>
+                   <li>The Margherita pizza was allegedly created in 1889 to honor Queen Margherita of Italy, with toppings representing the colors of the Italian flag: red (tomato), white (mozzarella), and green (basil).</li>
+                </ul>
+             </div>
+          </section>
+
+          <div style="text-align: center;">
+             <a href="/" class="back-btn">Back to Home</a>
+          </div>
+
+       </article>
+
+       <div class="milestone-banner" id="milestoneBanner">Milestone Reached!</div>
+
+       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
          <p class="related-games-subtitle">Discover more free online clicker games to play</p>
@@ -997,6 +1174,28 @@
          let perSecond = 0;
          let upgradeOwned = UPGRADES.map(() => 0);
 
+         // Combo system
+         let lastClickTime = 0;
+         let comboCount = 0;
+         const COMBO_WINDOW = 2000;
+         const comboDisplay = document.getElementById('comboDisplay');
+
+         // Sound toggle
+         let soundOn = true;
+         const soundToggle = document.getElementById('soundToggle');
+         soundToggle.addEventListener('click', () => {
+            soundOn = !soundOn;
+            soundToggle.textContent = soundOn ? '🔊' : '🔇';
+         });
+
+         // Progress bar
+         const progressBarFill = document.getElementById('progressBarFill');
+
+         // Milestones
+         const milestones = [1000, 10000, 100000, 1000000];
+         let reachedMilestones = new Set();
+         const milestoneBanner = document.getElementById('milestoneBanner');
+
          // DOM
          const scoreNum = document.getElementById('scoreNum');
          const perSecDisplay = document.getElementById('perSecDisplay');
@@ -1017,6 +1216,36 @@
          function getCost(baseC, owned) {
             return Math.floor(baseC * Math.pow(COST_SCALE, owned));
          }
+
+         function showCriticalPopup() {
+            const el = document.createElement('div');
+            el.className = 'critical-popup';
+            el.textContent = 'CRITICAL HIT!';
+            const rect = clickArea.getBoundingClientRect();
+            el.style.left = (rect.width/2 - 60) + 'px';
+            el.style.top = (rect.height/2 - 60) + 'px';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 800);
+         }
+
+         function showMilestoneBanner(text) {
+            milestoneBanner.textContent = 'Milestone Reached! ' + text + ' Pizzas';
+            milestoneBanner.classList.add('show');
+            setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
+         }
+
+         // Particles
+         setInterval(() => {
+            if (document.hidden) return;
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.textContent = ['🟩', '💎', '⭐', '🎮'][Math.floor(Math.random()*4)];
+            const rect = clickArea.getBoundingClientRect();
+            p.style.left = (20 + Math.random() * (rect.width - 40)) + 'px';
+            p.style.top = (rect.height - 30) + 'px';
+            clickArea.appendChild(p);
+            setTimeout(() => p.remove(), 2000);
+         }, 3500);
 
          function recalcPerSecond() {
             perSecond = 0;
@@ -1044,6 +1273,24 @@
                }
             });
 
+            // Progress bar to next affordable upgrade
+            let nextCost = Infinity;
+            UPGRADES.forEach((u, i) => {
+               const c = getCost(u.baseCost, upgradeOwned[i]);
+               if (c < nextCost) nextCost = c;
+            });
+            if (clickPowerCost < nextCost) nextCost = clickPowerCost;
+            let progress = Math.min(100, (score / nextCost) * 100);
+            progressBarFill.style.width = progress + '%';
+
+            // Milestones
+            milestones.forEach(m => {
+               if (score >= m && !reachedMilestones.has(m)) {
+                  reachedMilestones.add(m);
+                  showMilestoneBanner(formatNum(m));
+               }
+            });
+
             // Click power upgrade
             const cpCard = document.getElementById('upgClickPower');
             document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
@@ -1067,8 +1314,31 @@
          }
 
          function doClick(e) {
-            score += clickPower;
-            totalEarned += clickPower;
+            let now = Date.now();
+            if (now - lastClickTime <= COMBO_WINDOW) {
+               comboCount++;
+            } else {
+               comboCount = 1;
+            }
+            lastClickTime = now;
+
+            let earned = clickPower;
+            if (comboCount >= 10 && comboCount % 10 === 0) {
+               earned *= 2;
+               showCriticalPopup();
+            }
+
+            score += earned;
+            totalEarned += earned;
+
+            if (comboCount > 1) {
+               comboDisplay.textContent = comboCount + 'x COMBO!';
+               comboDisplay.classList.add('active');
+               clearTimeout(comboDisplay._t);
+               comboDisplay._t = setTimeout(() => comboDisplay.classList.remove('active'), 1500);
+            } else {
+               comboDisplay.classList.remove('active');
+            }
 
             clickBtn.classList.add('pressed');
             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
@@ -1136,7 +1406,7 @@
 
          // Save / Load
          function saveGame() {
-            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned };
+            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, reachedMilestones: [...reachedMilestones] };
             try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
          }
 
@@ -1151,6 +1421,7 @@
                   clickPowerLevel = data.clickPowerLevel || 1;
                   clickPowerCost = data.clickPowerCost || 50;
                   upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                  if (data.reachedMilestones) reachedMilestones = new Set(data.reachedMilestones);
                   recalcPerSecond();
                }
             } catch (e) { }
@@ -1189,6 +1460,16 @@
       menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
       document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
       document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+   </script>
+
+   <script>
+      // FAQ Toggle
+      document.querySelectorAll('.faq-section h3').forEach(q => {
+         q.addEventListener('click', () => {
+            q.classList.toggle('open');
+            q.nextElementSibling.classList.toggle('open');
+         });
+      });
    </script>
 
    <!-- Site Footer -->
