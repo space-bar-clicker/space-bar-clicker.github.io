@@ -1248,16 +1248,37 @@
                }
             });
 
-            // Click power upgrade
-            const cpCard = document.getElementById('upgClickPower');
-            document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
-            document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
-            if (score >= clickPowerCost) {
-               cpCard.classList.remove('locked');
-            } else {
-               cpCard.classList.add('locked');
-            }
-         }
+             // Click power upgrade
+             const cpCard = document.getElementById('upgClickPower');
+             document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
+             document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
+             if (score >= clickPowerCost) {
+                cpCard.classList.remove('locked');
+             } else {
+                cpCard.classList.add('locked');
+             }
+
+             // Progress bar: next affordable upgrade
+             let nextCost = Infinity;
+             UPGRADES.forEach((u, i) => {
+                const c = getCost(u.baseCost, upgradeOwned[i]);
+                if (c > score && c < nextCost) nextCost = c;
+             });
+             if (clickPowerCost > score && clickPowerCost < nextCost) nextCost = clickPowerCost;
+             if (nextCost !== Infinity) {
+                progressBarFill.style.width = Math.min(100, (score / nextCost) * 100) + '%';
+             } else {
+                progressBarFill.style.width = '100%';
+             }
+
+             // Milestones
+             milestones.forEach(m => {
+                if (score >= m && !milestonesReached[m]) {
+                   milestonesReached[m] = true;
+                   showMilestoneBanner(m);
+                }
+             });
+          }
 
           function showClickFloat(x, y, amount) {
              const el = document.createElement('div');
@@ -1417,13 +1438,38 @@
             }
          });
 
-         // Auto-save every 30s
-         setInterval(saveGame, 30000);
+          // Auto-save every 30s
+          setInterval(saveGame, 30000);
 
-         // Init
-         loadGame();
-         render();
-      })();
+          // Sound toggle
+          soundToggle.addEventListener('click', () => {
+             soundEnabled = !soundEnabled;
+             soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+          });
+
+          // Floating particles
+          setInterval(() => {
+             const p = document.createElement('div');
+             p.className = 'particle';
+             p.textContent = PARTICLE_EMOJI;
+             p.style.left = Math.random() * 100 + '%';
+             p.style.bottom = '0';
+             particleContainer.appendChild(p);
+             setTimeout(() => p.remove(), 2500);
+          }, 3000);
+
+          // FAQ toggle
+          document.querySelectorAll('.faq-question').forEach(q => {
+             q.addEventListener('click', () => {
+                const item = q.closest('.faq-item');
+                item.classList.toggle('open');
+             });
+          });
+
+          // Init
+          loadGame();
+          render();
+       })();
    </script>
 
    <script>
