@@ -935,25 +935,34 @@
 
       <!-- ===== GAME ===== -->
       <div class="game-wrapper" id="gameWrapper">
-         <div class="game-header">
-            <h2>🎅 Santa Clicker</h2>
-            <div class="game-stats-bar">
-               <span class="game-stat-pill" id="gStatTotal">0 Presents</span>
-               <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
-            </div>
-         </div>
+          <div class="game-header">
+             <h2>🎅 Santa Clicker</h2>
+             <div class="game-stats-bar">
+                <span class="game-stat-pill" id="gStatTotal">0 Presents</span>
+                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+                <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
+             </div>
+          </div>
          <div class="game-body">
-            <div class="click-area" id="clickArea">
-               <button class="click-btn" id="clickBtn" aria-label="Craft Present">
-                  <span class="emoji">🎅</span>
-               </button>
-               <div class="score-display">
-                  <div class="score-number" id="scoreNum">0</div>
-                  <div class="score-label">Presents</div>
-               </div>
-               <div class="per-second" id="perSecDisplay">0 presents/sec</div>
-               <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
-            </div>
+             <div class="click-area" id="clickArea">
+                <div class="milestone-banner" id="milestoneBanner"></div>
+                <button class="click-btn" id="clickBtn" aria-label="Craft Present">
+                   <span class="emoji">🎅</span>
+                </button>
+                <div class="critical-popup" id="criticalPopup">CRITICAL HIT!</div>
+                <div class="score-display">
+                   <div class="score-number" id="scoreNum">0</div>
+                   <div class="score-label">Presents</div>
+                </div>
+                <div class="per-second" id="perSecDisplay">0 presents/sec</div>
+                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+                <div class="combo-display" id="comboDisplay"></div>
+                <div class="progress-bar-container">
+                   <div class="progress-bar-fill" id="progressBarFill"></div>
+                </div>
+                <div class="keyboard-hint">Tip: Press SPACE to click!</div>
+                <div class="particle-container" id="particleContainer"></div>
+             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
 
@@ -1032,46 +1041,89 @@
       </div>
 
       <!-- ===== ARTICLE CONTENT ===== -->
-      <article class="article-container">
+       <article class="article-container">
 
+          <div class="intro">
+             <p>Welcome to <strong>Santa Clicker</strong>, the ultimate free Christmas-themed idle clicker game that brings the magic of the holiday season straight to your browser! In this enchanting incremental adventure, you step into Santa's boots and work tirelessly to craft and deliver presents to children around the world. Every click of your mouse or tap of your spacebar generates precious <strong>Presents</strong>—the main currency that powers your entire North Pole operation. What starts as a humble workshop with nothing but your own two hands quickly snowballs into a massive gift-producing empire staffed by Helper Elves, Toy Workshops, Reindeer Teams, Magic Sleighs, and the awe-inspiring Christmas Spirit itself.</p>
+             
+             <p>The Christmas season has always captivated hearts worldwide with its themes of generosity, joy, and wonder. From the historical Saint Nicholas of Myra, who secretly gifted coins to those in need, to the modern global phenomenon of Santa Claus delivering presents on Christmas Eve, the spirit of giving transcends cultures and centuries. <a href="/santa-clicker/">Santa Clicker</a> captures this timeless magic by letting you build your own toy-making legacy from the ground up. As you accumulate presents and purchase upgrades, you'll experience the same satisfaction that has made idle games like <a href="/cookie-clicker/">Cookie Clicker</a> and <a href="/planet-clicker/">Planet Clicker</a> massive hits with millions of players.</p>
+             
+             <p>Idle clicker games have exploded in popularity over the past decade because they offer the perfect blend of active engagement and passive progression. Unlike traditional games that demand constant attention, Santa Clicker rewards both frantic clicking sessions and relaxed AFK play. The genre's genius lies in its exponential growth curves—every upgrade you purchase makes the next one more attainable, creating an irresistible feedback loop of constant improvement. Best of all, Santa Clicker is completely free to play in your browser with no downloads, installations, or subscriptions required. Simply open the page, start clicking, and let the holiday cheer accumulate!</p>
+          </div>
 
-         <div class="intro">
-            The headline currency is <strong>Presents</strong>; passive tiers are <strong>Helper Elf</strong> through
-            <strong>Christmas Spirit</strong>, with <strong>Click Power</strong> for taps. Narrative fluff about countdown
-            timers, elf teams as separate mechanics, toy categories, reindeer feeds, or delivery cinematics does <strong>not</strong>
-            exist in this file—there is only the idle counter, stacked upgrades, Save, and Reset you can verify in DevTools by
-            reading the script section.
-         </div>
-         <section class="section">
-            <h2>Passive output (+presents/sec)</h2>
-            <div class="feature-box">
-               <h3>Tiers</h3>
-               <ul>
-                  <li><strong>Helper Elf</strong> — +1/sec.</li>
-                  <li><strong>Toy Workshop</strong> — +5/sec.</li>
-                  <li><strong>Reindeer Team</strong> — +20/sec.</li>
-                  <li><strong>Magic Sleigh</strong> — +100/sec.</li>
-                  <li><strong>Christmas Spirit</strong> — +500/sec.</li>
-               </ul>
-            </div>
-            <p>Local save semantics match the hub; no calendar-based events are wired to gameplay.</p>
-         </section>
-         <section class="section">
-            <h2>Tips</h2>
-            <ol class="tips-list">
-               <li><strong>Helper Elf when you need passive to catch up.</strong></li>
-               <li><strong>Toy Workshop for an early plateau lift.</strong></li>
-               <li><strong>Reindeer Team for mid escalation.</strong></li>
-               <li><strong>Magic Sleigh for long unattended runs.</strong></li>
-               <li><strong>Christmas Spirit is the strongest passive ladder entry.</strong></li>
-               <li><strong>Click Power upgrades still matter when bursts buy tiers faster.</strong></li>
-            </ol>
-         </section>
+          <section class="section">
+             <h2>How to Play Santa Clicker</h2>
+             <ol class="tips-list">
+                <li><strong>Click the Santa button</strong> to craft presents manually. Each click adds to your present count based on your current Click Power level.</li>
+                <li><strong>Build a combo streak</strong> by clicking rapidly within 2-second windows. At 10x combo, you'll trigger a "CRITICAL HIT!" for bonus presents!</li>
+                <li><strong>Purchase Helper Elves</strong> (15 presents) to generate +1 present per second automatically—your first step toward passive income.</li>
+                <li><strong>Expand with Toy Workshops</strong> (100 presents) for +5 presents/sec, then unlock Reindeer Teams (+20/sec) and Magic Sleighs (+100/sec).</li>
+                <li><strong>Invest in Click Power upgrades</strong> (starting at 50 presents) to double your manual clicking output and break through bottlenecks.</li>
+                <li><strong>Unlock Christmas Spirit</strong> (15,000 presents) for the ultimate +500 presents/sec passive generator.</li>
+                <li><strong>Use the SPACE bar</strong> as a keyboard shortcut to click without using your mouse—perfect for marathon sessions!</li>
+                <li><strong>Save your progress</strong> regularly with the Save button, or let auto-save protect your empire every 30 seconds.</li>
+             </ol>
+          </section>
 
-         <div style="text-align: center;">
-         </div>
+          <section class="section">
+             <h2>Strategy Guide</h2>
+             <p>Success in Santa Clicker requires balancing active clicking with smart passive investments. In the early game, your manual clicks are the primary source of presents, so focus on building a rhythm and maintaining combo streaks for critical hit bonuses. The first Helper Elf should be your immediate priority—spend those first 15 presents as soon as possible to start generating passive income. Once you have 3-4 elves working, your economy will begin to snowball, allowing you to purchase Toy Workshops much faster than clicking alone would permit.</p>
+             <p>During the mid-game transition (around 500-5,000 presents), you'll face important decisions about resource allocation. Should you buy another Reindeer Team or upgrade your Click Power? Generally, parallel investment in cheaper tiers outperforms saving for expensive single purchases. Five Toy Workshops generating +25/sec combined often beats waiting for one Reindeer Team at +20/sec. However, once you unlock the Magic Sleigh and Christmas Spirit tiers, shift your focus toward these high-output generators, as they dramatically accelerate your path to millions of presents.</p>
+             <p>The late game becomes a numbers game of optimization. With Christmas Spirit generating +500 presents per second per unit, your totals will skyrocket into the millions. At this stage, Click Power upgrades become less critical since passive income dominates, but they still provide valuable burst potential when you need to reach specific purchase thresholds quickly. Remember to save before taking breaks—while auto-save runs every 30 seconds, manual saves ensure you never lose a massive present haul to an unexpected browser closure.</p>
+          </section>
 
-      </article>
+          <section class="section faq-section">
+             <h2>Frequently Asked Questions</h2>
+             
+             <h3>What is Santa Clicker?</h3>
+             <div class="faq-answer"><p>Santa Clicker is a free browser-based idle clicker game where you generate presents by clicking and purchasing automated upgrades. It combines Christmas holiday theming with classic incremental game mechanics for relaxing, addictive gameplay.</p></div>
+             
+             <h3>Is Santa Clicker free to play?</h3>
+             <div class="faq-answer"><p>Yes! Santa Clicker is completely free to play with no downloads, registrations, or payments required. Simply visit the page and start clicking.</p></div>
+             
+             <h3>How do I save my progress?</h3>
+             <div class="faq-answer"><p>Click the "Save" button in the game footer to manually save, or rely on auto-save which triggers every 30 seconds. Your progress is stored locally in your browser.</p></div>
+             
+             <h3>What does the combo system do?</h3>
+             <div class="faq-answer"><p>Clicking rapidly within 2-second windows builds a combo multiplier. When you reach a 10x combo, you trigger a "CRITICAL HIT!" that awards bonus presents equal to double your normal click value.</p></div>
+             
+             <h3>Can I play on mobile?</h3>
+             <div class="faq-answer"><p>Yes, Santa Clicker is fully responsive and works on smartphones and tablets. Tap the Santa button to click, and all upgrades are touch-friendly.</p></div>
+             
+             <h3>What happens when I reset?</h3>
+             <div class="faq-answer"><p>Resetting clears all your presents, upgrades, and progress, giving you a fresh start. Use this if you want to experience the early-game progression again or challenge yourself to reach milestones faster.</p></div>
+             
+             <h3>How do I get more presents per second?</h3>
+             <div class="faq-answer"><p>Purchase passive generators like Helper Elves, Toy Workshops, Reindeer Teams, Magic Sleighs, and Christmas Spirit. Each unit adds to your total presents per second, and you can own multiple copies of each generator.</p></div>
+             
+             <h3>Are there other clicker games like this?</h3>
+             <div class="faq-answer"><p>Absolutely! Check out <a href="/cookie-clicker/">Cookie Clicker</a>, <a href="/minecraft-clicker/">Minecraft Clicker</a>, and <a href="/planet-clicker/">Planet Clicker</a> for more incremental fun with different themes.</p></div>
+          </section>
+
+          <section class="section">
+             <h2>Why Play Santa Clicker?</h2>
+             <p>Santa Clicker offers the perfect holiday escape for players of all ages. Whether you're taking a break from holiday shopping, relaxing during winter vacation, or simply love the satisfaction of watching numbers grow, this game delivers endless entertainment without any stress or time pressure. The Christmas theme adds warmth and charm to the proven idle game formula, making every upgrade feel like you're building something truly magical for the world's children.</p>
+             <p>Beyond its festive appeal, Santa Clicker serves as an excellent introduction to the idle/incremental genre for newcomers while providing enough depth to satisfy veteran clicker fans. The exponential scaling ensures that no matter how long you play, there's always a bigger number to chase and a new upgrade to unlock. Plus, with completely free browser-based access, you can jump in for five minutes or five hours without any commitment.</p>
+          </section>
+
+          <section class="section">
+             <h2>Did You Know? Christmas Fun Facts</h2>
+             <div class="highlight-box">
+                <ul>
+                   <li>The tradition of Christmas gift-giving dates back to the 4th century, inspired by Saint Nicholas, a Christian bishop known for secret gift-giving to the poor.</li>
+                   <li>Santa Claus's modern image—jolly, red-suited, and white-bearded—was popularized by Coca-Cola advertisements in the 1930s, though earlier depictions existed.</li>
+                   <li>The North Pole workshop concept became widespread through Clement Clarke Moore's 1823 poem "A Visit from St. Nicholas" (better known as "'Twas the Night Before Christmas").</li>
+                   <li>Reindeer were first associated with Santa's sleigh in the same 1823 poem, which named eight reindeer—Rudolph wasn't added until a 1939 Montgomery Ward story.</li>
+                   <li>Christmas is celebrated by over 2 billion people worldwide, making it one of the most widely observed cultural and religious events in human history.</li>
+                </ul>
+             </div>
+          </section>
+
+          <div style="text-align: center;">
+             <a href="/" class="back-btn">Back to Home</a>
+          </div>
+
+       </article>
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
@@ -1136,18 +1188,29 @@
          let clickPowerLevel = 1;
          let clickPowerCost = 50;
          let perSecond = 0;
-         let upgradeOwned = UPGRADES.map(() => 0);
+          let upgradeOwned = UPGRADES.map(() => 0);
 
-         // DOM
-         const scoreNum = document.getElementById('scoreNum');
-         const perSecDisplay = document.getElementById('perSecDisplay');
-         const clickPowerInfo = document.getElementById('clickPowerInfo');
-         const gStatTotal = document.getElementById('gStatTotal');
-         const gStatPerSec = document.getElementById('gStatPerSec');
-         const clickBtn = document.getElementById('clickBtn');
-         const clickArea = document.getElementById('clickArea');
+          // Combo & enhancements
+          let comboCount = 0;
+          let lastClickTime = 0;
+          let milestonesShown = {1000: false, 10000: false, 100000: false, 1000000: false};
+          let soundOn = true;
 
-         function formatNum(n) {
+          // DOM
+          const scoreNum = document.getElementById('scoreNum');
+          const perSecDisplay = document.getElementById('perSecDisplay');
+          const clickPowerInfo = document.getElementById('clickPowerInfo');
+          const gStatTotal = document.getElementById('gStatTotal');
+          const gStatPerSec = document.getElementById('gStatPerSec');
+          const clickBtn = document.getElementById('clickBtn');
+          const clickArea = document.getElementById('clickArea');
+          const comboDisplay = document.getElementById('comboDisplay');
+          const criticalPopup = document.getElementById('criticalPopup');
+          const progressBarFill = document.getElementById('progressBarFill');
+          const milestoneBanner = document.getElementById('milestoneBanner');
+          const soundToggle = document.getElementById('soundToggle');
+
+          function formatNum(n) {
             if (n < 1000) return Math.floor(n).toLocaleString();
             if (n < 1e6) return (n / 1e3).toFixed(1) + 'K';
             if (n < 1e9) return (n / 1e6).toFixed(1) + 'M';
@@ -1185,21 +1248,23 @@
                }
             });
 
-            // Click power upgrade
-            const cpCard = document.getElementById('upgClickPower');
-            document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
-            document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
-            if (score >= clickPowerCost) {
-               cpCard.classList.remove('locked');
-            } else {
-               cpCard.classList.add('locked');
-            }
-         }
+             // Click power upgrade
+             const cpCard = document.getElementById('upgClickPower');
+             document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
+             document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
+             if (score >= clickPowerCost) {
+                cpCard.classList.remove('locked');
+             } else {
+                cpCard.classList.add('locked');
+             }
 
-         function showClickFloat(x, y) {
-            const el = document.createElement('div');
-            el.className = 'click-float';
-            el.textContent = '+' + formatNum(clickPower);
+             updateProgressBar();
+          }
+
+          function showClickFloat(x, y, val) {
+             const el = document.createElement('div');
+             el.className = 'click-float';
+             el.textContent = '+' + formatNum(val || clickPower);
             el.style.left = x + 'px';
             el.style.top = y + 'px';
             clickArea.style.position = 'relative';
@@ -1207,26 +1272,46 @@
             setTimeout(() => el.remove(), 700);
          }
 
-         function doClick(e) {
-            score += clickPower;
-            totalEarned += clickPower;
+          function doClick(e) {
+             let earned = clickPower;
 
-            clickBtn.classList.add('pressed');
-            setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+             // Combo system
+             const now = Date.now();
+             if (now - lastClickTime <= 2000) {
+                comboCount++;
+             } else {
+                comboCount = 1;
+             }
+             lastClickTime = now;
+             if (comboDisplay) {
+                comboDisplay.textContent = comboCount > 1 ? comboCount + 'x Combo!' : '';
+                comboDisplay.style.opacity = comboCount > 1 ? '1' : '0';
+             }
+             if (comboCount > 0 && comboCount % 10 === 0) {
+                showCriticalHit();
+                earned += clickPower;
+             }
 
-            // Float position
-            const rect = clickArea.getBoundingClientRect();
-            let cx, cy;
-            if (e && e.clientX) {
-               cx = e.clientX - rect.left;
-               cy = e.clientY - rect.top;
-            } else {
-               cx = rect.width / 2 + (Math.random() - 0.5) * 40;
-               cy = rect.height / 2 - 30;
-            }
-            showClickFloat(cx, cy);
-            render();
-         }
+             score += earned;
+             totalEarned += earned;
+
+             clickBtn.classList.add('pressed');
+             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+
+             // Float position
+             const rect = clickArea.getBoundingClientRect();
+             let cx, cy;
+             if (e && e.clientX) {
+                cx = e.clientX - rect.left;
+                cy = e.clientY - rect.top;
+             } else {
+                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+                cy = rect.height / 2 - 30;
+             }
+             showClickFloat(cx, cy, earned);
+             checkMilestones();
+             render();
+          }
 
          clickBtn.addEventListener('click', doClick);
          clickBtn.addEventListener('touchstart', (e) => {
@@ -1266,20 +1351,83 @@
             }
          });
 
-         // Per-second tick
-         setInterval(() => {
-            if (perSecond > 0) {
-               score += perSecond;
-               totalEarned += perSecond;
-               render();
-            }
-         }, 1000);
+          // Per-second tick
+          setInterval(() => {
+             if (perSecond > 0) {
+                score += perSecond;
+                totalEarned += perSecond;
+                checkMilestones();
+                render();
+             }
+          }, 1000);
 
-         // Save / Load
-         function saveGame() {
-            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned };
-            try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
-         }
+          // Enhancement functions
+          function showCriticalHit() {
+             if (!criticalPopup) return;
+             criticalPopup.classList.remove('show');
+             void criticalPopup.offsetWidth;
+             criticalPopup.classList.add('show');
+             setTimeout(() => criticalPopup.classList.remove('show'), 1500);
+          }
+
+          function updateProgressBar() {
+             if (!progressBarFill) return;
+             let nextCost = Infinity;
+             UPGRADES.forEach((u, i) => {
+                const cost = getCost(u.baseCost, upgradeOwned[i]);
+                if (cost < nextCost) nextCost = cost;
+             });
+             if (clickPowerCost < nextCost) nextCost = clickPowerCost;
+             let pct = score >= nextCost ? 100 : (score / nextCost) * 100;
+             progressBarFill.style.width = pct + '%';
+          }
+
+          function checkMilestones() {
+             Object.keys(milestonesShown).forEach(key => {
+                const m = parseInt(key);
+                if (totalEarned >= m && !milestonesShown[key]) {
+                   milestonesShown[key] = true;
+                   showMilestone(m);
+                }
+             });
+          }
+
+          function showMilestone(amount) {
+             if (!milestoneBanner) return;
+             milestoneBanner.textContent = '🎉 Milestone: ' + formatNum(amount) + ' Presents reached!';
+             milestoneBanner.classList.add('show');
+             setTimeout(() => milestoneBanner.classList.remove('show'), 4000);
+          }
+
+          function spawnParticle() {
+             const container = document.getElementById('particleContainer');
+             if (!container) return;
+             const p = document.createElement('div');
+             p.className = 'particle';
+             const emojis = ['🎅', '🎁', '🦌', '⭐', '❄️', '🎄'];
+             p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+             p.style.left = Math.random() * 80 + 10 + '%';
+             p.style.animationDuration = (3 + Math.random() * 2) + 's';
+             container.appendChild(p);
+             setTimeout(() => p.remove(), 5000);
+          }
+
+          // Particles
+          setInterval(spawnParticle, 2500);
+
+          // Sound toggle
+          if (soundToggle) {
+             soundToggle.addEventListener('click', () => {
+                soundOn = !soundOn;
+                soundToggle.textContent = soundOn ? '🔊' : '🔇';
+             });
+          }
+
+          // Save / Load
+          function saveGame() {
+             const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, milestonesShown };
+             try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
+          }
 
          function loadGame() {
             try {
@@ -1291,9 +1439,10 @@
                   clickPower = data.clickPower || 1;
                   clickPowerLevel = data.clickPowerLevel || 1;
                   clickPowerCost = data.clickPowerCost || 50;
-                  upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
-                  recalcPerSecond();
-               }
+                   upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                   milestonesShown = data.milestonesShown || {1000: false, 10000: false, 100000: false, 1000000: false};
+                   recalcPerSecond();
+                }
             } catch (e) { }
          }
 
@@ -1307,8 +1456,9 @@
          document.getElementById('resetBtn').addEventListener('click', () => {
             if (confirm('Reset all progress for Santa Clicker? This cannot be undone.')) {
                localStorage.removeItem(SAVE_KEY);
-               score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
-               upgradeOwned = UPGRADES.map(() => 0);
+                score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
+                upgradeOwned = UPGRADES.map(() => 0);
+                milestonesShown = {1000: false, 10000: false, 100000: false, 1000000: false};
                recalcPerSecond();
                render();
             }
@@ -1323,14 +1473,22 @@
       })();
    </script>
 
-   <script>
-      // Mobile menu
-      const menuBtn = document.querySelector('.menu-btn');
-      const navLinks = document.querySelector('.nav-links');
-      menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
-      document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
-      document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
-   </script>
+    <script>
+       // Mobile menu
+       const menuBtn = document.querySelector('.menu-btn');
+       const navLinks = document.querySelector('.nav-links');
+       menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+       document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
+       document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+
+       // FAQ toggle
+       document.querySelectorAll('.faq-section h3').forEach(h3 => {
+          h3.addEventListener('click', () => {
+             h3.classList.toggle('active');
+             h3.nextElementSibling.classList.toggle('active');
+          });
+       });
+    </script>
 
    <!-- Site Footer -->
    <footer class="site-footer">

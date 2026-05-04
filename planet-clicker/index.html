@@ -935,25 +935,34 @@
 
       <!-- ===== GAME ===== -->
       <div class="game-wrapper" id="gameWrapper">
-         <div class="game-header">
-            <h2>🌍 Planet Clicker</h2>
-            <div class="game-stats-bar">
-               <span class="game-stat-pill" id="gStatTotal">0 Energy</span>
-               <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
-            </div>
-         </div>
+          <div class="game-header">
+             <h2>🌍 Planet Clicker</h2>
+             <div class="game-stats-bar">
+                <span class="game-stat-pill" id="gStatTotal">0 Energy</span>
+                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+                <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
+             </div>
+          </div>
          <div class="game-body">
-            <div class="click-area" id="clickArea">
-               <button class="click-btn" id="clickBtn" aria-label="Generate Energy">
-                  <span class="emoji">🌍</span>
-               </button>
-               <div class="score-display">
-                  <div class="score-number" id="scoreNum">0</div>
-                  <div class="score-label">Energy</div>
-               </div>
-               <div class="per-second" id="perSecDisplay">0 energy/sec</div>
-               <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
-            </div>
+             <div class="click-area" id="clickArea">
+                <div class="milestone-banner" id="milestoneBanner"></div>
+                <button class="click-btn" id="clickBtn" aria-label="Generate Energy">
+                   <span class="emoji">🌍</span>
+                </button>
+                <div class="critical-popup" id="criticalPopup">CRITICAL HIT!</div>
+                <div class="score-display">
+                   <div class="score-number" id="scoreNum">0</div>
+                   <div class="score-label">Energy</div>
+                </div>
+                <div class="per-second" id="perSecDisplay">0 energy/sec</div>
+                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+                <div class="combo-display" id="comboDisplay"></div>
+                <div class="progress-bar-container">
+                   <div class="progress-bar-fill" id="progressBarFill"></div>
+                </div>
+                <div class="keyboard-hint">Tip: Press SPACE to click!</div>
+                <div class="particle-container" id="particleContainer"></div>
+             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
 
@@ -1032,80 +1041,89 @@
       </div>
 
       <!-- ===== ARTICLE CONTENT ===== -->
-      <article class="article-container">
+       <article class="article-container">
 
-         <div class="intro">
-            This page is a <strong>cosmic-themed idle incremental</strong>: you harvest <strong>energy</strong>, not
-            cookies—letting sci-fi shorthand (solar → dark matter) stand in for a civilization climbing the
-            Kardashev-style ladder inside a spreadsheet brain. You’re optimizing <em>energy per second</em> and
-            <em>per click</em>, not piloting a 4X map—no guarantee of multiplayer, colonization cinematics, or
-            leaderboard sync in this lightweight web build.
-         </div>
+          <div class="intro">
+             <p>Welcome to <strong>Planet Clicker</strong>, a free cosmic idle clicker game that lets you harness the boundless energy of the universe! In this browser-based incremental adventure, your mission is to generate <strong>Energy</strong>—the fundamental currency of cosmic civilization—by clicking the planet and building an ever-expanding array of power generators. From humble Solar Panels that capture starlight to mind-bending Dark Matter harvesters that tap into the fabric of space itself, every upgrade brings you closer to becoming a Type III civilization on the Kardashev scale.</p>
+             
+             <p>Space exploration and energy harvesting have fascinated humanity since we first gazed at the stars. Today, real-world scientists study Dyson spheres as theoretical megastructures that advanced civilizations might build to capture a star's entire energy output. <a href="/planet-clicker/">Planet Clicker</a> transforms these awe-inspiring concepts into satisfying gameplay mechanics, letting you experience the thrill of cosmic engineering from your browser. Fans of space-themed games will also enjoy <a href="/planet-clicker-2/">Planet Clicker 2</a> and <a href="/earth-clicker/">Earth Clicker</a> for alternate takes on planetary incremental gameplay.</p>
+             
+             <p>The idle clicker genre has become a gaming phenomenon because it taps into our innate desire for growth and optimization. Planet Clicker exemplifies this perfectly—you start with nothing but a click, yet within minutes you're managing a complex economy of renewable and exotic energy sources. The game runs entirely in your browser with no downloads or fees, making it accessible on desktops, laptops, tablets, and smartphones. Whether you have five minutes between classes or want to run it passively in a background tab, Planet Clicker adapts to your schedule.</p>
+          </div>
 
-         <section class="section">
-            <h2>What this Planet Clicker actually simulates</h2>
-            <p>You run a two-track economy exactly like other games on this site: <strong>manual pulses</strong> from
-               clicking the planet and <strong>passive generators</strong> you can stack in multiple copies, each with
-               rising marginal cost. The fantasy names map to clear math roles:</p>
-            <div class="feature-box">
-               <h3>Generators you can buy (per owned copy)</h3>
-               <ul>
-                  <li><strong>Solar Panel</strong> — +1 energy/sec (cheap baseline; spam early)</li>
-                  <li><strong>Wind Turbine</strong> — +5 energy/sec (midline renewable)</li>
-                  <li><strong>Nuclear Plant</strong> — +20 energy/sec (dense baseload)</li>
-                  <li><strong>Dyson Ring</strong> — +100 energy/sec (megastructure fantasy tier)</li>
-                  <li><strong>Dark Matter</strong> — +500 energy/sec (absurd endgame throughput)</li>
-                  <li><strong>Click Power</strong> — multiplies how much each tap adds when numbers are still small</li>
-               </ul>
-            </div>
-            <p>Together they model the intuition that civilizations escalate from planetary-scale renewables to absurd
-               universal-scale harvesters—without simulating orbital mechanics.</p>
-         </section>
+          <section class="section">
+             <h2>How to Play Planet Clicker</h2>
+             <ol class="tips-list">
+                <li><strong>Click the planet button</strong> to generate energy manually. Each tap produces energy based on your current Click Power level.</li>
+                <li><strong>Maintain rapid clicks</strong> within 2-second intervals to build combo multipliers. Every 10x combo triggers a "CRITICAL HIT!" with 2x bonus energy!</li>
+                <li><strong>Install Solar Panels</strong> (15 energy) for your first passive generator, producing +1 energy per second automatically.</li>
+                <li><strong>Scale up with Wind Turbines</strong> (100 energy, +5/sec) and Nuclear Plants (500 energy, +20/sec) for mid-game growth.</li>
+                <li><strong>Invest in Click Power</strong> (starting at 50 energy) to double your manual output whenever tapping becomes more efficient than saving.</li>
+                <li><strong>Build Dyson Rings</strong> (2,500 energy, +100/sec) as your late-midgame power source.</li>
+                <li><strong>Unlock Dark Matter</strong> (15,000 energy, +500/sec) for endgame energy generation that skyrockets your totals.</li>
+                <li><strong>Press SPACE</strong> to click without your mouse, and save your progress regularly to protect your cosmic empire.</li>
+             </ol>
+          </section>
 
-         <section class="section">
-            <h2>How to climb the energy ladder</h2>
-            <ol class="tips-list">
-               <li><strong>Seed with clicks.</strong> Before passives compound, manual energy is fastest—keep clicking
-                  until Solar Panels pull their weight.</li>
-               <li><strong>Ride the cheap tiers.</strong> Flooding Wind Turbines often beats hoarding for a single Dyson
-                  Ring—parallel low-cost stacks reduce downtime.</li>
-               <li><strong>Invest in click power during the “fragile mid.”</strong> When Nuclear is online but Dark
-                  Matter is still distant, doubling tap value shortens awkward grinds.</li>
-               <li><strong>Target Dark Matter as your “universe budget cap.”</strong> Once dark-matter stacks tick,
-                  you’ve effectively solved the incremental arc; after that it’s experimentation or resets for fun.</li>
-               <li><strong>Save before walking away.</strong> Browser storage keeps progress; clearing site data wipes
-                  it—treat saves like checkpoints.</li>
-            </ol>
-         </section>
+          <section class="section">
+             <h2>Strategy Guide</h2>
+             <p>Early game strategy in Planet Clicker is all about momentum. Your initial clicks are precious—each one brings you closer to that first Solar Panel. Don't hoard energy waiting for bigger upgrades when affordable panels are available. The math is clear: a Solar Panel generating +1/sec pays for itself in 15 seconds, and every second after that is pure profit. Build your first few panels as fast as possible, then ride that passive income to your first Wind Turbine.</p>
+             <p>The mid-game (1,000-50,000 energy) is where strategic thinking matters most. You'll face the classic idle game dilemma: breadth versus depth. Should you buy ten more Wind Turbines or save for a single Nuclear Plant? Generally, filling out your lower-tier generators first provides better returns because their lower costs let you compound faster. However, once you have a solid base of turbines, Nuclear Plants become the clear next step. Click Power upgrades shine during this phase when you need to burst through specific cost barriers.</p>
+             <p>Late-game Planet Clicker is about scale. Dark Matter generators producing +500 energy per second each will push your totals into the millions. At this point, the game becomes a satisfying numbers spectacle. The progress bar helps you visualize exactly how close you are to your next major purchase, eliminating guesswork. Keep an eye on milestone celebrations—they're not just cosmetic rewards, but markers of genuine achievement in your journey from planetary civilization to universal energy lord.</p>
+          </section>
 
-         <section class="section">
-            <h2>Science flavor without false precision</h2>
-            <p>Real astrophysics doesn’t unlock Dyson rings from a smiley planet button—but incremental games borrow
-               <em>named</em> rungs (solar, nuclear, hypothetical megastructures) to make each purchase feel like a tech
-               tree. Treat the copy as thematic seasoning: what matters mechanically is exponential costs, linear or
-               superlinear generators, and the player’s pacing decisions.</p>
-            <div class="highlight-box">
-               <ul>
-                  <li><strong>Renewable metaphor:</strong> early tiers echo real engineering tradeoffs (distributed
-                     renewables vs concentrated plants).</li>
-                  <li><strong>Sci-fi metaphor:</strong> late tiers echo speculative energy harvesting—just enough wonder to
-                     justify giant numbers.</li>
-               </ul>
-            </div>
-         </section>
+          <section class="section faq-section">
+             <h2>Frequently Asked Questions</h2>
+             
+             <h3>What is Planet Clicker?</h3>
+             <div class="faq-answer"><p>Planet Clicker is a free browser idle game where you generate energy by clicking and building automated generators like Solar Panels, Wind Turbines, and Dark Matter harvesters.</p></div>
+             
+             <h3>Is Planet Clicker free?</h3>
+             <div class="faq-answer"><p>Yes, it's completely free with no downloads or registration required. Play directly in any modern web browser.</p></div>
+             
+             <h3>How does the combo system work?</h3>
+             <div class="faq-answer"><p>Clicking within 2-second intervals builds a combo. At every 10x combo, you get a "CRITICAL HIT!" that doubles your click output for that tap.</p></div>
+             
+             <h3>What's the best early upgrade?</h3>
+             <div class="faq-answer"><p>Solar Panels are your first priority. At only 15 energy with +1/sec return, they pay for themselves quickly and start compounding your growth.</p></div>
+             
+             <h3>Can I play Planet Clicker on my phone?</h3>
+             <div class="faq-answer"><p>Absolutely! The game is fully responsive and works great on mobile browsers. Tap the planet to click and purchase upgrades with touch.</p></div>
+             
+             <h3>What does the progress bar show?</h3>
+             <div class="faq-answer"><p>The progress bar displays how close you are to affording the next cheapest upgrade, giving you a visual indicator of your purchasing power.</p></div>
+             
+             <h3>Does my progress save automatically?</h3>
+             <div class="faq-answer"><p>Auto-save runs every 30 seconds, and you can manually save anytime with the Save button. Progress is stored in your browser's local storage.</p></div>
+             
+             <h3>Are there other space clicker games?</h3>
+             <div class="faq-answer"><p>Yes! Try <a href="/planet-clicker-2/">Planet Clicker 2</a> for galactic expansion, or <a href="/earth-clicker/">Earth Clicker</a> for planetary conservation themes.</p></div>
+          </section>
 
-         <section class="section">
-            <h2>Who should play it</h2>
-            <p>Fans of <strong>idle games about scale</strong> who want cosmic window dressing instead of bakery jokes.
-               If you enjoy planning purchase order more than twitch skill, Planet Clicker is a clean mental puzzle with
-               space vibes—pair it with <a href="/earth-clicker/">Earth Clicker</a> or <a href="/planet-clicker-2/">Planet
-                  Clicker 2</a> if you want to compare flavor text without changing the core math.</p>
-         </section>
+          <section class="section">
+             <h2>Why Play Planet Clicker?</h2>
+             <p>Planet Clicker stands out among idle games by wrapping satisfying incremental mechanics in a genuinely inspiring theme. Every upgrade represents a real concept from energy engineering and speculative science, giving your progression a sense of meaning beyond mere numbers. Whether you're a space enthusiast who recognizes Dyson sphere references or simply someone who enjoys watching exponential curves climb, the game delivers consistent dopamine hits through well-tuned difficulty curves.</p>
+             <p>The accessibility of Planet Clicker is another major strength. With no installation barriers, paywalls, or forced advertisements, you get a pure gaming experience that respects your time. The game scales beautifully from active clicking sessions to passive overnight runs, making it equally suitable for quick breaks and long-term engagement. If you've ever looked up at the night sky and wondered what humanity's energy future might look like, Planet Clicker lets you simulate that future—one click at a time.</p>
+          </section>
 
-         <div style="text-align: center;">
-         </div>
+          <section class="section">
+             <h2>Did You Know? Space & Energy Facts</h2>
+             <div class="highlight-box">
+                <ul>
+                   <li>A Dyson Sphere is a hypothetical megastructure first proposed by physicist Freeman Dyson in 1960, designed to capture a star's entire energy output.</li>
+                   <li>The Sun produces approximately 384.6 yottawatts of power—more energy in one second than humanity has used in its entire history.</li>
+                   <li>Dark matter makes up about 27% of the universe but cannot be observed directly; scientists detect it only through its gravitational effects on visible matter.</li>
+                   <li>Nuclear fusion, the process that powers stars, could theoretically provide humanity with virtually unlimited clean energy if controlled on Earth.</li>
+                   <li>Wind energy is one of the fastest-growing power sources globally, with capacity increasing over 20% annually in many countries.</li>
+                </ul>
+             </div>
+          </section>
 
-      </article>
+          <div style="text-align: center;">
+             <a href="/" class="back-btn">Back to Home</a>
+          </div>
+
+       </article>
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
@@ -1170,18 +1188,29 @@
          let clickPowerLevel = 1;
          let clickPowerCost = 50;
          let perSecond = 0;
-         let upgradeOwned = UPGRADES.map(() => 0);
+          let upgradeOwned = UPGRADES.map(() => 0);
 
-         // DOM
-         const scoreNum = document.getElementById('scoreNum');
-         const perSecDisplay = document.getElementById('perSecDisplay');
-         const clickPowerInfo = document.getElementById('clickPowerInfo');
-         const gStatTotal = document.getElementById('gStatTotal');
-         const gStatPerSec = document.getElementById('gStatPerSec');
-         const clickBtn = document.getElementById('clickBtn');
-         const clickArea = document.getElementById('clickArea');
+          // Combo & enhancements
+          let comboCount = 0;
+          let lastClickTime = 0;
+          let milestonesShown = {1000: false, 10000: false, 100000: false, 1000000: false};
+          let soundOn = true;
 
-         function formatNum(n) {
+          // DOM
+          const scoreNum = document.getElementById('scoreNum');
+          const perSecDisplay = document.getElementById('perSecDisplay');
+          const clickPowerInfo = document.getElementById('clickPowerInfo');
+          const gStatTotal = document.getElementById('gStatTotal');
+          const gStatPerSec = document.getElementById('gStatPerSec');
+          const clickBtn = document.getElementById('clickBtn');
+          const clickArea = document.getElementById('clickArea');
+          const comboDisplay = document.getElementById('comboDisplay');
+          const criticalPopup = document.getElementById('criticalPopup');
+          const progressBarFill = document.getElementById('progressBarFill');
+          const milestoneBanner = document.getElementById('milestoneBanner');
+          const soundToggle = document.getElementById('soundToggle');
+
+          function formatNum(n) {
             if (n < 1000) return Math.floor(n).toLocaleString();
             if (n < 1e6) return (n / 1e3).toFixed(1) + 'K';
             if (n < 1e9) return (n / 1e6).toFixed(1) + 'M';
@@ -1219,21 +1248,23 @@
                }
             });
 
-            // Click power upgrade
-            const cpCard = document.getElementById('upgClickPower');
-            document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
-            document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
-            if (score >= clickPowerCost) {
-               cpCard.classList.remove('locked');
-            } else {
-               cpCard.classList.add('locked');
-            }
-         }
+             // Click power upgrade
+             const cpCard = document.getElementById('upgClickPower');
+             document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
+             document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
+             if (score >= clickPowerCost) {
+                cpCard.classList.remove('locked');
+             } else {
+                cpCard.classList.add('locked');
+             }
 
-         function showClickFloat(x, y) {
-            const el = document.createElement('div');
-            el.className = 'click-float';
-            el.textContent = '+' + formatNum(clickPower);
+             updateProgressBar();
+          }
+
+          function showClickFloat(x, y, val) {
+             const el = document.createElement('div');
+             el.className = 'click-float';
+             el.textContent = '+' + formatNum(val || clickPower);
             el.style.left = x + 'px';
             el.style.top = y + 'px';
             clickArea.style.position = 'relative';
@@ -1241,26 +1272,46 @@
             setTimeout(() => el.remove(), 700);
          }
 
-         function doClick(e) {
-            score += clickPower;
-            totalEarned += clickPower;
+          function doClick(e) {
+             let earned = clickPower;
 
-            clickBtn.classList.add('pressed');
-            setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+             // Combo system
+             const now = Date.now();
+             if (now - lastClickTime <= 2000) {
+                comboCount++;
+             } else {
+                comboCount = 1;
+             }
+             lastClickTime = now;
+             if (comboDisplay) {
+                comboDisplay.textContent = comboCount > 1 ? comboCount + 'x Combo!' : '';
+                comboDisplay.style.opacity = comboCount > 1 ? '1' : '0';
+             }
+             if (comboCount > 0 && comboCount % 10 === 0) {
+                showCriticalHit();
+                earned += clickPower;
+             }
 
-            // Float position
-            const rect = clickArea.getBoundingClientRect();
-            let cx, cy;
-            if (e && e.clientX) {
-               cx = e.clientX - rect.left;
-               cy = e.clientY - rect.top;
-            } else {
-               cx = rect.width / 2 + (Math.random() - 0.5) * 40;
-               cy = rect.height / 2 - 30;
-            }
-            showClickFloat(cx, cy);
-            render();
-         }
+             score += earned;
+             totalEarned += earned;
+
+             clickBtn.classList.add('pressed');
+             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+
+             // Float position
+             const rect = clickArea.getBoundingClientRect();
+             let cx, cy;
+             if (e && e.clientX) {
+                cx = e.clientX - rect.left;
+                cy = e.clientY - rect.top;
+             } else {
+                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+                cy = rect.height / 2 - 30;
+             }
+             showClickFloat(cx, cy, earned);
+             checkMilestones();
+             render();
+          }
 
          clickBtn.addEventListener('click', doClick);
          clickBtn.addEventListener('touchstart', (e) => {
@@ -1300,20 +1351,83 @@
             }
          });
 
-         // Per-second tick
-         setInterval(() => {
-            if (perSecond > 0) {
-               score += perSecond;
-               totalEarned += perSecond;
-               render();
-            }
-         }, 1000);
+          // Per-second tick
+          setInterval(() => {
+             if (perSecond > 0) {
+                score += perSecond;
+                totalEarned += perSecond;
+                checkMilestones();
+                render();
+             }
+          }, 1000);
 
-         // Save / Load
-         function saveGame() {
-            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned };
-            try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
-         }
+          // Enhancement functions
+          function showCriticalHit() {
+             if (!criticalPopup) return;
+             criticalPopup.classList.remove('show');
+             void criticalPopup.offsetWidth;
+             criticalPopup.classList.add('show');
+             setTimeout(() => criticalPopup.classList.remove('show'), 1500);
+          }
+
+          function updateProgressBar() {
+             if (!progressBarFill) return;
+             let nextCost = Infinity;
+             UPGRADES.forEach((u, i) => {
+                const cost = getCost(u.baseCost, upgradeOwned[i]);
+                if (cost < nextCost) nextCost = cost;
+             });
+             if (clickPowerCost < nextCost) nextCost = clickPowerCost;
+             let pct = score >= nextCost ? 100 : (score / nextCost) * 100;
+             progressBarFill.style.width = pct + '%';
+          }
+
+          function checkMilestones() {
+             Object.keys(milestonesShown).forEach(key => {
+                const m = parseInt(key);
+                if (totalEarned >= m && !milestonesShown[key]) {
+                   milestonesShown[key] = true;
+                   showMilestone(m);
+                }
+             });
+          }
+
+          function showMilestone(amount) {
+             if (!milestoneBanner) return;
+             milestoneBanner.textContent = '🎉 Milestone: ' + formatNum(amount) + ' Energy reached!';
+             milestoneBanner.classList.add('show');
+             setTimeout(() => milestoneBanner.classList.remove('show'), 4000);
+          }
+
+          function spawnParticle() {
+             const container = document.getElementById('particleContainer');
+             if (!container) return;
+             const p = document.createElement('div');
+             p.className = 'particle';
+             const emojis = ['🌍', '☀️', '💨', '⚛️', '🌙', '⭐'];
+             p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+             p.style.left = Math.random() * 80 + 10 + '%';
+             p.style.animationDuration = (3 + Math.random() * 2) + 's';
+             container.appendChild(p);
+             setTimeout(() => p.remove(), 5000);
+          }
+
+          // Particles
+          setInterval(spawnParticle, 2500);
+
+          // Sound toggle
+          if (soundToggle) {
+             soundToggle.addEventListener('click', () => {
+                soundOn = !soundOn;
+                soundToggle.textContent = soundOn ? '🔊' : '🔇';
+             });
+          }
+
+          // Save / Load
+          function saveGame() {
+             const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, milestonesShown };
+             try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
+          }
 
          function loadGame() {
             try {
@@ -1325,9 +1439,10 @@
                   clickPower = data.clickPower || 1;
                   clickPowerLevel = data.clickPowerLevel || 1;
                   clickPowerCost = data.clickPowerCost || 50;
-                  upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
-                  recalcPerSecond();
-               }
+                   upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                   milestonesShown = data.milestonesShown || {1000: false, 10000: false, 100000: false, 1000000: false};
+                   recalcPerSecond();
+                }
             } catch (e) { }
          }
 
@@ -1341,8 +1456,9 @@
          document.getElementById('resetBtn').addEventListener('click', () => {
             if (confirm('Reset all progress for Planet Clicker? This cannot be undone.')) {
                localStorage.removeItem(SAVE_KEY);
-               score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
-               upgradeOwned = UPGRADES.map(() => 0);
+                score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
+                upgradeOwned = UPGRADES.map(() => 0);
+                milestonesShown = {1000: false, 10000: false, 100000: false, 1000000: false};
                recalcPerSecond();
                render();
             }
@@ -1357,14 +1473,22 @@
       })();
    </script>
 
-   <script>
-      // Mobile menu
-      const menuBtn = document.querySelector('.menu-btn');
-      const navLinks = document.querySelector('.nav-links');
-      menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
-      document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
-      document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
-   </script>
+    <script>
+       // Mobile menu
+       const menuBtn = document.querySelector('.menu-btn');
+       const navLinks = document.querySelector('.nav-links');
+       menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+       document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
+       document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+
+       // FAQ toggle
+       document.querySelectorAll('.faq-section h3').forEach(h3 => {
+          h3.addEventListener('click', () => {
+             h3.classList.toggle('active');
+             h3.nextElementSibling.classList.toggle('active');
+          });
+       });
+    </script>
 
    <!-- Site Footer -->
    <footer class="site-footer">

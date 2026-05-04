@@ -730,25 +730,34 @@
 
       <!-- ===== GAME ===== -->
       <div class="game-wrapper" id="gameWrapper">
-         <div class="game-header">
-            <h2>🌱 Plant Clicker</h2>
-            <div class="game-stats-bar">
-               <span class="game-stat-pill" id="gStatTotal">0 Seeds</span>
-               <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
-            </div>
-         </div>
+          <div class="game-header">
+             <h2>🌱 Plant Clicker</h2>
+             <div class="game-stats-bar">
+                <span class="game-stat-pill" id="gStatTotal">0 Seeds</span>
+                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+                <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
+             </div>
+          </div>
          <div class="game-body">
-            <div class="click-area" id="clickArea">
-               <button class="click-btn" id="clickBtn" aria-label="Grow Seed">
-                  <span class="emoji">🌱</span>
-               </button>
-               <div class="score-display">
-                  <div class="score-number" id="scoreNum">0</div>
-                  <div class="score-label">Seeds</div>
-               </div>
-               <div class="per-second" id="perSecDisplay">0 seeds/sec</div>
-               <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
-            </div>
+             <div class="click-area" id="clickArea">
+                <div class="milestone-banner" id="milestoneBanner"></div>
+                <button class="click-btn" id="clickBtn" aria-label="Grow Seed">
+                   <span class="emoji">🌱</span>
+                </button>
+                <div class="critical-popup" id="criticalPopup">CRITICAL HIT!</div>
+                <div class="score-display">
+                   <div class="score-number" id="scoreNum">0</div>
+                   <div class="score-label">Seeds</div>
+                </div>
+                <div class="per-second" id="perSecDisplay">0 seeds/sec</div>
+                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+                <div class="combo-display" id="comboDisplay"></div>
+                <div class="progress-bar-container">
+                   <div class="progress-bar-fill" id="progressBarFill"></div>
+                </div>
+                <div class="keyboard-hint">Tip: Press SPACE to click!</div>
+                <div class="particle-container" id="particleContainer"></div>
+             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
                
@@ -827,46 +836,89 @@
       </div>
 
       <!-- ===== ARTICLE CONTENT ===== -->
-      <article class="article-container">
-         
-         <div class="intro">
-            Plant Clicker maps the usual idle spine onto <strong>Seed</strong> economy: tap the sprout for bursts, stack
-            passives from <strong>Watering Can</strong> to <strong>World Tree</strong>, layer <strong>Click Power</strong>, and
-            save locally. Copy about tilling plots, seasonal bloom cycles, greenhouse biomes, encyclopedia pages, or ambient
-            gardening audio is <strong>imaginary</strong> for this static page—only one number line upgrades, no second
-            camera angle to “watch plants grow.” Pair with <a href="/room-clicker/">Room Clicker</a> if you want interior
-            fantasy instead of arboretum fantasy on the same math.
-         </div>
-         <section class="section">
-            <h2>Tiers (+seeds/sec)</h2>
-            <div class="feature-box">
-               <h3>Passive generators</h3>
-               <ul>
-                  <li><strong>Watering Can</strong> — +1/sec.</li>
-                  <li><strong>Flower Pot</strong> — +5/sec.</li>
-                  <li><strong>Greenhouse</strong> — +20/sec.</li>
-                  <li><strong>Botanical Lab</strong> — +100/sec.</li>
-                  <li><strong>World Tree</strong> — +500/sec; mythic label, still a rate stat.</li>
-               </ul>
-            </div>
-            <p>Raise Click Power when taps still compress time-to-next purchase more than another passive copy would.</p>
-         </section>
-         <section class="section">
-            <h2>Growth loop tips</h2>
-            <ol class="tips-list">
-               <li><strong>Water early and often (virtually).</strong> +1/sec beats pure clicking before long.</li>
-               <li><strong>Multiply Flower Pots.</strong> Breadth typically wins the first ten minutes.</li>
-               <li><strong>Greenhouse is your mid pacing hop.</strong></li>
-               <li><strong>Botanical Lab earns while you answer email.</strong></li>
-               <li><strong>Farm World Trees for absurd Seed totals.</strong></li>
-               <li><strong>Click Power when per-tap readout still punches through costs.</strong></li>
-            </ol>
-         </section>
-    
-         <div style="text-align: center;">
-         </div>
-      
-      </article>
+       <article class="article-container">
+
+          <div class="intro">
+             <p>Welcome to <strong>Plant Clicker</strong>, a free browser-based idle clicker game that transforms you into the ultimate digital gardener! In this relaxing incremental adventure, your goal is to cultivate <strong>Seeds</strong>—the life-giving currency that fuels your growing botanical empire. Starting with a single sprout and your own green thumb, you'll eventually manage Watering Cans, Flower Pots, Greenhouses, Botanical Labs, and the legendary World Tree itself. Every click waters your garden, while passive generators work around the clock to multiply your seed count.</p>
+             
+             <p>Plants and gardening have brought joy to humans for over 12,000 years, since the dawn of agriculture. From the hanging gardens of Babylon to modern vertical farms in Tokyo, cultivating life satisfies something fundamental in our nature. <a href="/plant-clicker/">Plant Clicker</a> captures this nurturing satisfaction through numbers-driven gameplay. As you watch your seed count bloom from dozens to millions, you'll understand why gardening metaphors work so well in incremental games. For more nature-themed fun, check out <a href="/earth-clicker/">Earth Clicker</a> or <a href="/planet-clicker/">Planet Clicker</a>.</p>
+             
+             <p>Idle clicker games like Plant Clicker have become a global phenomenon because they offer stress-free entertainment that fits any schedule. The genre's genius is its dual reward system: active players benefit from combo chains and critical hits, while passive players accumulate wealth through automated generators. Plant Clicker requires no downloads, subscriptions, or accounts—just open your browser and start growing. Whether you're on a lunch break, commuting, or relaxing at home, your garden keeps producing even when you're away.</p>
+          </div>
+
+          <section class="section">
+             <h2>How to Play Plant Clicker</h2>
+             <ol class="tips-list">
+                <li><strong>Click the sprout button</strong> to generate seeds manually. Each click produces seeds based on your Click Power level.</li>
+                <li><strong>Chain your clicks</strong> within 2-second windows to build combos. Every 10x combo triggers a "CRITICAL HIT!" worth double seeds!</li>
+                <li><strong>Buy Watering Cans</strong> (15 seeds) for your first passive generator, adding +1 seed per second to your garden.</li>
+                <li><strong>Plant Flower Pots</strong> (100 seeds, +5/sec) and build Greenhouses (500 seeds, +20/sec) for exponential growth.</li>
+                <li><strong>Upgrade Click Power</strong> (starting at 50 seeds) to double your manual harvest when active clicking pays off.</li>
+                <li><strong>Establish Botanical Labs</strong> (2,500 seeds, +100/sec) for advanced genetic cultivation technology.</li>
+                <li><strong>Grow the World Tree</strong> (15,000 seeds, +500/sec)—the ultimate passive generator representing nature's infinite bounty.</li>
+                <li><strong>Press SPACE to click</strong> hands-free, and save often to protect your botanical kingdom.</li>
+             </ol>
+          </section>
+
+          <section class="section">
+             <h2>Strategy Guide</h2>
+             <p>Early garden strategy is surprisingly similar to real gardening: start small and let compound growth do the heavy lifting. Your very first purchase should always be a Watering Can. At 15 seeds with +1/sec return, it pays for itself in just 15 seconds. Resist the temptation to click endlessly without buying—passive income is the engine that drives everything in Plant Clicker. Once you have 3-4 Watering Cans, your seed production will snowball naturally toward Flower Pots.</p>
+             <p>The mid-garden phase (1,000-50,000 seeds) rewards diversification. Much like a real garden with multiple plant species, spreading your investments across several generator types yields better returns than over-investing in one tier. Buy Flower Pots aggressively until they feel expensive, then transition to Greenhouses. Click Power upgrades are particularly valuable during this phase when you need bursts of activity to afford the next major tier. The progress bar helps you see exactly when you're close to a breakthrough purchase.</p>
+             <p>Endgame Plant Clicker is about reaching arboreal infinity. The World Tree generates +500 seeds per second per unit, making it the undisputed king of passive income. Once you unlock it, your totals will explode into millions and beyond. At this stage, the game becomes meditative—check in periodically to buy more trees, enjoy the milestone celebrations, and watch your particle effects float upward like pollen on a spring breeze. Remember that even the mightiest forest started as a single seed.</p>
+          </section>
+
+          <section class="section faq-section">
+             <h2>Frequently Asked Questions</h2>
+             
+             <h3>What is Plant Clicker?</h3>
+             <div class="faq-answer"><p>Plant Clicker is a free idle clicker game where you grow seeds by clicking and building automated garden upgrades like Watering Cans, Greenhouses, and the legendary World Tree.</p></div>
+             
+             <h3>Is Plant Clicker free to play?</h3>
+             <div class="faq-answer"><p>Yes, completely free! No downloads, accounts, or payments are needed. Just open the page in any browser and start gardening.</p></div>
+             
+             <h3>How does the combo system work?</h3>
+             <div class="faq-answer"><p>Rapid clicking within 2-second intervals builds a combo counter. At every 10x multiple, you score a "CRITICAL HIT!" that awards double seeds for that click.</p></div>
+             
+             <h3>What's the best first upgrade?</h3>
+             <div class="faq-answer"><p>The Watering Can is the perfect starter upgrade. Costing only 15 seeds and producing +1/sec, it pays for itself in 15 seconds and starts your passive income engine.</p></div>
+             
+             <h3>Can I play Plant Clicker on mobile?</h3>
+             <div class="faq-answer"><p>Yes! The game is fully touch-responsive. Tap the sprout to click and purchase upgrades easily on phones and tablets.</p></div>
+             
+             <h3>What does the progress bar indicate?</h3>
+             <div class="faq-answer"><p>The progress bar shows your percentage progress toward the next cheapest upgrade available, helping you plan purchases strategically.</p></div>
+             
+             <h3>Does the game save automatically?</h3>
+             <div class="faq-answer"><p>Auto-save triggers every 30 seconds. You can also manually save anytime with the Save button. All data is stored locally in your browser.</p></div>
+             
+             <h3>Are there other nature-themed clicker games?</h3>
+             <div class="faq-answer"><p>Yes! Try <a href="/earth-clicker/">Earth Clicker</a> for planetary themes or <a href="/planet-clicker/">Planet Clicker</a> for cosmic energy cultivation.</p></div>
+          </section>
+
+          <section class="section">
+             <h2>Why Play Plant Clicker?</h2>
+             <p>Plant Clicker offers a uniquely calming experience in the often frantic world of online gaming. The garden theme naturally encourages a slower, more meditative pace than combat or racing games. Every upgrade feels like nurturing something alive, and the exponential growth mirrors the real satisfaction of watching a garden flourish over time. For players seeking stress relief combined with strategic depth, Plant Clicker hits a rare sweet spot.</p>
+             <p>The game also serves as a fantastic entry point into the idle/incremental genre. Its intuitive theme—everyone understands watering plants and watching them grow—makes the underlying mechanics feel accessible rather than abstract. Yet beneath the friendly surface lies genuine optimization depth for hardcore players. With zero cost barriers and full mobile support, Plant Clicker is the perfect digital garden you can tend anywhere, anytime.</p>
+          </section>
+
+          <section class="section">
+             <h2>Did You Know? Plant & Garden Facts</h2>
+             <div class="highlight-box">
+                <ul>
+                   <li>The world's oldest known living tree is a bristlecone pine in California named Methuselah, estimated to be over 4,800 years old.</li>
+                   <li>Bamboo holds the record for fastest plant growth, with some species capable of growing up to 91 centimeters (35 inches) in a single day.</li>
+                   <li>There are over 390,000 known plant species on Earth, with scientists discovering approximately 2,000 new species every year.</li>
+                   <li>The first greenhouses were built in Korea during the 15th century to cultivate mandarins for the royal court during winter months.</li>
+                   <li>Trees communicate with each other through an underground fungal network nicknamed the "Wood Wide Web," sharing nutrients and warning signals.</li>
+                </ul>
+             </div>
+          </section>
+
+          <div style="text-align: center;">
+             <a href="/" class="back-btn">Back to Home</a>
+          </div>
+
+       </article>
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
@@ -931,18 +983,29 @@
       let clickPowerLevel = 1;
       let clickPowerCost = 50;
       let perSecond = 0;
-      let upgradeOwned = UPGRADES.map(() => 0);
+       let upgradeOwned = UPGRADES.map(() => 0);
 
-      // DOM
-      const scoreNum = document.getElementById('scoreNum');
-      const perSecDisplay = document.getElementById('perSecDisplay');
-      const clickPowerInfo = document.getElementById('clickPowerInfo');
-      const gStatTotal = document.getElementById('gStatTotal');
-      const gStatPerSec = document.getElementById('gStatPerSec');
-      const clickBtn = document.getElementById('clickBtn');
-      const clickArea = document.getElementById('clickArea');
+       // Combo & enhancements
+       let comboCount = 0;
+       let lastClickTime = 0;
+       let milestonesShown = {1000: false, 10000: false, 100000: false, 1000000: false};
+       let soundOn = true;
 
-      function formatNum(n) {
+       // DOM
+       const scoreNum = document.getElementById('scoreNum');
+       const perSecDisplay = document.getElementById('perSecDisplay');
+       const clickPowerInfo = document.getElementById('clickPowerInfo');
+       const gStatTotal = document.getElementById('gStatTotal');
+       const gStatPerSec = document.getElementById('gStatPerSec');
+       const clickBtn = document.getElementById('clickBtn');
+       const clickArea = document.getElementById('clickArea');
+       const comboDisplay = document.getElementById('comboDisplay');
+       const criticalPopup = document.getElementById('criticalPopup');
+       const progressBarFill = document.getElementById('progressBarFill');
+       const milestoneBanner = document.getElementById('milestoneBanner');
+       const soundToggle = document.getElementById('soundToggle');
+
+       function formatNum(n) {
          if (n < 1000) return Math.floor(n).toLocaleString();
          if (n < 1e6) return (n/1e3).toFixed(1) + 'K';
          if (n < 1e9) return (n/1e6).toFixed(1) + 'M';
@@ -980,21 +1043,23 @@
             }
          });
 
-         // Click power upgrade
-         const cpCard = document.getElementById('upgClickPower');
-         document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
-         document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
-         if (score >= clickPowerCost) {
-            cpCard.classList.remove('locked');
-         } else {
-            cpCard.classList.add('locked');
-         }
-      }
+          // Click power upgrade
+          const cpCard = document.getElementById('upgClickPower');
+          document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
+          document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
+          if (score >= clickPowerCost) {
+             cpCard.classList.remove('locked');
+          } else {
+             cpCard.classList.add('locked');
+          }
 
-      function showClickFloat(x, y) {
-         const el = document.createElement('div');
-         el.className = 'click-float';
-         el.textContent = '+' + formatNum(clickPower);
+          updateProgressBar();
+       }
+
+       function showClickFloat(x, y, val) {
+          const el = document.createElement('div');
+          el.className = 'click-float';
+          el.textContent = '+' + formatNum(val || clickPower);
          el.style.left = x + 'px';
          el.style.top = y + 'px';
          clickArea.style.position = 'relative';
@@ -1002,26 +1067,46 @@
          setTimeout(() => el.remove(), 700);
       }
 
-      function doClick(e) {
-         score += clickPower;
-         totalEarned += clickPower;
+       function doClick(e) {
+          let earned = clickPower;
 
-         clickBtn.classList.add('pressed');
-         setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+          // Combo system
+          const now = Date.now();
+          if (now - lastClickTime <= 2000) {
+             comboCount++;
+          } else {
+             comboCount = 1;
+          }
+          lastClickTime = now;
+          if (comboDisplay) {
+             comboDisplay.textContent = comboCount > 1 ? comboCount + 'x Combo!' : '';
+             comboDisplay.style.opacity = comboCount > 1 ? '1' : '0';
+          }
+          if (comboCount > 0 && comboCount % 10 === 0) {
+             showCriticalHit();
+             earned += clickPower;
+          }
 
-         // Float position
-         const rect = clickArea.getBoundingClientRect();
-         let cx, cy;
-         if (e && e.clientX) {
-            cx = e.clientX - rect.left;
-            cy = e.clientY - rect.top;
-         } else {
-            cx = rect.width / 2 + (Math.random() - 0.5) * 40;
-            cy = rect.height / 2 - 30;
-         }
-         showClickFloat(cx, cy);
-         render();
-      }
+          score += earned;
+          totalEarned += earned;
+
+          clickBtn.classList.add('pressed');
+          setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+
+          // Float position
+          const rect = clickArea.getBoundingClientRect();
+          let cx, cy;
+          if (e && e.clientX) {
+             cx = e.clientX - rect.left;
+             cy = e.clientY - rect.top;
+          } else {
+             cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+             cy = rect.height / 2 - 30;
+          }
+          showClickFloat(cx, cy, earned);
+          checkMilestones();
+          render();
+       }
 
       clickBtn.addEventListener('click', doClick);
       clickBtn.addEventListener('touchstart', (e) => {
@@ -1061,20 +1146,83 @@
          }
       });
 
-      // Per-second tick
-      setInterval(() => {
-         if (perSecond > 0) {
-            score += perSecond;
-            totalEarned += perSecond;
-            render();
-         }
-      }, 1000);
+       // Per-second tick
+       setInterval(() => {
+          if (perSecond > 0) {
+             score += perSecond;
+             totalEarned += perSecond;
+             checkMilestones();
+             render();
+          }
+       }, 1000);
 
-      // Save / Load
-      function saveGame() {
-         const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned };
-         try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch(e) {}
-      }
+       // Enhancement functions
+       function showCriticalHit() {
+          if (!criticalPopup) return;
+          criticalPopup.classList.remove('show');
+          void criticalPopup.offsetWidth;
+          criticalPopup.classList.add('show');
+          setTimeout(() => criticalPopup.classList.remove('show'), 1500);
+       }
+
+       function updateProgressBar() {
+          if (!progressBarFill) return;
+          let nextCost = Infinity;
+          UPGRADES.forEach((u, i) => {
+             const cost = getCost(u.baseCost, upgradeOwned[i]);
+             if (cost < nextCost) nextCost = cost;
+          });
+          if (clickPowerCost < nextCost) nextCost = clickPowerCost;
+          let pct = score >= nextCost ? 100 : (score / nextCost) * 100;
+          progressBarFill.style.width = pct + '%';
+       }
+
+       function checkMilestones() {
+          Object.keys(milestonesShown).forEach(key => {
+             const m = parseInt(key);
+             if (totalEarned >= m && !milestonesShown[key]) {
+                milestonesShown[key] = true;
+                showMilestone(m);
+             }
+          });
+       }
+
+       function showMilestone(amount) {
+          if (!milestoneBanner) return;
+          milestoneBanner.textContent = '🎉 Milestone: ' + formatNum(amount) + ' Seeds reached!';
+          milestoneBanner.classList.add('show');
+          setTimeout(() => milestoneBanner.classList.remove('show'), 4000);
+       }
+
+       function spawnParticle() {
+          const container = document.getElementById('particleContainer');
+          if (!container) return;
+          const p = document.createElement('div');
+          p.className = 'particle';
+          const emojis = ['🌱', '🌷', '🍃', '🌻', '🌳', '💧'];
+          p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+          p.style.left = Math.random() * 80 + 10 + '%';
+          p.style.animationDuration = (3 + Math.random() * 2) + 's';
+          container.appendChild(p);
+          setTimeout(() => p.remove(), 5000);
+       }
+
+       // Particles
+       setInterval(spawnParticle, 2500);
+
+       // Sound toggle
+       if (soundToggle) {
+          soundToggle.addEventListener('click', () => {
+             soundOn = !soundOn;
+             soundToggle.textContent = soundOn ? '🔊' : '🔇';
+          });
+       }
+
+       // Save / Load
+       function saveGame() {
+          const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, milestonesShown };
+          try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch(e) {}
+       }
 
       function loadGame() {
          try {
@@ -1086,9 +1234,10 @@
                clickPower = data.clickPower || 1;
                clickPowerLevel = data.clickPowerLevel || 1;
                clickPowerCost = data.clickPowerCost || 50;
-               upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
-               recalcPerSecond();
-            }
+                upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                milestonesShown = data.milestonesShown || {1000: false, 10000: false, 100000: false, 1000000: false};
+                recalcPerSecond();
+             }
          } catch(e) {}
       }
 
@@ -1102,8 +1251,9 @@
       document.getElementById('resetBtn').addEventListener('click', () => {
          if (confirm('Reset all progress for Plant Clicker? This cannot be undone.')) {
             localStorage.removeItem(SAVE_KEY);
-            score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
-            upgradeOwned = UPGRADES.map(() => 0);
+             score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
+             upgradeOwned = UPGRADES.map(() => 0);
+             milestonesShown = {1000: false, 10000: false, 100000: false, 1000000: false};
             recalcPerSecond();
             render();
          }
@@ -1118,14 +1268,22 @@
    })();
    </script>
 
-   <script>
-      // Mobile menu
-      const menuBtn = document.querySelector('.menu-btn');
-      const navLinks = document.querySelector('.nav-links');
-      menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
-      document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
-      document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
-   </script>
+    <script>
+       // Mobile menu
+       const menuBtn = document.querySelector('.menu-btn');
+       const navLinks = document.querySelector('.nav-links');
+       menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+       document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
+       document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+
+       // FAQ toggle
+       document.querySelectorAll('.faq-section h3').forEach(h3 => {
+          h3.addEventListener('click', () => {
+             h3.classList.toggle('active');
+             h3.nextElementSibling.classList.toggle('active');
+          });
+       });
+    </script>
 
    <!-- Site Footer -->
    <footer class="site-footer">
