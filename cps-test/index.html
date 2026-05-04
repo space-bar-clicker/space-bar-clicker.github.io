@@ -810,15 +810,9 @@
          clickArea.addEventListener('mousedown', handleClick);
          clickArea.addEventListener('touchstart', handleClick);
          
-         // Spacebar support
-         document.addEventListener('keydown', (e) => {
-            if (e.code === 'Space' && !e.repeat && !hasEnded) {
-               e.preventDefault();
-               handleClick();
-            }
-         });
+          // CPS Test: mouse/touch only — no spacebar support by design
 
-         resetBtn.addEventListener('click', resetTest);
+          resetBtn.addEventListener('click', resetTest);
          overlayRestartBtn.addEventListener('click', resetTest);
 
          timerBtns.forEach(btn => {
