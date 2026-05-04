@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Duck Clicker - Play Free Online | Spacebar Clicker</title>
+   <title>Duck Clicker - Play Free Online </title>
    <meta name="description"
       content="Play Duck Clicker free online! Collect Quacks, build your flock, and become the Quack Overlord. No download needed - instant browser fun!">
    <meta name="keywords"
@@ -112,8 +112,14 @@
             align-items: center;
             gap: 20px;
          }
-         .nav-links.active { display: flex; }
-         .menu-btn { display: block; }
+
+         .nav-links.active {
+            display: flex;
+         }
+
+         .menu-btn {
+            display: block;
+         }
       }
 
       /* Main */
@@ -169,7 +175,7 @@
       }
 
       .game-stat-pill {
-         background: rgba(255,255,255,0.2);
+         background: rgba(255, 255, 255, 0.2);
          border-radius: 20px;
          padding: 6px 14px;
          color: white;
@@ -222,7 +228,7 @@
          font-size: 64px;
          cursor: pointer;
          transition: transform 0.1s ease, box-shadow 0.1s ease;
-         box-shadow: 0 8px 30px #0288d133, inset 0 -4px 10px rgba(2,136,209,0.2);
+         box-shadow: 0 8px 30px #0288d133, inset 0 -4px 10px rgba(2, 136, 209, 0.2);
          display: flex;
          align-items: center;
          justify-content: center;
@@ -235,17 +241,18 @@
       }
 
       .click-btn:hover {
-         box-shadow: 0 12px 40px #0288d155, inset 0 -4px 10px rgba(2,136,209,0.2);
+         box-shadow: 0 12px 40px #0288d155, inset 0 -4px 10px rgba(2, 136, 209, 0.2);
       }
 
-      .click-btn:active, .click-btn.pressed {
+      .click-btn:active,
+      .click-btn.pressed {
          transform: scale(0.92);
-         box-shadow: 0 4px 15px #0288d144, inset 0 -4px 10px rgba(2,136,209,0.2);
+         box-shadow: 0 4px 15px #0288d144, inset 0 -4px 10px rgba(2, 136, 209, 0.2);
       }
 
       .click-btn .emoji {
          pointer-events: none;
-         filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
+         filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.15));
       }
 
       .score-display {
@@ -294,8 +301,15 @@
       }
 
       @keyframes floatUp {
-         0% { opacity: 1; transform: translateY(0) scale(0.8); }
-         100% { opacity: 0; transform: translateY(-70px) scale(1.1); }
+         0% {
+            opacity: 1;
+            transform: translateY(0) scale(0.8);
+         }
+
+         100% {
+            opacity: 0;
+            transform: translateY(-70px) scale(1.1);
+         }
       }
 
       /* Upgrades Panel */
@@ -328,7 +342,7 @@
          transition: all 0.2s ease;
          background: linear-gradient(180deg, #fff 0%, #f0faff 100%);
          position: relative;
-         box-shadow: 0 2px 6px rgba(2,136,209,0.08);
+         box-shadow: 0 2px 6px rgba(2, 136, 209, 0.08);
       }
 
       .upgrade-card:hover:not(.locked) {
@@ -429,7 +443,10 @@
          transition: transform 0.1s;
          z-index: 2;
       }
-      .combo-display.active { transform: scale(1.15); }
+
+      .combo-display.active {
+         transform: scale(1.15);
+      }
 
       .critical-popup {
          position: absolute;
@@ -441,10 +458,21 @@
          animation: critPop 0.8s ease-out forwards;
          z-index: 20;
       }
+
       @keyframes critPop {
-         0% { opacity: 1; transform: translateY(0) scale(0.5); }
-         50% { transform: translateY(-40px) scale(1.2); }
-         100% { opacity: 0; transform: translateY(-90px) scale(1); }
+         0% {
+            opacity: 1;
+            transform: translateY(0) scale(0.5);
+         }
+
+         50% {
+            transform: translateY(-40px) scale(1.2);
+         }
+
+         100% {
+            opacity: 0;
+            transform: translateY(-90px) scale(1);
+         }
       }
 
       /* Progress Bar */
@@ -458,6 +486,7 @@
          overflow: hidden;
          z-index: 2;
       }
+
       .progress-bar-fill {
          height: 100%;
          background: linear-gradient(90deg, #eab308, #eab308dd);
@@ -475,9 +504,17 @@
          animation: particleFloat 2.5s ease-out forwards;
          z-index: 1;
       }
+
       @keyframes particleFloat {
-         0% { opacity: 0.8; transform: translateY(0) scale(0.6); }
-         100% { opacity: 0; transform: translateY(-120px) scale(1.2); }
+         0% {
+            opacity: 0.8;
+            transform: translateY(0) scale(0.6);
+         }
+
+         100% {
+            opacity: 0;
+            transform: translateY(-120px) scale(1.2);
+         }
       }
 
       /* Swimming Ducks */
@@ -490,31 +527,77 @@
          z-index: 5;
          pointer-events: auto;
          transition: transform 0.1s ease;
-         filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+         filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
       }
+
       .pond-duck:active {
          transform: scale(0.85);
       }
+
       @keyframes swim1 {
-         0% { transform: translate(0,0) rotate(0deg); }
-         25% { transform: translate(30px,-15px) rotate(8deg); }
-         50% { transform: translate(0,-30px) rotate(0deg); }
-         75% { transform: translate(-30px,-15px) rotate(-8deg); }
-         100% { transform: translate(0,0) rotate(0deg); }
+         0% {
+            transform: translate(0, 0) rotate(0deg);
+         }
+
+         25% {
+            transform: translate(30px, -15px) rotate(8deg);
+         }
+
+         50% {
+            transform: translate(0, -30px) rotate(0deg);
+         }
+
+         75% {
+            transform: translate(-30px, -15px) rotate(-8deg);
+         }
+
+         100% {
+            transform: translate(0, 0) rotate(0deg);
+         }
       }
+
       @keyframes swim2 {
-         0% { transform: translate(0,0) rotate(0deg); }
-         33% { transform: translate(-20px,-25px) rotate(-10deg); }
-         66% { transform: translate(20px,-25px) rotate(10deg); }
-         100% { transform: translate(0,0) rotate(0deg); }
+         0% {
+            transform: translate(0, 0) rotate(0deg);
+         }
+
+         33% {
+            transform: translate(-20px, -25px) rotate(-10deg);
+         }
+
+         66% {
+            transform: translate(20px, -25px) rotate(10deg);
+         }
+
+         100% {
+            transform: translate(0, 0) rotate(0deg);
+         }
       }
+
       @keyframes swim3 {
-         0% { transform: translate(0,0) rotate(0deg) scaleX(1); }
-         20% { transform: translate(25px,-10px) rotate(5deg) scaleX(1); }
-         40% { transform: translate(10px,-30px) rotate(0deg) scaleX(-1); }
-         60% { transform: translate(-25px,-10px) rotate(-5deg) scaleX(-1); }
-         80% { transform: translate(-10px,-30px) rotate(0deg) scaleX(1); }
-         100% { transform: translate(0,0) rotate(0deg) scaleX(1); }
+         0% {
+            transform: translate(0, 0) rotate(0deg) scaleX(1);
+         }
+
+         20% {
+            transform: translate(25px, -10px) rotate(5deg) scaleX(1);
+         }
+
+         40% {
+            transform: translate(10px, -30px) rotate(0deg) scaleX(-1);
+         }
+
+         60% {
+            transform: translate(-25px, -10px) rotate(-5deg) scaleX(-1);
+         }
+
+         80% {
+            transform: translate(-10px, -30px) rotate(0deg) scaleX(1);
+         }
+
+         100% {
+            transform: translate(0, 0) rotate(0deg) scaleX(1);
+         }
       }
 
       /* Milestone Banner */
@@ -535,6 +618,7 @@
          transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
          z-index: 2000;
       }
+
       .milestone-banner.show {
          opacity: 1;
          transform: translateX(-50%) scale(1);
@@ -542,7 +626,7 @@
 
       /* Sound Toggle */
       .sound-toggle {
-         background: rgba(255,255,255,0.2);
+         background: rgba(255, 255, 255, 0.2);
          border: none;
          border-radius: 8px;
          padding: 6px 10px;
@@ -551,7 +635,10 @@
          cursor: pointer;
          transition: background 0.2s;
       }
-      .sound-toggle:hover { background: rgba(255,255,255,0.35); }
+
+      .sound-toggle:hover {
+         background: rgba(255, 255, 255, 0.35);
+      }
 
       /* Keyboard tip */
       .keyboard-tip {
@@ -563,8 +650,16 @@
       }
 
       /* FAQ Styles */
-      .faq-section { margin-bottom: 30px; }
-      .faq-item { margin-bottom: 14px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+      .faq-section {
+         margin-bottom: 30px;
+      }
+
+      .faq-item {
+         margin-bottom: 14px;
+         border-bottom: 1px solid #eee;
+         padding-bottom: 10px;
+      }
+
       .faq-question {
          font-size: 1.05rem;
          font-weight: 600;
@@ -577,7 +672,11 @@
          transition: color 0.2s;
          margin: 0;
       }
-      .faq-question:hover { color: #7838f3; }
+
+      .faq-question:hover {
+         color: #7838f3;
+      }
+
       .faq-question::after {
          content: '+';
          font-size: 1.3rem;
@@ -585,18 +684,34 @@
          transition: transform 0.3s;
          font-weight: 400;
       }
-      .faq-item.open .faq-question::after { transform: rotate(45deg); }
+
+      .faq-item.open .faq-question::after {
+         transform: rotate(45deg);
+      }
+
       .faq-answer {
          max-height: 0;
          overflow: hidden;
          transition: max-height 0.3s ease, opacity 0.3s ease;
          opacity: 0;
       }
-      .faq-item.open .faq-answer { max-height: 500px; opacity: 1; }
-      .faq-answer p { margin: 0 0 10px; font-size: 1rem; color: #555; }
+
+      .faq-item.open .faq-answer {
+         max-height: 500px;
+         opacity: 1;
+      }
+
+      .faq-answer p {
+         margin: 0 0 10px;
+         font-size: 1rem;
+         color: #555;
+      }
 
       /* Intro paragraphs */
-      .intro p { margin-bottom: 16px; line-height: 1.85; }
+      .intro p {
+         margin-bottom: 16px;
+         line-height: 1.85;
+      }
 
       /* Article Styles */
       .article-container {
@@ -607,21 +722,96 @@
          color: #333;
       }
 
-      h1, h2 { color: #7838f3; margin-bottom: 20px; }
-      h2 { margin-top: 10px; }
-      .intro { font-size: 1.1em; color: #555; margin-bottom: 30px; }
-      .section { margin-bottom: 30px; }
-      ol.tips-list { margin: 0 0 0 1.25rem; padding: 0; }
-      ol.tips-list li { margin-bottom: 14px; line-height: 1.65; color: #333; padding-left: 0.35rem; }
-      .highlight-box { background: #f8f9fe; border-left: 4px solid #7838f3; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
-      .highlight-box ul { list-style: none; padding-left: 0; }
-      .highlight-box li { padding: 8px 0; color: #333; line-height: 1.6; }
-      .feature-box { background: linear-gradient(145deg, #f8f9fe, #fff); border-radius: 12px; padding: 20px; margin: 20px 0; box-shadow: 0 4px 15px rgba(120,56,243,0.1); }
-      .feature-box h3 { color: #7838f3; margin-bottom: 12px; }
-      .feature-box ul { list-style: none; padding-left: 0; }
-      .feature-box li { padding: 6px 0 6px 24px; position: relative; color: #333; line-height: 1.6; }
-      .feature-box li::before { content: '✓'; position: absolute; left: 0; color: #7838f3; font-weight: bold; }
-      p { color: #333; line-height: 1.8; margin-bottom: 15px; font-size: 1.05rem; }
+      h1,
+      h2 {
+         color: #7838f3;
+         margin-bottom: 20px;
+      }
+
+      h2 {
+         margin-top: 10px;
+      }
+
+      .intro {
+         font-size: 1.1em;
+         color: #555;
+         margin-bottom: 30px;
+      }
+
+      .section {
+         margin-bottom: 30px;
+      }
+
+      ol.tips-list {
+         margin: 0 0 0 1.25rem;
+         padding: 0;
+      }
+
+      ol.tips-list li {
+         margin-bottom: 14px;
+         line-height: 1.65;
+         color: #333;
+         padding-left: 0.35rem;
+      }
+
+      .highlight-box {
+         background: #f8f9fe;
+         border-left: 4px solid #7838f3;
+         padding: 20px;
+         margin: 20px 0;
+         border-radius: 0 8px 8px 0;
+      }
+
+      .highlight-box ul {
+         list-style: none;
+         padding-left: 0;
+      }
+
+      .highlight-box li {
+         padding: 8px 0;
+         color: #333;
+         line-height: 1.6;
+      }
+
+      .feature-box {
+         background: linear-gradient(145deg, #f8f9fe, #fff);
+         border-radius: 12px;
+         padding: 20px;
+         margin: 20px 0;
+         box-shadow: 0 4px 15px rgba(120, 56, 243, 0.1);
+      }
+
+      .feature-box h3 {
+         color: #7838f3;
+         margin-bottom: 12px;
+      }
+
+      .feature-box ul {
+         list-style: none;
+         padding-left: 0;
+      }
+
+      .feature-box li {
+         padding: 6px 0 6px 24px;
+         position: relative;
+         color: #333;
+         line-height: 1.6;
+      }
+
+      .feature-box li::before {
+         content: '✓';
+         position: absolute;
+         left: 0;
+         color: #7838f3;
+         font-weight: bold;
+      }
+
+      p {
+         color: #333;
+         line-height: 1.8;
+         margin-bottom: 15px;
+         font-size: 1.05rem;
+      }
 
       .back-btn {
          display: inline-block;
@@ -635,39 +825,156 @@
          transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
          box-shadow: 0 8px 20px rgba(120, 56, 243, 0.2);
       }
-      .back-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 25px rgba(120, 56, 243, 0.3); }
+
+      .back-btn:hover {
+         transform: translateY(-2px);
+         box-shadow: 0 12px 25px rgba(120, 56, 243, 0.3);
+      }
 
       /* Footer */
-      .site-footer { background: linear-gradient(145deg, #8546ff, #7838f3); color: white; padding: 50px 0 20px; margin-top: 50px; }
-      .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-      .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-      .footer-section { display: flex; flex-direction: column; }
-      .footer-brand { padding-right: 30px; }
-      .footer-logo { color: white; font-size: 1.5rem; font-weight: bold; text-decoration: none; margin-bottom: 15px; display: inline-block; }
-      .footer-logo:hover { opacity: 0.9; }
-      .footer-tagline { color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.6; margin: 0; }
-      .footer-heading { color: white; font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
-      .footer-heading::after { content: ''; position: absolute; left: 0; bottom: 0; width: 30px; height: 2px; background: rgba(255,255,255,0.5); }
-      .footer-links { list-style: none; padding: 0; margin: 0; }
-      .footer-links li { margin-bottom: 12px; }
-      .footer-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.95rem; transition: all 0.3s ease; display: inline-block; }
-      .footer-links a:hover { color: white; transform: translateX(5px); }
-      .footer-bottom { border-top: 1px solid rgba(255,255,255,0.2); padding-top: 25px; text-align: center; }
-      .footer-bottom p { color: rgba(255,255,255,0.8); font-size: 0.9rem; margin: 0; }
+      .site-footer {
+         background: linear-gradient(145deg, #8546ff, #7838f3);
+         color: white;
+         padding: 50px 0 20px;
+         margin-top: 50px;
+      }
+
+      .footer-container {
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 0 20px;
+      }
+
+      .footer-grid {
+         display: grid;
+         grid-template-columns: 2fr 1fr 1fr;
+         gap: 40px;
+         margin-bottom: 40px;
+      }
+
+      .footer-section {
+         display: flex;
+         flex-direction: column;
+      }
+
+      .footer-brand {
+         padding-right: 30px;
+      }
+
+      .footer-logo {
+         color: white;
+         font-size: 1.5rem;
+         font-weight: bold;
+         text-decoration: none;
+         margin-bottom: 15px;
+         display: inline-block;
+      }
+
+      .footer-logo:hover {
+         opacity: 0.9;
+      }
+
+      .footer-tagline {
+         color: rgba(255, 255, 255, 0.85);
+         font-size: 0.95rem;
+         line-height: 1.6;
+         margin: 0;
+      }
+
+      .footer-heading {
+         color: white;
+         font-size: 1.1rem;
+         font-weight: 600;
+         margin-bottom: 20px;
+         position: relative;
+         padding-bottom: 10px;
+      }
+
+      .footer-heading::after {
+         content: '';
+         position: absolute;
+         left: 0;
+         bottom: 0;
+         width: 30px;
+         height: 2px;
+         background: rgba(255, 255, 255, 0.5);
+      }
+
+      .footer-links {
+         list-style: none;
+         padding: 0;
+         margin: 0;
+      }
+
+      .footer-links li {
+         margin-bottom: 12px;
+      }
+
+      .footer-links a {
+         color: rgba(255, 255, 255, 0.85);
+         text-decoration: none;
+         font-size: 0.95rem;
+         transition: all 0.3s ease;
+         display: inline-block;
+      }
+
+      .footer-links a:hover {
+         color: white;
+         transform: translateX(5px);
+      }
+
+      .footer-bottom {
+         border-top: 1px solid rgba(255, 255, 255, 0.2);
+         padding-top: 25px;
+         text-align: center;
+      }
+
+      .footer-bottom p {
+         color: rgba(255, 255, 255, 0.8);
+         font-size: 0.9rem;
+         margin: 0;
+      }
 
       @media (max-width: 900px) {
-         .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
-         .footer-brand { grid-column: span 2; padding-right: 0; }
+         .footer-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+         }
+
+         .footer-brand {
+            grid-column: span 2;
+            padding-right: 0;
+         }
       }
+
       @media (max-width: 600px) {
-         .site-footer { padding: 40px 0 20px; }
-         .footer-grid { grid-template-columns: 1fr; gap: 25px; }
-         .footer-brand { grid-column: span 1; }
-         .footer-section { text-align: center; }
-         .footer-heading::after { left: 50%; transform: translateX(-50%); }
-         .footer-links a:hover { transform: none; }
+         .site-footer {
+            padding: 40px 0 20px;
+         }
+
+         .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 25px;
+         }
+
+         .footer-brand {
+            grid-column: span 1;
+         }
+
+         .footer-section {
+            text-align: center;
+         }
+
+         .footer-heading::after {
+            left: 50%;
+            transform: translateX(-50%);
+         }
+
+         .footer-links a:hover {
+            transform: none;
+         }
       }
-   
+
       /* Related Games Section */
       .related-games-section {
          max-width: 900px;
@@ -723,7 +1030,6 @@
          box-shadow: 0 4px 12px rgba(120, 56, 243, 0.15);
          color: #3b0764;
       }
-
    </style>
 </head>
 
@@ -757,7 +1063,9 @@
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
-               <div id="particleContainer" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;"></div>
+               <div id="particleContainer"
+                  style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;">
+               </div>
                <button class="click-btn" id="clickBtn" aria-label="Quack Quack">
                   <span class="emoji">🐤</span>
                </button>
@@ -775,7 +1083,7 @@
             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
-               
+
                <div class="upgrade-card locked" id="upg0" data-idx="0">
                   <div class="upgrade-emoji">📯</div>
                   <div class="upgrade-info">
@@ -851,526 +1159,588 @@
       </div>
 
       <!-- ===== ARTICLE CONTENT ===== -->
-       <article class="article-container">
+      <article class="article-container">
 
-          <div class="intro">
-             <p>Duck Clicker is a compact idle loop where your score reads as abstract Quacks, manually earned per tap plus passives counted in quacks per second. Tiers escalate from Duck Whistle to Quack Overlord with the usual +1 to +500 ladder. There are no migrating flocks, no unlockable ponds that change art, no rare duck RNG, multiplayer races, or season passes—just themed labels on deterministic math. It is a free browser game that requires no download and no account, making it the perfect quick distraction.</p>
-             <p>Ducklings are among the most endearing baby animals in the world. Born fluffy and yellow, they imprint on the first moving object they see, often following their mother in a tidy line. This behavior, called imprinting, was famously studied by Konrad Lorenz, who showed that ducklings could imprint on humans too. In the wild, ducklings learn to swim within days of hatching and can dive underwater to escape predators. Duck Clicker channels this innocent charm into a simple game where every click feels like feeding a hungry duckling.</p>
-             <p>Clicker games have a unique psychological appeal that other genres struggle to replicate. The loop is pure: action leads to reward, which enables more action. There are no false walls, no artificial scarcity, and no competitive pressure. Duck Clicker distills this loop to its essence. The yellow color palette, the cute duckling emoji, and the gentle upgrade names create an atmosphere of uncomplicated fun. It is the gaming equivalent of comfort food.</p>
-             <p>Because Duck Clicker runs in your browser with automatic saving, you never have to worry about losing progress. Close the tab, shut down your computer, and come back tomorrow. Your Quack Overlord stacks will still be there, patiently generating Quacks. The game respects your time and attention, offering a persistent world that grows whether you are watching or not. That is the magic of idle games, and Duck Clicker executes it flawlessly.</p>
-          </div>
+         <div class="intro">
+            <p>Duck Clicker is a compact idle loop where your score reads as abstract Quacks, manually earned per tap
+               plus passives counted in quacks per second. Tiers escalate from Duck Whistle to Quack Overlord with the
+               usual +1 to +500 ladder. There are no migrating flocks, no unlockable ponds that change art, no rare duck
+               RNG, multiplayer races, or season passes—just themed labels on deterministic math. It is a free browser
+               game that requires no download and no account, making it the perfect quick distraction.</p>
+            <p>Ducklings are among the most endearing baby animals in the world. Born fluffy and yellow, they imprint on
+               the first moving object they see, often following their mother in a tidy line. This behavior, called
+               imprinting, was famously studied by Konrad Lorenz, who showed that ducklings could imprint on humans too.
+               In the wild, ducklings learn to swim within days of hatching and can dive underwater to escape predators.
+               Duck Clicker channels this innocent charm into a simple game where every click feels like feeding a
+               hungry duckling.</p>
+            <p>Clicker games have a unique psychological appeal that other genres struggle to replicate. The loop is
+               pure: action leads to reward, which enables more action. There are no false walls, no artificial
+               scarcity, and no competitive pressure. Duck Clicker distills this loop to its essence. The yellow color
+               palette, the cute duckling emoji, and the gentle upgrade names create an atmosphere of uncomplicated fun.
+               It is the gaming equivalent of comfort food.</p>
+            <p>Because Duck Clicker runs in your browser with automatic saving, you never have to worry about losing
+               progress. Close the tab, shut down your computer, and come back tomorrow. Your Quack Overlord stacks will
+               still be there, patiently generating Quacks. The game respects your time and attention, offering a
+               persistent world that grows whether you are watching or not. That is the magic of idle games, and Duck
+               Clicker executes it flawlessly.</p>
+         </div>
 
-          <section class="section">
-             <h2>How to Play Duck Clicker</h2>
-             <ol class="tips-list">
-                <li><strong>Click the Duckling Button:</strong> Tap the duckling emoji to generate Quacks manually.</li>
-                <li><strong>Blow the Duck Whistle:</strong> At 15 Quacks, buy a Duck Whistle for +1 quack per second.</li>
-                <li><strong>Gather a Duck Family:</strong> When you reach 100 Quacks, unlock Duck Family for +5 quacks per second.</li>
-                <li><strong>Create a Duck Lake:</strong> At 500 Quacks, build a Duck Lake generating +20 quacks per second.</li>
-                <li><strong>Spawn a Mega Duck:</strong> Save 2,500 Quacks to summon a Mega Duck for +100 quacks per second.</li>
-                 <li><strong>Upgrade Click Power:</strong> Spend 50 Quacks on Click Power to double your manual earnings.</li>
-                 <li><strong>Click Swimming Ducks:</strong> As you buy upgrades, little ducks appear in the pond. Click them for a x5 bonus quack!</li>
-                 <li><strong>Become the Quack Overlord:</strong> The ultimate upgrade at 15,000 Quacks gives +500 per second. Stack them to rule the flock.</li>
-             </ol>
-          </section>
+         <section class="section">
+            <h2>How to Play Duck Clicker</h2>
+            <ol class="tips-list">
+               <li><strong>Click the Duckling Button:</strong> Tap the duckling emoji to generate Quacks manually.</li>
+               <li><strong>Blow the Duck Whistle:</strong> At 15 Quacks, buy a Duck Whistle for +1 quack per second.
+               </li>
+               <li><strong>Gather a Duck Family:</strong> When you reach 100 Quacks, unlock Duck Family for +5 quacks
+                  per second.</li>
+               <li><strong>Create a Duck Lake:</strong> At 500 Quacks, build a Duck Lake generating +20 quacks per
+                  second.</li>
+               <li><strong>Spawn a Mega Duck:</strong> Save 2,500 Quacks to summon a Mega Duck for +100 quacks per
+                  second.</li>
+               <li><strong>Upgrade Click Power:</strong> Spend 50 Quacks on Click Power to double your manual earnings.
+               </li>
+               <li><strong>Click Swimming Ducks:</strong> As you buy upgrades, little ducks appear in the pond. Click
+                  them for a x5 bonus quack!</li>
+               <li><strong>Become the Quack Overlord:</strong> The ultimate upgrade at 15,000 Quacks gives +500 per
+                  second. Stack them to rule the flock.</li>
+            </ol>
+         </section>
 
-          <section class="section">
-             <h2>Duck Clicker Strategy Guide</h2>
-             <p>Early game success in Duck Clicker comes from aggressive investment in Duck Whistles. Do not let your Quacks sit idle. The moment you can afford another Whistle, buy it. The power of compounding means that even small +1 increments add up quickly when you have ten or twenty of them. Watch the progress bar to see exactly how close you are to your next purchase. If you are within a few clicks, keep clicking. If you are far away, consider saving for a Duck Family instead.</p>
-             <p>The mid-game transition to Duck Lake and Mega Duck is where your income really starts to snowball. At this stage, you should have a solid foundation of Whistles and Families. Do not be tempted to skip straight to Mega Duck without building up your lower tiers first. The math favors breadth over depth in the early and mid-game. Click Power upgrades become increasingly valuable here, as they allow you to generate manual income much faster, bridging the gaps between passive upgrades.</p>
-              <p>Late game optimization is about stacking Mega Ducks and Quack Overlords while keeping your lower tiers topped up. Every upgrade contributes to your total per-second income, so even cheap Whistles still matter. The combo system is your secret weapon for reaching milestones quickly. Rapid clicking within 2-second windows builds your combo, and every 10th click deals double damage to your goal. If you are pushing for 1 million Quacks, dedicate time to active clicking with combo management rather than pure AFK waiting.</p>
-              <p>Do not ignore the swimming ducks in the pond. Each swimming duck you click grants five times your current click power in bonus quacks. The more upgrades you own, the more ducks appear, turning the pond into an active bonus zone. During active play sessions, keep an eye on the edges of the click area where ducks tend to swim. A quick duck click can give you a sudden burst of income that helps you afford the next upgrade much sooner. Combine duck pond clicking with your regular combo rhythm for maximum efficiency.</p>
-           </section>
+         <section class="section">
+            <h2>Duck Clicker Strategy Guide</h2>
+            <p>Early game success in Duck Clicker comes from aggressive investment in Duck Whistles. Do not let your
+               Quacks sit idle. The moment you can afford another Whistle, buy it. The power of compounding means that
+               even small +1 increments add up quickly when you have ten or twenty of them. Watch the progress bar to
+               see exactly how close you are to your next purchase. If you are within a few clicks, keep clicking. If
+               you are far away, consider saving for a Duck Family instead.</p>
+            <p>The mid-game transition to Duck Lake and Mega Duck is where your income really starts to snowball. At
+               this stage, you should have a solid foundation of Whistles and Families. Do not be tempted to skip
+               straight to Mega Duck without building up your lower tiers first. The math favors breadth over depth in
+               the early and mid-game. Click Power upgrades become increasingly valuable here, as they allow you to
+               generate manual income much faster, bridging the gaps between passive upgrades.</p>
+            <p>Late game optimization is about stacking Mega Ducks and Quack Overlords while keeping your lower tiers
+               topped up. Every upgrade contributes to your total per-second income, so even cheap Whistles still
+               matter. The combo system is your secret weapon for reaching milestones quickly. Rapid clicking within
+               2-second windows builds your combo, and every 10th click deals double damage to your goal. If you are
+               pushing for 1 million Quacks, dedicate time to active clicking with combo management rather than pure AFK
+               waiting.</p>
+            <p>Do not ignore the swimming ducks in the pond. Each swimming duck you click grants five times your current
+               click power in bonus quacks. The more upgrades you own, the more ducks appear, turning the pond into an
+               active bonus zone. During active play sessions, keep an eye on the edges of the click area where ducks
+               tend to swim. A quick duck click can give you a sudden burst of income that helps you afford the next
+               upgrade much sooner. Combine duck pond clicking with your regular combo rhythm for maximum efficiency.
+            </p>
+         </section>
 
-          <section class="section faq-section">
-             <h2>Frequently Asked Questions</h2>
-             <div class="faq-item">
-                <h3 class="faq-question">What is Duck Clicker?</h3>
-                <div class="faq-answer">
-                   <p>Duck Clicker is a free browser idle game where you earn Quacks by clicking and purchase upgrades to generate passive income.</p>
-                </div>
-             </div>
-             <div class="faq-item">
-                <h3 class="faq-question">Do I need to download anything?</h3>
-                <div class="faq-answer">
-                   <p>No. Duck Clicker runs entirely in your web browser with no installation or account required.</p>
-                </div>
-             </div>
-             <div class="faq-item">
-                <h3 class="faq-question">How do combos and Critical Hits work?</h3>
-                <div class="faq-answer">
-                   <p>Click within 2 seconds of your last click to build a combo. Every 10th consecutive click scores a Critical Hit worth double points.</p>
-                </div>
-             </div>
-             <div class="faq-item">
-                <h3 class="faq-question">Will I lose progress if I close the tab?</h3>
-                <div class="faq-answer">
-                   <p>No. Your game auto-saves every 30 seconds. You can also manually save at any time.</p>
-                </div>
-             </div>
-             <div class="faq-item">
-                <h3 class="faq-question">What are the milestone celebrations?</h3>
-                <div class="faq-answer">
-                   <p>Banners appear when you hit 1K, 10K, 100K, and 1M Quacks. They are visual rewards for your dedication.</p>
-                </div>
-             </div>
-              <div class="faq-item">
-                 <h3 class="faq-question">What are the swimming ducks?</h3>
-                 <div class="faq-answer">
-                    <p>Swimming ducks are bonus ducks that appear in the pond as you buy upgrades. Each one you click gives you 5x your current click power in bonus quacks.</p>
-                 </div>
-              </div>
-              <div class="faq-item">
-                 <h3 class="faq-question">Can I play on my phone?</h3>
-                 <div class="faq-answer">
-                    <p>Yes. The game is fully responsive and works on mobile browsers. Just tap the duckling to click.</p>
-                 </div>
-              </div>
-          </section>
+         <section class="section faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+               <h3 class="faq-question">What is Duck Clicker?</h3>
+               <div class="faq-answer">
+                  <p>Duck Clicker is a free browser idle game where you earn Quacks by clicking and purchase upgrades to
+                     generate passive income.</p>
+               </div>
+            </div>
+            <div class="faq-item">
+               <h3 class="faq-question">Do I need to download anything?</h3>
+               <div class="faq-answer">
+                  <p>No. Duck Clicker runs entirely in your web browser with no installation or account required.</p>
+               </div>
+            </div>
+            <div class="faq-item">
+               <h3 class="faq-question">How do combos and Critical Hits work?</h3>
+               <div class="faq-answer">
+                  <p>Click within 2 seconds of your last click to build a combo. Every 10th consecutive click scores a
+                     Critical Hit worth double points.</p>
+               </div>
+            </div>
+            <div class="faq-item">
+               <h3 class="faq-question">Will I lose progress if I close the tab?</h3>
+               <div class="faq-answer">
+                  <p>No. Your game auto-saves every 30 seconds. You can also manually save at any time.</p>
+               </div>
+            </div>
+            <div class="faq-item">
+               <h3 class="faq-question">What are the milestone celebrations?</h3>
+               <div class="faq-answer">
+                  <p>Banners appear when you hit 1K, 10K, 100K, and 1M Quacks. They are visual rewards for your
+                     dedication.</p>
+               </div>
+            </div>
+            <div class="faq-item">
+               <h3 class="faq-question">What are the swimming ducks?</h3>
+               <div class="faq-answer">
+                  <p>Swimming ducks are bonus ducks that appear in the pond as you buy upgrades. Each one you click
+                     gives you 5x your current click power in bonus quacks.</p>
+               </div>
+            </div>
+            <div class="faq-item">
+               <h3 class="faq-question">Can I play on my phone?</h3>
+               <div class="faq-answer">
+                  <p>Yes. The game is fully responsive and works on mobile browsers. Just tap the duckling to click.</p>
+               </div>
+            </div>
+         </section>
 
-          <section class="section">
-             <h2>Why Play Duck Clicker?</h2>
-             <p>Duck Clicker is the definition of a palate-cleanser game. After a long session of competitive multiplayer or a complex RPG, there is something deeply therapeutic about a game that asks nothing of you except a few clicks. The duckling theme adds a layer of charm that elevates it above generic number generators. You are not just watching a number go up; you are imagining a tiny yellow duckling growing into a Quack Overlord. That narrative spark, however small, makes all the difference.</p>
-             <p>If you are looking for similar experiences, Duck Duck Clicker offers a more elaborate duck-themed adventure with additional upgrades, while Duck Duck Clicker 3D adds a tech twist. But Duck Clicker remains the purest expression of the formula. It is small, fast, and endlessly replayable. The yellow theme is bright and cheerful, and the upgrade names tell a fun story. For anyone who needs a five-minute mood boost, Duck Clicker is the perfect prescription.</p>
-          </section>
+         <section class="section">
+            <h2>Why Play Duck Clicker?</h2>
+            <p>Duck Clicker is the definition of a palate-cleanser game. After a long session of competitive multiplayer
+               or a complex RPG, there is something deeply therapeutic about a game that asks nothing of you except a
+               few clicks. The duckling theme adds a layer of charm that elevates it above generic number generators.
+               You are not just watching a number go up; you are imagining a tiny yellow duckling growing into a Quack
+               Overlord. That narrative spark, however small, makes all the difference.</p>
+            <p>If you are looking for similar experiences, Duck Duck Clicker offers a more elaborate duck-themed
+               adventure with additional upgrades, while Duck Duck Clicker 3D adds a tech twist. But Duck Clicker
+               remains the purest expression of the formula. It is small, fast, and endlessly replayable. The yellow
+               theme is bright and cheerful, and the upgrade names tell a fun story. For anyone who needs a five-minute
+               mood boost, Duck Clicker is the perfect prescription.</p>
+         </section>
 
-          <section class="section">
-             <h2>Did You Know? Fun Facts About Ducklings</h2>
-             <div class="highlight-box">
-                <ul>
-                   <li>Ducklings can communicate with their siblings before they even hatch, making soft calls through the eggshell.</li>
-                   <li>A mother duck will often lead her ducklings miles over land to reach a suitable pond.</li>
-                   <li>Ducklings are born with a layer of down that is not waterproof, so they rely on their mother's oils initially.</li>
-                   <li>The famous 'make way for ducklings' statues in Boston Public Garden commemorate a children's book about a mallard family.</li>
-                   <li>Ducklings learn to fly at around two months old, though some domestic breeds are too heavy to achieve lift.</li>
-                </ul>
-             </div>
-          </section>
+         <section class="section">
+            <h2>Did You Know? Fun Facts About Ducklings</h2>
+            <div class="highlight-box">
+               <ul>
+                  <li>Ducklings can communicate with their siblings before they even hatch, making soft calls through
+                     the eggshell.</li>
+                  <li>A mother duck will often lead her ducklings miles over land to reach a suitable pond.</li>
+                  <li>Ducklings are born with a layer of down that is not waterproof, so they rely on their mother's
+                     oils initially.</li>
+                  <li>The famous 'make way for ducklings' statues in Boston Public Garden commemorate a children's book
+                     about a mallard family.</li>
+                  <li>Ducklings learn to fly at around two months old, though some domestic breeds are too heavy to
+                     achieve lift.</li>
+               </ul>
+            </div>
+         </section>
 
-          <section class="section">
-             <h2>Discover More Free Clicker Games</h2>
-             <p>If you enjoy Duck Clicker, check out <a href="/duck-duck-clicker/">Duck Duck Clicker</a> for a fuller duck experience, or <a href="/duck-duck-clicker-3d/">Duck Duck Clicker 3D</a> for a tech-themed twist. Animal lovers should also try <a href="/dog-clicker/">Dog Clicker</a> and <a href="/kiwi-clicker/">Kiwi Clicker</a>. For the classic experience, do not miss <a href="/cookie-clicker/">Cookie Clicker</a>.</p>
-          </section>
+         <section class="section">
+            <h2>Discover More Free Clicker Games</h2>
+            <p>If you enjoy Duck Clicker, check out <a href="/duck-duck-clicker/">Duck Duck Clicker</a> for a fuller
+               duck experience, or <a href="/duck-duck-clicker-3d/">Duck Duck Clicker 3D</a> for a tech-themed twist.
+               Animal lovers should also try <a href="/dog-clicker/">Dog Clicker</a> and <a href="/kiwi-clicker/">Kiwi
+                  Clicker</a>. For the classic experience, do not miss <a href="/cookie-clicker/">Cookie Clicker</a>.
+            </p>
+         </section>
 
-          <div style="text-align: center;">
-          </div>
+         <div style="text-align: center;">
+         </div>
 
-       </article>
+      </article>
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
          <p class="related-games-subtitle">Discover more free online clicker games to play</p>
          <div class="related-games-grid">
-                  <a href="/cookie-clicker/" class="related-game-link">🍪 Cookie Clicker</a>
-                  <a href="/planet-clicker/" class="related-game-link">🌍 Planet Clicker</a>
-                  <a href="/chill-guy-clicker/" class="related-game-link">😎 Chill Guy Clicker</a>
-                  <a href="/capybara-clicker/" class="related-game-link">🦫 Capybara Clicker</a>
-                  <a href="/op-auto-clicker/" class="related-game-link">🖱️ OP Auto Clicker</a>
-                  <a href="/italian-brainrot-clicker/" class="related-game-link">🇮🇹 Italian Brainrot Clicker</a>
-                  <a href="/brainrot-clicker/" class="related-game-link">🧠 Brainrot Clicker</a>
-                  <a href="/candy-clicker/" class="related-game-link">🍬 Candy Clicker</a>
-                  <a href="/duck-duck-clicker/" class="related-game-link">🦆 Duck Duck Clicker</a>
-                  <a href="/cookie-clicker-2/" class="related-game-link">🍪 Cookie Clicker 2</a>
-                  <a href="/stimulation-clicker/" class="related-game-link">✨ Stimulation Clicker</a>
-                  <a href="/clicker-counter/" class="related-game-link">🔢 Clicker Counter</a>
-                  <a href="/candy-clicker-2/" class="related-game-link">🍭 Candy Clicker 2</a>
-                  <a href="/sprunki-clicker/" class="related-game-link">🎵 Sprunki Clicker</a>
-                  <a href="/roblox-clicker/" class="related-game-link">🟩 Roblox Clicker</a>
-                  <a href="/planet-clicker-2/" class="related-game-link">🪐 Planet Clicker 2</a>
-                  <a href="/whopper-clicker/" class="related-game-link">🍔 Whopper Clicker</a>
-                  <a href="/chicken-jockey-clicker/" class="related-game-link">🐔 Chicken Jockey Clicker</a>
-                  <a href="/capybara-clicker-2/" class="related-game-link">🦫 Capybara Clicker 2</a>
-                  <a href="/tube-clicker/" class="related-game-link">▶️ Tube Clicker</a>
-                  <a href="/pokemon-clicker/" class="related-game-link">⚡ Pokemon Clicker</a>
-                  <a href="/gs-auto-clicker/" class="related-game-link">⚙️ GS Auto Clicker</a>
-                  <a href="/earth-clicker/" class="related-game-link">🌎 Earth Clicker</a>
-                  <a href="/pizza-clicker/" class="related-game-link">🍕 Pizza Clicker</a>
-                  <a href="/duck-duck-clicker-3d/" class="related-game-link">🦆 Duck Duck Clicker 3D</a>
-                  <a href="/case-clicker/" class="related-game-link">📦 Case Clicker</a>
-                  <a href="/kiwi-clicker/" class="related-game-link">🥝 Kiwi Clicker</a>
-                  <a href="/money-clicker/" class="related-game-link">💵 Money Clicker</a>
-                  <a href="/tung-tung-tung-sahur-clicker/" class="related-game-link">🔔 Tung Tung Tung Sahur Clicker</a>
-                  <a href="/labubu-clicker/" class="related-game-link">🧸 Labubu Clicker</a>
-                  <a href="/room-clicker/" class="related-game-link">🏠 Room Clicker</a>
-                  <a href="/case-clicker-2/" class="related-game-link">🎰 Case Clicker 2</a>
-                  <a href="/plant-clicker/" class="related-game-link">🌱 Plant Clicker</a>
-                  <a href="/particle-clicker/" class="related-game-link">⚛️ Particle Clicker</a>
-                  <a href="/burger-clicker/" class="related-game-link">🍔 Burger Clicker</a>
-                  <a href="/csgo-clicker/" class="related-game-link">🔫 CSGO Clicker</a>
-                  <a href="/coin-clicker/" class="related-game-link">🪙 Coin Clicker</a>
-                  <a href="/dog-clicker/" class="related-game-link">🐕 Dog Clicker</a>
-                  <a href="/santa-clicker/" class="related-game-link">🎅 Santa Clicker</a>
-                  <a href="/chill-girl-clicker/" class="related-game-link">💆‍♀️ Chill Girl Clicker</a>
-                  <a href="/robux-clicker/" class="related-game-link">💎 Robux Clicker</a>
-                  <a href="/minecraft-clicker/" class="related-game-link">⛏️ Minecraft Clicker</a>
+            <a href="/cookie-clicker/" class="related-game-link">🍪 Cookie Clicker</a>
+            <a href="/planet-clicker/" class="related-game-link">🌍 Planet Clicker</a>
+            <a href="/chill-guy-clicker/" class="related-game-link">😎 Chill Guy Clicker</a>
+            <a href="/capybara-clicker/" class="related-game-link">🦫 Capybara Clicker</a>
+            <a href="/op-auto-clicker/" class="related-game-link">🖱️ OP Auto Clicker</a>
+            <a href="/italian-brainrot-clicker/" class="related-game-link">🇮🇹 Italian Brainrot Clicker</a>
+            <a href="/brainrot-clicker/" class="related-game-link">🧠 Brainrot Clicker</a>
+            <a href="/candy-clicker/" class="related-game-link">🍬 Candy Clicker</a>
+            <a href="/duck-duck-clicker/" class="related-game-link">🦆 Duck Duck Clicker</a>
+            <a href="/cookie-clicker-2/" class="related-game-link">🍪 Cookie Clicker 2</a>
+            <a href="/stimulation-clicker/" class="related-game-link">✨ Stimulation Clicker</a>
+            <a href="/clicker-counter/" class="related-game-link">🔢 Clicker Counter</a>
+            <a href="/candy-clicker-2/" class="related-game-link">🍭 Candy Clicker 2</a>
+            <a href="/sprunki-clicker/" class="related-game-link">🎵 Sprunki Clicker</a>
+            <a href="/roblox-clicker/" class="related-game-link">🟩 Roblox Clicker</a>
+            <a href="/planet-clicker-2/" class="related-game-link">🪐 Planet Clicker 2</a>
+            <a href="/whopper-clicker/" class="related-game-link">🍔 Whopper Clicker</a>
+            <a href="/chicken-jockey-clicker/" class="related-game-link">🐔 Chicken Jockey Clicker</a>
+            <a href="/capybara-clicker-2/" class="related-game-link">🦫 Capybara Clicker 2</a>
+            <a href="/tube-clicker/" class="related-game-link">▶️ Tube Clicker</a>
+            <a href="/pokemon-clicker/" class="related-game-link">⚡ Pokemon Clicker</a>
+            <a href="/gs-auto-clicker/" class="related-game-link">⚙️ GS Auto Clicker</a>
+            <a href="/earth-clicker/" class="related-game-link">🌎 Earth Clicker</a>
+            <a href="/pizza-clicker/" class="related-game-link">🍕 Pizza Clicker</a>
+            <a href="/duck-duck-clicker-3d/" class="related-game-link">🦆 Duck Duck Clicker 3D</a>
+            <a href="/case-clicker/" class="related-game-link">📦 Case Clicker</a>
+            <a href="/kiwi-clicker/" class="related-game-link">🥝 Kiwi Clicker</a>
+            <a href="/money-clicker/" class="related-game-link">💵 Money Clicker</a>
+            <a href="/tung-tung-tung-sahur-clicker/" class="related-game-link">🔔 Tung Tung Tung Sahur Clicker</a>
+            <a href="/labubu-clicker/" class="related-game-link">🧸 Labubu Clicker</a>
+            <a href="/room-clicker/" class="related-game-link">🏠 Room Clicker</a>
+            <a href="/case-clicker-2/" class="related-game-link">🎰 Case Clicker 2</a>
+            <a href="/plant-clicker/" class="related-game-link">🌱 Plant Clicker</a>
+            <a href="/particle-clicker/" class="related-game-link">⚛️ Particle Clicker</a>
+            <a href="/burger-clicker/" class="related-game-link">🍔 Burger Clicker</a>
+            <a href="/csgo-clicker/" class="related-game-link">🔫 CSGO Clicker</a>
+            <a href="/coin-clicker/" class="related-game-link">🪙 Coin Clicker</a>
+            <a href="/dog-clicker/" class="related-game-link">🐕 Dog Clicker</a>
+            <a href="/santa-clicker/" class="related-game-link">🎅 Santa Clicker</a>
+            <a href="/chill-girl-clicker/" class="related-game-link">💆‍♀️ Chill Girl Clicker</a>
+            <a href="/robux-clicker/" class="related-game-link">💎 Robux Clicker</a>
+            <a href="/minecraft-clicker/" class="related-game-link">⛏️ Minecraft Clicker</a>
          </div>
       </div>
 
    </div>
 
    <script>
-   (function() {
-      const SAVE_KEY = 'duck_clicker_save';
-      const UPGRADES = [{"name":"Duck Whistle","emoji":"📯","baseCost":15,"baseRate":1,"desc":"+1 quack/sec"},{"name":"Duck Family","emoji":"🦆","baseCost":100,"baseRate":5,"desc":"+5 quacks/sec"},{"name":"Duck Lake","emoji":"🏞️","baseCost":500,"baseRate":20,"desc":"+20 quacks/sec"},{"name":"Mega Duck","emoji":"🦢","baseCost":2500,"baseRate":100,"desc":"+100 quacks/sec"},{"name":"Quack Overlord","emoji":"👑","baseCost":15000,"baseRate":500,"desc":"+500 quacks/sec"}];
-      const COST_SCALE = 1.15;
-      const PARTICLE_EMOJI = '🐤';
+      (function () {
+         const SAVE_KEY = 'duck_clicker_save';
+         const UPGRADES = [{ "name": "Duck Whistle", "emoji": "📯", "baseCost": 15, "baseRate": 1, "desc": "+1 quack/sec" }, { "name": "Duck Family", "emoji": "🦆", "baseCost": 100, "baseRate": 5, "desc": "+5 quacks/sec" }, { "name": "Duck Lake", "emoji": "🏞️", "baseCost": 500, "baseRate": 20, "desc": "+20 quacks/sec" }, { "name": "Mega Duck", "emoji": "🦢", "baseCost": 2500, "baseRate": 100, "desc": "+100 quacks/sec" }, { "name": "Quack Overlord", "emoji": "👑", "baseCost": 15000, "baseRate": 500, "desc": "+500 quacks/sec" }];
+         const COST_SCALE = 1.15;
+         const PARTICLE_EMOJI = '🐤';
 
-      let score = 0;
-      let totalEarned = 0;
-      let clickPower = 1;
-      let clickPowerLevel = 1;
-      let clickPowerCost = 50;
-      let perSecond = 0;
-      let upgradeOwned = UPGRADES.map(() => 0);
+         let score = 0;
+         let totalEarned = 0;
+         let clickPower = 1;
+         let clickPowerLevel = 1;
+         let clickPowerCost = 50;
+         let perSecond = 0;
+         let upgradeOwned = UPGRADES.map(() => 0);
 
-      // Combo system
-      let lastClickTime = 0;
-      let comboCount = 0;
-      const COMBO_TIMEOUT = 2000;
-      const COMBO_CRIT_THRESHOLD = 10;
+         // Combo system
+         let lastClickTime = 0;
+         let comboCount = 0;
+         const COMBO_TIMEOUT = 2000;
+         const COMBO_CRIT_THRESHOLD = 10;
 
-      // Sound toggle
-      let soundEnabled = true;
+         // Sound toggle
+         let soundEnabled = true;
 
-      // Milestones
-      const milestones = [1000, 10000, 100000, 1000000];
-      let milestonesReached = {};
-      milestones.forEach(m => milestonesReached[m] = false);
+         // Milestones
+         const milestones = [1000, 10000, 100000, 1000000];
+         let milestonesReached = {};
+         milestones.forEach(m => milestonesReached[m] = false);
 
-      // DOM
-      const scoreNum = document.getElementById('scoreNum');
-      const perSecDisplay = document.getElementById('perSecDisplay');
-      const clickPowerInfo = document.getElementById('clickPowerInfo');
-      const gStatTotal = document.getElementById('gStatTotal');
-      const gStatPerSec = document.getElementById('gStatPerSec');
-      const clickBtn = document.getElementById('clickBtn');
-      const clickArea = document.getElementById('clickArea');
-      const comboDisplay = document.getElementById('comboDisplay');
-      const progressBarFill = document.getElementById('progressBarFill');
-      const milestoneBanner = document.getElementById('milestoneBanner');
-      const soundToggle = document.getElementById('soundToggle');
-      const particleContainer = document.getElementById('particleContainer');
+         // DOM
+         const scoreNum = document.getElementById('scoreNum');
+         const perSecDisplay = document.getElementById('perSecDisplay');
+         const clickPowerInfo = document.getElementById('clickPowerInfo');
+         const gStatTotal = document.getElementById('gStatTotal');
+         const gStatPerSec = document.getElementById('gStatPerSec');
+         const clickBtn = document.getElementById('clickBtn');
+         const clickArea = document.getElementById('clickArea');
+         const comboDisplay = document.getElementById('comboDisplay');
+         const progressBarFill = document.getElementById('progressBarFill');
+         const milestoneBanner = document.getElementById('milestoneBanner');
+         const soundToggle = document.getElementById('soundToggle');
+         const particleContainer = document.getElementById('particleContainer');
 
-      function formatNum(n) {
-         if (n < 1000) return Math.floor(n).toLocaleString();
-         if (n < 1e6) return (n/1e3).toFixed(1) + 'K';
-         if (n < 1e9) return (n/1e6).toFixed(1) + 'M';
-         if (n < 1e12) return (n/1e9).toFixed(1) + 'B';
-         return (n/1e12).toFixed(1) + 'T';
-      }
+         function formatNum(n) {
+            if (n < 1000) return Math.floor(n).toLocaleString();
+            if (n < 1e6) return (n / 1e3).toFixed(1) + 'K';
+            if (n < 1e9) return (n / 1e6).toFixed(1) + 'M';
+            if (n < 1e12) return (n / 1e9).toFixed(1) + 'B';
+            return (n / 1e12).toFixed(1) + 'T';
+         }
 
-      function getCost(baseC, owned) {
-         return Math.floor(baseC * Math.pow(COST_SCALE, owned));
-      }
+         function getCost(baseC, owned) {
+            return Math.floor(baseC * Math.pow(COST_SCALE, owned));
+         }
 
-      function recalcPerSecond() {
-         perSecond = 0;
-         UPGRADES.forEach((u, i) => {
-            perSecond += u.baseRate * upgradeOwned[i];
-         });
-      }
+         function recalcPerSecond() {
+            perSecond = 0;
+            UPGRADES.forEach((u, i) => {
+               perSecond += u.baseRate * upgradeOwned[i];
+            });
+         }
 
-      function render() {
-         scoreNum.textContent = formatNum(score);
-         perSecDisplay.textContent = formatNum(perSecond) + ' quacks/sec';
-         clickPowerInfo.textContent = '+' + formatNum(clickPower) + ' per click';
-         gStatTotal.textContent = formatNum(score) + ' Quacks';
-         gStatPerSec.textContent = formatNum(perSecond) + '/sec';
+         function render() {
+            scoreNum.textContent = formatNum(score);
+            perSecDisplay.textContent = formatNum(perSecond) + ' quacks/sec';
+            clickPowerInfo.textContent = '+' + formatNum(clickPower) + ' per click';
+            gStatTotal.textContent = formatNum(score) + ' Quacks';
+            gStatPerSec.textContent = formatNum(perSecond) + '/sec';
 
-         UPGRADES.forEach((u, i) => {
-            const card = document.getElementById('upg' + i);
-            const cost = getCost(u.baseCost, upgradeOwned[i]);
-            document.getElementById('upgCost' + i).textContent = formatNum(cost);
-            document.getElementById('upgOwned' + i).textContent = 'Owned: ' + upgradeOwned[i];
-            if (score >= cost) {
-               card.classList.remove('locked');
+            UPGRADES.forEach((u, i) => {
+               const card = document.getElementById('upg' + i);
+               const cost = getCost(u.baseCost, upgradeOwned[i]);
+               document.getElementById('upgCost' + i).textContent = formatNum(cost);
+               document.getElementById('upgOwned' + i).textContent = 'Owned: ' + upgradeOwned[i];
+               if (score >= cost) {
+                  card.classList.remove('locked');
+               } else {
+                  card.classList.add('locked');
+               }
+            });
+
+            // Click power upgrade
+            const cpCard = document.getElementById('upgClickPower');
+            document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
+            document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
+            if (score >= clickPowerCost) {
+               cpCard.classList.remove('locked');
             } else {
-               card.classList.add('locked');
+               cpCard.classList.add('locked');
+            }
+
+            // Progress bar: next affordable upgrade
+            let nextCost = Infinity;
+            UPGRADES.forEach((u, i) => {
+               const c = getCost(u.baseCost, upgradeOwned[i]);
+               if (c > score && c < nextCost) nextCost = c;
+            });
+            if (clickPowerCost > score && clickPowerCost < nextCost) nextCost = clickPowerCost;
+            if (nextCost !== Infinity) {
+               progressBarFill.style.width = Math.min(100, (score / nextCost) * 100) + '%';
+            } else {
+               progressBarFill.style.width = '100%';
+            }
+
+            // Milestones
+            milestones.forEach(m => {
+               if (score >= m && !milestonesReached[m]) {
+                  milestonesReached[m] = true;
+                  showMilestoneBanner(m);
+               }
+            });
+
+            updateSwimmingDucks();
+         }
+
+         const EMOJI = '🦆';
+
+         function getThemeEmojiText(amount, isCritical) {
+            if (isCritical) return '🔥' + EMOJI + '🔥';
+            if (amount <= 1) return EMOJI;
+            if (amount <= 5) return EMOJI.repeat(amount);
+            return EMOJI.repeat(3) + ' ×' + formatNum(amount);
+         }
+
+         function showClickFloat(x, y, text, isCritical) {
+            const el = document.createElement('div');
+            el.className = 'click-float';
+            el.textContent = text || getThemeEmojiText(clickPower, isCritical);
+            el.style.left = x + 'px';
+            el.style.top = y + 'px';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 700);
+         }
+
+         function showCriticalPopup(x, y, power) {
+            const el = document.createElement('div');
+            el.className = 'critical-popup';
+            el.textContent = getThemeEmojiText(power, true);
+            el.style.left = x + 'px';
+            el.style.top = (y - 30) + 'px';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 800);
+         }
+
+         function showMilestoneBanner(m) {
+            milestoneBanner.textContent = '🎉 Milestone Reached: ' + formatNum(m) + '!';
+            milestoneBanner.classList.add('show');
+            setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
+         }
+
+         // Swimming ducks
+         const swimmingDucks = [];
+         const swimAnimations = ['swim1', 'swim2', 'swim3'];
+
+         function spawnSwimmingDuck() {
+            const duck = document.createElement('div');
+            duck.className = 'pond-duck';
+            duck.textContent = '🦆';
+            const x = 10 + Math.random() * 70;
+            const y = 10 + Math.random() * 70;
+            duck.style.left = x + '%';
+            duck.style.top = y + '%';
+            const duration = 6 + Math.random() * 6;
+            const delay = Math.random() * -duration;
+            const anim = swimAnimations[Math.floor(Math.random() * swimAnimations.length)];
+            duck.style.animationName = anim;
+            duck.style.animationDuration = duration + 's';
+            duck.style.animationDelay = delay + 's';
+            duck.style.animationIterationCount = 'infinite';
+            duck.style.animationTimingFunction = 'linear';
+            duck.addEventListener('click', (ev) => {
+               ev.stopPropagation();
+               const rect = clickArea.getBoundingClientRect();
+               const cx = ev.clientX - rect.left;
+               const cy = ev.clientY - rect.top;
+               const bonus = clickPower * 5;
+               score += bonus;
+               totalEarned += bonus;
+               showClickFloat(cx, cy, getThemeEmojiText(bonus, false), false);
+               render();
+            });
+            clickArea.appendChild(duck);
+            swimmingDucks.push(duck);
+         }
+
+         function updateSwimmingDucks() {
+            const totalUpgrades = upgradeOwned.reduce((a, b) => a + b, 0);
+            const target = Math.min(totalUpgrades, 12);
+            while (swimmingDucks.length > target) {
+               const d = swimmingDucks.pop();
+               if (d && d.parentNode) d.remove();
+            }
+            while (swimmingDucks.length < target) {
+               spawnSwimmingDuck();
+            }
+         }
+
+         function doClick(e) {
+            const now = Date.now();
+            let earned = clickPower;
+            if (now - lastClickTime <= COMBO_TIMEOUT) {
+               comboCount++;
+            } else {
+               comboCount = 1;
+            }
+            lastClickTime = now;
+
+            if (comboCount > 1) {
+               comboDisplay.textContent = comboCount + 'x Combo!';
+               comboDisplay.classList.add('active');
+               setTimeout(() => comboDisplay.classList.remove('active'), 100);
+            } else {
+               comboDisplay.textContent = '';
+            }
+
+            const isCritical = (comboCount % COMBO_CRIT_THRESHOLD === 0);
+            if (isCritical) {
+               earned *= 2;
+            }
+
+            score += earned;
+            totalEarned += earned;
+
+            clickBtn.classList.add('pressed');
+            setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+
+            // Float position
+            const rect = clickArea.getBoundingClientRect();
+            let cx, cy;
+            if (e && e.clientX) {
+               cx = e.clientX - rect.left;
+               cy = e.clientY - rect.top;
+            } else {
+               cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+               cy = rect.height / 2 - 30;
+            }
+            showClickFloat(cx, cy, null, isCritical);
+            if (isCritical) {
+               showCriticalPopup(cx, cy, earned);
+            }
+            render();
+         }
+
+         clickBtn.addEventListener('click', doClick);
+         clickBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            doClick(e.touches[0]);
+         });
+
+         // Keyboard: spacebar
+         document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space' && !e.repeat) {
+               e.preventDefault();
+               doClick(null);
             }
          });
 
-          // Click power upgrade
-          const cpCard = document.getElementById('upgClickPower');
-          document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
-          document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
-          if (score >= clickPowerCost) {
-             cpCard.classList.remove('locked');
-          } else {
-             cpCard.classList.add('locked');
-          }
+         // Buy upgrades
+         UPGRADES.forEach((u, i) => {
+            document.getElementById('upg' + i).addEventListener('click', () => {
+               const cost = getCost(u.baseCost, upgradeOwned[i]);
+               if (score >= cost) {
+                  score -= cost;
+                  upgradeOwned[i]++;
+                  recalcPerSecond();
+                  render();
+               }
+            });
+         });
 
-          // Progress bar: next affordable upgrade
-          let nextCost = Infinity;
-          UPGRADES.forEach((u, i) => {
-             const c = getCost(u.baseCost, upgradeOwned[i]);
-             if (c > score && c < nextCost) nextCost = c;
-          });
-          if (clickPowerCost > score && clickPowerCost < nextCost) nextCost = clickPowerCost;
-          if (nextCost !== Infinity) {
-             progressBarFill.style.width = Math.min(100, (score / nextCost) * 100) + '%';
-          } else {
-             progressBarFill.style.width = '100%';
-          }
+         // Click power upgrade
+         document.getElementById('upgClickPower').addEventListener('click', () => {
+            if (score >= clickPowerCost) {
+               score -= clickPowerCost;
+               clickPowerLevel++;
+               clickPower = Math.pow(2, clickPowerLevel - 1);
+               clickPowerCost = Math.floor(50 * Math.pow(2.5, clickPowerLevel - 1));
+               render();
+            }
+         });
 
-          // Milestones
-          milestones.forEach(m => {
-             if (score >= m && !milestonesReached[m]) {
-                milestonesReached[m] = true;
-                showMilestoneBanner(m);
-             }
-          });
+         // Per-second tick
+         setInterval(() => {
+            if (perSecond > 0) {
+               score += perSecond;
+               totalEarned += perSecond;
+               render();
+            }
+         }, 1000);
 
-          updateSwimmingDucks();
-       }
-
-       const EMOJI = '🦆';
-
-       function getThemeEmojiText(amount, isCritical) {
-          if (isCritical) return '🔥' + EMOJI + '🔥';
-          if (amount <= 1) return EMOJI;
-          if (amount <= 5) return EMOJI.repeat(amount);
-          return EMOJI.repeat(3) + ' ×' + formatNum(amount);
-       }
-
-       function showClickFloat(x, y, text, isCritical) {
-          const el = document.createElement('div');
-          el.className = 'click-float';
-          el.textContent = text || getThemeEmojiText(clickPower, isCritical);
-          el.style.left = x + 'px';
-          el.style.top = y + 'px';
-          clickArea.style.position = 'relative';
-          clickArea.appendChild(el);
-          setTimeout(() => el.remove(), 700);
-       }
-
-       function showCriticalPopup(x, y, power) {
-          const el = document.createElement('div');
-          el.className = 'critical-popup';
-          el.textContent = getThemeEmojiText(power, true);
-          el.style.left = x + 'px';
-          el.style.top = (y - 30) + 'px';
-          clickArea.appendChild(el);
-          setTimeout(() => el.remove(), 800);
-       }
-
-       function showMilestoneBanner(m) {
-          milestoneBanner.textContent = '🎉 Milestone Reached: ' + formatNum(m) + '!';
-          milestoneBanner.classList.add('show');
-          setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
-       }
-
-       // Swimming ducks
-       const swimmingDucks = [];
-       const swimAnimations = ['swim1', 'swim2', 'swim3'];
-
-       function spawnSwimmingDuck() {
-          const duck = document.createElement('div');
-          duck.className = 'pond-duck';
-          duck.textContent = '🦆';
-          const x = 10 + Math.random() * 70;
-          const y = 10 + Math.random() * 70;
-          duck.style.left = x + '%';
-          duck.style.top = y + '%';
-          const duration = 6 + Math.random() * 6;
-          const delay = Math.random() * -duration;
-          const anim = swimAnimations[Math.floor(Math.random() * swimAnimations.length)];
-          duck.style.animationName = anim;
-          duck.style.animationDuration = duration + 's';
-          duck.style.animationDelay = delay + 's';
-          duck.style.animationIterationCount = 'infinite';
-          duck.style.animationTimingFunction = 'linear';
-          duck.addEventListener('click', (ev) => {
-             ev.stopPropagation();
-             const rect = clickArea.getBoundingClientRect();
-             const cx = ev.clientX - rect.left;
-             const cy = ev.clientY - rect.top;
-             const bonus = clickPower * 5;
-             score += bonus;
-             totalEarned += bonus;
-             showClickFloat(cx, cy, getThemeEmojiText(bonus, false), false);
-             render();
-          });
-          clickArea.appendChild(duck);
-          swimmingDucks.push(duck);
-       }
-
-       function updateSwimmingDucks() {
-          const totalUpgrades = upgradeOwned.reduce((a, b) => a + b, 0);
-          const target = Math.min(totalUpgrades, 12);
-          while (swimmingDucks.length > target) {
-             const d = swimmingDucks.pop();
-             if (d && d.parentNode) d.remove();
-          }
-          while (swimmingDucks.length < target) {
-             spawnSwimmingDuck();
-          }
-       }
-
-       function doClick(e) {
-          const now = Date.now();
-          let earned = clickPower;
-          if (now - lastClickTime <= COMBO_TIMEOUT) {
-             comboCount++;
-          } else {
-             comboCount = 1;
-          }
-          lastClickTime = now;
-
-          if (comboCount > 1) {
-             comboDisplay.textContent = comboCount + 'x Combo!';
-             comboDisplay.classList.add('active');
-             setTimeout(() => comboDisplay.classList.remove('active'), 100);
-          } else {
-             comboDisplay.textContent = '';
-          }
-
-          const isCritical = (comboCount % COMBO_CRIT_THRESHOLD === 0);
-          if (isCritical) {
-             earned *= 2;
-          }
-
-          score += earned;
-          totalEarned += earned;
-
-          clickBtn.classList.add('pressed');
-          setTimeout(() => clickBtn.classList.remove('pressed'), 100);
-
-          // Float position
-          const rect = clickArea.getBoundingClientRect();
-          let cx, cy;
-          if (e && e.clientX) {
-             cx = e.clientX - rect.left;
-             cy = e.clientY - rect.top;
-          } else {
-             cx = rect.width / 2 + (Math.random() - 0.5) * 40;
-             cy = rect.height / 2 - 30;
-          }
-          showClickFloat(cx, cy, null, isCritical);
-          if (isCritical) {
-             showCriticalPopup(cx, cy, earned);
-          }
-          render();
-       }
-
-      clickBtn.addEventListener('click', doClick);
-      clickBtn.addEventListener('touchstart', (e) => {
-         e.preventDefault();
-         doClick(e.touches[0]);
-      });
-
-      // Keyboard: spacebar
-      document.addEventListener('keydown', (e) => {
-         if (e.code === 'Space' && !e.repeat) {
-            e.preventDefault();
-            doClick(null);
+         // Save / Load
+         function saveGame() {
+            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned };
+            try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
          }
-      });
 
-      // Buy upgrades
-      UPGRADES.forEach((u, i) => {
-         document.getElementById('upg' + i).addEventListener('click', () => {
-            const cost = getCost(u.baseCost, upgradeOwned[i]);
-            if (score >= cost) {
-               score -= cost;
-               upgradeOwned[i]++;
+         function loadGame() {
+            try {
+               const raw = localStorage.getItem(SAVE_KEY);
+               if (raw) {
+                  const data = JSON.parse(raw);
+                  score = data.score || 0;
+                  totalEarned = data.totalEarned || 0;
+                  clickPower = data.clickPower || 1;
+                  clickPowerLevel = data.clickPowerLevel || 1;
+                  clickPowerCost = data.clickPowerCost || 50;
+                  upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                  recalcPerSecond();
+               }
+            } catch (e) { }
+         }
+
+         document.getElementById('saveBtn').addEventListener('click', () => {
+            saveGame();
+            const btn = document.getElementById('saveBtn');
+            btn.textContent = '✅ Saved!';
+            setTimeout(() => { btn.textContent = '💾 Save'; }, 1500);
+         });
+
+         document.getElementById('resetBtn').addEventListener('click', () => {
+            if (confirm('Reset all progress for Duck Clicker? This cannot be undone.')) {
+               localStorage.removeItem(SAVE_KEY);
+               score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
+               upgradeOwned = UPGRADES.map(() => 0);
+               milestonesReached = {}; milestones.forEach(m => milestonesReached[m] = false);
                recalcPerSecond();
                render();
             }
          });
-      });
 
-      // Click power upgrade
-      document.getElementById('upgClickPower').addEventListener('click', () => {
-         if (score >= clickPowerCost) {
-            score -= clickPowerCost;
-            clickPowerLevel++;
-            clickPower = Math.pow(2, clickPowerLevel - 1);
-            clickPowerCost = Math.floor(50 * Math.pow(2.5, clickPowerLevel - 1));
-            render();
-         }
-      });
+         // Auto-save every 30s
+         setInterval(saveGame, 30000);
 
-      // Per-second tick
-      setInterval(() => {
-         if (perSecond > 0) {
-            score += perSecond;
-            totalEarned += perSecond;
-            render();
-         }
-      }, 1000);
+         // Sound toggle
+         soundToggle.addEventListener('click', () => {
+            soundEnabled = !soundEnabled;
+            soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+         });
 
-      // Save / Load
-      function saveGame() {
-         const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned };
-         try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch(e) {}
-      }
+         // Floating particles
+         setInterval(() => {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.textContent = PARTICLE_EMOJI;
+            p.style.left = Math.random() * 100 + '%';
+            p.style.bottom = '0';
+            particleContainer.appendChild(p);
+            setTimeout(() => p.remove(), 2500);
+         }, 3000);
 
-      function loadGame() {
-         try {
-            const raw = localStorage.getItem(SAVE_KEY);
-            if (raw) {
-               const data = JSON.parse(raw);
-               score = data.score || 0;
-               totalEarned = data.totalEarned || 0;
-               clickPower = data.clickPower || 1;
-               clickPowerLevel = data.clickPowerLevel || 1;
-               clickPowerCost = data.clickPowerCost || 50;
-               upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
-               recalcPerSecond();
-            }
-         } catch(e) {}
-      }
+         // FAQ toggle
+         document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+               const item = q.closest('.faq-item');
+               item.classList.toggle('open');
+            });
+         });
 
-      document.getElementById('saveBtn').addEventListener('click', () => {
-         saveGame();
-         const btn = document.getElementById('saveBtn');
-         btn.textContent = '✅ Saved!';
-         setTimeout(() => { btn.textContent = '💾 Save'; }, 1500);
-      });
-
-       document.getElementById('resetBtn').addEventListener('click', () => {
-          if (confirm('Reset all progress for Duck Clicker? This cannot be undone.')) {
-             localStorage.removeItem(SAVE_KEY);
-             score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
-             upgradeOwned = UPGRADES.map(() => 0);
-             milestonesReached = {}; milestones.forEach(m => milestonesReached[m] = false);
-             recalcPerSecond();
-             render();
-          }
-       });
-
-       // Auto-save every 30s
-       setInterval(saveGame, 30000);
-
-       // Sound toggle
-       soundToggle.addEventListener('click', () => {
-          soundEnabled = !soundEnabled;
-          soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
-       });
-
-       // Floating particles
-       setInterval(() => {
-          const p = document.createElement('div');
-          p.className = 'particle';
-          p.textContent = PARTICLE_EMOJI;
-          p.style.left = Math.random() * 100 + '%';
-          p.style.bottom = '0';
-          particleContainer.appendChild(p);
-          setTimeout(() => p.remove(), 2500);
-       }, 3000);
-
-       // FAQ toggle
-       document.querySelectorAll('.faq-question').forEach(q => {
-          q.addEventListener('click', () => {
-             const item = q.closest('.faq-item');
-             item.classList.toggle('open');
-          });
-       });
-
-       // Init
-       loadGame();
-       render();
-    })();
+         // Init
+         loadGame();
+         render();
+      })();
    </script>
 
    <script>
@@ -1388,13 +1758,14 @@
          <div class="footer-grid">
             <div class="footer-section footer-brand">
                <a href="/" class="footer-logo">Spacebar Clicker</a>
-               <p class="footer-tagline">Test your spacebar clicking speed with our free online tool. Measure your CPS and improve your clicking skills.</p>
+               <p class="footer-tagline">Test your spacebar clicking speed with our free online tool. Measure your CPS
+                  and improve your clicking skills.</p>
             </div>
             <div class="footer-section">
                <h4 class="footer-heading">Quick Links</h4>
                <ul class="footer-links">
                   <li><a href="/">Home</a></li>
-                  
+
                   <li><a href="/about/">About Us</a></li>
                   <li><a href="/contact/">Contact</a></li>
                </ul>
@@ -1412,7 +1783,7 @@
       </div>
    </footer>
 
-   <script>(function(w,d,s,id){if(typeof(w.webpushr)!=='undefined')return;w.webpushr=w.webpushr||function(){(w.webpushr.q=w.webpushr.q||[]).push(arguments)};var js,fjs=d.getElementsByTagName(s)[0];js=d.createElement(s);js.id=id;js.async=1;js.src="https://cdn.webpushr.com/app.min.js";fjs.parentNode.appendChild(js);}(window,document,'script','webpushr-jssdk'));webpushr('setup',{'key':'BCqxAAS-ncGR0SExOoEY3HPXgbSncPSnvUNZbaqLmWTXCyeVDhZdKkXruhe2gvqHJnbMgm1oUAREgHJ3KPqSkW4'});</script>
+   <script>(function (w, d, s, id) { if (typeof (w.webpushr) !== 'undefined') return; w.webpushr = w.webpushr || function () { (w.webpushr.q = w.webpushr.q || []).push(arguments) }; var js, fjs = d.getElementsByTagName(s)[0]; js = d.createElement(s); js.id = id; js.async = 1; js.src = "https://cdn.webpushr.com/app.min.js"; fjs.parentNode.appendChild(js); }(window, document, 'script', 'webpushr-jssdk')); webpushr('setup', { 'key': 'BCqxAAS-ncGR0SExOoEY3HPXgbSncPSnvUNZbaqLmWTXCyeVDhZdKkXruhe2gvqHJnbMgm1oUAREgHJ3KPqSkW4' });</script>
 </body>
 
 </html>

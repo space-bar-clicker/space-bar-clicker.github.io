@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>CSGO Clicker - Free Counter-Strike Idle Game Online | Spacebar Clicker</title>
+   <title>CSGO Clicker - Free Counter-Strike Idle Game Online </title>
    <meta name="description"
       content="Play CSGO Clicker free online! Collect Skin Credits, unlock Mil-Spec to Knife Unbox tiers, and build passive income in this Counter-Strike themed idle game. No download needed.">
    <meta name="keywords"
@@ -112,8 +112,14 @@
             align-items: center;
             gap: 20px;
          }
-         .nav-links.active { display: flex; }
-         .menu-btn { display: block; }
+
+         .nav-links.active {
+            display: flex;
+         }
+
+         .menu-btn {
+            display: block;
+         }
       }
 
       /* Main */
@@ -168,7 +174,7 @@
       }
 
       .game-stat-pill {
-         background: rgba(255,255,255,0.2);
+         background: rgba(255, 255, 255, 0.2);
          border-radius: 20px;
          padding: 6px 14px;
          color: white;
@@ -219,7 +225,7 @@
          font-size: 64px;
          cursor: pointer;
          transition: transform 0.1s ease, box-shadow 0.1s ease;
-         box-shadow: 0 8px 30px #ff6b3533, inset 0 -4px 10px rgba(255,107,53,0.2);
+         box-shadow: 0 8px 30px #ff6b3533, inset 0 -4px 10px rgba(255, 107, 53, 0.2);
          display: flex;
          align-items: center;
          justify-content: center;
@@ -231,17 +237,18 @@
       }
 
       .click-btn:hover {
-         box-shadow: 0 12px 40px #ff6b3555, inset 0 -4px 10px rgba(255,107,53,0.2);
+         box-shadow: 0 12px 40px #ff6b3555, inset 0 -4px 10px rgba(255, 107, 53, 0.2);
       }
 
-      .click-btn:active, .click-btn.pressed {
+      .click-btn:active,
+      .click-btn.pressed {
          transform: scale(0.92);
-         box-shadow: 0 4px 15px #ff6b3544, inset 0 -4px 10px rgba(255,107,53,0.2);
+         box-shadow: 0 4px 15px #ff6b3544, inset 0 -4px 10px rgba(255, 107, 53, 0.2);
       }
 
       .click-btn .emoji {
          pointer-events: none;
-         filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
+         filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.15));
       }
 
       .score-display {
@@ -290,8 +297,15 @@
       }
 
       @keyframes floatUp {
-         0% { opacity: 1; transform: translateY(0) scale(0.8); }
-         100% { opacity: 0; transform: translateY(-70px) scale(1.1); }
+         0% {
+            opacity: 1;
+            transform: translateY(0) scale(0.8);
+         }
+
+         100% {
+            opacity: 0;
+            transform: translateY(-70px) scale(1.1);
+         }
       }
 
       /* Upgrades Panel */
@@ -323,7 +337,7 @@
          cursor: pointer;
          transition: all 0.2s ease;
          background: linear-gradient(180deg, #fff 0%, #f5f5f5 100%);
-         box-shadow: 0 2px 6px rgba(255,107,53,0.08);
+         box-shadow: 0 2px 6px rgba(255, 107, 53, 0.08);
          position: relative;
       }
 
@@ -331,7 +345,7 @@
          border-color: #ff6b35;
          background: linear-gradient(180deg, #fff 0%, #fff3e0 100%);
          transform: translateY(-1px);
-         box-shadow: 0 4px 12px rgba(255,107,53,0.15);
+         box-shadow: 0 4px 12px rgba(255, 107, 53, 0.15);
       }
 
       .upgrade-card.locked {
@@ -423,21 +437,34 @@
          color: #ea580c;
          min-height: 1.2em;
       }
+
       .critical-popup {
          position: absolute;
          pointer-events: none;
          font-size: 1.6rem;
          font-weight: 800;
          color: #dc2626;
-         text-shadow: 0 2px 8px rgba(220,38,38,0.3);
+         text-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
          animation: criticalPop 0.8s ease-out forwards;
          z-index: 20;
       }
+
       @keyframes criticalPop {
-         0% { opacity: 1; transform: translateY(0) scale(0.5); }
-         50% { transform: translateY(-30px) scale(1.2); }
-         100% { opacity: 0; transform: translateY(-80px) scale(1); }
+         0% {
+            opacity: 1;
+            transform: translateY(0) scale(0.5);
+         }
+
+         50% {
+            transform: translateY(-30px) scale(1.2);
+         }
+
+         100% {
+            opacity: 0;
+            transform: translateY(-80px) scale(1);
+         }
       }
+
       .progress-bar-container {
          width: 80%;
          max-width: 220px;
@@ -447,6 +474,7 @@
          margin-top: 12px;
          overflow: hidden;
       }
+
       .progress-bar-fill {
          height: 100%;
          background: linear-gradient(90deg, #ea580c, #ea580cdd);
@@ -454,6 +482,7 @@
          transition: width 0.3s ease;
          width: 0%;
       }
+
       .particle {
          position: absolute;
          pointer-events: none;
@@ -462,10 +491,19 @@
          animation: particleFloat 2.5s ease-out forwards;
          z-index: 5;
       }
+
       @keyframes particleFloat {
-         0% { opacity: 0.7; transform: translateY(0) rotate(0deg); }
-         100% { opacity: 0; transform: translateY(-120px) rotate(45deg); }
+         0% {
+            opacity: 0.7;
+            transform: translateY(0) rotate(0deg);
+         }
+
+         100% {
+            opacity: 0;
+            transform: translateY(-120px) rotate(45deg);
+         }
       }
+
       .milestone-banner {
          position: absolute;
          top: 50%;
@@ -477,22 +515,39 @@
          border-radius: 12px;
          font-size: 1.1rem;
          font-weight: 700;
-         box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
          animation: milestoneIn 0.5s ease-out, milestoneOut 0.5s ease-in 2s forwards;
          z-index: 50;
          pointer-events: none;
          white-space: nowrap;
       }
+
       @keyframes milestoneIn {
-         from { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
-         to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+         from {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.7);
+         }
+
+         to {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+         }
       }
+
       @keyframes milestoneOut {
-         from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-         to { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+         from {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+         }
+
+         to {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.9);
+         }
       }
+
       .sound-toggle {
-         background: rgba(255,255,255,0.2);
+         background: rgba(255, 255, 255, 0.2);
          border: none;
          border-radius: 8px;
          padding: 4px 10px;
@@ -501,7 +556,11 @@
          cursor: pointer;
          transition: background 0.2s;
       }
-      .sound-toggle:hover { background: rgba(255,255,255,0.35); }
+
+      .sound-toggle:hover {
+         background: rgba(255, 255, 255, 0.35);
+      }
+
       .keyboard-tip {
          width: 100%;
          text-align: center;
@@ -510,6 +569,7 @@
          margin-top: 8px;
          font-weight: 500;
       }
+
       .case-btn {
          margin-top: 12px;
          padding: 10px 18px;
@@ -521,17 +581,27 @@
          font-size: 0.95rem;
          cursor: pointer;
          transition: all 0.2s ease;
-         box-shadow: 0 4px 12px rgba(255,215,0,0.2);
+         box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
          animation: casePulse 1.5s infinite;
       }
+
       .case-btn:hover {
          transform: translateY(-2px);
-         box-shadow: 0 6px 18px rgba(255,215,0,0.3);
+         box-shadow: 0 6px 18px rgba(255, 215, 0, 0.3);
       }
+
       @keyframes casePulse {
-         0%, 100% { transform: scale(1); }
-         50% { transform: scale(1.05); }
+
+         0%,
+         100% {
+            transform: scale(1);
+         }
+
+         50% {
+            transform: scale(1.05);
+         }
       }
+
       .case-opening {
          position: absolute;
          top: 50%;
@@ -541,10 +611,11 @@
          border-radius: 14px;
          padding: 20px 28px;
          text-align: center;
-         box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+         box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
          z-index: 60;
          min-width: 200px;
       }
+
       .case-opening .case-scroll {
          font-size: 2.2rem;
          font-weight: 700;
@@ -554,22 +625,39 @@
          justify-content: center;
          margin-bottom: 10px;
       }
+
       .case-opening .case-result {
          font-size: 1.1rem;
          font-weight: 700;
          margin-bottom: 6px;
       }
+
       .case-opening .case-bonus {
          font-size: 0.9rem;
          color: #666;
       }
+
       @keyframes caseFlash {
-         0% { box-shadow: 0 0 0 0 rgba(255,215,0,0.5); }
-         100% { box-shadow: 0 0 20px 10px rgba(255,215,0,0); }
+         0% {
+            box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.5);
+         }
+
+         100% {
+            box-shadow: 0 0 20px 10px rgba(255, 215, 0, 0);
+         }
       }
+
       /* FAQ Section */
-      .faq-section { margin-bottom: 30px; }
-      .faq-item { margin-bottom: 14px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+      .faq-section {
+         margin-bottom: 30px;
+      }
+
+      .faq-item {
+         margin-bottom: 14px;
+         border-bottom: 1px solid #eee;
+         padding-bottom: 10px;
+      }
+
       .faq-item h3 {
          color: #333;
          font-size: 1.05rem;
@@ -579,7 +667,11 @@
          position: relative;
          padding-right: 20px;
       }
-      .faq-item h3:hover { color: #ea580c; }
+
+      .faq-item h3:hover {
+         color: #ea580c;
+      }
+
       .faq-item h3::after {
          content: '+';
          position: absolute;
@@ -589,7 +681,11 @@
          font-weight: 700;
          transition: transform 0.2s;
       }
-      .faq-item.active h3::after { transform: rotate(45deg); }
+
+      .faq-item.active h3::after {
+         transform: rotate(45deg);
+      }
+
       .faq-item p {
          display: none;
          color: #555;
@@ -598,12 +694,42 @@
          margin-bottom: 0;
          padding-top: 4px;
       }
-      .faq-item.active p { display: block; }
-      .fun-facts { background: #f8f9fe; border-radius: 12px; padding: 20px; margin: 20px 0; }
-      .fun-facts h3 { color: #7838f3; margin-bottom: 12px; }
-      .fun-facts ul { list-style: none; padding-left: 0; }
-      .fun-facts li { padding: 6px 0 6px 24px; position: relative; color: #333; line-height: 1.6; }
-      .fun-facts li::before { content: '•'; position: absolute; left: 0; color: #7838f3; font-weight: bold; }
+
+      .faq-item.active p {
+         display: block;
+      }
+
+      .fun-facts {
+         background: #f8f9fe;
+         border-radius: 12px;
+         padding: 20px;
+         margin: 20px 0;
+      }
+
+      .fun-facts h3 {
+         color: #7838f3;
+         margin-bottom: 12px;
+      }
+
+      .fun-facts ul {
+         list-style: none;
+         padding-left: 0;
+      }
+
+      .fun-facts li {
+         padding: 6px 0 6px 24px;
+         position: relative;
+         color: #333;
+         line-height: 1.6;
+      }
+
+      .fun-facts li::before {
+         content: '•';
+         position: absolute;
+         left: 0;
+         color: #7838f3;
+         font-weight: bold;
+      }
 
       /* Article Styles */
       .article-container {
@@ -614,21 +740,96 @@
          color: #333;
       }
 
-      h1, h2 { color: #7838f3; margin-bottom: 20px; }
-      h2 { margin-top: 10px; }
-      .intro { font-size: 1.1em; color: #555; margin-bottom: 30px; }
-      .section { margin-bottom: 30px; }
-      ol.tips-list { margin: 0 0 0 1.25rem; padding: 0; }
-      ol.tips-list li { margin-bottom: 14px; line-height: 1.65; color: #333; padding-left: 0.35rem; }
-      .highlight-box { background: #f8f9fe; border-left: 4px solid #7838f3; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
-      .highlight-box ul { list-style: none; padding-left: 0; }
-      .highlight-box li { padding: 8px 0; color: #333; line-height: 1.6; }
-      .feature-box { background: linear-gradient(145deg, #f8f9fe, #fff); border-radius: 12px; padding: 20px; margin: 20px 0; box-shadow: 0 4px 15px rgba(120,56,243,0.1); }
-      .feature-box h3 { color: #7838f3; margin-bottom: 12px; }
-      .feature-box ul { list-style: none; padding-left: 0; }
-      .feature-box li { padding: 6px 0 6px 24px; position: relative; color: #333; line-height: 1.6; }
-      .feature-box li::before { content: '✓'; position: absolute; left: 0; color: #7838f3; font-weight: bold; }
-      p { color: #333; line-height: 1.8; margin-bottom: 15px; font-size: 1.05rem; }
+      h1,
+      h2 {
+         color: #7838f3;
+         margin-bottom: 20px;
+      }
+
+      h2 {
+         margin-top: 10px;
+      }
+
+      .intro {
+         font-size: 1.1em;
+         color: #555;
+         margin-bottom: 30px;
+      }
+
+      .section {
+         margin-bottom: 30px;
+      }
+
+      ol.tips-list {
+         margin: 0 0 0 1.25rem;
+         padding: 0;
+      }
+
+      ol.tips-list li {
+         margin-bottom: 14px;
+         line-height: 1.65;
+         color: #333;
+         padding-left: 0.35rem;
+      }
+
+      .highlight-box {
+         background: #f8f9fe;
+         border-left: 4px solid #7838f3;
+         padding: 20px;
+         margin: 20px 0;
+         border-radius: 0 8px 8px 0;
+      }
+
+      .highlight-box ul {
+         list-style: none;
+         padding-left: 0;
+      }
+
+      .highlight-box li {
+         padding: 8px 0;
+         color: #333;
+         line-height: 1.6;
+      }
+
+      .feature-box {
+         background: linear-gradient(145deg, #f8f9fe, #fff);
+         border-radius: 12px;
+         padding: 20px;
+         margin: 20px 0;
+         box-shadow: 0 4px 15px rgba(120, 56, 243, 0.1);
+      }
+
+      .feature-box h3 {
+         color: #7838f3;
+         margin-bottom: 12px;
+      }
+
+      .feature-box ul {
+         list-style: none;
+         padding-left: 0;
+      }
+
+      .feature-box li {
+         padding: 6px 0 6px 24px;
+         position: relative;
+         color: #333;
+         line-height: 1.6;
+      }
+
+      .feature-box li::before {
+         content: '✓';
+         position: absolute;
+         left: 0;
+         color: #7838f3;
+         font-weight: bold;
+      }
+
+      p {
+         color: #333;
+         line-height: 1.8;
+         margin-bottom: 15px;
+         font-size: 1.05rem;
+      }
 
       .back-btn {
          display: inline-block;
@@ -642,39 +843,156 @@
          transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
          box-shadow: 0 8px 20px rgba(120, 56, 243, 0.2);
       }
-      .back-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 25px rgba(120, 56, 243, 0.3); }
+
+      .back-btn:hover {
+         transform: translateY(-2px);
+         box-shadow: 0 12px 25px rgba(120, 56, 243, 0.3);
+      }
 
       /* Footer */
-      .site-footer { background: linear-gradient(145deg, #8546ff, #7838f3); color: white; padding: 50px 0 20px; margin-top: 50px; }
-      .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-      .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-      .footer-section { display: flex; flex-direction: column; }
-      .footer-brand { padding-right: 30px; }
-      .footer-logo { color: white; font-size: 1.5rem; font-weight: bold; text-decoration: none; margin-bottom: 15px; display: inline-block; }
-      .footer-logo:hover { opacity: 0.9; }
-      .footer-tagline { color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.6; margin: 0; }
-      .footer-heading { color: white; font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
-      .footer-heading::after { content: ''; position: absolute; left: 0; bottom: 0; width: 30px; height: 2px; background: rgba(255,255,255,0.5); }
-      .footer-links { list-style: none; padding: 0; margin: 0; }
-      .footer-links li { margin-bottom: 12px; }
-      .footer-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.95rem; transition: all 0.3s ease; display: inline-block; }
-      .footer-links a:hover { color: white; transform: translateX(5px); }
-      .footer-bottom { border-top: 1px solid rgba(255,255,255,0.2); padding-top: 25px; text-align: center; }
-      .footer-bottom p { color: rgba(255,255,255,0.8); font-size: 0.9rem; margin: 0; }
+      .site-footer {
+         background: linear-gradient(145deg, #8546ff, #7838f3);
+         color: white;
+         padding: 50px 0 20px;
+         margin-top: 50px;
+      }
+
+      .footer-container {
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 0 20px;
+      }
+
+      .footer-grid {
+         display: grid;
+         grid-template-columns: 2fr 1fr 1fr;
+         gap: 40px;
+         margin-bottom: 40px;
+      }
+
+      .footer-section {
+         display: flex;
+         flex-direction: column;
+      }
+
+      .footer-brand {
+         padding-right: 30px;
+      }
+
+      .footer-logo {
+         color: white;
+         font-size: 1.5rem;
+         font-weight: bold;
+         text-decoration: none;
+         margin-bottom: 15px;
+         display: inline-block;
+      }
+
+      .footer-logo:hover {
+         opacity: 0.9;
+      }
+
+      .footer-tagline {
+         color: rgba(255, 255, 255, 0.85);
+         font-size: 0.95rem;
+         line-height: 1.6;
+         margin: 0;
+      }
+
+      .footer-heading {
+         color: white;
+         font-size: 1.1rem;
+         font-weight: 600;
+         margin-bottom: 20px;
+         position: relative;
+         padding-bottom: 10px;
+      }
+
+      .footer-heading::after {
+         content: '';
+         position: absolute;
+         left: 0;
+         bottom: 0;
+         width: 30px;
+         height: 2px;
+         background: rgba(255, 255, 255, 0.5);
+      }
+
+      .footer-links {
+         list-style: none;
+         padding: 0;
+         margin: 0;
+      }
+
+      .footer-links li {
+         margin-bottom: 12px;
+      }
+
+      .footer-links a {
+         color: rgba(255, 255, 255, 0.85);
+         text-decoration: none;
+         font-size: 0.95rem;
+         transition: all 0.3s ease;
+         display: inline-block;
+      }
+
+      .footer-links a:hover {
+         color: white;
+         transform: translateX(5px);
+      }
+
+      .footer-bottom {
+         border-top: 1px solid rgba(255, 255, 255, 0.2);
+         padding-top: 25px;
+         text-align: center;
+      }
+
+      .footer-bottom p {
+         color: rgba(255, 255, 255, 0.8);
+         font-size: 0.9rem;
+         margin: 0;
+      }
 
       @media (max-width: 900px) {
-         .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
-         .footer-brand { grid-column: span 2; padding-right: 0; }
+         .footer-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+         }
+
+         .footer-brand {
+            grid-column: span 2;
+            padding-right: 0;
+         }
       }
+
       @media (max-width: 600px) {
-         .site-footer { padding: 40px 0 20px; }
-         .footer-grid { grid-template-columns: 1fr; gap: 25px; }
-         .footer-brand { grid-column: span 1; }
-         .footer-section { text-align: center; }
-         .footer-heading::after { left: 50%; transform: translateX(-50%); }
-         .footer-links a:hover { transform: none; }
+         .site-footer {
+            padding: 40px 0 20px;
+         }
+
+         .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 25px;
+         }
+
+         .footer-brand {
+            grid-column: span 1;
+         }
+
+         .footer-section {
+            text-align: center;
+         }
+
+         .footer-heading::after {
+            left: 50%;
+            transform: translateX(-50%);
+         }
+
+         .footer-links a:hover {
+            transform: none;
+         }
       }
-   
+
       /* Related Games Section */
       .related-games-section {
          max-width: 900px;
@@ -730,7 +1048,6 @@
          box-shadow: 0 4px 12px rgba(120, 56, 243, 0.15);
          color: #3b0764;
       }
-
    </style>
 </head>
 
@@ -755,30 +1072,32 @@
       <div class="game-wrapper" id="gameWrapper">
          <div class="game-header">
             <h2>🔫 CSGO Clicker</h2>
-             <div class="game-stats-bar">
-                <span class="game-stat-pill" id="gStatTotal">0 Skin Credits</span>
-                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
-                <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
-             </div>
+            <div class="game-stats-bar">
+               <span class="game-stat-pill" id="gStatTotal">0 Skin Credits</span>
+               <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+               <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
+            </div>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
                <button class="click-btn" id="clickBtn" aria-label="Open Skin Credit">
                   <span class="emoji">🔫</span>
                </button>
-                <div class="score-display">
-                   <div class="score-number" id="scoreNum">0</div>
-                   <div class="score-label">Skin Credits</div>
-                   <div class="combo-display" id="comboDisplay"></div>
-                </div>
-                <div class="per-second" id="perSecDisplay">0 skin credits/sec</div>
-                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
-                 <div class="progress-bar-container"><div class="progress-bar-fill" id="progressBarFill"></div></div>
-                 <button class="case-btn" id="caseBtn" style="display:none;">📦 Case Ready!</button>
-             </div>
+               <div class="score-display">
+                  <div class="score-number" id="scoreNum">0</div>
+                  <div class="score-label">Skin Credits</div>
+                  <div class="combo-display" id="comboDisplay"></div>
+               </div>
+               <div class="per-second" id="perSecDisplay">0 skin credits/sec</div>
+               <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+               <div class="progress-bar-container">
+                  <div class="progress-bar-fill" id="progressBarFill"></div>
+               </div>
+               <button class="case-btn" id="caseBtn" style="display:none;">📦 Case Ready!</button>
+            </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
-               
+
                <div class="upgrade-card locked" id="upg0" data-idx="0">
                   <div class="upgrade-emoji">📘</div>
                   <div class="upgrade-info">
@@ -847,568 +1166,645 @@
                </div>
             </div>
          </div>
-          <div class="game-footer">
-             <button id="saveBtn">💾 Save</button>
-             <button class="reset-btn" id="resetBtn">🔄 Reset</button>
-             <div class="keyboard-tip">💡 Tip: Press SPACE to click!</div>
-          </div>
+         <div class="game-footer">
+            <button id="saveBtn">💾 Save</button>
+            <button class="reset-btn" id="resetBtn">🔄 Reset</button>
+            <div class="keyboard-tip">💡 Tip: Press SPACE to click!</div>
+         </div>
       </div>
 
       <!-- ===== ARTICLE CONTENT ===== -->
-       <article class="article-container">
-          <div class="intro">
-             <p>CSGO Clicker drops you into the adrenaline-fueled universe of Counter-Strike: Global Offensive, the legendary competitive first-person shooter that defined an era of esports. Since its launch in 2012 by Valve and Hidden Path Entertainment, CS:GO has captivated over 25 million monthly players with its tactical bomb-defusal gameplay, precise gun mechanics, and one of the most lucrative virtual economies in gaming history. This free browser idle game channels that same thrill of chasing rare loot, transforming it into an addictive incremental experience where every click earns you Skin Credits.</p>
-             <p>In this fan-themed clicker, you begin with nothing and gradually build a skin empire worthy of a global elite. Click the weapon icon to earn credits manually, then reinvest your earnings into passive generators named after real CS:GO rarity tiers. Each upgrade reflects an actual in-game classification—from the common blue Mil-Spec skins all the way to the legendary gold knives that can sell for thousands of real dollars on the Steam Community Market. While this is purely a fan tribute with no official connection to Valve and no real gambling mechanics, the thematic authenticity makes every upgrade feel like a genuine unboxing victory.</p>
-             <p>Idle and clicker games have surged in popularity because they perfectly tap into our brain's reward systems through visible, compounding progress. There is something deeply satisfying about watching numbers climb exponentially, knowing that your strategic purchases five minutes ago are now generating passive income while you focus on other tasks. CSGO Clicker wraps that universal psychological appeal in the competitive shooter aesthetic that millions of players worldwide adore. Best of all, this is a completely free browser game with no download required—simply open the page and start collecting.</p>
-             <p>Whether you are a die-hard CS:GO veteran who dreams of unboxing a Karambit Fade, a casual fan of the skin economy, or simply someone looking for a polished incremental game to pass the time, CSGO Clicker delivers hours of low-stakes, high-reward entertainment. The pacing is carefully tuned so you always have a reachable next goal, keeping you locked in that magical "just one more upgrade" loop that makes idle games irresistibly engaging. Compared to other shooters on the site like <a href="/case-clicker/">Case Clicker</a>, this game focuses specifically on the iconic CS:GO rarity ladder.</p>
-          </div>
+      <article class="article-container">
+         <div class="intro">
+            <p>CSGO Clicker drops you into the adrenaline-fueled universe of Counter-Strike: Global Offensive, the
+               legendary competitive first-person shooter that defined an era of esports. Since its launch in 2012 by
+               Valve and Hidden Path Entertainment, CS:GO has captivated over 25 million monthly players with its
+               tactical bomb-defusal gameplay, precise gun mechanics, and one of the most lucrative virtual economies in
+               gaming history. This free browser idle game channels that same thrill of chasing rare loot, transforming
+               it into an addictive incremental experience where every click earns you Skin Credits.</p>
+            <p>In this fan-themed clicker, you begin with nothing and gradually build a skin empire worthy of a global
+               elite. Click the weapon icon to earn credits manually, then reinvest your earnings into passive
+               generators named after real CS:GO rarity tiers. Each upgrade reflects an actual in-game
+               classification—from the common blue Mil-Spec skins all the way to the legendary gold knives that can sell
+               for thousands of real dollars on the Steam Community Market. While this is purely a fan tribute with no
+               official connection to Valve and no real gambling mechanics, the thematic authenticity makes every
+               upgrade feel like a genuine unboxing victory.</p>
+            <p>Idle and clicker games have surged in popularity because they perfectly tap into our brain's reward
+               systems through visible, compounding progress. There is something deeply satisfying about watching
+               numbers climb exponentially, knowing that your strategic purchases five minutes ago are now generating
+               passive income while you focus on other tasks. CSGO Clicker wraps that universal psychological appeal in
+               the competitive shooter aesthetic that millions of players worldwide adore. Best of all, this is a
+               completely free browser game with no download required—simply open the page and start collecting.</p>
+            <p>Whether you are a die-hard CS:GO veteran who dreams of unboxing a Karambit Fade, a casual fan of the skin
+               economy, or simply someone looking for a polished incremental game to pass the time, CSGO Clicker
+               delivers hours of low-stakes, high-reward entertainment. The pacing is carefully tuned so you always have
+               a reachable next goal, keeping you locked in that magical "just one more upgrade" loop that makes idle
+               games irresistibly engaging. Compared to other shooters on the site like <a href="/case-clicker/">Case
+                  Clicker</a>, this game focuses specifically on the iconic CS:GO rarity ladder.</p>
+         </div>
 
-          <section class="section">
-             <h2>How to Play CSGO Clicker</h2>
-             <ol class="tips-list">
-                <li><strong>Start clicking manually.</strong> Click the weapon button or press SPACE to earn your first Skin Credits. Every click gives you +1 credit initially.</li>
-                <li><strong>Buy your first Mil-Spec Drop.</strong> Once you have 15 credits, purchase this starter upgrade to generate +1 credit per second passively. This changes everything.</li>
-                <li><strong>Stack cheap tiers early.</strong> Buy multiple Mil-Spec and Restricted Drops before saving for expensive tiers. Breadth beats depth in the early game.</li>
-                <li><strong>Upgrade Click Power strategically.</strong> When manual clicking still matters for your economy, spend credits to double your per-click output.</li>
-                <li><strong>Unlock higher rarities.</strong> Progress through Classified Drops, Covert Skins, and ultimately the legendary Knife Unbox tier for massive passive gains.</li>
-                <li><strong>Save your progress.</strong> Hit the Save button to store your empire in browser storage, or let the auto-save feature handle it every 30 seconds.</li>
-                 <li><strong>Build your combo.</strong> Click rapidly within 2-second windows to build a combo multiplier. Reach 10 consecutive clicks to trigger a CRITICAL HIT for double points!</li>
-                 <li><strong>Open cases for bonus credits.</strong> Every 500 credits you earn unlocks a free case. Click the 📦 Case Ready! button to open it and win bonus credits based on CS:GO rarity tiers—from common Consumer up to the legendary Knife!</li>
-              </ol>
-          </section>
+         <section class="section">
+            <h2>How to Play CSGO Clicker</h2>
+            <ol class="tips-list">
+               <li><strong>Start clicking manually.</strong> Click the weapon button or press SPACE to earn your first
+                  Skin Credits. Every click gives you +1 credit initially.</li>
+               <li><strong>Buy your first Mil-Spec Drop.</strong> Once you have 15 credits, purchase this starter
+                  upgrade to generate +1 credit per second passively. This changes everything.</li>
+               <li><strong>Stack cheap tiers early.</strong> Buy multiple Mil-Spec and Restricted Drops before saving
+                  for expensive tiers. Breadth beats depth in the early game.</li>
+               <li><strong>Upgrade Click Power strategically.</strong> When manual clicking still matters for your
+                  economy, spend credits to double your per-click output.</li>
+               <li><strong>Unlock higher rarities.</strong> Progress through Classified Drops, Covert Skins, and
+                  ultimately the legendary Knife Unbox tier for massive passive gains.</li>
+               <li><strong>Save your progress.</strong> Hit the Save button to store your empire in browser storage, or
+                  let the auto-save feature handle it every 30 seconds.</li>
+               <li><strong>Build your combo.</strong> Click rapidly within 2-second windows to build a combo multiplier.
+                  Reach 10 consecutive clicks to trigger a CRITICAL HIT for double points!</li>
+               <li><strong>Open cases for bonus credits.</strong> Every 500 credits you earn unlocks a free case. Click
+                  the 📦 Case Ready! button to open it and win bonus credits based on CS:GO rarity tiers—from common
+                  Consumer up to the legendary Knife!</li>
+            </ol>
+         </section>
 
-          <section class="section">
-             <h2>CSGO Clicker Strategy Guide</h2>
-             <p>The key to mastering CSGO Clicker is understanding the opportunity cost of every purchase. In the opening minutes, your manual clicks dominate your income, making Click Power upgrades incredibly efficient. A good rule of thumb is to buy Click Power whenever the next generator feels more than a minute away. However, once you have stacked several Classified Drops or unlocked your first Covert Skin, passive income begins to overshadow manual clicking, and your strategy should shift toward generator breadth.</p>
-             <p>Mid-game optimization revolves around the 1.15x cost scaling curve. Because each additional copy of the same generator costs 15% more than the last, there is a sweet spot where buying one copy of the next tier up is less efficient than buying two or three copies of the current tier. Experienced players often maintain a roughly 5:3:2:1:0 ratio of Mil-Spec:Restricted:Classified:Covert:Knife in the early mid-game. This balanced portfolio ensures steady growth without over-investing in any single tier whose costs have inflated too high.</p>
-              <p>Late game strategy is all about scale. Once you have unlocked Knife Unboxes, your income enters exponential territory. At this stage, milestones like 100,000 and 1 million Skin Credits become achievable through AFK grinding. The progress bar below your score helps you visualize exactly how close you are to the next upgrade, eliminating guesswork. Players who enjoy this scaling pattern may also appreciate <a href="/money-clicker/">Money Clicker</a> for a similar numerical climb with a different theme.</p>
-              <p>Do not forget to open your cases strategically. Since every 500 earned credits unlocks a case, higher passive income means cases arrive faster. The case bonus is multiplied by rarity, so landing a Covert or Knife case can instantly fund your next major upgrade. Many experienced players time their case openings right before a big purchase, using the bonus to push them over the cost threshold for the next generator tier.</p>
-           </section>
+         <section class="section">
+            <h2>CSGO Clicker Strategy Guide</h2>
+            <p>The key to mastering CSGO Clicker is understanding the opportunity cost of every purchase. In the opening
+               minutes, your manual clicks dominate your income, making Click Power upgrades incredibly efficient. A
+               good rule of thumb is to buy Click Power whenever the next generator feels more than a minute away.
+               However, once you have stacked several Classified Drops or unlocked your first Covert Skin, passive
+               income begins to overshadow manual clicking, and your strategy should shift toward generator breadth.</p>
+            <p>Mid-game optimization revolves around the 1.15x cost scaling curve. Because each additional copy of the
+               same generator costs 15% more than the last, there is a sweet spot where buying one copy of the next tier
+               up is less efficient than buying two or three copies of the current tier. Experienced players often
+               maintain a roughly 5:3:2:1:0 ratio of Mil-Spec:Restricted:Classified:Covert:Knife in the early mid-game.
+               This balanced portfolio ensures steady growth without over-investing in any single tier whose costs have
+               inflated too high.</p>
+            <p>Late game strategy is all about scale. Once you have unlocked Knife Unboxes, your income enters
+               exponential territory. At this stage, milestones like 100,000 and 1 million Skin Credits become
+               achievable through AFK grinding. The progress bar below your score helps you visualize exactly how close
+               you are to the next upgrade, eliminating guesswork. Players who enjoy this scaling pattern may also
+               appreciate <a href="/money-clicker/">Money Clicker</a> for a similar numerical climb with a different
+               theme.</p>
+            <p>Do not forget to open your cases strategically. Since every 500 earned credits unlocks a case, higher
+               passive income means cases arrive faster. The case bonus is multiplied by rarity, so landing a Covert or
+               Knife case can instantly fund your next major upgrade. Many experienced players time their case openings
+               right before a big purchase, using the bonus to push them over the cost threshold for the next generator
+               tier.</p>
+         </section>
 
-          <section class="section faq-section">
-             <h2>Frequently Asked Questions</h2>
-             <div class="faq-item active">
-                <h3>Is CSGO Clicker an official Counter-Strike game?</h3>
-                <p>No. CSGO Clicker is a fan-made idle clicker inspired by Counter-Strike: Global Offensive. It is not affiliated with Valve Corporation, CS2, or any official Counter-Strike property. There are no real skins, no Steam inventory connections, and no actual gambling mechanics.</p>
-             </div>
-             <div class="faq-item">
-                <h3>Do I need to download anything to play?</h3>
-                <p>Absolutely not. CSGO Clicker is a free browser game that runs entirely in your web browser using HTML, CSS, and JavaScript. It works on desktop, tablet, and mobile devices without any installation.</p>
-             </div>
-             <div class="faq-item">
-                <h3>How does the combo system work?</h3>
-                <p>Every time you click within 2 seconds of your previous click, your combo counter increases. If you reach a 10-click combo, your next click becomes a CRITICAL HIT that awards double points. The combo display updates in real time below your score.</p>
-             </div>
-             <div class="faq-item">
-                <h3>What happens when I reach a milestone?</h3>
-                <p>When your score hits 1,000, 10,000, 100,000, or 1,000,000 Skin Credits, a celebratory milestone banner appears briefly in the center of the click area to congratulate your progress.</p>
-             </div>
-             <div class="faq-item">
-                <h3>Is my progress saved?</h3>
-                <p>Yes. Your progress is automatically saved to your browser's local storage every 30 seconds. You can also click the Save button to force an immediate save. If you clear your browser data, your progress will be reset.</p>
-             </div>
-              <div class="faq-item">
-                 <h3>Why are idle games like this so addictive?</h3>
-                 <p>Idle games tap into our brain's dopamine reward system through frequent, visible progress and compounding returns. The "number go up" feedback loop, combined with always having an affordable next goal, creates a powerful psychological hook that keeps players engaged for hours.</p>
-              </div>
-              <div class="faq-item">
-                 <h3>What are case openings?</h3>
-                 <p>Case openings are a bonus mechanic inspired by CS:GO's iconic weapon cases. Every 500 credits you earn unlocks a free case that you can open for an instant bonus. The reward scales with rarity—Consumer (×1), Industrial (×2), Mil-Spec (×5), Restricted (×10), Classified (×25), Covert (×50), and the ultra-rare Knife (×200). It is purely a fun reward system with no real-money cost or gambling risk.</p>
-              </div>
-           </section>
+         <section class="section faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item active">
+               <h3>Is CSGO Clicker an official Counter-Strike game?</h3>
+               <p>No. CSGO Clicker is a fan-made idle clicker inspired by Counter-Strike: Global Offensive. It is not
+                  affiliated with Valve Corporation, CS2, or any official Counter-Strike property. There are no real
+                  skins, no Steam inventory connections, and no actual gambling mechanics.</p>
+            </div>
+            <div class="faq-item">
+               <h3>Do I need to download anything to play?</h3>
+               <p>Absolutely not. CSGO Clicker is a free browser game that runs entirely in your web browser using HTML,
+                  CSS, and JavaScript. It works on desktop, tablet, and mobile devices without any installation.</p>
+            </div>
+            <div class="faq-item">
+               <h3>How does the combo system work?</h3>
+               <p>Every time you click within 2 seconds of your previous click, your combo counter increases. If you
+                  reach a 10-click combo, your next click becomes a CRITICAL HIT that awards double points. The combo
+                  display updates in real time below your score.</p>
+            </div>
+            <div class="faq-item">
+               <h3>What happens when I reach a milestone?</h3>
+               <p>When your score hits 1,000, 10,000, 100,000, or 1,000,000 Skin Credits, a celebratory milestone banner
+                  appears briefly in the center of the click area to congratulate your progress.</p>
+            </div>
+            <div class="faq-item">
+               <h3>Is my progress saved?</h3>
+               <p>Yes. Your progress is automatically saved to your browser's local storage every 30 seconds. You can
+                  also click the Save button to force an immediate save. If you clear your browser data, your progress
+                  will be reset.</p>
+            </div>
+            <div class="faq-item">
+               <h3>Why are idle games like this so addictive?</h3>
+               <p>Idle games tap into our brain's dopamine reward system through frequent, visible progress and
+                  compounding returns. The "number go up" feedback loop, combined with always having an affordable next
+                  goal, creates a powerful psychological hook that keeps players engaged for hours.</p>
+            </div>
+            <div class="faq-item">
+               <h3>What are case openings?</h3>
+               <p>Case openings are a bonus mechanic inspired by CS:GO's iconic weapon cases. Every 500 credits you earn
+                  unlocks a free case that you can open for an instant bonus. The reward scales with rarity—Consumer
+                  (×1), Industrial (×2), Mil-Spec (×5), Restricted (×10), Classified (×25), Covert (×50), and the
+                  ultra-rare Knife (×200). It is purely a fun reward system with no real-money cost or gambling risk.
+               </p>
+            </div>
+         </section>
 
-          <section class="section">
-             <h2>Why Play CSGO Clicker?</h2>
-             <p>CSGO Clicker stands out from generic idle games by wrapping its mechanics in one of gaming's most iconic franchises. The thrill of "unboxing" a Knife Unbox tier triggers the same emotional response that millions of CS:GO players feel when opening actual cases—except here, the outcome is deterministic and fair, with no real-money risk. This makes it the perfect way to experience the skin-collecting fantasy without any of the downsides of real loot boxes.</p>
-             <p>From a psychological perspective, the game excels at creating "flow state"—that mental zone where challenge and skill are perfectly balanced. Early on, rapid clicking and strategic purchasing decisions keep you fully engaged. Later, the massive passive income lets you relax and watch your empire grow. This dual-mode engagement is rare in clicker games and explains why players keep returning. If you enjoy this blend of action and relaxation, you might also love <a href="/chill-guy-clicker/">Chill Guy Clicker</a> for a more laid-back vibe, or <a href="/cookie-clicker/">Cookie Clicker</a> for the classic incremental experience.</p>
-          </section>
+         <section class="section">
+            <h2>Why Play CSGO Clicker?</h2>
+            <p>CSGO Clicker stands out from generic idle games by wrapping its mechanics in one of gaming's most iconic
+               franchises. The thrill of "unboxing" a Knife Unbox tier triggers the same emotional response that
+               millions of CS:GO players feel when opening actual cases—except here, the outcome is deterministic and
+               fair, with no real-money risk. This makes it the perfect way to experience the skin-collecting fantasy
+               without any of the downsides of real loot boxes.</p>
+            <p>From a psychological perspective, the game excels at creating "flow state"—that mental zone where
+               challenge and skill are perfectly balanced. Early on, rapid clicking and strategic purchasing decisions
+               keep you fully engaged. Later, the massive passive income lets you relax and watch your empire grow. This
+               dual-mode engagement is rare in clicker games and explains why players keep returning. If you enjoy this
+               blend of action and relaxation, you might also love <a href="/chill-guy-clicker/">Chill Guy Clicker</a>
+               for a more laid-back vibe, or <a href="/cookie-clicker/">Cookie Clicker</a> for the classic incremental
+               experience.</p>
+         </section>
 
-          <section class="section">
-             <div class="fun-facts">
-                <h3>Did You Know? CS:GO Fun Facts</h3>
-                <ul>
-                   <li>The most expensive CS:GO skin ever sold was a StatTrak M9 Bayonet Crimson Web for over $60,000.</li>
-                   <li>CS:GO cases were first introduced in the "Arms Deal" update in August 2013, revolutionizing the game's economy.</li>
-                   <li>There are over 30 different knife types in CS:GO, each with unique animations and rare patterns like "Fade" and "Doppler."</li>
-                   <li>The rarest item drop chance from a standard case is approximately 0.26% for a special item (knife or gloves).</li>
-                   <li>CS:GO became free-to-play in December 2018, causing the player base to surge past one million concurrent players.</li>
-                </ul>
-             </div>
-          </section>
+         <section class="section">
+            <div class="fun-facts">
+               <h3>Did You Know? CS:GO Fun Facts</h3>
+               <ul>
+                  <li>The most expensive CS:GO skin ever sold was a StatTrak M9 Bayonet Crimson Web for over $60,000.
+                  </li>
+                  <li>CS:GO cases were first introduced in the "Arms Deal" update in August 2013, revolutionizing the
+                     game's economy.</li>
+                  <li>There are over 30 different knife types in CS:GO, each with unique animations and rare patterns
+                     like "Fade" and "Doppler."</li>
+                  <li>The rarest item drop chance from a standard case is approximately 0.26% for a special item (knife
+                     or gloves).</li>
+                  <li>CS:GO became free-to-play in December 2018, causing the player base to surge past one million
+                     concurrent players.</li>
+               </ul>
+            </div>
+         </section>
 
-          <div style="text-align: center;">
-          </div>
-       </article>
+         <div style="text-align: center;">
+         </div>
+      </article>
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
          <p class="related-games-subtitle">Discover more free online clicker games to play</p>
          <div class="related-games-grid">
-                  <a href="/cookie-clicker/" class="related-game-link">🍪 Cookie Clicker</a>
-                  <a href="/planet-clicker/" class="related-game-link">🌍 Planet Clicker</a>
-                  <a href="/chill-guy-clicker/" class="related-game-link">😎 Chill Guy Clicker</a>
-                  <a href="/capybara-clicker/" class="related-game-link">🦫 Capybara Clicker</a>
-                  <a href="/op-auto-clicker/" class="related-game-link">🖱️ OP Auto Clicker</a>
-                  <a href="/italian-brainrot-clicker/" class="related-game-link">🇮🇹 Italian Brainrot Clicker</a>
-                  <a href="/brainrot-clicker/" class="related-game-link">🧠 Brainrot Clicker</a>
-                  <a href="/candy-clicker/" class="related-game-link">🍬 Candy Clicker</a>
-                  <a href="/duck-duck-clicker/" class="related-game-link">🦆 Duck Duck Clicker</a>
-                  <a href="/cookie-clicker-2/" class="related-game-link">🍪 Cookie Clicker 2</a>
-                  <a href="/stimulation-clicker/" class="related-game-link">✨ Stimulation Clicker</a>
-                  <a href="/clicker-counter/" class="related-game-link">🔢 Clicker Counter</a>
-                  <a href="/candy-clicker-2/" class="related-game-link">🍭 Candy Clicker 2</a>
-                  <a href="/sprunki-clicker/" class="related-game-link">🎵 Sprunki Clicker</a>
-                  <a href="/roblox-clicker/" class="related-game-link">🟩 Roblox Clicker</a>
-                  <a href="/planet-clicker-2/" class="related-game-link">🪐 Planet Clicker 2</a>
-                  <a href="/duck-clicker/" class="related-game-link">🐤 Duck Clicker</a>
-                  <a href="/whopper-clicker/" class="related-game-link">🍔 Whopper Clicker</a>
-                  <a href="/chicken-jockey-clicker/" class="related-game-link">🐔 Chicken Jockey Clicker</a>
-                  <a href="/capybara-clicker-2/" class="related-game-link">🦫 Capybara Clicker 2</a>
-                  <a href="/tube-clicker/" class="related-game-link">▶️ Tube Clicker</a>
-                  <a href="/pokemon-clicker/" class="related-game-link">⚡ Pokemon Clicker</a>
-                  <a href="/gs-auto-clicker/" class="related-game-link">⚙️ GS Auto Clicker</a>
-                  <a href="/earth-clicker/" class="related-game-link">🌎 Earth Clicker</a>
-                  <a href="/pizza-clicker/" class="related-game-link">🍕 Pizza Clicker</a>
-                  <a href="/duck-duck-clicker-3d/" class="related-game-link">🦆 Duck Duck Clicker 3D</a>
-                  <a href="/case-clicker/" class="related-game-link">📦 Case Clicker</a>
-                  <a href="/kiwi-clicker/" class="related-game-link">🥝 Kiwi Clicker</a>
-                  <a href="/money-clicker/" class="related-game-link">💵 Money Clicker</a>
-                  <a href="/tung-tung-tung-sahur-clicker/" class="related-game-link">🔔 Tung Tung Tung Sahur Clicker</a>
-                  <a href="/labubu-clicker/" class="related-game-link">🧸 Labubu Clicker</a>
-                  <a href="/room-clicker/" class="related-game-link">🏠 Room Clicker</a>
-                  <a href="/case-clicker-2/" class="related-game-link">🎰 Case Clicker 2</a>
-                  <a href="/plant-clicker/" class="related-game-link">🌱 Plant Clicker</a>
-                  <a href="/particle-clicker/" class="related-game-link">⚛️ Particle Clicker</a>
-                  <a href="/burger-clicker/" class="related-game-link">🍔 Burger Clicker</a>
-                  <a href="/coin-clicker/" class="related-game-link">🪙 Coin Clicker</a>
-                  <a href="/dog-clicker/" class="related-game-link">🐕 Dog Clicker</a>
-                  <a href="/santa-clicker/" class="related-game-link">🎅 Santa Clicker</a>
-                  <a href="/chill-girl-clicker/" class="related-game-link">💆‍♀️ Chill Girl Clicker</a>
-                  <a href="/robux-clicker/" class="related-game-link">💎 Robux Clicker</a>
-                  <a href="/minecraft-clicker/" class="related-game-link">⛏️ Minecraft Clicker</a>
+            <a href="/cookie-clicker/" class="related-game-link">🍪 Cookie Clicker</a>
+            <a href="/planet-clicker/" class="related-game-link">🌍 Planet Clicker</a>
+            <a href="/chill-guy-clicker/" class="related-game-link">😎 Chill Guy Clicker</a>
+            <a href="/capybara-clicker/" class="related-game-link">🦫 Capybara Clicker</a>
+            <a href="/op-auto-clicker/" class="related-game-link">🖱️ OP Auto Clicker</a>
+            <a href="/italian-brainrot-clicker/" class="related-game-link">🇮🇹 Italian Brainrot Clicker</a>
+            <a href="/brainrot-clicker/" class="related-game-link">🧠 Brainrot Clicker</a>
+            <a href="/candy-clicker/" class="related-game-link">🍬 Candy Clicker</a>
+            <a href="/duck-duck-clicker/" class="related-game-link">🦆 Duck Duck Clicker</a>
+            <a href="/cookie-clicker-2/" class="related-game-link">🍪 Cookie Clicker 2</a>
+            <a href="/stimulation-clicker/" class="related-game-link">✨ Stimulation Clicker</a>
+            <a href="/clicker-counter/" class="related-game-link">🔢 Clicker Counter</a>
+            <a href="/candy-clicker-2/" class="related-game-link">🍭 Candy Clicker 2</a>
+            <a href="/sprunki-clicker/" class="related-game-link">🎵 Sprunki Clicker</a>
+            <a href="/roblox-clicker/" class="related-game-link">🟩 Roblox Clicker</a>
+            <a href="/planet-clicker-2/" class="related-game-link">🪐 Planet Clicker 2</a>
+            <a href="/duck-clicker/" class="related-game-link">🐤 Duck Clicker</a>
+            <a href="/whopper-clicker/" class="related-game-link">🍔 Whopper Clicker</a>
+            <a href="/chicken-jockey-clicker/" class="related-game-link">🐔 Chicken Jockey Clicker</a>
+            <a href="/capybara-clicker-2/" class="related-game-link">🦫 Capybara Clicker 2</a>
+            <a href="/tube-clicker/" class="related-game-link">▶️ Tube Clicker</a>
+            <a href="/pokemon-clicker/" class="related-game-link">⚡ Pokemon Clicker</a>
+            <a href="/gs-auto-clicker/" class="related-game-link">⚙️ GS Auto Clicker</a>
+            <a href="/earth-clicker/" class="related-game-link">🌎 Earth Clicker</a>
+            <a href="/pizza-clicker/" class="related-game-link">🍕 Pizza Clicker</a>
+            <a href="/duck-duck-clicker-3d/" class="related-game-link">🦆 Duck Duck Clicker 3D</a>
+            <a href="/case-clicker/" class="related-game-link">📦 Case Clicker</a>
+            <a href="/kiwi-clicker/" class="related-game-link">🥝 Kiwi Clicker</a>
+            <a href="/money-clicker/" class="related-game-link">💵 Money Clicker</a>
+            <a href="/tung-tung-tung-sahur-clicker/" class="related-game-link">🔔 Tung Tung Tung Sahur Clicker</a>
+            <a href="/labubu-clicker/" class="related-game-link">🧸 Labubu Clicker</a>
+            <a href="/room-clicker/" class="related-game-link">🏠 Room Clicker</a>
+            <a href="/case-clicker-2/" class="related-game-link">🎰 Case Clicker 2</a>
+            <a href="/plant-clicker/" class="related-game-link">🌱 Plant Clicker</a>
+            <a href="/particle-clicker/" class="related-game-link">⚛️ Particle Clicker</a>
+            <a href="/burger-clicker/" class="related-game-link">🍔 Burger Clicker</a>
+            <a href="/coin-clicker/" class="related-game-link">🪙 Coin Clicker</a>
+            <a href="/dog-clicker/" class="related-game-link">🐕 Dog Clicker</a>
+            <a href="/santa-clicker/" class="related-game-link">🎅 Santa Clicker</a>
+            <a href="/chill-girl-clicker/" class="related-game-link">💆‍♀️ Chill Girl Clicker</a>
+            <a href="/robux-clicker/" class="related-game-link">💎 Robux Clicker</a>
+            <a href="/minecraft-clicker/" class="related-game-link">⛏️ Minecraft Clicker</a>
          </div>
       </div>
 
    </div>
 
    <script>
-   (function() {
-      const SAVE_KEY = 'csgo_clicker_save';
-      const UPGRADES = [{"name":"Mil-Spec Drop","emoji":"📘","baseCost":15,"baseRate":1,"desc":"+1 credit/sec"},{"name":"Restricted Drop","emoji":"📕","baseCost":100,"baseRate":5,"desc":"+5 credits/sec"},{"name":"Classified Drop","emoji":"📗","baseCost":500,"baseRate":20,"desc":"+20 credits/sec"},{"name":"Covert Skin","emoji":"🗡️","baseCost":2500,"baseRate":100,"desc":"+100 credits/sec"},{"name":"Knife Unbox","emoji":"🔪","baseCost":15000,"baseRate":500,"desc":"+500 credits/sec"}];
-      const COST_SCALE = 1.15;
+      (function () {
+         const SAVE_KEY = 'csgo_clicker_save';
+         const UPGRADES = [{ "name": "Mil-Spec Drop", "emoji": "📘", "baseCost": 15, "baseRate": 1, "desc": "+1 credit/sec" }, { "name": "Restricted Drop", "emoji": "📕", "baseCost": 100, "baseRate": 5, "desc": "+5 credits/sec" }, { "name": "Classified Drop", "emoji": "📗", "baseCost": 500, "baseRate": 20, "desc": "+20 credits/sec" }, { "name": "Covert Skin", "emoji": "🗡️", "baseCost": 2500, "baseRate": 100, "desc": "+100 credits/sec" }, { "name": "Knife Unbox", "emoji": "🔪", "baseCost": 15000, "baseRate": 500, "desc": "+500 credits/sec" }];
+         const COST_SCALE = 1.15;
 
-       let score = 0;
-       let totalEarned = 0;
-       let clickPower = 1;
-       let clickPowerLevel = 1;
-       let clickPowerCost = 50;
-       let perSecond = 0;
-       let upgradeOwned = UPGRADES.map(() => 0);
-       let nextCaseAt = 500;
+         let score = 0;
+         let totalEarned = 0;
+         let clickPower = 1;
+         let clickPowerLevel = 1;
+         let clickPowerCost = 50;
+         let perSecond = 0;
+         let upgradeOwned = UPGRADES.map(() => 0);
+         let nextCaseAt = 500;
 
-      // New features state
-      let comboCount = 0;
-      let lastClickTime = 0;
-      const COMBO_TIMEOUT = 2000;
-      const milestonesReached = new Set();
-      const MILESTONES = [1000, 10000, 100000, 1000000];
-      const PARTICLES = ['💥', '🔥', '⭐', '🎯'];
+         // New features state
+         let comboCount = 0;
+         let lastClickTime = 0;
+         const COMBO_TIMEOUT = 2000;
+         const milestonesReached = new Set();
+         const MILESTONES = [1000, 10000, 100000, 1000000];
+         const PARTICLES = ['💥', '🔥', '⭐', '🎯'];
 
-      // DOM
-      const scoreNum = document.getElementById('scoreNum');
-      const perSecDisplay = document.getElementById('perSecDisplay');
-      const clickPowerInfo = document.getElementById('clickPowerInfo');
-      const gStatTotal = document.getElementById('gStatTotal');
-      const gStatPerSec = document.getElementById('gStatPerSec');
-      const clickBtn = document.getElementById('clickBtn');
-      const clickArea = document.getElementById('clickArea');
-      const comboDisplay = document.getElementById('comboDisplay');
-      const progressBarFill = document.getElementById('progressBarFill');
+         // DOM
+         const scoreNum = document.getElementById('scoreNum');
+         const perSecDisplay = document.getElementById('perSecDisplay');
+         const clickPowerInfo = document.getElementById('clickPowerInfo');
+         const gStatTotal = document.getElementById('gStatTotal');
+         const gStatPerSec = document.getElementById('gStatPerSec');
+         const clickBtn = document.getElementById('clickBtn');
+         const clickArea = document.getElementById('clickArea');
+         const comboDisplay = document.getElementById('comboDisplay');
+         const progressBarFill = document.getElementById('progressBarFill');
 
-      function formatNum(n) {
-         if (n < 1000) return Math.floor(n).toLocaleString();
-         if (n < 1e6) return (n/1e3).toFixed(1) + 'K';
-         if (n < 1e9) return (n/1e6).toFixed(1) + 'M';
-         if (n < 1e12) return (n/1e9).toFixed(1) + 'B';
-         return (n/1e12).toFixed(1) + 'T';
-      }
+         function formatNum(n) {
+            if (n < 1000) return Math.floor(n).toLocaleString();
+            if (n < 1e6) return (n / 1e3).toFixed(1) + 'K';
+            if (n < 1e9) return (n / 1e6).toFixed(1) + 'M';
+            if (n < 1e12) return (n / 1e9).toFixed(1) + 'B';
+            return (n / 1e12).toFixed(1) + 'T';
+         }
 
-      function getCost(baseC, owned) {
-         return Math.floor(baseC * Math.pow(COST_SCALE, owned));
-      }
+         function getCost(baseC, owned) {
+            return Math.floor(baseC * Math.pow(COST_SCALE, owned));
+         }
 
-      function recalcPerSecond() {
-         perSecond = 0;
-         UPGRADES.forEach((u, i) => {
-            perSecond += u.baseRate * upgradeOwned[i];
-         });
-      }
+         function recalcPerSecond() {
+            perSecond = 0;
+            UPGRADES.forEach((u, i) => {
+               perSecond += u.baseRate * upgradeOwned[i];
+            });
+         }
 
-      function render() {
-         scoreNum.textContent = formatNum(score);
-         perSecDisplay.textContent = formatNum(perSecond) + ' skin credits/sec';
-         clickPowerInfo.textContent = '+' + formatNum(clickPower) + ' per click';
-         gStatTotal.textContent = formatNum(score) + ' Skin Credits';
-         gStatPerSec.textContent = formatNum(perSecond) + '/sec';
+         function render() {
+            scoreNum.textContent = formatNum(score);
+            perSecDisplay.textContent = formatNum(perSecond) + ' skin credits/sec';
+            clickPowerInfo.textContent = '+' + formatNum(clickPower) + ' per click';
+            gStatTotal.textContent = formatNum(score) + ' Skin Credits';
+            gStatPerSec.textContent = formatNum(perSecond) + '/sec';
 
-         UPGRADES.forEach((u, i) => {
-            const card = document.getElementById('upg' + i);
-            const cost = getCost(u.baseCost, upgradeOwned[i]);
-            document.getElementById('upgCost' + i).textContent = formatNum(cost);
-            document.getElementById('upgOwned' + i).textContent = 'Owned: ' + upgradeOwned[i];
-            if (score >= cost) {
-               card.classList.remove('locked');
+            UPGRADES.forEach((u, i) => {
+               const card = document.getElementById('upg' + i);
+               const cost = getCost(u.baseCost, upgradeOwned[i]);
+               document.getElementById('upgCost' + i).textContent = formatNum(cost);
+               document.getElementById('upgOwned' + i).textContent = 'Owned: ' + upgradeOwned[i];
+               if (score >= cost) {
+                  card.classList.remove('locked');
+               } else {
+                  card.classList.add('locked');
+               }
+            });
+
+            // Click power upgrade
+            const cpCard = document.getElementById('upgClickPower');
+            document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
+            document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
+            if (score >= clickPowerCost) {
+               cpCard.classList.remove('locked');
             } else {
-               card.classList.add('locked');
+               cpCard.classList.add('locked');
             }
+         }
+
+         function getThemeEmojiText(amount, isCritical) {
+            const EMOJI = '🔪';
+            if (isCritical) return '⭐' + EMOJI + '⭐';
+            if (amount <= 1) return EMOJI;
+            if (amount <= 5) return EMOJI.repeat(amount);
+            return EMOJI.repeat(3) + ' ×' + formatNum(amount);
+         }
+
+         function showClickFloat(x, y, text, isCritical) {
+            const el = document.createElement('div');
+            el.className = 'click-float';
+            el.textContent = text != null ? text : getThemeEmojiText(clickPower, isCritical);
+            el.style.left = x + 'px';
+            el.style.top = y + 'px';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 700);
+         }
+
+         function updateCombo() {
+            const now = Date.now();
+            if (now - lastClickTime < COMBO_TIMEOUT) {
+               comboCount++;
+            } else {
+               comboCount = 1;
+            }
+            lastClickTime = now;
+            if (comboDisplay) {
+               comboDisplay.textContent = comboCount > 1 ? '🔥 Combo x' + comboCount : '';
+            }
+            if (comboCount >= 10 && comboCount % 10 === 0) {
+               showCriticalHit();
+               return 2;
+            }
+            return 1;
+         }
+
+         function showCriticalHit() {
+            const el = document.createElement('div');
+            el.className = 'critical-popup';
+            el.textContent = 'CRITICAL HIT!';
+            const rect = clickArea.getBoundingClientRect();
+            el.style.left = (rect.width / 2 - 60) + 'px';
+            el.style.top = (rect.height / 2 - 80) + 'px';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 800);
+         }
+
+         function updateProgressBar() {
+            if (!progressBarFill) return;
+            let nextCost = Infinity;
+            let found = false;
+            UPGRADES.forEach((u, i) => {
+               const cost = getCost(u.baseCost, upgradeOwned[i]);
+               if (cost > score && cost < nextCost) {
+                  nextCost = cost;
+                  found = true;
+               }
+            });
+            if (clickPowerCost > score && clickPowerCost < nextCost) {
+               nextCost = clickPowerCost;
+               found = true;
+            }
+            if (!found) {
+               progressBarFill.style.width = '100%';
+               return;
+            }
+            const prevCost = nextCost / COST_SCALE;
+            const progress = Math.max(0, Math.min(100, ((score - prevCost) / (nextCost - prevCost)) * 100));
+            progressBarFill.style.width = progress + '%';
+         }
+
+         function checkMilestones() {
+            MILESTONES.forEach(m => {
+               if (score >= m && !milestonesReached.has(m)) {
+                  milestonesReached.add(m);
+                  showMilestone(m);
+               }
+            });
+         }
+
+         function showMilestone(value) {
+            const banner = document.createElement('div');
+            banner.className = 'milestone-banner';
+            banner.textContent = '🎉 Milestone: ' + formatNum(value) + '!';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(banner);
+            setTimeout(() => banner.remove(), 3000);
+         }
+
+         function checkCaseReady() {
+            const btn = document.getElementById('caseBtn');
+            if (!btn) return;
+            btn.style.display = totalEarned >= nextCaseAt ? 'block' : 'none';
+         }
+
+         function openCase() {
+            const RARITIES = [
+               { name: 'Consumer', color: '#b0c3d9', mult: 1, weight: 40 },
+               { name: 'Industrial', color: '#5e98d9', mult: 2, weight: 25 },
+               { name: 'Mil-Spec', color: '#4b69ff', mult: 5, weight: 15 },
+               { name: 'Restricted', color: '#8847ff', mult: 10, weight: 10 },
+               { name: 'Classified', color: '#d32ce6', mult: 25, weight: 5 },
+               { name: 'Covert', color: '#eb4b4b', mult: 50, weight: 3 },
+               { name: 'Knife', color: '#ffd700', mult: 200, weight: 2 }
+            ];
+            const totalWeight = RARITIES.reduce((s, r) => s + r.weight, 0);
+            let rand = Math.random() * totalWeight;
+            let chosen = RARITIES[0];
+            for (const r of RARITIES) {
+               if (rand < r.weight) { chosen = r; break; }
+               rand -= r.weight;
+            }
+            const baseReward = 50;
+            const bonus = baseReward * chosen.mult;
+            const overlay = document.createElement('div');
+            overlay.className = 'case-opening';
+            overlay.style.border = '3px solid ' + chosen.color;
+            const scrollDiv = document.createElement('div');
+            scrollDiv.className = 'case-scroll';
+            overlay.appendChild(scrollDiv);
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(overlay);
+            const scrollCount = 3 + Math.floor(Math.random() * 3);
+            let step = 0;
+            const interval = setInterval(() => {
+               step++;
+               const tempRarity = RARITIES[Math.floor(Math.random() * RARITIES.length)];
+               scrollDiv.textContent = tempRarity.name;
+               scrollDiv.style.color = tempRarity.color;
+               if (step >= scrollCount) {
+                  clearInterval(interval);
+                  scrollDiv.textContent = chosen.name;
+                  scrollDiv.style.color = chosen.color;
+                  const resultDiv = document.createElement('div');
+                  resultDiv.className = 'case-result';
+                  resultDiv.textContent = '★ ' + chosen.name + ' ★';
+                  resultDiv.style.color = chosen.color;
+                  overlay.appendChild(resultDiv);
+                  const bonusDiv = document.createElement('div');
+                  bonusDiv.className = 'case-bonus';
+                  bonusDiv.textContent = '+' + formatNum(bonus) + ' Skin Credits';
+                  overlay.appendChild(bonusDiv);
+                  score += bonus;
+                  totalEarned += bonus;
+                  render();
+                  updateProgressBar();
+                  checkCaseReady();
+                  overlay.style.animation = 'caseFlash 0.5s ease-out';
+                  setTimeout(() => overlay.remove(), 2000);
+               }
+            }, 300);
+            nextCaseAt += 500;
+            document.getElementById('caseBtn').style.display = 'none';
+         }
+
+         function spawnParticle() {
+            if (document.hidden) return;
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.textContent = PARTICLES[Math.floor(Math.random() * PARTICLES.length)];
+            const rect = clickArea.getBoundingClientRect();
+            p.style.left = (Math.random() * rect.width * 0.6 + rect.width * 0.2) + 'px';
+            p.style.top = (rect.height * 0.3) + 'px';
+            clickArea.appendChild(p);
+            setTimeout(() => p.remove(), 2500);
+         }
+
+         function doClick(e) {
+            const mult = updateCombo();
+            const power = clickPower * mult;
+            score += power;
+            totalEarned += power;
+
+            clickBtn.classList.add('pressed');
+            setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+
+            // Float position
+            const rect = clickArea.getBoundingClientRect();
+            let cx, cy;
+            if (e && e.clientX) {
+               cx = e.clientX - rect.left;
+               cy = e.clientY - rect.top;
+            } else {
+               cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+               cy = rect.height / 2 - 30;
+            }
+            showClickFloat(cx, cy, null, mult === 2);
+            if (mult === 2) {
+               const cel = document.createElement('div');
+               cel.className = 'click-float';
+               cel.textContent = getThemeEmojiText(power, true);
+               cel.style.left = (cx + 20) + 'px';
+               cel.style.top = (cy - 20) + 'px';
+               cel.style.color = '#dc2626';
+               clickArea.appendChild(cel);
+               setTimeout(() => cel.remove(), 700);
+            }
+            checkMilestones();
+            checkCaseReady();
+            render();
+            updateProgressBar();
+         }
+
+         clickBtn.addEventListener('click', doClick);
+         clickBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            doClick(e.touches[0]);
+         });
+
+         // Keyboard: spacebar
+         document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space' && !e.repeat) {
+               e.preventDefault();
+               doClick(null);
+            }
+         });
+
+         // Buy upgrades
+         UPGRADES.forEach((u, i) => {
+            document.getElementById('upg' + i).addEventListener('click', () => {
+               const cost = getCost(u.baseCost, upgradeOwned[i]);
+               if (score >= cost) {
+                  score -= cost;
+                  upgradeOwned[i]++;
+                  recalcPerSecond();
+                  render();
+               }
+            });
          });
 
          // Click power upgrade
-         const cpCard = document.getElementById('upgClickPower');
-         document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
-         document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
-         if (score >= clickPowerCost) {
-            cpCard.classList.remove('locked');
-         } else {
-            cpCard.classList.add('locked');
-         }
-      }
-
-      function getThemeEmojiText(amount, isCritical) {
-         const EMOJI = '🔪';
-         if (isCritical) return '⭐' + EMOJI + '⭐';
-         if (amount <= 1) return EMOJI;
-         if (amount <= 5) return EMOJI.repeat(amount);
-         return EMOJI.repeat(3) + ' ×' + formatNum(amount);
-      }
-
-      function showClickFloat(x, y, text, isCritical) {
-         const el = document.createElement('div');
-         el.className = 'click-float';
-         el.textContent = text != null ? text : getThemeEmojiText(clickPower, isCritical);
-         el.style.left = x + 'px';
-         el.style.top = y + 'px';
-         clickArea.style.position = 'relative';
-         clickArea.appendChild(el);
-         setTimeout(() => el.remove(), 700);
-      }
-
-      function updateCombo() {
-         const now = Date.now();
-         if (now - lastClickTime < COMBO_TIMEOUT) {
-            comboCount++;
-         } else {
-            comboCount = 1;
-         }
-         lastClickTime = now;
-         if (comboDisplay) {
-            comboDisplay.textContent = comboCount > 1 ? '🔥 Combo x' + comboCount : '';
-         }
-         if (comboCount >= 10 && comboCount % 10 === 0) {
-            showCriticalHit();
-            return 2;
-         }
-         return 1;
-      }
-
-      function showCriticalHit() {
-         const el = document.createElement('div');
-         el.className = 'critical-popup';
-         el.textContent = 'CRITICAL HIT!';
-         const rect = clickArea.getBoundingClientRect();
-         el.style.left = (rect.width / 2 - 60) + 'px';
-         el.style.top = (rect.height / 2 - 80) + 'px';
-         clickArea.style.position = 'relative';
-         clickArea.appendChild(el);
-         setTimeout(() => el.remove(), 800);
-      }
-
-      function updateProgressBar() {
-         if (!progressBarFill) return;
-         let nextCost = Infinity;
-         let found = false;
-         UPGRADES.forEach((u, i) => {
-            const cost = getCost(u.baseCost, upgradeOwned[i]);
-            if (cost > score && cost < nextCost) {
-               nextCost = cost;
-               found = true;
+         document.getElementById('upgClickPower').addEventListener('click', () => {
+            if (score >= clickPowerCost) {
+               score -= clickPowerCost;
+               clickPowerLevel++;
+               clickPower = Math.pow(2, clickPowerLevel - 1);
+               clickPowerCost = Math.floor(50 * Math.pow(2.5, clickPowerLevel - 1));
+               render();
             }
          });
-         if (clickPowerCost > score && clickPowerCost < nextCost) {
-            nextCost = clickPowerCost;
-            found = true;
-         }
-         if (!found) {
-            progressBarFill.style.width = '100%';
-            return;
-         }
-         const prevCost = nextCost / COST_SCALE;
-         const progress = Math.max(0, Math.min(100, ((score - prevCost) / (nextCost - prevCost)) * 100));
-         progressBarFill.style.width = progress + '%';
-      }
 
-      function checkMilestones() {
-         MILESTONES.forEach(m => {
-            if (score >= m && !milestonesReached.has(m)) {
-               milestonesReached.add(m);
-               showMilestone(m);
+         // Case opening
+         document.getElementById('caseBtn').addEventListener('click', openCase);
+
+         // Per-second tick
+         setInterval(() => {
+            if (perSecond > 0) {
+               score += perSecond;
+               totalEarned += perSecond;
+               render();
+               updateProgressBar();
+               checkCaseReady();
             }
+         }, 1000);
+
+         // Save / Load
+         function saveGame() {
+            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, nextCaseAt };
+            try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
+         }
+
+         function loadGame() {
+            try {
+               const raw = localStorage.getItem(SAVE_KEY);
+               if (raw) {
+                  const data = JSON.parse(raw);
+                  score = data.score || 0;
+                  totalEarned = data.totalEarned || 0;
+                  clickPower = data.clickPower || 1;
+                  clickPowerLevel = data.clickPowerLevel || 1;
+                  clickPowerCost = data.clickPowerCost || 50;
+                  upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                  nextCaseAt = data.nextCaseAt || 500;
+                  recalcPerSecond();
+               }
+            } catch (e) { }
+         }
+
+         document.getElementById('saveBtn').addEventListener('click', () => {
+            saveGame();
+            const btn = document.getElementById('saveBtn');
+            btn.textContent = '✅ Saved!';
+            setTimeout(() => { btn.textContent = '💾 Save'; }, 1500);
          });
-      }
 
-       function showMilestone(value) {
-          const banner = document.createElement('div');
-          banner.className = 'milestone-banner';
-          banner.textContent = '🎉 Milestone: ' + formatNum(value) + '!';
-          clickArea.style.position = 'relative';
-          clickArea.appendChild(banner);
-          setTimeout(() => banner.remove(), 3000);
-       }
-
-       function checkCaseReady() {
-          const btn = document.getElementById('caseBtn');
-          if (!btn) return;
-          btn.style.display = totalEarned >= nextCaseAt ? 'block' : 'none';
-       }
-
-       function openCase() {
-          const RARITIES = [
-             { name: 'Consumer', color: '#b0c3d9', mult: 1, weight: 40 },
-             { name: 'Industrial', color: '#5e98d9', mult: 2, weight: 25 },
-             { name: 'Mil-Spec', color: '#4b69ff', mult: 5, weight: 15 },
-             { name: 'Restricted', color: '#8847ff', mult: 10, weight: 10 },
-             { name: 'Classified', color: '#d32ce6', mult: 25, weight: 5 },
-             { name: 'Covert', color: '#eb4b4b', mult: 50, weight: 3 },
-             { name: 'Knife', color: '#ffd700', mult: 200, weight: 2 }
-          ];
-          const totalWeight = RARITIES.reduce((s, r) => s + r.weight, 0);
-          let rand = Math.random() * totalWeight;
-          let chosen = RARITIES[0];
-          for (const r of RARITIES) {
-             if (rand < r.weight) { chosen = r; break; }
-             rand -= r.weight;
-          }
-          const baseReward = 50;
-          const bonus = baseReward * chosen.mult;
-          const overlay = document.createElement('div');
-          overlay.className = 'case-opening';
-          overlay.style.border = '3px solid ' + chosen.color;
-          const scrollDiv = document.createElement('div');
-          scrollDiv.className = 'case-scroll';
-          overlay.appendChild(scrollDiv);
-          clickArea.style.position = 'relative';
-          clickArea.appendChild(overlay);
-          const scrollCount = 3 + Math.floor(Math.random() * 3);
-          let step = 0;
-          const interval = setInterval(() => {
-             step++;
-             const tempRarity = RARITIES[Math.floor(Math.random() * RARITIES.length)];
-             scrollDiv.textContent = tempRarity.name;
-             scrollDiv.style.color = tempRarity.color;
-             if (step >= scrollCount) {
-                clearInterval(interval);
-                scrollDiv.textContent = chosen.name;
-                scrollDiv.style.color = chosen.color;
-                const resultDiv = document.createElement('div');
-                resultDiv.className = 'case-result';
-                resultDiv.textContent = '★ ' + chosen.name + ' ★';
-                resultDiv.style.color = chosen.color;
-                overlay.appendChild(resultDiv);
-                const bonusDiv = document.createElement('div');
-                bonusDiv.className = 'case-bonus';
-                bonusDiv.textContent = '+' + formatNum(bonus) + ' Skin Credits';
-                overlay.appendChild(bonusDiv);
-                score += bonus;
-                totalEarned += bonus;
-                render();
-                updateProgressBar();
-                checkCaseReady();
-                overlay.style.animation = 'caseFlash 0.5s ease-out';
-                setTimeout(() => overlay.remove(), 2000);
-             }
-          }, 300);
-          nextCaseAt += 500;
-          document.getElementById('caseBtn').style.display = 'none';
-       }
-
-       function spawnParticle() {
-         if (document.hidden) return;
-         const p = document.createElement('div');
-         p.className = 'particle';
-         p.textContent = PARTICLES[Math.floor(Math.random() * PARTICLES.length)];
-         const rect = clickArea.getBoundingClientRect();
-         p.style.left = (Math.random() * rect.width * 0.6 + rect.width * 0.2) + 'px';
-         p.style.top = (rect.height * 0.3) + 'px';
-         clickArea.appendChild(p);
-         setTimeout(() => p.remove(), 2500);
-      }
-
-      function doClick(e) {
-         const mult = updateCombo();
-         const power = clickPower * mult;
-         score += power;
-         totalEarned += power;
-
-         clickBtn.classList.add('pressed');
-         setTimeout(() => clickBtn.classList.remove('pressed'), 100);
-
-         // Float position
-         const rect = clickArea.getBoundingClientRect();
-         let cx, cy;
-         if (e && e.clientX) {
-            cx = e.clientX - rect.left;
-            cy = e.clientY - rect.top;
-         } else {
-            cx = rect.width / 2 + (Math.random() - 0.5) * 40;
-            cy = rect.height / 2 - 30;
-         }
-          showClickFloat(cx, cy, null, mult === 2);
-          if (mult === 2) {
-             const cel = document.createElement('div');
-             cel.className = 'click-float';
-             cel.textContent = getThemeEmojiText(power, true);
-             cel.style.left = (cx + 20) + 'px';
-             cel.style.top = (cy - 20) + 'px';
-             cel.style.color = '#dc2626';
-             clickArea.appendChild(cel);
-             setTimeout(() => cel.remove(), 700);
-          }
-          checkMilestones();
-          checkCaseReady();
-          render();
-          updateProgressBar();
-      }
-
-      clickBtn.addEventListener('click', doClick);
-      clickBtn.addEventListener('touchstart', (e) => {
-         e.preventDefault();
-         doClick(e.touches[0]);
-      });
-
-      // Keyboard: spacebar
-      document.addEventListener('keydown', (e) => {
-         if (e.code === 'Space' && !e.repeat) {
-            e.preventDefault();
-            doClick(null);
-         }
-      });
-
-      // Buy upgrades
-      UPGRADES.forEach((u, i) => {
-         document.getElementById('upg' + i).addEventListener('click', () => {
-            const cost = getCost(u.baseCost, upgradeOwned[i]);
-            if (score >= cost) {
-               score -= cost;
-               upgradeOwned[i]++;
+         document.getElementById('resetBtn').addEventListener('click', () => {
+            if (confirm('Reset all progress for CSGO Clicker? This cannot be undone.')) {
+               localStorage.removeItem(SAVE_KEY);
+               score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
+               upgradeOwned = UPGRADES.map(() => 0);
                recalcPerSecond();
                render();
             }
          });
-      });
 
-       // Click power upgrade
-       document.getElementById('upgClickPower').addEventListener('click', () => {
-          if (score >= clickPowerCost) {
-             score -= clickPowerCost;
-             clickPowerLevel++;
-             clickPower = Math.pow(2, clickPowerLevel - 1);
-             clickPowerCost = Math.floor(50 * Math.pow(2.5, clickPowerLevel - 1));
-             render();
-          }
-       });
+         // Auto-save every 30s
+         setInterval(saveGame, 30000);
 
-       // Case opening
-       document.getElementById('caseBtn').addEventListener('click', openCase);
+         // Particles
+         setInterval(spawnParticle, 3000);
 
-       // Per-second tick
-       setInterval(() => {
-          if (perSecond > 0) {
-             score += perSecond;
-             totalEarned += perSecond;
-             render();
-             updateProgressBar();
-             checkCaseReady();
-          }
-       }, 1000);
+         // Sound toggle
+         document.getElementById('soundToggle').addEventListener('click', function () {
+            this.textContent = this.textContent === '🔊' ? '🔇' : '🔊';
+         });
 
-      // Save / Load
-       function saveGame() {
-          const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, nextCaseAt };
-          try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch(e) {}
-       }
-
-      function loadGame() {
-         try {
-            const raw = localStorage.getItem(SAVE_KEY);
-            if (raw) {
-               const data = JSON.parse(raw);
-                score = data.score || 0;
-                totalEarned = data.totalEarned || 0;
-                clickPower = data.clickPower || 1;
-                clickPowerLevel = data.clickPowerLevel || 1;
-                clickPowerCost = data.clickPowerCost || 50;
-                upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
-                nextCaseAt = data.nextCaseAt || 500;
-                recalcPerSecond();
-            }
-         } catch(e) {}
-      }
-
-      document.getElementById('saveBtn').addEventListener('click', () => {
-         saveGame();
-         const btn = document.getElementById('saveBtn');
-         btn.textContent = '✅ Saved!';
-         setTimeout(() => { btn.textContent = '💾 Save'; }, 1500);
-      });
-
-      document.getElementById('resetBtn').addEventListener('click', () => {
-         if (confirm('Reset all progress for CSGO Clicker? This cannot be undone.')) {
-            localStorage.removeItem(SAVE_KEY);
-            score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
-            upgradeOwned = UPGRADES.map(() => 0);
-            recalcPerSecond();
-            render();
-         }
-      });
-
-      // Auto-save every 30s
-      setInterval(saveGame, 30000);
-
-      // Particles
-      setInterval(spawnParticle, 3000);
-
-      // Sound toggle
-      document.getElementById('soundToggle').addEventListener('click', function() {
-         this.textContent = this.textContent === '🔊' ? '🔇' : '🔊';
-      });
-
-       // Init
-       loadGame();
-       render();
-       updateProgressBar();
-       checkCaseReady();
-    })();
+         // Init
+         loadGame();
+         render();
+         updateProgressBar();
+         checkCaseReady();
+      })();
    </script>
 
-    <script>
-       // Mobile menu
-       const menuBtn = document.querySelector('.menu-btn');
-       const navLinks = document.querySelector('.nav-links');
-       menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
-       document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
-       document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
-    </script>
-    <script>
-       // FAQ toggle
-       document.querySelectorAll('.faq-item h3').forEach(q => {
-          q.addEventListener('click', () => {
-             const item = q.parentElement;
-             const isActive = item.classList.contains('active');
-             document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-             if (!isActive) item.classList.add('active');
-          });
-       });
-    </script>
+   <script>
+      // Mobile menu
+      const menuBtn = document.querySelector('.menu-btn');
+      const navLinks = document.querySelector('.nav-links');
+      menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+      document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
+      document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+   </script>
+   <script>
+      // FAQ toggle
+      document.querySelectorAll('.faq-item h3').forEach(q => {
+         q.addEventListener('click', () => {
+            const item = q.parentElement;
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            if (!isActive) item.classList.add('active');
+         });
+      });
+   </script>
 
    <!-- Site Footer -->
    <footer class="site-footer">
@@ -1416,13 +1812,14 @@
          <div class="footer-grid">
             <div class="footer-section footer-brand">
                <a href="/" class="footer-logo">Spacebar Clicker</a>
-               <p class="footer-tagline">Test your spacebar clicking speed with our free online tool. Measure your CPS and improve your clicking skills.</p>
+               <p class="footer-tagline">Test your spacebar clicking speed with our free online tool. Measure your CPS
+                  and improve your clicking skills.</p>
             </div>
             <div class="footer-section">
                <h4 class="footer-heading">Quick Links</h4>
                <ul class="footer-links">
                   <li><a href="/">Home</a></li>
-                  
+
                   <li><a href="/about/">About Us</a></li>
                   <li><a href="/contact/">Contact</a></li>
                </ul>
@@ -1440,7 +1837,7 @@
       </div>
    </footer>
 
-   <script>(function(w,d,s,id){if(typeof(w.webpushr)!=='undefined')return;w.webpushr=w.webpushr||function(){(w.webpushr.q=w.webpushr.q||[]).push(arguments)};var js,fjs=d.getElementsByTagName(s)[0];js=d.createElement(s);js.id=id;js.async=1;js.src="https://cdn.webpushr.com/app.min.js";fjs.parentNode.appendChild(js);}(window,document,'script','webpushr-jssdk'));webpushr('setup',{'key':'BCqxAAS-ncGR0SExOoEY3HPXgbSncPSnvUNZbaqLmWTXCyeVDhZdKkXruhe2gvqHJnbMgm1oUAREgHJ3KPqSkW4'});</script>
+   <script>(function (w, d, s, id) { if (typeof (w.webpushr) !== 'undefined') return; w.webpushr = w.webpushr || function () { (w.webpushr.q = w.webpushr.q || []).push(arguments) }; var js, fjs = d.getElementsByTagName(s)[0]; js = d.createElement(s); js.id = id; js.async = 1; js.src = "https://cdn.webpushr.com/app.min.js"; fjs.parentNode.appendChild(js); }(window, document, 'script', 'webpushr-jssdk')); webpushr('setup', { 'key': 'BCqxAAS-ncGR0SExOoEY3HPXgbSncPSnvUNZbaqLmWTXCyeVDhZdKkXruhe2gvqHJnbMgm1oUAREgHJ3KPqSkW4' });</script>
 </body>
 
 </html>

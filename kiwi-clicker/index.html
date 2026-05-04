@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Kiwi Clicker - Play Free Online | Spacebar Clicker</title>
+   <title>Kiwi Clicker - Play Free Online </title>
    <meta name="description"
       content="Play Kiwi Clicker free online! Build your kiwi sanctuary, collect Kiwi Coins, and unlock nature upgrades. No download needed - play instantly in your browser!">
    <meta name="keywords"
@@ -228,7 +228,7 @@
          font-size: 64px;
          cursor: pointer;
          transition: transform 0.1s ease, box-shadow 0.1s ease;
-         box-shadow: 0 8px 30px #558b2f33, inset 0 -4px 10px rgba(85,139,47,0.2);
+         box-shadow: 0 8px 30px #558b2f33, inset 0 -4px 10px rgba(85, 139, 47, 0.2);
          display: flex;
          align-items: center;
          justify-content: center;
@@ -241,18 +241,18 @@
       }
 
       .click-btn:hover {
-         box-shadow: 0 12px 40px #558b2f55, inset 0 -4px 10px rgba(85,139,47,0.2);
+         box-shadow: 0 12px 40px #558b2f55, inset 0 -4px 10px rgba(85, 139, 47, 0.2);
       }
 
       .click-btn:active,
       .click-btn.pressed {
          transform: scale(0.92);
-         box-shadow: 0 4px 15px #558b2f44, inset 0 -4px 10px rgba(85,139,47,0.2);
+         box-shadow: 0 4px 15px #558b2f44, inset 0 -4px 10px rgba(85, 139, 47, 0.2);
       }
 
       .click-btn .emoji {
          pointer-events: none;
-         filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
+         filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.15));
       }
 
       .score-display {
@@ -341,7 +341,7 @@
          cursor: pointer;
          transition: all 0.2s ease;
          background: linear-gradient(180deg, #fff 0%, #f1f8e9 100%);
-         box-shadow: 0 2px 6px rgba(85,139,47,0.08);
+         box-shadow: 0 2px 6px rgba(85, 139, 47, 0.08);
          position: relative;
       }
 
@@ -443,7 +443,10 @@
          transition: transform 0.1s;
          z-index: 2;
       }
-      .combo-display.active { transform: scale(1.15); }
+
+      .combo-display.active {
+         transform: scale(1.15);
+      }
 
       .critical-popup {
          position: absolute;
@@ -455,10 +458,21 @@
          animation: critPop 0.8s ease-out forwards;
          z-index: 20;
       }
+
       @keyframes critPop {
-         0% { opacity: 1; transform: translateY(0) scale(0.5); }
-         50% { transform: translateY(-40px) scale(1.2); }
-         100% { opacity: 0; transform: translateY(-90px) scale(1); }
+         0% {
+            opacity: 1;
+            transform: translateY(0) scale(0.5);
+         }
+
+         50% {
+            transform: translateY(-40px) scale(1.2);
+         }
+
+         100% {
+            opacity: 0;
+            transform: translateY(-90px) scale(1);
+         }
       }
 
       /* Progress Bar */
@@ -472,6 +486,7 @@
          overflow: hidden;
          z-index: 2;
       }
+
       .progress-bar-fill {
          height: 100%;
          background: linear-gradient(90deg, #65a30d, #65a30ddd);
@@ -489,9 +504,17 @@
          animation: particleFloat 2.5s ease-out forwards;
          z-index: 1;
       }
+
       @keyframes particleFloat {
-         0% { opacity: 0.8; transform: translateY(0) scale(0.6); }
-         100% { opacity: 0; transform: translateY(-120px) scale(1.2); }
+         0% {
+            opacity: 0.8;
+            transform: translateY(0) scale(0.6);
+         }
+
+         100% {
+            opacity: 0;
+            transform: translateY(-120px) scale(1.2);
+         }
       }
 
       /* Milestone Banner */
@@ -512,6 +535,7 @@
          transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
          z-index: 2000;
       }
+
       .milestone-banner.show {
          opacity: 1;
          transform: translateX(-50%) scale(1);
@@ -519,7 +543,7 @@
 
       /* Sound Toggle */
       .sound-toggle {
-         background: rgba(255,255,255,0.2);
+         background: rgba(255, 255, 255, 0.2);
          border: none;
          border-radius: 8px;
          padding: 6px 10px;
@@ -528,7 +552,10 @@
          cursor: pointer;
          transition: background 0.2s;
       }
-      .sound-toggle:hover { background: rgba(255,255,255,0.35); }
+
+      .sound-toggle:hover {
+         background: rgba(255, 255, 255, 0.35);
+      }
 
       /* Keyboard tip */
       .keyboard-tip {
@@ -546,9 +573,18 @@
          color: #558b2f;
          z-index: 2;
       }
-      .ripeness-display.hard { color: #8bc34a; }
-      .ripeness-display.ripe { color: #558b2f; }
-      .ripeness-display.overripe { color: #795548; }
+
+      .ripeness-display.hard {
+         color: #8bc34a;
+      }
+
+      .ripeness-display.ripe {
+         color: #558b2f;
+      }
+
+      .ripeness-display.overripe {
+         color: #795548;
+      }
 
       .harvest-btn {
          margin-top: 8px;
@@ -563,6 +599,7 @@
          transition: all 0.2s ease;
          z-index: 2;
       }
+
       .harvest-btn:hover {
          background: #558b2f;
          color: white;
@@ -572,14 +609,23 @@
          background: radial-gradient(circle at 35% 35%, #aeea00, #33691e);
          border-color: #33691e;
       }
+
       .click-btn.overripe {
          background: radial-gradient(circle at 35% 35%, #a1887f, #5d4037);
          border-color: #5d4037;
       }
 
       /* FAQ Styles */
-      .faq-section { margin-bottom: 30px; }
-      .faq-item { margin-bottom: 14px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+      .faq-section {
+         margin-bottom: 30px;
+      }
+
+      .faq-item {
+         margin-bottom: 14px;
+         border-bottom: 1px solid #eee;
+         padding-bottom: 10px;
+      }
+
       .faq-question {
          font-size: 1.05rem;
          font-weight: 600;
@@ -592,7 +638,11 @@
          transition: color 0.2s;
          margin: 0;
       }
-      .faq-question:hover { color: #7838f3; }
+
+      .faq-question:hover {
+         color: #7838f3;
+      }
+
       .faq-question::after {
          content: '+';
          font-size: 1.3rem;
@@ -600,18 +650,34 @@
          transition: transform 0.3s;
          font-weight: 400;
       }
-      .faq-item.open .faq-question::after { transform: rotate(45deg); }
+
+      .faq-item.open .faq-question::after {
+         transform: rotate(45deg);
+      }
+
       .faq-answer {
          max-height: 0;
          overflow: hidden;
          transition: max-height 0.3s ease, opacity 0.3s ease;
          opacity: 0;
       }
-      .faq-item.open .faq-answer { max-height: 500px; opacity: 1; }
-      .faq-answer p { margin: 0 0 10px; font-size: 1rem; color: #555; }
+
+      .faq-item.open .faq-answer {
+         max-height: 500px;
+         opacity: 1;
+      }
+
+      .faq-answer p {
+         margin: 0 0 10px;
+         font-size: 1rem;
+         color: #555;
+      }
 
       /* Intro paragraphs */
-      .intro p { margin-bottom: 16px; line-height: 1.85; }
+      .intro p {
+         margin-bottom: 16px;
+         line-height: 1.85;
+      }
 
       /* Article Styles */
       .article-container {
@@ -963,7 +1029,9 @@
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
-               <div id="particleContainer" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;"></div>
+               <div id="particleContainer"
+                  style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;">
+               </div>
                <button class="click-btn" id="clickBtn" aria-label="Protect Kiwi Coin">
                   <span class="emoji">🥝</span>
                </button>
@@ -977,10 +1045,10 @@
                <div class="progress-bar-container">
                   <div class="progress-bar-fill" id="progressBarFill"></div>
                </div>
-                <div class="keyboard-tip">Tip: Press SPACE to click!</div>
-                <div class="ripeness-display" id="ripenessDisplay">Stage: Hard</div>
-                <button class="harvest-btn" id="harvestBtn" style="display:none;">🌾 Harvest</button>
-             </div>
+               <div class="keyboard-tip">Tip: Press SPACE to click!</div>
+               <div class="ripeness-display" id="ripenessDisplay">Stage: Hard</div>
+               <button class="harvest-btn" id="harvestBtn" style="display:none;">🌾 Harvest</button>
+            </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
 
@@ -1059,111 +1127,186 @@
       </div>
 
       <!-- ===== ARTICLE CONTENT ===== -->
-       <article class="article-container">
+      <article class="article-container">
 
-          <div class="intro">
-             <p>Welcome to Kiwi Clicker, a charming idle clicker game inspired by the unique wildlife of New Zealand. In this free browser game, your mission is simple: click the kiwi button to earn Kiwi Coins, then invest those coins into powerful upgrades that generate passive income. From humble Fern Groves to sprawling Kiwi Sanctuaries, every upgrade brings you closer to building the ultimate nature preserve. The best part? No download is required—just open your browser and start clicking!</p>
-             <p>The kiwi bird is one of nature's most fascinating creatures. Native to New Zealand, these small, flightless birds are known for their long beaks, nocturnal habits, and hair-like feathers. There are five recognized species of kiwi, including the North Island brown kiwi and the great spotted kiwi. Sadly, all species are threatened or vulnerable due to habitat loss and predators. Kiwi Clicker celebrates these remarkable birds by letting you build a virtual sanctuary in their honor, one click at a time.</p>
-             <p>Idle and clicker games have exploded in popularity because they offer a perfect blend of active engagement and passive progression. Whether you are actively clicking or away from the keyboard, your empire continues to grow. This makes them ideal for multitasking—play while watching videos, working, or relaxing. The psychological satisfaction of watching numbers go up, unlocking new tiers, and reaching milestones creates a deeply rewarding loop that keeps players coming back for more.</p>
-             <p>Kiwi Clicker is completely free to play and runs entirely in your web browser. There are no hidden costs, no installation steps, and no account required. Your progress is automatically saved to your browser's local storage, so you can close the tab and return later without losing a single Kiwi Coin. If you are looking for a relaxing, low-stakes game with a nature theme, this is the perfect choice.</p>
-          </div>
+         <div class="intro">
+            <p>Welcome to Kiwi Clicker, a charming idle clicker game inspired by the unique wildlife of New Zealand. In
+               this free browser game, your mission is simple: click the kiwi button to earn Kiwi Coins, then invest
+               those coins into powerful upgrades that generate passive income. From humble Fern Groves to sprawling
+               Kiwi Sanctuaries, every upgrade brings you closer to building the ultimate nature preserve. The best
+               part? No download is required—just open your browser and start clicking!</p>
+            <p>The kiwi bird is one of nature's most fascinating creatures. Native to New Zealand, these small,
+               flightless birds are known for their long beaks, nocturnal habits, and hair-like feathers. There are five
+               recognized species of kiwi, including the North Island brown kiwi and the great spotted kiwi. Sadly, all
+               species are threatened or vulnerable due to habitat loss and predators. Kiwi Clicker celebrates these
+               remarkable birds by letting you build a virtual sanctuary in their honor, one click at a time.</p>
+            <p>Idle and clicker games have exploded in popularity because they offer a perfect blend of active
+               engagement and passive progression. Whether you are actively clicking or away from the keyboard, your
+               empire continues to grow. This makes them ideal for multitasking—play while watching videos, working, or
+               relaxing. The psychological satisfaction of watching numbers go up, unlocking new tiers, and reaching
+               milestones creates a deeply rewarding loop that keeps players coming back for more.</p>
+            <p>Kiwi Clicker is completely free to play and runs entirely in your web browser. There are no hidden costs,
+               no installation steps, and no account required. Your progress is automatically saved to your browser's
+               local storage, so you can close the tab and return later without losing a single Kiwi Coin. If you are
+               looking for a relaxing, low-stakes game with a nature theme, this is the perfect choice.</p>
+         </div>
 
-          <section class="section">
-             <h2>How to Play Kiwi Clicker</h2>
-             <ol class="tips-list">
-                <li><strong>Click the Kiwi Button:</strong> Start by clicking the large kiwi emoji button in the center of the screen. Each click earns you Kiwi Coins.</li>
-                <li><strong>Purchase Fern Groves:</strong> Once you have 15 coins, buy your first Fern Grove upgrade. It generates +1 coin per second automatically.</li>
-                <li><strong>Expand with Nesting Areas:</strong> When you reach 100 coins, invest in a Nesting Area for +5 coins per second. Stack multiple for compounding returns.</li>
-                <li><strong>Set Predator Traps:</strong> At 500 coins, unlock Predator Traps to protect your sanctuary and earn +20 coins per second.</li>
-                <li><strong>Build a Wildlife Reserve:</strong> Save up 2,500 coins to establish a Wildlife Reserve, generating +100 coins per second.</li>
-                <li><strong>Upgrade Click Power:</strong> Spend 50 coins on Click Power to double your manual earnings. This is essential for active play sessions.</li>
-                 <li><strong>Reach the Kiwi Sanctuary:</strong> The ultimate goal is the Kiwi Sanctuary at 15,000 coins, providing +500 coins per second. Stack them for massive income.</li>
-                 <li><strong>Watch the Ripeness Stages:</strong> Your kiwi fruit goes through Hard, Ripe, and Overripe stages as you click. Harvest at the right time to maximize bonuses.</li>
-              </ol>
-           </section>
+         <section class="section">
+            <h2>How to Play Kiwi Clicker</h2>
+            <ol class="tips-list">
+               <li><strong>Click the Kiwi Button:</strong> Start by clicking the large kiwi emoji button in the center
+                  of the screen. Each click earns you Kiwi Coins.</li>
+               <li><strong>Purchase Fern Groves:</strong> Once you have 15 coins, buy your first Fern Grove upgrade. It
+                  generates +1 coin per second automatically.</li>
+               <li><strong>Expand with Nesting Areas:</strong> When you reach 100 coins, invest in a Nesting Area for +5
+                  coins per second. Stack multiple for compounding returns.</li>
+               <li><strong>Set Predator Traps:</strong> At 500 coins, unlock Predator Traps to protect your sanctuary
+                  and earn +20 coins per second.</li>
+               <li><strong>Build a Wildlife Reserve:</strong> Save up 2,500 coins to establish a Wildlife Reserve,
+                  generating +100 coins per second.</li>
+               <li><strong>Upgrade Click Power:</strong> Spend 50 coins on Click Power to double your manual earnings.
+                  This is essential for active play sessions.</li>
+               <li><strong>Reach the Kiwi Sanctuary:</strong> The ultimate goal is the Kiwi Sanctuary at 15,000 coins,
+                  providing +500 coins per second. Stack them for massive income.</li>
+               <li><strong>Watch the Ripeness Stages:</strong> Your kiwi fruit goes through Hard, Ripe, and Overripe
+                  stages as you click. Harvest at the right time to maximize bonuses.</li>
+            </ol>
+         </section>
 
-          <section class="section">
-             <h2>Kiwi Clicker Strategy Guide</h2>
-             <p>Early game strategy in Kiwi Clicker is all about balancing manual clicks with passive upgrades. Your first priority should always be unlocking a Fern Grove as soon as you hit 15 coins. Passive income is the foundation of every successful idle run. Once you have a steady stream of coins, resist the urge to save for expensive upgrades. Instead, buy multiple cheap upgrades first. The cost scaling means each additional Fern Grove or Nesting Area becomes more expensive, but the immediate income boost often outweighs waiting for a single big purchase.</p>
-             <p>Mid-game progression centers around the Predator Trap and Wildlife Reserve tiers. When you have around 500 coins, evaluate whether buying another Nesting Area or saving for a Predator Trap is more efficient. A good rule of thumb: if the wait time for the expensive upgrade is longer than 30 seconds of active clicking, buy more cheap upgrades first. Also, do not neglect Click Power upgrades. Doubling your manual click output can dramatically shorten the time between major purchases, especially during active play.</p>
-              <p>Late game optimization is about scaling. Once you unlock Wildlife Reserves and Kiwi Sanctuaries, your income will skyrocket. At this stage, milestone celebrations will pop up as you cross 1K, 10K, 100K, and 1M coins. Use these as benchmarks to gauge your progress. Maintain a healthy mix of all upgrade tiers rather than dumping everything into one type. The combo system rewards rapid consecutive clicking, so during active sessions, click as fast as possible to build combos. Every 10th combo click triggers a Critical Hit, doubling that click's output and accelerating your growth even further.</p>
-              <p>The ripeness system adds another layer of strategy. During the Hard stage, clicks earn normal points. Once you enter the Ripe stage (clicks 101-150), you earn 1.5x points per click, making this the ideal window for maximum gains. However, if you push into the Overripe stage, points begin to decay by 10% per click. The key is timing your harvest: harvesting during Ripe gives a solid bonus, while waiting too long into Overripe reduces both your per-click earnings and your harvest reward. Experienced players learn to harvest just before Overripe to reset the cycle and collect the best possible bonus.</p>
-           </section>
+         <section class="section">
+            <h2>Kiwi Clicker Strategy Guide</h2>
+            <p>Early game strategy in Kiwi Clicker is all about balancing manual clicks with passive upgrades. Your
+               first priority should always be unlocking a Fern Grove as soon as you hit 15 coins. Passive income is the
+               foundation of every successful idle run. Once you have a steady stream of coins, resist the urge to save
+               for expensive upgrades. Instead, buy multiple cheap upgrades first. The cost scaling means each
+               additional Fern Grove or Nesting Area becomes more expensive, but the immediate income boost often
+               outweighs waiting for a single big purchase.</p>
+            <p>Mid-game progression centers around the Predator Trap and Wildlife Reserve tiers. When you have around
+               500 coins, evaluate whether buying another Nesting Area or saving for a Predator Trap is more efficient.
+               A good rule of thumb: if the wait time for the expensive upgrade is longer than 30 seconds of active
+               clicking, buy more cheap upgrades first. Also, do not neglect Click Power upgrades. Doubling your manual
+               click output can dramatically shorten the time between major purchases, especially during active play.
+            </p>
+            <p>Late game optimization is about scaling. Once you unlock Wildlife Reserves and Kiwi Sanctuaries, your
+               income will skyrocket. At this stage, milestone celebrations will pop up as you cross 1K, 10K, 100K, and
+               1M coins. Use these as benchmarks to gauge your progress. Maintain a healthy mix of all upgrade tiers
+               rather than dumping everything into one type. The combo system rewards rapid consecutive clicking, so
+               during active sessions, click as fast as possible to build combos. Every 10th combo click triggers a
+               Critical Hit, doubling that click's output and accelerating your growth even further.</p>
+            <p>The ripeness system adds another layer of strategy. During the Hard stage, clicks earn normal points.
+               Once you enter the Ripe stage (clicks 101-150), you earn 1.5x points per click, making this the ideal
+               window for maximum gains. However, if you push into the Overripe stage, points begin to decay by 10% per
+               click. The key is timing your harvest: harvesting during Ripe gives a solid bonus, while waiting too long
+               into Overripe reduces both your per-click earnings and your harvest reward. Experienced players learn to
+               harvest just before Overripe to reset the cycle and collect the best possible bonus.</p>
+         </section>
 
-          <section class="section faq-section">
-             <h2>Frequently Asked Questions</h2>
-             <div class="faq-item">
-                <h3 class="faq-question">What is Kiwi Clicker?</h3>
-                <div class="faq-answer">
-                   <p>Kiwi Clicker is a free online idle clicker game where you earn Kiwi Coins by clicking and purchase upgrades that generate passive income. The theme is inspired by New Zealand's iconic kiwi birds and nature conservation.</p>
-                </div>
-             </div>
-             <div class="faq-item">
-                <h3 class="faq-question">Do I need to download anything to play?</h3>
-                <div class="faq-answer">
-                   <p>No. Kiwi Clicker runs entirely in your web browser. There is no download, installation, or account creation required. Just visit the page and start playing instantly.</p>
-                </div>
-             </div>
-             <div class="faq-item">
-                <h3 class="faq-question">How does the combo system work?</h3>
-                <div class="faq-answer">
-                   <p>Every time you click within 2 seconds of your previous click, your combo counter increases. If you reach a multiple of 10, that click becomes a Critical Hit and earns double points. Breaking the 2-second window resets your combo.</p>
-                </div>
-             </div>
-             <div class="faq-item">
-                <h3 class="faq-question">Can I save my progress?</h3>
-                <div class="faq-answer">
-                   <p>Yes. Your progress is automatically saved to your browser's local storage every 30 seconds. You can also manually click the Save button at any time. Your data will persist as long as you use the same browser and do not clear local storage.</p>
-                </div>
-             </div>
-              <div class="faq-item">
-                 <h3 class="faq-question">What is the ripeness system?</h3>
-                 <div class="faq-answer">
-                    <p>As you click, your kiwi fruit ripens through three stages: Hard (first 100 clicks), Ripe (clicks 101-150, ×1.5 points), and Overripe (clicks 151+, points decay by 10% per click). You can harvest your kiwi to reset it back to Hard and collect a bonus based on its stage.</p>
-                 </div>
-              </div>
-              <div class="faq-item">
-                 <h3 class="faq-question">What happens when I reach a milestone?</h3>
-                 <div class="faq-answer">
-                    <p>When your score hits 1,000, 10,000, 100,000, or 1,000,000 coins, a Milestone Reached banner appears at the top of the screen to celebrate your achievement. These are purely cosmetic but satisfying markers of your progress.</p>
-                 </div>
-              </div>
-             <div class="faq-item">
-                <h3 class="faq-question">Is there a mobile version?</h3>
-                <div class="faq-answer">
-                   <p>The game is fully responsive and works on mobile browsers. You can tap the kiwi button to click, and the layout automatically adjusts to fit your screen size.</p>
-                </div>
-             </div>
-          </section>
+         <section class="section faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+               <h3 class="faq-question">What is Kiwi Clicker?</h3>
+               <div class="faq-answer">
+                  <p>Kiwi Clicker is a free online idle clicker game where you earn Kiwi Coins by clicking and purchase
+                     upgrades that generate passive income. The theme is inspired by New Zealand's iconic kiwi birds and
+                     nature conservation.</p>
+               </div>
+            </div>
+            <div class="faq-item">
+               <h3 class="faq-question">Do I need to download anything to play?</h3>
+               <div class="faq-answer">
+                  <p>No. Kiwi Clicker runs entirely in your web browser. There is no download, installation, or account
+                     creation required. Just visit the page and start playing instantly.</p>
+               </div>
+            </div>
+            <div class="faq-item">
+               <h3 class="faq-question">How does the combo system work?</h3>
+               <div class="faq-answer">
+                  <p>Every time you click within 2 seconds of your previous click, your combo counter increases. If you
+                     reach a multiple of 10, that click becomes a Critical Hit and earns double points. Breaking the
+                     2-second window resets your combo.</p>
+               </div>
+            </div>
+            <div class="faq-item">
+               <h3 class="faq-question">Can I save my progress?</h3>
+               <div class="faq-answer">
+                  <p>Yes. Your progress is automatically saved to your browser's local storage every 30 seconds. You can
+                     also manually click the Save button at any time. Your data will persist as long as you use the same
+                     browser and do not clear local storage.</p>
+               </div>
+            </div>
+            <div class="faq-item">
+               <h3 class="faq-question">What is the ripeness system?</h3>
+               <div class="faq-answer">
+                  <p>As you click, your kiwi fruit ripens through three stages: Hard (first 100 clicks), Ripe (clicks
+                     101-150, ×1.5 points), and Overripe (clicks 151+, points decay by 10% per click). You can harvest
+                     your kiwi to reset it back to Hard and collect a bonus based on its stage.</p>
+               </div>
+            </div>
+            <div class="faq-item">
+               <h3 class="faq-question">What happens when I reach a milestone?</h3>
+               <div class="faq-answer">
+                  <p>When your score hits 1,000, 10,000, 100,000, or 1,000,000 coins, a Milestone Reached banner appears
+                     at the top of the screen to celebrate your achievement. These are purely cosmetic but satisfying
+                     markers of your progress.</p>
+               </div>
+            </div>
+            <div class="faq-item">
+               <h3 class="faq-question">Is there a mobile version?</h3>
+               <div class="faq-answer">
+                  <p>The game is fully responsive and works on mobile browsers. You can tap the kiwi button to click,
+                     and the layout automatically adjusts to fit your screen size.</p>
+               </div>
+            </div>
+         </section>
 
-          <section class="section">
-             <h2>Why Play Kiwi Clicker?</h2>
-             <p>Kiwi Clicker taps into the core psychology that makes idle games so addictive: the dopamine rush of incremental progress. Every click provides immediate feedback, every upgrade purchase delivers a tangible boost, and the passive income creates a sense of momentum even when you are not actively playing. Compared to more complex games, Kiwi Clicker offers a low-pressure, meditative experience. There are no timers, no enemies, and no way to lose—only steady, satisfying growth. This makes it perfect for unwinding after a stressful day or keeping your hands busy during a phone call.</p>
-             <p>Unlike generic clickers, Kiwi Clicker wraps its mechanics in a wholesome nature theme centered on one of the world's most unique birds. The Fern Grove, Nesting Area, and Sanctuary upgrades tell a subtle story of conservation and growth. While other clickers might focus on cookies or coins, Kiwi Clicker invites you to imagine building a real wildlife refuge. The green color palette, nature emojis, and tranquil pacing create an atmosphere that feels distinct from the frenetic energy of many other idle games. If you want a clicker that soothes rather than stresses, this is it.</p>
-          </section>
+         <section class="section">
+            <h2>Why Play Kiwi Clicker?</h2>
+            <p>Kiwi Clicker taps into the core psychology that makes idle games so addictive: the dopamine rush of
+               incremental progress. Every click provides immediate feedback, every upgrade purchase delivers a tangible
+               boost, and the passive income creates a sense of momentum even when you are not actively playing.
+               Compared to more complex games, Kiwi Clicker offers a low-pressure, meditative experience. There are no
+               timers, no enemies, and no way to lose—only steady, satisfying growth. This makes it perfect for
+               unwinding after a stressful day or keeping your hands busy during a phone call.</p>
+            <p>Unlike generic clickers, Kiwi Clicker wraps its mechanics in a wholesome nature theme centered on one of
+               the world's most unique birds. The Fern Grove, Nesting Area, and Sanctuary upgrades tell a subtle story
+               of conservation and growth. While other clickers might focus on cookies or coins, Kiwi Clicker invites
+               you to imagine building a real wildlife refuge. The green color palette, nature emojis, and tranquil
+               pacing create an atmosphere that feels distinct from the frenetic energy of many other idle games. If you
+               want a clicker that soothes rather than stresses, this is it.</p>
+         </section>
 
-          <section class="section">
-             <h2>Did You Know? Fun Facts About Kiwis</h2>
-             <div class="highlight-box">
-                <ul>
-                   <li>Kiwi birds are completely flightless and have tiny, virtually useless wings hidden beneath their bristly feathers.</li>
-                   <li>A kiwi's beak has nostrils at the tip, which is extremely rare among birds and helps them sniff out food underground.</li>
-                   <li>Kiwis lay the largest eggs relative to their body size of any bird species—up to 20% of the female's body weight.</li>
-                   <li>These nocturnal birds can live for 20 to 30 years in the wild, patrolling their territories every night.</li>
-                   <li>New Zealanders are often referred to as 'Kiwis' internationally, named after this beloved national symbol.</li>
-                </ul>
-             </div>
-          </section>
+         <section class="section">
+            <h2>Did You Know? Fun Facts About Kiwis</h2>
+            <div class="highlight-box">
+               <ul>
+                  <li>Kiwi birds are completely flightless and have tiny, virtually useless wings hidden beneath their
+                     bristly feathers.</li>
+                  <li>A kiwi's beak has nostrils at the tip, which is extremely rare among birds and helps them sniff
+                     out food underground.</li>
+                  <li>Kiwis lay the largest eggs relative to their body size of any bird species—up to 20% of the
+                     female's body weight.</li>
+                  <li>These nocturnal birds can live for 20 to 30 years in the wild, patrolling their territories every
+                     night.</li>
+                  <li>New Zealanders are often referred to as 'Kiwis' internationally, named after this beloved national
+                     symbol.</li>
+               </ul>
+            </div>
+         </section>
 
-          <section class="section">
-             <h2>Discover More Free Clicker Games</h2>
-             <p>If you enjoy Kiwi Clicker, be sure to check out these other popular titles on our site. Try <a href="/duck-duck-clicker/">Duck Duck Clicker</a> for a different nature theme, or test your automation skills in <a href="/gs-auto-clicker/">GS Auto Clicker</a>. Animal lovers might also enjoy <a href="/dog-clicker/">Dog Clicker</a> and <a href="/italian-brainrot-clicker/">Italian Brainrot Clicker</a>. For the classic experience, do not miss <a href="/cookie-clicker/">Cookie Clicker</a>.</p>
-          </section>
+         <section class="section">
+            <h2>Discover More Free Clicker Games</h2>
+            <p>If you enjoy Kiwi Clicker, be sure to check out these other popular titles on our site. Try <a
+                  href="/duck-duck-clicker/">Duck Duck Clicker</a> for a different nature theme, or test your automation
+               skills in <a href="/gs-auto-clicker/">GS Auto Clicker</a>. Animal lovers might also enjoy <a
+                  href="/dog-clicker/">Dog Clicker</a> and <a href="/italian-brainrot-clicker/">Italian Brainrot
+                  Clicker</a>. For the classic experience, do not miss <a href="/cookie-clicker/">Cookie Clicker</a>.
+            </p>
+         </section>
 
-          <div style="text-align: center;">
-          </div>
+         <div style="text-align: center;">
+         </div>
 
-       </article>
+      </article>
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
@@ -1223,33 +1366,33 @@
          const COST_SCALE = 1.15;
          const PARTICLE_EMOJI = '🍃';
 
-          let score = 0;
-          let totalEarned = 0;
-          let clickPower = 1;
-          let clickPowerLevel = 1;
-          let clickPowerCost = 50;
-          let perSecond = 0;
-          let upgradeOwned = UPGRADES.map(() => 0);
+         let score = 0;
+         let totalEarned = 0;
+         let clickPower = 1;
+         let clickPowerLevel = 1;
+         let clickPowerCost = 50;
+         let perSecond = 0;
+         let upgradeOwned = UPGRADES.map(() => 0);
 
-          // Combo system
-          let lastClickTime = 0;
-          let comboCount = 0;
-          const COMBO_TIMEOUT = 2000;
-          const COMBO_CRIT_THRESHOLD = 10;
+         // Combo system
+         let lastClickTime = 0;
+         let comboCount = 0;
+         const COMBO_TIMEOUT = 2000;
+         const COMBO_CRIT_THRESHOLD = 10;
 
-          // Sound toggle
-          let soundEnabled = true;
+         // Sound toggle
+         let soundEnabled = true;
 
-          // Milestones
-          const milestones = [1000, 10000, 100000, 1000000];
-          let milestonesReached = {};
-          milestones.forEach(m => milestonesReached[m] = false);
+         // Milestones
+         const milestones = [1000, 10000, 100000, 1000000];
+         let milestonesReached = {};
+         milestones.forEach(m => milestonesReached[m] = false);
 
-          // Ripening system
-          let clickCount = 0;
-          let overripeDecay = 1.0;
-          let ripenessStage = 'hard';
-          const EMOJI = '🥝';
+         // Ripening system
+         let clickCount = 0;
+         let overripeDecay = 1.0;
+         let ripenessStage = 'hard';
+         const EMOJI = '🥝';
 
          // DOM
          const scoreNum = document.getElementById('scoreNum');
@@ -1258,27 +1401,27 @@
          const gStatTotal = document.getElementById('gStatTotal');
          const gStatPerSec = document.getElementById('gStatPerSec');
          const clickBtn = document.getElementById('clickBtn');
-          const clickArea = document.getElementById('clickArea');
-          const comboDisplay = document.getElementById('comboDisplay');
-          const progressBarFill = document.getElementById('progressBarFill');
-          const milestoneBanner = document.getElementById('milestoneBanner');
-          const soundToggle = document.getElementById('soundToggle');
-          const particleContainer = document.getElementById('particleContainer');
+         const clickArea = document.getElementById('clickArea');
+         const comboDisplay = document.getElementById('comboDisplay');
+         const progressBarFill = document.getElementById('progressBarFill');
+         const milestoneBanner = document.getElementById('milestoneBanner');
+         const soundToggle = document.getElementById('soundToggle');
+         const particleContainer = document.getElementById('particleContainer');
 
-           function formatNum(n) {
-             if (n < 1000) return Math.floor(n).toLocaleString();
-             if (n < 1e6) return (n / 1e3).toFixed(1) + 'K';
-             if (n < 1e9) return (n / 1e6).toFixed(1) + 'M';
-             if (n < 1e12) return (n / 1e9).toFixed(1) + 'B';
-             return (n / 1e12).toFixed(1) + 'T';
-          }
+         function formatNum(n) {
+            if (n < 1000) return Math.floor(n).toLocaleString();
+            if (n < 1e6) return (n / 1e3).toFixed(1) + 'K';
+            if (n < 1e9) return (n / 1e6).toFixed(1) + 'M';
+            if (n < 1e12) return (n / 1e9).toFixed(1) + 'B';
+            return (n / 1e12).toFixed(1) + 'T';
+         }
 
-          function getThemeEmojiText(amount, isCritical) {
-             if (isCritical) return '⭐' + EMOJI + '⭐';
-             if (amount <= 1) return EMOJI;
-             if (amount <= 5) return EMOJI.repeat(amount);
-             return EMOJI.repeat(3) + ' ×' + formatNum(amount);
-          }
+         function getThemeEmojiText(amount, isCritical) {
+            if (isCritical) return '⭐' + EMOJI + '⭐';
+            if (amount <= 1) return EMOJI;
+            if (amount <= 5) return EMOJI.repeat(amount);
+            return EMOJI.repeat(3) + ' ×' + formatNum(amount);
+         }
 
          function getCost(baseC, owned) {
             return Math.floor(baseC * Math.pow(COST_SCALE, owned));
@@ -1291,170 +1434,170 @@
             });
          }
 
-          function render() {
-             scoreNum.textContent = formatNum(score);
-             perSecDisplay.textContent = formatNum(perSecond) + ' kiwi coins/sec';
-             clickPowerInfo.textContent = '+' + formatNum(clickPower) + ' per click';
-             gStatTotal.textContent = formatNum(score) + ' Kiwi Coins';
-             gStatPerSec.textContent = formatNum(perSecond) + '/sec';
+         function render() {
+            scoreNum.textContent = formatNum(score);
+            perSecDisplay.textContent = formatNum(perSecond) + ' kiwi coins/sec';
+            clickPowerInfo.textContent = '+' + formatNum(clickPower) + ' per click';
+            gStatTotal.textContent = formatNum(score) + ' Kiwi Coins';
+            gStatPerSec.textContent = formatNum(perSecond) + '/sec';
 
-             UPGRADES.forEach((u, i) => {
-                const card = document.getElementById('upg' + i);
-                const cost = getCost(u.baseCost, upgradeOwned[i]);
-                document.getElementById('upgCost' + i).textContent = formatNum(cost);
-                document.getElementById('upgOwned' + i).textContent = 'Owned: ' + upgradeOwned[i];
-                if (score >= cost) {
-                   card.classList.remove('locked');
-                } else {
-                   card.classList.add('locked');
-                }
-             });
+            UPGRADES.forEach((u, i) => {
+               const card = document.getElementById('upg' + i);
+               const cost = getCost(u.baseCost, upgradeOwned[i]);
+               document.getElementById('upgCost' + i).textContent = formatNum(cost);
+               document.getElementById('upgOwned' + i).textContent = 'Owned: ' + upgradeOwned[i];
+               if (score >= cost) {
+                  card.classList.remove('locked');
+               } else {
+                  card.classList.add('locked');
+               }
+            });
 
-              // Click power upgrade
-              const cpCard = document.getElementById('upgClickPower');
-              document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
-              document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
-              if (score >= clickPowerCost) {
-                 cpCard.classList.remove('locked');
-              } else {
-                 cpCard.classList.add('locked');
-              }
+            // Click power upgrade
+            const cpCard = document.getElementById('upgClickPower');
+            document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
+            document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
+            if (score >= clickPowerCost) {
+               cpCard.classList.remove('locked');
+            } else {
+               cpCard.classList.add('locked');
+            }
 
-              // Progress bar: next affordable upgrade
-              let nextCost = Infinity;
-              UPGRADES.forEach((u, i) => {
-                 const c = getCost(u.baseCost, upgradeOwned[i]);
-                 if (c > score && c < nextCost) nextCost = c;
-              });
-              if (clickPowerCost > score && clickPowerCost < nextCost) nextCost = clickPowerCost;
-              if (nextCost !== Infinity) {
-                 progressBarFill.style.width = Math.min(100, (score / nextCost) * 100) + '%';
-              } else {
-                 progressBarFill.style.width = '100%';
-              }
+            // Progress bar: next affordable upgrade
+            let nextCost = Infinity;
+            UPGRADES.forEach((u, i) => {
+               const c = getCost(u.baseCost, upgradeOwned[i]);
+               if (c > score && c < nextCost) nextCost = c;
+            });
+            if (clickPowerCost > score && clickPowerCost < nextCost) nextCost = clickPowerCost;
+            if (nextCost !== Infinity) {
+               progressBarFill.style.width = Math.min(100, (score / nextCost) * 100) + '%';
+            } else {
+               progressBarFill.style.width = '100%';
+            }
 
-              // Milestones
-              milestones.forEach(m => {
-                 if (score >= m && !milestonesReached[m]) {
-                    milestonesReached[m] = true;
-                    showMilestoneBanner(m);
-                 }
-              });
+            // Milestones
+            milestones.forEach(m => {
+               if (score >= m && !milestonesReached[m]) {
+                  milestonesReached[m] = true;
+                  showMilestoneBanner(m);
+               }
+            });
 
-              // Ripeness display
-              const ripenessDisplay = document.getElementById('ripenessDisplay');
-              const harvestBtn = document.getElementById('harvestBtn');
-              if (ripenessDisplay) {
-                 let stageLabel = 'Stage: Hard';
-                 if (ripenessStage === 'ripe') stageLabel = 'Stage: Ripe (×1.5)';
-                 if (ripenessStage === 'overripe') stageLabel = 'Stage: Overripe (decaying)';
-                 ripenessDisplay.textContent = stageLabel;
-                 ripenessDisplay.className = 'ripeness-display ' + ripenessStage;
-              }
-              if (harvestBtn) {
-                 harvestBtn.style.display = (ripenessStage === 'ripe' || ripenessStage === 'overripe') ? 'inline-block' : 'none';
-              }
+            // Ripeness display
+            const ripenessDisplay = document.getElementById('ripenessDisplay');
+            const harvestBtn = document.getElementById('harvestBtn');
+            if (ripenessDisplay) {
+               let stageLabel = 'Stage: Hard';
+               if (ripenessStage === 'ripe') stageLabel = 'Stage: Ripe (×1.5)';
+               if (ripenessStage === 'overripe') stageLabel = 'Stage: Overripe (decaying)';
+               ripenessDisplay.textContent = stageLabel;
+               ripenessDisplay.className = 'ripeness-display ' + ripenessStage;
+            }
+            if (harvestBtn) {
+               harvestBtn.style.display = (ripenessStage === 'ripe' || ripenessStage === 'overripe') ? 'inline-block' : 'none';
+            }
 
-              // Kiwi button ripeness color
-              clickBtn.classList.remove('ripe', 'overripe');
-              if (ripenessStage === 'ripe') {
-                 clickBtn.classList.add('ripe');
-              } else if (ripenessStage === 'overripe') {
-                 clickBtn.classList.add('overripe');
-              }
-           }
+            // Kiwi button ripeness color
+            clickBtn.classList.remove('ripe', 'overripe');
+            if (ripenessStage === 'ripe') {
+               clickBtn.classList.add('ripe');
+            } else if (ripenessStage === 'overripe') {
+               clickBtn.classList.add('overripe');
+            }
+         }
 
-           function showClickFloat(x, y, text, isCritical) {
-              const el = document.createElement('div');
-              el.className = 'click-float';
-              if (text == null) {
-                 el.textContent = getThemeEmojiText(clickPower, isCritical);
-              } else {
-                 el.textContent = text;
-              }
-              el.style.left = x + 'px';
-              el.style.top = y + 'px';
-              clickArea.style.position = 'relative';
-              clickArea.appendChild(el);
-              setTimeout(() => el.remove(), 700);
-           }
+         function showClickFloat(x, y, text, isCritical) {
+            const el = document.createElement('div');
+            el.className = 'click-float';
+            if (text == null) {
+               el.textContent = getThemeEmojiText(clickPower, isCritical);
+            } else {
+               el.textContent = text;
+            }
+            el.style.left = x + 'px';
+            el.style.top = y + 'px';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 700);
+         }
 
-           function showCriticalPopup(x, y, power) {
-              const el = document.createElement('div');
-              el.className = 'critical-popup';
-              el.textContent = getThemeEmojiText(power, true);
-              el.style.left = x + 'px';
-              el.style.top = (y - 30) + 'px';
-              clickArea.appendChild(el);
-              setTimeout(() => el.remove(), 800);
-           }
+         function showCriticalPopup(x, y, power) {
+            const el = document.createElement('div');
+            el.className = 'critical-popup';
+            el.textContent = getThemeEmojiText(power, true);
+            el.style.left = x + 'px';
+            el.style.top = (y - 30) + 'px';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 800);
+         }
 
-          function showMilestoneBanner(m) {
-             milestoneBanner.textContent = '🎉 Milestone Reached: ' + formatNum(m) + '!';
-             milestoneBanner.classList.add('show');
-             setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
-          }
+         function showMilestoneBanner(m) {
+            milestoneBanner.textContent = '🎉 Milestone Reached: ' + formatNum(m) + '!';
+            milestoneBanner.classList.add('show');
+            setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
+         }
 
-           function doClick(e) {
-              const now = Date.now();
-              let earned = clickPower;
-              if (now - lastClickTime <= COMBO_TIMEOUT) {
-                 comboCount++;
-              } else {
-                 comboCount = 1;
-              }
-              lastClickTime = now;
+         function doClick(e) {
+            const now = Date.now();
+            let earned = clickPower;
+            if (now - lastClickTime <= COMBO_TIMEOUT) {
+               comboCount++;
+            } else {
+               comboCount = 1;
+            }
+            lastClickTime = now;
 
-              if (comboCount > 1) {
-                 comboDisplay.textContent = comboCount + 'x Combo!';
-                 comboDisplay.classList.add('active');
-                 setTimeout(() => comboDisplay.classList.remove('active'), 100);
-              } else {
-                 comboDisplay.textContent = '';
-              }
+            if (comboCount > 1) {
+               comboDisplay.textContent = comboCount + 'x Combo!';
+               comboDisplay.classList.add('active');
+               setTimeout(() => comboDisplay.classList.remove('active'), 100);
+            } else {
+               comboDisplay.textContent = '';
+            }
 
-              if (comboCount % COMBO_CRIT_THRESHOLD === 0) {
-                 earned *= 2;
-              }
+            if (comboCount % COMBO_CRIT_THRESHOLD === 0) {
+               earned *= 2;
+            }
 
-              // Ripening mechanic
-              clickCount++;
-              let ripenessMult = 1;
-              if (clickCount <= 100) {
-                 ripenessStage = 'hard';
-              } else if (clickCount <= 150) {
-                 ripenessStage = 'ripe';
-                 ripenessMult = 1.5;
-              } else {
-                 ripenessStage = 'overripe';
-                 overripeDecay *= 0.9;
-                 ripenessMult = overripeDecay;
-              }
-              earned = Math.round(earned * ripenessMult);
+            // Ripening mechanic
+            clickCount++;
+            let ripenessMult = 1;
+            if (clickCount <= 100) {
+               ripenessStage = 'hard';
+            } else if (clickCount <= 150) {
+               ripenessStage = 'ripe';
+               ripenessMult = 1.5;
+            } else {
+               ripenessStage = 'overripe';
+               overripeDecay *= 0.9;
+               ripenessMult = overripeDecay;
+            }
+            earned = Math.round(earned * ripenessMult);
 
-              score += earned;
-              totalEarned += earned;
+            score += earned;
+            totalEarned += earned;
 
-              clickBtn.classList.add('pressed');
-              setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+            clickBtn.classList.add('pressed');
+            setTimeout(() => clickBtn.classList.remove('pressed'), 100);
 
-              // Float position
-              const rect = clickArea.getBoundingClientRect();
-              let cx, cy;
-              if (e && e.clientX) {
-                 cx = e.clientX - rect.left;
-                 cy = e.clientY - rect.top;
-              } else {
-                 cx = rect.width / 2 + (Math.random() - 0.5) * 40;
-                 cy = rect.height / 2 - 30;
-              }
-              const isCritical = comboCount % COMBO_CRIT_THRESHOLD === 0;
-              showClickFloat(cx, cy, null, isCritical);
-              if (isCritical) {
-                 showCriticalPopup(cx, cy, earned);
-              }
-              render();
-           }
+            // Float position
+            const rect = clickArea.getBoundingClientRect();
+            let cx, cy;
+            if (e && e.clientX) {
+               cx = e.clientX - rect.left;
+               cy = e.clientY - rect.top;
+            } else {
+               cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+               cy = rect.height / 2 - 30;
+            }
+            const isCritical = comboCount % COMBO_CRIT_THRESHOLD === 0;
+            showClickFloat(cx, cy, null, isCritical);
+            if (isCritical) {
+               showCriticalPopup(cx, cy, earned);
+            }
+            render();
+         }
 
          clickBtn.addEventListener('click', doClick);
          clickBtn.addEventListener('touchstart', (e) => {
@@ -1503,30 +1646,30 @@
             }
          }, 1000);
 
-          // Save / Load
-          function saveGame() {
-             const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, clickCount, overripeDecay, ripenessStage };
-             try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
-          }
+         // Save / Load
+         function saveGame() {
+            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, clickCount, overripeDecay, ripenessStage };
+            try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
+         }
 
-          function loadGame() {
-             try {
-                const raw = localStorage.getItem(SAVE_KEY);
-                if (raw) {
-                   const data = JSON.parse(raw);
-                   score = data.score || 0;
-                   totalEarned = data.totalEarned || 0;
-                   clickPower = data.clickPower || 1;
-                   clickPowerLevel = data.clickPowerLevel || 1;
-                   clickPowerCost = data.clickPowerCost || 50;
-                   upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
-                   clickCount = data.clickCount || 0;
-                   overripeDecay = data.overripeDecay || 1.0;
-                   ripenessStage = data.ripenessStage || 'hard';
-                   recalcPerSecond();
-                }
-             } catch (e) { }
-          }
+         function loadGame() {
+            try {
+               const raw = localStorage.getItem(SAVE_KEY);
+               if (raw) {
+                  const data = JSON.parse(raw);
+                  score = data.score || 0;
+                  totalEarned = data.totalEarned || 0;
+                  clickPower = data.clickPower || 1;
+                  clickPowerLevel = data.clickPowerLevel || 1;
+                  clickPowerCost = data.clickPowerCost || 50;
+                  upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                  clickCount = data.clickCount || 0;
+                  overripeDecay = data.overripeDecay || 1.0;
+                  ripenessStage = data.ripenessStage || 'hard';
+                  recalcPerSecond();
+               }
+            } catch (e) { }
+         }
 
          document.getElementById('saveBtn').addEventListener('click', () => {
             saveGame();
@@ -1535,63 +1678,63 @@
             setTimeout(() => { btn.textContent = '💾 Save'; }, 1500);
          });
 
-           document.getElementById('resetBtn').addEventListener('click', () => {
-              if (confirm('Reset all progress for Kiwi Clicker? This cannot be undone.')) {
-                 localStorage.removeItem(SAVE_KEY);
-                 score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
-                 upgradeOwned = UPGRADES.map(() => 0);
-                 milestonesReached = {}; milestones.forEach(m => milestonesReached[m] = false);
-                 clickCount = 0; overripeDecay = 1.0; ripenessStage = 'hard';
-                 recalcPerSecond();
-                 render();
-              }
-           });
+         document.getElementById('resetBtn').addEventListener('click', () => {
+            if (confirm('Reset all progress for Kiwi Clicker? This cannot be undone.')) {
+               localStorage.removeItem(SAVE_KEY);
+               score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
+               upgradeOwned = UPGRADES.map(() => 0);
+               milestonesReached = {}; milestones.forEach(m => milestonesReached[m] = false);
+               clickCount = 0; overripeDecay = 1.0; ripenessStage = 'hard';
+               recalcPerSecond();
+               render();
+            }
+         });
 
-           // Harvest button
-           document.getElementById('harvestBtn').addEventListener('click', () => {
-              let bonus = clickPower * 100;
-              if (ripenessStage === 'overripe') bonus = Math.floor(bonus * overripeDecay);
-              score += bonus;
-              totalEarned += bonus;
-              clickCount = 0;
-              overripeDecay = 1.0;
-              ripenessStage = 'hard';
-              showClickFloat(clickArea.getBoundingClientRect().width / 2, clickArea.getBoundingClientRect().height / 2, '🌾 +' + formatNum(bonus));
-              render();
-           });
+         // Harvest button
+         document.getElementById('harvestBtn').addEventListener('click', () => {
+            let bonus = clickPower * 100;
+            if (ripenessStage === 'overripe') bonus = Math.floor(bonus * overripeDecay);
+            score += bonus;
+            totalEarned += bonus;
+            clickCount = 0;
+            overripeDecay = 1.0;
+            ripenessStage = 'hard';
+            showClickFloat(clickArea.getBoundingClientRect().width / 2, clickArea.getBoundingClientRect().height / 2, '🌾 +' + formatNum(bonus));
+            render();
+         });
 
-          // Auto-save every 30s
-          setInterval(saveGame, 30000);
+         // Auto-save every 30s
+         setInterval(saveGame, 30000);
 
-          // Sound toggle
-          soundToggle.addEventListener('click', () => {
-             soundEnabled = !soundEnabled;
-             soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
-          });
+         // Sound toggle
+         soundToggle.addEventListener('click', () => {
+            soundEnabled = !soundEnabled;
+            soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+         });
 
-          // Floating particles
-          setInterval(() => {
-             const p = document.createElement('div');
-             p.className = 'particle';
-             p.textContent = PARTICLE_EMOJI;
-             p.style.left = Math.random() * 100 + '%';
-             p.style.bottom = '0';
-             particleContainer.appendChild(p);
-             setTimeout(() => p.remove(), 2500);
-          }, 3000);
+         // Floating particles
+         setInterval(() => {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.textContent = PARTICLE_EMOJI;
+            p.style.left = Math.random() * 100 + '%';
+            p.style.bottom = '0';
+            particleContainer.appendChild(p);
+            setTimeout(() => p.remove(), 2500);
+         }, 3000);
 
-          // FAQ toggle
-          document.querySelectorAll('.faq-question').forEach(q => {
-             q.addEventListener('click', () => {
-                const item = q.closest('.faq-item');
-                item.classList.toggle('open');
-             });
-          });
+         // FAQ toggle
+         document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+               const item = q.closest('.faq-item');
+               item.classList.toggle('open');
+            });
+         });
 
-          // Init
-          loadGame();
-          render();
-       })();
+         // Init
+         loadGame();
+         render();
+      })();
    </script>
 
    <script>

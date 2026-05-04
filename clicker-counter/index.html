@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Clicker Counter - Free Number Idle Game Online | Spacebar Clicker</title>
+   <title>Clicker Counter - Free Number Idle Game Online</title>
    <meta name="description"
       content="Play Clicker Counter free online! Rack up counts, unlock auto counters to infinite arrays, and scale your numbers in this clean incremental game. No download needed.">
    <meta name="keywords"
@@ -225,7 +225,7 @@
          font-size: 64px;
          cursor: pointer;
          transition: transform 0.1s ease, box-shadow 0.1s ease;
-         box-shadow: 0 8px 30px #61616133, inset 0 -4px 10px rgba(97,97,97,0.2);
+         box-shadow: 0 8px 30px #61616133, inset 0 -4px 10px rgba(97, 97, 97, 0.2);
          display: flex;
          align-items: center;
          justify-content: center;
@@ -237,18 +237,18 @@
       }
 
       .click-btn:hover {
-         box-shadow: 0 12px 40px #61616155, inset 0 -4px 10px rgba(97,97,97,0.2);
+         box-shadow: 0 12px 40px #61616155, inset 0 -4px 10px rgba(97, 97, 97, 0.2);
       }
 
       .click-btn:active,
       .click-btn.pressed {
          transform: scale(0.92);
-         box-shadow: 0 4px 15px #61616144, inset 0 -4px 10px rgba(97,97,97,0.2);
+         box-shadow: 0 4px 15px #61616144, inset 0 -4px 10px rgba(97, 97, 97, 0.2);
       }
 
       .click-btn .emoji {
          pointer-events: none;
-         filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
+         filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.15));
       }
 
       .score-display {
@@ -344,7 +344,7 @@
          border-color: #0891b2;
          background: linear-gradient(180deg, #fff 0%, #e0e0e0 100%);
          transform: translateY(-2px);
-         box-shadow: 0 6px 16px rgba(97,97,97,0.18);
+         box-shadow: 0 6px 16px rgba(97, 97, 97, 0.18);
          transform: translateY(-1px);
          box-shadow: 0 4px 12px #0891b215;
       }
@@ -438,21 +438,34 @@
          color: #0891b2;
          min-height: 1.2em;
       }
+
       .critical-popup {
          position: absolute;
          pointer-events: none;
          font-size: 1.6rem;
          font-weight: 800;
          color: #dc2626;
-         text-shadow: 0 2px 8px rgba(220,38,38,0.3);
+         text-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
          animation: criticalPop 0.8s ease-out forwards;
          z-index: 20;
       }
+
       @keyframes criticalPop {
-         0% { opacity: 1; transform: translateY(0) scale(0.5); }
-         50% { transform: translateY(-30px) scale(1.2); }
-         100% { opacity: 0; transform: translateY(-80px) scale(1); }
+         0% {
+            opacity: 1;
+            transform: translateY(0) scale(0.5);
+         }
+
+         50% {
+            transform: translateY(-30px) scale(1.2);
+         }
+
+         100% {
+            opacity: 0;
+            transform: translateY(-80px) scale(1);
+         }
       }
+
       .progress-bar-container {
          width: 80%;
          max-width: 220px;
@@ -462,6 +475,7 @@
          margin-top: 12px;
          overflow: hidden;
       }
+
       .progress-bar-fill {
          height: 100%;
          background: linear-gradient(90deg, #0891b2, #0891b2dd);
@@ -469,6 +483,7 @@
          transition: width 0.3s ease;
          width: 0%;
       }
+
       .particle {
          position: absolute;
          pointer-events: none;
@@ -477,10 +492,19 @@
          animation: particleFloat 2.5s ease-out forwards;
          z-index: 5;
       }
+
       @keyframes particleFloat {
-         0% { opacity: 0.7; transform: translateY(0) rotate(0deg); }
-         100% { opacity: 0; transform: translateY(-120px) rotate(45deg); }
+         0% {
+            opacity: 0.7;
+            transform: translateY(0) rotate(0deg);
+         }
+
+         100% {
+            opacity: 0;
+            transform: translateY(-120px) rotate(45deg);
+         }
       }
+
       .milestone-banner {
          position: absolute;
          top: 50%;
@@ -492,22 +516,39 @@
          border-radius: 12px;
          font-size: 1.1rem;
          font-weight: 700;
-         box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
          animation: milestoneIn 0.5s ease-out, milestoneOut 0.5s ease-in 2s forwards;
          z-index: 50;
          pointer-events: none;
          white-space: nowrap;
       }
+
       @keyframes milestoneIn {
-         from { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
-         to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+         from {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.7);
+         }
+
+         to {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+         }
       }
+
       @keyframes milestoneOut {
-         from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-         to { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+         from {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+         }
+
+         to {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.9);
+         }
       }
+
       .sound-toggle {
-         background: rgba(255,255,255,0.2);
+         background: rgba(255, 255, 255, 0.2);
          border: none;
          border-radius: 8px;
          padding: 4px 10px;
@@ -516,7 +557,11 @@
          cursor: pointer;
          transition: background 0.2s;
       }
-      .sound-toggle:hover { background: rgba(255,255,255,0.35); }
+
+      .sound-toggle:hover {
+         background: rgba(255, 255, 255, 0.35);
+      }
+
       .keyboard-tip {
          width: 100%;
          text-align: center;
@@ -525,9 +570,18 @@
          margin-top: 8px;
          font-weight: 500;
       }
+
       /* FAQ Section */
-      .faq-section { margin-bottom: 30px; }
-      .faq-item { margin-bottom: 14px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+      .faq-section {
+         margin-bottom: 30px;
+      }
+
+      .faq-item {
+         margin-bottom: 14px;
+         border-bottom: 1px solid #eee;
+         padding-bottom: 10px;
+      }
+
       .faq-item h3 {
          color: #333;
          font-size: 1.05rem;
@@ -537,7 +591,11 @@
          position: relative;
          padding-right: 20px;
       }
-      .faq-item h3:hover { color: #0891b2; }
+
+      .faq-item h3:hover {
+         color: #0891b2;
+      }
+
       .faq-item h3::after {
          content: '+';
          position: absolute;
@@ -547,7 +605,11 @@
          font-weight: 700;
          transition: transform 0.2s;
       }
-      .faq-item.active h3::after { transform: rotate(45deg); }
+
+      .faq-item.active h3::after {
+         transform: rotate(45deg);
+      }
+
       .faq-item p {
          display: none;
          color: #555;
@@ -556,12 +618,42 @@
          margin-bottom: 0;
          padding-top: 4px;
       }
-      .faq-item.active p { display: block; }
-      .fun-facts { background: #f8f9fe; border-radius: 12px; padding: 20px; margin: 20px 0; }
-      .fun-facts h3 { color: #7838f3; margin-bottom: 12px; }
-      .fun-facts ul { list-style: none; padding-left: 0; }
-      .fun-facts li { padding: 6px 0 6px 24px; position: relative; color: #333; line-height: 1.6; }
-      .fun-facts li::before { content: '•'; position: absolute; left: 0; color: #7838f3; font-weight: bold; }
+
+      .faq-item.active p {
+         display: block;
+      }
+
+      .fun-facts {
+         background: #f8f9fe;
+         border-radius: 12px;
+         padding: 20px;
+         margin: 20px 0;
+      }
+
+      .fun-facts h3 {
+         color: #7838f3;
+         margin-bottom: 12px;
+      }
+
+      .fun-facts ul {
+         list-style: none;
+         padding-left: 0;
+      }
+
+      .fun-facts li {
+         padding: 6px 0 6px 24px;
+         position: relative;
+         color: #333;
+         line-height: 1.6;
+      }
+
+      .fun-facts li::before {
+         content: '•';
+         position: absolute;
+         left: 0;
+         color: #7838f3;
+         font-weight: bold;
+      }
 
       /* Article Styles */
       .article-container {
@@ -904,25 +996,27 @@
       <div class="game-wrapper" id="gameWrapper">
          <div class="game-header">
             <h2>🔢 Clicker Counter</h2>
-             <div class="game-stats-bar">
-                <span class="game-stat-pill" id="gStatTotal">0 Counts</span>
-                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
-                <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
-             </div>
+            <div class="game-stats-bar">
+               <span class="game-stat-pill" id="gStatTotal">0 Counts</span>
+               <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+               <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
+            </div>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
                <button class="click-btn" id="clickBtn" aria-label="Count Count">
                   <span class="emoji">🔢</span>
                </button>
-                <div class="score-display">
-                   <div class="score-number" id="scoreNum">0</div>
-                   <div class="score-label">Counts</div>
-                   <div class="combo-display" id="comboDisplay"></div>
-                </div>
-                <div class="per-second" id="perSecDisplay">0 counts/sec</div>
-                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
-                <div class="progress-bar-container"><div class="progress-bar-fill" id="progressBarFill"></div></div>
+               <div class="score-display">
+                  <div class="score-number" id="scoreNum">0</div>
+                  <div class="score-label">Counts</div>
+                  <div class="combo-display" id="comboDisplay"></div>
+               </div>
+               <div class="per-second" id="perSecDisplay">0 counts/sec</div>
+               <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+               <div class="progress-bar-container">
+                  <div class="progress-bar-fill" id="progressBarFill"></div>
+               </div>
             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
@@ -995,92 +1089,168 @@
                </div>
             </div>
          </div>
-          <div class="game-footer">
-             <button id="saveBtn">💾 Save</button>
-             <button class="reset-btn" id="resetBtn">🔄 Reset</button>
-             <div class="keyboard-tip">💡 Tip: Press SPACE to click!</div>
-          </div>
+         <div class="game-footer">
+            <button id="saveBtn">💾 Save</button>
+            <button class="reset-btn" id="resetBtn">🔄 Reset</button>
+            <div class="keyboard-tip">💡 Tip: Press SPACE to click!</div>
+         </div>
       </div>
 
       <!-- ===== ARTICLE CONTENT ===== -->
-       <article class="article-container">
-          <div class="intro">
-             <p>Clicker Counter strips away complex themes and flashy graphics to deliver the pure essence of incremental gaming: numbers going up. While other clickers wrap their mechanics in cookies, planets, or memes, this free browser game embraces minimalism. You start with zero. You click to increase your Count. You invest those Counts into passive generators that tick upward automatically. The result is a crystal-clear demonstration of why idle games are so addictive—the compounding math is laid bare, unobscured by narrative or decorative fluff.</p>
-             <p>The appeal of counting as a mechanic predates video games entirely. Humans have been tallying marks on walls, notching sticks, and clicking mechanical counters for millennia. There is something primal and satisfying about quantifying progress, no matter how abstract. Clicker Counter taps into that ancient instinct through a modern digital lens. Your Auto Counter represents the first delegation of labor—the moment you stop doing everything yourself. The Tally Machine industrializes the process. The Digital Counter brings computing power to bear. The Counter Array parallelizes your operation across hundreds of threads. Finally, the Infinite Counter suggests that your counting enterprise has transcended physical limitations entirely.</p>
-             <p>Idle games exploded into mainstream consciousness with Cookie Clicker in 2013, but their roots stretch back to Progress Quest (2002) and even earlier incremental concepts. What makes the genre endure is its universal accessibility. You do not need fast reflexes, gaming experience, or expensive hardware—just a browser and a willingness to watch numbers grow. Clicker Counter exemplifies this democratized design philosophy. There are no hidden mechanics, no paywalls, and no competitive pressure. The cyan color scheme and clean interface make it accessible to players of all ages and abilities. Like all games on this site, it requires absolutely no download.</p>
-             <p>Whether you are a mathematics enthusiast who appreciates exponential growth curves, a casual player seeking a low-stress distraction, or an educator looking for a playful way to demonstrate compound interest, Clicker Counter delivers. Its stripped-down aesthetic makes it the perfect introduction to idle games for newcomers, while its deep optimization potential keeps veteran clicker fans engaged. If you enjoy the pure numbers approach, you might also appreciate <a href="/op-auto-clicker/">OP Auto Clicker</a> for automated clicking tools, or <a href="/money-clicker/">Money Clicker</a> for a more traditionally themed financial incremental experience.</p>
-          </div>
+      <article class="article-container">
+         <div class="intro">
+            <p>Clicker Counter strips away complex themes and flashy graphics to deliver the pure essence of incremental
+               gaming: numbers going up. While other clickers wrap their mechanics in cookies, planets, or memes, this
+               free browser game embraces minimalism. You start with zero. You click to increase your Count. You invest
+               those Counts into passive generators that tick upward automatically. The result is a crystal-clear
+               demonstration of why idle games are so addictive—the compounding math is laid bare, unobscured by
+               narrative or decorative fluff.</p>
+            <p>The appeal of counting as a mechanic predates video games entirely. Humans have been tallying marks on
+               walls, notching sticks, and clicking mechanical counters for millennia. There is something primal and
+               satisfying about quantifying progress, no matter how abstract. Clicker Counter taps into that ancient
+               instinct through a modern digital lens. Your Auto Counter represents the first delegation of labor—the
+               moment you stop doing everything yourself. The Tally Machine industrializes the process. The Digital
+               Counter brings computing power to bear. The Counter Array parallelizes your operation across hundreds of
+               threads. Finally, the Infinite Counter suggests that your counting enterprise has transcended physical
+               limitations entirely.</p>
+            <p>Idle games exploded into mainstream consciousness with Cookie Clicker in 2013, but their roots stretch
+               back to Progress Quest (2002) and even earlier incremental concepts. What makes the genre endure is its
+               universal accessibility. You do not need fast reflexes, gaming experience, or expensive hardware—just a
+               browser and a willingness to watch numbers grow. Clicker Counter exemplifies this democratized design
+               philosophy. There are no hidden mechanics, no paywalls, and no competitive pressure. The cyan color
+               scheme and clean interface make it accessible to players of all ages and abilities. Like all games on
+               this site, it requires absolutely no download.</p>
+            <p>Whether you are a mathematics enthusiast who appreciates exponential growth curves, a casual player
+               seeking a low-stress distraction, or an educator looking for a playful way to demonstrate compound
+               interest, Clicker Counter delivers. Its stripped-down aesthetic makes it the perfect introduction to idle
+               games for newcomers, while its deep optimization potential keeps veteran clicker fans engaged. If you
+               enjoy the pure numbers approach, you might also appreciate <a href="/op-auto-clicker/">OP Auto
+                  Clicker</a> for automated clicking tools, or <a href="/money-clicker/">Money Clicker</a> for a more
+               traditionally themed financial incremental experience.</p>
+         </div>
 
-          <section class="section">
-             <h2>How to Play Clicker Counter</h2>
-             <ol class="tips-list">
-                <li><strong>Start counting manually.</strong> Click the counter button or press SPACE to increase your Count by +1 per click at the start.</li>
-                <li><strong>Buy an Auto Counter.</strong> At 15 Counts, this first passive generator adds +1 count per second automatically—your first step toward automation.</li>
-                <li><strong>Build Tally Machines.</strong> Each Tally Machine generates +5 counts/sec and offers excellent early-game value. Purchase several before advancing.</li>
-                <li><strong>Invest in Click Power strategically.</strong> When manual clicking still contributes meaningfully to your total, upgrading click power cuts your wait times in half.</li>
-                <li><strong>Upgrade to Digital Counters and Arrays.</strong> Digital Counters (+20/sec) mark your mid-game, while Counter Arrays (+100/sec) enable serious AFK grinding.</li>
-                <li><strong>Unlock the Infinite Counter.</strong> The +500/sec endgame generator lets your Count explode into the millions with minimal active effort.</li>
-                <li><strong>Master the combo rhythm.</strong> Click rapidly within 2-second windows to build combos. Every 10 consecutive clicks scores a CRITICAL HIT for double points!</li>
-             </ol>
-          </section>
+         <section class="section">
+            <h2>How to Play Clicker Counter</h2>
+            <ol class="tips-list">
+               <li><strong>Start counting manually.</strong> Click the counter button or press SPACE to increase your
+                  Count by +1 per click at the start.</li>
+               <li><strong>Buy an Auto Counter.</strong> At 15 Counts, this first passive generator adds +1 count per
+                  second automatically—your first step toward automation.</li>
+               <li><strong>Build Tally Machines.</strong> Each Tally Machine generates +5 counts/sec and offers
+                  excellent early-game value. Purchase several before advancing.</li>
+               <li><strong>Invest in Click Power strategically.</strong> When manual clicking still contributes
+                  meaningfully to your total, upgrading click power cuts your wait times in half.</li>
+               <li><strong>Upgrade to Digital Counters and Arrays.</strong> Digital Counters (+20/sec) mark your
+                  mid-game, while Counter Arrays (+100/sec) enable serious AFK grinding.</li>
+               <li><strong>Unlock the Infinite Counter.</strong> The +500/sec endgame generator lets your Count explode
+                  into the millions with minimal active effort.</li>
+               <li><strong>Master the combo rhythm.</strong> Click rapidly within 2-second windows to build combos.
+                  Every 10 consecutive clicks scores a CRITICAL HIT for double points!</li>
+            </ol>
+         </section>
 
-          <section class="section">
-             <h2>Clicker Counter Strategy Guide</h2>
-             <p>Clicker Counter's minimalist theme makes it an ideal teaching tool for idle game mathematics. The core concept every player must internalize is opportunity cost: every second you spend saving for an expensive upgrade is a second you are not earning passive income from a cheaper upgrade you could have bought earlier. In the opening minutes, this principle heavily favors buying Auto Counters and Tally Machines as soon as you can afford them. A player who immediately reinvests every Count will typically reach 1,000 totals two to three times faster than a player who saves for their first Digital Counter.</p>
-             <p>As your operation scales into the mid-game, the decision-making becomes more nuanced. The 1.15x cost scaling means that your tenth Tally Machine costs roughly four times what the first one cost, while your first Digital Counter costs 500 Counts and produces 20 per second. At this transition point, you must calculate marginal returns: is a 500-Count Digital Counter (payback in 25 seconds) better than five more Tally Machines costing approximately 650 Counts total (payback in 26 seconds)? The answer shifts constantly as prices inflate, which is exactly what makes the optimization engaging. The progress bar below your score provides real-time visual feedback on how close you are to your next affordable upgrade.</p>
-             <p>Late-game Clicker Counter becomes a meditation on exponential scale. Once you have multiple Counter Arrays and your first Infinite Counter, your Count enters a phase of explosive growth where milestones fall like dominoes. The combo system remains relevant here for players who want to optimize actively—by maintaining 10-hit streaks for critical hits, you can inject significant manual bursts into your otherwise passive income stream. Some competitive players set arbitrary challenges, such as reaching 1 million Counts without ever purchasing Click Power, or speedrunning to the first Infinite Counter in under 10 minutes. For those who enjoy numerical optimization, <a href="/gs-auto-clicker/">GS Auto Clicker</a> offers tools that complement the idle math mindset.</p>
-          </section>
+         <section class="section">
+            <h2>Clicker Counter Strategy Guide</h2>
+            <p>Clicker Counter's minimalist theme makes it an ideal teaching tool for idle game mathematics. The core
+               concept every player must internalize is opportunity cost: every second you spend saving for an expensive
+               upgrade is a second you are not earning passive income from a cheaper upgrade you could have bought
+               earlier. In the opening minutes, this principle heavily favors buying Auto Counters and Tally Machines as
+               soon as you can afford them. A player who immediately reinvests every Count will typically reach 1,000
+               totals two to three times faster than a player who saves for their first Digital Counter.</p>
+            <p>As your operation scales into the mid-game, the decision-making becomes more nuanced. The 1.15x cost
+               scaling means that your tenth Tally Machine costs roughly four times what the first one cost, while your
+               first Digital Counter costs 500 Counts and produces 20 per second. At this transition point, you must
+               calculate marginal returns: is a 500-Count Digital Counter (payback in 25 seconds) better than five more
+               Tally Machines costing approximately 650 Counts total (payback in 26 seconds)? The answer shifts
+               constantly as prices inflate, which is exactly what makes the optimization engaging. The progress bar
+               below your score provides real-time visual feedback on how close you are to your next affordable upgrade.
+            </p>
+            <p>Late-game Clicker Counter becomes a meditation on exponential scale. Once you have multiple Counter
+               Arrays and your first Infinite Counter, your Count enters a phase of explosive growth where milestones
+               fall like dominoes. The combo system remains relevant here for players who want to optimize actively—by
+               maintaining 10-hit streaks for critical hits, you can inject significant manual bursts into your
+               otherwise passive income stream. Some competitive players set arbitrary challenges, such as reaching 1
+               million Counts without ever purchasing Click Power, or speedrunning to the first Infinite Counter in
+               under 10 minutes. For those who enjoy numerical optimization, <a href="/gs-auto-clicker/">GS Auto
+                  Clicker</a> offers tools that complement the idle math mindset.</p>
+         </section>
 
-          <section class="section faq-section">
-             <h2>Frequently Asked Questions</h2>
-             <div class="faq-item active">
-                <h3>Is Clicker Counter just a basic tally app?</h3>
-                <p>No. While the name suggests simplicity, Clicker Counter is a full incremental idle game with passive generators, escalating costs, combo multipliers, and milestone celebrations. It uses "counter" theming over traditional resource names but plays identically to other clickers on the site.</p>
-             </div>
-             <div class="faq-item">
-                <h3>Can I play on mobile devices?</h3>
-                <p>Yes. Clicker Counter is fully responsive and works on smartphones and tablets through any modern browser. Touch the counter button to click, and your progress auto-saves for seamless mobile sessions.</p>
-             </div>
-             <div class="faq-item">
-                <h3>How do combos and critical hits work?</h3>
-                <p>Click within 2 seconds of your previous click to increase your combo counter. Upon reaching 10 consecutive clicks, you land a CRITICAL HIT that awards double Counts for that click. The combo display updates in real time below your score.</p>
-             </div>
-             <div class="faq-item">
-                <h3>What does the progress bar indicate?</h3>
-                <p>The progress bar shows what percentage you have accumulated toward the next upgrade you cannot yet afford. It fills as you earn Counts and provides at-a-glance feedback on your purchasing timeline.</p>
-             </div>
-             <div class="faq-item">
-                <h3>Is my progress saved?</h3>
-                <p>Yes. The game automatically saves to your browser's local storage every 30 seconds. You can also save manually. Clearing browser cache or using incognito mode will erase your data.</p>
-             </div>
-             <div class="faq-item">
-                <h3>Why are minimal idle games so popular?</h3>
-                <p>Minimalist games reduce cognitive load while preserving the satisfying core loop of growth and achievement. Without complex narratives or stressful mechanics, players can relax while still experiencing genuine progress—a rare combination in modern gaming.</p>
-             </div>
-          </section>
+         <section class="section faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item active">
+               <h3>Is Clicker Counter just a basic tally app?</h3>
+               <p>No. While the name suggests simplicity, Clicker Counter is a full incremental idle game with passive
+                  generators, escalating costs, combo multipliers, and milestone celebrations. It uses "counter" theming
+                  over traditional resource names but plays identically to other clickers on the site.</p>
+            </div>
+            <div class="faq-item">
+               <h3>Can I play on mobile devices?</h3>
+               <p>Yes. Clicker Counter is fully responsive and works on smartphones and tablets through any modern
+                  browser. Touch the counter button to click, and your progress auto-saves for seamless mobile sessions.
+               </p>
+            </div>
+            <div class="faq-item">
+               <h3>How do combos and critical hits work?</h3>
+               <p>Click within 2 seconds of your previous click to increase your combo counter. Upon reaching 10
+                  consecutive clicks, you land a CRITICAL HIT that awards double Counts for that click. The combo
+                  display updates in real time below your score.</p>
+            </div>
+            <div class="faq-item">
+               <h3>What does the progress bar indicate?</h3>
+               <p>The progress bar shows what percentage you have accumulated toward the next upgrade you cannot yet
+                  afford. It fills as you earn Counts and provides at-a-glance feedback on your purchasing timeline.</p>
+            </div>
+            <div class="faq-item">
+               <h3>Is my progress saved?</h3>
+               <p>Yes. The game automatically saves to your browser's local storage every 30 seconds. You can also save
+                  manually. Clearing browser cache or using incognito mode will erase your data.</p>
+            </div>
+            <div class="faq-item">
+               <h3>Why are minimal idle games so popular?</h3>
+               <p>Minimalist games reduce cognitive load while preserving the satisfying core loop of growth and
+                  achievement. Without complex narratives or stressful mechanics, players can relax while still
+                  experiencing genuine progress—a rare combination in modern gaming.</p>
+            </div>
+         </section>
 
-          <section class="section">
-             <h2>Why Play Clicker Counter?</h2>
-             <p>Clicker Counter succeeds because it respects the player's intelligence. By stripping away elaborate themes and narrative pretenses, it exposes the beautiful mathematical engine that drives all incremental games. Every purchase decision is transparent, every cost is predictable, and every upgrade has a quantifiable return on investment. This clarity makes it uniquely satisfying for players who enjoy optimization and number theory. There is no ambiguity, no randomness, and no hidden mechanics—just pure, elegant compounding.</p>
-             <p>From a psychological perspective, the game's minimalist design reduces decision fatigue while maximizing positive feedback. The cyan color scheme is calming, the interface is uncluttered, and the progression curve is perfectly tuned to create frequent "micro-wins" that release dopamine without overwhelming the player. The combo system adds just enough skill-based interaction to keep engaged players busy, while the robust passive generators ensure that casual players who simply leave the tab open still make meaningful progress. Whether you are a hardcore optimizer calculating payback periods or a casual browser looking for a soothing distraction, Clicker Counter meets you exactly where you are.</p>
-          </section>
+         <section class="section">
+            <h2>Why Play Clicker Counter?</h2>
+            <p>Clicker Counter succeeds because it respects the player's intelligence. By stripping away elaborate
+               themes and narrative pretenses, it exposes the beautiful mathematical engine that drives all incremental
+               games. Every purchase decision is transparent, every cost is predictable, and every upgrade has a
+               quantifiable return on investment. This clarity makes it uniquely satisfying for players who enjoy
+               optimization and number theory. There is no ambiguity, no randomness, and no hidden mechanics—just pure,
+               elegant compounding.</p>
+            <p>From a psychological perspective, the game's minimalist design reduces decision fatigue while maximizing
+               positive feedback. The cyan color scheme is calming, the interface is uncluttered, and the progression
+               curve is perfectly tuned to create frequent "micro-wins" that release dopamine without overwhelming the
+               player. The combo system adds just enough skill-based interaction to keep engaged players busy, while the
+               robust passive generators ensure that casual players who simply leave the tab open still make meaningful
+               progress. Whether you are a hardcore optimizer calculating payback periods or a casual browser looking
+               for a soothing distraction, Clicker Counter meets you exactly where you are.</p>
+         </section>
 
-          <section class="section">
-             <div class="fun-facts">
-                <h3>Did You Know? Counting & Mathematics Facts</h3>
-                <ul>
-                   <li>The oldest known tally sticks date back over 30,000 years, proving that humans have always been obsessed with counting.</li>
-                   <li>The mathematical concept of compound interest, central to all idle games, was understood by ancient Babylonian mathematicians around 2000 BCE.</li>
-                   <li>Exponential growth curves like those in idle games are used to model real-world phenomena including population growth, viral spread, and nuclear chain reactions.</li>
-                   <li>The world's fastest human counter can recite numbers at over 500 per minute—still slower than late-game Clicker Counter's passive generation.</li>
-                   <li>Studies show that watching numbers increase triggers the same neural reward pathways as receiving actual monetary rewards, explaining the genre's addictive appeal.</li>
-                </ul>
-             </div>
-          </section>
+         <section class="section">
+            <div class="fun-facts">
+               <h3>Did You Know? Counting & Mathematics Facts</h3>
+               <ul>
+                  <li>The oldest known tally sticks date back over 30,000 years, proving that humans have always been
+                     obsessed with counting.</li>
+                  <li>The mathematical concept of compound interest, central to all idle games, was understood by
+                     ancient Babylonian mathematicians around 2000 BCE.</li>
+                  <li>Exponential growth curves like those in idle games are used to model real-world phenomena
+                     including population growth, viral spread, and nuclear chain reactions.</li>
+                  <li>The world's fastest human counter can recite numbers at over 500 per minute—still slower than
+                     late-game Clicker Counter's passive generation.</li>
+                  <li>Studies show that watching numbers increase triggers the same neural reward pathways as receiving
+                     actual monetary rewards, explaining the genre's addictive appeal.</li>
+               </ul>
+            </div>
+         </section>
 
-          <div style="text-align: center;">
-          </div>
-       </article>
+         <div style="text-align: center;">
+         </div>
+      </article>
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
@@ -1145,15 +1315,15 @@
          let clickPowerLevel = 1;
          let clickPowerCost = 50;
          let perSecond = 0;
-          let upgradeOwned = UPGRADES.map(() => 0);
+         let upgradeOwned = UPGRADES.map(() => 0);
 
-          // New features state
-          let comboCount = 0;
-          let lastClickTime = 0;
-          const COMBO_TIMEOUT = 2000;
-          const milestonesReached = new Set();
-          const MILESTONES = [1000, 10000, 100000, 1000000];
-          const PARTICLES = ['🔢', '✨', '💫', '📊'];
+         // New features state
+         let comboCount = 0;
+         let lastClickTime = 0;
+         const COMBO_TIMEOUT = 2000;
+         const milestonesReached = new Set();
+         const MILESTONES = [1000, 10000, 100000, 1000000];
+         const PARTICLES = ['🔢', '✨', '💫', '📊'];
 
          // DOM
          const scoreNum = document.getElementById('scoreNum');
@@ -1161,10 +1331,10 @@
          const clickPowerInfo = document.getElementById('clickPowerInfo');
          const gStatTotal = document.getElementById('gStatTotal');
          const gStatPerSec = document.getElementById('gStatPerSec');
-          const clickBtn = document.getElementById('clickBtn');
-          const clickArea = document.getElementById('clickArea');
-          const comboDisplay = document.getElementById('comboDisplay');
-          const progressBarFill = document.getElementById('progressBarFill');
+         const clickBtn = document.getElementById('clickBtn');
+         const clickArea = document.getElementById('clickArea');
+         const comboDisplay = document.getElementById('comboDisplay');
+         const progressBarFill = document.getElementById('progressBarFill');
 
          function formatNum(n) {
             if (n < 1000) return Math.floor(n).toLocaleString();
@@ -1226,95 +1396,95 @@
             setTimeout(() => el.remove(), 700);
          }
 
-          function updateCombo() {
-             const now = Date.now();
-             if (now - lastClickTime < COMBO_TIMEOUT) {
-                comboCount++;
-             } else {
-                comboCount = 1;
-             }
-             lastClickTime = now;
-             if (comboDisplay) {
-                comboDisplay.textContent = comboCount > 1 ? '🔥 Combo x' + comboCount : '';
-             }
-             if (comboCount >= 10 && comboCount % 10 === 0) {
-                showCriticalHit();
-                return 2;
-             }
-             return 1;
-          }
+         function updateCombo() {
+            const now = Date.now();
+            if (now - lastClickTime < COMBO_TIMEOUT) {
+               comboCount++;
+            } else {
+               comboCount = 1;
+            }
+            lastClickTime = now;
+            if (comboDisplay) {
+               comboDisplay.textContent = comboCount > 1 ? '🔥 Combo x' + comboCount : '';
+            }
+            if (comboCount >= 10 && comboCount % 10 === 0) {
+               showCriticalHit();
+               return 2;
+            }
+            return 1;
+         }
 
-          function showCriticalHit() {
-             const el = document.createElement('div');
-             el.className = 'critical-popup';
-             el.textContent = 'CRITICAL HIT!';
-             const rect = clickArea.getBoundingClientRect();
-             el.style.left = (rect.width / 2 - 60) + 'px';
-             el.style.top = (rect.height / 2 - 80) + 'px';
-             clickArea.style.position = 'relative';
-             clickArea.appendChild(el);
-             setTimeout(() => el.remove(), 800);
-          }
+         function showCriticalHit() {
+            const el = document.createElement('div');
+            el.className = 'critical-popup';
+            el.textContent = 'CRITICAL HIT!';
+            const rect = clickArea.getBoundingClientRect();
+            el.style.left = (rect.width / 2 - 60) + 'px';
+            el.style.top = (rect.height / 2 - 80) + 'px';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 800);
+         }
 
-          function updateProgressBar() {
-             if (!progressBarFill) return;
-             let nextCost = Infinity;
-             let found = false;
-             UPGRADES.forEach((u, i) => {
-                const cost = getCost(u.baseCost, upgradeOwned[i]);
-                if (cost > score && cost < nextCost) {
-                   nextCost = cost;
-                   found = true;
-                }
-             });
-             if (clickPowerCost > score && clickPowerCost < nextCost) {
-                nextCost = clickPowerCost;
-                found = true;
-             }
-             if (!found) {
-                progressBarFill.style.width = '100%';
-                return;
-             }
-             const prevCost = nextCost / COST_SCALE;
-             const progress = Math.max(0, Math.min(100, ((score - prevCost) / (nextCost - prevCost)) * 100));
-             progressBarFill.style.width = progress + '%';
-          }
+         function updateProgressBar() {
+            if (!progressBarFill) return;
+            let nextCost = Infinity;
+            let found = false;
+            UPGRADES.forEach((u, i) => {
+               const cost = getCost(u.baseCost, upgradeOwned[i]);
+               if (cost > score && cost < nextCost) {
+                  nextCost = cost;
+                  found = true;
+               }
+            });
+            if (clickPowerCost > score && clickPowerCost < nextCost) {
+               nextCost = clickPowerCost;
+               found = true;
+            }
+            if (!found) {
+               progressBarFill.style.width = '100%';
+               return;
+            }
+            const prevCost = nextCost / COST_SCALE;
+            const progress = Math.max(0, Math.min(100, ((score - prevCost) / (nextCost - prevCost)) * 100));
+            progressBarFill.style.width = progress + '%';
+         }
 
-          function checkMilestones() {
-             MILESTONES.forEach(m => {
-                if (score >= m && !milestonesReached.has(m)) {
-                   milestonesReached.add(m);
-                   showMilestone(m);
-                }
-             });
-          }
+         function checkMilestones() {
+            MILESTONES.forEach(m => {
+               if (score >= m && !milestonesReached.has(m)) {
+                  milestonesReached.add(m);
+                  showMilestone(m);
+               }
+            });
+         }
 
-          function showMilestone(value) {
-             const banner = document.createElement('div');
-             banner.className = 'milestone-banner';
-             banner.textContent = '🎉 Milestone: ' + formatNum(value) + '!';
-             clickArea.style.position = 'relative';
-             clickArea.appendChild(banner);
-             setTimeout(() => banner.remove(), 3000);
-          }
+         function showMilestone(value) {
+            const banner = document.createElement('div');
+            banner.className = 'milestone-banner';
+            banner.textContent = '🎉 Milestone: ' + formatNum(value) + '!';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(banner);
+            setTimeout(() => banner.remove(), 3000);
+         }
 
-          function spawnParticle() {
-             if (document.hidden) return;
-             const p = document.createElement('div');
-             p.className = 'particle';
-             p.textContent = PARTICLES[Math.floor(Math.random() * PARTICLES.length)];
-             const rect = clickArea.getBoundingClientRect();
-             p.style.left = (Math.random() * rect.width * 0.6 + rect.width * 0.2) + 'px';
-             p.style.top = (rect.height * 0.3) + 'px';
-             clickArea.appendChild(p);
-             setTimeout(() => p.remove(), 2500);
-          }
+         function spawnParticle() {
+            if (document.hidden) return;
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.textContent = PARTICLES[Math.floor(Math.random() * PARTICLES.length)];
+            const rect = clickArea.getBoundingClientRect();
+            p.style.left = (Math.random() * rect.width * 0.6 + rect.width * 0.2) + 'px';
+            p.style.top = (rect.height * 0.3) + 'px';
+            clickArea.appendChild(p);
+            setTimeout(() => p.remove(), 2500);
+         }
 
-          function doClick(e) {
-             const mult = updateCombo();
-             const power = clickPower * mult;
-             score += power;
-             totalEarned += power;
+         function doClick(e) {
+            const mult = updateCombo();
+            const power = clickPower * mult;
+            score += power;
+            totalEarned += power;
 
             clickBtn.classList.add('pressed');
             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
@@ -1329,21 +1499,21 @@
                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
                cy = rect.height / 2 - 30;
             }
-             showClickFloat(cx, cy);
-             if (mult === 2) {
-                const cel = document.createElement('div');
-                cel.className = 'click-float';
-                cel.textContent = '+' + formatNum(power) + ' (2x)';
-                cel.style.left = (cx + 20) + 'px';
-                cel.style.top = (cy - 20) + 'px';
-                cel.style.color = '#dc2626';
-                clickArea.appendChild(cel);
-                setTimeout(() => cel.remove(), 700);
-             }
-             checkMilestones();
-             render();
-             updateProgressBar();
-          }
+            showClickFloat(cx, cy);
+            if (mult === 2) {
+               const cel = document.createElement('div');
+               cel.className = 'click-float';
+               cel.textContent = '+' + formatNum(power) + ' (2x)';
+               cel.style.left = (cx + 20) + 'px';
+               cel.style.top = (cy - 20) + 'px';
+               cel.style.color = '#dc2626';
+               clickArea.appendChild(cel);
+               setTimeout(() => cel.remove(), 700);
+            }
+            checkMilestones();
+            render();
+            updateProgressBar();
+         }
 
          clickBtn.addEventListener('click', doClick);
          clickBtn.addEventListener('touchstart', (e) => {
@@ -1431,43 +1601,43 @@
             }
          });
 
-          // Auto-save every 30s
-          setInterval(saveGame, 30000);
+         // Auto-save every 30s
+         setInterval(saveGame, 30000);
 
-          // Particles
-          setInterval(spawnParticle, 3000);
+         // Particles
+         setInterval(spawnParticle, 3000);
 
-          // Sound toggle
-          document.getElementById('soundToggle').addEventListener('click', function() {
-             this.textContent = this.textContent === '🔊' ? '🔇' : '🔊';
-          });
+         // Sound toggle
+         document.getElementById('soundToggle').addEventListener('click', function () {
+            this.textContent = this.textContent === '🔊' ? '🔇' : '🔊';
+         });
 
-          // Init
-          loadGame();
-          render();
-          updateProgressBar();
+         // Init
+         loadGame();
+         render();
+         updateProgressBar();
       })();
    </script>
 
-    <script>
-       // Mobile menu
-       const menuBtn = document.querySelector('.menu-btn');
-       const navLinks = document.querySelector('.nav-links');
-       menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
-       document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
-       document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
-    </script>
-    <script>
-       // FAQ toggle
-       document.querySelectorAll('.faq-item h3').forEach(q => {
-          q.addEventListener('click', () => {
-             const item = q.parentElement;
-             const isActive = item.classList.contains('active');
-             document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active')));
-             if (!isActive) item.classList.add('active');
-          });
+   <script>
+      // Mobile menu
+      const menuBtn = document.querySelector('.menu-btn');
+      const navLinks = document.querySelector('.nav-links');
+      menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+      document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
+      document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+   </script>
+   <script>
+      // FAQ toggle
+      document.querySelectorAll('.faq-item h3').forEach(q => {
+         q.addEventListener('click', () => {
+            const item = q.parentElement;
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active')));
+         if (!isActive) item.classList.add('active');
+      });
        });
-    </script>
+   </script>
 
    <!-- Site Footer -->
    <footer class="site-footer">
@@ -1502,69 +1672,69 @@
 
    <script>(function (w, d, s, id) { if (typeof (w.webpushr) !== 'undefined') return; w.webpushr = w.webpushr || function () { (w.webpushr.q = w.webpushr.q || []).push(arguments) }; var js, fjs = d.getElementsByTagName(s)[0]; js = d.createElement(s); js.id = id; js.async = 1; js.src = "https://cdn.webpushr.com/app.min.js"; fjs.parentNode.appendChild(js); }(window, document, 'script', 'webpushr-jssdk')); webpushr('setup', { 'key': 'BCqxAAS-ncGR0SExOoEY3HPXgbSncPSnvUNZbaqLmWTXCyeVDhZdKkXruhe2gvqHJnbMgm1oUAREgHJ3KPqSkW4' });</script>
 
-<script>
-(function() {
-  const EMOJI = '🔢';
-  function getThemeEmojiText(amount, isCritical) {
-    if (isCritical) return '🔥' + EMOJI + '🔥';
-    if (amount <= 1) return EMOJI;
-    if (amount <= 5) return EMOJI.repeat(Math.min(amount, 5));
-    const fmt = typeof formatNum === 'function' ? formatNum(amount) : Math.floor(amount).toLocaleString();
-    return EMOJI.repeat(3) + ' ×' + fmt;
-  }
-  const ca = document.getElementById('clickArea');
-  if (!ca) return;
-  ca.addEventListener('click', function(e) {
-    if (e.target.closest('.click-btn')) {
-      // Let the original handler run, then we add emoji float
-      setTimeout(function() {
-        const floats = ca.querySelectorAll('.click-float');
-        floats.forEach(function(el) {
-          if (el.textContent.startsWith('+')) {
-            const num = parseFloat(el.textContent.replace('+','').replace(/,/g,''));
-            if (!isNaN(num)) {
-              const isCrit = el.style.color === 'rgb(220, 38, 38)' || el.style.color === '#dc2626';
-              el.textContent = getThemeEmojiText(num, isCrit);
+   <script>
+      (function () {
+         const EMOJI = '🔢';
+         function getThemeEmojiText(amount, isCritical) {
+            if (isCritical) return '🔥' + EMOJI + '🔥';
+            if (amount <= 1) return EMOJI;
+            if (amount <= 5) return EMOJI.repeat(Math.min(amount, 5));
+            const fmt = typeof formatNum === 'function' ? formatNum(amount) : Math.floor(amount).toLocaleString();
+            return EMOJI.repeat(3) + ' ×' + fmt;
+         }
+         const ca = document.getElementById('clickArea');
+         if (!ca) return;
+         ca.addEventListener('click', function (e) {
+            if (e.target.closest('.click-btn')) {
+               // Let the original handler run, then we add emoji float
+               setTimeout(function () {
+                  const floats = ca.querySelectorAll('.click-float');
+                  floats.forEach(function (el) {
+                     if (el.textContent.startsWith('+')) {
+                        const num = parseFloat(el.textContent.replace('+', '').replace(/,/g, ''));
+                        if (!isNaN(num)) {
+                           const isCrit = el.style.color === 'rgb(220, 38, 38)' || el.style.color === '#dc2626';
+                           el.textContent = getThemeEmojiText(num, isCrit);
+                        }
+                     }
+                  });
+               }, 10);
             }
-          }
-        });
-      }, 10);
-    }
-  });
-})();
-</script>
+         });
+      })();
+   </script>
 
-<script>
-(function() {
-  const EMOJI = '🔢';
-  function getThemeEmojiText(amount, isCritical) {
-    if (isCritical) return '🔥' + EMOJI + '🔥';
-    if (amount <= 1) return EMOJI;
-    if (amount <= 5) return EMOJI.repeat(Math.min(amount, 5));
-    const fmt = typeof formatNum === 'function' ? formatNum(amount) : Math.floor(amount).toLocaleString();
-    return EMOJI.repeat(3) + ' ×' + fmt;
-  }
-  const ca = document.getElementById('clickArea');
-  if (!ca) return;
-  ca.addEventListener('click', function(e) {
-    if (e.target.closest('.click-btn')) {
-      // Let the original handler run, then we add emoji float
-      setTimeout(function() {
-        const floats = ca.querySelectorAll('.click-float');
-        floats.forEach(function(el) {
-          if (el.textContent.startsWith('+')) {
-            const num = parseFloat(el.textContent.replace('+','').replace(/,/g,''));
-            if (!isNaN(num)) {
-              const isCrit = el.style.color === 'rgb(220, 38, 38)' || el.style.color === '#dc2626';
-              el.textContent = getThemeEmojiText(num, isCrit);
+   <script>
+      (function () {
+         const EMOJI = '🔢';
+         function getThemeEmojiText(amount, isCritical) {
+            if (isCritical) return '🔥' + EMOJI + '🔥';
+            if (amount <= 1) return EMOJI;
+            if (amount <= 5) return EMOJI.repeat(Math.min(amount, 5));
+            const fmt = typeof formatNum === 'function' ? formatNum(amount) : Math.floor(amount).toLocaleString();
+            return EMOJI.repeat(3) + ' ×' + fmt;
+         }
+         const ca = document.getElementById('clickArea');
+         if (!ca) return;
+         ca.addEventListener('click', function (e) {
+            if (e.target.closest('.click-btn')) {
+               // Let the original handler run, then we add emoji float
+               setTimeout(function () {
+                  const floats = ca.querySelectorAll('.click-float');
+                  floats.forEach(function (el) {
+                     if (el.textContent.startsWith('+')) {
+                        const num = parseFloat(el.textContent.replace('+', '').replace(/,/g, ''));
+                        if (!isNaN(num)) {
+                           const isCrit = el.style.color === 'rgb(220, 38, 38)' || el.style.color === '#dc2626';
+                           el.textContent = getThemeEmojiText(num, isCrit);
+                        }
+                     }
+                  });
+               }, 10);
             }
-          }
-        });
-      }, 10);
-    }
-  });
-})();
-</script>
+         });
+      })();
+   </script>
 </body>
 
 </html>

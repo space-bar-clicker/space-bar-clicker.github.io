@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Chill Guy Clicker - Free Relaxing Meme Idle Game Online | Spacebar Clicker</title>
+   <title>Chill Guy Clicker - Free Relaxing Meme Idle Game Online</title>
    <meta name="description"
       content="Play Chill Guy Clicker free online! Earn Chill Points, unlock sunglasses to cosmic peace, and vibe out in this relaxing meme-themed incremental game. No download.">
    <meta name="keywords"
@@ -225,7 +225,7 @@
          font-size: 64px;
          cursor: pointer;
          transition: transform 0.1s ease, box-shadow 0.1s ease;
-         box-shadow: 0 8px 30px #ff980033, inset 0 -4px 10px rgba(255,152,0,0.2);
+         box-shadow: 0 8px 30px #ff980033, inset 0 -4px 10px rgba(255, 152, 0, 0.2);
          display: flex;
          align-items: center;
          justify-content: center;
@@ -237,18 +237,18 @@
       }
 
       .click-btn:hover {
-         box-shadow: 0 12px 40px #ff980055, inset 0 -4px 10px rgba(255,152,0,0.2);
+         box-shadow: 0 12px 40px #ff980055, inset 0 -4px 10px rgba(255, 152, 0, 0.2);
       }
 
       .click-btn:active,
       .click-btn.pressed {
          transform: scale(0.92);
-         box-shadow: 0 4px 15px #ff980044, inset 0 -4px 10px rgba(255,152,0,0.2);
+         box-shadow: 0 4px 15px #ff980044, inset 0 -4px 10px rgba(255, 152, 0, 0.2);
       }
 
       .click-btn .emoji {
          pointer-events: none;
-         filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
+         filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.15));
       }
 
       .score-display {
@@ -344,7 +344,7 @@
          border-color: #7c3aed;
          background: linear-gradient(180deg, #fff 0%, #ffe0b2 100%);
          transform: translateY(-2px);
-         box-shadow: 0 6px 16px rgba(255,152,0,0.18);
+         box-shadow: 0 6px 16px rgba(255, 152, 0, 0.18);
          transform: translateY(-1px);
          box-shadow: 0 4px 12px #7c3aed15;
       }
@@ -438,21 +438,34 @@
          color: #7c3aed;
          min-height: 1.2em;
       }
+
       .critical-popup {
          position: absolute;
          pointer-events: none;
          font-size: 1.6rem;
          font-weight: 800;
          color: #dc2626;
-         text-shadow: 0 2px 8px rgba(220,38,38,0.3);
+         text-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
          animation: criticalPop 0.8s ease-out forwards;
          z-index: 20;
       }
+
       @keyframes criticalPop {
-         0% { opacity: 1; transform: translateY(0) scale(0.5); }
-         50% { transform: translateY(-30px) scale(1.2); }
-         100% { opacity: 0; transform: translateY(-80px) scale(1); }
+         0% {
+            opacity: 1;
+            transform: translateY(0) scale(0.5);
+         }
+
+         50% {
+            transform: translateY(-30px) scale(1.2);
+         }
+
+         100% {
+            opacity: 0;
+            transform: translateY(-80px) scale(1);
+         }
       }
+
       .progress-bar-container {
          width: 80%;
          max-width: 220px;
@@ -462,6 +475,7 @@
          margin-top: 12px;
          overflow: hidden;
       }
+
       .progress-bar-fill {
          height: 100%;
          background: linear-gradient(90deg, #7c3aed, #7c3aeddd);
@@ -469,6 +483,7 @@
          transition: width 0.3s ease;
          width: 0%;
       }
+
       .particle {
          position: absolute;
          pointer-events: none;
@@ -477,10 +492,19 @@
          animation: particleFloat 2.5s ease-out forwards;
          z-index: 5;
       }
+
       @keyframes particleFloat {
-         0% { opacity: 0.7; transform: translateY(0) rotate(0deg); }
-         100% { opacity: 0; transform: translateY(-120px) rotate(45deg); }
+         0% {
+            opacity: 0.7;
+            transform: translateY(0) rotate(0deg);
+         }
+
+         100% {
+            opacity: 0;
+            transform: translateY(-120px) rotate(45deg);
+         }
       }
+
       .milestone-banner {
          position: absolute;
          top: 50%;
@@ -492,22 +516,39 @@
          border-radius: 12px;
          font-size: 1.1rem;
          font-weight: 700;
-         box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
          animation: milestoneIn 0.5s ease-out, milestoneOut 0.5s ease-in 2s forwards;
          z-index: 50;
          pointer-events: none;
          white-space: nowrap;
       }
+
       @keyframes milestoneIn {
-         from { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
-         to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+         from {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.7);
+         }
+
+         to {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+         }
       }
+
       @keyframes milestoneOut {
-         from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-         to { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+         from {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+         }
+
+         to {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.9);
+         }
       }
+
       .sound-toggle {
-         background: rgba(255,255,255,0.2);
+         background: rgba(255, 255, 255, 0.2);
          border: none;
          border-radius: 8px;
          padding: 4px 10px;
@@ -516,7 +557,11 @@
          cursor: pointer;
          transition: background 0.2s;
       }
-      .sound-toggle:hover { background: rgba(255,255,255,0.35); }
+
+      .sound-toggle:hover {
+         background: rgba(255, 255, 255, 0.35);
+      }
+
       .keyboard-tip {
          width: 100%;
          text-align: center;
@@ -525,9 +570,18 @@
          margin-top: 8px;
          font-weight: 500;
       }
+
       /* FAQ Section */
-      .faq-section { margin-bottom: 30px; }
-      .faq-item { margin-bottom: 14px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+      .faq-section {
+         margin-bottom: 30px;
+      }
+
+      .faq-item {
+         margin-bottom: 14px;
+         border-bottom: 1px solid #eee;
+         padding-bottom: 10px;
+      }
+
       .faq-item h3 {
          color: #333;
          font-size: 1.05rem;
@@ -537,7 +591,11 @@
          position: relative;
          padding-right: 20px;
       }
-      .faq-item h3:hover { color: #7c3aed; }
+
+      .faq-item h3:hover {
+         color: #7c3aed;
+      }
+
       .faq-item h3::after {
          content: '+';
          position: absolute;
@@ -547,7 +605,11 @@
          font-weight: 700;
          transition: transform 0.2s;
       }
-      .faq-item.active h3::after { transform: rotate(45deg); }
+
+      .faq-item.active h3::after {
+         transform: rotate(45deg);
+      }
+
       .faq-item p {
          display: none;
          color: #555;
@@ -556,12 +618,42 @@
          margin-bottom: 0;
          padding-top: 4px;
       }
-      .faq-item.active p { display: block; }
-      .fun-facts { background: #f8f9fe; border-radius: 12px; padding: 20px; margin: 20px 0; }
-      .fun-facts h3 { color: #7838f3; margin-bottom: 12px; }
-      .fun-facts ul { list-style: none; padding-left: 0; }
-      .fun-facts li { padding: 6px 0 6px 24px; position: relative; color: #333; line-height: 1.6; }
-      .fun-facts li::before { content: '•'; position: absolute; left: 0; color: #7838f3; font-weight: bold; }
+
+      .faq-item.active p {
+         display: block;
+      }
+
+      .fun-facts {
+         background: #f8f9fe;
+         border-radius: 12px;
+         padding: 20px;
+         margin: 20px 0;
+      }
+
+      .fun-facts h3 {
+         color: #7838f3;
+         margin-bottom: 12px;
+      }
+
+      .fun-facts ul {
+         list-style: none;
+         padding-left: 0;
+      }
+
+      .fun-facts li {
+         padding: 6px 0 6px 24px;
+         position: relative;
+         color: #333;
+         line-height: 1.6;
+      }
+
+      .fun-facts li::before {
+         content: '•';
+         position: absolute;
+         left: 0;
+         color: #7838f3;
+         font-weight: bold;
+      }
 
       /* Article Styles */
       .article-container {
@@ -904,25 +996,27 @@
       <div class="game-wrapper" id="gameWrapper">
          <div class="game-header">
             <h2>😎 Chill Guy Clicker</h2>
-             <div class="game-stats-bar">
-                <span class="game-stat-pill" id="gStatTotal">0 Chill Points</span>
-                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
-                <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
-             </div>
+            <div class="game-stats-bar">
+               <span class="game-stat-pill" id="gStatTotal">0 Chill Points</span>
+               <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+               <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
+            </div>
          </div>
          <div class="game-body">
             <div class="click-area" id="clickArea">
                <button class="click-btn" id="clickBtn" aria-label="Chill Chill Point">
                   <span class="emoji">😎</span>
                </button>
-                <div class="score-display">
-                   <div class="score-number" id="scoreNum">0</div>
-                   <div class="score-label">Chill Points</div>
-                   <div class="combo-display" id="comboDisplay"></div>
-                </div>
-                <div class="per-second" id="perSecDisplay">0 chill points/sec</div>
-                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
-                <div class="progress-bar-container"><div class="progress-bar-fill" id="progressBarFill"></div></div>
+               <div class="score-display">
+                  <div class="score-number" id="scoreNum">0</div>
+                  <div class="score-label">Chill Points</div>
+                  <div class="combo-display" id="comboDisplay"></div>
+               </div>
+               <div class="per-second" id="perSecDisplay">0 chill points/sec</div>
+               <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+               <div class="progress-bar-container">
+                  <div class="progress-bar-fill" id="progressBarFill"></div>
+               </div>
             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
@@ -995,92 +1089,166 @@
                </div>
             </div>
          </div>
-          <div class="game-footer">
-             <button id="saveBtn">💾 Save</button>
-             <button class="reset-btn" id="resetBtn">🔄 Reset</button>
-             <div class="keyboard-tip">💡 Tip: Press SPACE to click!</div>
-          </div>
+         <div class="game-footer">
+            <button id="saveBtn">💾 Save</button>
+            <button class="reset-btn" id="resetBtn">🔄 Reset</button>
+            <div class="keyboard-tip">💡 Tip: Press SPACE to click!</div>
+         </div>
       </div>
 
       <!-- ===== ARTICLE CONTENT ===== -->
-       <article class="article-container">
-          <div class="intro">
-             <p>Chill Guy Clicker celebrates the iconic "chill guy" meme that took the internet by storm—a laid-back character wearing sunglasses, often depicted leaning back with an expression of pure relaxation while chaos unfolds around him. This meme resonated with millions because it captures a universal fantasy: the ability to remain completely unfazed by life's stresses. Our free browser idle game transforms that vibe into an incremental experience where you earn Chill Points by embracing the chill lifestyle, upgrading from simple Sunglasses all the way to Cosmic Peace.</p>
-             <p>The "chill guy" meme emerged from internet culture's ongoing love affair with stoicism and low-stakes humor. Unlike aggressive or confrontational memes, the chill guy represents acceptance, mindfulness, and the art of not letting things bother you. This clicker game channels that energy into every mechanic. There are no deadlines, no penalties for inactivity, and no complex systems to master—just a soothing progression from one relaxing upgrade to the next. As your Chill Points accumulate, you unlock better ways to unwind: Hammocks for afternoon naps, Lo-fi Radios for background ambiance, Zen Gardens for meditation, and finally Cosmic Peace, a state of transcendental relaxation that generates passive chill at an almost supernatural rate.</p>
-             <p>Idle games have always been the most therapeutic genre in gaming. Unlike competitive shooters or stressful strategy games, clickers reward patience and consistency rather than reflexes or intense focus. Chill Guy Clicker takes this natural chill quality and amplifies it through its meme-inspired theme. Every visual element, from the purple color scheme to the sunglasses emoji, reinforces the core message: relax, take your time, and let the numbers go up. This makes it the perfect companion for study sessions, work breaks, or late-night wind-down routines. Best of all, it is completely free with no download required.</p>
-             <p>Whether you are a dedicated meme enthusiast who recognizes the chill guy aesthetic, a stressed student looking for a calming distraction, or simply someone who appreciates well-designed incremental games, Chill Guy Clicker meets you where you are. The progression is gentle, the math is transparent, and the theme never stops being charming. For a complementary experience with a feminine cozy aesthetic, check out <a href="/chill-girl-clicker/">Chill Girl Clicker</a>, which uses Vibes instead of Chill Points but shares identical mechanics. If you prefer something more energetic, <a href="/capybara-clicker/">Capybara Clicker</a> offers a similarly relaxed animal-themed vibe.</p>
-          </div>
+      <article class="article-container">
+         <div class="intro">
+            <p>Chill Guy Clicker celebrates the iconic "chill guy" meme that took the internet by storm—a laid-back
+               character wearing sunglasses, often depicted leaning back with an expression of pure relaxation while
+               chaos unfolds around him. This meme resonated with millions because it captures a universal fantasy: the
+               ability to remain completely unfazed by life's stresses. Our free browser idle game transforms that vibe
+               into an incremental experience where you earn Chill Points by embracing the chill lifestyle, upgrading
+               from simple Sunglasses all the way to Cosmic Peace.</p>
+            <p>The "chill guy" meme emerged from internet culture's ongoing love affair with stoicism and low-stakes
+               humor. Unlike aggressive or confrontational memes, the chill guy represents acceptance, mindfulness, and
+               the art of not letting things bother you. This clicker game channels that energy into every mechanic.
+               There are no deadlines, no penalties for inactivity, and no complex systems to master—just a soothing
+               progression from one relaxing upgrade to the next. As your Chill Points accumulate, you unlock better
+               ways to unwind: Hammocks for afternoon naps, Lo-fi Radios for background ambiance, Zen Gardens for
+               meditation, and finally Cosmic Peace, a state of transcendental relaxation that generates passive chill
+               at an almost supernatural rate.</p>
+            <p>Idle games have always been the most therapeutic genre in gaming. Unlike competitive shooters or
+               stressful strategy games, clickers reward patience and consistency rather than reflexes or intense focus.
+               Chill Guy Clicker takes this natural chill quality and amplifies it through its meme-inspired theme.
+               Every visual element, from the purple color scheme to the sunglasses emoji, reinforces the core message:
+               relax, take your time, and let the numbers go up. This makes it the perfect companion for study sessions,
+               work breaks, or late-night wind-down routines. Best of all, it is completely free with no download
+               required.</p>
+            <p>Whether you are a dedicated meme enthusiast who recognizes the chill guy aesthetic, a stressed student
+               looking for a calming distraction, or simply someone who appreciates well-designed incremental games,
+               Chill Guy Clicker meets you where you are. The progression is gentle, the math is transparent, and the
+               theme never stops being charming. For a complementary experience with a feminine cozy aesthetic, check
+               out <a href="/chill-girl-clicker/">Chill Girl Clicker</a>, which uses Vibes instead of Chill Points but
+               shares identical mechanics. If you prefer something more energetic, <a href="/capybara-clicker/">Capybara
+                  Clicker</a> offers a similarly relaxed animal-themed vibe.</p>
+         </div>
 
-          <section class="section">
-             <h2>How to Play Chill Guy Clicker</h2>
-             <ol class="tips-list">
-                <li><strong>Channel your inner chill.</strong> Click the sunglasses button or press SPACE to manually generate Chill Points. Every click starts at +1 point.</li>
-                <li><strong>Get your first pair of Sunglasses.</strong> For just 15 Chill Points, this upgrade generates +1 point per second automatically—your first step toward passive relaxation.</li>
-                <li><strong>Lounge in multiple Hammocks.</strong> Hammocks provide +5 points/sec each and are the best early-game investment. Stack several before moving up.</li>
-                <li><strong>Upgrade Click Power when active.</strong> If you are clicking frequently, boosting your click power effectively doubles your manual chill output and accelerates growth.</li>
-                <li><strong>Turn on the Lo-fi Radio.</strong> At +20 points/sec, this upgrade marks your transition into mid-game where AFK grinding becomes genuinely productive.</li>
-                <li><strong>Achieve Cosmic Peace.</strong> The ultimate +500/sec generator represents total transcendental chill and enables you to reach massive point totals effortlessly.</li>
-                <li><strong>Keep that combo flowing.</strong> Rapid clicking builds combos, and every 10-click streak triggers a CRITICAL HIT for double Chill Points!</li>
-             </ol>
-          </section>
+         <section class="section">
+            <h2>How to Play Chill Guy Clicker</h2>
+            <ol class="tips-list">
+               <li><strong>Channel your inner chill.</strong> Click the sunglasses button or press SPACE to manually
+                  generate Chill Points. Every click starts at +1 point.</li>
+               <li><strong>Get your first pair of Sunglasses.</strong> For just 15 Chill Points, this upgrade generates
+                  +1 point per second automatically—your first step toward passive relaxation.</li>
+               <li><strong>Lounge in multiple Hammocks.</strong> Hammocks provide +5 points/sec each and are the best
+                  early-game investment. Stack several before moving up.</li>
+               <li><strong>Upgrade Click Power when active.</strong> If you are clicking frequently, boosting your click
+                  power effectively doubles your manual chill output and accelerates growth.</li>
+               <li><strong>Turn on the Lo-fi Radio.</strong> At +20 points/sec, this upgrade marks your transition into
+                  mid-game where AFK grinding becomes genuinely productive.</li>
+               <li><strong>Achieve Cosmic Peace.</strong> The ultimate +500/sec generator represents total
+                  transcendental chill and enables you to reach massive point totals effortlessly.</li>
+               <li><strong>Keep that combo flowing.</strong> Rapid clicking builds combos, and every 10-click streak
+                  triggers a CRITICAL HIT for double Chill Points!</li>
+            </ol>
+         </section>
 
-          <section class="section">
-             <h2>Chill Guy Clicker Strategy Guide</h2>
-             <p>The philosophy of Chill Guy Clicker is literally in its name: do not stress about optimization. That said, a little strategic thinking goes a long way. In the opening minutes, your manual clicks are your primary source of Chill Points, making Click Power upgrades surprisingly valuable. A good heuristic is to purchase Click Power whenever the next generator tier feels more than 60 seconds away. This ensures that your active playtime is always moving you toward meaningful milestones rather than waiting idly for passive income to trickle in.</p>
-             <p>Mid-game strategy shifts from active clicking to portfolio management. With several Sunglasses and Hammocks online, your passive income starts to snowball. This is when the 1.15x cost scaling becomes most noticeable. Because each additional copy of the same generator becomes 15% more expensive, there is a natural balancing point where diversifying across two adjacent tiers outperforms maxing out a single tier. Most experienced chill players find that a 4:3:2 ratio of Sunglasses:Hammocks:Lo-fi Radios provides the smoothest growth curve through the mid-game. The progress bar below your score helps visualize when your next upgrade is within reach.</p>
-             <p>Late-game Chill Guy Clicker is about achieving zen-like scale. Once you unlock Zen Gardens (+100/sec) and especially Cosmic Peace (+500/sec), your Chill Points enter exponential growth territory. At this stage, milestones like 100,000 and 1 million points become achievable through pure AFK grinding. The combo system remains relevant even here—by rhythmically clicking to maintain 10-hit streaks, you can trigger critical hits that inject bursts of active income into your otherwise passive chill empire. For players who enjoy this laid-back scaling pattern, <a href="/chill-girl-clicker/">Chill Girl Clicker</a> offers an identical mathematical framework with a cozy self-care theme.</p>
-          </section>
+         <section class="section">
+            <h2>Chill Guy Clicker Strategy Guide</h2>
+            <p>The philosophy of Chill Guy Clicker is literally in its name: do not stress about optimization. That
+               said, a little strategic thinking goes a long way. In the opening minutes, your manual clicks are your
+               primary source of Chill Points, making Click Power upgrades surprisingly valuable. A good heuristic is to
+               purchase Click Power whenever the next generator tier feels more than 60 seconds away. This ensures that
+               your active playtime is always moving you toward meaningful milestones rather than waiting idly for
+               passive income to trickle in.</p>
+            <p>Mid-game strategy shifts from active clicking to portfolio management. With several Sunglasses and
+               Hammocks online, your passive income starts to snowball. This is when the 1.15x cost scaling becomes most
+               noticeable. Because each additional copy of the same generator becomes 15% more expensive, there is a
+               natural balancing point where diversifying across two adjacent tiers outperforms maxing out a single
+               tier. Most experienced chill players find that a 4:3:2 ratio of Sunglasses:Hammocks:Lo-fi Radios provides
+               the smoothest growth curve through the mid-game. The progress bar below your score helps visualize when
+               your next upgrade is within reach.</p>
+            <p>Late-game Chill Guy Clicker is about achieving zen-like scale. Once you unlock Zen Gardens (+100/sec) and
+               especially Cosmic Peace (+500/sec), your Chill Points enter exponential growth territory. At this stage,
+               milestones like 100,000 and 1 million points become achievable through pure AFK grinding. The combo
+               system remains relevant even here—by rhythmically clicking to maintain 10-hit streaks, you can trigger
+               critical hits that inject bursts of active income into your otherwise passive chill empire. For players
+               who enjoy this laid-back scaling pattern, <a href="/chill-girl-clicker/">Chill Girl Clicker</a> offers an
+               identical mathematical framework with a cozy self-care theme.</p>
+         </section>
 
-          <section class="section faq-section">
-             <h2>Frequently Asked Questions</h2>
-             <div class="faq-item active">
-                <h3>What is the "chill guy" meme?</h3>
-                <p>The chill guy meme features a relaxed character wearing sunglasses, symbolizing stoicism and the ability to remain calm regardless of surrounding chaos. It became massively popular on social media as a representation of idealized calmness and low-stakes living.</p>
-             </div>
-             <div class="faq-item">
-                <h3>Do I need to download anything to play?</h3>
-                <p>No. Chill Guy Clicker is a completely free browser game. It works on desktop, tablet, and mobile devices without any installation. Just open the page and start vibing.</p>
-             </div>
-             <div class="faq-item">
-                <h3>How does the combo system work?</h3>
-                <p>Click within 2 seconds of your previous click to build a combo. When you reach 10 consecutive clicks, your next click becomes a CRITICAL HIT worth double Chill Points. The combo counter displays below your main score.</p>
-             </div>
-             <div class="faq-item">
-                <h3>What are the floating particles?</h3>
-                <p>Small theme-appropriate emojis periodically float up from the click button as a visual effect. These particles are purely cosmetic and add atmosphere without affecting gameplay or performance.</p>
-             </div>
-             <div class="faq-item">
-                <h3>Will my progress save automatically?</h3>
-                <p>Yes. Your Chill Points and upgrades are saved to browser local storage every 30 seconds automatically. You can also click Save manually. Clearing browser data will reset your progress.</p>
-             </div>
-             <div class="faq-item">
-                <h3>Why are relaxing idle games good for mental health?</h3>
-                <p>Low-stakes incremental games provide predictable positive feedback without pressure or punishment. This creates a safe space for relaxation and can help reduce anxiety by offering a sense of control and accomplishment.</p>
-             </div>
-          </section>
+         <section class="section faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item active">
+               <h3>What is the "chill guy" meme?</h3>
+               <p>The chill guy meme features a relaxed character wearing sunglasses, symbolizing stoicism and the
+                  ability to remain calm regardless of surrounding chaos. It became massively popular on social media as
+                  a representation of idealized calmness and low-stakes living.</p>
+            </div>
+            <div class="faq-item">
+               <h3>Do I need to download anything to play?</h3>
+               <p>No. Chill Guy Clicker is a completely free browser game. It works on desktop, tablet, and mobile
+                  devices without any installation. Just open the page and start vibing.</p>
+            </div>
+            <div class="faq-item">
+               <h3>How does the combo system work?</h3>
+               <p>Click within 2 seconds of your previous click to build a combo. When you reach 10 consecutive clicks,
+                  your next click becomes a CRITICAL HIT worth double Chill Points. The combo counter displays below
+                  your main score.</p>
+            </div>
+            <div class="faq-item">
+               <h3>What are the floating particles?</h3>
+               <p>Small theme-appropriate emojis periodically float up from the click button as a visual effect. These
+                  particles are purely cosmetic and add atmosphere without affecting gameplay or performance.</p>
+            </div>
+            <div class="faq-item">
+               <h3>Will my progress save automatically?</h3>
+               <p>Yes. Your Chill Points and upgrades are saved to browser local storage every 30 seconds automatically.
+                  You can also click Save manually. Clearing browser data will reset your progress.</p>
+            </div>
+            <div class="faq-item">
+               <h3>Why are relaxing idle games good for mental health?</h3>
+               <p>Low-stakes incremental games provide predictable positive feedback without pressure or punishment.
+                  This creates a safe space for relaxation and can help reduce anxiety by offering a sense of control
+                  and accomplishment.</p>
+            </div>
+         </section>
 
-          <section class="section">
-             <h2>Why Play Chill Guy Clicker?</h2>
-             <p>Chill Guy Clicker distinguishes itself from other idle games through its unwavering commitment to a single emotional state: relaxation. While many clickers gradually introduce complexity, stress mechanics, or competitive elements, this game never stops being chill. The purple color palette, the sunglasses emoji, and the names of every upgrade—from Hammock to Cosmic Peace—reinforce a cohesive aesthetic of intentional calmness. Playing this game feels less like "gaming" and more like a digital meditation session where your only goal is to watch good vibes accumulate.</p>
-             <p>Psychologically, the game leverages what therapists call "controllable positive outcomes." In a world full of uncertainty, there is genuine comfort in a system where every action has a predictable, beneficial result. Clicking earns points. Points buy upgrades. Upgrades generate more points. This simple, transparent loop creates a sense of mastery and safety that more complex games often fail to provide. Whether you are actively clicking combos or simply leaving the tab open while you work, Chill Guy Clicker respects your time and always rewards your attention. For an even more soothing experience, pair it with <a href="/chill-girl-clicker/">Chill Girl Clicker</a> and alternate between the two themes.</p>
-          </section>
+         <section class="section">
+            <h2>Why Play Chill Guy Clicker?</h2>
+            <p>Chill Guy Clicker distinguishes itself from other idle games through its unwavering commitment to a
+               single emotional state: relaxation. While many clickers gradually introduce complexity, stress mechanics,
+               or competitive elements, this game never stops being chill. The purple color palette, the sunglasses
+               emoji, and the names of every upgrade—from Hammock to Cosmic Peace—reinforce a cohesive aesthetic of
+               intentional calmness. Playing this game feels less like "gaming" and more like a digital meditation
+               session where your only goal is to watch good vibes accumulate.</p>
+            <p>Psychologically, the game leverages what therapists call "controllable positive outcomes." In a world
+               full of uncertainty, there is genuine comfort in a system where every action has a predictable,
+               beneficial result. Clicking earns points. Points buy upgrades. Upgrades generate more points. This
+               simple, transparent loop creates a sense of mastery and safety that more complex games often fail to
+               provide. Whether you are actively clicking combos or simply leaving the tab open while you work, Chill
+               Guy Clicker respects your time and always rewards your attention. For an even more soothing experience,
+               pair it with <a href="/chill-girl-clicker/">Chill Girl Clicker</a> and alternate between the two themes.
+            </p>
+         </section>
 
-          <section class="section">
-             <div class="fun-facts">
-                <h3>Did You Know? Chill Meme & Relaxation Facts</h3>
-                <ul>
-                   <li>The "chill guy" meme is part of a broader internet trend celebrating stoicism, including characters like "This is fine" dog and "Galaxy Brain" guy.</li>
-                   <li>Lo-fi music streams on YouTube regularly attract over 50,000 concurrent listeners who use the beats for studying and relaxation.</li>
-                   <li>Research shows that repetitive, low-stakes activities like clicking can induce a meditative state similar to mindfulness practice.</li>
-                   <li>The color purple, prominently featured in Chill Guy Clicker, is associated with calmness, creativity, and spiritual balance in color psychology.</li>
-                   <li>Idle games have been used in clinical studies as stress-reduction tools, with participants showing lower cortisol levels after 20-minute sessions.</li>
-                </ul>
-             </div>
-          </section>
+         <section class="section">
+            <div class="fun-facts">
+               <h3>Did You Know? Chill Meme & Relaxation Facts</h3>
+               <ul>
+                  <li>The "chill guy" meme is part of a broader internet trend celebrating stoicism, including
+                     characters like "This is fine" dog and "Galaxy Brain" guy.</li>
+                  <li>Lo-fi music streams on YouTube regularly attract over 50,000 concurrent listeners who use the
+                     beats for studying and relaxation.</li>
+                  <li>Research shows that repetitive, low-stakes activities like clicking can induce a meditative state
+                     similar to mindfulness practice.</li>
+                  <li>The color purple, prominently featured in Chill Guy Clicker, is associated with calmness,
+                     creativity, and spiritual balance in color psychology.</li>
+                  <li>Idle games have been used in clinical studies as stress-reduction tools, with participants showing
+                     lower cortisol levels after 20-minute sessions.</li>
+               </ul>
+            </div>
+         </section>
 
-          <div style="text-align: center;">
-          </div>
-       </article>
+         <div style="text-align: center;">
+         </div>
+      </article>
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
@@ -1145,15 +1313,15 @@
          let clickPowerLevel = 1;
          let clickPowerCost = 50;
          let perSecond = 0;
-          let upgradeOwned = UPGRADES.map(() => 0);
+         let upgradeOwned = UPGRADES.map(() => 0);
 
-          // New features state
-          let comboCount = 0;
-          let lastClickTime = 0;
-          const COMBO_TIMEOUT = 2000;
-          const milestonesReached = new Set();
-          const MILESTONES = [1000, 10000, 100000, 1000000];
-          const PARTICLES = ['😎', '✨', '🌴', '☀️'];
+         // New features state
+         let comboCount = 0;
+         let lastClickTime = 0;
+         const COMBO_TIMEOUT = 2000;
+         const milestonesReached = new Set();
+         const MILESTONES = [1000, 10000, 100000, 1000000];
+         const PARTICLES = ['😎', '✨', '🌴', '☀️'];
 
          // DOM
          const scoreNum = document.getElementById('scoreNum');
@@ -1161,10 +1329,10 @@
          const clickPowerInfo = document.getElementById('clickPowerInfo');
          const gStatTotal = document.getElementById('gStatTotal');
          const gStatPerSec = document.getElementById('gStatPerSec');
-          const clickBtn = document.getElementById('clickBtn');
-          const clickArea = document.getElementById('clickArea');
-          const comboDisplay = document.getElementById('comboDisplay');
-          const progressBarFill = document.getElementById('progressBarFill');
+         const clickBtn = document.getElementById('clickBtn');
+         const clickArea = document.getElementById('clickArea');
+         const comboDisplay = document.getElementById('comboDisplay');
+         const progressBarFill = document.getElementById('progressBarFill');
 
          function formatNum(n) {
             if (n < 1000) return Math.floor(n).toLocaleString();
@@ -1226,95 +1394,95 @@
             setTimeout(() => el.remove(), 700);
          }
 
-          function updateCombo() {
-             const now = Date.now();
-             if (now - lastClickTime < COMBO_TIMEOUT) {
-                comboCount++;
-             } else {
-                comboCount = 1;
-             }
-             lastClickTime = now;
-             if (comboDisplay) {
-                comboDisplay.textContent = comboCount > 1 ? '🔥 Combo x' + comboCount : '';
-             }
-             if (comboCount >= 10 && comboCount % 10 === 0) {
-                showCriticalHit();
-                return 2;
-             }
-             return 1;
-          }
+         function updateCombo() {
+            const now = Date.now();
+            if (now - lastClickTime < COMBO_TIMEOUT) {
+               comboCount++;
+            } else {
+               comboCount = 1;
+            }
+            lastClickTime = now;
+            if (comboDisplay) {
+               comboDisplay.textContent = comboCount > 1 ? '🔥 Combo x' + comboCount : '';
+            }
+            if (comboCount >= 10 && comboCount % 10 === 0) {
+               showCriticalHit();
+               return 2;
+            }
+            return 1;
+         }
 
-          function showCriticalHit() {
-             const el = document.createElement('div');
-             el.className = 'critical-popup';
-             el.textContent = 'CRITICAL HIT!';
-             const rect = clickArea.getBoundingClientRect();
-             el.style.left = (rect.width / 2 - 60) + 'px';
-             el.style.top = (rect.height / 2 - 80) + 'px';
-             clickArea.style.position = 'relative';
-             clickArea.appendChild(el);
-             setTimeout(() => el.remove(), 800);
-          }
+         function showCriticalHit() {
+            const el = document.createElement('div');
+            el.className = 'critical-popup';
+            el.textContent = 'CRITICAL HIT!';
+            const rect = clickArea.getBoundingClientRect();
+            el.style.left = (rect.width / 2 - 60) + 'px';
+            el.style.top = (rect.height / 2 - 80) + 'px';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(el);
+            setTimeout(() => el.remove(), 800);
+         }
 
-          function updateProgressBar() {
-             if (!progressBarFill) return;
-             let nextCost = Infinity;
-             let found = false;
-             UPGRADES.forEach((u, i) => {
-                const cost = getCost(u.baseCost, upgradeOwned[i]);
-                if (cost > score && cost < nextCost) {
-                   nextCost = cost;
-                   found = true;
-                }
-             });
-             if (clickPowerCost > score && clickPowerCost < nextCost) {
-                nextCost = clickPowerCost;
-                found = true;
-             }
-             if (!found) {
-                progressBarFill.style.width = '100%';
-                return;
-             }
-             const prevCost = nextCost / COST_SCALE;
-             const progress = Math.max(0, Math.min(100, ((score - prevCost) / (nextCost - prevCost)) * 100));
-             progressBarFill.style.width = progress + '%';
-          }
+         function updateProgressBar() {
+            if (!progressBarFill) return;
+            let nextCost = Infinity;
+            let found = false;
+            UPGRADES.forEach((u, i) => {
+               const cost = getCost(u.baseCost, upgradeOwned[i]);
+               if (cost > score && cost < nextCost) {
+                  nextCost = cost;
+                  found = true;
+               }
+            });
+            if (clickPowerCost > score && clickPowerCost < nextCost) {
+               nextCost = clickPowerCost;
+               found = true;
+            }
+            if (!found) {
+               progressBarFill.style.width = '100%';
+               return;
+            }
+            const prevCost = nextCost / COST_SCALE;
+            const progress = Math.max(0, Math.min(100, ((score - prevCost) / (nextCost - prevCost)) * 100));
+            progressBarFill.style.width = progress + '%';
+         }
 
-          function checkMilestones() {
-             MILESTONES.forEach(m => {
-                if (score >= m && !milestonesReached.has(m)) {
-                   milestonesReached.add(m);
-                   showMilestone(m);
-                }
-             });
-          }
+         function checkMilestones() {
+            MILESTONES.forEach(m => {
+               if (score >= m && !milestonesReached.has(m)) {
+                  milestonesReached.add(m);
+                  showMilestone(m);
+               }
+            });
+         }
 
-          function showMilestone(value) {
-             const banner = document.createElement('div');
-             banner.className = 'milestone-banner';
-             banner.textContent = '🎉 Milestone: ' + formatNum(value) + '!';
-             clickArea.style.position = 'relative';
-             clickArea.appendChild(banner);
-             setTimeout(() => banner.remove(), 3000);
-          }
+         function showMilestone(value) {
+            const banner = document.createElement('div');
+            banner.className = 'milestone-banner';
+            banner.textContent = '🎉 Milestone: ' + formatNum(value) + '!';
+            clickArea.style.position = 'relative';
+            clickArea.appendChild(banner);
+            setTimeout(() => banner.remove(), 3000);
+         }
 
-          function spawnParticle() {
-             if (document.hidden) return;
-             const p = document.createElement('div');
-             p.className = 'particle';
-             p.textContent = PARTICLES[Math.floor(Math.random() * PARTICLES.length)];
-             const rect = clickArea.getBoundingClientRect();
-             p.style.left = (Math.random() * rect.width * 0.6 + rect.width * 0.2) + 'px';
-             p.style.top = (rect.height * 0.3) + 'px';
-             clickArea.appendChild(p);
-             setTimeout(() => p.remove(), 2500);
-          }
+         function spawnParticle() {
+            if (document.hidden) return;
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.textContent = PARTICLES[Math.floor(Math.random() * PARTICLES.length)];
+            const rect = clickArea.getBoundingClientRect();
+            p.style.left = (Math.random() * rect.width * 0.6 + rect.width * 0.2) + 'px';
+            p.style.top = (rect.height * 0.3) + 'px';
+            clickArea.appendChild(p);
+            setTimeout(() => p.remove(), 2500);
+         }
 
-          function doClick(e) {
-             const mult = updateCombo();
-             const power = clickPower * mult;
-             score += power;
-             totalEarned += power;
+         function doClick(e) {
+            const mult = updateCombo();
+            const power = clickPower * mult;
+            score += power;
+            totalEarned += power;
 
             clickBtn.classList.add('pressed');
             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
@@ -1329,21 +1497,21 @@
                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
                cy = rect.height / 2 - 30;
             }
-             showClickFloat(cx, cy);
-             if (mult === 2) {
-                const cel = document.createElement('div');
-                cel.className = 'click-float';
-                cel.textContent = '+' + formatNum(power) + ' (2x)';
-                cel.style.left = (cx + 20) + 'px';
-                cel.style.top = (cy - 20) + 'px';
-                cel.style.color = '#dc2626';
-                clickArea.appendChild(cel);
-                setTimeout(() => cel.remove(), 700);
-             }
-             checkMilestones();
-             render();
-             updateProgressBar();
-          }
+            showClickFloat(cx, cy);
+            if (mult === 2) {
+               const cel = document.createElement('div');
+               cel.className = 'click-float';
+               cel.textContent = '+' + formatNum(power) + ' (2x)';
+               cel.style.left = (cx + 20) + 'px';
+               cel.style.top = (cy - 20) + 'px';
+               cel.style.color = '#dc2626';
+               clickArea.appendChild(cel);
+               setTimeout(() => cel.remove(), 700);
+            }
+            checkMilestones();
+            render();
+            updateProgressBar();
+         }
 
          clickBtn.addEventListener('click', doClick);
          clickBtn.addEventListener('touchstart', (e) => {
@@ -1431,43 +1599,43 @@
             }
          });
 
-          // Auto-save every 30s
-          setInterval(saveGame, 30000);
+         // Auto-save every 30s
+         setInterval(saveGame, 30000);
 
-          // Particles
-          setInterval(spawnParticle, 3000);
+         // Particles
+         setInterval(spawnParticle, 3000);
 
-          // Sound toggle
-          document.getElementById('soundToggle').addEventListener('click', function() {
-             this.textContent = this.textContent === '🔊' ? '🔇' : '🔊';
-          });
+         // Sound toggle
+         document.getElementById('soundToggle').addEventListener('click', function () {
+            this.textContent = this.textContent === '🔊' ? '🔇' : '🔊';
+         });
 
-          // Init
-          loadGame();
-          render();
-          updateProgressBar();
+         // Init
+         loadGame();
+         render();
+         updateProgressBar();
       })();
    </script>
 
-    <script>
-       // Mobile menu
-       const menuBtn = document.querySelector('.menu-btn');
-       const navLinks = document.querySelector('.nav-links');
-       menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
-       document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
-       document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
-    </script>
-    <script>
-       // FAQ toggle
-       document.querySelectorAll('.faq-item h3').forEach(q => {
-          q.addEventListener('click', () => {
-             const item = q.parentElement;
-             const isActive = item.classList.contains('active');
-             document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-             if (!isActive) item.classList.add('active');
-          });
-       });
-    </script>
+   <script>
+      // Mobile menu
+      const menuBtn = document.querySelector('.menu-btn');
+      const navLinks = document.querySelector('.nav-links');
+      menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+      document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
+      document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+   </script>
+   <script>
+      // FAQ toggle
+      document.querySelectorAll('.faq-item h3').forEach(q => {
+         q.addEventListener('click', () => {
+            const item = q.parentElement;
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            if (!isActive) item.classList.add('active');
+         });
+      });
+   </script>
 
    <!-- Site Footer -->
    <footer class="site-footer">
@@ -1502,69 +1670,69 @@
 
    <script>(function (w, d, s, id) { if (typeof (w.webpushr) !== 'undefined') return; w.webpushr = w.webpushr || function () { (w.webpushr.q = w.webpushr.q || []).push(arguments) }; var js, fjs = d.getElementsByTagName(s)[0]; js = d.createElement(s); js.id = id; js.async = 1; js.src = "https://cdn.webpushr.com/app.min.js"; fjs.parentNode.appendChild(js); }(window, document, 'script', 'webpushr-jssdk')); webpushr('setup', { 'key': 'BCqxAAS-ncGR0SExOoEY3HPXgbSncPSnvUNZbaqLmWTXCyeVDhZdKkXruhe2gvqHJnbMgm1oUAREgHJ3KPqSkW4' });</script>
 
-<script>
-(function() {
-  const EMOJI = '😎';
-  function getThemeEmojiText(amount, isCritical) {
-    if (isCritical) return '🔥' + EMOJI + '🔥';
-    if (amount <= 1) return EMOJI;
-    if (amount <= 5) return EMOJI.repeat(Math.min(amount, 5));
-    const fmt = typeof formatNum === 'function' ? formatNum(amount) : Math.floor(amount).toLocaleString();
-    return EMOJI.repeat(3) + ' ×' + fmt;
-  }
-  const ca = document.getElementById('clickArea');
-  if (!ca) return;
-  ca.addEventListener('click', function(e) {
-    if (e.target.closest('.click-btn')) {
-      // Let the original handler run, then we add emoji float
-      setTimeout(function() {
-        const floats = ca.querySelectorAll('.click-float');
-        floats.forEach(function(el) {
-          if (el.textContent.startsWith('+')) {
-            const num = parseFloat(el.textContent.replace('+','').replace(/,/g,''));
-            if (!isNaN(num)) {
-              const isCrit = el.style.color === 'rgb(220, 38, 38)' || el.style.color === '#dc2626';
-              el.textContent = getThemeEmojiText(num, isCrit);
+   <script>
+      (function () {
+         const EMOJI = '😎';
+         function getThemeEmojiText(amount, isCritical) {
+            if (isCritical) return '🔥' + EMOJI + '🔥';
+            if (amount <= 1) return EMOJI;
+            if (amount <= 5) return EMOJI.repeat(Math.min(amount, 5));
+            const fmt = typeof formatNum === 'function' ? formatNum(amount) : Math.floor(amount).toLocaleString();
+            return EMOJI.repeat(3) + ' ×' + fmt;
+         }
+         const ca = document.getElementById('clickArea');
+         if (!ca) return;
+         ca.addEventListener('click', function (e) {
+            if (e.target.closest('.click-btn')) {
+               // Let the original handler run, then we add emoji float
+               setTimeout(function () {
+                  const floats = ca.querySelectorAll('.click-float');
+                  floats.forEach(function (el) {
+                     if (el.textContent.startsWith('+')) {
+                        const num = parseFloat(el.textContent.replace('+', '').replace(/,/g, ''));
+                        if (!isNaN(num)) {
+                           const isCrit = el.style.color === 'rgb(220, 38, 38)' || el.style.color === '#dc2626';
+                           el.textContent = getThemeEmojiText(num, isCrit);
+                        }
+                     }
+                  });
+               }, 10);
             }
-          }
-        });
-      }, 10);
-    }
-  });
-})();
-</script>
+         });
+      })();
+   </script>
 
-<script>
-(function() {
-  const EMOJI = '😎';
-  function getThemeEmojiText(amount, isCritical) {
-    if (isCritical) return '🔥' + EMOJI + '🔥';
-    if (amount <= 1) return EMOJI;
-    if (amount <= 5) return EMOJI.repeat(Math.min(amount, 5));
-    const fmt = typeof formatNum === 'function' ? formatNum(amount) : Math.floor(amount).toLocaleString();
-    return EMOJI.repeat(3) + ' ×' + fmt;
-  }
-  const ca = document.getElementById('clickArea');
-  if (!ca) return;
-  ca.addEventListener('click', function(e) {
-    if (e.target.closest('.click-btn')) {
-      // Let the original handler run, then we add emoji float
-      setTimeout(function() {
-        const floats = ca.querySelectorAll('.click-float');
-        floats.forEach(function(el) {
-          if (el.textContent.startsWith('+')) {
-            const num = parseFloat(el.textContent.replace('+','').replace(/,/g,''));
-            if (!isNaN(num)) {
-              const isCrit = el.style.color === 'rgb(220, 38, 38)' || el.style.color === '#dc2626';
-              el.textContent = getThemeEmojiText(num, isCrit);
+   <script>
+      (function () {
+         const EMOJI = '😎';
+         function getThemeEmojiText(amount, isCritical) {
+            if (isCritical) return '🔥' + EMOJI + '🔥';
+            if (amount <= 1) return EMOJI;
+            if (amount <= 5) return EMOJI.repeat(Math.min(amount, 5));
+            const fmt = typeof formatNum === 'function' ? formatNum(amount) : Math.floor(amount).toLocaleString();
+            return EMOJI.repeat(3) + ' ×' + fmt;
+         }
+         const ca = document.getElementById('clickArea');
+         if (!ca) return;
+         ca.addEventListener('click', function (e) {
+            if (e.target.closest('.click-btn')) {
+               // Let the original handler run, then we add emoji float
+               setTimeout(function () {
+                  const floats = ca.querySelectorAll('.click-float');
+                  floats.forEach(function (el) {
+                     if (el.textContent.startsWith('+')) {
+                        const num = parseFloat(el.textContent.replace('+', '').replace(/,/g, ''));
+                        if (!isNaN(num)) {
+                           const isCrit = el.style.color === 'rgb(220, 38, 38)' || el.style.color === '#dc2626';
+                           el.textContent = getThemeEmojiText(num, isCrit);
+                        }
+                     }
+                  });
+               }, 10);
             }
-          }
-        });
-      }, 10);
-    }
-  });
-})();
-</script>
+         });
+      })();
+   </script>
 </body>
 
 </html>
