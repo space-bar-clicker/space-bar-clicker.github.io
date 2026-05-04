@@ -31,7 +31,7 @@
       }
 
       body {
-         background: linear-gradient(135deg, #f6f8fd 0%, #f0f2f5 100%);
+         background: linear-gradient(135deg, #fff5f0 0%, #ffe4c4 100%);
          min-height: 100vh;
       }
 
@@ -202,29 +202,29 @@
          justify-content: center;
          padding: 36px 20px;
          border-right: 1px solid #f0f0f0;
-         background: #fee2e2;
-         min-height: 320px;
+         background: linear-gradient(180deg, #fff5f0 0%, #ffccbc 100%);
+         min-height: 420px;
       }
 
       @media (max-width: 700px) {
          .click-area {
             border-right: none;
             border-bottom: 1px solid #f0f0f0;
-            min-height: 260px;
+            min-height: 360px;
             padding: 28px 20px;
          }
       }
 
       .click-btn {
-         width: 150px;
-         height: 150px;
+         width: 160px;
+         height: 160px;
          border-radius: 50%;
-         border: 4px solid #dc2626;
-         background: white;
+         border: 5px solid #d84315;
+         background: radial-gradient(circle at 35% 35%, #ff7043, #d84315);
          font-size: 64px;
          cursor: pointer;
          transition: transform 0.1s ease, box-shadow 0.1s ease;
-         box-shadow: 0 8px 30px #dc262633;
+         box-shadow: 0 8px 30px #d8431533, inset 0 -4px 10px rgba(216,67,21,0.2);
          display: flex;
          align-items: center;
          justify-content: center;
@@ -236,17 +236,28 @@
       }
 
       .click-btn:hover {
-         box-shadow: 0 12px 40px #dc262655;
+         box-shadow: 0 12px 40px #d8431555, inset 0 -4px 10px rgba(216,67,21,0.2);
       }
 
       .click-btn:active,
       .click-btn.pressed {
          transform: scale(0.92);
-         box-shadow: 0 4px 15px #dc262644;
+         box-shadow: 0 4px 15px #d8431544, inset 0 -4px 10px rgba(216,67,21,0.2);
       }
 
       .click-btn .emoji {
          pointer-events: none;
+         filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
+      }
+
+      .topping-layers {
+         margin-top: 10px;
+         font-size: 1.2rem;
+         min-height: 1.5em;
+         display: flex;
+         gap: 4px;
+         justify-content: center;
+         align-items: center;
       }
 
       .score-display {
@@ -313,7 +324,7 @@
          flex-direction: column;
          gap: 10px;
          overflow-y: auto;
-         max-height: 420px;
+         max-height: 520px;
       }
 
       .upgrades-title {
@@ -334,13 +345,14 @@
          border: 1.5px solid #eee;
          cursor: pointer;
          transition: all 0.2s ease;
-         background: white;
+         background: linear-gradient(180deg, #fff 0%, #faf5f0 100%);
+         box-shadow: 0 2px 6px rgba(216,67,21,0.08);
          position: relative;
       }
 
       .upgrade-card:hover:not(.locked) {
          border-color: #dc2626;
-         background: #fee2e2;
+         background: linear-gradient(180deg, #fff 0%, #ffccbc 100%);
          transform: translateY(-1px);
          box-shadow: 0 4px 12px #dc262615;
       }
@@ -952,12 +964,15 @@
                <button class="click-btn" id="clickBtn" aria-label="Bake Pizza">
                   <span class="emoji">🍕</span>
                </button>
+               <div class="topping-layers" id="toppingLayers"></div>
                <div class="score-display">
                   <div class="score-number" id="scoreNum">0</div>
                   <div class="score-label">Pizzas</div>
                </div>
+               <div class="combo-display" id="comboDisplay"></div>
                <div class="per-second" id="perSecDisplay">0 pizzas/sec</div>
                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+               <div class="progress-bar-container"><div class="progress-bar-fill" id="progressBarFill"></div></div>
             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
@@ -1054,16 +1069,18 @@
                 <li><strong>Stoke the Flames:</strong> Invest in <strong>Click Power</strong> to bake multiple pizzas per click. Higher click power means hotter ovens and faster output.</li>
                 <li><strong>Build the Team:</strong> Unlock <strong>Wood-Fire Ovens</strong> (+5/sec) and <strong>Pizza Chefs</strong> (+20/sec) to bring professional talent into your kitchen.</li>
                 <li><strong>Deliver Worldwide:</strong> Save for <strong>Delivery Fleet</strong> (+100/sec) and the legendary <strong>Pizza Empire</strong> (+500/sec) to turn your local pizzeria into a multinational chain.</li>
-                <li><strong>Perfect Your Dough:</strong> Maintain a rapid click streak within 2-second windows to build combos. Every 10th click triggers a <strong>Critical Hit</strong>, baking double pizzas!</li>
-             </ol>
+                 <li><strong>Perfect Your Dough:</strong> Maintain a rapid click streak within 2-second windows to build combos. Every 10th click triggers a <strong>Critical Hit</strong>, baking double pizzas!</li>
+                 <li><strong>Stack Toppings:</strong> Every 25 clicks adds a topping layer (up to 5). Each layer boosts click power by 10%. Build all 5 layers to unleash a Fully Loaded slice with a massive ×3 bonus on your next click!</li>
+              </ol>
           </section>
 
           <section class="section">
              <h2>Pizza Clicker Strategy Guide</h2>
              <p><strong>Grand Opening:</strong> Every successful pizzeria starts with a solid foundation. Your first purchase should always be Extra Cheese for passive income. Even one +1/sec upgrade will outperform manual clicking over time. After your first passive stream is flowing, alternate between Click Power and more Extra Cheese. In the opening minutes, spend every point you earn. The sooner you reinvest, the faster your kitchen grows.</p>
              <p><strong>The Dinner Rush:</strong> The mid-game is where strategy matters most. Pizza Chefs offer a huge boost at +20/sec, but they are expensive. If you are actively playing, a buffed Click Power can help you reach that Chef milestone in a single session. If you are stepping away, stock up on Wood-Fire Ovens. They provide excellent passive value for their cost and will keep the dough rising while you are gone.</p>
-             <p><strong>Franchise Domination:</strong> Pizza Empire is the ultimate upgrade, adding +500 pizzas per second. Once unlocked, your operation is no longer a pizzeria; it is an institution. The smartest late-game play is to buy Pizza Empires whenever possible. Use Click Power upgrades only when you plan an active clicking spree. When you return from AFK, your Delivery Fleets and Empires will have baked a fortune. Do not forget to Save your progress.</p>
-          </section>
+              <p><strong>Franchise Domination:</strong> Pizza Empire is the ultimate upgrade, adding +500 pizzas per second. Once unlocked, your operation is no longer a pizzeria; it is an institution. The smartest late-game play is to buy Pizza Empires whenever possible. Use Click Power upgrades only when you plan an active clicking spree. When you return from AFK, your Delivery Fleets and Empires will have baked a fortune. Do not forget to Save your progress.</p>
+              <p><strong>Topping Mastery:</strong> Do not ignore the topping layer system. Every 25 clicks grants a +10% boost, stacking up to +50% at 5 layers. The key is to reach 125 clicks as quickly as possible so you can trigger the Fully Loaded ×3 bonus. During active play sessions, focus on rapid, consistent clicking rather than sporadic bursts. The Fully Loaded bonus stacks with Critical Hits, meaning a click at 5 layers during a Critical can deliver enormous payouts. Time your upgrade purchases between topping cycles so you do not lose momentum.</p>
+           </section>
 
           <section class="section faq-section">
              <h2>Frequently Asked Questions</h2>
@@ -1077,9 +1094,11 @@
              <p>Always start with Extra Cheese for passive income. Then balance Click Power with the next tier. Late game, Pizza Empires are the most efficient purchase for massive passive production.</p>
              <h3>Can I play Pizza Clicker on my phone?</h3>
              <p>Yes! Pizza Clicker is fully responsive. Tap the pizza button to bake and scroll through upgrades on your mobile device.</p>
-             <h3>How do combos and Critical Hits work?</h3>
-             <p>Click within 2 seconds of your previous click to maintain a combo. Every 10th consecutive click triggers a Critical Hit, baking double pizzas for that click. Wait longer than 2 seconds and the combo resets.</p>
-          </section>
+              <h3>How do combos and Critical Hits work?</h3>
+              <p>Click within 2 seconds of your previous click to maintain a combo. Every 10th consecutive click triggers a Critical Hit, baking double pizzas for that click. Wait longer than 2 seconds and the combo resets.</p>
+              <h3>What are topping combos?</h3>
+              <p>Every 25 clicks builds a topping layer. Each of the 5 layers adds +10% to your click power. Once you reach 5 layers, your next click becomes a Fully Loaded slice that awards a ×3 bonus, then the layers reset. It is a great way to reward active clicking!</p>
+           </section>
 
           <section class="section">
              <h2>Why Play Pizza Clicker?</h2>
@@ -1204,15 +1223,33 @@
          const clickBtn = document.getElementById('clickBtn');
          const clickArea = document.getElementById('clickArea');
 
-         function formatNum(n) {
-            if (n < 1000) return Math.floor(n).toLocaleString();
-            if (n < 1e6) return (n / 1e3).toFixed(1) + 'K';
-            if (n < 1e9) return (n / 1e6).toFixed(1) + 'M';
-            if (n < 1e12) return (n / 1e9).toFixed(1) + 'B';
-            return (n / 1e12).toFixed(1) + 'T';
-         }
+          function formatNum(n) {
+             if (n < 1000) return Math.floor(n).toLocaleString();
+             if (n < 1e6) return (n / 1e3).toFixed(1) + 'K';
+             if (n < 1e9) return (n / 1e6).toFixed(1) + 'M';
+             if (n < 1e12) return (n / 1e9).toFixed(1) + 'B';
+             return (n / 1e12).toFixed(1) + 'T';
+          }
 
-         function getCost(baseC, owned) {
+          function getThemeEmojiText(amount, isCritical) {
+             const EMOJI = '🍕';
+             if (isCritical) return '🔥' + EMOJI + '🔥';
+             if (amount <= 1) return EMOJI;
+             if (amount <= 5) return EMOJI.repeat(amount);
+             return EMOJI.repeat(3) + ' ×' + formatNum(amount);
+          }
+
+          let toppingClicks = 0;
+          let toppingLayers = 0;
+          const TOPPING_EMOJIS = ['🍅', '🧀', '🥬', '🍄', '🌶️'];
+          const toppingLayersEl = document.getElementById('toppingLayers');
+          function updateToppingDisplay() {
+             if (toppingLayersEl) {
+                toppingLayersEl.textContent = TOPPING_EMOJIS.slice(0, toppingLayers).join('');
+             }
+          }
+
+          function getCost(baseC, owned) {
             return Math.floor(baseC * Math.pow(COST_SCALE, owned));
          }
 
@@ -1301,10 +1338,14 @@
             }
          }
 
-         function showClickFloat(x, y) {
+         function showClickFloat(x, y, text, isCritical) {
             const el = document.createElement('div');
             el.className = 'click-float';
-            el.textContent = '+' + formatNum(clickPower);
+            if (text) {
+               el.textContent = text;
+            } else {
+               el.textContent = getThemeEmojiText(clickPower, isCritical);
+            }
             el.style.left = x + 'px';
             el.style.top = y + 'px';
             clickArea.style.position = 'relative';
@@ -1321,11 +1362,31 @@
             }
             lastClickTime = now;
 
-            let earned = clickPower;
+            // Topping combos
+            let isFullyLoaded = false;
+            if (toppingLayers >= 5) {
+               isFullyLoaded = true;
+               toppingClicks = 0;
+               toppingLayers = 0;
+            } else {
+               toppingClicks++;
+               toppingLayers = Math.min(5, Math.floor(toppingClicks / 25));
+            }
+            updateToppingDisplay();
+
+            let power = clickPower;
+            if (!isFullyLoaded) {
+               power = Math.floor(power * (1 + toppingLayers * 0.1));
+            } else {
+               power = power * 3;
+            }
+
+            let mult = 1;
             if (comboCount >= 10 && comboCount % 10 === 0) {
-               earned *= 2;
+               mult = 2;
                showCriticalPopup();
             }
+            let earned = power * mult;
 
             score += earned;
             totalEarned += earned;
@@ -1352,7 +1413,11 @@
                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
                cy = rect.height / 2 - 30;
             }
-            showClickFloat(cx, cy);
+            if (mult === 2) {
+               showClickFloat(cx, cy, getThemeEmojiText(power, true));
+            } else {
+               showClickFloat(cx, cy, null, mult === 2);
+            }
             render();
          }
 
@@ -1405,7 +1470,7 @@
 
          // Save / Load
          function saveGame() {
-            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, reachedMilestones: [...reachedMilestones] };
+            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, reachedMilestones: [...reachedMilestones], toppingClicks };
             try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
          }
 
@@ -1420,8 +1485,11 @@
                   clickPowerLevel = data.clickPowerLevel || 1;
                   clickPowerCost = data.clickPowerCost || 50;
                   upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                  toppingClicks = data.toppingClicks || 0;
+                  toppingLayers = Math.min(5, Math.floor(toppingClicks / 25));
                   if (data.reachedMilestones) reachedMilestones = new Set(data.reachedMilestones);
                   recalcPerSecond();
+                  updateToppingDisplay();
                }
             } catch (e) { }
          }
@@ -1438,6 +1506,9 @@
                localStorage.removeItem(SAVE_KEY);
                score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
                upgradeOwned = UPGRADES.map(() => 0);
+               toppingClicks = 0;
+               toppingLayers = 0;
+               updateToppingDisplay();
                recalcPerSecond();
                render();
             }

@@ -31,7 +31,7 @@
       }
 
       body {
-         background: linear-gradient(135deg, #f6f8fd 0%, #f0f2f5 100%);
+         background: linear-gradient(135deg, #fff0f5 0%, #fce4ec 100%);
          min-height: 100vh;
       }
 
@@ -202,29 +202,29 @@
          justify-content: center;
          padding: 36px 20px;
          border-right: 1px solid #f0f0f0;
-         background: #fce7f3;
-         min-height: 320px;
+         background: linear-gradient(180deg, #fff0f5 0%, #fce7f3 100%);
+         min-height: 420px;
       }
 
       @media (max-width: 700px) {
          .click-area {
             border-right: none;
             border-bottom: 1px solid #f0f0f0;
-            min-height: 260px;
+            min-height: 360px;
             padding: 28px 20px;
          }
       }
 
       .click-btn {
-         width: 150px;
-         height: 150px;
+         width: 160px;
+         height: 160px;
          border-radius: 50%;
-         border: 4px solid #ec4899;
-         background: white;
+         border: 5px solid #ec4899;
+         background: radial-gradient(circle at 35% 35%, #ff69b4, #ec4899);
          font-size: 64px;
          cursor: pointer;
          transition: transform 0.1s ease, box-shadow 0.1s ease;
-         box-shadow: 0 8px 30px #ec489933;
+         box-shadow: 0 8px 30px #ec489933, inset 0 -4px 10px rgba(236,72,153,0.2);
          display: flex;
          align-items: center;
          justify-content: center;
@@ -236,17 +236,18 @@
       }
 
       .click-btn:hover {
-         box-shadow: 0 12px 40px #ec489955;
+         box-shadow: 0 12px 40px #ec489955, inset 0 -4px 10px rgba(236,72,153,0.2);
       }
 
       .click-btn:active,
       .click-btn.pressed {
          transform: scale(0.92);
-         box-shadow: 0 4px 15px #ec489944;
+         box-shadow: 0 4px 15px #ec489944, inset 0 -4px 10px rgba(236,72,153,0.2);
       }
 
       .click-btn .emoji {
          pointer-events: none;
+         filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
       }
 
       .score-display {
@@ -313,7 +314,7 @@
          flex-direction: column;
          gap: 10px;
          overflow-y: auto;
-         max-height: 420px;
+         max-height: 520px;
       }
 
       .upgrades-title {
@@ -334,13 +335,14 @@
          border: 1.5px solid #eee;
          cursor: pointer;
          transition: all 0.2s ease;
-         background: white;
+         background: linear-gradient(180deg, #fff 0%, #faf0f5 100%);
+         box-shadow: 0 2px 6px rgba(236,72,153,0.08);
          position: relative;
       }
 
       .upgrade-card:hover:not(.locked) {
          border-color: #ec4899;
-         background: #fce7f3;
+         background: linear-gradient(180deg, #fff 0%, #fce7f3 100%);
          transform: translateY(-1px);
          box-shadow: 0 4px 12px #ec489915;
       }
@@ -763,6 +765,15 @@
       .sound-toggle:hover { background: rgba(255,255,255,0.2); }
       .keyboard-hint { font-size: 0.75rem; color: #aaa; margin-top: 10px; text-align: center; font-weight: 500; }
 
+      /* Sugar Rush */
+      .sugar-rush-wrapper { width: 80%; max-width: 220px; margin-top: 10px; }
+      .sugar-rush-label { font-size: 0.7rem; color: #ec4899; font-weight: 700; text-align: center; margin-bottom: 3px; }
+      .sugar-rush-bar-container { width: 100%; height: 8px; background: #e5e7eb; border-radius: 4px; overflow: hidden; box-shadow: inset 0 1px 2px rgba(0,0,0,0.08); }
+      .sugar-rush-bar-fill { height: 100%; border-radius: 4px; transition: width 0.2s ease; background: linear-gradient(90deg, #f472b6, #ec4899); width: 0%; }
+      .sugar-rush-active .sugar-rush-bar-fill { background: linear-gradient(90deg, #fbbf24, #f59e0b); }
+      .sugar-rush-banner { position: absolute; top: 12px; left: 50%; transform: translateX(-50%) translateY(-80px); background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #fff; padding: 8px 20px; border-radius: 20px; font-weight: 800; font-size: 0.95rem; box-shadow: 0 6px 20px rgba(245,158,11,0.35); z-index: 15; transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1); pointer-events: none; white-space: nowrap; }
+      .sugar-rush-banner.show { transform: translateX(-50%) translateY(0); }
+
    </style>
 </head>
 
@@ -807,11 +818,18 @@
                <div class="per-second" id="perSecDisplay">0 candies/sec</div>
                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
                <div class="combo-display" id="comboDisplay"></div>
-               <div class="progress-bar-container">
-                  <div class="progress-bar-fill" id="progressBar" style="width:0%; color: #ec4899;"></div>
-               </div>
-               <div class="keyboard-hint">Tip: Press SPACE to click!</div>
-            </div>
+                <div class="progress-bar-container">
+                   <div class="progress-bar-fill" id="progressBar" style="width:0%; color: #ec4899;"></div>
+                </div>
+                <div class="sugar-rush-wrapper" id="sugarRushWrapper">
+                   <div class="sugar-rush-label" id="sugarRushLabel">Sugar Rush</div>
+                   <div class="sugar-rush-bar-container">
+                      <div class="sugar-rush-bar-fill" id="sugarRushBar"></div>
+                   </div>
+                </div>
+                <div class="sugar-rush-banner" id="sugarRushBanner">🔥 Sugar Rush! x3</div>
+                <div class="keyboard-hint">Tip: Press SPACE to click!</div>
+             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
 
@@ -909,6 +927,7 @@
             <li><strong>Open the Candy Dimension</strong> at 15,000 candies for +500 candies/sec. This rainbow realm is the ultimate endgame upgrade.</li>
             <li><strong>Upgrade Click Power</strong> whenever active clicking still meaningfully accelerates your next purchase.</li>
             <li><strong>Press SPACE</strong> for rapid clicking and to build combo streaks that trigger critical hits.</li>
+            <li><strong>Fill the Sugar Rush bar</strong> by clicking repeatedly. Once full, you get a 3x candy multiplier for 8 seconds—time your clicks to maximize this burst!</li>
             </ol>
          </section>
 
@@ -917,6 +936,7 @@
             <p>Candy Clicker rewards aggressive early investment. The Sugar Boost and Candy Machine tiers are so cheap that they pay for themselves within seconds of purchase. Do not hoard candies hoping for a Lollipop Tree—buy every affordable upgrade as soon as it unlocks. The compounding effect of multiple small passive sources outperforms saving for one big splash.</p>
 <p>Mid-game strategy revolves around the Chocolate River unlock at 2,500 candies. This is your first truly AFK-viable upgrade. Once you own one or two Rivers, your candy production becomes self-sustaining. At this point, Click Power upgrades become situational: valuable during active grinding sessions, but inferior to passive generators if you plan to step away. A balanced approach is to level Click Power twice for every five passive upgrades you buy.</p>
 <p>The Candy Dimension represents the late game, but do not neglect your roots. Because each upgrade's cost rises exponentially, there comes a point where your 40th Sugar Boost costs less than your 4th Candy Dimension and still contributes meaningfully to total output. The most efficient late-game players maintain a pyramid-shaped portfolio: many cheap upgrades, several mid-tier upgrades, and a handful of top-tier Dimension portals. Sweet success comes to those who diversify.</p>
+<p>Timing your Sugar Rush is the difference between a good run and a great one. Since every click fills the bar by 10%, you need 10 rapid clicks to activate the 3x multiplier. The ideal moment is right after you buy a big passive upgrade or when you are about to hit a milestone. During the 8-second window, spam SPACE as fast as possible—each critical hit inside Sugar Rush earns 6x base power, making it the highest burst damage in the game. Save your most aggressive clicking for when the bar is nearly full, then unleash the rush.</p>
          </section>
 
          <section class="section faq-section">
@@ -931,6 +951,8 @@
             <p>Small candy-themed emojis float up from the click area periodically as a visual flourish. They are purely cosmetic and do not affect gameplay.</p>
             <h3>Why is there a progress bar under my score?</h3>
             <p>The progress bar shows how close you are to affording your next cheapest upgrade. It fills in real time as you earn candies, giving you a visual target to aim for.</p>
+            <h3>What is Sugar Rush?</h3>
+            <p>Sugar Rush is a special bonus that activates when you fill the pink bar below the progress bar by clicking. Every click adds 10%. At 100%, you enter Sugar Rush for 8 seconds, earning triple candies on every click and critical hit. It is the fastest way to spike your score during active play.</p>
             <h3>Can I play on mobile?</h3>
             <p>Yes. Candy Clicker is fully responsive and works on iOS, Android, and any modern mobile browser. Tap the candy button to click.</p>
             <h3>What happens when I hit 1 million candies?</h3>
@@ -940,7 +962,7 @@
          <section class="section">
             <h2>Why Play Candy Clicker?</h2>
             <p>Candy Clicker taps into one of humanity's most primal pleasures: the joy of sweetness. The pink color scheme, candy-themed upgrades, and whimsical names like 'Lollipop Tree' create an atmosphere of innocent delight that few other clickers match. While games like <a href="/case-clicker-2/">Case Clicker 2</a> lean into competitive luxury, Candy Clicker invites you to relax and indulge. There is no pressure, no timer, and no failure state—just an ever-growing mountain of digital sugar.</p>
-<p>The enhanced combo system and critical hits add a layer of skill-based reward for active players without punishing those who prefer passive growth. Whether you are a stressed student needing a five-minute break, a parent looking for a kid-friendly browser game, or an incremental veteran chasing high scores, Candy Clicker delivers. The fact that it requires zero downloads or registrations makes it one of the most accessible premium-quality clickers on the web.</p>
+<p>The enhanced combo system, critical hits, and Sugar Rush mechanic add layers of skill-based reward for active players without punishing those who prefer passive growth. Sugar Rush in particular turns every session into a mini speed-run: can you fill the bar and cash in 3x candies before time runs out? Whether you are a stressed student needing a five-minute break, a parent looking for a kid-friendly browser game, or an incremental veteran chasing high scores, Candy Clicker delivers. The fact that it requires zero downloads or registrations makes it one of the most accessible premium-quality clickers on the web.</p>
          </section>
 
          <section class="section">
@@ -1098,57 +1120,84 @@
             if (c < cheapestCost) cheapestCost = c;
          });
          if (clickPowerCost < cheapestCost) cheapestCost = clickPowerCost;
-         const progressPct = Math.min(100, (score / cheapestCost) * 100);
-         progressBar.style.width = progressPct + '%';
-      }
+          const progressPct = Math.min(100, (score / cheapestCost) * 100);
+          progressBar.style.width = progressPct + '%';
 
-                  function showClickFloat(x, y, pts) {
-            const el = document.createElement('div');
-            el.className = 'click-float';
-            el.textContent = '+' + formatNum(pts || clickPower);
-            el.style.left = x + 'px';
-            el.style.top = y + 'px';
-            clickArea.style.position = 'relative';
-            clickArea.appendChild(el);
-            setTimeout(() => el.remove(), 700);
-         }
+          renderSugarRush();
+       }
+
+                  function getThemeEmojiText(amount, isCritical) {
+             const EMOJI = '🍬';
+             if (isCritical) return '🔥' + EMOJI + '🔥';
+             if (amount <= 1) return EMOJI;
+             if (amount <= 5) return EMOJI.repeat(amount);
+             return EMOJI.repeat(3) + ' ×' + formatNum(amount);
+          }
+
+          function showClickFloat(x, y, text, isCritical) {
+             const el = document.createElement('div');
+             el.className = 'click-float';
+             if (text === null || text === undefined) {
+                el.textContent = getThemeEmojiText(clickPower, isCritical);
+             } else {
+                el.textContent = text;
+             }
+             el.style.left = x + 'px';
+             el.style.top = y + 'px';
+             clickArea.style.position = 'relative';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 700);
+          }
 
                   function doClick(e) {
-            const now = Date.now();
-            if (now - lastClickTime < 2000) {
-               combo++;
-            } else {
-               combo = 1;
-            }
-            lastClickTime = now;
+             const now = Date.now();
+             if (now - lastClickTime < 2000) {
+                combo++;
+             } else {
+                combo = 1;
+             }
+             lastClickTime = now;
 
-            let points = clickPower;
-            let isCritical = false;
-            if (combo > 0 && combo % 10 === 0) {
-               points *= 2;
-               isCritical = true;
-            }
+             let points = clickPower;
+             let isCritical = false;
+             if (combo > 0 && combo % 10 === 0) {
+                points *= 2;
+                isCritical = true;
+             }
 
-            score += points;
-            totalEarned += points;
+             // Sugar Rush multiplier
+             if (sugarRushActive) {
+                points *= 3;
+             }
 
-            clickBtn.classList.add('pressed');
-            setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+             score += points;
+             totalEarned += points;
 
-            const rect = clickArea.getBoundingClientRect();
-            let cx, cy;
-            if (e && e.clientX) {
-               cx = e.clientX - rect.left;
-               cy = e.clientY - rect.top;
-            } else {
-               cx = rect.width / 2 + (Math.random() - 0.5) * 40;
-               cy = rect.height / 2 - 30;
-            }
-            showClickFloat(cx, cy, points);
-            if (isCritical) showCriticalPopup(cx, cy);
-            checkMilestones();
-            render();
-         }
+             // Sugar Rush meter
+             if (!sugarRushActive) {
+                sugarRushMeter = Math.min(100, sugarRushMeter + 10);
+                if (sugarRushMeter >= 100) {
+                   startSugarRush();
+                }
+             }
+
+             clickBtn.classList.add('pressed');
+             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+
+             const rect = clickArea.getBoundingClientRect();
+             let cx, cy;
+             if (e && e.clientX) {
+                cx = e.clientX - rect.left;
+                cy = e.clientY - rect.top;
+             } else {
+                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+                cy = rect.height / 2 - 30;
+             }
+             showClickFloat(cx, cy, null, isCritical);
+             if (isCritical) showCriticalPopup(cx, cy, getThemeEmojiText(points, true));
+             checkMilestones();
+             render();
+          }
 
          clickBtn.addEventListener('click', doClick);
          clickBtn.addEventListener('touchstart', (e) => {
@@ -1198,24 +1247,30 @@
          }, 1000);
 
          // Save / Load
-                  function saveGame() {
-            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, milestoneShown };
-            try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
-         }
+                   function saveGame() {
+             const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, milestoneShown, sugarRushMeter, sugarRushActive };
+             try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
+          }
 
          function loadGame() {
             try {
                const raw = localStorage.getItem(SAVE_KEY);
                if (raw) {
                   const data = JSON.parse(raw);
-                                  score = data.score || 0;
-                   totalEarned = data.totalEarned || 0;
-                   clickPower = data.clickPower || 1;
-                   clickPowerLevel = data.clickPowerLevel || 1;
-                   clickPowerCost = data.clickPowerCost || 50;
-                   upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
-                   milestoneShown = data.milestoneShown || {1000: false, 10000: false, 100000: false, 1000000: false};
-                   recalcPerSecond();
+                    score = data.score || 0;
+                    totalEarned = data.totalEarned || 0;
+                    clickPower = data.clickPower || 1;
+                    clickPowerLevel = data.clickPowerLevel || 1;
+                    clickPowerCost = data.clickPowerCost || 50;
+                    upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                    milestoneShown = data.milestoneShown || {1000: false, 10000: false, 100000: false, 1000000: false};
+                    sugarRushMeter = data.sugarRushMeter || 0;
+                    sugarRushActive = data.sugarRushActive || false;
+                    if (sugarRushActive) {
+                       sugarRushWrapper.classList.add('sugar-rush-active');
+                       sugarRushBanner.classList.add('show');
+                    }
+                    recalcPerSecond();
                }
             } catch (e) { }
          }
@@ -1230,35 +1285,67 @@
          document.getElementById('resetBtn').addEventListener('click', () => {
             if (confirm('Reset all progress for Candy Clicker? This cannot be undone.')) {
                localStorage.removeItem(SAVE_KEY);
-                               score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
-                upgradeOwned = UPGRADES.map(() => 0);
-                milestoneShown = {1000: false, 10000: false, 100000: false, 1000000: false};
-                combo = 0;
-                recalcPerSecond();
-                render();
+                                score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
+                 upgradeOwned = UPGRADES.map(() => 0);
+                 milestoneShown = {1000: false, 10000: false, 100000: false, 1000000: false};
+                 combo = 0;
+                 sugarRushMeter = 0;
+                 sugarRushActive = false;
+                 if (sugarRushTimer) clearTimeout(sugarRushTimer);
+                 sugarRushWrapper.classList.remove('sugar-rush-active');
+                 sugarRushBanner.classList.remove('show');
+                 recalcPerSecond();
+                 render();
             }
          });
 
-          // ===== NEW FEATURES =====
-          let combo = 0;
-          let lastClickTime = 0;
-          let soundEnabled = true;
-          let milestoneShown = {1000: false, 10000: false, 100000: false, 1000000: false};
-          const PARTICLE_EMOJI = '🍬';
-          const comboDisplay = document.getElementById('comboDisplay');
-          const progressBar = document.getElementById('progressBar');
-          const milestoneBanner = document.getElementById('milestoneBanner');
-          const soundToggle = document.getElementById('soundToggle');
+           // ===== NEW FEATURES =====
+           let combo = 0;
+           let lastClickTime = 0;
+           let soundEnabled = true;
+           let milestoneShown = {1000: false, 10000: false, 100000: false, 1000000: false};
+           const PARTICLE_EMOJI = '🍬';
+           const comboDisplay = document.getElementById('comboDisplay');
+           const progressBar = document.getElementById('progressBar');
+           const milestoneBanner = document.getElementById('milestoneBanner');
+           const soundToggle = document.getElementById('soundToggle');
 
-          function showCriticalPopup(x, y) {
-             const el = document.createElement('div');
-             el.className = 'critical-popup';
-             el.textContent = 'CRITICAL HIT!';
-             el.style.left = (x - 50) + 'px';
-             el.style.top = (y - 50) + 'px';
-             clickArea.appendChild(el);
-             setTimeout(() => el.remove(), 850);
-          }
+           // Sugar Rush
+           let sugarRushMeter = 0;
+           let sugarRushActive = false;
+           let sugarRushTimer = null;
+           const sugarRushBar = document.getElementById('sugarRushBar');
+           const sugarRushWrapper = document.getElementById('sugarRushWrapper');
+           const sugarRushBanner = document.getElementById('sugarRushBanner');
+
+           function startSugarRush() {
+              sugarRushActive = true;
+              sugarRushMeter = 100;
+              sugarRushWrapper.classList.add('sugar-rush-active');
+              sugarRushBanner.classList.add('show');
+              if (sugarRushTimer) clearTimeout(sugarRushTimer);
+              sugarRushTimer = setTimeout(() => {
+                 sugarRushActive = false;
+                 sugarRushMeter = 0;
+                 sugarRushWrapper.classList.remove('sugar-rush-active');
+                 sugarRushBanner.classList.remove('show');
+                 renderSugarRush();
+              }, 8000);
+           }
+
+           function renderSugarRush() {
+              if (sugarRushBar) sugarRushBar.style.width = sugarRushMeter + '%';
+           }
+
+           function showCriticalPopup(x, y, text) {
+              const el = document.createElement('div');
+              el.className = 'critical-popup';
+              el.textContent = text || 'CRITICAL HIT!';
+              el.style.left = (x - 50) + 'px';
+              el.style.top = (y - 50) + 'px';
+              clickArea.appendChild(el);
+              setTimeout(() => el.remove(), 850);
+           }
 
           function checkMilestones() {
              const ms = [1000, 10000, 100000, 1000000];

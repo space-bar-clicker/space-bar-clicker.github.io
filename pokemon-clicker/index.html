@@ -31,7 +31,7 @@
       }
 
       body {
-         background: linear-gradient(135deg, #f6f8fd 0%, #f0f2f5 100%);
+         background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
          min-height: 100vh;
       }
 
@@ -202,29 +202,29 @@
          justify-content: center;
          padding: 36px 20px;
          border-right: 1px solid #f0f0f0;
-         background: #fee2e2;
-         min-height: 320px;
+         background: linear-gradient(180deg, #e3f2fd 0%, #fee2e2 100%);
+         min-height: 420px;
       }
 
       @media (max-width: 700px) {
          .click-area {
             border-right: none;
             border-bottom: 1px solid #f0f0f0;
-            min-height: 260px;
+            min-height: 360px;
             padding: 28px 20px;
          }
       }
 
       .click-btn {
-         width: 150px;
-         height: 150px;
+         width: 160px;
+         height: 160px;
          border-radius: 50%;
-         border: 4px solid #dc2626;
-         background: white;
+         border: 5px solid #dc2626;
+         background: radial-gradient(circle at 35% 35%, #ff5252, #dc2626);
          font-size: 64px;
          cursor: pointer;
          transition: transform 0.1s ease, box-shadow 0.1s ease;
-         box-shadow: 0 8px 30px #dc262633;
+         box-shadow: 0 8px 30px #dc262633, inset 0 -4px 10px rgba(220,38,38,0.2);
          display: flex;
          align-items: center;
          justify-content: center;
@@ -236,17 +236,18 @@
       }
 
       .click-btn:hover {
-         box-shadow: 0 12px 40px #dc262655;
+         box-shadow: 0 12px 40px #dc262655, inset 0 -4px 10px rgba(220,38,38,0.2);
       }
 
       .click-btn:active,
       .click-btn.pressed {
          transform: scale(0.92);
-         box-shadow: 0 4px 15px #dc262644;
+         box-shadow: 0 4px 15px #dc262644, inset 0 -4px 10px rgba(220,38,38,0.2);
       }
 
       .click-btn .emoji {
          pointer-events: none;
+         filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
       }
 
       .score-display {
@@ -313,7 +314,7 @@
          flex-direction: column;
          gap: 10px;
          overflow-y: auto;
-         max-height: 420px;
+         max-height: 520px;
       }
 
       .upgrades-title {
@@ -334,13 +335,14 @@
          border: 1.5px solid #eee;
          cursor: pointer;
          transition: all 0.2s ease;
-         background: white;
+         background: linear-gradient(180deg, #fff 0%, #faf0f0 100%);
+         box-shadow: 0 2px 6px rgba(220,38,38,0.08);
          position: relative;
       }
 
       .upgrade-card:hover:not(.locked) {
          border-color: #dc2626;
-         background: #fee2e2;
+         background: linear-gradient(180deg, #fff 0%, #fee2e2 100%);
          transform: translateY(-1px);
          box-shadow: 0 4px 12px #dc262615;
       }
@@ -847,6 +849,18 @@
          margin-top: 8px;
          font-weight: 500;
       }
+      .type-display {
+         margin-top: 4px;
+         font-size: 0.85rem;
+         font-weight: 700;
+         min-height: 20px;
+         text-align: center;
+      }
+      .type-fire { color: #e53935; }
+      .type-water { color: #1e88e5; }
+      .type-grass { color: #43a047; }
+      .type-electric { color: #fdd835; }
+      .type-ice { color: #00acc1; }
       .faq-section { margin-bottom: 30px; }
       .faq-item { margin-bottom: 16px; border-bottom: 1px solid #eee; padding-bottom: 12px; }
       .faq-item h3 {
@@ -952,8 +966,9 @@
                 <div class="progress-bar-container" id="progressBarContainer">
                    <div class="progress-bar-fill" id="progressBarFill"></div>
                 </div>
-                <div class="combo-display" id="comboDisplay"></div>
-                <div class="per-second" id="perSecDisplay">0 pokécoins/sec</div>
+                 <div class="combo-display" id="comboDisplay"></div>
+                 <div class="type-display" id="typeDisplay"></div>
+                 <div class="per-second" id="perSecDisplay">0 pokécoins/sec</div>
                 <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
                 <div class="keyboard-tip">Tip: Press SPACE to click!</div>
              </div>
@@ -1055,8 +1070,9 @@
 <li>Unlock <strong>Legendary Hunt</strong> at 2,500 PokéCoins for +100/sec—chase mythical profits.</li>
 <li>Achieve <strong>Pokemon Master</strong> status at 15,000 PokéCoins for +500/sec and reign supreme.</li>
 <li>Use Save to protect your trainer journey across browser sessions.</li>
-<li>Build click combos for Critical Hits, and press SPACE to catch PokéCoins faster!</li>
-            </ol>
+ <li>Build click combos for Critical Hits, and press SPACE to catch PokéCoins faster!</li>
+ <li>Watch for random Pokemon type effectiveness! Fire, Water, Grass, Electric, and Ice types can be Super Effective (x2), Not Very Effective (x0.5), or Normal (x1).</li>
+             </ol>
          </section>
 
          <section class="section">
@@ -1064,8 +1080,9 @@
             <p>New trainers often make the mistake of hoarding PokéCoins for expensive upgrades while ignoring cheap Great Balls. Remember: every Great Ball pays for itself in 15 seconds and generates pure profit after that. In the opening minutes, buy Great Balls whenever you can afford them. The compound effect of multiple +1/sec generators adds up faster than you might expect.</p>
 <p>The Gym Badge tier (+20/sec) is your first major power spike. Before unlocking it, ensure you have at least 5-8 Great Balls and 2-3 Pokédex Upgrades. This income foundation means the 500 PokéCoin cost for Gym Badge will not bankrupt your passive earnings. After purchasing your first Gym Badge, your per-second income should jump enough to make the next tiers accessible within minutes rather than hours.</p>
 <p>Legendary Hunt (+100/sec) and Pokemon Master (+500/sec) are expensive but transformative. When approaching these purchases, calculate your "time to purchase" by dividing the cost by your current per-second income. If it will take more than 10 minutes, invest in Click Power or lower-tier duplicates first. The goal is minimizing downtime between major upgrades.</p>
-<p>The optimal endgame strategy involves maintaining a diverse portfolio of all upgrade tiers rather than maxing just one. Because each duplicate costs 1.15x more than the last, spreading purchases across tiers keeps the marginal cost low while maximizing total income. Check the progress bar to identify which upgrade offers the best value at any moment.</p>
-         </section>
+ <p>The optimal endgame strategy involves maintaining a diverse portfolio of all upgrade tiers rather than maxing just one. Because each duplicate costs 1.15x more than the last, spreading purchases across tiers keeps the marginal cost low while maximizing total income. Check the progress bar to identify which upgrade offers the best value at any moment.</p>
+ <p>Type matchups add another layer of decision-making. Super Effective clicks double your earnings, so chaining clicks during a hot streak can accelerate your progress. Not Very Effective clicks are unavoidable, but you can offset them by maintaining a high passive income from upgrades. There is no way to control which type appears, but knowing the odds (20% Super Effective, 70% Normal, 10% Not Very Effective) helps set expectations for your session.</p>
+          </section>
 
          <section class="section faq-section">
             <h2>Frequently Asked Questions</h2>
@@ -1089,12 +1106,16 @@
                   <h3>How do I save my progress?</h3>
                   <div class="faq-answer"><p>Press the Save button or let the auto-save feature (every 30 seconds) handle it. Your trainer progress stores locally in your browser. Clearing site data will reset your journey.</p></div>
                </div>
-<div class="faq-item">
-                  <h3>What is a Critical Hit in Pokemon Clicker?</h3>
-                  <div class="faq-answer"><p>When you achieve a 10-click combo (clicking at least once every 2 seconds), your next click triggers a Critical Hit that awards double PokéCoins and shows a dramatic popup!</p></div>
-               </div>
-<div class="faq-item">
-                  <h3>Is there a maximum level?</h3>
+ <div class="faq-item">
+                   <h3>What is a Critical Hit in Pokemon Clicker?</h3>
+                   <div class="faq-answer"><p>When you achieve a 10-click combo (clicking at least once every 2 seconds), your next click triggers a Critical Hit that awards double PokéCoins and shows a dramatic popup!</p></div>
+                </div>
+ <div class="faq-item">
+                   <h3>What is the type system?</h3>
+                   <div class="faq-answer"><p>Every click is assigned a random Pokemon type: Fire, Water, Grass, Electric, or Ice. There is a 20% chance the click is Super Effective (x2 multiplier), a 10% chance it is Not Very Effective (x0.5 multiplier), and a 70% chance it is Normal (x1). The type icon appears next to your click float, and the current effectiveness is shown below the combo display.</p></div>
+                </div>
+ <div class="faq-item">
+                   <h3>Is there a maximum level?</h3>
                   <div class="faq-answer"><p>There is no level cap. Click Power scales exponentially (doubling each level), and you can own unlimited copies of each upgrade tier. Dedicated trainers can reach billions or trillions of PokéCoins.</p></div>
                </div>
 <div class="faq-item">
@@ -1253,16 +1274,46 @@
             }
          }
 
-         function showClickFloat(x, y) {
-            const el = document.createElement('div');
-            el.className = 'click-float';
-            el.textContent = '+' + formatNum(clickPower);
-            el.style.left = x + 'px';
-            el.style.top = y + 'px';
-            clickArea.style.position = 'relative';
-            clickArea.appendChild(el);
-            setTimeout(() => el.remove(), 700);
-         }
+          const EMOJI = '⚡';
+          function getThemeEmojiText(amount, isCritical) {
+             if (isCritical) return '🔥' + EMOJI + '🔥';
+             if (amount <= 1) return EMOJI;
+             if (amount <= 5) return EMOJI.repeat(Math.floor(amount));
+             return EMOJI.repeat(3) + ' ×' + formatNum(amount);
+          }
+
+          const TYPES = [
+             { name: 'Fire', emoji: '🔥' },
+             { name: 'Water', emoji: '💧' },
+             { name: 'Grass', emoji: '🍃' },
+             { name: 'Electric', emoji: '⚡' },
+             { name: 'Ice', emoji: '❄️' }
+          ];
+          function getRandomType() {
+             return TYPES[Math.floor(Math.random() * TYPES.length)];
+          }
+          function getEffectiveness() {
+             const r = Math.random();
+             if (r < 0.2) return { mult: 2, label: 'Super Effective!' };
+             if (r < 0.3) return { mult: 0.5, label: 'Not Very Effective...' };
+             return { mult: 1, label: 'Normal' };
+          }
+
+          function showClickFloat(x, y, text, isCritical, type) {
+             const el = document.createElement('div');
+             el.className = 'click-float';
+             if (!text) text = getThemeEmojiText(clickPower, isCritical);
+             if (type) {
+                text += ' ' + type.emoji;
+                el.classList.add('type-' + type.name.toLowerCase());
+             }
+             el.textContent = text;
+             el.style.left = x + 'px';
+             el.style.top = y + 'px';
+             clickArea.style.position = 'relative';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 700);
+          }
 
          function doClick(e) {
             score += clickPower;
@@ -1410,16 +1461,16 @@
             }
          }
 
-         function showCriticalHit(x, y) {
-            const el = document.createElement('div');
-            el.className = 'critical-popup';
-            el.textContent = 'CRITICAL HIT! +' + formatNum(clickPower * 2);
-            el.style.left = x + 'px';
-            el.style.top = y + 'px';
-            clickArea.style.position = 'relative';
-            clickArea.appendChild(el);
-            setTimeout(() => el.remove(), 900);
-         }
+          function showCriticalHit(x, y, power) {
+             const el = document.createElement('div');
+             el.className = 'critical-popup';
+             el.textContent = getThemeEmojiText(power, true);
+             el.style.left = x + 'px';
+             el.style.top = y + 'px';
+             clickArea.style.position = 'relative';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 900);
+          }
 
          function updateProgressBar() {
             let nextCost = Infinity;
@@ -1461,41 +1512,49 @@
             setTimeout(() => el.remove(), 2500);
          }
 
-         // Modify doClick to include new features
-         const _origDoClick = doClick;
-         doClick = function(e) {
-            let multiplier = 1;
-            updateCombo();
-            if (comboCount >= 10 && comboCount % 10 === 0) {
-               multiplier = 2;
-            }
-            score += clickPower * multiplier;
-            totalEarned += clickPower * multiplier;
+          // Modify doClick to include new features
+          const _origDoClick = doClick;
+          doClick = function(e) {
+             const type = getRandomType();
+             const eff = getEffectiveness();
+             let mult = 1;
+             updateCombo();
+             if (comboCount >= 10 && comboCount % 10 === 0) {
+                mult = 2;
+             }
+             const totalMult = eff.mult * mult;
+             score += clickPower * totalMult;
+             totalEarned += clickPower * totalMult;
 
-            clickBtn.classList.add('pressed');
-            setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+             clickBtn.classList.add('pressed');
+             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
 
-            const rect = clickArea.getBoundingClientRect();
-            let cx, cy;
-            if (e && e.clientX) {
-               cx = e.clientX - rect.left;
-               cy = e.clientY - rect.top;
-            } else {
-               cx = rect.width / 2 + (Math.random() - 0.5) * 40;
-               cy = rect.height / 2 - 30;
-            }
-            if (multiplier === 2) {
-               showCriticalHit(cx, cy);
-            }
-            showClickFloat(cx, cy);
-            checkMilestones();
-            updateProgressBar();
-            render();
-         };
+             const rect = clickArea.getBoundingClientRect();
+             let cx, cy;
+             if (e && e.clientX) {
+                cx = e.clientX - rect.left;
+                cy = e.clientY - rect.top;
+             } else {
+                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+                cy = rect.height / 2 - 30;
+             }
+             if (mult === 2) {
+                showCriticalHit(cx, cy, clickPower * totalMult);
+             }
+             showClickFloat(cx, cy, null, mult === 2, type);
+             const typeDisplay = document.getElementById('typeDisplay');
+             if (typeDisplay) {
+                typeDisplay.textContent = eff.label + ' ' + type.emoji + (eff.mult !== 1 ? ' x' + eff.mult : '');
+                typeDisplay.className = 'type-display type-' + type.name.toLowerCase();
+             }
+             checkMilestones();
+             updateProgressBar();
+             render();
+          };
 
-         // Re-attach click listener to use new doClick
-         clickBtn.removeEventListener('click', _origDoClick);
-         clickBtn.addEventListener('click', doClick);
+          // Re-attach click listener to use new doClick
+          clickBtn.removeEventListener('click', _origDoClick);
+          clickBtn.addEventListener('click', doClick);
 
          // Modify render to include progress bar update
          const _origRender = render;

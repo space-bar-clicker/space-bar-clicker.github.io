@@ -32,7 +32,7 @@
       }
 
       body {
-         background: linear-gradient(135deg, #f6f8fd 0%, #f0f2f5 100%);
+         background: linear-gradient(135deg, #f5f5dc 0%, #e8e4c9 100%);
          min-height: 100vh;
       }
 
@@ -204,8 +204,8 @@
          justify-content: center;
          padding: 36px 20px;
          border-right: 1px solid #f0f0f0;
-         background: #fef3c7;
-         min-height: 320px;
+         background: linear-gradient(180deg, #f5f5dc 0%, #d7ccc8 100%);
+         min-height: 420px;
          position: relative;
          overflow: hidden;
       }
@@ -214,21 +214,21 @@
          .click-area {
             border-right: none;
             border-bottom: 1px solid #f0f0f0;
-            min-height: 260px;
+            min-height: 360px;
             padding: 28px 20px;
          }
       }
 
       .click-btn {
-         width: 150px;
-         height: 150px;
+         width: 160px;
+         height: 160px;
          border-radius: 50%;
-         border: 4px solid #b45309;
-         background: white;
+         border: 5px solid #795548;
+         background: radial-gradient(circle at 35% 35%, #a1887f, #795548);
          font-size: 64px;
          cursor: pointer;
          transition: transform 0.1s ease, box-shadow 0.1s ease;
-         box-shadow: 0 8px 30px #b4530933;
+         box-shadow: 0 8px 30px #79554833, inset 0 -4px 10px rgba(121,85,72,0.2);
          display: flex;
          align-items: center;
          justify-content: center;
@@ -241,17 +241,18 @@
       }
 
       .click-btn:hover {
-         box-shadow: 0 12px 40px #b4530955;
+         box-shadow: 0 12px 40px #79554855, inset 0 -4px 10px rgba(121,85,72,0.2);
       }
 
       .click-btn:active,
       .click-btn.pressed {
          transform: scale(0.92);
-         box-shadow: 0 4px 15px #b4530944;
+         box-shadow: 0 4px 15px #79554844, inset 0 -4px 10px rgba(121,85,72,0.2);
       }
 
       .click-btn .emoji {
          pointer-events: none;
+         filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
       }
 
       .score-display {
@@ -318,7 +319,7 @@
          flex-direction: column;
          gap: 10px;
          overflow-y: auto;
-         max-height: 420px;
+         max-height: 520px;
       }
 
       .upgrades-title {
@@ -339,15 +340,16 @@
          border: 1.5px solid #eee;
          cursor: pointer;
          transition: all 0.2s ease;
-         background: white;
+         background: linear-gradient(180deg, #fff 0%, #faf7f2 100%);
+         box-shadow: 0 2px 6px rgba(121,85,72,0.08);
          position: relative;
       }
 
       .upgrade-card:hover:not(.locked) {
-         border-color: #b45309;
-         background: #fef3c7;
+         border-color: #795548;
+         background: linear-gradient(180deg, #fff 0%, #d7ccc8 100%);
          transform: translateY(-1px);
-         box-shadow: 0 4px 12px #b4530915;
+         box-shadow: 0 4px 12px rgba(121,85,72,0.15);
       }
 
       .upgrade-card.locked {
@@ -535,6 +537,64 @@
          margin-top: 8px;
          font-weight: 500;
          z-index: 2;
+      }
+
+      /* Happiness Meter */
+      .happiness-meter {
+         margin-top: 10px;
+         width: 80%;
+         max-width: 220px;
+         z-index: 2;
+      }
+      .happiness-label {
+         font-size: 0.75rem;
+         color: #795548;
+         font-weight: 600;
+         margin-bottom: 4px;
+         text-align: center;
+      }
+      .happiness-bar {
+         height: 10px;
+         background: #e5e7eb;
+         border-radius: 5px;
+         overflow: hidden;
+      }
+      .happiness-fill {
+         height: 100%;
+         background: linear-gradient(90deg, #e91e63, #f06292);
+         border-radius: 5px;
+         transition: width 0.2s ease;
+         width: 0%;
+         transform-origin: left center;
+      }
+      .happiness-fill.beating {
+         animation: heartBeat 0.8s ease-in-out infinite;
+      }
+      @keyframes heartBeat {
+         0%, 100% { transform: scaleX(1); }
+         50% { transform: scaleX(1.05); }
+      }
+      .happy-banner {
+         margin-top: 6px;
+         font-size: 0.8rem;
+         font-weight: 700;
+         color: #e91e63;
+         text-align: center;
+         opacity: 0;
+         transform: translateY(-5px);
+         transition: all 0.3s ease;
+      }
+      .happy-banner.show {
+         opacity: 1;
+         transform: translateY(0);
+      }
+      .click-btn.happy {
+         animation: pawWag 0.4s ease-in-out infinite;
+      }
+      @keyframes pawWag {
+         0% { transform: rotate(-12deg); }
+         50% { transform: rotate(12deg); }
+         100% { transform: rotate(-12deg); }
       }
 
       /* FAQ Styles */
@@ -933,10 +993,17 @@
                </div>
                <div class="per-second" id="perSecDisplay">0 treats/sec</div>
                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
-               <div class="combo-display" id="comboDisplay"></div>
-               <div class="progress-bar-container">
-                  <div class="progress-bar-fill" id="progressBarFill"></div>
-               </div>
+                <div class="combo-display" id="comboDisplay"></div>
+                <div class="happiness-meter" id="happinessMeter">
+                   <div class="happiness-label">❤️ Happiness</div>
+                   <div class="happiness-bar">
+                      <div class="happiness-fill" id="happinessFill"></div>
+                   </div>
+                   <div class="happy-banner" id="happyBanner">🐕 Happy! +50% treats/sec</div>
+                </div>
+                <div class="progress-bar-container">
+                   <div class="progress-bar-fill" id="progressBarFill"></div>
+                </div>
                <div class="keyboard-tip">Tip: Press SPACE to click!</div>
             </div>
             <div class="upgrades-panel" id="upgradesPanel">
@@ -1035,16 +1102,18 @@
                 <li><strong>Open a Dog Park:</strong> At 500 Treats, unlock a Dog Park generating +20 treats per second.</li>
                 <li><strong>Enroll in Puppy Academy:</strong> Save 2,500 Treats to enroll in Puppy Academy for +100 treats per second.</li>
                 <li><strong>Upgrade Click Power:</strong> Spend 50 Treats on Click Power to double your manual earnings.</li>
-                <li><strong>Build Good Boy Palace:</strong> The ultimate upgrade at 15,000 Treats is the Good Boy Palace, delivering +500 treats per second.</li>
-             </ol>
+                 <li><strong>Build Good Boy Palace:</strong> The ultimate upgrade at 15,000 Treats is the Good Boy Palace, delivering +500 treats per second.</li>
+                 <li><strong>Keep the Dog Happy:</strong> Clicking fills the Happiness Meter by 8% per click. At 100%, the dog becomes Happy for 20 seconds, granting +50% passive income.</li>
+              </ol>
           </section>
 
           <section class="section">
              <h2>Dog Clicker Strategy Guide</h2>
              <p>Early game strategy in Dog Clicker is all about Tennis Balls. They are cheap, effective, and the foundation of your Treat economy. Buy them aggressively. The mistake most beginners make is hoarding Treats for a big purchase when they could be compounding their income with multiple small purchases. The exponential cost scaling is real, but the immediate return on investment for cheap upgrades is unbeatable. Use the progress bar to gauge whether you are close to your next upgrade.</p>
              <p>Mid-game strategy shifts toward Dog Parks and Puppy Academy. By now, you should have a solid base of Tennis Balls and Dog Walkers. The decision tree is simple: if you can buy another cheap upgrade in under 15 seconds of active clicking, do it. Otherwise, save for the next tier. Puppy Academy at 2,500 Treats is a game-changer because it provides +100 per second, which stacks beautifully. Do not neglect Click Power during this phase. Doubling your manual output can save you minutes of waiting.</p>
-             <p>Late game optimization means stacking Good Boy Palaces while keeping your lower tiers healthy. Every upgrade contributes to your total, so even a humble Tennis Ball still adds value. The combo system shines in the late game. Rapid clicking within 2-second windows builds your combo counter, and every 10th click triggers a Critical Hit for double Treats. If you are chasing the 1 million Treat milestone, active clicking with good combo management is far more effective than passive waiting. Treat your clicks like a dog treats a tennis ball: with enthusiasm and repetition.</p>
-          </section>
+              <p>Late game optimization means stacking Good Boy Palaces while keeping your lower tiers healthy. Every upgrade contributes to your total, so even a humble Tennis Ball still adds value. The combo system shines in the late game. Rapid clicking within 2-second windows builds your combo counter, and every 10th click triggers a Critical Hit for double Treats. If you are chasing the 1 million Treat milestone, active clicking with good combo management is far more effective than passive waiting. Treat your clicks like a dog treats a tennis ball: with enthusiasm and repetition.</p>
+              <p>Timing your Happiness Meter is a powerful advanced tactic. Because Happy Mode grants a 50% passive income boost for 20 seconds, you should try to reach 100% happiness right after buying several expensive upgrades. The compounding effect of a high treats-per-second rate multiplied by 1.5x can vault you to your next milestone much faster. Conversely, if your meter is close to full, avoid letting it sit idle; the 3% per second decay means you only have about 30 seconds of inactivity before all that potential happiness disappears.</p>
+           </section>
 
           <section class="section faq-section">
              <h2>Frequently Asked Questions</h2>
@@ -1072,14 +1141,20 @@
                    <p>Yes. The game auto-saves to your browser's local storage every 30 seconds. You can also save manually with the Save button.</p>
                 </div>
              </div>
-             <div class="faq-item">
-                <h3 class="faq-question">What are milestone banners?</h3>
-                <div class="faq-answer">
-                   <p>Celebration banners appear when you reach 1K, 10K, 100K, and 1M Treats. They mark your achievements.</p>
-                </div>
-             </div>
-             <div class="faq-item">
-                <h3 class="faq-question">Can I play on mobile?</h3>
+              <div class="faq-item">
+                 <h3 class="faq-question">What are milestone banners?</h3>
+                 <div class="faq-answer">
+                    <p>Celebration banners appear when you reach 1K, 10K, 100K, and 1M Treats. They mark your achievements.</p>
+                 </div>
+              </div>
+              <div class="faq-item">
+                 <h3 class="faq-question">What is the Happiness Meter?</h3>
+                 <div class="faq-answer">
+                    <p>Each click fills the Happiness Meter by 8%. When it reaches 100%, your dog becomes Happy for 20 seconds, boosting passive income by 50%. The meter decays by 3% per second when you are not clicking.</p>
+                 </div>
+              </div>
+              <div class="faq-item">
+                 <h3 class="faq-question">Can I play on mobile?</h3>
                 <div class="faq-answer">
                    <p>Absolutely. The game is fully responsive and works on all modern mobile browsers. Just tap the dog button to click.</p>
                 </div>
@@ -1190,12 +1265,20 @@
          // Sound toggle
          let soundEnabled = true;
 
-         // Milestones
-         const milestones = [1000, 10000, 100000, 1000000];
-         let milestonesReached = {};
-         milestones.forEach(m => milestonesReached[m] = false);
+          // Milestones
+          const milestones = [1000, 10000, 100000, 1000000];
+          let milestonesReached = {};
+          milestones.forEach(m => milestonesReached[m] = false);
 
-         // DOM
+          // Happiness Meter
+          let happiness = 0;
+          let happyMode = false;
+          let happyModeTimer = null;
+          const HAPPINESS_PER_CLICK = 8;
+          const HAPPINESS_DECAY = 3;
+          const HAPPY_MODE_DURATION = 20000;
+
+          // DOM
          const scoreNum = document.getElementById('scoreNum');
          const perSecDisplay = document.getElementById('perSecDisplay');
          const clickPowerInfo = document.getElementById('clickPowerInfo');
@@ -1206,18 +1289,28 @@
           const comboDisplay = document.getElementById('comboDisplay');
           const progressBarFill = document.getElementById('progressBarFill');
           const milestoneBanner = document.getElementById('milestoneBanner');
-          const soundToggle = document.getElementById('soundToggle');
-          const particleContainer = document.getElementById('particleContainer');
+           const soundToggle = document.getElementById('soundToggle');
+           const particleContainer = document.getElementById('particleContainer');
+           const happinessFill = document.getElementById('happinessFill');
+           const happyBanner = document.getElementById('happyBanner');
 
-          function formatNum(n) {
-            if (n < 1000) return Math.floor(n).toLocaleString();
-            if (n < 1e6) return (n / 1e3).toFixed(1) + 'K';
-            if (n < 1e9) return (n / 1e6).toFixed(1) + 'M';
-            if (n < 1e12) return (n / 1e9).toFixed(1) + 'B';
-            return (n / 1e12).toFixed(1) + 'T';
-         }
+           function formatNum(n) {
+             if (n < 1000) return Math.floor(n).toLocaleString();
+             if (n < 1e6) return (n / 1e3).toFixed(1) + 'K';
+             if (n < 1e9) return (n / 1e6).toFixed(1) + 'M';
+             if (n < 1e12) return (n / 1e9).toFixed(1) + 'B';
+             return (n / 1e12).toFixed(1) + 'T';
+          }
 
-         function getCost(baseC, owned) {
+          const EMOJI = '🐕';
+          function getThemeEmojiText(amount, isCritical) {
+             if (isCritical) return '❤️' + EMOJI + '❤️';
+             if (amount <= 1) return EMOJI;
+             if (amount <= 5) return EMOJI.repeat(Math.floor(amount));
+             return EMOJI.repeat(3) + ' ×' + formatNum(amount);
+          }
+
+          function getCost(baseC, owned) {
             return Math.floor(baseC * Math.pow(COST_SCALE, owned));
          }
 
@@ -1229,13 +1322,14 @@
          }
 
          function render() {
-            scoreNum.textContent = formatNum(score);
-            perSecDisplay.textContent = formatNum(perSecond) + ' treats/sec';
-            clickPowerInfo.textContent = '+' + formatNum(clickPower) + ' per click';
-            gStatTotal.textContent = formatNum(score) + ' Treats';
-            gStatPerSec.textContent = formatNum(perSecond) + '/sec';
+             const effectivePerSecond = perSecond * (happyMode ? 1.5 : 1);
+             scoreNum.textContent = formatNum(score);
+             perSecDisplay.textContent = formatNum(effectivePerSecond) + ' treats/sec';
+             clickPowerInfo.textContent = '+' + formatNum(clickPower) + ' per click';
+             gStatTotal.textContent = formatNum(score) + ' Treats';
+             gStatPerSec.textContent = formatNum(effectivePerSecond) + '/sec';
 
-            UPGRADES.forEach((u, i) => {
+             UPGRADES.forEach((u, i) => {
                const card = document.getElementById('upg' + i);
                const cost = getCost(u.baseCost, upgradeOwned[i]);
                document.getElementById('upgCost' + i).textContent = formatNum(cost);
@@ -1279,18 +1373,21 @@
              });
           }
 
-          function showClickFloat(x, y, amount) {
-             const el = document.createElement('div');
-             el.className = 'click-float';
-             el.textContent = '+' + formatNum(amount || clickPower);
-             el.style.left = x + 'px';
-             el.style.top = y + 'px';
-             clickArea.style.position = 'relative';
-             clickArea.appendChild(el);
-             setTimeout(() => el.remove(), 700);
-          }
+           function showClickFloat(x, y, text, isCritical) {
+              const el = document.createElement('div');
+              el.className = 'click-float';
+              if (text == null) {
+                 text = getThemeEmojiText(clickPower, isCritical);
+              }
+              el.textContent = text;
+              el.style.left = x + 'px';
+              el.style.top = y + 'px';
+              clickArea.style.position = 'relative';
+              clickArea.appendChild(el);
+              setTimeout(() => el.remove(), 700);
+           }
 
-          function showCriticalPopup(x, y) {
+           function showCriticalPopup(x, y) {
              const el = document.createElement('div');
              el.className = 'critical-popup';
              el.textContent = 'CRITICAL HIT!';
@@ -1300,56 +1397,88 @@
              setTimeout(() => el.remove(), 800);
           }
 
-          function showMilestoneBanner(m) {
-             milestoneBanner.textContent = '🎉 Milestone Reached: ' + formatNum(m) + '!';
-             milestoneBanner.classList.add('show');
-             setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
-          }
+           function showMilestoneBanner(m) {
+              milestoneBanner.textContent = '🎉 Milestone Reached: ' + formatNum(m) + '!';
+              milestoneBanner.classList.add('show');
+              setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
+           }
 
-          function doClick(e) {
-             const now = Date.now();
-             let earned = clickPower;
-             if (now - lastClickTime <= COMBO_TIMEOUT) {
-                comboCount++;
-             } else {
-                comboCount = 1;
-             }
-             lastClickTime = now;
+           function startHappyMode() {
+              happyMode = true;
+              clickBtn.classList.add('happy');
+              happyBanner.classList.add('show');
+              if (happyModeTimer) clearTimeout(happyModeTimer);
+              happyModeTimer = setTimeout(() => {
+                 happyMode = false;
+                 clickBtn.classList.remove('happy');
+                 happyBanner.classList.remove('show');
+                 happiness = 0;
+                 renderHappiness();
+                 render();
+              }, HAPPY_MODE_DURATION);
+           }
 
-             if (comboCount > 1) {
-                comboDisplay.textContent = comboCount + 'x Combo!';
-                comboDisplay.classList.add('active');
-                setTimeout(() => comboDisplay.classList.remove('active'), 100);
-             } else {
-                comboDisplay.textContent = '';
-             }
+           function renderHappiness() {
+              happinessFill.style.width = happiness + '%';
+              if (happyMode) {
+                 happinessFill.classList.add('beating');
+              } else {
+                 happinessFill.classList.remove('beating');
+              }
+           }
 
-             if (comboCount % COMBO_CRIT_THRESHOLD === 0) {
-                earned *= 2;
-             }
+           function doClick(e) {
+              const now = Date.now();
+              let mult = 1;
+              if (now - lastClickTime <= COMBO_TIMEOUT) {
+                 comboCount++;
+              } else {
+                 comboCount = 1;
+              }
+              lastClickTime = now;
 
-             score += earned;
-             totalEarned += earned;
+              if (comboCount > 1) {
+                 comboDisplay.textContent = comboCount + 'x Combo!';
+                 comboDisplay.classList.add('active');
+                 setTimeout(() => comboDisplay.classList.remove('active'), 100);
+              } else {
+                 comboDisplay.textContent = '';
+              }
 
-             clickBtn.classList.add('pressed');
-             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+              if (comboCount % COMBO_CRIT_THRESHOLD === 0) {
+                 mult = 2;
+              }
+              const earned = clickPower * mult;
 
-             // Float position
-             const rect = clickArea.getBoundingClientRect();
-             let cx, cy;
-             if (e && e.clientX) {
-                cx = e.clientX - rect.left;
-                cy = e.clientY - rect.top;
-             } else {
-                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
-                cy = rect.height / 2 - 30;
-             }
-             showClickFloat(cx, cy, earned);
-             if (comboCount % COMBO_CRIT_THRESHOLD === 0) {
-                showCriticalPopup(cx, cy);
-             }
-             render();
-          }
+              score += earned;
+              totalEarned += earned;
+
+              // Happiness
+              happiness = Math.min(100, happiness + HAPPINESS_PER_CLICK);
+              if (happiness >= 100 && !happyMode) {
+                 startHappyMode();
+              }
+              renderHappiness();
+
+              clickBtn.classList.add('pressed');
+              setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+
+              // Float position
+              const rect = clickArea.getBoundingClientRect();
+              let cx, cy;
+              if (e && e.clientX) {
+                 cx = e.clientX - rect.left;
+                 cy = e.clientY - rect.top;
+              } else {
+                 cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+                 cy = rect.height / 2 - 30;
+              }
+              showClickFloat(cx, cy, null, mult === 2);
+              if (mult === 2) {
+                 showCriticalPopup(cx, cy);
+              }
+              render();
+           }
 
          clickBtn.addEventListener('click', doClick);
          clickBtn.addEventListener('touchstart', (e) => {
@@ -1389,36 +1518,44 @@
             }
          });
 
-         // Per-second tick
-         setInterval(() => {
-            if (perSecond > 0) {
-               score += perSecond;
-               totalEarned += perSecond;
-               render();
-            }
-         }, 1000);
+          // Per-second tick
+          setInterval(() => {
+             let gain = perSecond;
+             if (happyMode) gain *= 1.5;
+             if (gain > 0) {
+                score += gain;
+                totalEarned += gain;
+             }
+             if (!happyMode) {
+                happiness = Math.max(0, happiness - HAPPINESS_DECAY);
+                renderHappiness();
+             }
+             render();
+          }, 1000);
 
          // Save / Load
-         function saveGame() {
-            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned };
-            try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
-         }
+          function saveGame() {
+             const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, happiness };
+             try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
+          }
 
-         function loadGame() {
-            try {
-               const raw = localStorage.getItem(SAVE_KEY);
-               if (raw) {
-                  const data = JSON.parse(raw);
-                  score = data.score || 0;
-                  totalEarned = data.totalEarned || 0;
-                  clickPower = data.clickPower || 1;
-                  clickPowerLevel = data.clickPowerLevel || 1;
-                  clickPowerCost = data.clickPowerCost || 50;
-                  upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
-                  recalcPerSecond();
-               }
-            } catch (e) { }
-         }
+          function loadGame() {
+             try {
+                const raw = localStorage.getItem(SAVE_KEY);
+                if (raw) {
+                   const data = JSON.parse(raw);
+                   score = data.score || 0;
+                   totalEarned = data.totalEarned || 0;
+                   clickPower = data.clickPower || 1;
+                   clickPowerLevel = data.clickPowerLevel || 1;
+                   clickPowerCost = data.clickPowerCost || 50;
+                   upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                   happiness = data.happiness || 0;
+                   if (happiness >= 100) startHappyMode();
+                   recalcPerSecond();
+                }
+             } catch (e) { }
+          }
 
          document.getElementById('saveBtn').addEventListener('click', () => {
             saveGame();
@@ -1430,11 +1567,17 @@
           document.getElementById('resetBtn').addEventListener('click', () => {
              if (confirm('Reset all progress for Dog Clicker? This cannot be undone.')) {
                 localStorage.removeItem(SAVE_KEY);
-                score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
-                upgradeOwned = UPGRADES.map(() => 0);
-                milestonesReached = {}; milestones.forEach(m => milestonesReached[m] = false);
-                recalcPerSecond();
-                render();
+                 score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
+                 upgradeOwned = UPGRADES.map(() => 0);
+                 happiness = 0;
+                 if (happyModeTimer) clearTimeout(happyModeTimer);
+                 happyMode = false;
+                 clickBtn.classList.remove('happy');
+                 happyBanner.classList.remove('show');
+                 milestonesReached = {}; milestones.forEach(m => milestonesReached[m] = false);
+                 recalcPerSecond();
+                 render();
+                 renderHappiness();
              }
           });
 
@@ -1466,10 +1609,11 @@
              });
           });
 
-          // Init
-          loadGame();
-          render();
-       })();
+           // Init
+           loadGame();
+           render();
+           renderHappiness();
+        })();
    </script>
 
    <script>

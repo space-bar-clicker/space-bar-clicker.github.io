@@ -31,7 +31,7 @@
       }
 
       body {
-         background: linear-gradient(135deg, #f6f8fd 0%, #f0f2f5 100%);
+         background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
          min-height: 100vh;
       }
 
@@ -202,29 +202,29 @@
          justify-content: center;
          padding: 36px 20px;
          border-right: 1px solid #f0f0f0;
-         background: #dcfce7;
-         min-height: 320px;
+         background: linear-gradient(180deg, #e8f5e9 0%, #c8e6c9 100%);
+         min-height: 420px;
       }
 
       @media (max-width: 700px) {
          .click-area {
             border-right: none;
             border-bottom: 1px solid #f0f0f0;
-            min-height: 260px;
+            min-height: 360px;
             padding: 28px 20px;
          }
       }
 
       .click-btn {
-         width: 150px;
-         height: 150px;
+         width: 160px;
+         height: 160px;
          border-radius: 50%;
-         border: 4px solid #16a34a;
-         background: white;
+         border: 5px solid #ffd700;
+         background: radial-gradient(circle at 35% 35%, #ffeb3b, #ffd700);
          font-size: 64px;
          cursor: pointer;
          transition: transform 0.1s ease, box-shadow 0.1s ease;
-         box-shadow: 0 8px 30px #16a34a33;
+         box-shadow: 0 8px 30px #ffd70033, inset 0 -4px 10px rgba(255,215,0,0.2);
          display: flex;
          align-items: center;
          justify-content: center;
@@ -236,17 +236,18 @@
       }
 
       .click-btn:hover {
-         box-shadow: 0 12px 40px #16a34a55;
+         box-shadow: 0 12px 40px #ffd70055, inset 0 -4px 10px rgba(255,215,0,0.2);
       }
 
       .click-btn:active,
       .click-btn.pressed {
          transform: scale(0.92);
-         box-shadow: 0 4px 15px #16a34a44;
+         box-shadow: 0 4px 15px #ffd70044, inset 0 -4px 10px rgba(255,215,0,0.2);
       }
 
       .click-btn .emoji {
          pointer-events: none;
+         filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
       }
 
       .score-display {
@@ -257,13 +258,13 @@
       .score-number {
          font-size: 2.2rem;
          font-weight: 700;
-         color: #16a34a;
+         color: #fff;
          font-variant-numeric: tabular-nums;
       }
 
       .score-label {
          font-size: 0.85rem;
-         color: #888;
+         color: rgba(255,255,255,0.75);
          font-weight: 500;
          margin-top: 2px;
       }
@@ -271,16 +272,16 @@
       .per-second {
          margin-top: 8px;
          font-size: 0.9rem;
-         color: #aaa;
+         color: rgba(255,255,255,0.65);
          font-weight: 500;
       }
 
       .click-power-info {
          margin-top: 10px;
          font-size: 0.8rem;
-         color: #16a34a;
+         color: #ffd700;
          font-weight: 600;
-         opacity: 0.7;
+         opacity: 0.9;
       }
 
       /* Click float (the +1 animation) */
@@ -289,7 +290,7 @@
          pointer-events: none;
          font-size: 1.3rem;
          font-weight: 700;
-         color: #16a34a;
+         color: #ffd700;
          animation: floatUp 0.7s ease-out forwards;
          z-index: 10;
       }
@@ -313,7 +314,7 @@
          flex-direction: column;
          gap: 10px;
          overflow-y: auto;
-         max-height: 420px;
+         max-height: 520px;
       }
 
       .upgrades-title {
@@ -334,13 +335,14 @@
          border: 1.5px solid #eee;
          cursor: pointer;
          transition: all 0.2s ease;
-         background: white;
+         background: linear-gradient(180deg, #fff 0%, #f0f7f0 100%);
+         box-shadow: 0 2px 6px rgba(27,94,32,0.08);
          position: relative;
       }
 
       .upgrade-card:hover:not(.locked) {
          border-color: #16a34a;
-         background: #dcfce7;
+         background: linear-gradient(180deg, #fff 0%, #e8f5e9 100%);
          transform: translateY(-1px);
          box-shadow: 0 4px 12px #16a34a15;
       }
@@ -763,7 +765,7 @@
          margin-top: 6px;
          font-size: 0.85rem;
          font-weight: 700;
-         color: #16a34a;
+         color: #fff;
          min-height: 20px;
          text-align: center;
       }
@@ -771,7 +773,7 @@
          width: 80%;
          max-width: 220px;
          height: 10px;
-         background: #eee;
+         background: rgba(255,255,255,0.25);
          border-radius: 5px;
          margin-top: 10px;
          overflow: hidden;
@@ -835,7 +837,7 @@
       .keyboard-tip {
          text-align: center;
          font-size: 0.78rem;
-         color: #888;
+         color: rgba(255,255,255,0.6);
          margin-top: 8px;
          font-weight: 500;
       }
@@ -894,14 +896,77 @@
          line-height: 1.65;
          font-size: 1.02rem;
       }
-      .fun-facts-list li::before {
-         content: '💡';
-         position: absolute;
-         left: 0;
-         top: 10px;
-      }
+       .fun-facts-list li::before {
+          content: '💡';
+          position: absolute;
+          left: 0;
+          top: 10px;
+       }
 
-   </style>
+       /* Stock Ticker */
+       .stock-ticker {
+          display: flex;
+          gap: 8px;
+          margin-bottom: 14px;
+          flex-wrap: wrap;
+          justify-content: center;
+          max-width: 100%;
+       }
+       .stock-item {
+          background: rgba(0,0,0,0.35);
+          border-radius: 8px;
+          padding: 6px 10px;
+          color: #fff;
+          font-size: 0.72rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          min-width: 70px;
+          text-align: center;
+          border: 1.5px solid rgba(255,255,255,0.1);
+       }
+       .stock-item:hover {
+          background: rgba(0,0,0,0.5);
+          border-color: rgba(255,215,0,0.4);
+          transform: translateY(-1px);
+       }
+       .stock-item.invested {
+          border-color: #ffd700;
+          background: rgba(255,215,0,0.15);
+       }
+       .stock-name {
+          font-size: 0.68rem;
+          opacity: 0.85;
+          margin-bottom: 2px;
+       }
+       .stock-price {
+          font-size: 0.78rem;
+          font-weight: 700;
+       }
+       .stock-change {
+          font-size: 0.65rem;
+          margin-top: 1px;
+       }
+       .stock-change.up { color: #69f0ae; }
+       .stock-change.down { color: #ff8a80; }
+       .stock-chart {
+          display: flex;
+          align-items: flex-end;
+          gap: 1px;
+          height: 14px;
+          margin-top: 4px;
+          justify-content: center;
+       }
+       .stock-bar {
+          width: 3px;
+          background: rgba(255,255,255,0.4);
+          border-radius: 1px;
+          transition: height 0.3s ease, background 0.3s ease;
+       }
+       .stock-bar.up { background: #69f0ae; }
+       .stock-bar.down { background: #ff8a80; }
+
+    </style>
 </head>
 
 <body>
@@ -933,10 +998,11 @@
              </div>
           </div>
           <div class="game-body">
-                         <div class="click-area" id="clickArea">
-                <button class="click-btn" id="clickBtn" aria-label="Hustle Dollar">
-                   <span class="emoji">💵</span>
-                </button>
+                          <div class="click-area" id="clickArea">
+                 <div class="stock-ticker" id="stockTicker"></div>
+                 <button class="click-btn" id="clickBtn" aria-label="Hustle Dollar">
+                    <span class="emoji">💵</span>
+                 </button>
                 <div class="score-display">
                    <div class="score-number" id="scoreNum">0</div>
                    <div class="score-label">Dollars</div>
@@ -1046,6 +1112,7 @@
 <li>Invest in <strong>Click Power</strong> early to double (then quadruple) your manual earnings per tap.</li>
 <li>Unlock the <strong>Startup</strong> tier at 2,500 Dollars for +$100/sec and watch your wealth snowball.</li>
 <li>Reach <strong>Billionaire Status</strong> at 15,000 Dollars for +$500/sec and become a tycoon.</li>
+<li>Use the <strong>Stock Market</strong> ticker above the click button to invest 10% of your balance. Prices fluctuate every 10 seconds and your investment auto-sells after 30 seconds for profit or loss.</li>
 <li>Use the Save button to preserve your empire across browser sessions.</li>
 <li>Press SPACE on your keyboard to click faster without wearing out your mouse!</li>
             </ol>
@@ -1057,7 +1124,8 @@
 <p>Click Power upgrades follow an exponential curve (doubling each level), making them incredibly powerful in the late game. However, early on, every dollar spent on Click Power is a dollar not earning passive income. A good rule of thumb: buy Click Power when you can afford it in under 30 seconds of passive income.</p>
 <p>The 1.15x cost scaling means each duplicate upgrade grows more expensive. Use the progress bar below your score to track exactly how close you are to the next affordable upgrade. When multiple upgrades are unlocked, calculate which gives the best "income per cost" ratio—sometimes a second Stock Portfolio beats your first Startup.</p>
 <p>AFK strategy matters: before stepping away, dump every dollar into your highest unlocked passive tier. The compounding effect of leaving your tab open with strong passive income often outperforms active clicking over long periods. Reset only when you want to speedrun or test new opening strategies.</p>
-         </section>
+<p><strong>Stock market timing:</strong> The mini stock ticker fluctuates every 10 seconds with up to 5% variance. Watch for a red downtrend—if a stock drops for two consecutive ticks, the odds favor a rebound. Conversely, after two green ticks, a correction becomes likely. Never invest when your balance is low (under 100 Dollars) because the 10% minimum bet may not return enough to justify the 30-second lock-up. Instead, treat stocks as a late-game bonus mechanic once your passive income exceeds 50 Dollars per second.</p>
+          </section>
 
          <section class="section faq-section">
             <h2>Frequently Asked Questions</h2>
@@ -1090,10 +1158,14 @@
                   <div class="faq-answer"><p>Billionaire Status gives +$500 per second per owned unit, making it the ultimate passive income source. However, the game continues indefinitely—you can stack multiple Billionaire Status units and push your score into the trillions!</p></div>
                </div>
 <div class="faq-item">
-                  <h3>How does the combo system work?</h3>
-                  <div class="faq-answer"><p>Click rapidly without pausing for more than 2 seconds to build a combo counter. At 10 consecutive clicks, your next click scores a Critical Hit with a 2x multiplier and a dramatic popup!</p></div>
-               </div>
-         </section>
+                   <h3>How does the combo system work?</h3>
+                   <div class="faq-answer"><p>Click rapidly without pausing for more than 2 seconds to build a combo counter. At 10 consecutive clicks, your next click scores a Critical Hit with a 2x multiplier and a dramatic popup!</p></div>
+                </div>
+<div class="faq-item">
+                   <h3>What is the stock market?</h3>
+                   <div class="faq-answer"><p>The stock market is a mini-game inside Money Clicker where you can click on one of four tickers (TECH, GOLD, OIL, CRYPTO) to invest 10% of your current balance. Prices change every 10 seconds and your investment is automatically sold after 30 seconds—hopefully for a profit!</p></div>
+                </div>
+          </section>
 
          <section class="section">
             <h2>Why Play Money Clicker?</h2>
@@ -1204,6 +1276,16 @@
             return (n / 1e12).toFixed(1) + 'T';
          }
 
+         function getThemeEmojiText(amount, isCritical) {
+            const EMOJI = '💵';
+            if (isCritical) {
+               return '💰' + EMOJI + '💰';
+            }
+            if (amount <= 1) return EMOJI;
+            if (amount <= 5) return EMOJI.repeat(amount);
+            return EMOJI.repeat(3) + ' ×' + formatNum(amount);
+         }
+
          function getCost(baseC, owned) {
             return Math.floor(baseC * Math.pow(COST_SCALE, owned));
          }
@@ -1245,10 +1327,14 @@
             }
          }
 
-         function showClickFloat(x, y) {
+         function showClickFloat(x, y, text, isCritical) {
             const el = document.createElement('div');
             el.className = 'click-float';
-            el.textContent = '+' + formatNum(clickPower);
+            if (text === null || text === undefined || text === '') {
+               el.textContent = getThemeEmojiText(clickPower, isCritical);
+            } else {
+               el.textContent = text;
+            }
             el.style.left = x + 'px';
             el.style.top = y + 'px';
             clickArea.style.position = 'relative';
@@ -1402,16 +1488,16 @@
             }
          }
 
-         function showCriticalHit(x, y) {
-            const el = document.createElement('div');
-            el.className = 'critical-popup';
-            el.textContent = 'CRITICAL HIT! +' + formatNum(clickPower * 2);
-            el.style.left = x + 'px';
-            el.style.top = y + 'px';
-            clickArea.style.position = 'relative';
-            clickArea.appendChild(el);
-            setTimeout(() => el.remove(), 900);
-         }
+          function showCriticalHit(x, y) {
+             const el = document.createElement('div');
+             el.className = 'critical-popup';
+             el.textContent = getThemeEmojiText(clickPower * 2, true) + ' CRITICAL!';
+             el.style.left = x + 'px';
+             el.style.top = y + 'px';
+             clickArea.style.position = 'relative';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 900);
+          }
 
          function updateProgressBar() {
             let nextCost = Infinity;
@@ -1476,11 +1562,11 @@
                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
                cy = rect.height / 2 - 30;
             }
-            if (multiplier === 2) {
-               showCriticalHit(cx, cy);
-            }
-            showClickFloat(cx, cy);
-            checkMilestones();
+             if (multiplier === 2) {
+                showCriticalHit(cx, cy);
+             }
+             showClickFloat(cx, cy, null, multiplier === 2);
+             checkMilestones();
             updateProgressBar();
             render();
          };
@@ -1503,12 +1589,107 @@
             }
          }, 4000);
 
-         // FAQ toggle
-         document.querySelectorAll('.faq-item h3').forEach(h3 => {
-            h3.addEventListener('click', () => {
-               h3.parentElement.classList.toggle('open');
-            });
-         });
+          // ===== STOCK MARKET =====
+          const STOCKS = [
+             { name: 'TECH', basePrice: 100, prices: [100,102,98,105,103], invested: 0, investTime: 0, buyPrice: 0 },
+             { name: 'GOLD', basePrice: 80, prices: [80,82,81,79,83], invested: 0, investTime: 0, buyPrice: 0 },
+             { name: 'OIL', basePrice: 60, prices: [60,58,62,59,61], invested: 0, investTime: 0, buyPrice: 0 },
+             { name: 'CRYPTO', basePrice: 40, prices: [40,44,38,42,41], invested: 0, investTime: 0, buyPrice: 0 },
+          ];
+          const stockTicker = document.getElementById('stockTicker');
+
+          function renderStocks() {
+             stockTicker.innerHTML = '';
+             STOCKS.forEach((s, i) => {
+                const current = s.prices[s.prices.length - 1];
+                const prev = s.prices[s.prices.length - 2] || current;
+                const change = ((current - prev) / prev) * 100;
+                const isUp = change >= 0;
+                const el = document.createElement('div');
+                el.className = 'stock-item' + (s.invested > 0 ? ' invested' : '');
+                el.innerHTML = '<div class="stock-name">' + s.name + '</div>' +
+                   '<div class="stock-price">$' + current.toFixed(1) + '</div>' +
+                   '<div class="stock-change ' + (isUp ? 'up' : 'down') + '">' + (isUp ? '▲' : '▼') + ' ' + Math.abs(change).toFixed(1) + '%</div>' +
+                   '<div class="stock-chart">' + s.prices.map((p, idx) => {
+                      const barUp = idx > 0 && p >= s.prices[idx-1];
+                      const h = Math.max(2, Math.min(14, (p / (Math.max(...s.prices) || 1)) * 14));
+                      return '<div class="stock-bar ' + (barUp ? 'up' : 'down') + '" style="height:' + h + 'px"></div>';
+                   }).join('') + '</div>';
+                el.addEventListener('click', () => investStock(i));
+                stockTicker.appendChild(el);
+             });
+          }
+
+          function investStock(idx) {
+             const s = STOCKS[idx];
+             if (s.invested > 0) return; // already invested
+             const investAmount = Math.floor(score * 0.1);
+             if (investAmount < 1) return;
+             score -= investAmount;
+             s.invested = investAmount;
+             s.buyPrice = s.prices[s.prices.length - 1];
+             s.investTime = Date.now();
+             renderStocks();
+             render();
+          }
+
+          function updateStocks() {
+             STOCKS.forEach(s => {
+                const last = s.prices[s.prices.length - 1];
+                const change = 1 + (Math.random() * 0.1 - 0.05); // +/- 5%
+                const next = Math.max(1, last * change);
+                s.prices.shift();
+                s.prices.push(next);
+             });
+             renderStocks();
+          }
+
+          function checkStockReturns() {
+             // Auto-sell handled by the 1-second interval above
+          }
+
+          // Stock fluctuate every 10s
+          setInterval(updateStocks, 10000);
+
+          // Stock sell timer: sell after 30s from invest
+          setInterval(() => {
+             const now = Date.now();
+             STOCKS.forEach((s, idx) => {
+                if (s.invested > 0 && now - s.investTime >= 30000) {
+                   const currentPrice = s.prices[s.prices.length - 1];
+                   const buyPrice = s.buyPrice;
+                   const ratio = currentPrice / Math.max(1, buyPrice);
+                   const returned = Math.floor(s.invested * ratio);
+                   const profit = returned - s.invested;
+                   score += returned;
+                   totalEarned += Math.max(0, profit);
+                   s.invested = 0;
+                   s.investTime = 0;
+                   s.buyPrice = 0;
+                   renderStocks();
+                   render();
+                   // Show result float
+                   const rect = clickArea.getBoundingClientRect();
+                   const el = document.createElement('div');
+                   el.className = 'click-float';
+                   el.textContent = (profit >= 0 ? '+' : '') + formatNum(profit) + ' ' + s.name;
+                   el.style.color = profit >= 0 ? '#69f0ae' : '#ff8a80';
+                   el.style.left = (rect.width / 2 + (Math.random() - 0.5) * 60) + 'px';
+                   el.style.top = (rect.height * 0.25) + 'px';
+                   clickArea.appendChild(el);
+                   setTimeout(() => el.remove(), 1000);
+                }
+             });
+          }, 1000);
+
+          renderStocks();
+
+          // FAQ toggle
+          document.querySelectorAll('.faq-item h3').forEach(h3 => {
+             h3.addEventListener('click', () => {
+                h3.parentElement.classList.toggle('open');
+             });
+          });
 
          // Init
          loadGame();

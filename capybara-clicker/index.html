@@ -31,7 +31,7 @@
       }
 
       body {
-         background: linear-gradient(135deg, #f6f8fd 0%, #f0f2f5 100%);
+         background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
          min-height: 100vh;
       }
 
@@ -202,29 +202,29 @@
          justify-content: center;
          padding: 36px 20px;
          border-right: 1px solid #f0f0f0;
-         background: #fef3c7;
-         min-height: 320px;
+         background: linear-gradient(180deg, #e3f2fd 0%, #90caf9 100%);
+         min-height: 420px;
       }
 
       @media (max-width: 700px) {
          .click-area {
             border-right: none;
             border-bottom: 1px solid #f0f0f0;
-            min-height: 260px;
+            min-height: 360px;
             padding: 28px 20px;
          }
       }
 
       .click-btn {
-         width: 150px;
-         height: 150px;
+         width: 160px;
+         height: 160px;
          border-radius: 50%;
-         border: 4px solid #b45309;
-         background: white;
+         border: 5px solid #0277bd;
+         background: radial-gradient(circle at 35% 35%, #4fc3f7, #0277bd);
          font-size: 64px;
          cursor: pointer;
          transition: transform 0.1s ease, box-shadow 0.1s ease;
-         box-shadow: 0 8px 30px #b4530933;
+         box-shadow: 0 8px 30px #0277bd33, inset 0 -4px 10px rgba(2,119,189,0.2);
          display: flex;
          align-items: center;
          justify-content: center;
@@ -236,17 +236,18 @@
       }
 
       .click-btn:hover {
-         box-shadow: 0 12px 40px #b4530955;
+         box-shadow: 0 12px 40px #0277bd55, inset 0 -4px 10px rgba(2,119,189,0.2);
       }
 
       .click-btn:active,
       .click-btn.pressed {
          transform: scale(0.92);
-         box-shadow: 0 4px 15px #b4530944;
+         box-shadow: 0 4px 15px #0277bd44, inset 0 -4px 10px rgba(2,119,189,0.2);
       }
 
       .click-btn .emoji {
          pointer-events: none;
+         filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
       }
 
       .score-display {
@@ -313,7 +314,7 @@
          flex-direction: column;
          gap: 10px;
          overflow-y: auto;
-         max-height: 420px;
+         max-height: 520px;
       }
 
       .upgrades-title {
@@ -334,15 +335,16 @@
          border: 1.5px solid #eee;
          cursor: pointer;
          transition: all 0.2s ease;
-         background: white;
+         background: linear-gradient(180deg, #fff 0%, #f0f7ff 100%);
+         box-shadow: 0 2px 6px rgba(2,119,189,0.08);
          position: relative;
       }
 
       .upgrade-card:hover:not(.locked) {
-         border-color: #b45309;
-         background: #fef3c7;
+         border-color: #0277bd;
+         background: linear-gradient(180deg, #fff 0%, #e3f2fd 100%);
          transform: translateY(-1px);
-         box-shadow: 0 4px 12px #b4530915;
+         box-shadow: 0 4px 12px rgba(2,119,189,0.12);
       }
 
       .upgrade-card.locked {
@@ -762,6 +764,11 @@
       .sound-toggle { background: none; border: none; font-size: 1.25rem; cursor: pointer; padding: 4px 10px; border-radius: 8px; transition: background 0.2s; color: white; line-height: 1; }
       .sound-toggle:hover { background: rgba(255,255,255,0.2); }
       .keyboard-hint { font-size: 0.75rem; color: #aaa; margin-top: 10px; text-align: center; font-weight: 500; }
+      .chill-meter { margin-top: 12px; width: 80%; max-width: 220px; text-align: center; }
+      .chill-label { font-size: 0.8rem; font-weight: 600; color: #0277bd; transition: color 0.3s ease; }
+      .chill-label.max-chill { color: #ffd700; }
+      .click-btn.chill-aura { animation: chillPulse 2s ease-in-out infinite; }
+      @keyframes chillPulse { 0%, 100% { box-shadow: 0 8px 30px #0277bd33, inset 0 -4px 10px rgba(2,119,189,0.2), 0 0 20px rgba(79,195,247,0.3); } 50% { box-shadow: 0 8px 30px #0277bd33, inset 0 -4px 10px rgba(2,119,189,0.2), 0 0 45px rgba(79,195,247,0.65); } }
 
    </style>
 </head>
@@ -810,8 +817,14 @@
                <div class="progress-bar-container">
                   <div class="progress-bar-fill" id="progressBar" style="width:0%; color: #b45309;"></div>
                </div>
-               <div class="keyboard-hint">Tip: Press SPACE to click!</div>
-            </div>
+                <div class="keyboard-hint">Tip: Press SPACE to click!</div>
+                <div class="chill-meter" id="chillMeter">
+                   <div class="chill-label" id="chillLabel">Chill Level: 0%</div>
+                   <div class="progress-bar-container">
+                      <div class="progress-bar-fill" id="chillBar" style="width:0%; color: #0277bd;"></div>
+                   </div>
+                </div>
+             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
 
@@ -908,8 +921,9 @@
             <li><strong>Build a Capybara Spa</strong> at 2,500 coins for +100 coins/sec. Now you can leave the tab open and return to meaningful progress.</li>
             <li><strong>Establish a Capybara Kingdom</strong> at 15,000 coins for +500 coins/sec. This endgame upgrade turns your modest pond into an empire.</li>
             <li><strong>Upgrade Click Power</strong> when you are actively playing and want to speed-run your next major purchase.</li>
-            <li><strong>Press SPACE</strong> to click rapidly and build combos for critical hit bonuses.</li>
-            </ol>
+             <li><strong>Press SPACE</strong> to click rapidly and build combos for critical hit bonuses.</li>
+             <li><strong>Chill Meter</strong> builds when you are not clicking, up to a maximum of 3x passive income. The less you click, the more chill you accumulate—creating a strategic choice between active clicking and idle relaxation.</li>
+             </ol>
          </section>
 
          <section class="section">
@@ -917,7 +931,8 @@
             <p>The optimal Capybara Clicker strategy is deceptively simple: never stop buying. Because upgrade costs scale exponentially, the cheapest available upgrade often provides the best marginal return even in the late game. Early on, this means buying Watermelons and Hot Springs as fast as you can click. Do not save up for a Baby Capybara if buying five Hot Springs first gets you there faster.</p>
 <p>Mid-game, around the time you unlock your first Capybara Spa, you should evaluate your play style. Active players benefit enormously from Click Power upgrades, which double your per-click output. A player clicking ten times per second with level-4 Click Power earns more than a passive player with only one Spa. However, if you prefer to leave the tab open while working or studying, pour every coin into passive generators. The beauty of this game is that both strategies are valid.</p>
 <p>In the true late game, when you own multiple Kingdoms, the exponential cost scaling creates interesting optimization puzzles. Sometimes buying your 30th Watermelon is cheaper than your 3rd Kingdom and still adds meaningful income. Diversify across all tiers rather than hyper-focusing on the most expensive. Think of your capybara empire as a balanced ecosystem: every pond, spa, and watermelon patch contributes to the whole.</p>
-         </section>
+<p>The Chill Meter introduces a fascinating strategic dilemma. Active clicking generates immediate coins and combos, but it resets your chill multiplier to zero. Idle play, on the other hand, lets your Chill Meter climb toward the 3x passive income cap. The optimal approach depends on your session length: if you are actively playing for a few minutes, spam clicks and ignore chill. If you are leaving the tab open while working or studying, let your capybara relax and enjoy the compounding idle rewards. The most advanced players alternate between burst-clicking phases and chill phases, maximizing both income streams.</p>
+          </section>
 
          <section class="section faq-section">
             <h2>Frequently Asked Questions</h2>
@@ -933,9 +948,11 @@
             <p>The progress bar shows your progress toward the cheapest upgrade you cannot yet afford. If you have just bought something expensive, it may take a moment to fill again. It updates in real time as you earn coins.</p>
             <h3>Is this game free to play?</h3>
             <p>Yes. Capybara Clicker is 100% free with no ads, no microtransactions, and no registration required. It runs entirely in your browser.</p>
-            <h3>What happens at score milestones?</h3>
-            <p>When you reach 1,000, 10,000, 100,000, or 1,000,000 coins, a golden milestone banner appears at the top of your screen to celebrate your achievement.</p>
-         </section>
+             <h3>What happens at score milestones?</h3>
+             <p>When you reach 1,000, 10,000, 100,000, or 1,000,000 coins, a golden milestone banner appears at the top of your screen to celebrate your achievement.</p>
+             <h3>What is the Chill Meter?</h3>
+             <p>The Chill Meter is Capybara Clicker's unique idle mechanic. For every second you do not click, your chill increases by 5%, up to a maximum of 100%. At max chill, your passive income is tripled. Clicking resets your chill to zero. This creates an interesting paradox: click actively for immediate coins, or stay idle for massive passive multiplier rewards.</p>
+          </section>
 
          <section class="section">
             <h2>Why Play Capybara Clicker?</h2>
@@ -1025,7 +1042,8 @@
          let clickPowerLevel = 1;
          let clickPowerCost = 50;
          let perSecond = 0;
-         let upgradeOwned = UPGRADES.map(() => 0);
+          let upgradeOwned = UPGRADES.map(() => 0);
+          let chillPercent = 0;
 
          // DOM
          const scoreNum = document.getElementById('scoreNum');
@@ -1055,12 +1073,16 @@
             });
          }
 
-         function render() {
-            scoreNum.textContent = formatNum(score);
-            perSecDisplay.textContent = formatNum(perSecond) + ' capybara coins/sec';
-            clickPowerInfo.textContent = '+' + formatNum(clickPower) + ' per click';
-            gStatTotal.textContent = formatNum(score) + ' Capybara Coins';
-            gStatPerSec.textContent = formatNum(perSecond) + '/sec';
+          function getChillMultiplier() {
+             return 1 + (chillPercent / 100) * 2;
+          }
+
+          function render() {
+             scoreNum.textContent = formatNum(score);
+             perSecDisplay.textContent = formatNum(perSecond * getChillMultiplier()) + ' capybara coins/sec';
+             clickPowerInfo.textContent = '+' + formatNum(clickPower) + ' per click';
+             gStatTotal.textContent = formatNum(score) + ' Capybara Coins';
+             gStatPerSec.textContent = formatNum(perSecond * getChillMultiplier()) + '/sec';
 
             UPGRADES.forEach((u, i) => {
                const card = document.getElementById('upg' + i);
@@ -1091,64 +1113,89 @@
             comboDisplay.textContent = '';
          }
 
-         // Update progress bar
-         let cheapestCost = Infinity;
-         UPGRADES.forEach((u, i) => {
-            const c = getCost(u.baseCost, upgradeOwned[i]);
-            if (c < cheapestCost) cheapestCost = c;
-         });
-         if (clickPowerCost < cheapestCost) cheapestCost = clickPowerCost;
-         const progressPct = Math.min(100, (score / cheapestCost) * 100);
-         progressBar.style.width = progressPct + '%';
-      }
+          // Update progress bar
+          let cheapestCost = Infinity;
+          UPGRADES.forEach((u, i) => {
+             const c = getCost(u.baseCost, upgradeOwned[i]);
+             if (c < cheapestCost) cheapestCost = c;
+          });
+          if (clickPowerCost < cheapestCost) cheapestCost = clickPowerCost;
+          const progressPct = Math.min(100, (score / cheapestCost) * 100);
+          progressBar.style.width = progressPct + '%';
 
-                  function showClickFloat(x, y, pts) {
-            const el = document.createElement('div');
-            el.className = 'click-float';
-            el.textContent = '+' + formatNum(pts || clickPower);
-            el.style.left = x + 'px';
-            el.style.top = y + 'px';
-            clickArea.style.position = 'relative';
-            clickArea.appendChild(el);
-            setTimeout(() => el.remove(), 700);
-         }
+          // Update chill meter
+          const chillLabel = document.getElementById('chillLabel');
+          const chillBar = document.getElementById('chillBar');
+          if (chillLabel && chillBar) {
+             chillLabel.textContent = 'Chill Level: ' + Math.floor(chillPercent) + '%';
+             chillBar.style.width = chillPercent + '%';
+             if (chillPercent >= 100) {
+                chillLabel.classList.add('max-chill');
+                clickBtn.classList.add('chill-aura');
+             } else {
+                chillLabel.classList.remove('max-chill');
+                clickBtn.classList.remove('chill-aura');
+             }
+          }
+       }
+
+                  function getThemeEmojiText(amount, isCritical) {
+             const EMOJI = '🦫';
+             if (isCritical) return '♨️' + EMOJI + '♨️';
+             if (amount <= 1) return EMOJI;
+             if (amount <= 5) return EMOJI.repeat(Math.floor(amount));
+             return EMOJI.repeat(3) + ' ×' + formatNum(amount);
+          }
+
+                  function showClickFloat(x, y, text, isCritical) {
+             const el = document.createElement('div');
+             el.className = 'click-float';
+             el.textContent = text || getThemeEmojiText(clickPower, isCritical);
+             el.style.left = x + 'px';
+             el.style.top = y + 'px';
+             clickArea.style.position = 'relative';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 700);
+          }
 
                   function doClick(e) {
-            const now = Date.now();
-            if (now - lastClickTime < 2000) {
-               combo++;
-            } else {
-               combo = 1;
-            }
-            lastClickTime = now;
+             const now = Date.now();
+             if (now - lastClickTime < 2000) {
+                combo++;
+             } else {
+                combo = 1;
+             }
+             lastClickTime = now;
+             chillPercent = 0;
 
-            let points = clickPower;
-            let isCritical = false;
-            if (combo > 0 && combo % 10 === 0) {
-               points *= 2;
-               isCritical = true;
-            }
+             let points = clickPower;
+             let isCritical = false;
+             if (combo > 0 && combo % 10 === 0) {
+                points *= 2;
+                isCritical = true;
+             }
+             const mult = isCritical ? 2 : 1;
 
-            score += points;
-            totalEarned += points;
+             score += points;
+             totalEarned += points;
 
-            clickBtn.classList.add('pressed');
-            setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+             clickBtn.classList.add('pressed');
+             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
 
-            const rect = clickArea.getBoundingClientRect();
-            let cx, cy;
-            if (e && e.clientX) {
-               cx = e.clientX - rect.left;
-               cy = e.clientY - rect.top;
-            } else {
-               cx = rect.width / 2 + (Math.random() - 0.5) * 40;
-               cy = rect.height / 2 - 30;
-            }
-            showClickFloat(cx, cy, points);
-            if (isCritical) showCriticalPopup(cx, cy);
-            checkMilestones();
-            render();
-         }
+             const rect = clickArea.getBoundingClientRect();
+             let cx, cy;
+             if (e && e.clientX) {
+                cx = e.clientX - rect.left;
+                cy = e.clientY - rect.top;
+             } else {
+                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+                cy = rect.height / 2 - 30;
+             }
+             showClickFloat(cx, cy, null, mult === 2);
+             if (isCritical) showCriticalPopup(cx, cy, points);
+             checkMilestones();
+             render();
+          }
 
          clickBtn.addEventListener('click', doClick);
          clickBtn.addEventListener('touchstart', (e) => {
@@ -1188,20 +1235,21 @@
             }
          });
 
-         // Per-second tick
-         setInterval(() => {
-            if (perSecond > 0) {
-               score += perSecond;
-               totalEarned += perSecond;
-               render();
-            }
-         }, 1000);
+          // Per-second tick
+          setInterval(() => {
+             const effectivePerSec = perSecond * getChillMultiplier();
+             if (effectivePerSec > 0) {
+                score += effectivePerSec;
+                totalEarned += effectivePerSec;
+                render();
+             }
+          }, 1000);
 
          // Save / Load
-                  function saveGame() {
-            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, milestoneShown };
-            try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
-         }
+                   function saveGame() {
+             const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, milestoneShown, chillPercent, lastClickTime };
+             try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
+          }
 
          function loadGame() {
             try {
@@ -1214,8 +1262,10 @@
                    clickPowerLevel = data.clickPowerLevel || 1;
                    clickPowerCost = data.clickPowerCost || 50;
                    upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
-                   milestoneShown = data.milestoneShown || {1000: false, 10000: false, 100000: false, 1000000: false};
-                   recalcPerSecond();
+                    milestoneShown = data.milestoneShown || {1000: false, 10000: false, 100000: false, 1000000: false};
+                    chillPercent = data.chillPercent || 0;
+                    lastClickTime = data.lastClickTime || 0;
+                    recalcPerSecond();
                }
             } catch (e) { }
          }
@@ -1232,9 +1282,10 @@
                localStorage.removeItem(SAVE_KEY);
                                score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
                 upgradeOwned = UPGRADES.map(() => 0);
-                milestoneShown = {1000: false, 10000: false, 100000: false, 1000000: false};
-                combo = 0;
-                recalcPerSecond();
+                 milestoneShown = {1000: false, 10000: false, 100000: false, 1000000: false};
+                 combo = 0;
+                 chillPercent = 0;
+                 recalcPerSecond();
                 render();
             }
          });
@@ -1250,15 +1301,15 @@
           const milestoneBanner = document.getElementById('milestoneBanner');
           const soundToggle = document.getElementById('soundToggle');
 
-          function showCriticalPopup(x, y) {
-             const el = document.createElement('div');
-             el.className = 'critical-popup';
-             el.textContent = 'CRITICAL HIT!';
-             el.style.left = (x - 50) + 'px';
-             el.style.top = (y - 50) + 'px';
-             clickArea.appendChild(el);
-             setTimeout(() => el.remove(), 850);
-          }
+           function showCriticalPopup(x, y, power) {
+              const el = document.createElement('div');
+              el.className = 'critical-popup';
+              el.textContent = getThemeEmojiText(power, true);
+              el.style.left = (x - 50) + 'px';
+              el.style.top = (y - 50) + 'px';
+              clickArea.appendChild(el);
+              setTimeout(() => el.remove(), 850);
+           }
 
           function checkMilestones() {
              const ms = [1000, 10000, 100000, 1000000];
@@ -1300,8 +1351,17 @@
              });
           });
 
-         // Auto-save every 30s
-         setInterval(saveGame, 30000);
+          // Chill meter builds when idle
+          setInterval(() => {
+             const now = Date.now();
+             if (now - lastClickTime >= 1000) {
+                chillPercent = Math.min(100, chillPercent + 5);
+                render();
+             }
+          }, 1000);
+
+          // Auto-save every 30s
+          setInterval(saveGame, 30000);
 
          // Init
          loadGame();

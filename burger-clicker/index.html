@@ -30,10 +30,10 @@
          font-family: 'Inter', system-ui, -apple-system, sans-serif;
       }
 
-      body {
-         background: linear-gradient(135deg, #f6f8fd 0%, #f0f2f5 100%);
-         min-height: 100vh;
-      }
+       body {
+          background: linear-gradient(135deg, #fff0f0 0%, #ffe0b2 100%);
+          min-height: 100vh;
+       }
 
       /* Navbar */
       .navbar {
@@ -195,36 +195,38 @@
       }
 
       /* Click Area */
-      .click-area {
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         justify-content: center;
-         padding: 36px 20px;
-         border-right: 1px solid #f0f0f0;
-         background: #fef9c3;
-         min-height: 320px;
-      }
+       .click-area {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 36px 20px;
+          border-right: 1px solid #f0f0f0;
+          background: linear-gradient(180deg, #fff0f0 0%, #ffcc80 100%);
+          min-height: 420px;
+          position: relative;
+          overflow: hidden;
+       }
 
       @media (max-width: 700px) {
          .click-area {
             border-right: none;
             border-bottom: 1px solid #f0f0f0;
-            min-height: 260px;
+            min-height: 360px;
             padding: 28px 20px;
          }
       }
 
       .click-btn {
-         width: 150px;
-         height: 150px;
+         width: 160px;
+         height: 160px;
          border-radius: 50%;
-         border: 4px solid #ca8a04;
-         background: white;
+         border: 5px solid #e65100;
+         background: radial-gradient(circle at 35% 35%, #ff9800, #e65100);
          font-size: 64px;
          cursor: pointer;
          transition: transform 0.1s ease, box-shadow 0.1s ease;
-         box-shadow: 0 8px 30px #ca8a0433;
+         box-shadow: 0 8px 30px #e6510033, inset 0 -4px 10px rgba(230,81,0,0.2);
          display: flex;
          align-items: center;
          justify-content: center;
@@ -236,17 +238,18 @@
       }
 
       .click-btn:hover {
-         box-shadow: 0 12px 40px #ca8a0455;
+         box-shadow: 0 12px 40px #e6510055, inset 0 -4px 10px rgba(230,81,0,0.2);
       }
 
       .click-btn:active,
       .click-btn.pressed {
          transform: scale(0.92);
-         box-shadow: 0 4px 15px #ca8a0444;
+         box-shadow: 0 4px 15px #e6510044, inset 0 -4px 10px rgba(230,81,0,0.2);
       }
 
       .click-btn .emoji {
          pointer-events: none;
+         filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
       }
 
       .score-display {
@@ -330,19 +333,32 @@
          align-items: center;
          gap: 12px;
          padding: 12px 14px;
-         border-radius: 12px;
-         border: 1.5px solid #eee;
+         border-radius: 14px;
+         border: 2px solid #d7ccc8;
          cursor: pointer;
          transition: all 0.2s ease;
-         background: white;
+         background: linear-gradient(180deg, #fff 0%, #faf5f0 100%);
          position: relative;
+         box-shadow: 0 2px 6px rgba(230,81,0,0.08);
+      }
+
+      .upgrade-card::before {
+         content: '';
+         position: absolute;
+         top: 4px;
+         left: 50%;
+         transform: translateX(-50%);
+         width: 30%;
+         height: 4px;
+         background: linear-gradient(90deg, transparent, rgba(230,81,0,0.3), transparent);
+         border-radius: 2px;
       }
 
       .upgrade-card:hover:not(.locked) {
-         border-color: #ca8a04;
-         background: #fef9c3;
-         transform: translateY(-1px);
-         box-shadow: 0 4px 12px #ca8a0415;
+         border-color: #e65100;
+         background: linear-gradient(180deg, #fff 0%, #ffcc80 100%);
+         transform: translateY(-2px);
+         box-shadow: 0 6px 16px rgba(230,81,0,0.18);
       }
 
       .upgrade-card.locked {
@@ -1102,53 +1118,61 @@
          progressBar.style.width = progressPct + '%';
       }
 
-                  function showClickFloat(x, y, pts) {
-            const el = document.createElement('div');
-            el.className = 'click-float';
-            el.textContent = '+' + formatNum(pts || clickPower);
-            el.style.left = x + 'px';
-            el.style.top = y + 'px';
-            clickArea.style.position = 'relative';
-            clickArea.appendChild(el);
-            setTimeout(() => el.remove(), 700);
-         }
+                  function getThemeEmojiText(amount, isCritical) {
+             const EMOJI = '🍔';
+             if (isCritical) return '🔥' + EMOJI + '🔥';
+             if (amount <= 1) return EMOJI;
+             if (amount <= 5) return EMOJI.repeat(Math.min(amount, 5));
+             return EMOJI.repeat(3) + ' ×' + formatNum(amount);
+          }
+
+                  function showClickFloat(x, y, pts, isCritical) {
+             const el = document.createElement('div');
+             el.className = 'click-float';
+             el.textContent = getThemeEmojiText(pts || clickPower, isCritical);
+             el.style.left = x + 'px';
+             el.style.top = y + 'px';
+             clickArea.style.position = 'relative';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 700);
+          }
 
                   function doClick(e) {
-            const now = Date.now();
-            if (now - lastClickTime < 2000) {
-               combo++;
-            } else {
-               combo = 1;
-            }
-            lastClickTime = now;
+             const now = Date.now();
+             if (now - lastClickTime < 2000) {
+                combo++;
+             } else {
+                combo = 1;
+             }
+             lastClickTime = now;
 
-            let points = clickPower;
-            let isCritical = false;
-            if (combo > 0 && combo % 10 === 0) {
-               points *= 2;
-               isCritical = true;
-            }
+             let points = clickPower;
+             let isCritical = false;
+             if (combo > 0 && combo % 10 === 0) {
+                points *= 2;
+                isCritical = true;
+             }
 
-            score += points;
-            totalEarned += points;
+             score += points;
+             totalEarned += points;
 
-            clickBtn.classList.add('pressed');
-            setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+             clickBtn.classList.add('pressed');
+             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
 
-            const rect = clickArea.getBoundingClientRect();
-            let cx, cy;
-            if (e && e.clientX) {
-               cx = e.clientX - rect.left;
-               cy = e.clientY - rect.top;
-            } else {
-               cx = rect.width / 2 + (Math.random() - 0.5) * 40;
-               cy = rect.height / 2 - 30;
-            }
-            showClickFloat(cx, cy, points);
-            if (isCritical) showCriticalPopup(cx, cy);
-            checkMilestones();
-            render();
-         }
+             const rect = clickArea.getBoundingClientRect();
+             let cx, cy;
+             if (e && e.clientX) {
+                cx = e.clientX - rect.left;
+                cy = e.clientY - rect.top;
+             } else {
+                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+                cy = rect.height / 2 - 30;
+             }
+             showClickFloat(cx, cy, points, isCritical);
+             if (isCritical) showCriticalPopup(cx, cy);
+             checkMilestones();
+             render();
+          }
 
          clickBtn.addEventListener('click', doClick);
          clickBtn.addEventListener('touchstart', (e) => {
@@ -1250,15 +1274,15 @@
           const milestoneBanner = document.getElementById('milestoneBanner');
           const soundToggle = document.getElementById('soundToggle');
 
-          function showCriticalPopup(x, y) {
-             const el = document.createElement('div');
-             el.className = 'critical-popup';
-             el.textContent = 'CRITICAL HIT!';
-             el.style.left = (x - 50) + 'px';
-             el.style.top = (y - 50) + 'px';
-             clickArea.appendChild(el);
-             setTimeout(() => el.remove(), 850);
-          }
+           function showCriticalPopup(x, y) {
+              const el = document.createElement('div');
+              el.className = 'critical-popup';
+              el.textContent = getThemeEmojiText(clickPower * 2, true);
+              el.style.left = (x - 50) + 'px';
+              el.style.top = (y - 50) + 'px';
+              clickArea.appendChild(el);
+              setTimeout(() => el.remove(), 850);
+           }
 
           function checkMilestones() {
              const ms = [1000, 10000, 100000, 1000000];

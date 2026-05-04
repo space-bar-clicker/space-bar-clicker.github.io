@@ -32,7 +32,7 @@
       }
 
       body {
-         background: linear-gradient(135deg, #f6f8fd 0%, #f0f2f5 100%);
+         background: linear-gradient(135deg, #eceff1 0%, #cfd8dc 100%);
          min-height: 100vh;
       }
 
@@ -197,29 +197,29 @@
          justify-content: center;
          padding: 36px 20px;
          border-right: 1px solid #f0f0f0;
-         background: #ffedd5;
-         min-height: 320px;
+         background: linear-gradient(180deg, #eceff1 0%, #cfd8dc 100%);
+         min-height: 420px;
       }
 
       @media (max-width: 700px) {
          .click-area {
             border-right: none;
             border-bottom: 1px solid #f0f0f0;
-            min-height: 260px;
+            min-height: 360px;
             padding: 28px 20px;
          }
       }
 
       .click-btn {
-         width: 150px;
-         height: 150px;
+         width: 160px;
+         height: 160px;
          border-radius: 50%;
-         border: 4px solid #ea580c;
-         background: white;
+         border: 5px solid #ff6b35;
+         background: radial-gradient(circle at 35% 35%, #ff8a50, #ff6b35);
          font-size: 64px;
          cursor: pointer;
          transition: transform 0.1s ease, box-shadow 0.1s ease;
-         box-shadow: 0 8px 30px #ea580c33;
+         box-shadow: 0 8px 30px #ff6b3533, inset 0 -4px 10px rgba(255,107,53,0.2);
          display: flex;
          align-items: center;
          justify-content: center;
@@ -231,16 +231,17 @@
       }
 
       .click-btn:hover {
-         box-shadow: 0 12px 40px #ea580c55;
+         box-shadow: 0 12px 40px #ff6b3555, inset 0 -4px 10px rgba(255,107,53,0.2);
       }
 
       .click-btn:active, .click-btn.pressed {
          transform: scale(0.92);
-         box-shadow: 0 4px 15px #ea580c44;
+         box-shadow: 0 4px 15px #ff6b3544, inset 0 -4px 10px rgba(255,107,53,0.2);
       }
 
       .click-btn .emoji {
          pointer-events: none;
+         filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
       }
 
       .score-display {
@@ -300,7 +301,7 @@
          flex-direction: column;
          gap: 10px;
          overflow-y: auto;
-         max-height: 420px;
+         max-height: 520px;
       }
 
       .upgrades-title {
@@ -321,15 +322,16 @@
          border: 1.5px solid #eee;
          cursor: pointer;
          transition: all 0.2s ease;
-         background: white;
+         background: linear-gradient(180deg, #fff 0%, #f5f5f5 100%);
+         box-shadow: 0 2px 6px rgba(255,107,53,0.08);
          position: relative;
       }
 
       .upgrade-card:hover:not(.locked) {
-         border-color: #ea580c;
-         background: #ffedd5;
+         border-color: #ff6b35;
+         background: linear-gradient(180deg, #fff 0%, #fff3e0 100%);
          transform: translateY(-1px);
-         box-shadow: 0 4px 12px #ea580c15;
+         box-shadow: 0 4px 12px rgba(255,107,53,0.15);
       }
 
       .upgrade-card.locked {
@@ -507,6 +509,63 @@
          color: #888;
          margin-top: 8px;
          font-weight: 500;
+      }
+      .case-btn {
+         margin-top: 12px;
+         padding: 10px 18px;
+         border-radius: 10px;
+         border: 2px solid #ffd700;
+         background: linear-gradient(180deg, #fffbe6 0%, #fff3c4 100%);
+         color: #b8860b;
+         font-weight: 700;
+         font-size: 0.95rem;
+         cursor: pointer;
+         transition: all 0.2s ease;
+         box-shadow: 0 4px 12px rgba(255,215,0,0.2);
+         animation: casePulse 1.5s infinite;
+      }
+      .case-btn:hover {
+         transform: translateY(-2px);
+         box-shadow: 0 6px 18px rgba(255,215,0,0.3);
+      }
+      @keyframes casePulse {
+         0%, 100% { transform: scale(1); }
+         50% { transform: scale(1.05); }
+      }
+      .case-opening {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         background: white;
+         border-radius: 14px;
+         padding: 20px 28px;
+         text-align: center;
+         box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+         z-index: 60;
+         min-width: 200px;
+      }
+      .case-opening .case-scroll {
+         font-size: 2.2rem;
+         font-weight: 700;
+         min-height: 60px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         margin-bottom: 10px;
+      }
+      .case-opening .case-result {
+         font-size: 1.1rem;
+         font-weight: 700;
+         margin-bottom: 6px;
+      }
+      .case-opening .case-bonus {
+         font-size: 0.9rem;
+         color: #666;
+      }
+      @keyframes caseFlash {
+         0% { box-shadow: 0 0 0 0 rgba(255,215,0,0.5); }
+         100% { box-shadow: 0 0 20px 10px rgba(255,215,0,0); }
       }
       /* FAQ Section */
       .faq-section { margin-bottom: 30px; }
@@ -714,8 +773,9 @@
                 </div>
                 <div class="per-second" id="perSecDisplay">0 skin credits/sec</div>
                 <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
-                <div class="progress-bar-container"><div class="progress-bar-fill" id="progressBarFill"></div></div>
-            </div>
+                 <div class="progress-bar-container"><div class="progress-bar-fill" id="progressBarFill"></div></div>
+                 <button class="case-btn" id="caseBtn" style="display:none;">📦 Case Ready!</button>
+             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
                
@@ -812,16 +872,18 @@
                 <li><strong>Upgrade Click Power strategically.</strong> When manual clicking still matters for your economy, spend credits to double your per-click output.</li>
                 <li><strong>Unlock higher rarities.</strong> Progress through Classified Drops, Covert Skins, and ultimately the legendary Knife Unbox tier for massive passive gains.</li>
                 <li><strong>Save your progress.</strong> Hit the Save button to store your empire in browser storage, or let the auto-save feature handle it every 30 seconds.</li>
-                <li><strong>Build your combo.</strong> Click rapidly within 2-second windows to build a combo multiplier. Reach 10 consecutive clicks to trigger a CRITICAL HIT for double points!</li>
-             </ol>
+                 <li><strong>Build your combo.</strong> Click rapidly within 2-second windows to build a combo multiplier. Reach 10 consecutive clicks to trigger a CRITICAL HIT for double points!</li>
+                 <li><strong>Open cases for bonus credits.</strong> Every 500 credits you earn unlocks a free case. Click the 📦 Case Ready! button to open it and win bonus credits based on CS:GO rarity tiers—from common Consumer up to the legendary Knife!</li>
+              </ol>
           </section>
 
           <section class="section">
              <h2>CSGO Clicker Strategy Guide</h2>
              <p>The key to mastering CSGO Clicker is understanding the opportunity cost of every purchase. In the opening minutes, your manual clicks dominate your income, making Click Power upgrades incredibly efficient. A good rule of thumb is to buy Click Power whenever the next generator feels more than a minute away. However, once you have stacked several Classified Drops or unlocked your first Covert Skin, passive income begins to overshadow manual clicking, and your strategy should shift toward generator breadth.</p>
              <p>Mid-game optimization revolves around the 1.15x cost scaling curve. Because each additional copy of the same generator costs 15% more than the last, there is a sweet spot where buying one copy of the next tier up is less efficient than buying two or three copies of the current tier. Experienced players often maintain a roughly 5:3:2:1:0 ratio of Mil-Spec:Restricted:Classified:Covert:Knife in the early mid-game. This balanced portfolio ensures steady growth without over-investing in any single tier whose costs have inflated too high.</p>
-             <p>Late game strategy is all about scale. Once you have unlocked Knife Unboxes, your income enters exponential territory. At this stage, milestones like 100,000 and 1 million Skin Credits become achievable through AFK grinding. The progress bar below your score helps you visualize exactly how close you are to the next upgrade, eliminating guesswork. Players who enjoy this scaling pattern may also appreciate <a href="/money-clicker/">Money Clicker</a> for a similar numerical climb with a different theme.</p>
-          </section>
+              <p>Late game strategy is all about scale. Once you have unlocked Knife Unboxes, your income enters exponential territory. At this stage, milestones like 100,000 and 1 million Skin Credits become achievable through AFK grinding. The progress bar below your score helps you visualize exactly how close you are to the next upgrade, eliminating guesswork. Players who enjoy this scaling pattern may also appreciate <a href="/money-clicker/">Money Clicker</a> for a similar numerical climb with a different theme.</p>
+              <p>Do not forget to open your cases strategically. Since every 500 earned credits unlocks a case, higher passive income means cases arrive faster. The case bonus is multiplied by rarity, so landing a Covert or Knife case can instantly fund your next major upgrade. Many experienced players time their case openings right before a big purchase, using the bonus to push them over the cost threshold for the next generator tier.</p>
+           </section>
 
           <section class="section faq-section">
              <h2>Frequently Asked Questions</h2>
@@ -845,11 +907,15 @@
                 <h3>Is my progress saved?</h3>
                 <p>Yes. Your progress is automatically saved to your browser's local storage every 30 seconds. You can also click the Save button to force an immediate save. If you clear your browser data, your progress will be reset.</p>
              </div>
-             <div class="faq-item">
-                <h3>Why are idle games like this so addictive?</h3>
-                <p>Idle games tap into our brain's dopamine reward system through frequent, visible progress and compounding returns. The "number go up" feedback loop, combined with always having an affordable next goal, creates a powerful psychological hook that keeps players engaged for hours.</p>
-             </div>
-          </section>
+              <div class="faq-item">
+                 <h3>Why are idle games like this so addictive?</h3>
+                 <p>Idle games tap into our brain's dopamine reward system through frequent, visible progress and compounding returns. The "number go up" feedback loop, combined with always having an affordable next goal, creates a powerful psychological hook that keeps players engaged for hours.</p>
+              </div>
+              <div class="faq-item">
+                 <h3>What are case openings?</h3>
+                 <p>Case openings are a bonus mechanic inspired by CS:GO's iconic weapon cases. Every 500 credits you earn unlocks a free case that you can open for an instant bonus. The reward scales with rarity—Consumer (×1), Industrial (×2), Mil-Spec (×5), Restricted (×10), Classified (×25), Covert (×50), and the ultra-rare Knife (×200). It is purely a fun reward system with no real-money cost or gambling risk.</p>
+              </div>
+           </section>
 
           <section class="section">
              <h2>Why Play CSGO Clicker?</h2>
@@ -931,13 +997,14 @@
       const UPGRADES = [{"name":"Mil-Spec Drop","emoji":"📘","baseCost":15,"baseRate":1,"desc":"+1 credit/sec"},{"name":"Restricted Drop","emoji":"📕","baseCost":100,"baseRate":5,"desc":"+5 credits/sec"},{"name":"Classified Drop","emoji":"📗","baseCost":500,"baseRate":20,"desc":"+20 credits/sec"},{"name":"Covert Skin","emoji":"🗡️","baseCost":2500,"baseRate":100,"desc":"+100 credits/sec"},{"name":"Knife Unbox","emoji":"🔪","baseCost":15000,"baseRate":500,"desc":"+500 credits/sec"}];
       const COST_SCALE = 1.15;
 
-      let score = 0;
-      let totalEarned = 0;
-      let clickPower = 1;
-      let clickPowerLevel = 1;
-      let clickPowerCost = 50;
-      let perSecond = 0;
-      let upgradeOwned = UPGRADES.map(() => 0);
+       let score = 0;
+       let totalEarned = 0;
+       let clickPower = 1;
+       let clickPowerLevel = 1;
+       let clickPowerCost = 50;
+       let perSecond = 0;
+       let upgradeOwned = UPGRADES.map(() => 0);
+       let nextCaseAt = 500;
 
       // New features state
       let comboCount = 0;
@@ -1007,10 +1074,18 @@
          }
       }
 
-      function showClickFloat(x, y) {
+      function getThemeEmojiText(amount, isCritical) {
+         const EMOJI = '🔪';
+         if (isCritical) return '⭐' + EMOJI + '⭐';
+         if (amount <= 1) return EMOJI;
+         if (amount <= 5) return EMOJI.repeat(amount);
+         return EMOJI.repeat(3) + ' ×' + formatNum(amount);
+      }
+
+      function showClickFloat(x, y, text, isCritical) {
          const el = document.createElement('div');
          el.className = 'click-float';
-         el.textContent = '+' + formatNum(clickPower);
+         el.textContent = text != null ? text : getThemeEmojiText(clickPower, isCritical);
          el.style.left = x + 'px';
          el.style.top = y + 'px';
          clickArea.style.position = 'relative';
@@ -1081,16 +1156,82 @@
          });
       }
 
-      function showMilestone(value) {
-         const banner = document.createElement('div');
-         banner.className = 'milestone-banner';
-         banner.textContent = '🎉 Milestone: ' + formatNum(value) + '!';
-         clickArea.style.position = 'relative';
-         clickArea.appendChild(banner);
-         setTimeout(() => banner.remove(), 3000);
-      }
+       function showMilestone(value) {
+          const banner = document.createElement('div');
+          banner.className = 'milestone-banner';
+          banner.textContent = '🎉 Milestone: ' + formatNum(value) + '!';
+          clickArea.style.position = 'relative';
+          clickArea.appendChild(banner);
+          setTimeout(() => banner.remove(), 3000);
+       }
 
-      function spawnParticle() {
+       function checkCaseReady() {
+          const btn = document.getElementById('caseBtn');
+          if (!btn) return;
+          btn.style.display = totalEarned >= nextCaseAt ? 'block' : 'none';
+       }
+
+       function openCase() {
+          const RARITIES = [
+             { name: 'Consumer', color: '#b0c3d9', mult: 1, weight: 40 },
+             { name: 'Industrial', color: '#5e98d9', mult: 2, weight: 25 },
+             { name: 'Mil-Spec', color: '#4b69ff', mult: 5, weight: 15 },
+             { name: 'Restricted', color: '#8847ff', mult: 10, weight: 10 },
+             { name: 'Classified', color: '#d32ce6', mult: 25, weight: 5 },
+             { name: 'Covert', color: '#eb4b4b', mult: 50, weight: 3 },
+             { name: 'Knife', color: '#ffd700', mult: 200, weight: 2 }
+          ];
+          const totalWeight = RARITIES.reduce((s, r) => s + r.weight, 0);
+          let rand = Math.random() * totalWeight;
+          let chosen = RARITIES[0];
+          for (const r of RARITIES) {
+             if (rand < r.weight) { chosen = r; break; }
+             rand -= r.weight;
+          }
+          const baseReward = 50;
+          const bonus = baseReward * chosen.mult;
+          const overlay = document.createElement('div');
+          overlay.className = 'case-opening';
+          overlay.style.border = '3px solid ' + chosen.color;
+          const scrollDiv = document.createElement('div');
+          scrollDiv.className = 'case-scroll';
+          overlay.appendChild(scrollDiv);
+          clickArea.style.position = 'relative';
+          clickArea.appendChild(overlay);
+          const scrollCount = 3 + Math.floor(Math.random() * 3);
+          let step = 0;
+          const interval = setInterval(() => {
+             step++;
+             const tempRarity = RARITIES[Math.floor(Math.random() * RARITIES.length)];
+             scrollDiv.textContent = tempRarity.name;
+             scrollDiv.style.color = tempRarity.color;
+             if (step >= scrollCount) {
+                clearInterval(interval);
+                scrollDiv.textContent = chosen.name;
+                scrollDiv.style.color = chosen.color;
+                const resultDiv = document.createElement('div');
+                resultDiv.className = 'case-result';
+                resultDiv.textContent = '★ ' + chosen.name + ' ★';
+                resultDiv.style.color = chosen.color;
+                overlay.appendChild(resultDiv);
+                const bonusDiv = document.createElement('div');
+                bonusDiv.className = 'case-bonus';
+                bonusDiv.textContent = '+' + formatNum(bonus) + ' Skin Credits';
+                overlay.appendChild(bonusDiv);
+                score += bonus;
+                totalEarned += bonus;
+                render();
+                updateProgressBar();
+                checkCaseReady();
+                overlay.style.animation = 'caseFlash 0.5s ease-out';
+                setTimeout(() => overlay.remove(), 2000);
+             }
+          }, 300);
+          nextCaseAt += 500;
+          document.getElementById('caseBtn').style.display = 'none';
+       }
+
+       function spawnParticle() {
          if (document.hidden) return;
          const p = document.createElement('div');
          p.className = 'particle';
@@ -1121,20 +1262,21 @@
             cx = rect.width / 2 + (Math.random() - 0.5) * 40;
             cy = rect.height / 2 - 30;
          }
-         showClickFloat(cx, cy);
-         if (mult === 2) {
-            const cel = document.createElement('div');
-            cel.className = 'click-float';
-            cel.textContent = '+' + formatNum(power) + ' (2x)';
-            cel.style.left = (cx + 20) + 'px';
-            cel.style.top = (cy - 20) + 'px';
-            cel.style.color = '#dc2626';
-            clickArea.appendChild(cel);
-            setTimeout(() => cel.remove(), 700);
-         }
-         checkMilestones();
-         render();
-         updateProgressBar();
+          showClickFloat(cx, cy, null, mult === 2);
+          if (mult === 2) {
+             const cel = document.createElement('div');
+             cel.className = 'click-float';
+             cel.textContent = getThemeEmojiText(power, true);
+             cel.style.left = (cx + 20) + 'px';
+             cel.style.top = (cy - 20) + 'px';
+             cel.style.color = '#dc2626';
+             clickArea.appendChild(cel);
+             setTimeout(() => cel.remove(), 700);
+          }
+          checkMilestones();
+          checkCaseReady();
+          render();
+          updateProgressBar();
       }
 
       clickBtn.addEventListener('click', doClick);
@@ -1164,44 +1306,50 @@
          });
       });
 
-      // Click power upgrade
-      document.getElementById('upgClickPower').addEventListener('click', () => {
-         if (score >= clickPowerCost) {
-            score -= clickPowerCost;
-            clickPowerLevel++;
-            clickPower = Math.pow(2, clickPowerLevel - 1);
-            clickPowerCost = Math.floor(50 * Math.pow(2.5, clickPowerLevel - 1));
-            render();
-         }
-      });
+       // Click power upgrade
+       document.getElementById('upgClickPower').addEventListener('click', () => {
+          if (score >= clickPowerCost) {
+             score -= clickPowerCost;
+             clickPowerLevel++;
+             clickPower = Math.pow(2, clickPowerLevel - 1);
+             clickPowerCost = Math.floor(50 * Math.pow(2.5, clickPowerLevel - 1));
+             render();
+          }
+       });
 
-      // Per-second tick
-      setInterval(() => {
-         if (perSecond > 0) {
-            score += perSecond;
-            totalEarned += perSecond;
-            render();
-         }
-      }, 1000);
+       // Case opening
+       document.getElementById('caseBtn').addEventListener('click', openCase);
+
+       // Per-second tick
+       setInterval(() => {
+          if (perSecond > 0) {
+             score += perSecond;
+             totalEarned += perSecond;
+             render();
+             updateProgressBar();
+             checkCaseReady();
+          }
+       }, 1000);
 
       // Save / Load
-      function saveGame() {
-         const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned };
-         try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch(e) {}
-      }
+       function saveGame() {
+          const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, nextCaseAt };
+          try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch(e) {}
+       }
 
       function loadGame() {
          try {
             const raw = localStorage.getItem(SAVE_KEY);
             if (raw) {
                const data = JSON.parse(raw);
-               score = data.score || 0;
-               totalEarned = data.totalEarned || 0;
-               clickPower = data.clickPower || 1;
-               clickPowerLevel = data.clickPowerLevel || 1;
-               clickPowerCost = data.clickPowerCost || 50;
-               upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
-               recalcPerSecond();
+                score = data.score || 0;
+                totalEarned = data.totalEarned || 0;
+                clickPower = data.clickPower || 1;
+                clickPowerLevel = data.clickPowerLevel || 1;
+                clickPowerCost = data.clickPowerCost || 50;
+                upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                nextCaseAt = data.nextCaseAt || 500;
+                recalcPerSecond();
             }
          } catch(e) {}
       }
@@ -1234,11 +1382,12 @@
          this.textContent = this.textContent === '🔊' ? '🔇' : '🔊';
       });
 
-      // Init
-      loadGame();
-      render();
-      updateProgressBar();
-   })();
+       // Init
+       loadGame();
+       render();
+       updateProgressBar();
+       checkCaseReady();
+    })();
    </script>
 
     <script>

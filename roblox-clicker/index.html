@@ -32,7 +32,7 @@
       }
 
       body {
-         background: linear-gradient(135deg, #f6f8fd 0%, #f0f2f5 100%);
+         background: linear-gradient(135deg, #e0e0e0 0%, #bdbdbd 100%);
          min-height: 100vh;
       }
 
@@ -203,29 +203,29 @@
          justify-content: center;
          padding: 36px 20px;
          border-right: 1px solid #f0f0f0;
-         background: #fee2e2;
-         min-height: 320px;
+         background: linear-gradient(180deg, #e0e0e0 0%, #f5f5f5 100%);
+         min-height: 420px;
       }
 
       @media (max-width: 700px) {
          .click-area {
             border-right: none;
             border-bottom: 1px solid #f0f0f0;
-            min-height: 260px;
+            min-height: 360px;
             padding: 28px 20px;
          }
       }
 
       .click-btn {
-         width: 150px;
-         height: 150px;
+         width: 160px;
+         height: 160px;
          border-radius: 50%;
-         border: 4px solid #dc2626;
-         background: white;
+         border: 5px solid #00b06f;
+         background: radial-gradient(circle at 35% 35%, #4db6ac, #00b06f);
          font-size: 64px;
          cursor: pointer;
          transition: transform 0.1s ease, box-shadow 0.1s ease;
-         box-shadow: 0 8px 30px #dc262633;
+         box-shadow: 0 8px 30px #00b06f33, inset 0 -4px 10px rgba(0,176,111,0.2);
          display: flex;
          align-items: center;
          justify-content: center;
@@ -237,17 +237,18 @@
       }
 
       .click-btn:hover {
-         box-shadow: 0 12px 40px #dc262655;
+         box-shadow: 0 12px 40px #00b06f55, inset 0 -4px 10px rgba(0,176,111,0.2);
       }
 
       .click-btn:active,
       .click-btn.pressed {
          transform: scale(0.92);
-         box-shadow: 0 4px 15px #dc262644;
+         box-shadow: 0 4px 15px #00b06f44, inset 0 -4px 10px rgba(0,176,111,0.2);
       }
 
       .click-btn .emoji {
          pointer-events: none;
+         filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
       }
 
       .score-display {
@@ -314,7 +315,7 @@
          flex-direction: column;
          gap: 10px;
          overflow-y: auto;
-         max-height: 420px;
+         max-height: 520px;
       }
 
       .upgrades-title {
@@ -335,15 +336,16 @@
          border: 1.5px solid #eee;
          cursor: pointer;
          transition: all 0.2s ease;
-         background: white;
+         background: linear-gradient(180deg, #fff 0%, #f5f8f7 100%);
+         box-shadow: 0 2px 6px rgba(0,176,111,0.08);
          position: relative;
       }
 
       .upgrade-card:hover:not(.locked) {
-         border-color: #dc2626;
-         background: #fee2e2;
+         border-color: #00b06f;
+         background: linear-gradient(180deg, #fff 0%, #e0f2f1 100%);
          transform: translateY(-1px);
-         box-shadow: 0 4px 12px #dc262615;
+         box-shadow: 0 4px 12px rgba(0,176,111,0.15);
       }
 
       .upgrade-card.locked {
@@ -909,6 +911,44 @@
          font-weight: 500;
       }
 
+      /* Obby Challenge */
+      .obby-banner {
+         position: absolute;
+         top: 12px;
+         left: 50%;
+         transform: translateX(-50%) translateY(-120%);
+         background: linear-gradient(135deg, #00b06f, #008f5a);
+         color: white;
+         padding: 10px 22px;
+         border-radius: 30px;
+         font-weight: 700;
+         font-size: 0.95rem;
+         box-shadow: 0 6px 20px rgba(0,176,111,0.3);
+         opacity: 0;
+         transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+         z-index: 50;
+         pointer-events: none;
+         white-space: nowrap;
+         text-align: center;
+      }
+      .obby-banner.show {
+         opacity: 1;
+         transform: translateX(-50%) translateY(0);
+      }
+      .obby-banner .obby-countdown {
+         font-size: 0.8rem;
+         font-weight: 600;
+         opacity: 0.9;
+         display: block;
+         margin-top: 2px;
+      }
+      .obby-banner.success {
+         background: linear-gradient(135deg, #00b06f, #00d68f);
+      }
+      .obby-banner.fail {
+         background: linear-gradient(135deg, #dc2626, #b91c1c);
+      }
+
       /* Internal links styling consistency */
       .article-container a {
          color: #7838f3;
@@ -949,7 +989,8 @@
             <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
          </div>
          <div class="game-body">
-            <div class="click-area" id="clickArea">
+            <div class="click-area" id="clickArea" style="position:relative;">
+               <div class="obby-banner" id="obbyBanner">Obby Challenge!<span class="obby-countdown" id="obbyCountdown">Click 3 times in 1s!</span></div>
                <button class="click-btn" id="clickBtn" aria-label="Earn Robux Point">
                   <span class="emoji">🟩</span>
                </button>
@@ -959,6 +1000,7 @@
                </div>
                <div class="per-second" id="perSecDisplay">0 robux points/sec</div>
                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+               <div class="combo-display" id="comboDisplay"></div>
             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
@@ -1055,16 +1097,18 @@
                 <li><strong>Upgrade Click Power:</strong> Invest in <strong>Click Power</strong> to double (and eventually multiply) the amount you earn per click. This is crucial for active play sessions.</li>
                 <li><strong>Expand Your Studio:</strong> Unlock <strong>Game Pass</strong> (+5/sec) and <strong>Dev Console</strong> (+20/sec) to accelerate your mid-game growth and reach bigger milestones faster.</li>
                 <li><strong>Dominate the Charts:</strong> Save up for <strong>Popular Game</strong> (+100/sec) and <strong>Roblox Empire</strong> (+500/sec) to generate massive passive income and watch your score explode.</li>
-                <li><strong>Use Keyboard Shortcuts:</strong> Press the <strong>SPACE bar</strong> to click without using your mouse. Build combos by clicking rapidly within 2 seconds to trigger <strong>Critical Hits</strong> for bonus points!</li>
-             </ol>
+                 <li><strong>Use Keyboard Shortcuts:</strong> Press the <strong>SPACE bar</strong> to click without using your mouse. Build combos by clicking rapidly within 2 seconds to trigger <strong>Critical Hits</strong> for bonus points!</li>
+                 <li><strong>Master the Obby Challenge:</strong> Every 3 minutes an <strong>Obby Challenge</strong> appears. Click 3 times within 1 second to jump over obstacles and earn a <strong>+200 Robux bonus</strong>. Even if you fail, you still get +50 Robux just for trying!</li>
+              </ol>
           </section>
 
           <section class="section">
              <h2>Roblox Clicker Strategy Guide</h2>
              <p><strong>Early Game Snowball:</strong> Your first priority should always be buying a Starter Pack as soon as you can afford it. Passive income is the engine that drives idle games. Once you have one or two Starter Packs, alternate between Click Power upgrades and more passive generators. The key early on is to never let your points sit idle; if you can afford an upgrade, buy it immediately. Every new purchase compounds your future earnings.</p>
              <p><strong>Mid-Game Transition:</strong> Around the 500-2,000 point mark, you will face a decision: continue buying cheaper lower-tier upgrades or save for the Dev Console and Popular Game. Generally, if a cheaper upgrade pays for itself in under 30 seconds, it is worth buying. Otherwise, save for the next tier. Do not neglect Click Power during this phase. A high click multiplier makes manual grinding during active sessions incredibly effective for bridging gaps between expensive purchases.</p>
-             <p><strong>Late Game Optimization:</strong> Once you unlock Roblox Empire, your passive income becomes astronomical. At this stage, the game shifts from active clicking to empire management. Stack multiple Empire rows and let the points roll in while you are away. When you return, dump your accumulated wealth into more Empires or further Click Power levels. Remember to hit the Save button periodically, or let the auto-save feature handle it every 30 seconds.</p>
-          </section>
+              <p><strong>Late Game Optimization:</strong> Once you unlock Roblox Empire, your passive income becomes astronomical. At this stage, the game shifts from active clicking to empire management. Stack multiple Empire rows and let the points roll in while you are away. When you return, dump your accumulated wealth into more Empires or further Click Power levels. Remember to hit the Save button periodically, or let the auto-save feature handle it every 30 seconds.</p>
+              <p><strong>Obby Challenge Timing:</strong> The Obby Challenge is not just a reflex test, it is a strategic opportunity. Try to enter an Obby Challenge with a high combo streak or right after a Critical Hit when your click power is effectively doubled. Since the challenge grants a flat +200 Robux on success, timing it during moments of high activity ensures you do not break your rhythm. Even the +50 participation prize adds up over time, so never ignore the banner when it appears!</p>
+           </section>
 
           <section class="section faq-section">
              <h2>Frequently Asked Questions</h2>
@@ -1078,9 +1122,11 @@
              <p>Always start with the Starter Pack for passive income. Then balance Click Power upgrades with the next available tier. A good rule of thumb is to buy the most expensive upgrade you can afford, unless a cheaper one provides a better points-per-second return on investment.</p>
              <h3>Can I play Roblox Clicker on mobile?</h3>
              <p>Yes! The game is fully responsive and works on smartphones and tablets. Simply tap the click button to earn points. Touch interactions are optimized for mobile screens.</p>
-             <h3>How does the combo system work?</h3>
-             <p>Every time you click within 2 seconds of your previous click, your combo counter increases. When you reach a 10x combo (and every 10 clicks after), you score a <strong>Critical Hit</strong> that doubles the points for that click. Keep clicking rapidly to maintain your combo streak!</p>
-          </section>
+              <h3>How does the combo system work?</h3>
+              <p>Every time you click within 2 seconds of your previous click, your combo counter increases. When you reach a 10x combo (and every 10 clicks after), you score a <strong>Critical Hit</strong> that doubles the points for that click. Keep clicking rapidly to maintain your combo streak!</p>
+              <h3>What is the Obby Challenge?</h3>
+              <p>The <strong>Obby Challenge</strong> is a mini obstacle course event that appears every 3 minutes. You have 1 second to click 3 times rapidly to "jump over obstacles." Success rewards you with <strong>+200 Robux Points</strong>, while failure still grants a <strong>+50 Robux participation prize</strong>. It is a fun way to test your reflexes and earn bonus points!</p>
+           </section>
 
           <section class="section">
              <h2>Why Play Roblox Clicker?</h2>
@@ -1302,10 +1348,18 @@
             }
          }
 
-         function showClickFloat(x, y) {
+         function getThemeEmojiText(amount, isCritical) {
+            const EMOJI = '🟩';
+            if (isCritical) return '💎' + EMOJI + '💎';
+            if (amount <= 1) return EMOJI;
+            if (amount <= 5) return EMOJI.repeat(amount);
+            return EMOJI.repeat(3) + ' ×' + formatNum(amount);
+         }
+
+         function showClickFloat(x, y, text, isCritical) {
             const el = document.createElement('div');
             el.className = 'click-float';
-            el.textContent = '+' + formatNum(clickPower);
+            el.textContent = text || getThemeEmojiText(clickPower, isCritical);
             el.style.left = x + 'px';
             el.style.top = y + 'px';
             clickArea.style.position = 'relative';
@@ -1322,9 +1376,11 @@
             }
             lastClickTime = now;
 
+            let isCritical = false;
             let earned = clickPower;
             if (comboCount >= 10 && comboCount % 10 === 0) {
                earned *= 2;
+               isCritical = true;
                showCriticalPopup();
             }
 
@@ -1353,7 +1409,11 @@
                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
                cy = rect.height / 2 - 30;
             }
-            showClickFloat(cx, cy);
+            if (isCritical) {
+               showClickFloat(cx, cy, getThemeEmojiText(earned, true), true);
+            } else {
+               showClickFloat(cx, cy, null, false);
+            }
             render();
          }
 
@@ -1444,13 +1504,82 @@
             }
          });
 
-         // Auto-save every 30s
-         setInterval(saveGame, 30000);
+          // Obby Challenge
+          const obbyBanner = document.getElementById('obbyBanner');
+          const obbyCountdown = document.getElementById('obbyCountdown');
+          let obbyActive = false;
+          let obbyClicks = 0;
+          let obbyTimer = null;
+          let obbyTimeout = null;
 
-         // Init
-         loadGame();
-         render();
-      })();
+          function startObbyChallenge() {
+             if (obbyActive) return;
+             obbyActive = true;
+             obbyClicks = 0;
+             obbyBanner.classList.remove('success', 'fail');
+             obbyBanner.classList.add('show');
+             obbyCountdown.textContent = 'Click 3 times in 1s!';
+             let timeLeft = 1.0;
+             obbyTimer = setInterval(() => {
+                timeLeft -= 0.1;
+                if (timeLeft <= 0) {
+                   clearInterval(obbyTimer);
+                   endObbyChallenge(false);
+                } else {
+                   obbyCountdown.textContent = 'Click 3 times in ' + timeLeft.toFixed(1) + 's!';
+                }
+             }, 100);
+          }
+
+          function endObbyChallenge(success) {
+             obbyActive = false;
+             clearInterval(obbyTimer);
+             clearTimeout(obbyTimeout);
+             if (success) {
+                score += 200;
+                totalEarned += 200;
+                obbyBanner.classList.add('success');
+                obbyCountdown.textContent = '+200 Robux!';
+                render();
+             } else {
+                score += 50;
+                totalEarned += 50;
+                obbyBanner.classList.add('fail');
+                obbyCountdown.textContent = '+50 Robux (participation)';
+                render();
+             }
+             setTimeout(() => {
+                obbyBanner.classList.remove('show', 'success', 'fail');
+                obbyCountdown.textContent = 'Click 3 times in 1s!';
+             }, 2000);
+          }
+
+          function onObbyClick() {
+             if (!obbyActive) return;
+             obbyClicks++;
+             if (obbyClicks >= 3) {
+                endObbyChallenge(true);
+             }
+          }
+
+          clickBtn.addEventListener('click', onObbyClick);
+          document.addEventListener('keydown', (e) => {
+             if (e.code === 'Space' && !e.repeat && obbyActive) {
+                onObbyClick();
+             }
+          });
+
+          setInterval(() => {
+             if (!document.hidden) startObbyChallenge();
+          }, 180000);
+
+          // Auto-save every 30s
+          setInterval(saveGame, 30000);
+
+          // Init
+          loadGame();
+          render();
+       })();
    </script>
 
    <script>

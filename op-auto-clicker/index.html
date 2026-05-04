@@ -32,7 +32,7 @@
       }
 
       body {
-         background: linear-gradient(135deg, #f6f8fd 0%, #f0f2f5 100%);
+         background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
          min-height: 100vh;
       }
 
@@ -218,15 +218,15 @@
       }
 
       .click-btn {
-         width: 150px;
-         height: 150px;
+         width: 160px;
+         height: 160px;
          border-radius: 50%;
-         border: 4px solid #dc2626;
-         background: white;
+         border: 5px solid #00e676;
+         background: radial-gradient(circle at 35% 35%, #69f0ae, #00e676);
          font-size: 64px;
          cursor: pointer;
          transition: transform 0.1s ease, box-shadow 0.1s ease;
-         box-shadow: 0 8px 30px #dc262633;
+         box-shadow: 0 8px 30px #00e67633, inset 0 -4px 10px rgba(0, 230, 118, 0.2);
          display: flex;
          align-items: center;
          justify-content: center;
@@ -238,17 +238,18 @@
       }
 
       .click-btn:hover {
-         box-shadow: 0 12px 40px #dc262655;
+         box-shadow: 0 12px 40px #00e67655, inset 0 -4px 10px rgba(0, 230, 118, 0.2);
       }
 
       .click-btn:active,
       .click-btn.pressed {
          transform: scale(0.92);
-         box-shadow: 0 4px 15px #dc262644;
+         box-shadow: 0 4px 15px #00e67644, inset 0 -4px 10px rgba(0, 230, 118, 0.2);
       }
 
       .click-btn .emoji {
          pointer-events: none;
+         filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.15));
       }
 
       .score-display {
@@ -342,9 +343,9 @@
 
       .upgrade-card:hover:not(.locked) {
          border-color: #dc2626;
-         background: #fee2e2;
-         transform: translateY(-1px);
-         box-shadow: 0 4px 12px #dc262615;
+         background: linear-gradient(180deg, #fff 0%, #e8f5e9 100%);
+         transform: translateY(-2px);
+         box-shadow: 0 6px 16px rgba(0, 230, 118, 0.18);
       }
 
       .upgrade-card.locked {
@@ -778,11 +779,30 @@
       }
 
       @keyframes criticalPop {
-         0% { transform: translateX(-50%) scale(0); opacity: 0; }
-         20% { transform: translateX(-50%) scale(1.2); opacity: 1; }
-         40% { transform: translateX(-50%) scale(1); opacity: 1; }
-         80% { transform: translateX(-50%) scale(1); opacity: 1; }
-         100% { transform: translateX(-50%) scale(0.8); opacity: 0; }
+         0% {
+            transform: translateX(-50%) scale(0);
+            opacity: 0;
+         }
+
+         20% {
+            transform: translateX(-50%) scale(1.2);
+            opacity: 1;
+         }
+
+         40% {
+            transform: translateX(-50%) scale(1);
+            opacity: 1;
+         }
+
+         80% {
+            transform: translateX(-50%) scale(1);
+            opacity: 1;
+         }
+
+         100% {
+            transform: translateX(-50%) scale(0.8);
+            opacity: 0;
+         }
       }
 
       .progress-bar-container {
@@ -823,8 +843,15 @@
       }
 
       @keyframes floatParticle {
-         0% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
-         100% { transform: translateY(-400px) rotate(360deg); opacity: 0; }
+         0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0.7;
+         }
+
+         100% {
+            transform: translateY(-400px) rotate(360deg);
+            opacity: 0;
+         }
       }
 
       .milestone-banner {
@@ -851,7 +878,7 @@
       }
 
       .sound-toggle {
-         background: rgba(255,255,255,0.2);
+         background: rgba(255, 255, 255, 0.2);
          border: none;
          border-radius: 20px;
          padding: 6px 12px;
@@ -862,7 +889,7 @@
       }
 
       .sound-toggle:hover {
-         background: rgba(255,255,255,0.35);
+         background: rgba(255, 255, 255, 0.35);
       }
 
       .keyboard-hint {
@@ -935,34 +962,34 @@
 
       <!-- ===== GAME ===== -->
       <div class="game-wrapper" id="gameWrapper">
-          <div class="game-header">
-             <h2>🖱️ OP Auto Clicker</h2>
-             <div class="game-stats-bar">
-                <span class="game-stat-pill" id="gStatTotal">0 Clicks</span>
-                <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
-                <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
-             </div>
-          </div>
+         <div class="game-header">
+            <h2>🖱️ OP Auto Clicker</h2>
+            <div class="game-stats-bar">
+               <span class="game-stat-pill" id="gStatTotal">0 Clicks</span>
+               <span class="game-stat-pill" id="gStatPerSec">0/sec</span>
+               <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
+            </div>
+         </div>
          <div class="game-body">
-             <div class="click-area" id="clickArea">
-                <div class="milestone-banner" id="milestoneBanner"></div>
-                <button class="click-btn" id="clickBtn" aria-label="Click Click">
-                   <span class="emoji">🖱️</span>
-                </button>
-                <div class="critical-popup" id="criticalPopup">CRITICAL HIT!</div>
-                <div class="score-display">
-                   <div class="score-number" id="scoreNum">0</div>
-                   <div class="score-label">Clicks</div>
-                </div>
-                <div class="per-second" id="perSecDisplay">0 clicks/sec</div>
-                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
-                <div class="combo-display" id="comboDisplay"></div>
-                <div class="progress-bar-container">
-                   <div class="progress-bar-fill" id="progressBarFill"></div>
-                </div>
-                <div class="keyboard-hint">Tip: Press SPACE to click!</div>
-                <div class="particle-container" id="particleContainer"></div>
-             </div>
+            <div class="click-area" id="clickArea">
+               <div class="milestone-banner" id="milestoneBanner"></div>
+               <button class="click-btn" id="clickBtn" aria-label="Click Click">
+                  <span class="emoji">🖱️</span>
+               </button>
+               <div class="critical-popup" id="criticalPopup">CRITICAL HIT!</div>
+               <div class="score-display">
+                  <div class="score-number" id="scoreNum">0</div>
+                  <div class="score-label">Clicks</div>
+               </div>
+               <div class="per-second" id="perSecDisplay">0 clicks/sec</div>
+               <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+               <div class="combo-display" id="comboDisplay"></div>
+               <div class="progress-bar-container">
+                  <div class="progress-bar-fill" id="progressBarFill"></div>
+               </div>
+               <div class="keyboard-hint">Tip: Press SPACE to click!</div>
+               <div class="particle-container" id="particleContainer"></div>
+            </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
 
@@ -1041,89 +1068,160 @@
       </div>
 
       <!-- ===== ARTICLE CONTENT ===== -->
-       <article class="article-container">
+      <article class="article-container">
 
-          <div class="intro">
-             <p>Welcome to <strong>OP Auto Clicker</strong>, the ultimate free browser idle game that celebrates the art and science of automation! In this incremental clicker adventure, your currency is abstract <strong>Clicks</strong>—pure digital actions that represent the heartbeat of computing. Starting with manual clicking, you'll quickly graduate to Double Click techniques, Macro Bots, Click Farms, AI Clickers, and finally the mind-bending Quantum Click engine. Every tap brings you closer to a fully automated clicking empire that operates at speeds no human hand could match.</p>
-             
-             <p>Automation has transformed human civilization since the Industrial Revolution, and today it powers everything from factory assembly lines to smartphone notifications. The concept of a machine that clicks faster than a human connects to real-world auto-clicker tools used in software testing, data entry, and accessibility. <a href="/op-auto-clicker/">OP Auto Clicker</a> transforms this utilitarian concept into genuinely fun gameplay. If you enjoy automation themes, you might also like <a href="/gs-auto-clicker/">GS Auto Clicker</a> or <a href="/minecraft-clicker/">Minecraft Clicker</a> for different mechanical flavors.</p>
-             
-             <p>Idle clicker games have become a cornerstone of casual gaming because they deliver consistent dopamine rewards without demanding intense focus. OP Auto Clicker takes this formula and wraps it in a tech-themed package that appeals to gamers, programmers, and anyone fascinated by exponential growth. The game runs entirely in your browser with no downloads or fees, making it instantly accessible on any device. Whether you want to actively build combos or let your automated farm generate clicks while you work, OP Auto Clicker scales to your availability.</p>
-          </div>
+         <div class="intro">
+            <p>Welcome to <strong>OP Auto Clicker</strong>, the ultimate free browser idle game that celebrates the art
+               and science of automation! In this incremental clicker adventure, your currency is abstract
+               <strong>Clicks</strong>—pure digital actions that represent the heartbeat of computing. Starting with
+               manual clicking, you'll quickly graduate to Double Click techniques, Macro Bots, Click Farms, AI
+               Clickers, and finally the mind-bending Quantum Click engine. Every tap brings you closer to a fully
+               automated clicking empire that operates at speeds no human hand could match.</p>
 
-          <section class="section">
-             <h2>How to Play OP Auto Clicker</h2>
-             <ol class="tips-list">
-                <li><strong>Click the mouse button</strong> to generate Clicks manually. Each tap produces clicks based on your current Click Power level.</li>
-                <li><strong>Maintain rapid-fire clicking</strong> within 2-second intervals to build combo chains. Hit 10x combo for a "CRITICAL HIT!" that doubles your output!</li>
-                <li><strong>Master Double Click</strong> (15 clicks) for your first automation tier, adding +1 click per second passively.</li>
-                <li><strong>Deploy Macro Bots</strong> (100 clicks, +5/sec) and Click Farms (500 clicks, +20/sec) for industrial-scale production.</li>
-                <li><strong>Upgrade Click Power</strong> (starting at 50 clicks) to double your manual tapping strength when burst clicking matters.</li>
-                <li><strong>Activate AI Clickers</strong> (2,500 clicks, +100/sec) for machine-learning optimized clicking algorithms.</li>
-                <li><strong>Unlock Quantum Click</strong> (15,000 clicks, +500/sec) to harness subatomic computing power for maximum automation.</li>
-                <li><strong>Press SPACE to click</strong> without your mouse, and save your progress to preserve your automation empire.</li>
-             </ol>
-          </section>
+            <p>Automation has transformed human civilization since the Industrial Revolution, and today it powers
+               everything from factory assembly lines to smartphone notifications. The concept of a machine that clicks
+               faster than a human connects to real-world auto-clicker tools used in software testing, data entry, and
+               accessibility. <a href="/op-auto-clicker/">OP Auto Clicker</a> transforms this utilitarian concept into
+               genuinely fun gameplay. If you enjoy automation themes, you might also like <a
+                  href="/gs-auto-clicker/">GS Auto Clicker</a> or <a href="/minecraft-clicker/">Minecraft Clicker</a>
+               for different mechanical flavors.</p>
 
-          <section class="section">
-             <h2>Strategy Guide</h2>
-             <p>Early automation strategy is all about getting your first passive generators online as fast as possible. Your manual clicks are important but temporary—every second without a Double Click generator running is a second of lost compound growth. Purchase your first Double Click at 15 clicks immediately. The return on investment is immediate: in just 15 seconds, it pays for itself, and every click after that is building toward your next upgrade. Think of it as installing your first assembly line robot.</p>
-             <p>Mid-game scaling (1,000-50,000 clicks) tests your ability to balance multiple production lines. Click Farms provide excellent mid-tier returns, but don't neglect your Macro Bots entirely—they're cheaper to stack and can provide surprising aggregate output. Click Power upgrades are particularly strategic during this phase. When you're 50 clicks short of a major purchase, a quick burst of manual clicking (especially with combo multipliers) can push you over the threshold much faster than waiting for passive generation.</p>
-             <p>Endgame OP Auto Clicker is about achieving true automation nirvana. Quantum Click generators produce +500 clicks per second each, meaning a handful of them can generate millions while you sleep. At this point, manual clicking becomes ceremonial—a nostalgic nod to where you started. The milestone banners celebrating 1K, 10K, 100K, and 1M clicks serve as milestones in your journey from human clicker to automated overlord. Keep optimizing, keep expanding, and watch the numbers climb to infinity.</p>
-          </section>
+            <p>Idle clicker games have become a cornerstone of casual gaming because they deliver consistent dopamine
+               rewards without demanding intense focus. OP Auto Clicker takes this formula and wraps it in a tech-themed
+               package that appeals to gamers, programmers, and anyone fascinated by exponential growth. The game runs
+               entirely in your browser with no downloads or fees, making it instantly accessible on any device. Whether
+               you want to actively build combos or let your automated farm generate clicks while you work, OP Auto
+               Clicker scales to your availability.</p>
+         </div>
 
-          <section class="section faq-section">
-             <h2>Frequently Asked Questions</h2>
-             
-             <h3>What is OP Auto Clicker?</h3>
-             <div class="faq-answer"><p>OP Auto Clicker is a free browser idle game where you generate Clicks by tapping and building automated clicking systems from Double Clicks to Quantum Click engines.</p></div>
-             
-             <h3>Is OP Auto Clicker free?</h3>
-             <div class="faq-answer"><p>Yes, completely free with no downloads, accounts, or payments. Just open the page and start clicking.</p></div>
-             
-             <h3>How does the combo system work?</h3>
-             <div class="faq-answer"><p>Clicking within 2-second intervals builds a combo. Every 10x combo triggers a "CRITICAL HIT!" that awards double clicks for that tap.</p></div>
-             
-             <h3>Is this the same as the OP Auto Clicker app?</h3>
-             <div class="faq-answer"><p>No, this is a browser-based idle game with automation themes, not the standalone Windows utility. It's a fun incremental experience inspired by clicking culture.</p></div>
-             
-             <h3>Can I play on mobile?</h3>
-             <div class="faq-answer"><p>Yes, fully responsive! Tap to click and purchase upgrades on smartphones and tablets.</p></div>
-             
-             <h3>What does the progress bar indicate?</h3>
-             <div class="faq-answer"><p>The progress bar shows how close you are to affording your next cheapest upgrade, helping you plan purchases efficiently.</p></div>
-             
-             <h3>How do I save progress?</h3>
-             <div class="faq-answer"><p>Auto-save happens every 30 seconds, or you can manually save anytime. Progress is stored locally in your browser.</p></div>
-             
-             <h3>Are there similar automation games?</h3>
-             <div class="faq-answer"><p>Yes! Check out <a href="/gs-auto-clicker/">GS Auto Clicker</a> or <a href="/minecraft-clicker/">Minecraft Clicker</a> for more mechanical incremental fun.</p></div>
-          </section>
+         <section class="section">
+            <h2>How to Play OP Auto Clicker</h2>
+            <ol class="tips-list">
+               <li><strong>Click the mouse button</strong> to generate Clicks manually. Each tap produces clicks based
+                  on your current Click Power level.</li>
+               <li><strong>Maintain rapid-fire clicking</strong> within 2-second intervals to build combo chains. Hit
+                  10x combo for a "CRITICAL HIT!" that doubles your output!</li>
+               <li><strong>Master Double Click</strong> (15 clicks) for your first automation tier, adding +1 click per
+                  second passively.</li>
+               <li><strong>Deploy Macro Bots</strong> (100 clicks, +5/sec) and Click Farms (500 clicks, +20/sec) for
+                  industrial-scale production.</li>
+               <li><strong>Upgrade Click Power</strong> (starting at 50 clicks) to double your manual tapping strength
+                  when burst clicking matters.</li>
+               <li><strong>Activate AI Clickers</strong> (2,500 clicks, +100/sec) for machine-learning optimized
+                  clicking algorithms.</li>
+               <li><strong>Unlock Quantum Click</strong> (15,000 clicks, +500/sec) to harness subatomic computing power
+                  for maximum automation.</li>
+               <li><strong>Press SPACE to click</strong> without your mouse, and save your progress to preserve your
+                  automation empire.</li>
+            </ol>
+         </section>
 
-          <section class="section">
-             <h2>Why Play OP Auto Clicker?</h2>
-             <p>OP Auto Clicker stands out by embracing a theme that most games ignore: the beauty of automation itself. In a world where we constantly seek ways to work smarter, this game makes optimization genuinely fun. Every upgrade represents another layer of abstraction between you and the raw clicking, mirroring how real technology evolves from manual tools to sophisticated machinery. The satisfaction of watching your automated systems outperform your own clicking is uniquely rewarding.</p>
-             <p>The game also excels as a "background companion"—something you can check on throughout the day without demanding your full attention. The exponential scaling ensures there's always a new milestone to reach, while the free browser-based format means you can play anywhere without commitment. Whether you're a tech enthusiast who appreciates the automation theme or simply someone who enjoys well-designed idle games, OP Auto Clicker delivers consistent entertainment with zero friction.</p>
-          </section>
+         <section class="section">
+            <h2>Strategy Guide</h2>
+            <p>Early automation strategy is all about getting your first passive generators online as fast as possible.
+               Your manual clicks are important but temporary—every second without a Double Click generator running is a
+               second of lost compound growth. Purchase your first Double Click at 15 clicks immediately. The return on
+               investment is immediate: in just 15 seconds, it pays for itself, and every click after that is building
+               toward your next upgrade. Think of it as installing your first assembly line robot.</p>
+            <p>Mid-game scaling (1,000-50,000 clicks) tests your ability to balance multiple production lines. Click
+               Farms provide excellent mid-tier returns, but don't neglect your Macro Bots entirely—they're cheaper to
+               stack and can provide surprising aggregate output. Click Power upgrades are particularly strategic during
+               this phase. When you're 50 clicks short of a major purchase, a quick burst of manual clicking (especially
+               with combo multipliers) can push you over the threshold much faster than waiting for passive generation.
+            </p>
+            <p>Endgame OP Auto Clicker is about achieving true automation nirvana. Quantum Click generators produce +500
+               clicks per second each, meaning a handful of them can generate millions while you sleep. At this point,
+               manual clicking becomes ceremonial—a nostalgic nod to where you started. The milestone banners
+               celebrating 1K, 10K, 100K, and 1M clicks serve as milestones in your journey from human clicker to
+               automated overlord. Keep optimizing, keep expanding, and watch the numbers climb to infinity.</p>
+         </section>
 
-          <section class="section">
-             <h2>Did You Know? Automation & Computing Facts</h2>
-             <div class="highlight-box">
-                <ul>
-                   <li>The world's fastest mouse clicker achieved over 1,000 clicks in 10 seconds—yet even that pales in comparison to automated software that can click thousands of times per second.</li>
-                   <li>The first computer mouse was invented by Douglas Engelbart in 1964 and was made of wood with a single button.</li>
-                   <li>Modern data centers process over 2.5 quintillion bytes of data daily, much of it triggered by automated systems rather than human actions.</li>
-                   <li>Quantum computers can perform certain calculations millions of times faster than classical computers by exploiting quantum superposition.</li>
-                   <li>Automation in manufacturing increased global productivity by over 30% in the past two decades, reshaping economies worldwide.</li>
-                </ul>
-             </div>
-          </section>
+         <section class="section faq-section">
+            <h2>Frequently Asked Questions</h2>
 
-          <div style="text-align: center;">
-             <a href="/" class="back-btn">Back to Home</a>
-          </div>
+            <h3>What is OP Auto Clicker?</h3>
+            <div class="faq-answer">
+               <p>OP Auto Clicker is a free browser idle game where you generate Clicks by tapping and building
+                  automated clicking systems from Double Clicks to Quantum Click engines.</p>
+            </div>
 
-       </article>
+            <h3>Is OP Auto Clicker free?</h3>
+            <div class="faq-answer">
+               <p>Yes, completely free with no downloads, accounts, or payments. Just open the page and start clicking.
+               </p>
+            </div>
+
+            <h3>How does the combo system work?</h3>
+            <div class="faq-answer">
+               <p>Clicking within 2-second intervals builds a combo. Every 10x combo triggers a "CRITICAL HIT!" that
+                  awards double clicks for that tap.</p>
+            </div>
+
+            <h3>Is this the same as the OP Auto Clicker app?</h3>
+            <div class="faq-answer">
+               <p>No, this is a browser-based idle game with automation themes, not the standalone Windows utility. It's
+                  a fun incremental experience inspired by clicking culture.</p>
+            </div>
+
+            <h3>Can I play on mobile?</h3>
+            <div class="faq-answer">
+               <p>Yes, fully responsive! Tap to click and purchase upgrades on smartphones and tablets.</p>
+            </div>
+
+            <h3>What does the progress bar indicate?</h3>
+            <div class="faq-answer">
+               <p>The progress bar shows how close you are to affording your next cheapest upgrade, helping you plan
+                  purchases efficiently.</p>
+            </div>
+
+            <h3>How do I save progress?</h3>
+            <div class="faq-answer">
+               <p>Auto-save happens every 30 seconds, or you can manually save anytime. Progress is stored locally in
+                  your browser.</p>
+            </div>
+
+            <h3>Are there similar automation games?</h3>
+            <div class="faq-answer">
+               <p>Yes! Check out <a href="/gs-auto-clicker/">GS Auto Clicker</a> or <a
+                     href="/minecraft-clicker/">Minecraft Clicker</a> for more mechanical incremental fun.</p>
+            </div>
+         </section>
+
+         <section class="section">
+            <h2>Why Play OP Auto Clicker?</h2>
+            <p>OP Auto Clicker stands out by embracing a theme that most games ignore: the beauty of automation itself.
+               In a world where we constantly seek ways to work smarter, this game makes optimization genuinely fun.
+               Every upgrade represents another layer of abstraction between you and the raw clicking, mirroring how
+               real technology evolves from manual tools to sophisticated machinery. The satisfaction of watching your
+               automated systems outperform your own clicking is uniquely rewarding.</p>
+            <p>The game also excels as a "background companion"—something you can check on throughout the day without
+               demanding your full attention. The exponential scaling ensures there's always a new milestone to reach,
+               while the free browser-based format means you can play anywhere without commitment. Whether you're a tech
+               enthusiast who appreciates the automation theme or simply someone who enjoys well-designed idle games, OP
+               Auto Clicker delivers consistent entertainment with zero friction.</p>
+         </section>
+
+         <section class="section">
+            <h2>Did You Know? Automation & Computing Facts</h2>
+            <div class="highlight-box">
+               <ul>
+                  <li>The world's fastest mouse clicker achieved over 1,000 clicks in 10 seconds—yet even that pales in
+                     comparison to automated software that can click thousands of times per second.</li>
+                  <li>The first computer mouse was invented by Douglas Engelbart in 1964 and was made of wood with a
+                     single button.</li>
+                  <li>Modern data centers process over 2.5 quintillion bytes of data daily, much of it triggered by
+                     automated systems rather than human actions.</li>
+                  <li>Quantum computers can perform certain calculations millions of times faster than classical
+                     computers by exploiting quantum superposition.</li>
+                  <li>Automation in manufacturing increased global productivity by over 30% in the past two decades,
+                     reshaping economies worldwide.</li>
+               </ul>
+            </div>
+         </section>
+
+
+
+      </article>
       <!-- Related Games Section -->
       <div class="related-games-section">
          <h2 class="related-games-title">🎮 More Clicker Games</h2>
@@ -1188,29 +1286,29 @@
          let clickPowerLevel = 1;
          let clickPowerCost = 50;
          let perSecond = 0;
-          let upgradeOwned = UPGRADES.map(() => 0);
+         let upgradeOwned = UPGRADES.map(() => 0);
 
-          // Combo & enhancements
-          let comboCount = 0;
-          let lastClickTime = 0;
-          let milestonesShown = {1000: false, 10000: false, 100000: false, 1000000: false};
-          let soundOn = true;
+         // Combo & enhancements
+         let comboCount = 0;
+         let lastClickTime = 0;
+         let milestonesShown = { 1000: false, 10000: false, 100000: false, 1000000: false };
+         let soundOn = true;
 
-          // DOM
-          const scoreNum = document.getElementById('scoreNum');
-          const perSecDisplay = document.getElementById('perSecDisplay');
-          const clickPowerInfo = document.getElementById('clickPowerInfo');
-          const gStatTotal = document.getElementById('gStatTotal');
-          const gStatPerSec = document.getElementById('gStatPerSec');
-          const clickBtn = document.getElementById('clickBtn');
-          const clickArea = document.getElementById('clickArea');
-          const comboDisplay = document.getElementById('comboDisplay');
-          const criticalPopup = document.getElementById('criticalPopup');
-          const progressBarFill = document.getElementById('progressBarFill');
-          const milestoneBanner = document.getElementById('milestoneBanner');
-          const soundToggle = document.getElementById('soundToggle');
+         // DOM
+         const scoreNum = document.getElementById('scoreNum');
+         const perSecDisplay = document.getElementById('perSecDisplay');
+         const clickPowerInfo = document.getElementById('clickPowerInfo');
+         const gStatTotal = document.getElementById('gStatTotal');
+         const gStatPerSec = document.getElementById('gStatPerSec');
+         const clickBtn = document.getElementById('clickBtn');
+         const clickArea = document.getElementById('clickArea');
+         const comboDisplay = document.getElementById('comboDisplay');
+         const criticalPopup = document.getElementById('criticalPopup');
+         const progressBarFill = document.getElementById('progressBarFill');
+         const milestoneBanner = document.getElementById('milestoneBanner');
+         const soundToggle = document.getElementById('soundToggle');
 
-          function formatNum(n) {
+         function formatNum(n) {
             if (n < 1000) return Math.floor(n).toLocaleString();
             if (n < 1e6) return (n / 1e3).toFixed(1) + 'K';
             if (n < 1e9) return (n / 1e6).toFixed(1) + 'M';
@@ -1248,23 +1346,23 @@
                }
             });
 
-             // Click power upgrade
-             const cpCard = document.getElementById('upgClickPower');
-             document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
-             document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
-             if (score >= clickPowerCost) {
-                cpCard.classList.remove('locked');
-             } else {
-                cpCard.classList.add('locked');
-             }
+            // Click power upgrade
+            const cpCard = document.getElementById('upgClickPower');
+            document.getElementById('clickPowerCost').textContent = formatNum(clickPowerCost);
+            document.getElementById('clickPowerLevel').textContent = 'Level: ' + clickPowerLevel;
+            if (score >= clickPowerCost) {
+               cpCard.classList.remove('locked');
+            } else {
+               cpCard.classList.add('locked');
+            }
 
-             updateProgressBar();
-          }
+            updateProgressBar();
+         }
 
-          function showClickFloat(x, y, val) {
-             const el = document.createElement('div');
-             el.className = 'click-float';
-             el.textContent = '+' + formatNum(val || clickPower);
+         function showClickFloat(x, y, val) {
+            const el = document.createElement('div');
+            el.className = 'click-float';
+            el.textContent = '+' + formatNum(val || clickPower);
             el.style.left = x + 'px';
             el.style.top = y + 'px';
             clickArea.style.position = 'relative';
@@ -1272,46 +1370,46 @@
             setTimeout(() => el.remove(), 700);
          }
 
-          function doClick(e) {
-             let earned = clickPower;
+         function doClick(e) {
+            let earned = clickPower;
 
-             // Combo system
-             const now = Date.now();
-             if (now - lastClickTime <= 2000) {
-                comboCount++;
-             } else {
-                comboCount = 1;
-             }
-             lastClickTime = now;
-             if (comboDisplay) {
-                comboDisplay.textContent = comboCount > 1 ? comboCount + 'x Combo!' : '';
-                comboDisplay.style.opacity = comboCount > 1 ? '1' : '0';
-             }
-             if (comboCount > 0 && comboCount % 10 === 0) {
-                showCriticalHit();
-                earned += clickPower;
-             }
+            // Combo system
+            const now = Date.now();
+            if (now - lastClickTime <= 2000) {
+               comboCount++;
+            } else {
+               comboCount = 1;
+            }
+            lastClickTime = now;
+            if (comboDisplay) {
+               comboDisplay.textContent = comboCount > 1 ? comboCount + 'x Combo!' : '';
+               comboDisplay.style.opacity = comboCount > 1 ? '1' : '0';
+            }
+            if (comboCount > 0 && comboCount % 10 === 0) {
+               showCriticalHit();
+               earned += clickPower;
+            }
 
-             score += earned;
-             totalEarned += earned;
+            score += earned;
+            totalEarned += earned;
 
-             clickBtn.classList.add('pressed');
-             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+            clickBtn.classList.add('pressed');
+            setTimeout(() => clickBtn.classList.remove('pressed'), 100);
 
-             // Float position
-             const rect = clickArea.getBoundingClientRect();
-             let cx, cy;
-             if (e && e.clientX) {
-                cx = e.clientX - rect.left;
-                cy = e.clientY - rect.top;
-             } else {
-                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
-                cy = rect.height / 2 - 30;
-             }
-             showClickFloat(cx, cy, earned);
-             checkMilestones();
-             render();
-          }
+            // Float position
+            const rect = clickArea.getBoundingClientRect();
+            let cx, cy;
+            if (e && e.clientX) {
+               cx = e.clientX - rect.left;
+               cy = e.clientY - rect.top;
+            } else {
+               cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+               cy = rect.height / 2 - 30;
+            }
+            showClickFloat(cx, cy, earned);
+            checkMilestones();
+            render();
+         }
 
          clickBtn.addEventListener('click', doClick);
          clickBtn.addEventListener('touchstart', (e) => {
@@ -1351,83 +1449,83 @@
             }
          });
 
-          // Per-second tick
-          setInterval(() => {
-             if (perSecond > 0) {
-                score += perSecond;
-                totalEarned += perSecond;
-                checkMilestones();
-                render();
-             }
-          }, 1000);
+         // Per-second tick
+         setInterval(() => {
+            if (perSecond > 0) {
+               score += perSecond;
+               totalEarned += perSecond;
+               checkMilestones();
+               render();
+            }
+         }, 1000);
 
-          // Enhancement functions
-          function showCriticalHit() {
-             if (!criticalPopup) return;
-             criticalPopup.classList.remove('show');
-             void criticalPopup.offsetWidth;
-             criticalPopup.classList.add('show');
-             setTimeout(() => criticalPopup.classList.remove('show'), 1500);
-          }
+         // Enhancement functions
+         function showCriticalHit() {
+            if (!criticalPopup) return;
+            criticalPopup.classList.remove('show');
+            void criticalPopup.offsetWidth;
+            criticalPopup.classList.add('show');
+            setTimeout(() => criticalPopup.classList.remove('show'), 1500);
+         }
 
-          function updateProgressBar() {
-             if (!progressBarFill) return;
-             let nextCost = Infinity;
-             UPGRADES.forEach((u, i) => {
-                const cost = getCost(u.baseCost, upgradeOwned[i]);
-                if (cost < nextCost) nextCost = cost;
-             });
-             if (clickPowerCost < nextCost) nextCost = clickPowerCost;
-             let pct = score >= nextCost ? 100 : (score / nextCost) * 100;
-             progressBarFill.style.width = pct + '%';
-          }
+         function updateProgressBar() {
+            if (!progressBarFill) return;
+            let nextCost = Infinity;
+            UPGRADES.forEach((u, i) => {
+               const cost = getCost(u.baseCost, upgradeOwned[i]);
+               if (cost < nextCost) nextCost = cost;
+            });
+            if (clickPowerCost < nextCost) nextCost = clickPowerCost;
+            let pct = score >= nextCost ? 100 : (score / nextCost) * 100;
+            progressBarFill.style.width = pct + '%';
+         }
 
-          function checkMilestones() {
-             Object.keys(milestonesShown).forEach(key => {
-                const m = parseInt(key);
-                if (totalEarned >= m && !milestonesShown[key]) {
-                   milestonesShown[key] = true;
-                   showMilestone(m);
-                }
-             });
-          }
+         function checkMilestones() {
+            Object.keys(milestonesShown).forEach(key => {
+               const m = parseInt(key);
+               if (totalEarned >= m && !milestonesShown[key]) {
+                  milestonesShown[key] = true;
+                  showMilestone(m);
+               }
+            });
+         }
 
-          function showMilestone(amount) {
-             if (!milestoneBanner) return;
-             milestoneBanner.textContent = '🎉 Milestone: ' + formatNum(amount) + ' Clicks reached!';
-             milestoneBanner.classList.add('show');
-             setTimeout(() => milestoneBanner.classList.remove('show'), 4000);
-          }
+         function showMilestone(amount) {
+            if (!milestoneBanner) return;
+            milestoneBanner.textContent = '🎉 Milestone: ' + formatNum(amount) + ' Clicks reached!';
+            milestoneBanner.classList.add('show');
+            setTimeout(() => milestoneBanner.classList.remove('show'), 4000);
+         }
 
-          function spawnParticle() {
-             const container = document.getElementById('particleContainer');
-             if (!container) return;
-             const p = document.createElement('div');
-             p.className = 'particle';
-             const emojis = ['🖱️', '👆', '🤖', '⚡', '💻', '🎯'];
-             p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-             p.style.left = Math.random() * 80 + 10 + '%';
-             p.style.animationDuration = (3 + Math.random() * 2) + 's';
-             container.appendChild(p);
-             setTimeout(() => p.remove(), 5000);
-          }
+         function spawnParticle() {
+            const container = document.getElementById('particleContainer');
+            if (!container) return;
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const emojis = ['🖱️', '👆', '🤖', '⚡', '💻', '🎯'];
+            p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            p.style.left = Math.random() * 80 + 10 + '%';
+            p.style.animationDuration = (3 + Math.random() * 2) + 's';
+            container.appendChild(p);
+            setTimeout(() => p.remove(), 5000);
+         }
 
-          // Particles
-          setInterval(spawnParticle, 2500);
+         // Particles
+         setInterval(spawnParticle, 2500);
 
-          // Sound toggle
-          if (soundToggle) {
-             soundToggle.addEventListener('click', () => {
-                soundOn = !soundOn;
-                soundToggle.textContent = soundOn ? '🔊' : '🔇';
-             });
-          }
+         // Sound toggle
+         if (soundToggle) {
+            soundToggle.addEventListener('click', () => {
+               soundOn = !soundOn;
+               soundToggle.textContent = soundOn ? '🔊' : '🔇';
+            });
+         }
 
-          // Save / Load
-          function saveGame() {
-             const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, milestonesShown };
-             try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
-          }
+         // Save / Load
+         function saveGame() {
+            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, milestonesShown };
+            try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
+         }
 
          function loadGame() {
             try {
@@ -1439,10 +1537,10 @@
                   clickPower = data.clickPower || 1;
                   clickPowerLevel = data.clickPowerLevel || 1;
                   clickPowerCost = data.clickPowerCost || 50;
-                   upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
-                   milestonesShown = data.milestonesShown || {1000: false, 10000: false, 100000: false, 1000000: false};
-                   recalcPerSecond();
-                }
+                  upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                  milestonesShown = data.milestonesShown || { 1000: false, 10000: false, 100000: false, 1000000: false };
+                  recalcPerSecond();
+               }
             } catch (e) { }
          }
 
@@ -1456,9 +1554,9 @@
          document.getElementById('resetBtn').addEventListener('click', () => {
             if (confirm('Reset all progress for OP Auto Clicker? This cannot be undone.')) {
                localStorage.removeItem(SAVE_KEY);
-                score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
-                upgradeOwned = UPGRADES.map(() => 0);
-                milestonesShown = {1000: false, 10000: false, 100000: false, 1000000: false};
+               score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
+               upgradeOwned = UPGRADES.map(() => 0);
+               milestonesShown = { 1000: false, 10000: false, 100000: false, 1000000: false };
                recalcPerSecond();
                render();
             }
@@ -1473,22 +1571,22 @@
       })();
    </script>
 
-    <script>
-       // Mobile menu
-       const menuBtn = document.querySelector('.menu-btn');
-       const navLinks = document.querySelector('.nav-links');
-       menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
-       document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
-       document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+   <script>
+      // Mobile menu
+      const menuBtn = document.querySelector('.menu-btn');
+      const navLinks = document.querySelector('.nav-links');
+      menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+      document.addEventListener('click', (e) => { if (!e.target.closest('.navbar')) navLinks.classList.remove('active'); });
+      document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
 
-       // FAQ toggle
-       document.querySelectorAll('.faq-section h3').forEach(h3 => {
-          h3.addEventListener('click', () => {
-             h3.classList.toggle('active');
-             h3.nextElementSibling.classList.toggle('active');
-          });
-       });
-    </script>
+      // FAQ toggle
+      document.querySelectorAll('.faq-section h3').forEach(h3 => {
+         h3.addEventListener('click', () => {
+            h3.classList.toggle('active');
+            h3.nextElementSibling.classList.toggle('active');
+         });
+      });
+   </script>
 
    <!-- Site Footer -->
    <footer class="site-footer">
@@ -1522,6 +1620,70 @@
    </footer>
 
    <script>(function (w, d, s, id) { if (typeof (w.webpushr) !== 'undefined') return; w.webpushr = w.webpushr || function () { (w.webpushr.q = w.webpushr.q || []).push(arguments) }; var js, fjs = d.getElementsByTagName(s)[0]; js = d.createElement(s); js.id = id; js.async = 1; js.src = "https://cdn.webpushr.com/app.min.js"; fjs.parentNode.appendChild(js); }(window, document, 'script', 'webpushr-jssdk')); webpushr('setup', { 'key': 'BCqxAAS-ncGR0SExOoEY3HPXgbSncPSnvUNZbaqLmWTXCyeVDhZdKkXruhe2gvqHJnbMgm1oUAREgHJ3KPqSkW4' });</script>
+
+   <script>
+      (function () {
+         const EMOJI = '🖱️';
+         function getThemeEmojiText(amount, isCritical) {
+            if (isCritical) return '🔥' + EMOJI + '🔥';
+            if (amount <= 1) return EMOJI;
+            if (amount <= 5) return EMOJI.repeat(Math.min(amount, 5));
+            const fmt = typeof formatNum === 'function' ? formatNum(amount) : Math.floor(amount).toLocaleString();
+            return EMOJI.repeat(3) + ' ×' + fmt;
+         }
+         const ca = document.getElementById('clickArea');
+         if (!ca) return;
+         ca.addEventListener('click', function (e) {
+            if (e.target.closest('.click-btn')) {
+               // Let the original handler run, then we add emoji float
+               setTimeout(function () {
+                  const floats = ca.querySelectorAll('.click-float');
+                  floats.forEach(function (el) {
+                     if (el.textContent.startsWith('+')) {
+                        const num = parseFloat(el.textContent.replace('+', '').replace(/,/g, ''));
+                        if (!isNaN(num)) {
+                           const isCrit = el.style.color === 'rgb(220, 38, 38)' || el.style.color === '#dc2626';
+                           el.textContent = getThemeEmojiText(num, isCrit);
+                        }
+                     }
+                  });
+               }, 10);
+            }
+         });
+      })();
+   </script>
+
+   <script>
+      (function () {
+         const EMOJI = '🖱️';
+         function getThemeEmojiText(amount, isCritical) {
+            if (isCritical) return '🔥' + EMOJI + '🔥';
+            if (amount <= 1) return EMOJI;
+            if (amount <= 5) return EMOJI.repeat(Math.min(amount, 5));
+            const fmt = typeof formatNum === 'function' ? formatNum(amount) : Math.floor(amount).toLocaleString();
+            return EMOJI.repeat(3) + ' ×' + fmt;
+         }
+         const ca = document.getElementById('clickArea');
+         if (!ca) return;
+         ca.addEventListener('click', function (e) {
+            if (e.target.closest('.click-btn')) {
+               // Let the original handler run, then we add emoji float
+               setTimeout(function () {
+                  const floats = ca.querySelectorAll('.click-float');
+                  floats.forEach(function (el) {
+                     if (el.textContent.startsWith('+')) {
+                        const num = parseFloat(el.textContent.replace('+', '').replace(/,/g, ''));
+                        if (!isNaN(num)) {
+                           const isCrit = el.style.color === 'rgb(220, 38, 38)' || el.style.color === '#dc2626';
+                           el.textContent = getThemeEmojiText(num, isCrit);
+                        }
+                     }
+                  });
+               }, 10);
+            }
+         });
+      })();
+   </script>
 </body>
 
 </html>

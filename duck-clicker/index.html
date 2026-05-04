@@ -32,7 +32,7 @@
       }
 
       body {
-         background: linear-gradient(135deg, #f6f8fd 0%, #f0f2f5 100%);
+         background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
          min-height: 100vh;
       }
 
@@ -198,8 +198,8 @@
          justify-content: center;
          padding: 36px 20px;
          border-right: 1px solid #f0f0f0;
-         background: #fef9c3;
-         min-height: 320px;
+         background: linear-gradient(180deg, #e0f7fa 0%, #fef9c3 100%);
+         min-height: 420px;
          position: relative;
          overflow: hidden;
       }
@@ -208,21 +208,21 @@
          .click-area {
             border-right: none;
             border-bottom: 1px solid #f0f0f0;
-            min-height: 260px;
+            min-height: 360px;
             padding: 28px 20px;
          }
       }
 
       .click-btn {
-         width: 150px;
-         height: 150px;
+         width: 160px;
+         height: 160px;
          border-radius: 50%;
-         border: 4px solid #eab308;
-         background: white;
+         border: 5px solid #0288d1;
+         background: radial-gradient(circle at 35% 35%, #4fc3f7, #0288d1);
          font-size: 64px;
          cursor: pointer;
          transition: transform 0.1s ease, box-shadow 0.1s ease;
-         box-shadow: 0 8px 30px #eab30833;
+         box-shadow: 0 8px 30px #0288d133, inset 0 -4px 10px rgba(2,136,209,0.2);
          display: flex;
          align-items: center;
          justify-content: center;
@@ -235,16 +235,17 @@
       }
 
       .click-btn:hover {
-         box-shadow: 0 12px 40px #eab30855;
+         box-shadow: 0 12px 40px #0288d155, inset 0 -4px 10px rgba(2,136,209,0.2);
       }
 
       .click-btn:active, .click-btn.pressed {
          transform: scale(0.92);
-         box-shadow: 0 4px 15px #eab30844;
+         box-shadow: 0 4px 15px #0288d144, inset 0 -4px 10px rgba(2,136,209,0.2);
       }
 
       .click-btn .emoji {
          pointer-events: none;
+         filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
       }
 
       .score-display {
@@ -304,7 +305,7 @@
          flex-direction: column;
          gap: 10px;
          overflow-y: auto;
-         max-height: 420px;
+         max-height: 520px;
       }
 
       .upgrades-title {
@@ -325,13 +326,14 @@
          border: 1.5px solid #eee;
          cursor: pointer;
          transition: all 0.2s ease;
-         background: white;
+         background: linear-gradient(180deg, #fff 0%, #f0faff 100%);
          position: relative;
+         box-shadow: 0 2px 6px rgba(2,136,209,0.08);
       }
 
       .upgrade-card:hover:not(.locked) {
          border-color: #eab308;
-         background: #fef9c3;
+         background: linear-gradient(180deg, #fff 0%, #fef9c3 100%);
          transform: translateY(-1px);
          box-shadow: 0 4px 12px #eab30815;
       }
@@ -476,6 +478,43 @@
       @keyframes particleFloat {
          0% { opacity: 0.8; transform: translateY(0) scale(0.6); }
          100% { opacity: 0; transform: translateY(-120px) scale(1.2); }
+      }
+
+      /* Swimming Ducks */
+      .pond-duck {
+         position: absolute;
+         font-size: 1.4rem;
+         cursor: pointer;
+         user-select: none;
+         -webkit-user-select: none;
+         z-index: 5;
+         pointer-events: auto;
+         transition: transform 0.1s ease;
+         filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+      }
+      .pond-duck:active {
+         transform: scale(0.85);
+      }
+      @keyframes swim1 {
+         0% { transform: translate(0,0) rotate(0deg); }
+         25% { transform: translate(30px,-15px) rotate(8deg); }
+         50% { transform: translate(0,-30px) rotate(0deg); }
+         75% { transform: translate(-30px,-15px) rotate(-8deg); }
+         100% { transform: translate(0,0) rotate(0deg); }
+      }
+      @keyframes swim2 {
+         0% { transform: translate(0,0) rotate(0deg); }
+         33% { transform: translate(-20px,-25px) rotate(-10deg); }
+         66% { transform: translate(20px,-25px) rotate(10deg); }
+         100% { transform: translate(0,0) rotate(0deg); }
+      }
+      @keyframes swim3 {
+         0% { transform: translate(0,0) rotate(0deg) scaleX(1); }
+         20% { transform: translate(25px,-10px) rotate(5deg) scaleX(1); }
+         40% { transform: translate(10px,-30px) rotate(0deg) scaleX(-1); }
+         60% { transform: translate(-25px,-10px) rotate(-5deg) scaleX(-1); }
+         80% { transform: translate(-10px,-30px) rotate(0deg) scaleX(1); }
+         100% { transform: translate(0,0) rotate(0deg) scaleX(1); }
       }
 
       /* Milestone Banner */
@@ -829,8 +868,9 @@
                 <li><strong>Gather a Duck Family:</strong> When you reach 100 Quacks, unlock Duck Family for +5 quacks per second.</li>
                 <li><strong>Create a Duck Lake:</strong> At 500 Quacks, build a Duck Lake generating +20 quacks per second.</li>
                 <li><strong>Spawn a Mega Duck:</strong> Save 2,500 Quacks to summon a Mega Duck for +100 quacks per second.</li>
-                <li><strong>Upgrade Click Power:</strong> Spend 50 Quacks on Click Power to double your manual earnings.</li>
-                <li><strong>Become the Quack Overlord:</strong> The ultimate upgrade at 15,000 Quacks gives +500 per second. Stack them to rule the flock.</li>
+                 <li><strong>Upgrade Click Power:</strong> Spend 50 Quacks on Click Power to double your manual earnings.</li>
+                 <li><strong>Click Swimming Ducks:</strong> As you buy upgrades, little ducks appear in the pond. Click them for a x5 bonus quack!</li>
+                 <li><strong>Become the Quack Overlord:</strong> The ultimate upgrade at 15,000 Quacks gives +500 per second. Stack them to rule the flock.</li>
              </ol>
           </section>
 
@@ -838,8 +878,9 @@
              <h2>Duck Clicker Strategy Guide</h2>
              <p>Early game success in Duck Clicker comes from aggressive investment in Duck Whistles. Do not let your Quacks sit idle. The moment you can afford another Whistle, buy it. The power of compounding means that even small +1 increments add up quickly when you have ten or twenty of them. Watch the progress bar to see exactly how close you are to your next purchase. If you are within a few clicks, keep clicking. If you are far away, consider saving for a Duck Family instead.</p>
              <p>The mid-game transition to Duck Lake and Mega Duck is where your income really starts to snowball. At this stage, you should have a solid foundation of Whistles and Families. Do not be tempted to skip straight to Mega Duck without building up your lower tiers first. The math favors breadth over depth in the early and mid-game. Click Power upgrades become increasingly valuable here, as they allow you to generate manual income much faster, bridging the gaps between passive upgrades.</p>
-             <p>Late game optimization is about stacking Mega Ducks and Quack Overlords while keeping your lower tiers topped up. Every upgrade contributes to your total per-second income, so even cheap Whistles still matter. The combo system is your secret weapon for reaching milestones quickly. Rapid clicking within 2-second windows builds your combo, and every 10th click deals double damage to your goal. If you are pushing for 1 million Quacks, dedicate time to active clicking with combo management rather than pure AFK waiting.</p>
-          </section>
+              <p>Late game optimization is about stacking Mega Ducks and Quack Overlords while keeping your lower tiers topped up. Every upgrade contributes to your total per-second income, so even cheap Whistles still matter. The combo system is your secret weapon for reaching milestones quickly. Rapid clicking within 2-second windows builds your combo, and every 10th click deals double damage to your goal. If you are pushing for 1 million Quacks, dedicate time to active clicking with combo management rather than pure AFK waiting.</p>
+              <p>Do not ignore the swimming ducks in the pond. Each swimming duck you click grants five times your current click power in bonus quacks. The more upgrades you own, the more ducks appear, turning the pond into an active bonus zone. During active play sessions, keep an eye on the edges of the click area where ducks tend to swim. A quick duck click can give you a sudden burst of income that helps you afford the next upgrade much sooner. Combine duck pond clicking with your regular combo rhythm for maximum efficiency.</p>
+           </section>
 
           <section class="section faq-section">
              <h2>Frequently Asked Questions</h2>
@@ -873,12 +914,18 @@
                    <p>Banners appear when you hit 1K, 10K, 100K, and 1M Quacks. They are visual rewards for your dedication.</p>
                 </div>
              </div>
-             <div class="faq-item">
-                <h3 class="faq-question">Can I play on my phone?</h3>
-                <div class="faq-answer">
-                   <p>Yes. The game is fully responsive and works on mobile browsers. Just tap the duckling to click.</p>
-                </div>
-             </div>
+              <div class="faq-item">
+                 <h3 class="faq-question">What are the swimming ducks?</h3>
+                 <div class="faq-answer">
+                    <p>Swimming ducks are bonus ducks that appear in the pond as you buy upgrades. Each one you click gives you 5x your current click power in bonus quacks.</p>
+                 </div>
+              </div>
+              <div class="faq-item">
+                 <h3 class="faq-question">Can I play on my phone?</h3>
+                 <div class="faq-answer">
+                    <p>Yes. The game is fully responsive and works on mobile browsers. Just tap the duckling to click.</p>
+                 </div>
+              </div>
           </section>
 
           <section class="section">
@@ -1072,12 +1119,23 @@
                 showMilestoneBanner(m);
              }
           });
+
+          updateSwimmingDucks();
        }
 
-       function showClickFloat(x, y, amount) {
+       const EMOJI = '🦆';
+
+       function getThemeEmojiText(amount, isCritical) {
+          if (isCritical) return '🔥' + EMOJI + '🔥';
+          if (amount <= 1) return EMOJI;
+          if (amount <= 5) return EMOJI.repeat(amount);
+          return EMOJI.repeat(3) + ' ×' + formatNum(amount);
+       }
+
+       function showClickFloat(x, y, text, isCritical) {
           const el = document.createElement('div');
           el.className = 'click-float';
-          el.textContent = '+' + formatNum(amount || clickPower);
+          el.textContent = text || getThemeEmojiText(clickPower, isCritical);
           el.style.left = x + 'px';
           el.style.top = y + 'px';
           clickArea.style.position = 'relative';
@@ -1085,10 +1143,10 @@
           setTimeout(() => el.remove(), 700);
        }
 
-       function showCriticalPopup(x, y) {
+       function showCriticalPopup(x, y, power) {
           const el = document.createElement('div');
           el.className = 'critical-popup';
-          el.textContent = 'CRITICAL HIT!';
+          el.textContent = getThemeEmojiText(power, true);
           el.style.left = x + 'px';
           el.style.top = (y - 30) + 'px';
           clickArea.appendChild(el);
@@ -1099,6 +1157,53 @@
           milestoneBanner.textContent = '🎉 Milestone Reached: ' + formatNum(m) + '!';
           milestoneBanner.classList.add('show');
           setTimeout(() => milestoneBanner.classList.remove('show'), 3000);
+       }
+
+       // Swimming ducks
+       const swimmingDucks = [];
+       const swimAnimations = ['swim1', 'swim2', 'swim3'];
+
+       function spawnSwimmingDuck() {
+          const duck = document.createElement('div');
+          duck.className = 'pond-duck';
+          duck.textContent = '🦆';
+          const x = 10 + Math.random() * 70;
+          const y = 10 + Math.random() * 70;
+          duck.style.left = x + '%';
+          duck.style.top = y + '%';
+          const duration = 6 + Math.random() * 6;
+          const delay = Math.random() * -duration;
+          const anim = swimAnimations[Math.floor(Math.random() * swimAnimations.length)];
+          duck.style.animationName = anim;
+          duck.style.animationDuration = duration + 's';
+          duck.style.animationDelay = delay + 's';
+          duck.style.animationIterationCount = 'infinite';
+          duck.style.animationTimingFunction = 'linear';
+          duck.addEventListener('click', (ev) => {
+             ev.stopPropagation();
+             const rect = clickArea.getBoundingClientRect();
+             const cx = ev.clientX - rect.left;
+             const cy = ev.clientY - rect.top;
+             const bonus = clickPower * 5;
+             score += bonus;
+             totalEarned += bonus;
+             showClickFloat(cx, cy, getThemeEmojiText(bonus, false), false);
+             render();
+          });
+          clickArea.appendChild(duck);
+          swimmingDucks.push(duck);
+       }
+
+       function updateSwimmingDucks() {
+          const totalUpgrades = upgradeOwned.reduce((a, b) => a + b, 0);
+          const target = Math.min(totalUpgrades, 12);
+          while (swimmingDucks.length > target) {
+             const d = swimmingDucks.pop();
+             if (d && d.parentNode) d.remove();
+          }
+          while (swimmingDucks.length < target) {
+             spawnSwimmingDuck();
+          }
        }
 
        function doClick(e) {
@@ -1119,7 +1224,8 @@
              comboDisplay.textContent = '';
           }
 
-          if (comboCount % COMBO_CRIT_THRESHOLD === 0) {
+          const isCritical = (comboCount % COMBO_CRIT_THRESHOLD === 0);
+          if (isCritical) {
              earned *= 2;
           }
 
@@ -1139,9 +1245,9 @@
              cx = rect.width / 2 + (Math.random() - 0.5) * 40;
              cy = rect.height / 2 - 30;
           }
-          showClickFloat(cx, cy, earned);
-          if (comboCount % COMBO_CRIT_THRESHOLD === 0) {
-             showCriticalPopup(cx, cy);
+          showClickFloat(cx, cy, null, isCritical);
+          if (isCritical) {
+             showCriticalPopup(cx, cy, earned);
           }
           render();
        }

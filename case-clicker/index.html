@@ -32,7 +32,7 @@
       }
 
       body {
-         background: linear-gradient(135deg, #f6f8fd 0%, #f0f2f5 100%);
+         background: linear-gradient(135deg, #eceff1 0%, #cfd8dc 100%);
          min-height: 100vh;
       }
 
@@ -203,29 +203,29 @@
          justify-content: center;
          padding: 36px 20px;
          border-right: 1px solid #f0f0f0;
-         background: #ede9fe;
-         min-height: 320px;
+         background: linear-gradient(180deg, #eceff1 0%, #b0bec5 100%);
+         min-height: 420px;
       }
 
       @media (max-width: 700px) {
          .click-area {
             border-right: none;
             border-bottom: 1px solid #f0f0f0;
-            min-height: 260px;
+            min-height: 360px;
             padding: 28px 20px;
          }
       }
 
       .click-btn {
-         width: 150px;
-         height: 150px;
+         width: 160px;
+         height: 160px;
          border-radius: 50%;
-         border: 4px solid #7c3aed;
-         background: white;
+         border: 5px solid #546e7a;
+         background: radial-gradient(circle at 35% 35%, #78909c, #546e7a);
          font-size: 64px;
          cursor: pointer;
          transition: transform 0.1s ease, box-shadow 0.1s ease;
-         box-shadow: 0 8px 30px #7c3aed33;
+         box-shadow: 0 8px 30px #546e7a33, inset 0 -4px 10px rgba(84,110,122,0.2);
          display: flex;
          align-items: center;
          justify-content: center;
@@ -237,17 +237,18 @@
       }
 
       .click-btn:hover {
-         box-shadow: 0 12px 40px #7c3aed55;
+         box-shadow: 0 12px 40px #546e7a55, inset 0 -4px 10px rgba(84,110,122,0.2);
       }
 
       .click-btn:active,
       .click-btn.pressed {
          transform: scale(0.92);
-         box-shadow: 0 4px 15px #7c3aed44;
+         box-shadow: 0 4px 15px #546e7a44, inset 0 -4px 10px rgba(84,110,122,0.2);
       }
 
       .click-btn .emoji {
          pointer-events: none;
+         filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
       }
 
       .score-display {
@@ -314,7 +315,7 @@
          flex-direction: column;
          gap: 10px;
          overflow-y: auto;
-         max-height: 420px;
+         max-height: 520px;
       }
 
       .upgrades-title {
@@ -335,13 +336,14 @@
          border: 1.5px solid #eee;
          cursor: pointer;
          transition: all 0.2s ease;
-         background: white;
+         background: linear-gradient(180deg, #fff 0%, #f5f7f8 100%);
+         box-shadow: 0 2px 6px rgba(84,110,122,0.08);
          position: relative;
       }
 
       .upgrade-card:hover:not(.locked) {
          border-color: #7c3aed;
-         background: #ede9fe;
+         background: linear-gradient(180deg, #fff 0%, #eceff1 100%);
          transform: translateY(-1px);
          box-shadow: 0 4px 12px #7c3aed15;
       }
@@ -391,6 +393,31 @@
          color: #aaa;
          margin-top: 1px;
       }
+
+      .rarity-common { border-color: #9e9e9e; }
+      .rarity-uncommon { border-color: #4caf50; }
+      .rarity-rare { border-color: #2196f3; }
+      .rarity-epic { border-color: #9c27b0; }
+      .rarity-legendary { border-color: #ff9800; }
+
+      .rarity-badge {
+         position: absolute;
+         top: 6px;
+         right: 8px;
+         font-size: 0.6rem;
+         font-weight: 700;
+         text-transform: uppercase;
+         letter-spacing: 0.05em;
+         padding: 1px 5px;
+         border-radius: 4px;
+         color: white;
+         background: #9e9e9e;
+         pointer-events: none;
+      }
+      .rarity-badge.uncommon { background: #4caf50; }
+      .rarity-badge.rare { background: #2196f3; }
+      .rarity-badge.epic { background: #9c27b0; }
+      .rarity-badge.legendary { background: #ff9800; }
 
       /* Game Footer */
       .game-footer {
@@ -819,61 +846,66 @@
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
 
-               <div class="upgrade-card locked" id="upg0" data-idx="0">
-                  <div class="upgrade-emoji">🔑</div>
-                  <div class="upgrade-info">
-                     <div class="upgrade-name">Bronze Key</div>
-                     <div class="upgrade-desc">+1 coin/sec</div>
-                  </div>
-                  <div class="upgrade-right">
-                     <div class="upgrade-cost" id="upgCost0">15</div>
-                     <div class="upgrade-owned" id="upgOwned0">Owned: 0</div>
-                  </div>
-               </div>
-               <div class="upgrade-card locked" id="upg1" data-idx="1">
-                  <div class="upgrade-emoji">🗝️</div>
-                  <div class="upgrade-info">
-                     <div class="upgrade-name">Silver Key</div>
-                     <div class="upgrade-desc">+5 coins/sec</div>
-                  </div>
-                  <div class="upgrade-right">
-                     <div class="upgrade-cost" id="upgCost1">100</div>
-                     <div class="upgrade-owned" id="upgOwned1">Owned: 0</div>
-                  </div>
-               </div>
-               <div class="upgrade-card locked" id="upg2" data-idx="2">
-                  <div class="upgrade-emoji">🏅</div>
-                  <div class="upgrade-info">
-                     <div class="upgrade-name">Gold Key</div>
-                     <div class="upgrade-desc">+20 coins/sec</div>
-                  </div>
-                  <div class="upgrade-right">
-                     <div class="upgrade-cost" id="upgCost2">500</div>
-                     <div class="upgrade-owned" id="upgOwned2">Owned: 0</div>
-                  </div>
-               </div>
-               <div class="upgrade-card locked" id="upg3" data-idx="3">
-                  <div class="upgrade-emoji">🍀</div>
-                  <div class="upgrade-info">
-                     <div class="upgrade-name">Luck Charm</div>
-                     <div class="upgrade-desc">+100 coins/sec</div>
-                  </div>
-                  <div class="upgrade-right">
-                     <div class="upgrade-cost" id="upgCost3">2500</div>
-                     <div class="upgrade-owned" id="upgOwned3">Owned: 0</div>
-                  </div>
-               </div>
-               <div class="upgrade-card locked" id="upg4" data-idx="4">
-                  <div class="upgrade-emoji">💎</div>
-                  <div class="upgrade-info">
-                     <div class="upgrade-name">Master Unboxer</div>
-                     <div class="upgrade-desc">+500 coins/sec</div>
-                  </div>
-                  <div class="upgrade-right">
-                     <div class="upgrade-cost" id="upgCost4">15000</div>
-                     <div class="upgrade-owned" id="upgOwned4">Owned: 0</div>
-                  </div>
-               </div>
+                <div class="upgrade-card locked rarity-common" id="upg0" data-idx="0">
+                   <div class="upgrade-emoji">🔑</div>
+                   <div class="upgrade-info">
+                      <div class="upgrade-name">Bronze Key</div>
+                      <div class="upgrade-desc">+1 coin/sec</div>
+                   </div>
+                   <div class="upgrade-right">
+                      <div class="upgrade-cost" id="upgCost0">15</div>
+                      <div class="upgrade-owned" id="upgOwned0">Owned: 0</div>
+                   </div>
+                   <span class="rarity-badge">Common</span>
+                </div>
+                <div class="upgrade-card locked rarity-uncommon" id="upg1" data-idx="1">
+                   <div class="upgrade-emoji">🗝️</div>
+                   <div class="upgrade-info">
+                      <div class="upgrade-name">Silver Key</div>
+                      <div class="upgrade-desc">+5 coins/sec</div>
+                   </div>
+                   <div class="upgrade-right">
+                      <div class="upgrade-cost" id="upgCost1">100</div>
+                      <div class="upgrade-owned" id="upgOwned1">Owned: 0</div>
+                   </div>
+                   <span class="rarity-badge uncommon">Uncommon</span>
+                </div>
+                <div class="upgrade-card locked rarity-rare" id="upg2" data-idx="2">
+                   <div class="upgrade-emoji">🏅</div>
+                   <div class="upgrade-info">
+                      <div class="upgrade-name">Gold Key</div>
+                      <div class="upgrade-desc">+20 coins/sec</div>
+                   </div>
+                   <div class="upgrade-right">
+                      <div class="upgrade-cost" id="upgCost2">500</div>
+                      <div class="upgrade-owned" id="upgOwned2">Owned: 0</div>
+                   </div>
+                   <span class="rarity-badge rare">Rare</span>
+                </div>
+                <div class="upgrade-card locked rarity-epic" id="upg3" data-idx="3">
+                   <div class="upgrade-emoji">🍀</div>
+                   <div class="upgrade-info">
+                      <div class="upgrade-name">Luck Charm</div>
+                      <div class="upgrade-desc">+100 coins/sec</div>
+                   </div>
+                   <div class="upgrade-right">
+                      <div class="upgrade-cost" id="upgCost3">2500</div>
+                      <div class="upgrade-owned" id="upgOwned3">Owned: 0</div>
+                   </div>
+                   <span class="rarity-badge epic">Epic</span>
+                </div>
+                <div class="upgrade-card locked rarity-legendary" id="upg4" data-idx="4">
+                   <div class="upgrade-emoji">💎</div>
+                   <div class="upgrade-info">
+                      <div class="upgrade-name">Master Unboxer</div>
+                      <div class="upgrade-desc">+500 coins/sec</div>
+                   </div>
+                   <div class="upgrade-right">
+                      <div class="upgrade-cost" id="upgCost4">15000</div>
+                      <div class="upgrade-owned" id="upgOwned4">Owned: 0</div>
+                   </div>
+                   <span class="rarity-badge legendary">Legendary</span>
+                </div>
                <div class="upgrade-card" id="upgClickPower" data-type="click">
                   <div class="upgrade-emoji">👆</div>
                   <div class="upgrade-info">
@@ -911,16 +943,18 @@
                 <li><strong>Stack Silver Keys for early growth.</strong> Silver Keys provide +5 coins/sec each and offer excellent cost efficiency. Purchase several before moving to higher tiers.</li>
                 <li><strong>Upgrade Click Power when manual matters.</strong> If you are still clicking frequently, investing in Click Power effectively doubles your manual output and reduces wait times.</li>
                 <li><strong>Unlock Gold Keys and Luck Charms.</strong> Gold Keys (+20/sec) mark your mid-game transition, while Luck Charms (+100/sec) enable serious AFK sessions.</li>
-                <li><strong>Achieve Master Unboxer status.</strong> The ultimate +500/sec generator turns your operation into a case-opening empire capable of reaching millions of coins.</li>
-                <li><strong>Chain combos for critical hits.</strong> Click rapidly within 2-second windows to build combos. Every 10 consecutive clicks triggers a CRITICAL HIT worth double coins!</li>
-             </ol>
+                 <li><strong>Achieve Master Unboxer status.</strong> The ultimate +500/sec generator turns your operation into a case-opening empire capable of reaching millions of coins.</li>
+                 <li><strong>Chain combos for critical hits.</strong> Click rapidly within 2-second windows to build combos. Every 10 consecutive clicks triggers a CRITICAL HIT worth double coins!</li>
+                 <li><strong>Pay attention to rarity tiers.</strong> Upgrades are color-coded from Common (gray) to Legendary (gold). Higher rarity upgrades offer bigger payouts and should be prioritized once affordable.</li>
+              </ol>
           </section>
 
           <section class="section">
              <h2>Case Clicker Strategy Guide</h2>
              <p>Case Clicker rewards players who understand the mathematics of exponential cost scaling. With each generator purchase increasing the next copy's price by 15%, blindly chasing the highest tier you can afford is usually a mistake. In the early game, three Silver Keys cost roughly 330 coins total and produce 15 coins per second. By contrast, your first Gold Key costs 500 coins and produces only 20 coins per second. While the Gold Key has a slightly better payback period, the Silver Keys can be purchased incrementally, meaning you start earning their passive income sooner. This concept—opportunity cost of delayed purchases—is the single most important strategic insight for new players.</p>
              <p>Mid-game strategy revolves around portfolio diversification. As your income grows, you should maintain a balanced mix of generators across multiple tiers rather than over-investing in a single tier whose costs have inflated. The progress bar below your main score is an invaluable tool here, showing you exactly what percentage of the next cheapest upgrade you have accumulated. When the bar fills, you know a purchase is available. Smart players use this visual feedback to time their Click Power upgrades for the gaps between generator purchases, ensuring that manual clicking always has a meaningful impact on their economy.</p>
-             <p>Late-game Case Clicker is about achieving scale and celebrating milestones. Once you have unlocked multiple Luck Charms and your first Master Unboxer, your passive income enters the thousands of coins per second. At this point, manual clicking becomes optional rather than essential, and the game transforms into a pure optimization puzzle. The milestone celebrations at 1,000, 10,000, 100,000, and 1,000,000 coins provide satisfying punctuation marks on your journey. Experienced players often set personal challenges, such as reaching 1 million coins without purchasing any Click Power upgrades, or attempting speedruns to the first Master Unboxer. For those who enjoy competitive optimization, <a href="/money-clicker/">Money Clicker</a> offers an even more aggressively scaled economy with similar mechanics.</p>
+              <p>Late-game Case Clicker is about achieving scale and celebrating milestones. Once you have unlocked multiple Luck Charms and your first Master Unboxer, your passive income enters the thousands of coins per second. At this point, manual clicking becomes optional rather than essential, and the game transforms into a pure optimization puzzle. The milestone celebrations at 1,000, 10,000, 100,000, and 1,000,000 coins provide satisfying punctuation marks on your journey. Experienced players often set personal challenges, such as reaching 1 million coins without purchasing any Click Power upgrades, or attempting speedruns to the first Master Unboxer. For those who enjoy competitive optimization, <a href="/money-clicker/">Money Clicker</a> offers an even more aggressively scaled economy with similar mechanics.</p>
+              <p>Targeting higher rarity upgrades is one of the most effective late-game strategies. While Common and Uncommon generators form the foundation of early income, Rare, Epic, and Legendary upgrades deliver dramatically higher returns per coin invested. Once you can afford a Gold Key or Luck Charm without stalling your economy, prioritize it over buying additional lower-tier copies. The visual rarity badges make it easy to spot these high-value targets at a glance, and focusing on them will accelerate your path to Master Unboxer status.</p>
           </section>
 
           <section class="section faq-section">
@@ -933,12 +967,16 @@
                 <h3>Can I play on my phone or tablet?</h3>
                 <p>Yes. Case Clicker is fully responsive and works on any device with a modern web browser. Touch the case button to click, and the game auto-saves your progress for seamless mobile play.</p>
              </div>
-             <div class="faq-item">
-                <h3>How does the combo system work?</h3>
-                <p>Click within 2 seconds of your previous click to increase your combo counter. Reach 10 consecutive clicks to land a CRITICAL HIT, which awards double coins for that click. The combo display updates in real time.</p>
-             </div>
-             <div class="faq-item">
-                <h3>What does the progress bar show?</h3>
+              <div class="faq-item">
+                 <h3>How does the combo system work?</h3>
+                 <p>Click within 2 seconds of your previous click to increase your combo counter. Reach 10 consecutive clicks to land a CRITICAL HIT, which awards double coins for that click. The combo display updates in real time.</p>
+              </div>
+              <div class="faq-item">
+                 <h3>What are rarity tiers?</h3>
+                 <p>Each upgrade has a rarity tier shown by its border color and badge: Common (gray), Uncommon (green), Rare (blue), Epic (purple), and Legendary (gold). Higher rarity upgrades provide significantly more passive income and represent major milestones in your progression.</p>
+              </div>
+              <div class="faq-item">
+                 <h3>What does the progress bar show?</h3>
                 <p>The progress bar displays what percentage you have accumulated toward the next cheapest upgrade you cannot yet afford. It fills as you earn coins and resets when you make a purchase.</p>
              </div>
              <div class="faq-item">
@@ -1058,13 +1096,27 @@
           const comboDisplay = document.getElementById('comboDisplay');
           const progressBarFill = document.getElementById('progressBarFill');
 
-         function formatNum(n) {
-            if (n < 1000) return Math.floor(n).toLocaleString();
-            if (n < 1e6) return (n / 1e3).toFixed(1) + 'K';
-            if (n < 1e9) return (n / 1e6).toFixed(1) + 'M';
-            if (n < 1e12) return (n / 1e9).toFixed(1) + 'B';
-            return (n / 1e12).toFixed(1) + 'T';
-         }
+          function formatNum(n) {
+             if (n < 1000) return Math.floor(n).toLocaleString();
+             if (n < 1e6) return (n / 1e3).toFixed(1) + 'K';
+             if (n < 1e9) return (n / 1e6).toFixed(1) + 'M';
+             if (n < 1e12) return (n / 1e9).toFixed(1) + 'B';
+             return (n / 1e12).toFixed(1) + 'T';
+          }
+
+          function getThemeEmojiText(amount, isCritical) {
+             const EMOJI = '📦';
+             if (isCritical) {
+                return '💎' + EMOJI + '💎';
+             }
+             if (amount <= 1) {
+                return EMOJI;
+             }
+             if (amount <= 5) {
+                return EMOJI.repeat(Math.floor(amount));
+             }
+             return EMOJI.repeat(3) + ' ×' + formatNum(amount);
+          }
 
          function getCost(baseC, owned) {
             return Math.floor(baseC * Math.pow(COST_SCALE, owned));
@@ -1107,16 +1159,16 @@
             }
          }
 
-         function showClickFloat(x, y) {
-            const el = document.createElement('div');
-            el.className = 'click-float';
-            el.textContent = '+' + formatNum(clickPower);
-            el.style.left = x + 'px';
-            el.style.top = y + 'px';
-            clickArea.style.position = 'relative';
-            clickArea.appendChild(el);
-            setTimeout(() => el.remove(), 700);
-         }
+          function showClickFloat(x, y, text, isCritical) {
+             const el = document.createElement('div');
+             el.className = 'click-float';
+             el.textContent = text != null ? text : getThemeEmojiText(clickPower, isCritical);
+             el.style.left = x + 'px';
+             el.style.top = y + 'px';
+             clickArea.style.position = 'relative';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 700);
+          }
 
           function updateCombo() {
              const now = Date.now();
@@ -1221,17 +1273,17 @@
                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
                cy = rect.height / 2 - 30;
             }
-             showClickFloat(cx, cy);
-             if (mult === 2) {
-                const cel = document.createElement('div');
-                cel.className = 'click-float';
-                cel.textContent = '+' + formatNum(power) + ' (2x)';
-                cel.style.left = (cx + 20) + 'px';
-                cel.style.top = (cy - 20) + 'px';
-                cel.style.color = '#dc2626';
-                clickArea.appendChild(cel);
-                setTimeout(() => cel.remove(), 700);
-             }
+              showClickFloat(cx, cy, null, mult === 2);
+              if (mult === 2) {
+                 const cel = document.createElement('div');
+                 cel.className = 'click-float';
+                 cel.textContent = getThemeEmojiText(power, true);
+                 cel.style.left = (cx + 20) + 'px';
+                 cel.style.top = (cy - 20) + 'px';
+                 cel.style.color = '#dc2626';
+                 clickArea.appendChild(cel);
+                 setTimeout(() => cel.remove(), 700);
+              }
              checkMilestones();
              render();
              updateProgressBar();

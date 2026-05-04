@@ -31,7 +31,7 @@
       }
 
       body {
-         background: linear-gradient(135deg, #f6f8fd 0%, #f0f2f5 100%);
+         background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
          min-height: 100vh;
       }
 
@@ -202,29 +202,29 @@
          justify-content: center;
          padding: 36px 20px;
          border-right: 1px solid #f0f0f0;
-         background: #ffedd5;
-         min-height: 320px;
+         background: linear-gradient(180deg, #fff3e0 0%, #ffe0b2 100%);
+         min-height: 420px;
       }
 
       @media (max-width: 700px) {
          .click-area {
             border-right: none;
             border-bottom: 1px solid #f0f0f0;
-            min-height: 260px;
+            min-height: 360px;
             padding: 28px 20px;
          }
       }
 
       .click-btn {
-         width: 150px;
-         height: 150px;
+         width: 160px;
+         height: 160px;
          border-radius: 50%;
-         border: 4px solid #ea580c;
-         background: white;
+         border: 5px solid #ff6f00;
+         background: radial-gradient(circle at 35% 35%, #ff8f00, #ff6f00);
          font-size: 64px;
          cursor: pointer;
          transition: transform 0.1s ease, box-shadow 0.1s ease;
-         box-shadow: 0 8px 30px #ea580c33;
+         box-shadow: 0 8px 30px #ff6f0033, inset 0 -4px 10px rgba(255,111,0,0.2);
          display: flex;
          align-items: center;
          justify-content: center;
@@ -236,17 +236,18 @@
       }
 
       .click-btn:hover {
-         box-shadow: 0 12px 40px #ea580c55;
+         box-shadow: 0 12px 40px #ff6f0055, inset 0 -4px 10px rgba(255,111,0,0.2);
       }
 
       .click-btn:active,
       .click-btn.pressed {
          transform: scale(0.92);
-         box-shadow: 0 4px 15px #ea580c44;
+         box-shadow: 0 4px 15px #ff6f0044, inset 0 -4px 10px rgba(255,111,0,0.2);
       }
 
       .click-btn .emoji {
          pointer-events: none;
+         filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
       }
 
       .score-display {
@@ -313,7 +314,7 @@
          flex-direction: column;
          gap: 10px;
          overflow-y: auto;
-         max-height: 420px;
+         max-height: 520px;
       }
 
       .upgrades-title {
@@ -334,13 +335,14 @@
          border: 1.5px solid #eee;
          cursor: pointer;
          transition: all 0.2s ease;
-         background: white;
+         background: linear-gradient(180deg, #fff 0%, #faf5f0 100%);
+         box-shadow: 0 2px 6px rgba(255,111,0,0.08);
          position: relative;
       }
 
       .upgrade-card:hover:not(.locked) {
          border-color: #ea580c;
-         background: #ffedd5;
+         background: linear-gradient(180deg, #fff 0%, #ffcc80 100%);
          transform: translateY(-1px);
          box-shadow: 0 4px 12px #ea580c15;
       }
@@ -801,6 +803,58 @@
          width: 0%;
       }
 
+      /* Flame Meter */
+      .flame-meter-container {
+         width: 80%;
+         max-width: 220px;
+         margin-top: 14px;
+         text-align: center;
+      }
+      .flame-meter-label {
+         font-size: 0.75rem;
+         font-weight: 600;
+         color: #ffcc80;
+         margin-bottom: 4px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         gap: 6px;
+      }
+      .flame-meter-label.flame-out {
+         color: #ef4444;
+         animation: flameOutPulse 1s ease-in-out infinite;
+      }
+      @keyframes flameOutPulse {
+         0%, 100% { opacity: 1; }
+         50% { opacity: 0.6; }
+      }
+      .flame-bar-wrap {
+         width: 100%;
+         height: 12px;
+         background: rgba(255,255,255,0.12);
+         border-radius: 6px;
+         overflow: hidden;
+         position: relative;
+      }
+      .flame-bar-fill {
+         height: 100%;
+         border-radius: 6px;
+         transition: width 0.3s ease, background 0.5s ease;
+         width: 0%;
+      }
+      .flame-bar-fill.blue { background: linear-gradient(90deg, #29b6f6, #4fc3f7); }
+      .flame-bar-fill.orange { background: linear-gradient(90deg, #ffa726, #ff9800); }
+      .flame-bar-fill.red { background: linear-gradient(90deg, #f44336, #ff5722); }
+      .flame-multiplier {
+         font-size: 0.75rem;
+         color: #ffcc80;
+         margin-top: 4px;
+         font-weight: 600;
+      }
+      .flame-multiplier.flame-out {
+         color: #ef4444;
+      }
+
       /* Floating Particles */
       .particle {
          position: absolute;
@@ -948,17 +1002,25 @@
             <button class="sound-toggle" id="soundToggle" title="Toggle Sound">🔊</button>
          </div>
          <div class="game-body">
-            <div class="click-area" id="clickArea">
-               <button class="click-btn" id="clickBtn" aria-label="Grill Whopper">
-                  <span class="emoji">🍔</span>
-               </button>
-               <div class="score-display">
-                  <div class="score-number" id="scoreNum">0</div>
-                  <div class="score-label">Whoppers</div>
-               </div>
-               <div class="per-second" id="perSecDisplay">0 whoppers/sec</div>
-               <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
-            </div>
+             <div class="click-area" id="clickArea">
+                <button class="click-btn" id="clickBtn" aria-label="Grill Whopper">
+                   <span class="emoji">🍔</span>
+                </button>
+                <div class="score-display">
+                   <div class="score-number" id="scoreNum">0</div>
+                   <div class="score-label">Whoppers</div>
+                </div>
+                <div class="per-second" id="perSecDisplay">0 whoppers/sec</div>
+                <div class="click-power-info" id="clickPowerInfo">+1 per click</div>
+                <div class="combo-display" id="comboDisplay"></div>
+                <div class="flame-meter-container" id="flameMeterContainer">
+                   <div class="flame-meter-label" id="flameMeterLabel">🔥 Flame Intensity</div>
+                   <div class="flame-bar-wrap">
+                      <div class="flame-bar-fill" id="flameBarFill"></div>
+                   </div>
+                   <div class="flame-multiplier" id="flameMultiplier">Passive x1.0</div>
+                </div>
+             </div>
             <div class="upgrades-panel" id="upgradesPanel">
                <div class="upgrades-title">Upgrades</div>
 
@@ -1054,16 +1116,18 @@
                 <li><strong>Sharpen Your Skills:</strong> Buy <strong>Click Power</strong> to flip more burgers per click. A high click multiplier turns you into a one-person assembly line during active sessions.</li>
                 <li><strong>Hire the Crew:</strong> Unlock <strong>Grill Master</strong> (+5/sec) and <strong>Drive-Through</strong> (+20/sec) to bring in reinforcements and scale your production.</li>
                 <li><strong>Go Corporate:</strong> Save for <strong>Franchise Deal</strong> (+100/sec) and <strong>Burger Empire</strong> (+500/sec) to turn your single grill into a multinational fast-food conglomerate.</li>
-                <li><strong>Combo Cooking:</strong> Maintain a rapid click streak within 2-second windows to build combos. Every 10 consecutive clicks triggers a <strong>Critical Hit</strong> that cooks double burgers!</li>
-             </ol>
+                 <li><strong>Combo Cooking:</strong> Maintain a rapid click streak within 2-second windows to build combos. Every 10 consecutive clicks triggers a <strong>Critical Hit</strong> that cooks double burgers!</li>
+                 <li><strong>Keep the Flame Alive:</strong> The flame meter fuels your passive income. Click regularly to stoke the fire and boost your automated production up to x2.5. If the flame dies, passive income stops completely until you relight it.</li>
+              </ol>
           </section>
 
           <section class="section">
              <h2>Whopper Clicker Strategy Guide</h2>
              <p><strong>Opening Shift Strategy:</strong> Your first shift should focus on getting at least one Extra Patty running as fast as possible. Passive income is the secret sauce of every successful clicker run. Once you have a baseline of automated production, funnel excess Whoppers into Click Power. The early game is all about minimizing downtime. If you have enough for an upgrade, buy it. Compounding interest applies to burgers too.</p>
              <p><strong>The Lunch Rush:</strong> Around the mid-game, you will be juggling Grill Masters and Drive-Throughs while eyeing that expensive Franchise Deal. Here is the pro move: if you plan to step away from the game, prioritize Drive-Throughs for steady AFK income. If you are actively playing, buff your Click Power so manual clicks can fund the next big purchase in minutes rather than hours. Balance is the key to a well-run kitchen.</p>
-             <p><strong>Empire Management:</strong> In the late game, Burger Empire upgrades are your bread and butter. Each one adds a staggering +500 Whoppers per second. At this stage, active clicking becomes less about necessity and more about maintaining combos for fun. When you return to the game after a break, your first move should always be investing idle earnings into more Empires. Only then should you consider whether another Click Power level is worth the price.</p>
-          </section>
+              <p><strong>Empire Management:</strong> In the late game, Burger Empire upgrades are your bread and butter. Each one adds a staggering +500 Whoppers per second. At this stage, active clicking becomes less about necessity and more about maintaining combos for fun. When you return to the game after a break, your first move should always be investing idle earnings into more Empires. Only then should you consider whether another Click Power level is worth the price.</p>
+              <p><strong>Flame Management:</strong> The Flame Meter is the hidden engine behind your empire's growth. Because it decays by 2% per second but gains 15% per click, a quick burst of 7 clicks can max it out from zero. The optimal rhythm is to click aggressively for a few seconds to push the flame into the red zone, then let your passive income cook at maximum multiplier while you check on other tasks. Never let the flame sit at zero for long, because a dead flame means all your Grill Masters and Burger Empires are standing idle. Treat every click as a strike of the match.</p>
+           </section>
 
           <section class="section faq-section">
              <h2>Frequently Asked Questions</h2>
@@ -1077,9 +1141,11 @@
              <p>Early on, buy Extra Patties for passive income. In the mid-game, balance Click Power with Drive-Through purchases. Late game, focus entirely on Burger Empire upgrades for maximum passive production.</p>
              <h3>Does Whopper Clicker work on mobile?</h3>
              <p>Yes, the game is fully responsive. Tap the burger button to click and scroll through upgrades on your phone or tablet just as you would on a computer.</p>
-             <h3>How do combos and Critical Hits work?</h3>
-             <p>Click rapidly so that each click happens within 2 seconds of the last one to build a combo. Every time your combo reaches a multiple of 10, you land a Critical Hit that earns double Whoppers for that click. Let 2 seconds pass and your combo resets to zero.</p>
-          </section>
+              <h3>How do combos and Critical Hits work?</h3>
+              <p>Click rapidly so that each click happens within 2 seconds of the last one to build a combo. Every time your combo reaches a multiple of 10, you land a Critical Hit that earns double Whoppers for that click. Let 2 seconds pass and your combo resets to zero.</p>
+              <h3>What is the Flame Meter?</h3>
+              <p>The Flame Meter measures your grill's intensity and directly scales your passive income. It ranges from 0% to 100%. Each click adds 15% fuel, but it decays by 2% every second. At 100% flame, your passive income is multiplied by 2.5x. If the flame drops to 0%, your passive production shuts off completely until you click again to relight it.</p>
+           </section>
 
           <section class="section">
              <h2>Why Play Whopper Clicker?</h2>
@@ -1173,13 +1239,22 @@
          let perSecond = 0;
          let upgradeOwned = UPGRADES.map(() => 0);
 
-         // Combo system
-         let lastClickTime = 0;
-         let comboCount = 0;
-         const COMBO_WINDOW = 2000;
-         const comboDisplay = document.getElementById('comboDisplay');
+          // Combo system
+          let lastClickTime = 0;
+          let comboCount = 0;
+          const COMBO_WINDOW = 2000;
+          const comboDisplay = document.getElementById('comboDisplay');
 
-         // Sound toggle
+          // Flame Meter
+          let flamePercent = 50; // start at 50%
+          const FLAME_DECAY = 2; // per second
+          const FLAME_CLICK_GAIN = 15;
+          const FLAME_MAX_MULTIPLIER = 2.5;
+          const flameBarFill = document.getElementById('flameBarFill');
+          const flameMeterLabel = document.getElementById('flameMeterLabel');
+          const flameMultiplier = document.getElementById('flameMultiplier');
+
+          // Sound toggle
          let soundOn = true;
          const soundToggle = document.getElementById('soundToggle');
          soundToggle.addEventListener('click', () => {
@@ -1204,7 +1279,16 @@
          const clickBtn = document.getElementById('clickBtn');
          const clickArea = document.getElementById('clickArea');
 
-         function formatNum(n) {
+          const EMOJI = '🔥';
+
+          function getThemeEmojiText(amount, isCritical) {
+             if (isCritical) return '💥' + EMOJI + '💥';
+             if (amount <= 1) return EMOJI;
+             if (amount <= 5) return EMOJI.repeat(Math.floor(amount));
+             return EMOJI.repeat(3) + ' ×' + formatNum(amount);
+          }
+
+          function formatNum(n) {
             if (n < 1000) return Math.floor(n).toLocaleString();
             if (n < 1e6) return (n / 1e3).toFixed(1) + 'K';
             if (n < 1e9) return (n / 1e6).toFixed(1) + 'M';
@@ -1216,16 +1300,16 @@
             return Math.floor(baseC * Math.pow(COST_SCALE, owned));
          }
 
-         function showCriticalPopup() {
-            const el = document.createElement('div');
-            el.className = 'critical-popup';
-            el.textContent = 'CRITICAL HIT!';
-            const rect = clickArea.getBoundingClientRect();
-            el.style.left = (rect.width/2 - 60) + 'px';
-            el.style.top = (rect.height/2 - 60) + 'px';
-            clickArea.appendChild(el);
-            setTimeout(() => el.remove(), 800);
-         }
+          function showCriticalPopup(amount) {
+             const el = document.createElement('div');
+             el.className = 'critical-popup';
+             el.textContent = getThemeEmojiText(amount, true);
+             const rect = clickArea.getBoundingClientRect();
+             el.style.left = (rect.width/2 - 60) + 'px';
+             el.style.top = (rect.height/2 - 60) + 'px';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 800);
+          }
 
          function showMilestoneBanner(text) {
             milestoneBanner.textContent = 'Milestone Reached! ' + text + ' Whoppers';
@@ -1246,19 +1330,50 @@
             setTimeout(() => p.remove(), 2000);
          }, 3500);
 
-         function recalcPerSecond() {
-            perSecond = 0;
-            UPGRADES.forEach((u, i) => {
-               perSecond += u.baseRate * upgradeOwned[i];
-            });
-         }
+          function recalcPerSecond() {
+             perSecond = 0;
+             UPGRADES.forEach((u, i) => {
+                perSecond += u.baseRate * upgradeOwned[i];
+             });
+          }
 
-         function render() {
-            scoreNum.textContent = formatNum(score);
-            perSecDisplay.textContent = formatNum(perSecond) + ' whoppers/sec';
-            clickPowerInfo.textContent = '+' + formatNum(clickPower) + ' per click';
-            gStatTotal.textContent = formatNum(score) + ' Whoppers';
-            gStatPerSec.textContent = formatNum(perSecond) + '/sec';
+          function getFlameMultiplier() {
+             if (flamePercent <= 0) return 0;
+             return (flamePercent / 100) * FLAME_MAX_MULTIPLIER;
+          }
+
+          function updateFlameMeter() {
+             flameBarFill.style.width = flamePercent + '%';
+             flameBarFill.classList.remove('blue', 'orange', 'red');
+             if (flamePercent <= 0) {
+                flameBarFill.classList.add('blue');
+                flameMeterLabel.textContent = 'Flame Out!';
+                flameMeterLabel.classList.add('flame-out');
+                flameMultiplier.textContent = 'Passive x0.0';
+                flameMultiplier.classList.add('flame-out');
+             } else {
+                flameMeterLabel.classList.remove('flame-out');
+                flameMultiplier.classList.remove('flame-out');
+                flameMeterLabel.textContent = '🔥 Flame Intensity';
+                if (flamePercent < 33) {
+                   flameBarFill.classList.add('blue');
+                } else if (flamePercent < 66) {
+                   flameBarFill.classList.add('orange');
+                } else {
+                   flameBarFill.classList.add('red');
+                }
+                let mult = getFlameMultiplier();
+                flameMultiplier.textContent = 'Passive x' + mult.toFixed(1);
+             }
+          }
+
+          function render() {
+             let effectivePerSec = perSecond * getFlameMultiplier();
+             scoreNum.textContent = formatNum(score);
+             perSecDisplay.textContent = formatNum(effectivePerSec) + ' whoppers/sec';
+             clickPowerInfo.textContent = '+' + formatNum(clickPower) + ' per click';
+             gStatTotal.textContent = formatNum(score) + ' Whoppers';
+             gStatPerSec.textContent = formatNum(effectivePerSec) + '/sec';
 
             UPGRADES.forEach((u, i) => {
                const card = document.getElementById('upg' + i);
@@ -1301,60 +1416,66 @@
             }
          }
 
-         function showClickFloat(x, y) {
-            const el = document.createElement('div');
-            el.className = 'click-float';
-            el.textContent = '+' + formatNum(clickPower);
-            el.style.left = x + 'px';
-            el.style.top = y + 'px';
-            clickArea.style.position = 'relative';
-            clickArea.appendChild(el);
-            setTimeout(() => el.remove(), 700);
-         }
+          function showClickFloat(x, y, text, isCritical) {
+             const el = document.createElement('div');
+             el.className = 'click-float';
+             el.textContent = text || getThemeEmojiText(clickPower, isCritical);
+             el.style.left = x + 'px';
+             el.style.top = y + 'px';
+             clickArea.style.position = 'relative';
+             clickArea.appendChild(el);
+             setTimeout(() => el.remove(), 700);
+          }
 
-         function doClick(e) {
-            let now = Date.now();
-            if (now - lastClickTime <= COMBO_WINDOW) {
-               comboCount++;
-            } else {
-               comboCount = 1;
-            }
-            lastClickTime = now;
+          function doClick(e) {
+             let now = Date.now();
+             if (now - lastClickTime <= COMBO_WINDOW) {
+                comboCount++;
+             } else {
+                comboCount = 1;
+             }
+             lastClickTime = now;
 
-            let earned = clickPower;
-            if (comboCount >= 10 && comboCount % 10 === 0) {
-               earned *= 2;
-               showCriticalPopup();
-            }
+             let earned = clickPower;
+             let isCritical = false;
+             if (comboCount >= 10 && comboCount % 10 === 0) {
+                earned *= 2;
+                isCritical = true;
+                showCriticalPopup(earned);
+             }
 
-            score += earned;
-            totalEarned += earned;
+             score += earned;
+             totalEarned += earned;
 
-            if (comboCount > 1) {
-               comboDisplay.textContent = comboCount + 'x COMBO!';
-               comboDisplay.classList.add('active');
-               clearTimeout(comboDisplay._t);
-               comboDisplay._t = setTimeout(() => comboDisplay.classList.remove('active'), 1500);
-            } else {
-               comboDisplay.classList.remove('active');
-            }
+             // Fuel the flame on every click
+             flamePercent = Math.min(100, flamePercent + 15);
+             updateFlameMeter();
 
-            clickBtn.classList.add('pressed');
-            setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+             if (comboCount > 1) {
+                comboDisplay.textContent = comboCount + 'x COMBO!';
+                comboDisplay.classList.add('active');
+                clearTimeout(comboDisplay._t);
+                comboDisplay._t = setTimeout(() => comboDisplay.classList.remove('active'), 1500);
+             } else {
+                comboDisplay.classList.remove('active');
+             }
 
-            // Float position
-            const rect = clickArea.getBoundingClientRect();
-            let cx, cy;
-            if (e && e.clientX) {
-               cx = e.clientX - rect.left;
-               cy = e.clientY - rect.top;
-            } else {
-               cx = rect.width / 2 + (Math.random() - 0.5) * 40;
-               cy = rect.height / 2 - 30;
-            }
-            showClickFloat(cx, cy);
-            render();
-         }
+             clickBtn.classList.add('pressed');
+             setTimeout(() => clickBtn.classList.remove('pressed'), 100);
+
+             // Float position
+             const rect = clickArea.getBoundingClientRect();
+             let cx, cy;
+             if (e && e.clientX) {
+                cx = e.clientX - rect.left;
+                cy = e.clientY - rect.top;
+             } else {
+                cx = rect.width / 2 + (Math.random() - 0.5) * 40;
+                cy = rect.height / 2 - 30;
+             }
+             showClickFloat(cx, cy, null, isCritical);
+             render();
+          }
 
          clickBtn.addEventListener('click', doClick);
          clickBtn.addEventListener('touchstart', (e) => {
@@ -1394,37 +1515,47 @@
             }
          });
 
-         // Per-second tick
-         setInterval(() => {
-            if (perSecond > 0) {
-               score += perSecond;
-               totalEarned += perSecond;
-               render();
-            }
-         }, 1000);
+          // Per-second tick
+          setInterval(() => {
+             // Decay flame
+             if (flamePercent > 0) {
+                flamePercent = Math.max(0, flamePercent - FLAME_DECAY);
+                updateFlameMeter();
+             }
+             // Apply passive income with flame multiplier
+             if (perSecond > 0) {
+                let mult = getFlameMultiplier();
+                let earned = perSecond * mult;
+                score += earned;
+                totalEarned += earned;
+                render();
+             }
+          }, 1000);
 
          // Save / Load
-         function saveGame() {
-            const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, reachedMilestones: [...reachedMilestones] };
-            try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
-         }
+          function saveGame() {
+             const data = { score, totalEarned, clickPower, clickPowerLevel, clickPowerCost, upgradeOwned, reachedMilestones: [...reachedMilestones], flamePercent };
+             try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch (e) { }
+          }
 
-         function loadGame() {
-            try {
-               const raw = localStorage.getItem(SAVE_KEY);
-               if (raw) {
-                  const data = JSON.parse(raw);
-                  score = data.score || 0;
-                  totalEarned = data.totalEarned || 0;
-                  clickPower = data.clickPower || 1;
-                  clickPowerLevel = data.clickPowerLevel || 1;
-                  clickPowerCost = data.clickPowerCost || 50;
-                  upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
-                  if (data.reachedMilestones) reachedMilestones = new Set(data.reachedMilestones);
-                  recalcPerSecond();
-               }
-            } catch (e) { }
-         }
+          function loadGame() {
+             try {
+                const raw = localStorage.getItem(SAVE_KEY);
+                if (raw) {
+                   const data = JSON.parse(raw);
+                   score = data.score || 0;
+                   totalEarned = data.totalEarned || 0;
+                   clickPower = data.clickPower || 1;
+                   clickPowerLevel = data.clickPowerLevel || 1;
+                   clickPowerCost = data.clickPowerCost || 50;
+                   upgradeOwned = data.upgradeOwned || UPGRADES.map(() => 0);
+                   if (data.reachedMilestones) reachedMilestones = new Set(data.reachedMilestones);
+                   flamePercent = typeof data.flamePercent === 'number' ? data.flamePercent : 50;
+                   recalcPerSecond();
+                   updateFlameMeter();
+                }
+             } catch (e) { }
+          }
 
          document.getElementById('saveBtn').addEventListener('click', () => {
             saveGame();
@@ -1433,22 +1564,25 @@
             setTimeout(() => { btn.textContent = '💾 Save'; }, 1500);
          });
 
-         document.getElementById('resetBtn').addEventListener('click', () => {
-            if (confirm('Reset all progress for Whopper Clicker? This cannot be undone.')) {
-               localStorage.removeItem(SAVE_KEY);
-               score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
-               upgradeOwned = UPGRADES.map(() => 0);
-               recalcPerSecond();
-               render();
-            }
-         });
+          document.getElementById('resetBtn').addEventListener('click', () => {
+             if (confirm('Reset all progress for Whopper Clicker? This cannot be undone.')) {
+                localStorage.removeItem(SAVE_KEY);
+                score = 0; totalEarned = 0; clickPower = 1; clickPowerLevel = 1; clickPowerCost = 50;
+                upgradeOwned = UPGRADES.map(() => 0);
+                flamePercent = 50;
+                recalcPerSecond();
+                updateFlameMeter();
+                render();
+             }
+          });
 
          // Auto-save every 30s
          setInterval(saveGame, 30000);
 
-         // Init
-         loadGame();
-         render();
+          // Init
+          loadGame();
+          updateFlameMeter();
+          render();
       })();
    </script>
 
